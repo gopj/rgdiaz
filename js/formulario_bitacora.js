@@ -1,5 +1,6 @@
 function otro_residuo_peligroso(dato) {
 	var cl = dato;
+	var arrcl = cl.split(",");
 	if (cl == "Otro") {
 		document.getElementById('lb_clave').innerHTML="";
 		$("#otro_residuo").removeAttr('disabled');
@@ -9,17 +10,8 @@ function otro_residuo_peligroso(dato) {
 		document.getElementById('otro_residuo').value = "";
 		document.getElementById('clave').value = "";
 		$("#otro_residuo").attr('disabled','disabled');
-		$("#clave").attr('disabled','disabled');
-		if(cl == "O-1") {
-			cl = "O";
-		}else if(cl == "O-2") {
-			cl = "O";
-		}else if(cl == "SO4-1") {
-			cl = "SO4";
-		}else if(cl == "SO4-2") {
-			cl = "SO4";
-		}
-		document.getElementById('lb_clave').innerHTML=cl;
+		$("#clave").attr('disabled','disabled');		
+		document.getElementById('lb_clave').innerHTML=arrcl[1];
 	}
 }
 
@@ -36,6 +28,7 @@ function otra_area_generacion(dato) {
 
 function otra_empresa_transportista(dato) {
 	var cl = dato;
+	var arrcl = cl.split(",");
 	if (cl == "Otro") {
 		document.getElementById('lb_autorizacion').innerHTML="";
 		$("#otro_empresa").removeAttr('disabled');
@@ -46,7 +39,9 @@ function otra_empresa_transportista(dato) {
 		document.getElementById('no_auto').value = "";
 		$("#otro_empresa").attr('disabled','disabled');
 		$("#no_auto").attr('disabled','disabled');
-		document.getElementById('lb_autorizacion').innerHTML=cl;
+
+
+		document.getElementById('lb_autorizacion').innerHTML=arrcl[1];
 	}
 }
 
@@ -64,6 +59,7 @@ function otro_modalidad_trabajo(dato)
 
 function otra_destino(dato) {
 	var cl = dato;
+	var arrcl = cl.split(",");
 	if (cl == "Otro") {
 		document.getElementById('lb_autorizacion_dest').innerHTML="";
 		$("#otro_dest").removeAttr('disabled');
@@ -74,7 +70,7 @@ function otra_destino(dato) {
 		document.getElementById('no_auto_dest').value = "";
 		$("#otro_dest").attr('disabled','disabled');
 		$("#no_auto_dest").attr('disabled','disabled');
-		document.getElementById('lb_autorizacion_dest').innerHTML=cl;
+		document.getElementById('lb_autorizacion_dest').innerHTML=arrcl[1];
 	}
 }
 

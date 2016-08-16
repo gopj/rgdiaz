@@ -1,4 +1,8 @@
-			<div class="span9">
+<?php 
+//print_r($tipo_emp_transportista);
+
+?>
+	<div class="span9">
 				<legend><center>Nuevo Registro</center></legend>
 				<form id="form_bitacora_residuo_peligroso" action="<?php echo site_url('cliente/guardar_registro_nueva'); ?>" method="post">
 				<div class="well">
@@ -11,7 +15,7 @@
 									<select id="residuo" class="txt"  style="width:60%;" name="residuo" type="text" onchange="otro_residuo_peligroso(this.value);" required>
 										<option value="">Seleccione una opción</option>
 										<?php foreach ($residuos as $row) {
-											echo "<option value='{$row->residuo}'> {$row->residuo} </option>";
+											echo "<option value='{$row->id_tipo_residuo}, {$row->clave}'> ".   mb_strimwidth($row->residuo, 0, 55, '...') . "</option>";
 										 } ?>
 										<option value="Otro">Otro</option>
 									</select>
@@ -72,8 +76,9 @@
 								<div class="form-inline">
 									<select id="area_generacion" class="txt" name="area_generacion" onchange="otra_area_generacion(this.value);" style="width:40%" required>
 										<option value="">Seleccione una opción</option>
-										<option value="Mantenimiento">Mantenimiento</option>
-										<option value="Laboratorio">Laboratorio</option>
+										<?php foreach ($areas as $row) {
+											echo "<option value='{$row->id_area}'> ".   mb_strimwidth($row->area, 0, 55, '...') . "</option>";
+										 } ?>
 										<option value="Otro">Otro</option>
 									</select>
 									&nbsp;
@@ -100,10 +105,9 @@
 								<div class="form-inline" style="margin-bottom:10px;">
 									<select class="txt" name="emp_tran" onchange="otra_empresa_transportista(this.value);" style="width:30%">
 										<option value="">Seleccione una opción</option>
-										<option value="06-10-PS-I-01-2011">Ricardo Díaz Virgen</option>
-										<option value="014-002-682-95">Alicia Huerta Rodríguez</option>
-										<option value="21-015-PS-I-02-07">Ecoltec S.A. de C.V.</option>
-										<option value="09-I-20-11">EK Ambiental S.A. de C.V.</option>
+										<?php foreach ($tipo_emp_transportista as $row) {
+											echo "<option value='{$row->id_tipo_emp_transportista}, {$row->no_autorizacion_transportista}'> ".   mb_strimwidth($row->nombre_empresa, 0, 55, '...') . "</option>";
+										 } ?>
 										<option value="Otro">Otro</option>
 									</select>
 									&nbsp;
@@ -131,13 +135,9 @@
 								<div class="form-inline" style="margin-bottom:10px;">
 									<select class="txt" name="dest_final" onchange="otra_destino(this.value);">
 										<option value="">Seleccione una opción</option>
-										<option value="06-09-ll-01-2011">Ecoltec S.A de C.V. (acopio)</option>
-										<option value="6-IV-34-09">Ecoltec S.A de C.V. (destino final)</option>
-										<option value="14-030B-PS-ll-43-07">Francisco Serrano Lomeli</option>
-										<option value="14-98B-PS-ll-18-03">Alicia Huerta Rodriguez</option>
-										<option value="14-II-06-11">EK Ambiental S.A. de C.V.</option>
-										<option value="11-V-86-09">Sistema de Tratamiento Ambiental S.A. de C.V.</option>
-										<option value="19-IV-78-11">Enertec Exports S. de R.L. de C.V.</option>
+										<?php foreach ($tipo_emp_destino as $row) {
+											echo "<option value='{$row->id_tipo_destino}, {$row->no_autorizacion_destino}'> ".   mb_strimwidth($row->nombre_destino, 0, 55, '...') . "</option>";
+										} ?>
 										<option value="Otro">Otro</option>
 									</select>
 									&nbsp;
@@ -159,9 +159,9 @@
 								<div class="form-inline"> 
 									<select class="txt" name="sig_manejo" onchange="otro_modalidad_trabajo(this.value);" style="width:40%">
 										<option value="">Seleccione una opción</option>
-										<option value="Coprocesamiento">Coprocesamiento</option>
-										<option value="Confinamiento controlado">Confinamiento controlado</option>
-										<option value="Formulación de combustibles alternos">Formulación de combustibles alternos</option>
+										<?php foreach ($tipo_modalidad as $row) {
+											echo "<option value='{$row->id_tipo_modalidad}'> ".   mb_strimwidth($row->modalidad, 0, 55, '...') . "</option>";
+										 } ?>
 										<option value="Otro">Otro</option>
 									</select>
 									&nbsp;

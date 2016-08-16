@@ -348,13 +348,21 @@ class Cliente extends CI_Controller {
 			$total=$this->notificacion_model->obtiene_noticliente($id,$status);
 			$carpetas=$this->carpeta_model->obt_carpeta_personal($ruta);
 			$archivos=$this->archivo_model->obtienearchivos($ruta_carpeta);
-			$residuos = $this->residuo_peligroso_model->get_residuos($id);
+			$residuos = $this->residuo_peligroso_model->get_tipo_residuos();
+			$areas = $this->residuo_peligroso_model->get_areas();
+			$tipo_emp_transportista = $this->residuo_peligroso_model->get_tipo_emp_transportista();
+			$tipo_emp_destino = $this->residuo_peligroso_model->get_tipo_emp_destino();
+			$tipo_modalidad = $this->residuo_peligroso_model->get_tipo_modalidad();
 			$data = array('carpetas'=> $carpetas,
 						   'archivo'=>$archivos,
 						   'numnoti'=>$total,
 						   'id'=>$id,
 						   'tipo_bitacora' => $tipo_bitacora,
-						   'residuos' => $residuos
+						   'residuos' => $residuos,
+						   'areas' => $areas,
+						   'tipo_emp_transportista' => $tipo_emp_transportista,
+						   'tipo_emp_destino' => $tipo_emp_destino,
+						   'tipo_modalidad' => $tipo_modalidad
 						 );
 			$this->load->view('usuario/header_usuario',$data);
 			$this->load->view('usuario/nuevo_registro',$data);
@@ -472,84 +480,56 @@ class Cliente extends CI_Controller {
 	public function guardar_registro_nueva()
 	{
 		if($this->input->post()){
-			$id_persona 		= $this->input->post('id_persona');
-			$residuo 			= $this->input->post('residuo');
-			$otro_residuo 		= $this->input->post('otro_residuo');
-			$clave 				= $this->input->post('clave');
-			$cantidad 			= $this->input->post('cantidad');
-			$unidad 			= $this->input->post('unidad');
-			$caracteristica 	= $this->input->post('caracteristica');
-			$area_generacion 	= $this->input->post('area_generacion');
-			$otro_area 			= $this->input->post('otro_area');
-			$fecha_ingreso 		= $this->input->post('fecha_ingreso');
-			$fecha_salida 		= $this->input->post('fecha_salida');
-			$emp_tran 			= $this->input->post('emp_tran');
-			$otro_emp 			= $this->input->post('otro_emp');
-			$no_auto 			= $this->input->post('no_auto');
-			$folio_manifiesto	= $this->input->post('folio');
-			$dest_final 		= $this->input->post('dest_final');
-			$otro_dest 			= $this->input->post('otro_dest');
-			$no_auto_dest 		= $this->input->post('no_auto_dest');
-			$sig_manejo 		= $this->input->post('sig_manejo');
-			$otro_modalidad		= $this->input->post('otro_modalidad');
-			$resp_tec 			= $this->input->post('resp_tec');
-				
-			$nombre_residuo = "";
-			$clave_residuo = "";
-			if ($residuo == "Otro") {
-				$nombre_residuo = $otro_residuo;
-				$clave_residuo = $clave;
+			$data["id_persona"] 		= $this->input->post('id_persona');
+			$data["residuo"] 			= $this->input->post('residuo');
+			$data["otro_residuo"] 		= $this->input->post('otro_residuo');
+			$data["clave"] 				= $this->input->post('clave');
+			$data["cantidad"] 			= $this->input->post('cantidad');
+			$data["unidad"] 			= $this->input->post('unidad');
+			$data["caracteristica"] 	= $this->input->post('caracteristica');
+			$data["area_generacion"] 	= $this->input->post('area_generacion');
+			$data["otro_area"] 			= $this->input->post('otro_area');
+			$data["fecha_ingreso"] 		= $this->input->post('fecha_ingreso');
+			$data["fecha_salida"] 		= $this->input->post('fecha_salida');
+			$data["emp_tran"] 			= $this->input->post('emp_tran');
+			$data["otro_emp"] 			= $this->input->post('otro_emp');
+			$data["no_auto"] 			= $this->input->post('no_auto');
+			$data["folio_manifiesto"]	= $this->input->post('folio');
+			$data["dest_final"] 		= $this->input->post('dest_final');
+			$data["otro_dest"] 			= $this->input->post('otro_dest');
+			$data["no_auto_dest"] 		= $this->input->post('no_auto_dest');
+			$data["sig_manejo"] 		= $this->input->post('sig_manejo');
+			$data["otro_modalidad"]		= $this->input->post('otro_modalidad');
+			$data["resp_tec"] 			= $this->input->post('resp_tec');
+
+			//Residuo					
+			if ($data["residuo"] != "Otro") {
+				$id_residuo = explode(",", $data["residuo"]);
+				$data["residuo"] = $id_residuo[0];
 			} 
-			#die($nombre_residuo);
-			$caracteristicas_residuos = "";
-			foreach ($caracteristica as $row) {
-				$caracteristicas_residuos .= $row." ";
-			}
-
-			if($area_generacion == "Otro") {
-				$area_generacion = $otro_area;
-			}
-
-			$nombre_empresa = "";
-			$no_autorizacion_trans = "";
-			if($emp_tran == "Otro")	{
-				$nombre_empresa = $otro_emp;
-				$no_autorizacion_trans = $no_auto;
-			} 
-
-			$destino_final = "";
-			$no_autorizacion_dest = "";
-			if($dest_final == "Otro")	{
-				$destino_final = $otro_dest;
-				$no_autorizacion_dest = $no_auto_dest;
-			}
-
-			if($sig_manejo == "Otro") {
-				$sig_manejo = $otro_modalidad;
-			}
-
-			$fecha_insercion = date("Y-m-d H:i:s");
-			$tipo_bitacora = 1;
-			$this->residuo_peligroso_model->inserta_residuo($nombre_residuo,
-															$clave_residuo,
-															$cantidad,
-															$unidad,
-															$caracteristicas_residuos,
-															$area_generacion,
-															$fecha_ingreso,
-															$fecha_salida,
-															$sig_manejo,
-															$nombre_empresa,
-															$no_autorizacion_trans,
-															$folio_manifiesto,
-															$destino_final,
-															$no_autorizacion_dest,
-															$resp_tec,
-															$tipo_bitacora,
-															$fecha_insercion);
 			
-			$folio_prueba = $this->residuo_peligroso_model->get_id($fecha_insercion);
-			$folio = $folio_prueba->id_residuo_peligroso;
+			//Caracteristicas
+			$data["caracteristicas_residuos"] = "";
+			foreach ($data["caracteristica"] as $row) {
+				$data["caracteristicas_residuos"] .= $row . " ";
+			}
+			
+			// Empresa transportista
+			if($data["emp_tran"] != "Otro")	{
+				$id_emp_tran = explode(",", $data["emp_tran"]);
+				$data["emp_tran"] = $id_emp_tran[0];
+			} 
+
+			// Empresa de destino
+			if($data["dest_final"] != "Otro")	{
+				$id_emp_final = explode(",", $data["emp_tran"]);
+				$data["dest_final"] = $id_emp_final[0];
+			}
+
+			$data["tipo_bitacora"] = 1;
+			$this->residuo_peligroso_model->inserta_residuo($data);
+			
+			$folio = $this->residuo_peligroso_model->get_id();		
 			$this->bitacora_model->inserta_bitacora($id_persona,$tipo_bitacora,$folio);
 			redirect('cliente/ver_bitacora');
 			#die($caracteristicas_residuos);
