@@ -1,9 +1,9 @@
-<div class="span9">
+<div class="span12">
 	<center><legend>Bitácora Residuos Peligrosos</legend></center>
 	<div class="row">
-		<div class="span9">
-			<div style="overflow:scroll; width:100%; height:300px;">
-				<table class="table table-hover">
+		<div class="span12">
+			<div style="overflow:scroll; width:100%; height:450px;">
+				<table class="table table-hover" id="header-fixed">
 					<thead>
 						<th class="table-residuos">FOLIO DEL MANIFIESTO</th>
 						<th class="table-residuos">RESIDUO PELIGROSO</th>
@@ -26,7 +26,7 @@
 						<?php
 							foreach ($residuos as $row) {
 						?>
-						<tr>
+						<tr bgcolor="#dcf29f">
 							<td><?php echo $row->folio; ?></td>
 							<td><?php echo $row->residuo; ?></td>
 							<td class="center"><?php echo $row->clave; ?></td>
@@ -47,10 +47,7 @@
 									<input type="hidden" name="id_residuo_peligroso" value="<?php echo $row->id_residuo_peligroso;?>" />
 									<input type="submit" value="Modificar" class="btn btn-primary btn-mini" <?php if($row->folio!='') ?>>
 									<?php $url_delete = site_url('cliente/eliminar_bit/'). "/"; ?>
-									<button type='button' class='btn btn-danger btn-mini' data-toggle='modal' data-target='.bs-modal-del' id='eliminar' onclick='delete_residuo(<?= $row->id_residuo_peligroso ?>, 
-																																												<?= "\"$row->residuo\"" ?>,
-																																												<?= "\"$url_delete\"" ?> 
-																																												)'> Eliminar </button>
+									<button type='button' class='btn btn-danger btn-mini' data-toggle='modal' data-target='.bs-modal-del' id='eliminar' onclick='delete_residuo(<?= $row->id_residuo_peligroso ?>, <?= "\"$row->residuo\"" ?>, <?= "\"$url_delete\"" ?> )'> Eliminar </button>
 								</form>
 							</td>
 						</tr>
@@ -64,7 +61,7 @@
 	</div>
 	<div class="row" style="margin-top:10px;">
 		<div class="span5"></div>
-		<div class="span2">
+		<div class="span1">
 			<form action="<?php echo site_url('cliente/bitacora'); ?>" method="POST">
 				<input type="submit" class="btn btn-primary pull-right" value="Nuevo Registro">
 			</form>
@@ -100,3 +97,7 @@
 		</div> 
 	</div>
 </div><!-- Modal -->
+
+<script type="text/javascript">
+	$( "tr:odd" ).css( "background-color", "#ffffff" );
+</script>>
