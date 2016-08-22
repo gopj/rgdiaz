@@ -463,7 +463,9 @@ class Cliente extends CI_Controller {
 			$tipo_modalidad = $this->residuo_peligroso_model->get_tipo_modalidad();
 
 			$nombre_residuo = $this->residuo_peligroso_model->get_nombre_residuo($id_bitacora);
-			
+			$nombre_area = $this->residuo_peligroso_model->get_nombre_area($id_bitacora);
+
+
 			$data = array(
 				'numnoti'=>$total,
 				'id'=>$id,
@@ -474,7 +476,8 @@ class Cliente extends CI_Controller {
 				'tipo_emp_transportista' => $tipo_emp_transportista,
 				'tipo_emp_destino' => $tipo_emp_destino,
 				'tipo_modalidad' => $tipo_modalidad,
-				'nombre_residuo' => $nombre_residuo
+				'nombre_residuo' => $nombre_residuo,
+				'nombre_area' => $nombre_area
 			);
 
 			$this->load->view('usuario/header_usuario',$data);
