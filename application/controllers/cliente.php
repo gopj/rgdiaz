@@ -10,6 +10,10 @@ class Cliente extends CI_Controller {
 		$this->load->model('notificacion_model');
 		$this->load->model('residuo_peligroso_model');
 		$this->load->model('bitacora_model');
+		$this->load->model('area_model');
+		$this->load->model('emp_transportista_model');
+		$this->load->model('emp_destino_model');
+		$this->load->model('modalidad_model');
 		$this->load->helper('download');
 		$this->load->library('Excel');
 		$this->load->library('session');
@@ -349,10 +353,10 @@ class Cliente extends CI_Controller {
 			$carpetas=$this->carpeta_model->obt_carpeta_personal($ruta);
 			$archivos=$this->archivo_model->obtienearchivos($ruta_carpeta);
 			$residuos = $this->residuo_peligroso_model->get_tipo_residuos();
-			$areas = $this->residuo_peligroso_model->get_areas();
-			$tipo_emp_transportista = $this->residuo_peligroso_model->get_tipo_emp_transportista();
-			$tipo_emp_destino = $this->residuo_peligroso_model->get_tipo_emp_destino();
-			$tipo_modalidad = $this->residuo_peligroso_model->get_tipo_modalidad();
+			$areas = $this->area_model->get_areas();
+			$tipo_emp_transportista = $this->emp_transportista_model->get_tipo_emp_transportista();
+			$tipo_emp_destino = $this->emp_destino_model->get_tipo_emp_destino();
+			$tipo_modalidad = $this->modalidad_model->get_tipo_modalidad();
 			
 			$data = array(
 				'carpetas'=> $carpetas,
@@ -449,22 +453,25 @@ class Cliente extends CI_Controller {
 
 	public function update_bit(){
 		if($this->input->post()){
-			$id_bitacora = $this->input->post('id_residuo_peligroso');
-			$id = $this->session->userdata('id');
-			$status=0;
-			$total=$this->notificacion_model->obtiene_noticliente($id,$status);
-			$bitacora = $this->residuo_peligroso_model->get_bitacora($id_bitacora);
-			$peligrosidad = $bitacora->caracteristica;
-			$peligrosidad2 = explode(" ", $peligrosidad);
-			$residuos = $this->residuo_peligroso_model->get_tipo_residuos();
-			$areas = $this->residuo_peligroso_model->get_areas();
-			$tipo_emp_transportista = $this->residuo_peligroso_model->get_tipo_emp_transportista();
-			$tipo_emp_destino = $this->residuo_peligroso_model->get_tipo_emp_destino();
-			$tipo_modalidad = $this->residuo_peligroso_model->get_tipo_modalidad();
+			$id_bitacora 			= $this->input->post('id_residuo_peligroso');
+			$id 					= $this->session->userdata('id');
+			$status 				= 0;
+			$total					= $this->notificacion_model->obtiene_noticliente($id,$status);
+			$bitacora 				= $this->residuo_peligroso_model->get_bitacora($id_bitacora);
+			$peligrosidad 			= $bitacora->caracteristica;
+			$peligrosidad2 			= explode(" ", $peligrosidad);
 
-			$nombre_residuo = $this->residuo_peligroso_model->get_nombre_residuo($id_bitacora);
-			$nombre_area = $this->residuo_peligroso_model->get_nombre_area($id_bitacora);
+			$residuos 				= $this->residuo_peligroso_model->get_tipo_residuos();
+			$areas 					= $this->area_model->get_areas();
+			$tipo_emp_transportista = $this->emp_transportista_model->get_tipo_emp_transportista();
+			$tipo_emp_destino 		= $this->emp_destino_model->get_tipo_emp_destino();
+			$tipo_modalidad 		= $this->modalidad_model->get_tipo_modalidad();
 
+			$nombre_residuo 		= $this->residuo_peligroso_model->get_nombre_residuo($id_bitacora);
+			$nombre_area 			= $this->area_model->get_nombre_area($id_bitacora);
+			$nombre_emp_trans		= $this->emp_transportista_model->get_nombre_trans($id_bitacora);
+			$nombre_emp_dest		= $this->emp_destino_model->get_nombre_dest($id_bitacora);
+			$nombre_modalidad		= $this->modalidad_model->get_nombre_modalidad($id_bitacora);
 
 			$data = array(
 				'numnoti'=>$total,
@@ -477,7 +484,10 @@ class Cliente extends CI_Controller {
 				'tipo_emp_destino' => $tipo_emp_destino,
 				'tipo_modalidad' => $tipo_modalidad,
 				'nombre_residuo' => $nombre_residuo,
-				'nombre_area' => $nombre_area
+				'nombre_area' => $nombre_area,
+				'nombre_emp_trans' => $nombre_emp_trans,
+				'nombre_emp_dest' => $nombre_emp_dest,
+				'nombre_modalidad' => $nombre_modalidad
 			);
 
 			$this->load->view('usuario/header_usuario',$data);

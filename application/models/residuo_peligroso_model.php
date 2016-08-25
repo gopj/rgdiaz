@@ -2,11 +2,14 @@
 
 class Residuo_peligroso_model extends CI_Model {
 
-public function __construct() 
-	 {
+	public function __construct() {
 		parent::__construct(); 
 		$this->load->database();
-	 }
+		$this->load->model('area_model');
+		$this->load->model('emp_transportista_model');
+		$this->load->model('emp_destino_model');
+		$this->load->model('modalidad_model');
+	}
 
 	public function get_id(){
 		$result = $this->db->query("SELECT id_residuo_peligroso FROM residuos_peligrosos order by id_residuo_peligroso desc limit 1 ;")->result();	
@@ -18,59 +21,7 @@ public function __construct()
 		return $this->db->query("SELECT * FROM tipo_residuos;")->result();
 	}
 
-	public function get_areas(){
-		return $this->db->query("SELECT * FROM areas;")->result();
-	}
-
-	public function get_tipo_emp_transportista(){
-		return $this->db->query("SELECT * FROM tipo_emp_transportista;")->result();
-	}
-
-	public function get_tipo_emp_destino() {
-		return $this->db->query("SELECT * FROM tipo_emp_destino;")->result();
-	}
-
-	public function get_tipo_modalidad() {
-		return $this->db->query("SELECT * FROM tipo_modalidad;")->result();
-	}
-
 	public function get_nombre_residuo($id){
-		$sql = "SELECT tr.residuo
-				FROM residuos_peligrosos as r, tipo_residuos as tr
-				WHERE r.id_tipo_residuo = tr.id_tipo_residuo and r.id_residuo_peligroso =" . $id . ";";
-		$nombre_resiudo = $this->db->query($sql)->result();
-
-		return $nombre_resiudo[0]->residuo;
-	}
-
-	public function get_nombre_area($id){
-		$sql = "SELECT a.area
-				FROM residuos_peligrosos as r, areas as a
-				WHERE r.id_area = a.id_area and r.id_residuo_peligroso =" . $id . ";";
-		$nombre_area = $this->db->query($sql)->result();
-
-		return $nombre_area[0]->residuo;
-	}
-
-	public function get_nombre_trans($id){
-		$sql = "SELECT tr.residuo
-				FROM residuos_peligrosos as r, tipo_residuos as tr
-				WHERE r.id_tipo_residuo = tr.id_tipo_residuo and r.id_residuo_peligroso =" . $id . ";";
-		$nombre_resiudo = $this->db->query($sql)->result();
-
-		return $nombre_resiudo[0]->residuo;
-	}
-
-	public function get_nombre_dest($id){
-		$sql = "SELECT tr.residuo
-				FROM residuos_peligrosos as r, tipo_residuos as tr
-				WHERE r.id_tipo_residuo = tr.id_tipo_residuo and r.id_residuo_peligroso =" . $id . ";";
-		$nombre_resiudo = $this->db->query($sql)->result();
-
-		return $nombre_resiudo[0]->residuo;
-	}
-
-	public function get_nombre_modalidad($id){
 		$sql = "SELECT tr.residuo
 				FROM residuos_peligrosos as r, tipo_residuos as tr
 				WHERE r.id_tipo_residuo = tr.id_tipo_residuo and r.id_residuo_peligroso =" . $id . ";";
@@ -125,10 +76,10 @@ public function __construct()
 	public function inserta_residuo($data) {	
 
 		$data['residuo'] = $this->_tipo_residuo($data);
-	 	$data['area_generacion'] = $this->_area($data);
-	 	$data['emp_tran'] = $this->_emp_tran($data);
-	 	$data['dest_final'] = $this->_emp_dest($data);
-	 	$data['sig_manejo'] = $this->_modalidad($data);
+		$data['area_generacion'] = $this->area_model->_area($data);
+		$data['emp_tran'] = $this->emp_transportista_model->_emp_tran($data);
+		$data['dest_final'] = $this->emp_destino_model->_emp_dest($data);
+		$data['sig_manejo'] = $this->modalidad_model->_modalidad($data);
 
 		return $this->db->set('id_tipo_residuo'				,$data['residuo'])
 						->set('id_area'						,$data['area_generacion'])
@@ -149,13 +100,17 @@ public function __construct()
 	}
 
 	public function actualizar_registro($data) {
-
+		/*echo "<pre>";
+		print_r($data);
+		echo "</pre>";
+		die();*/
 		$data['residuo'] = $this->_tipo_residuo($data);
-	 	$data['area_generacion'] = $this->_area($data);
-	 	$data['emp_tran'] = $this->_emp_tran($data);
-	 	$data['dest_final'] = $this->_emp_dest($data);
-	 	$data['sig_manejo'] = $this->_modalidad($data);	
-						
+		$data['area_generacion'] = $this->area_model->_area($data);
+		$data['emp_tran'] = $this->emp_transportista_model->_emp_tran($data);
+		$data['dest_final'] = $this->emp_destino_model->_emp_dest($data);
+		$data['sig_manejo'] = $this->modalidad_model->_modalidad($data);
+
+							
 		return $this->db->set('id_tipo_residuo'				,$data['residuo'])
 						->set('id_area'						,$data['area_generacion'])
 						->set('id_tipo_modalidad'			,$data['sig_manejo'])
@@ -167,15 +122,10 @@ public function __construct()
 						->set('fecha_ingreso'				,$data['fecha_ingreso'])
 						->set('fecha_salida'				,$data['fecha_salida'])
 						->set('resp_tec'					,$data['resp_tec'])
-						->set('tipo_bitacora'				,$data['tipo_bitacora'])
-						->set('fecha_insercion'				,$data['fecha_insercion'])
 						->set('folio_manifiesto'			,$data['folio_manifiesto'])
-						->set('fecha_insercion'				,$data['folio_manifiesto'])
-						->where('id_residuo_peligroso'		,$data["id_residuo_peligroso"])
+						->where('id_residuo_peligroso'		,$data['id_residuo_peligroso'])
 						->update('residuos_peligrosos');
-	}		
-
-	
+	}
 
 	 public function update_residuos($id_residuo_peligroso,
 									 $fecha_salida,
@@ -196,10 +146,10 @@ public function __construct()
 						->set('resp_tec',$resp_tec)
 						->where('id_residuo_peligroso',$id_residuo_peligroso)
 						->update('residuos_peligrosos');
-	 }
+	}
 	
 	public function delete_residuo($id_residuo_peligroso){
-		$this->db->query(" DELETE FROM bitacora where id_bitacora={$id_residuo_peligroso};");
+		//$this->db->query(" DELETE FROM bitacora where id_bitacora={$id_residuo_peligroso};");
 		return $this->db->query(" DELETE FROM residuos_peligrosos where id_residuo_peligroso={$id_residuo_peligroso};");				
 	}
 
@@ -211,132 +161,43 @@ public function __construct()
 					 ->set('residuo', $data['otro_residuo'])
 					 ->insert('tipo_residuos');
 
-			//Bloquear tabla para no tomar otros valores
-			/*$sql = "LOCK TABLES `tipo_residuos` WRITE;";
-			$this->db->query($sql);*/
-
 			//Obtener id_tipo_residuo
 			$sql = "SELECT id_tipo_residuo FROM tipo_residuos order by id_tipo_residuo desc limit 1 ;";
 			$result = $this->db->query($sql)->result();
 
 			$id_tipo_residuo = $result[0]->id_tipo_residuo;
-
-			/*$sql = "UNLOCK TABLES;";
-			$this->db->query($sql);*/
 		} else {
-			$id_tipo_residuo = $otro;
+			$id_tipo_residuo = $data['residuo'];
 		}
 
 		return $id_tipo_residuo;
 
 	}
 
-	public function _area($data){
-
-		// Tipo de area, Insersion de nueva area en tabla areas
-		if ($data['area_generacion'] == "Otro") {
-			$this->db->set('area', $data['otro_area'])
-					 ->insert('areas');
-
-			//Bloquear tabla para no tomar otros valores
-			/*$sql = "LOCK TABLES `areas` WRITE;";
-			$this->db->query($sql);*/
-
-			//Obtener id_area
-			$sql = "SELECT id_area FROM areas order by id_area desc limit 1 ;";
-			$result = $this->db->query($sql)->result();
-			$id_area = $result[0]->id_area;
-
-			/*$sql = "UNLOCK TABLES;";
-			$this->db->query($sql);*/
-
-		} else {
-			$id_area = $otro;
-		}
-
-		return $id_area;
-
-	}
-
-	public function _emp_tran($data){
-
-		// Tipo empresa transportista, Insersion de nuevo residui en tabla tipo_emp_transportista
-		if ($data['emp_tran'] == "Otro") {
-			$this->db->set('nombre_empresa', $data['otro_emp'])
-					 ->set('no_autorizacion_transportista', $data['no_auto'])
-					 ->insert('tipo_emp_transportista');
-
-			//Bloquear tabla para no tomar otros valores
-			/*$sql = "LOCK TABLES `tipo_emp_transportista` WRITE;";
-			$this->db->query($sql);*/
-
-			//Obtener id_tipo_emp_transportista
-			$sql = "SELECT id_tipo_emp_transportista FROM tipo_emp_transportista order by id_tipo_emp_transportista desc limit 1 ;";
-			$result = $this->db->query($sql)->result();
-			$id_tipo_emp_transportista = $result[0]->id_tipo_emp_transportista;
-		
-			//Desbloquear tabla
-			/*$sql = "UNLOCK TABLES;";
-			$this->db->query($sql);*/
-
-		} else {
-			$id_tipo_emp_transportista = $otro;
-		}
-
-		return $id_tipo_emp_transportista;
-
-	}
-
-	public function _emp_dest($data){
-		// Tipo empresa destino, Insersion de nuevo destino en tabla tipo_emp_destino
-		if ($data['dest_final'] == "Otro") {
-			$this->db->set('nombre_destino', $data['otro_dest'])
-					 ->set('no_autorizacion_destino', $data['no_auto_dest'])
-					 ->insert('tipo_emp_destino');
-
-			//Bloquear tabla para no tomar otros valores
-			/*$sql = "LOCK TABLES `tipo_emp_destino` WRITE;";
-			$this->db->query($sql);*/
-
-			//Obtener id_tipo_emp_destino
-			$sql = "SELECT id_tipo_emp_destino FROM tipo_emp_destino order by id_tipo_emp_destino desc limit 1 ;";
-			$result = $this->db->query($sql)->result();
-			$id_tipo_emp_destino = $result[0]->id_tipo_emp_destino;
-
-			/*$sql = "UNLOCK TABLES;";
-			$this->db->query($sql);*/
-
-		} else {
-			$id_tipo_emp_destino = $otro;
-		}
-
-		return $id_tipo_emp_destino;
-	}
-
-	public function _modalidad($data){
-
-		// Tipo modalidad, Insersion de nuevo destino en tabla tipo_modalidad
-		if ($data['sig_manejo'] == "Otro") {
-			$this->db->set('modalidad', $data['otro_modalidad'])
-					 ->insert('tipo_modalidad');
-
-			//Bloquear tabla para no tomar otros valores
-			/*$sql = "LOCK TABLES `tipo_modalidad` WRITE;";
-			$this->db->query($sql);*/
-
-			//Obtener id_tipo_emp_destino
-			$sql = "SELECT id_tipo_modalidad FROM tipo_modalidad order by id_tipo_modalidad desc limit 1 ;";
-			$result = $this->db->query($sql)->result();
-			$id_tipo_modalidad = $result[0]->id_tipo_modalidad;
-		
-			/*$sql = "UNLOCK TABLES;";
-			$this->db->query($sql);*/
-		} else {
-			$id_tipo_modalidad = $otro;
-		}
-
-		return $id_tipo_modalidad;
-	}
 }
 
+/*
+CHECK 
 
+$sql = "
+			UPDATE residuos_peligrosos 
+			SET 
+				id_tipo_residuo = {$data['residuo']} and
+				id_area = {$data['area_generacion']} and
+				id_tipo_modalidad = {$data['sig_manejo']} and
+				id_tipo_emp_transportista = {$data['emp_tran']} and
+				id_tipo_emp_destino = {$data['dest_final']} and
+				cantidad = \"{$data['cantidad']}\" and
+				unidad = \"{$data['unidad']}\" and
+				caracteristica = \"{$data['caracteristicas_residuos']}\" and
+				fecha_ingreso = \"{$data['fecha_ingreso']}\" and
+				fecha_salida = \"{$data['fecha_salida']}\" and
+				resp_tec = \"{$data['resp_tec']}\" and
+				folio_manifiesto = \"{$data['folio_manifiesto']}\"
+			WHERE
+				id_residuo_peligroso = {$data['id_residuo_peligroso']} ;
+		";
+
+		echo $sql;
+		die();
+*/
