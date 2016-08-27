@@ -44,10 +44,10 @@ class Residuo_peligroso_model extends CI_Model {
 				r.fecha_salida as fecha_salida,
 				m.modalidad as sig_manejo,
 				et.nombre_empresa as emp_tran,
-				r.dest_final as dest_final,
+				ed.nombre_destino as dest_final,
 				r.resp_tec as resp_tec,
 				et.no_autorizacion_transportista as no_aut_transp,
-				r.no_aut_dest_final as no_aut_dest_final,
+				ed.no_autorizacion_destino as no_aut_dest_final,
 				r.folio_manifiesto as folio,
 				b.id_persona as id_persona
 
@@ -100,10 +100,7 @@ class Residuo_peligroso_model extends CI_Model {
 	}
 
 	public function actualizar_registro($data) {
-		/*echo "<pre>";
-		print_r($data);
-		echo "</pre>";
-		die();*/
+		
 		$data['residuo'] = $this->_tipo_residuo($data);
 		$data['area_generacion'] = $this->area_model->_area($data);
 		$data['emp_tran'] = $this->emp_transportista_model->_emp_tran($data);
@@ -179,7 +176,11 @@ class Residuo_peligroso_model extends CI_Model {
 /*
 CHECK 
 
-$sql = "
+echo "<pre>";
+		print_r($data);
+		
+		
+		$sql = "
 			UPDATE residuos_peligrosos 
 			SET 
 				id_tipo_residuo = {$data['residuo']} and
@@ -197,7 +198,8 @@ $sql = "
 			WHERE
 				id_residuo_peligroso = {$data['id_residuo_peligroso']} ;
 		";
-
 		echo $sql;
+		
+		echo "</pre>";
 		die();
 */

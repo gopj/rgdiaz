@@ -1,3 +1,10 @@
+<?php
+	/*echo "<pre>";
+	print_r($residuos);
+	echo "</pre>";
+
+	die();*/
+?>
 <div class="span12">
 	<center><legend>Bitácora Residuos Peligrosos</legend></center>
 	<div class="row">
@@ -5,6 +12,7 @@
 			<div style="overflow:scroll; width:100%; height:450px;">
 				<table class="table table-hover" id="header-fixed">
 					<thead>
+						<th class="table-residuos">SELECCIONA</th>
 						<th class="table-residuos">FOLIO DEL MANIFIESTO</th>
 						<th class="table-residuos">RESIDUO PELIGROSO</th>
 						<th class="table-residuos">CLAVE</th>
@@ -27,6 +35,7 @@
 							foreach ($residuos as $row) {
 						?>
 						<tr bgcolor="#dcf29f">
+							<td class="center" ><input type="checkbox" name="residuos_to_update[]" value="<?php echo $row->id_residuo_peligroso; ?>"></td>
 							<td><?php echo $row->folio; ?></td>
 							<td><?php echo $row->residuo; ?></td>
 							<td class="center"><?php echo $row->clave; ?></td>
@@ -54,6 +63,33 @@
 						<?php
 							}
 						?>
+						<tr>
+							<td>
+								<select id="residuo" class="txt"  style="width:100%;" name="residuo" type="text" onchange="otro_residuo_peligroso(this.value);" required>
+									<option value="">Seleccione una opción</option>
+									<option value="Otro">Otro</option>
+									<option value="Otro">Otro</option>
+									<option value="Otro">Otro</option>
+									<option value="Otro">Otro</option>
+								</select>
+							</td>
+							<td>Test</td>
+							<td>Test</td>
+							<td>Test</td>
+							<td>Test</td>
+							<td>Test</td>
+							<td>Test</td>
+							<td>Test</td>
+							<td>Test</td>
+							<td>Test</td>
+							<td>Test</td>
+							<td>Test</td>
+							<td>Test</td>
+							<td>Test</td>
+							<td>Test</td>
+							<td>Test</td>
+							<td>Test</td>
+						</tr>
 					</tbody>
 				</table>
 			</div>

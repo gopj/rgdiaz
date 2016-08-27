@@ -1,5 +1,21 @@
 <?php 
-echo $nombre_emp_trans;	
+/*echo $nombre_residuo . "<br>"; 
+echo $nombre_area . "<br>"; 
+echo $nombre_emp_trans . "<br>"; 
+echo $nombre_emp_dest . "<br>"; 
+echo $nombre_modalidad . "<br>"; 
+
+//print_r($tipo_emp_destino);
+
+foreach ($tipo_emp_destino as $row) {
+	if ($nombre_emp_dest == $row->nombre_destino) {
+		echo "true and print";
+	} else {
+		echo "print";
+	}
+} 
+
+die();*/
 ?>
 
 <div class="span9">
@@ -145,10 +161,10 @@ echo $nombre_emp_trans;
 					<div class="form-inline" style="margin-bottom:10px;">
 						<select class="txt" name="dest_final" onchange="otra_destino(this.value);" required>
 							<?php foreach ($tipo_emp_destino as $row) {
-								if ($nombre_emp_destino == $row->dest_final) {
-									echo "<option value='{$row->id_tipo_destino}, {$row->no_autorizacion_destino}' selected> ".   mb_strimwidth($row->nombre_destino, 0, 55, '...') . "</option>";
+								if ($nombre_emp_dest == $row->nombre_destino) {
+									echo "<option value='{$row->id_tipo_emp_destino}, {$row->no_autorizacion_destino}' selected> ".   mb_strimwidth($row->nombre_destino, 0, 55, '...') . "</option>";
 								} else {
-									echo "<option value='{$row->id_tipo_destino}, {$row->no_autorizacion_destino}'> ".   mb_strimwidth($row->nombre_destino, 0, 55, '...') . "</option>";
+									echo "<option value='{$row->id_tipo_emp_destino}, {$row->no_autorizacion_destino}'> ".   mb_strimwidth($row->nombre_destino, 0, 55, '...') . "</option>";
 								}
 							} ?>
 							<option value="Otro">Otro</option>

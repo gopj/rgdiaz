@@ -315,23 +315,23 @@ class Cliente extends CI_Controller {
 
 	public function ver_bitacora(){
 		$id = $this->session->userdata('id');
-			$ruta = "clientes/".$id;
-			$ruta_carpeta = $ruta;
-			$status=0;
-			$total=$this->notificacion_model->obtiene_noticliente($id,$status);
-			$carpetas=$this->carpeta_model->obt_carpeta_personal($ruta);
-			$archivos=$this->archivo_model->obtienearchivos($ruta_carpeta);
-			$data = array('carpetas'=> $carpetas,
-						   'archivo'=>$archivos,
-						   'numnoti'=>$total,
-						   'id'=>$id
-						 );
-			$this->load->view('usuario/header_usuario',$data);
-			#	Obtengo todos los registros de residuos peligrosos
-				$residuos_peligrosos = $this->residuo_peligroso_model->get_residuos($id);
-				$data3 = array(
-					'residuos' => $residuos_peligrosos
-				);
+		$ruta = "clientes/".$id;
+		$ruta_carpeta = $ruta;
+		$status=0;
+		$total=$this->notificacion_model->obtiene_noticliente($id,$status);
+		$carpetas=$this->carpeta_model->obt_carpeta_personal($ruta);
+		$archivos=$this->archivo_model->obtienearchivos($ruta_carpeta);
+		$data = array('carpetas'=> $carpetas,
+					   'archivo'=>$archivos,
+					   'numnoti'=>$total,
+					   'id'=>$id
+					 );
+		$this->load->view('usuario/header_usuario',$data);
+		#	Obtengo todos los registros de residuos peligrosos
+			$residuos_peligrosos = $this->residuo_peligroso_model->get_residuos($id);
+			$data3 = array(
+				'residuos' => $residuos_peligrosos
+			);
 		$this->load->view('usuario/bitacora',$data3);
 		$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
 			// Obtenemos las bitacoras que hay
@@ -596,6 +596,11 @@ class Cliente extends CI_Controller {
 			$data["otro_modalidad"]		= $this->input->post('otro_modalidad');
 			$data["resp_tec"] 			= $this->input->post('resp_tec');
 
+			/*echo "<pre>";
+			print_r($data);
+			echo "</pre>";
+			die();*/
+
 			//Residuo					
 			if ($data["residuo"] != "Otro") {
 				$id_residuo = explode(",", $data["residuo"]);
@@ -617,7 +622,7 @@ class Cliente extends CI_Controller {
 
 			// Empresa de destino
 			if($data["dest_final"] != "Otro")	{
-				$id_emp_final = explode(",", $data["emp_tran"]);
+				$id_emp_final = explode(",", $data["dest_final"]);
 				$data["dest_final"] = $id_emp_final[0];
 			}
 
