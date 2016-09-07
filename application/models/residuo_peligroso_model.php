@@ -73,30 +73,42 @@ class Residuo_peligroso_model extends CI_Model {
 						->row();
 	 }
 
-	public function inserta_residuo($data) {	
+
+
+	public function inserta_residuo_1($data) {	
 
 		$data['residuo'] = $this->_tipo_residuo($data);
 		$data['area_generacion'] = $this->area_model->_area($data);
-		$data['emp_tran'] = $this->emp_transportista_model->_emp_tran($data);
-		$data['dest_final'] = $this->emp_destino_model->_emp_dest($data);
-		$data['sig_manejo'] = $this->modalidad_model->_modalidad($data);
 
 		return $this->db->set('id_tipo_residuo'				,$data['residuo'])
 						->set('id_area'						,$data['area_generacion'])
-						->set('id_tipo_modalidad'			,$data['sig_manejo'])
-						->set('id_tipo_emp_transportista'	,$data['emp_tran'])
-						->set('id_tipo_emp_destino'			,$data['dest_final'])
 						->set('cantidad'					,$data['cantidad'])
 						->set('unidad'						,$data['unidad'])
 						->set('caracteristica'				,$data['caracteristicas_residuos'])
 						->set('fecha_ingreso'				,$data['fecha_ingreso'])
-						->set('fecha_salida'				,$data['fecha_salida'])
-						->set('resp_tec'					,$data['resp_tec'])
-						->set('tipo_bitacora'				,$data['tipo_bitacora'])
 						->set('fecha_insercion'				,$data['fecha_insercion'])
-						->set('folio_manifiesto'			,$data['folio_manifiesto'])
-						->set('fecha_insercion'				,$data['folio_manifiesto'])
+						->set('tipo_bitacora'				,$data['tipo_bitacora'])
 						->insert('residuos_peligrosos');
+	}
+
+	public function actualizar_registros($data) {
+
+		$data['emp_tran'] = $this->emp_transportista_model->_emp_tran($data);
+		$data['dest_final'] = $this->emp_destino_model->_emp_dest($data);
+		$data['sig_manejo'] = $this->modalidad_model->_modalidad($data);
+
+		foreach ($data['registros'] as $row) {
+			$this->db->set('id_tipo_modalidad'		    ,$data['sig_manejo'])
+					->set('id_tipo_emp_transportista'	,$data['emp_tran'])
+					->set('id_tipo_emp_destino'			,$data['dest_final'])
+					->set('fecha_salida'				,$data['fecha_salida'])
+					->set('resp_tec'					,$data['resp_tec'])
+					->set('folio_manifiesto'			,$data['folio_manifiesto'])
+					->where('id_residuo_peligroso'		,$row)
+					->update('residuos_peligrosos');
+		}
+
+		return "OK";
 	}
 
 	public function actualizar_registro($data) {

@@ -1,23 +1,3 @@
-<?php 
-/*echo $nombre_residuo . "<br>"; 
-echo $nombre_area . "<br>"; 
-echo $nombre_emp_trans . "<br>"; 
-echo $nombre_emp_dest . "<br>"; 
-echo $nombre_modalidad . "<br>"; 
-
-//print_r($tipo_emp_destino);
-
-foreach ($tipo_emp_destino as $row) {
-	if ($nombre_emp_dest == $row->nombre_destino) {
-		echo "true and print";
-	} else {
-		echo "print";
-	}
-} 
-
-die();*/
-?>
-
 <div class="span9">
 	<legend><center>Actualizar Registro</center></legend>
 	<form id="form_bitacora_residuo_peligroso" action="<?php echo site_url('cliente/update_bitacora_cliente'); ?>" method="post">
@@ -28,7 +8,6 @@ die();*/
 				<label for="" class="control-label">Residuo peligoso:</label>
 				<div class="controls">
 					<div class="form-inline" style="margin-bottom:10px;">
-					<option value="O1" <?php {if($bitacora->clave == "O1"){ echo "selected";}} ?> >Aceite dieléctricos gastados</option>
 						<select id="residuo" class="txt"  style="width:60%;" name="residuo" type="text" onchange="otro_residuo_peligroso(this.value);" required>
 							<?php foreach ($residuos as $row) {
 								if ($nombre_residuo == $row->residuo) {

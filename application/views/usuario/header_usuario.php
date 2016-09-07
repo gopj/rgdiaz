@@ -15,6 +15,7 @@
 		<link rel="stylesheet" type="text/css" href="css/estilos.css">
 		<link rel="stylesheet" type="text/css" href="css/demo_table_jui.css">
 		<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.8.4.custom.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-table.css">
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/jquery.dataTables.js"></script>
@@ -25,6 +26,8 @@
 		<script type="text/javascript" src="js/notificaciones.js"></script>
 		<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
 		<script type="text/javascript" src="js/formulario_bitacora.js"></script>
+		<script type="text/javascript" src="js/bootstrap-table.js"></script>
+		<script type="text/javascript" src="js/jquery.floatThead.js"></script>
 		<!--[if lt IE 9]>
 				<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 			< ![endif]-->

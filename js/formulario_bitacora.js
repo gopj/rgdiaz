@@ -104,7 +104,7 @@ function reg_bit_new(){
 			otro_residuo.focus();
 			valida = false;
 		}else if(!clave.value || expRegNom.test(clave.value)){
-			alert("INGRSA CLAVE DE OTRO RESIDUO");
+			alert("INGRESA CLAVE DE OTRO RESIDUO");
 			clave.focus();
 			valida = false;
 		}else if(!cantidad.value || !expRegNum.exec(cantidad.value) || cantidad.value == 0){
@@ -172,6 +172,101 @@ function reg_bit_new(){
 			alert("INGRESA UNA FECHA DE INGRESO");
 			fecha_ingreso.focus();
 			valida = false;
+	}
+	
+	
+	if(valida){
+		alert('DATOS GUARDADOS CORRECTAMENTE');
+		formulario.submit(); 
+		/*var ok = confirm("¡REVISA QUE LOS DATOS SEAN CORRECTOS, UNA VEZ INGRESADOS NO PODRÁS MODIFICARLOS!");
+		if(ok == true){
+			alert('DATOS GUARDADOS CORRECTAMENTE');
+			formulario.submit();
+		}*/
+	}
+				
+}
+
+// Validaciones Cliente 
+function reg_bit_update(){ 
+	var expRegNum = /^\d*$/; // Expresion regular números positivos
+	var expRegNom = /^\s*$/; // Expresion regular nombre valido
+	var formulario = document.getElementById('form_update_residuo_peligroso');
+	//Fecha Salida
+	var fecha_salida = document.getElementById('fecha_salida');
+	//Empresa Transportista
+	var emp_transportista = document.getElementById('emp_tran');
+	var otro_emp_transportista = document.getElementById('otro_empresa');
+	var no_auto_transportista = document.getElementById('no_auto');
+	//Folio
+	var folio = document.getElementById('folio');
+	//Empresa Destino Final 
+	var emp_dest_final = document.getElementById('dest_final');
+	var otro_emp_dest_final = document.getElementById('otro_dest');
+	var no_auto_dest_final = document.getElementById('no_auto_dest');
+	//Modalidad
+	var modalidad = document.getElementById('sig_manejo');
+	var otro_modalidad = document.getElementById('otro_modalidad');
+	//Responsable Técnico
+	var resposable_tecnico = document.getElementById('resp_tec');
+
+
+
+	var valida = true;
+	
+	//Fecha Salida
+	if(!fecha_salida.value){
+		alert("INGRESA EL CAMPO DE FECHA DE SALIDA");
+		fecha_salida.focus();
+		valida = false;
+	} else if(!emp_transportista.value){
+		alert("INGRESA EL CAMPO DE EMPRESA TRANSPORTISTA");
+		emp_transportista.focus();
+		valida = false;
+	} else if (emp_transportista.value == "Otro") {
+		if (!otro_emp_transportista.value) {
+			alert("INGRESA EL NOMBRE DE OTRO EMPRESA TRANSPORTISTA");
+			otro_emp_transportista.focus();
+			valida = false;
+		} else if (!no_auto_transportista.value) {
+			alert("INGRESA EL NOMBRE DE OTRO NO DE AUTORIZACION PARA EMPRESA TRANSPORTISTA");
+			otro_emp_transportista.focus();
+			valida = false;
+		}
+		
+	} else if(!folio.value){
+		alert("INGRESA EL CAMPO DE FOLIO");
+		folio.focus();
+		valida = false;
+	} else if(!emp_dest_final.value){
+		alert("INGRESA EL CAMPO DE EMPRESA DESTINO FINAL");
+		emp_transportista.focus();
+		valida = false;
+	} else if (emp_dest_final.value == "Otro") {
+		if (!otro_emp_dest_final.value) {
+			alert("INGRESA EL NOMBRE DE OTRO EMPRESA DESTINO FINAL");
+			otro_emp_transportista.focus();
+			valida = false;
+		} else if (!no_auto_dest_final.value) {
+			alert("INGRESA EL NOMBRE DE OTRO NO DE AUTORIZACION PARA EMPRESA DESTINO FINAL");
+			otro_emp_transportista.focus();
+			valida = false;
+		}
+		
+	} else if (!modalidad.value) {
+		alert("INGRESA EL CAMPO DE MODALIDAD DE MANEJO");
+		modalidad.focus();
+		valida = false;
+	} else if (modalidad.value == "Otro") {
+		if (!otro_modalidad.vale) {
+			alert("INGRESA EL CAMPO DE OTRO MODALIDAD DE MANEJO");
+			otro_modalidad.focus();
+			valida = false;
+		}
+	} else if (!resposable_tecnico.value) {
+		alert("INGRESA EL CAMPO DE RESPONSABLE TÉCNICO");
+		resposable_tecnico.focus();
+		valida = false;
 	}
 	
 	

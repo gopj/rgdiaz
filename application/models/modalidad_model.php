@@ -17,7 +17,7 @@ class Modalidad_model extends CI_Model {
 				WHERE r.id_tipo_modalidad = m.id_tipo_modalidad and r.id_residuo_peligroso =" . $id . ";";
 		$nombre_modalidad = $this->db->query($sql)->result();
 
-		return $nombre_modalidad[0]->modalidad;
+		return @$nombre_modalidad[0]->modalidad;
 	}
 
 	public function _modalidad($data){

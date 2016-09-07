@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+﻿<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Cliente extends CI_Controller {
 
 	public function __construct(){
@@ -346,41 +346,91 @@ class Cliente extends CI_Controller {
 	public function bitacora(){
 		$tipo_bitacora = $this->input->post('id_bitacora');
 		$id = $this->session->userdata('id');
-			$ruta = "clientes/".$id;
-			$ruta_carpeta = $ruta;
-			$status=0;
-			$total=$this->notificacion_model->obtiene_noticliente($id,$status);
-			$carpetas=$this->carpeta_model->obt_carpeta_personal($ruta);
-			$archivos=$this->archivo_model->obtienearchivos($ruta_carpeta);
-			$residuos = $this->residuo_peligroso_model->get_tipo_residuos();
-			$areas = $this->area_model->get_areas();
-			$tipo_emp_transportista = $this->emp_transportista_model->get_tipo_emp_transportista();
-			$tipo_emp_destino = $this->emp_destino_model->get_tipo_emp_destino();
-			$tipo_modalidad = $this->modalidad_model->get_tipo_modalidad();
-			
-			$data = array(
-				'carpetas'=> $carpetas,
-				'archivo'=>$archivos,
-				'numnoti'=>$total,
-				'id'=>$id,
-				'tipo_bitacora' => $tipo_bitacora,
-				'residuos' => $residuos,
-				'areas' => $areas,
-				'tipo_emp_transportista' => $tipo_emp_transportista,
-				'tipo_emp_destino' => $tipo_emp_destino,
-				'tipo_modalidad' => $tipo_modalidad
-			);
+		$ruta = "clientes/".$id;
+		$ruta_carpeta = $ruta;
+		$status=0;
+		$total=$this->notificacion_model->obtiene_noticliente($id,$status);
+		$carpetas=$this->carpeta_model->obt_carpeta_personal($ruta);
+		$archivos=$this->archivo_model->obtienearchivos($ruta_carpeta);
+		$residuos = $this->residuo_peligroso_model->get_tipo_residuos();
+		$areas = $this->area_model->get_areas();
+		$tipo_emp_transportista = $this->emp_transportista_model->get_tipo_emp_transportista();
+		$tipo_emp_destino = $this->emp_destino_model->get_tipo_emp_destino();
+		$tipo_modalidad = $this->modalidad_model->get_tipo_modalidad();
+		
+		$data = array(
+			'carpetas' 		=> $carpetas,
+			'archivo' 		=> $archivos,
+			'numnoti' 		=> $total,
+			'id' 			=> $id,
+			'tipo_bitacora' => $tipo_bitacora,
+			'residuos' 		=> $residuos,
+			'areas' 		=> $areas
+		);
 
-			$this->load->view('usuario/header_usuario',$data);
-			$this->load->view('usuario/nuevo_registro',$data);
-			$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
-			// Obtenemos las bitacoras que hay
-			$bitacoras = $this->bitacora_model->get_bitacoras();
-			$data2 = array(
-							'new_noti' =>$datos_popover,
-							'bitacoras' =>$bitacoras
-						  );
-			$this->load->view('usuario/footer_usuario',$data2);
+		$this->load->view('usuario/header_usuario',$data);
+		$this->load->view('usuario/nuevo_registro_1',$data);
+		$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
+		// Obtenemos las bitacoras que hay
+		$bitacoras = $this->bitacora_model->get_bitacoras();
+		$data2 = array(
+						'new_noti' =>$datos_popover,
+						'bitacoras' =>$bitacoras
+					  );
+		$this->load->view('usuario/footer_usuario',$data2);
+	}
+
+	public function bitacora_actualiza_reg(){
+
+
+		if ($this->input->post()) {
+			if ($this->input->post('residuos_to_update') != NULL ) {
+
+		
+				$id_bitacora 			= $this->input->post('id_residuo_peligroso');
+				$id 					= $this->session->userdata('id');
+				$status 				= 0;
+				$total					= $this->notificacion_model->obtiene_noticliente($id,$status);
+				$ruta 					= "clientes/".$id;
+				$ruta_carpeta 			= $ruta;
+				$carpetas 				= $this->carpeta_model->obt_carpeta_personal($ruta);
+				$archivos 				= $this->archivo_model->obtienearchivos($ruta_carpeta);
+				$bitacora 				= $this->residuo_peligroso_model->get_bitacora($id_bitacora);
+				$peligrosidad 			= $bitacora->caracteristica;
+				$peligrosidad2 			= explode(" ", $peligrosidad);
+
+				$tipo_emp_transportista = $this->emp_transportista_model->get_tipo_emp_transportista();
+				$tipo_emp_destino 		= $this->emp_destino_model->get_tipo_emp_destino();
+				$tipo_modalidad 		= $this->modalidad_model->get_tipo_modalidad();
+				$actualizar_registros	= $this->input->post("residuos_to_update");
+				
+				$data = array(
+					'carpetas' 				=> $carpetas,
+					'archivo' 				=> $archivos,
+					'numnoti' 				=> $total,
+					'id' 					=> $id,
+					'tipo_emp_transportista'=> $tipo_emp_transportista,
+					'tipo_emp_destino' 		=> $tipo_emp_destino,
+					'tipo_modalidad' 		=> $tipo_modalidad,
+					'actualizar_registros' 	=> $actualizar_registros
+				);
+
+				$this->load->view('usuario/header_usuario',$data);
+				$this->load->view('usuario/actualizar_registros',$data);
+				$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
+				$bitacoras = $this->bitacora_model->get_bitacoras();
+
+
+				$data2 = array(
+					'new_noti' =>$datos_popover,
+					'bitacoras' =>$bitacoras
+				);
+				$this->load->view('usuario/footer_usuario',$data2);
+			} else {
+				redirect("cliente/ver_bitacora");
+			}
+		}
+
 	}
 
 	public function cambia_status_notificacion(){
@@ -389,65 +439,6 @@ class Cliente extends CI_Controller {
 			$status = $this->input->post('id_status_notificacion'); 
 			$id = $this->input->post('recibe');
 			$this->notificacion_model->cambia_status_notificacion($status,$id);
-		}
-	}
-
-	public function guarda_bitacora_residuos()
-	{
-		if($this->input->post()){
-			$id 				= $this->session->userdata('id');
-			$residuo_post 		= $this->input->post('residuo');
-			$clave 				= $residuo_post;
-			$cantidad 			= $this->input->post('cantidad');
-			$unidad 			= "Kg";
-			$caracteristica 	= $this->input->post('caracteristica');
-			$area_generacion 	= $this->input->post('area_generacion');
-			$fecha_ingreso 		= date("Y-m-d", strtotime($this->input->post('fecha_ingreso')));
-			$fecha_salida 		= date("Y-m-d", strtotime($this->input->post('fecha_salida')));
-			$sig_manejo 		= $this->input->post('sig_manejo');
-			$emp_tran 			= $this->input->post('emp_tran');
-			$dest_final 		= $this->input->post('dest_final');
-			$resp_tec 			= $this->input->post('resp_tec');
-			$tipo_bitacora 		= $this->input->post('tipo_bitacora');
-			$fecha_insercion 	= date("Y-m-d H:i:s");
-			
-
-			//Insertamos el registro en la base de datos
-			$this->residuo_peligroso_model->inserta_residuo($residuo,
-															$clave,
-															$cantidad,
-															$unidad,
-															$caracteristica,
-															$area_generacion,
-															$fecha_ingreso,
-															$fecha_salida,
-															$sig_manejo,
-															$emp_tran,
-															$dest_final,
-															$resp_tec,
-															$tipo_bitacora,
-															$fecha_insercion);
-			
-			// Obtenemos el id del registro recien creado
-			$folio_prueba = $this->residuo_peligroso_model->get_id($residuo,
-												   $clave,
-												   $cantidad,
-												   $unidad,
-												   $caracteristica,
-												   $area_generacion,
-												   $fecha_ingreso,
-												   $fecha_salida,
-												   $sig_manejo,
-												   $emp_tran,
-												   $dest_final,
-												   $resp_tec,
-												   $tipo_bitacora,
-												   $fecha_insercion);
-			$folio = $folio_prueba->id_residuo_peligroso;
-
-			//Insertamos en la tabla bitacora
-			$this->bitacora_model->inserta_bitacora($id,$tipo_bitacora,$folio);
-			redirect('cliente/ver_bitacora');
 		}
 	}
 
@@ -506,10 +497,8 @@ class Cliente extends CI_Controller {
 			
 	}
 
-
-	public function guardar_registro_nueva()
-	{
-		if($this->input->post()){
+	public function guardar_registro_nueva_1() {
+		if ( $this->input->post() ) {
 			$data["id_persona"] 		= $this->input->post('id_persona');
 			$data["residuo"] 			= $this->input->post('residuo');
 			$data["otro_residuo"] 		= $this->input->post('otro_residuo');
@@ -520,17 +509,6 @@ class Cliente extends CI_Controller {
 			$data["area_generacion"] 	= $this->input->post('area_generacion');
 			$data["otro_area"] 			= $this->input->post('otro_area');
 			$data["fecha_ingreso"] 		= $this->input->post('fecha_ingreso');
-			$data["fecha_salida"] 		= $this->input->post('fecha_salida');
-			$data["emp_tran"] 			= $this->input->post('emp_tran');
-			$data["otro_emp"] 			= $this->input->post('otro_emp');
-			$data["no_auto"] 			= $this->input->post('no_auto');
-			$data["folio_manifiesto"]	= $this->input->post('folio');
-			$data["dest_final"] 		= $this->input->post('dest_final');
-			$data["otro_dest"] 			= $this->input->post('otro_dest');
-			$data["no_auto_dest"] 		= $this->input->post('no_auto_dest');
-			$data["sig_manejo"] 		= $this->input->post('sig_manejo');
-			$data["otro_modalidad"]		= $this->input->post('otro_modalidad');
-			$data["resp_tec"] 			= $this->input->post('resp_tec');
 			$data["fecha_insercion"] 	= date("Y-m-d H:i:s");
 
 			//Residuo					
@@ -545,7 +523,36 @@ class Cliente extends CI_Controller {
 				$data["caracteristicas_residuos"] .= $row . " ";
 			}
 			unset($data["caracteristica"]);
+
+			$data["tipo_bitacora"] = 1;
+			$this->residuo_peligroso_model->inserta_residuo_1($data);
 			
+			$folio = $this->residuo_peligroso_model->get_id();		
+			$this->bitacora_model->inserta_bitacora($data["id_persona"], $data["tipo_bitacora"], $folio);
+			redirect('cliente/ver_bitacora');
+
+		} else {
+			redirect('cliente/ver_bitacora');
+		} 
+	}
+
+	public function actualizar_registros() {
+		if ( $this->input->post() ) {
+
+			$data["id_persona"] 		= $this->input->post('id_persona');
+			$data["fecha_salida"] 		= $this->input->post('fecha_salida');
+			$data["emp_tran"] 			= $this->input->post('emp_tran');
+			$data["otro_emp"] 			= $this->input->post('otro_emp');
+			$data["no_auto"] 			= $this->input->post('no_auto');
+			$data["folio_manifiesto"]	= $this->input->post('folio');
+			$data["dest_final"] 		= $this->input->post('dest_final');
+			$data["otro_dest"] 			= $this->input->post('otro_dest');
+			$data["no_auto_dest"] 		= $this->input->post('no_auto_dest');
+			$data["sig_manejo"] 		= $this->input->post('sig_manejo');
+			$data["otro_modalidad"]		= $this->input->post('otro_modalidad');
+			$data["resp_tec"] 			= $this->input->post('resp_tec');
+			$data["registros"]			= explode(" ", $this->input->post('registros'));
+
 			// Empresa transportista
 			if($data["emp_tran"] != "Otro")	{
 				$id_emp_tran = explode(",", $data["emp_tran"]);
@@ -558,17 +565,12 @@ class Cliente extends CI_Controller {
 				$data["dest_final"] = $id_emp_final[0];
 			}
 
-			$data["tipo_bitacora"] = 1;
-			$this->residuo_peligroso_model->inserta_residuo($data);
+			$this->residuo_peligroso_model->actualizar_registros($data);
 			
-			$folio = $this->residuo_peligroso_model->get_id();		
-			$this->bitacora_model->inserta_bitacora($data["id_persona"], $data["tipo_bitacora"], $folio);
 			redirect('cliente/ver_bitacora');
-		}
-		else
-		{
+		} else {
 			redirect('cliente/ver_bitacora');
-		}
+		} 
 	}
 
 	public function update_bitacora_cliente(){
@@ -595,11 +597,6 @@ class Cliente extends CI_Controller {
 			$data["sig_manejo"] 		= $this->input->post('sig_manejo');
 			$data["otro_modalidad"]		= $this->input->post('otro_modalidad');
 			$data["resp_tec"] 			= $this->input->post('resp_tec');
-
-			/*echo "<pre>";
-			print_r($data);
-			echo "</pre>";
-			die();*/
 
 			//Residuo					
 			if ($data["residuo"] != "Otro") {
