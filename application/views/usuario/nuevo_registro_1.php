@@ -78,7 +78,7 @@
 				<label for="" class="control-label">Area de generacion:</label>
 				<div class="controls">
 					<div class="form-inline">
-						<select id="area_generacion" class="txt" name="area_generacion" onchange="otra_area_generacion(this.value);" style="width:40%" required>
+						<select id="area_generacion" class="txt" name="area_generacion" onchange="otra_area_generacion(this.value);" style="width:60%" required>
 							<option value="">Seleccione una opción</option>
 							<?php foreach ($areas as $row) {
 								echo "<option value='{$row->id_area}'> ".   mb_strimwidth($row->area, 0, 55, '...') . "</option>";
@@ -87,14 +87,14 @@
 						</select>
 						&nbsp;
 						<label for="">Otro:</label>
-						<input type="text" class="txt" id="otro_area" name="otro_area" style="width:40%" disabled>
+						<input type="text" class="txt" id="otro_area" name="otro_area" style="width:20%" disabled>
 					</div>
 				</div>
 			</div>
 			<div class="control-group">
 				<label for="" class="control-label">Fecha de entrada en almacen:</label>
 				<div class="controls">
-					<input class="txt" style="width:38%; text-align: center;" name="fecha_ingreso" id="fecha_ingreso" type="text" placeholder="aaaa/mm/dd" data-date-format="yyyy-mm-dd">
+					<input class="txt" style="width:58%; text-align: center;" name="fecha_ingreso" id="fecha_ingreso" type="text" placeholder="aaaa/mm/dd" data-date-format="yyyy-mm-dd">
 				</div>
 			</div>
 		</div>

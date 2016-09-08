@@ -28,6 +28,7 @@
 		<script type="text/javascript" src="js/formulario_bitacora.js"></script>
 		<script type="text/javascript" src="js/bootstrap-table.js"></script>
 		<script type="text/javascript" src="js/jquery.floatThead.js"></script>
+		<script type="text/javascript" src="js/jquery.validate.js"></script>
 		<!--[if lt IE 9]>
 				<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 			< ![endif]-->
