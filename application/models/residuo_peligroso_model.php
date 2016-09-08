@@ -49,7 +49,8 @@ class Residuo_peligroso_model extends CI_Model {
 				et.no_autorizacion_transportista as no_aut_transp,
 				ed.no_autorizacion_destino as no_aut_dest_final,
 				r.folio_manifiesto as folio,
-				b.id_persona as id_persona
+				b.id_persona as id_persona,
+				r.status
 
 			FROM 
 				residuos_peligrosos as r
@@ -75,7 +76,7 @@ class Residuo_peligroso_model extends CI_Model {
 
 
 
-	public function inserta_residuo_1($data) {	
+	public function inserta_residuo($data) {	
 
 		$data['residuo'] = $this->_tipo_residuo($data);
 		$data['area_generacion'] = $this->area_model->_area($data);
@@ -88,6 +89,7 @@ class Residuo_peligroso_model extends CI_Model {
 						->set('fecha_ingreso'				,$data['fecha_ingreso'])
 						->set('fecha_insercion'				,$data['fecha_insercion'])
 						->set('tipo_bitacora'				,$data['tipo_bitacora'])
+						->set('status'						,"W")
 						->insert('residuos_peligrosos');
 	}
 
@@ -104,6 +106,7 @@ class Residuo_peligroso_model extends CI_Model {
 					->set('fecha_salida'				,$data['fecha_salida'])
 					->set('resp_tec'					,$data['resp_tec'])
 					->set('folio_manifiesto'			,$data['folio_manifiesto'])
+					->set('status'						,"R")
 					->where('id_residuo_peligroso'		,$row)
 					->update('residuos_peligrosos');
 		}
@@ -132,28 +135,8 @@ class Residuo_peligroso_model extends CI_Model {
 						->set('fecha_salida'				,$data['fecha_salida'])
 						->set('resp_tec'					,$data['resp_tec'])
 						->set('folio_manifiesto'			,$data['folio_manifiesto'])
+						->set('status'						,"R")
 						->where('id_residuo_peligroso'		,$data['id_residuo_peligroso'])
-						->update('residuos_peligrosos');
-	}
-
-	 public function update_residuos($id_residuo_peligroso,
-									 $fecha_salida,
-									 $sig_manejo,
-									 $nombre_empresa,
-									 $no_autorizacion_trans,
-									 $folio_manifiesto,
-									 $destino_final,
-									 $no_autorizacion_dest,
-									 $resp_tec){
-		return $this->db->set('fecha_salida',$fecha_salida)
-						->set('sig_manejo',$sig_manejo)
-						->set('emp_tran',$nombre_empresa)
-						->set('no_aut_transp',$no_autorizacion_trans)
-						->set('folio_manifiesto',$folio_manifiesto)
-						->set('dest_final',$destino_final)
-						->set('no_aut_dest_final',$no_autorizacion_dest)
-						->set('resp_tec',$resp_tec)
-						->where('id_residuo_peligroso',$id_residuo_peligroso)
 						->update('residuos_peligrosos');
 	}
 	
@@ -184,34 +167,3 @@ class Residuo_peligroso_model extends CI_Model {
 	}
 
 }
-
-/*
-CHECK 
-
-echo "<pre>";
-		print_r($data);
-		
-		
-		$sql = "
-			UPDATE residuos_peligrosos 
-			SET 
-				id_tipo_residuo = {$data['residuo']} and
-				id_area = {$data['area_generacion']} and
-				id_tipo_modalidad = {$data['sig_manejo']} and
-				id_tipo_emp_transportista = {$data['emp_tran']} and
-				id_tipo_emp_destino = {$data['dest_final']} and
-				cantidad = \"{$data['cantidad']}\" and
-				unidad = \"{$data['unidad']}\" and
-				caracteristica = \"{$data['caracteristicas_residuos']}\" and
-				fecha_ingreso = \"{$data['fecha_ingreso']}\" and
-				fecha_salida = \"{$data['fecha_salida']}\" and
-				resp_tec = \"{$data['resp_tec']}\" and
-				folio_manifiesto = \"{$data['folio_manifiesto']}\"
-			WHERE
-				id_residuo_peligroso = {$data['id_residuo_peligroso']} ;
-		";
-		echo $sql;
-		
-		echo "</pre>";
-		die();
-*/

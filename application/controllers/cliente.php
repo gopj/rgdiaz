@@ -18,10 +18,13 @@ class Cliente extends CI_Controller {
 		$this->load->library('Excel');
 		$this->load->library('session');
 		$this->load->library('email');
+		if(empty($this->session->userdata("tipo")))
+			redirect(site_url(),'refresh');
 	}
 
 	#	Metodo index carga la vista principal del cliente
 	public function index(){
+
 		if($this->session->userdata('tipo')==3){
 			$id = $this->session->userdata('id');
 			$ruta = "clientes/".$id;
@@ -369,7 +372,7 @@ class Cliente extends CI_Controller {
 		);
 
 		$this->load->view('usuario/header_usuario',$data);
-		$this->load->view('usuario/nuevo_registro_1',$data);
+		$this->load->view('usuario/nuevo_registro',$data);
 		$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
 		// Obtenemos las bitacoras que hay
 		$bitacoras = $this->bitacora_model->get_bitacoras();
@@ -525,7 +528,7 @@ class Cliente extends CI_Controller {
 			unset($data["caracteristica"]);
 
 			$data["tipo_bitacora"] = 1;
-			$this->residuo_peligroso_model->inserta_residuo_1($data);
+			$this->residuo_peligroso_model->inserta_residuo($data);
 			
 			$folio = $this->residuo_peligroso_model->get_id();		
 			$this->bitacora_model->inserta_bitacora($data["id_persona"], $data["tipo_bitacora"], $folio);

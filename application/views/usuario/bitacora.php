@@ -27,33 +27,40 @@
 					</thead>
 					<tbody>
 						<?php foreach ($residuos as $row) { ?>
-							<tr bgcolor="#dcf29f">
-								<td class="center"> <strong> <?php echo $row->id_residuo_peligroso; ?> </strong> </td>
-								<td class="center"> <input type="checkbox" id="check" name="residuos_to_update[]" value="<?php echo $row->id_residuo_peligroso; ?>"></td>
-								<td class="center"><?php echo $row->folio; ?></td>
-								<td><?php echo $row->residuo; ?></td>
-								<td class="center"><?php echo $row->clave; ?></td>
-								<td class="center"><?php echo $row->cantidad; ?></td>
-								<td class="center"><?php echo $row->unidad; ?></td>
-								<td><?php echo $row->caracteristica; ?></td>
-								<td><?php echo $row->area_generacion ?></td>
-								<td class="center"><?php echo $row->fecha_ingreso; ?></td>
-								<td class="center"><?php echo $row->fecha_salida; ?></td>
-								<td><?php echo $row->emp_tran; ?></td>
-								<td><?php echo $row->no_aut_transp; ?></td>
-								<td><?php echo $row->dest_final; ?></td>
-								<td><?php echo $row->no_aut_dest_final; ?></td>
-								<td><?php echo $row->sig_manejo; ?></td>
-								<td><?php echo $row->resp_tec; ?></td>
-								<td class="center center-align">
-									<form action="<?php echo site_url('cliente/update_bit');?>" method="post">
-										<input type="hidden" name="id_residuo_peligroso" value="<?php echo $row->id_residuo_peligroso;?>" >
-										<input type="submit" value="Modificar" class="btn btn-primary btn-mini" <?php if ($row->folio != '') ?>>
-										<?php $url_delete = site_url('cliente/eliminar_bit/') . "/"; ?>
-										<button type='button' class='btn btn-danger btn-mini' data-toggle='modal' data-target='.bs-modal-del' id='eliminar' onclick='delete_residuo(<?= $row->id_residuo_peligroso ?>, <?= "\"$row->residuo\"" ?>, <?= "\"$url_delete\"" ?> )'> Eliminar </button>
-									</form>
-								</td>
-							</tr>
+							<?php if ($row->status == "R") { ?>
+								<tr bgcolor="#dcf29f">
+									<td class="center"> <strong> <?php echo $row->id_residuo_peligroso; ?> </strong> </td>
+									<td class="center"> <input type="checkbox" id="check" name="residuos_to_update[]" disabled value=""></td>	
+							<?php } else { ?>
+								<tr bgcolor="#f9f936">
+									<td class="center"> <strong> <?php echo $row->id_residuo_peligroso; ?> </strong> </td>
+									<td class="center"> <input type="checkbox" id="check" name="residuos_to_update[]" value="<?php echo $row->id_residuo_peligroso; ?>"></td>
+							<?php } ?>
+									
+									<td class="center"><?php echo $row->folio; ?></td>
+									<td><?php echo $row->residuo; ?></td>
+									<td class="center"><?php echo $row->clave; ?></td>
+									<td class="center"><?php echo $row->cantidad; ?></td>
+									<td class="center"><?php echo $row->unidad; ?></td>
+									<td><?php echo $row->caracteristica; ?></td>
+									<td><?php echo $row->area_generacion ?></td>
+									<td class="center"><?php echo $row->fecha_ingreso; ?></td>
+									<td class="center"><?php echo $row->fecha_salida; ?></td>
+									<td><?php echo $row->emp_tran; ?></td>
+									<td><?php echo $row->no_aut_transp; ?></td>
+									<td><?php echo $row->dest_final; ?></td>
+									<td><?php echo $row->no_aut_dest_final; ?></td>
+									<td><?php echo $row->sig_manejo; ?></td>
+									<td><?php echo $row->resp_tec; ?></td>
+									<td class="center center-align">
+										<form action="<?php echo site_url('cliente/update_bit');?>" method="post">
+											<input type="hidden" name="id_residuo_peligroso" value="<?php echo $row->id_residuo_peligroso;?>" >
+											<input type="submit" value="Modificar" class="btn btn-primary btn-mini" <?php if ($row->folio != '') ?>>
+											<?php $url_delete = site_url('cliente/eliminar_bit/') . "/"; ?>
+											<button type='button' class='btn btn-danger btn-mini' data-toggle='modal' data-target='.bs-modal-del' id='eliminar' onclick='delete_residuo(<?= $row->id_residuo_peligroso ?>, <?= "\"$row->residuo\"" ?>, <?= "\"$url_delete\"" ?> )'> Eliminar </button>
+										</form>
+									</td>
+								</tr>
 						<?php } ?>
 					</tbody>
 				</table>
@@ -102,5 +109,5 @@
 </div><!-- Modal -->
 
 <script type="text/javascript">
-	$( "tr:odd" ).css( "background-color", "#ffffff" );
+	
 </script>
