@@ -10,6 +10,10 @@ class Administrador extends CI_Controller {
 		$this->load->model('notificacion_model');
 		$this->load->model('residuo_peligroso_model');
 		$this->load->model('bitacora_model');
+		$this->load->model('area_model');
+		$this->load->model('emp_transportista_model');
+		$this->load->model('emp_destino_model');
+		$this->load->model('modalidad_model');
 		$this->load->helper('download');
 		$this->load->library('session');
 		$this->load->library('email');
@@ -674,6 +678,7 @@ class Administrador extends CI_Controller {
 	public function bitacora(){
 		if($this->input->post()){
 			$id_persona = $this->input->post('id_persona');
+			echo $id_persona;
 			$status = 0;
 				$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
 				$data = array(
@@ -903,19 +908,26 @@ class Administrador extends CI_Controller {
 		}
 	}
 
-	public function nuevo_registro()
-	{
+	public function nuevo_registro() {
+
 		if($this->input->post()){
 			$id_persona = $this->input->post('id_persona');
 			$id_bitacora = $this->input->post('id_bitacora');
 			$status = 0;
 			$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
+			$residuos = $this->residuo_peligroso_model->get_tipo_residuos();
+			$areas = $this->area_model->get_areas();
+			$tipo_emp_transportista = $this->emp_transportista_model->get_tipo_emp_transportista();
+			$tipo_emp_destino = $this->emp_destino_model->get_tipo_emp_destino();
+			$tipo_modalidad = $this->modalidad_model->get_tipo_modalidad();
 			$data = array(
 				'mensajes'=> $mensajesnuevos,
 			);
 			$this->load->view('administrador/header_admin',$data);
 			$data2 = array(
-				'id_persona'=>$id_persona);
+				'id_persona'=>$id_persona,
+				'residuos' 		=> $residuos,
+				'areas' 		=> $areas);
 
 			#	Obtengo a todos mis clientes para seleccionar uno en opcion dar de baja y los mando al modal
 			$id_tipo_persona=3;
@@ -1275,6 +1287,141 @@ class Administrador extends CI_Controller {
 		{
 			redirect('administrador/bitacora');
 		}
+	}
+
+	public function guardar_registro_nueva_1() {
+		if ( $this->input->post() ) {
+			$data["id_persona"] 		= $this->input->post('id_persona');
+			$data["residuo"] 			= $this->input->post('residuo');
+			$data["otro_residuo"] 		= $this->input->post('otro_residuo');
+			$data["clave"] 				= $this->input->post('clave');
+			$data["cantidad"] 			= $this->input->post('cantidad');
+			$data["unidad"] 			= $this->input->post('unidad');
+			$data["caracteristica"] 	= $this->input->post('caracteristica');
+			$data["area_generacion"] 	= $this->input->post('area_generacion');
+			$data["otro_area"] 			= $this->input->post('otro_area');
+			$data["fecha_ingreso"] 		= $this->input->post('fecha_ingreso');
+			$data["fecha_insercion"] 	= date("Y-m-d H:i:s");
+
+			//Residuo					
+			if ($data["residuo"] != "Otro") {
+				$id_residuo = explode(",", $data["residuo"]);
+				$data["residuo"] = $id_residuo[0];
+			} 
+			
+			//Caracteristicas
+			$data["caracteristicas_residuos"] = "";
+			foreach ($data["caracteristica"] as $row) {
+				$data["caracteristicas_residuos"] .= $row . " ";
+			}
+			unset($data["caracteristica"]);
+
+			$data["tipo_bitacora"] = 1;
+			$this->residuo_peligroso_model->inserta_residuo($data);
+			
+			$folio = $this->residuo_peligroso_model->get_id();		
+			$this->bitacora_model->inserta_bitacora($data["id_persona"], $data["tipo_bitacora"], $folio);
+			redirect('administrador/bitacora');
+
+		} else {
+			redirect('administrador/bitacora');
+		} 
+	}
+
+	public function eliminar_bit($id){
+		$this->residuo_peligroso_model->delete_residuo($id);
+
+		redirect('administrador/bitacora');
+	}
+
+	public function actualizar_registros() {
+		if ( $this->input->post() ) {
+
+			$data["id_persona"] 		= $this->input->post('id_persona');
+			$data["fecha_salida"] 		= $this->input->post('fecha_salida');
+			$data["emp_tran"] 			= $this->input->post('emp_tran');
+			$data["otro_emp"] 			= $this->input->post('otro_emp');
+			$data["no_auto"] 			= $this->input->post('no_auto');
+			$data["folio_manifiesto"]	= $this->input->post('folio');
+			$data["dest_final"] 		= $this->input->post('dest_final');
+			$data["otro_dest"] 			= $this->input->post('otro_dest');
+			$data["no_auto_dest"] 		= $this->input->post('no_auto_dest');
+			$data["sig_manejo"] 		= $this->input->post('sig_manejo');
+			$data["otro_modalidad"]		= $this->input->post('otro_modalidad');
+			$data["resp_tec"] 			= $this->input->post('resp_tec');
+			$data["registros"]			= explode(" ", $this->input->post('registros'));
+
+			// Empresa transportista
+			if($data["emp_tran"] != "Otro")	{
+				$id_emp_tran = explode(",", $data["emp_tran"]);
+				$data["emp_tran"] = $id_emp_tran[0];
+			} 
+
+			// Empresa de destino
+			if($data["dest_final"] != "Otro")	{
+				$id_emp_final = explode(",", $data["emp_tran"]);
+				$data["dest_final"] = $id_emp_final[0];
+			}
+
+			$this->residuo_peligroso_model->actualizar_registros($data);
+			
+			redirect('administrador/bitacora');
+		} else {
+			redirect('administrador/bitacora');
+		} 
+	}
+
+
+	public function bitacora_actualiza_reg(){
+
+		if ($this->input->post()) {
+			if ($this->input->post('residuos_to_update') != NULL ) {
+
+				$id_bitacora 			= $this->input->post('id_residuo_peligroso');
+				$id 					= $this->session->userdata('id');
+				$status 				= 0;
+				$total					= $this->notificacion_model->obtiene_noticliente($id,$status);
+				$ruta 					= "clientes/".$id;
+				$ruta_carpeta 			= $ruta;
+				$carpetas 				= $this->carpeta_model->obt_carpeta_personal($ruta);
+				$archivos 				= $this->archivo_model->obtienearchivos($ruta_carpeta);
+
+				$tipo_emp_transportista = $this->emp_transportista_model->get_tipo_emp_transportista();
+				$tipo_emp_destino 		= $this->emp_destino_model->get_tipo_emp_destino();
+				$tipo_modalidad 		= $this->modalidad_model->get_tipo_modalidad();
+				$actualizar_registros	= $this->input->post("residuos_to_update");
+				
+				$data = array(
+					'carpetas' 				=> $carpetas,
+					'archivo' 				=> $archivos,
+					'numnoti' 				=> $total,
+					'id' 					=> $id,
+					'tipo_emp_transportista'=> $tipo_emp_transportista,
+					'tipo_emp_destino' 		=> $tipo_emp_destino,
+					'tipo_modalidad' 		=> $tipo_modalidad,
+					'actualizar_registros' 	=> $actualizar_registros
+				);
+
+				$this->load->view('administrador/header_admin',$data);
+				echo "header";
+				$this->load->view('administrador/actualizar_registros',$data);
+				echo "data";
+				$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
+				$bitacoras = $this->bitacora_model->get_bitacoras();
+
+
+				$data2 = array(
+					'new_noti' =>$datos_popover,
+					'bitacoras' =>$bitacoras
+				);
+				$this->load->view('administrador/footeru',$data2);
+			} else {
+				redirect("administrador/bitacora");
+			}
+		} else {
+			redirect("administrador/bitacora");
+		}
+
 	}
 
 	public function actualizar_registro()

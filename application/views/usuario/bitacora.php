@@ -23,7 +23,7 @@
 						<th class="table-residuos">NO. AUTORIZACIÓN</th>
 						<th class="table-residuos">MODALIDAD DE MANEJO</th>
 						<th class="table-residuos">RESPONSABLE TÉCNICO</th>
-						<th class="table-residuos">ACCIONES</th>
+						<th class="table-residuos">OPCIÓN</th>
 					</thead>
 					<tbody>
 						<?php foreach ($residuos as $row) { ?>
@@ -52,14 +52,23 @@
 									<td><?php echo $row->no_aut_dest_final; ?></td>
 									<td><?php echo $row->sig_manejo; ?></td>
 									<td><?php echo $row->resp_tec; ?></td>
-									<td class="center center-align">
-										<form action="<?php echo site_url('cliente/update_bit');?>" method="post">
-											<input type="hidden" name="id_residuo_peligroso" value="<?php echo $row->id_residuo_peligroso;?>" >
-											<input type="submit" value="Modificar" class="btn btn-primary btn-mini" <?php if ($row->folio != '') ?>>
-											<?php $url_delete = site_url('cliente/eliminar_bit/') . "/"; ?>
-											<button type='button' class='btn btn-danger btn-mini' data-toggle='modal' data-target='.bs-modal-del' id='eliminar' onclick='delete_residuo(<?= $row->id_residuo_peligroso ?>, <?= "\"$row->residuo\"" ?>, <?= "\"$url_delete\"" ?> )'> Eliminar </button>
-										</form>
-									</td>
+									<?php if ($row->status == "R") { ?>
+										<td class="center center-align">
+											<form action="<?php echo site_url('cliente/update_bit');?>" method="post">
+												<input type="hidden" name="id_residuo_peligroso" disabled value="<?php echo $row->id_residuo_peligroso;?>" >
+												<?php $url_delete = site_url('cliente/eliminar_bit/') . "/"; ?>
+												<button type='button' class='btn btn-danger btn-mini' disabled data-toggle='modal' data-target='.bs-modal-del' id='eliminar' onclick='delete_residuo(<?= $row->id_residuo_peligroso ?>, <?= "\"$row->residuo\"" ?>, <?= "\"$url_delete\"" ?> )'> Eliminar </button>
+											</form>
+										</td>
+									<?php } else { ?>
+										<td class="center center-align">
+											<form action="<?php echo site_url('cliente/update_bit');?>" method="post">
+												<input type="hidden" name="id_residuo_peligroso" value="<?php echo $row->id_residuo_peligroso;?>" >
+												<?php $url_delete = site_url('cliente/eliminar_bit/') . "/"; ?>
+												<button type='button' class='btn btn-danger btn-mini' data-toggle='modal' data-target='.bs-modal-del' id='eliminar' onclick='delete_residuo(<?= $row->id_residuo_peligroso ?>, <?= "\"$row->residuo\"" ?>, <?= "\"$url_delete\"" ?> )'> Eliminar </button>
+											</form>
+										</td>
+									<?php } ?>
 								</tr>
 						<?php } ?>
 					</tbody>
@@ -75,7 +84,7 @@
 			</form>
 		</div>
 		<div class="span2">
-			<input type="submit" class="btn btn-primary pull-left" value="Actaulizar Registros">
+			<input type="submit" class="btn btn-primary pull-left" value="Registrar Salidas">
 		</div>
 		<div class="span2">
 			<form action="<?php echo site_url('cliente/generar_excel'); ?>" method="POST">
