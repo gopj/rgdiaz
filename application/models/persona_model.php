@@ -2,231 +2,243 @@
 
 class Persona_model extends CI_Model {
 
-public function __construct() 
-     {
-           parent::__construct(); 
-           $this->load->database();
-     }
+	public function __construct() 
+	{
+		   parent::__construct(); 
+		   $this->load->database();
+	}
 
-     public function login($correo,$password,$id_status_persona)
-     {
-     	return $this->db->where('correo',$correo)
-     					->where('password',$password)
-                        ->where('id_status_persona',$id_status_persona)
-     					->get('persona')
-     					->row();
-     }
+	public function login($correo,$password,$id_status_persona)
+	{
+		return $this->db->where('correo',$correo)
+						->where('password',$password)
+						->where('id_status_persona',$id_status_persona)
+						->get('persona')
+						->row();
+	}
 
-     public function verifica_correo($nombre_empresa,$correo){
-        return $this->db->where('nombre_empresa',$nombre_empresa)
-                        ->where('correo',$correo)
-                        ->get('persona')
-                        ->row();
-     }
+	public function verifica_correo($nombre_empresa,$correo){
+		return $this->db->where('nombre_empresa',$nombre_empresa)
+						->where('correo',$correo)
+						->get('persona')
+						->row();
+	}
 
-     public function recupera_corr($correo){
-        return $this->db->where('correo',$correo)
-                        ->get('persona')
-                        ->row();
-     }
+	public function recupera_corr($correo){
+		return $this->db->where('correo',$correo)
+						->get('persona')
+						->row();
+	}
 
-     public function cambia_psw($psw_nva,$correo){
-        return $this->db->set('password',$psw_nva)
-                        ->where('correo',$correo)
-                        ->update('persona');
-     }
+	public function cambia_psw($psw_nva,$correo){
+		return $this->db->set('password',$psw_nva)
+						->where('correo',$correo)
+						->update('persona');
+	}
 
-      public function alta_cliente($correo,$psw_nva,$id_tipo_persona,$id_status_persona,$lleno_datos){
-        return $this->db->set('correo',$correo)
-                 ->set('password',$psw_nva)
-                 ->set('id_tipo_persona',$id_tipo_persona)
-                 ->set('id_status_persona',$id_status_persona)
-                 ->set('lleno_datos',$lleno_datos)
-                 ->insert('persona');
-     }
+	public function alta_cliente($correo,$psw_nva,$id_tipo_persona,$id_status_persona,$lleno_datos){
+		return $this->db->set('correo',$correo)
+				 ->set('password',$psw_nva)
+				 ->set('id_tipo_persona',$id_tipo_persona)
+				 ->set('id_status_persona',$id_status_persona)
+				 ->set('lleno_datos',$lleno_datos)
+				 ->insert('persona');
+	}
 
-      public function baja_cliente($id_status_persona,$id_persona)
-     {
-     $this->db->set('id_status_persona',$id_status_persona)
-              ->where('id_persona',$id_persona)
-              ->update('persona');
-     }
+	public function baja_cliente($id_status_persona,$id_persona)
+	{
+	 $this->db->set('id_status_persona',$id_status_persona)
+			  ->where('id_persona',$id_persona)
+			  ->update('persona');
+	}
 
-     public function obtiene_clientes($id_status_persona,$id_tipo_persona)
-     {
-            $query = $this->db->where('id_tipo_persona',$id_tipo_persona)
-                 ->where('id_status_persona',$id_status_persona)
-                 ->get('persona');
-        return $query;
-     }
+	public function obtiene_clientes($id_status_persona,$id_tipo_persona)
+	{
+			$query = $this->db->where('id_tipo_persona',$id_tipo_persona)
+				 ->where('id_status_persona',$id_status_persona)
+				 ->get('persona');
+		return $query;
+	}
 
-     public function obtiene_clientes_baja($id_status_persona,$id_tipo_persona,$lleno_datos){
-        $query = $this->db->where('id_status_persona',$id_status_persona)
-                          ->where('id_tipo_persona',$id_tipo_persona)
-                          ->where('lleno_datos',$lleno_datos)
-                          ->get('persona');
-        return $query;
-     }
+	public function obtiene_clientes_baja($id_status_persona,$id_tipo_persona,$lleno_datos){
+		$query = $this->db->where('id_status_persona',$id_status_persona)
+						  ->where('id_tipo_persona',$id_tipo_persona)
+						  ->where('lleno_datos',$lleno_datos)
+						  ->get('persona');
+		return $query;
+	}
 
-     public function obtienetodoclientes($id_tipo_persona,$lleno_datos)
-     {
-        return $this->db->where('id_tipo_persona',$id_tipo_persona)
-                        ->where('lleno_datos',$lleno_datos)
-                        ->get('persona');
-     }
+	public function obtienetodoclientes($id_tipo_persona,$lleno_datos)
+	{
+		return $this->db->where('id_tipo_persona',$id_tipo_persona)
+						->where('lleno_datos',$lleno_datos)
+						->get('persona');
+	}
 
-     public function obtiene_cliente($id_persona)
-     {
-        return $this->db->where('id_persona',$id_persona)
-                         ->get('persona')
-                         ->row();
-     }
+	public function obtiene_cliente($id_persona)
+	{
+		return $this->db->where('id_persona',$id_persona)
+						 ->get('persona')
+						 ->row();
+	}
 
-     public function obtenerid($correo,$psw_nva)
-     {
-        return $this->db->where('correo',$correo)
-                        ->where('password',$psw_nva)
-                        ->get('persona')
-                        ->row();
-     }
+	public function obtenerid($correo,$psw_nva)
+	{
+		return $this->db->where('correo',$correo)
+						->where('password',$psw_nva)
+						->get('persona')
+						->row();
+	}
 
-     public function regisdatos_persona($nombre,
-                                        $telefono_personal,
-                                        $telefono_personal_alt,
-                                        $password,
-                                        $nombre_empresa,
-                                        $calle_empresa,
-                                        $correo_empresa,
-                                        $cp_empresa,
-                                        $colonia_empresa,
-                                        $numero_empresa,
-                                        $id_persona,
-                                        $municipio,
-                                        $estado,
-                                        $telefono_empresa,
-                                        $completo)
-     {
-        $this->db->set('nombre',$nombre)
-                 ->set('telefono_personal',$telefono_personal)
-                 ->set('telefono_personal_alt',$telefono_personal_alt)
-                 ->set('password',$password)
-                 ->set('nombre_empresa',$nombre_empresa)
-                 ->set('calle_empresa',$calle_empresa)
-                 ->set('correo_empresa',$correo_empresa)
-                 ->set('cp_empresa',$cp_empresa)
-                 ->set('colonia_empresa',$colonia_empresa)
-                 ->set('numero_empresa',$numero_empresa)
-                 ->set('estado',$estado)
-                 ->set('municipio',$municipio)
-                 ->set('lleno_datos',$completo)
-                 ->set('telefono_empresa',$telefono_empresa)
-                 ->where('id_persona',$id_persona)
-                 ->update('persona');
-     }
+	public function get_nombre_cliente($id){
+		$result = $this->db->query("SELECT nombre FROM persona WHERE  id_persona = {$id} LIMIT 1;")->result();  
 
-     public function actualizadatos_persona($id_persona,$nombre,$correo,$telefono_personal,$telefono_personal_alt,
-                                            $nombre_empresa,$calle_empresa,$correo_empresa,
-                                            $cp_empresa,$colonia_empresa,$numero_empresa,
-                                            $municipio,$estado,$telefono_empresa)
-     {
-        $this->db->set('nombre',$nombre)
-                 ->set('correo',$correo)
-                 ->set('telefono_personal',$telefono_personal)
-                 ->set('telefono_personal_alt',$telefono_personal_alt)
-                 ->set('nombre_empresa',$nombre_empresa)
-                 ->set('calle_empresa',$calle_empresa)
-                 ->set('correo_empresa',$correo_empresa)
-                 ->set('cp_empresa',$cp_empresa)
-                 ->set('colonia_empresa',$colonia_empresa)
-                 ->set('numero_empresa',$numero_empresa)
-                 ->set('municipio',$municipio)
-                 ->set('estado',$estado)
-                 ->set('telefono_empresa',$telefono_empresa)
-                 ->where('id_persona',$id_persona)
-                 ->update('persona');
-     }
+		return $result[0]->nombre;
+	}
 
-     public function inserta_cliente_admin($nombre,$correo,$telefono_personal,$telefono_personal_alt,
-                                           $psw_nva,$nombre_empresa,$id_status_persona,
-                                           $id_tipo_persona,$calle_empresa,$correo_empresa,
-                                           $lleno_datos,$cp_empresa,$colonia_empresa,
-                                           $numero_empresa,$estado,$municipio,$telefono_empresa){
-        return $this->db->set('nombre',$nombre)
-                        ->set('correo',$correo)
-                        ->set('telefono_personal',$telefono_personal)
-                        ->set('telefono_personal_alt',$telefono_personal_alt)
-                        ->set('password',$psw_nva)
-                        ->set('nombre_empresa',$nombre_empresa)
-                        ->set('id_status_persona',$id_status_persona)
-                        ->set('id_tipo_persona',$id_tipo_persona)
-                        ->set('calle_empresa',$calle_empresa)
-                        ->set('correo_empresa',$correo_empresa)
-                        ->set('lleno_datos',$lleno_datos)
-                        ->set('cp_empresa',$cp_empresa)
-                        ->set('colonia_empresa',$colonia_empresa)
-                        ->set('numero_empresa',$numero_empresa)
-                        ->set('estado',$estado)
-                        ->set('municipio',$municipio)
-                        ->set('telefono_empresa',$telefono_empresa)
-                        ->insert('persona');
-     }
+	public function get_nombre_empresa($id){
+		$result = $this->db->query("SELECT nombre_empresa FROM persona WHERE  id_persona = {$id} LIMIT 1;")->result();  
 
-     public function getCorreos($id_tipo_persona){
-        return $this->db->select('correo')
-                        ->where('id_tipo_persona',$id_tipo_persona)
-                        ->get('persona');
-     }
+		return $result[0]->nombre_empresa;
+	}
 
-     public function getCorreo($id_persona){
-       $query = $this->db->select('correo')
-                         ->where('id_persona',$id_persona)
-                         ->get('persona')
-                         ->row();
-        return $query;
-     }
+	public function regisdatos_persona($nombre,
+										$telefono_personal,
+										$telefono_personal_alt,
+										$password,
+										$nombre_empresa,
+										$calle_empresa,
+										$correo_empresa,
+										$cp_empresa,
+										$colonia_empresa,
+										$numero_empresa,
+										$id_persona,
+										$municipio,
+										$estado,
+										$telefono_empresa,
+										$completo)
+	{
+		$this->db->set('nombre',$nombre)
+				 ->set('telefono_personal',$telefono_personal)
+				 ->set('telefono_personal_alt',$telefono_personal_alt)
+				 ->set('password',$password)
+				 ->set('nombre_empresa',$nombre_empresa)
+				 ->set('calle_empresa',$calle_empresa)
+				 ->set('correo_empresa',$correo_empresa)
+				 ->set('cp_empresa',$cp_empresa)
+				 ->set('colonia_empresa',$colonia_empresa)
+				 ->set('numero_empresa',$numero_empresa)
+				 ->set('estado',$estado)
+				 ->set('municipio',$municipio)
+				 ->set('lleno_datos',$completo)
+				 ->set('telefono_empresa',$telefono_empresa)
+				 ->where('id_persona',$id_persona)
+				 ->update('persona');
+	}
 
-     public function actualiza_datos_admin($id_persona,$nombre,$correo,
-                                           $telefono_personal,$telefono_personal_alt,$password_contacto,$nombre_empresa,
-                                           $id_status_persona,$calle_empresa,
-                                           $correo_empresa,$cp_empresa,$colonia_empresa,
-                                           $numero_empresa,$municipio,$estado,$telefono_empresa){
-        return $this->db->set('nombre',$nombre)
-                        ->set('correo',$correo)
-                        ->set('telefono_personal',$telefono_personal)
-                        ->set('telefono_personal_alt',$telefono_personal_alt)
-                        ->set('password',$password_contacto)
-                        ->set('nombre_empresa',$nombre_empresa)
-                        ->set('id_status_persona',$id_status_persona)
-                        ->set('calle_empresa',$calle_empresa)
-                        ->set('correo_empresa',$correo_empresa)
-                        ->set('cp_empresa',$cp_empresa)
-                        ->set('colonia_empresa',$colonia_empresa)
-                        ->set('numero_empresa',$numero_empresa)
-                        ->set('municipio',$municipio)
-                        ->set('estado',$estado)
-                        ->set('telefono_empresa',$telefono_empresa)
-                        ->where('id_persona',$id_persona)
-                        ->update('persona');
-     }
+	public function actualizadatos_persona($id_persona,$nombre,$correo,$telefono_personal,$telefono_personal_alt,
+											$nombre_empresa,$calle_empresa,$correo_empresa,
+											$cp_empresa,$colonia_empresa,$numero_empresa,
+											$municipio,$estado,$telefono_empresa)
+	{
+		$this->db->set('nombre',$nombre)
+				 ->set('correo',$correo)
+				 ->set('telefono_personal',$telefono_personal)
+				 ->set('telefono_personal_alt',$telefono_personal_alt)
+				 ->set('nombre_empresa',$nombre_empresa)
+				 ->set('calle_empresa',$calle_empresa)
+				 ->set('correo_empresa',$correo_empresa)
+				 ->set('cp_empresa',$cp_empresa)
+				 ->set('colonia_empresa',$colonia_empresa)
+				 ->set('numero_empresa',$numero_empresa)
+				 ->set('municipio',$municipio)
+				 ->set('estado',$estado)
+				 ->set('telefono_empresa',$telefono_empresa)
+				 ->where('id_persona',$id_persona)
+				 ->update('persona');
+	 }
 
-     public function update_password($id_persona,$password){
-        return $this->db->where('id_persona',$id_persona)
-                        ->set('password',$password)
-                        ->update('persona');
-     }
+	public function inserta_cliente_admin($nombre,$correo,$telefono_personal,$telefono_personal_alt,
+										   $psw_nva,$nombre_empresa,$id_status_persona,
+										   $id_tipo_persona,$calle_empresa,$correo_empresa,
+										   $lleno_datos,$cp_empresa,$colonia_empresa,
+										   $numero_empresa,$estado,$municipio,$telefono_empresa){
+		return $this->db->set('nombre',$nombre)
+						->set('correo',$correo)
+						->set('telefono_personal',$telefono_personal)
+						->set('telefono_personal_alt',$telefono_personal_alt)
+						->set('password',$psw_nva)
+						->set('nombre_empresa',$nombre_empresa)
+						->set('id_status_persona',$id_status_persona)
+						->set('id_tipo_persona',$id_tipo_persona)
+						->set('calle_empresa',$calle_empresa)
+						->set('correo_empresa',$correo_empresa)
+						->set('lleno_datos',$lleno_datos)
+						->set('cp_empresa',$cp_empresa)
+						->set('colonia_empresa',$colonia_empresa)
+						->set('numero_empresa',$numero_empresa)
+						->set('estado',$estado)
+						->set('municipio',$municipio)
+						->set('telefono_empresa',$telefono_empresa)
+						->insert('persona');
+	}
 
-     public function get_nombre($id_persona){
-        return $this->db->select('nombre_empresa')
-                        ->where('id_persona',$id_persona)
-                        ->get('persona')
-                        ->row();
-     }
+	public function getCorreos($id_tipo_persona){
+		return $this->db->select('correo')
+						->where('id_tipo_persona',$id_tipo_persona)
+						->get('persona');
+	}
 
-     public function update_persona($id_persona,$status){
-        return $this->db->set('id_status_persona',$status)
-                        ->where('id_persona',$id_persona)
-                        ->update('persona');
-     }
+	public function getCorreo($id_persona){
+	   $query = $this->db->select('correo')
+						 ->where('id_persona',$id_persona)
+						 ->get('persona')
+						 ->row();
+		return $query;
+	}
+
+	public function actualiza_datos_admin($id_persona,$nombre,$correo,
+										   $telefono_personal,$telefono_personal_alt,$password_contacto,$nombre_empresa,
+										   $id_status_persona,$calle_empresa,
+										   $correo_empresa,$cp_empresa,$colonia_empresa,
+										   $numero_empresa,$municipio,$estado,$telefono_empresa){
+		return $this->db->set('nombre',$nombre)
+						->set('correo',$correo)
+						->set('telefono_personal',$telefono_personal)
+						->set('telefono_personal_alt',$telefono_personal_alt)
+						->set('password',$password_contacto)
+						->set('nombre_empresa',$nombre_empresa)
+						->set('id_status_persona',$id_status_persona)
+						->set('calle_empresa',$calle_empresa)
+						->set('correo_empresa',$correo_empresa)
+						->set('cp_empresa',$cp_empresa)
+						->set('colonia_empresa',$colonia_empresa)
+						->set('numero_empresa',$numero_empresa)
+						->set('municipio',$municipio)
+						->set('estado',$estado)
+						->set('telefono_empresa',$telefono_empresa)
+						->where('id_persona',$id_persona)
+						->update('persona');
+	}
+
+	public function update_password($id_persona,$password){
+		return $this->db->where('id_persona',$id_persona)
+						->set('password',$password)
+						->update('persona');
+	}
+
+	public function get_nombre($id_persona){
+		return $this->db->select('nombre_empresa')
+						->where('id_persona',$id_persona)
+						->get('persona')
+						->row();
+	}
+
+	public function update_persona($id_persona,$status){
+		return $this->db->set('id_status_persona',$status)
+						->where('id_persona',$id_persona)
+						->update('persona');
+	}
  }
 
 

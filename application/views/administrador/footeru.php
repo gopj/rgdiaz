@@ -113,11 +113,11 @@
 			<div class="footer" style="color:#fff; font-weight:bold; ">
 					<div class="container">
 						<div style="">
-							Derechos reservados &copy;2014 RDíaz
+							Derechos reservados &copy; <?php echo date("Y"); ?> RDíaz
 						</div>
-						<div class="pull-right" style="font-weight:normal; font-size:14px;">
+						<!-- <div class="pull-right" style="font-weight:normal; font-size:14px;">
 							Desarrollado por: Shark Soft
-						</div>
+						</div> -->
 					</div>
 			</div>
 		</footer>

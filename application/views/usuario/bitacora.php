@@ -76,10 +76,13 @@
 			</div>
 		</div>
 	</div>
+
+	</form>
 	<div class="row" style="margin-top:10px;">
 		<div class="span5"></div>
 		<div class="span1">
 			<form action="<?php echo site_url('cliente/bitacora'); ?>" method="POST">
+			<input type="hidden" value="<?php echo $id; ?>" name="id_persona">
 				<input type="submit" class="btn btn-primary pull-right" value="Nuevo Registro">
 			</form>
 		</div>
@@ -93,7 +96,6 @@
 			</form>
 		</div>
 	</div>
-	</form>
 </div>
 
 

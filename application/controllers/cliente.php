@@ -18,11 +18,6 @@ class Cliente extends CI_Controller {
 		$this->load->library('Excel');
 		$this->load->library('session');
 		$this->load->library('email');
-<<<<<<< HEAD
-		/*if(empty($this->session->userdata("tipo")))
-			redirect(site_url(),'refresh');*/
-=======
->>>>>>> origin/master
 	}
 
 	#	Metodo index carga la vista principal del cliente
@@ -391,6 +386,7 @@ class Cliente extends CI_Controller {
 		if ($this->input->post()) {
 			if ($this->input->post('residuos_to_update') != NULL ) {
 
+		
 				$id_bitacora 			= $this->input->post('id_residuo_peligroso');
 				$id 					= $this->session->userdata('id');
 				$status 				= 0;
@@ -399,10 +395,7 @@ class Cliente extends CI_Controller {
 				$ruta_carpeta 			= $ruta;
 				$carpetas 				= $this->carpeta_model->obt_carpeta_personal($ruta);
 				$archivos 				= $this->archivo_model->obtienearchivos($ruta_carpeta);
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
 				$tipo_emp_transportista = $this->emp_transportista_model->get_tipo_emp_transportista();
 				$tipo_emp_destino 		= $this->emp_destino_model->get_tipo_emp_destino();
 				$tipo_modalidad 		= $this->modalidad_model->get_tipo_modalidad();
@@ -433,10 +426,8 @@ class Cliente extends CI_Controller {
 			} else {
 				redirect("cliente/ver_bitacora");
 			}
-		} else {
-			redirect("cliente/ver_bitacora");
-			
 		}
+
 	}
 
 	public function cambia_status_notificacion(){
@@ -503,7 +494,7 @@ class Cliente extends CI_Controller {
 			
 	}
 
-	public function guardar_registro_nueva_1() {
+	public function guardar_registro_nueva() {
 		if ( $this->input->post() ) {
 			$data["id_persona"] 		= $this->input->post('id_persona');
 			$data["residuo"] 			= $this->input->post('residuo');

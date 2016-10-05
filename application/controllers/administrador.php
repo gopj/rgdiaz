@@ -658,15 +658,15 @@ class Administrador extends CI_Controller {
 				$id_tipo_persona=3;
 				$id_status_persona=1;
 				$data2 = array( 
-					'clientes' => $cliente,
-								'carpetas'=> $subcarpetas,
-								'direccion'=> $direccion,
-								'id_persona'=> $id_persona,
-								'archivo'=>$archivos,
-								'anterior'=>$anterior,
-								'raiz'=>$raiz,
-								'correo' => $correo_clientes,
-								'direccion_real' => $direccion_real
+						'clientes' => $cliente,
+						'carpetas'=> $subcarpetas,
+						'direccion'=> $direccion,
+						'id_persona'=> $id_persona,
+						'archivo'=>$archivos,
+						'anterior'=>$anterior,
+						'raiz'=>$raiz,
+						'correo' => $correo_clientes,
+						'direccion_real' => $direccion_real
 
 				);
 				$this->load->view('administrador/header_admin',$data);
@@ -675,10 +675,16 @@ class Administrador extends CI_Controller {
 		
 	}
 
-	public function bitacora(){
-		if($this->input->post()){
-			$id_persona = $this->input->post('id_persona');
-			echo $id_persona;
+	public function bitacora($id = null){
+		if(($this->input->post()) || ($id != null) ){
+
+			//redirect
+			if ($this->input->post()) {
+				$id_persona = $this->input->post('id_persona');
+			} elseif ($id) {
+				$id_persona = $id;
+			}
+			
 			$status = 0;
 				$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
 				$data = array(
@@ -693,13 +699,15 @@ class Administrador extends CI_Controller {
 				$lleno_datos = 1;
 				$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona,$id_tipo_persona,$lleno_datos);
 				$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
+				$nombre_cliente = $this->persona_model->get_nombre_cliente($id_persona);
 			#	Obtengo todos los registros de residuos peligrosos
 				$residuos_peligrosos = $this->residuo_peligroso_model->get_residuos($id_persona);
 				$data3 = array(
 					'clientes' => $cliente_baja,
 					'correo' => $correo_clientes,
 					'residuos' => $residuos_peligrosos,
-					'id_persona' => $id_persona
+					'id_persona' => $id_persona,
+					'nombre_cliente' => $nombre_cliente
 				);
 				$this->load->view('administrador/bitacora_residuo',$data3);
 				$this->load->view('administrador/footeru',$data3);
@@ -707,7 +715,7 @@ class Administrador extends CI_Controller {
 		}
 		else
 		{
-			redirect('administrador/subir_archivo');
+			redirect('administrador/admin_clientes');
 		}
 	}
 
@@ -842,22 +850,26 @@ class Administrador extends CI_Controller {
 	public function generar_ecxel()
 	{
 		if($this->input->post()){
-    	$this->load->view('administrador/exce');
-		$ruta='application/views/administrador/exce.xls';
-		header('Content-Description: File Transfer');
-		header('Content-Type: application/octet-stream');
-		header('Content-Disposition: attachment; filename='.basename($ruta));
-		header('Content-Transfer-Encoding: binary');
-		header('Expires: 0');
-		header('Cache-Control: must-revalidate');
-		header('Pragma: public');
-		header('Content-Length: ' . filesize($ruta));
-		ob_clean();
-		flush();
-		readfile($ruta);
-		exit;	
-		}
-		else{
+	    	$this->load->view('administrador/exce');
+	    	
+			$ruta='application/views/administrador/exce.xls';
+			$id_persona = $this->input->post('id_persona');
+			$nombre_cliente = $this->persona_model->get_nombre_cliente($id_persona);
+			$nombre_empresa = $this->persona_model->get_nombre_empresa($id_persona);
+
+			header('Content-Description: File Transfer');
+			header('Content-Type: application/octet-stream');
+			header('Content-Disposition: attachment; filename='.basename($ruta));
+			header('Content-Transfer-Encoding: binary');
+			header('Expires: 0');
+			header('Cache-Control: must-revalidate');
+			header('Pragma: public');
+			header('Content-Length: ' . filesize($ruta));
+			ob_clean();
+			flush();
+			readfile($ruta);
+			exit;	
+		} else{
 			redirect('administrador');
 		}
 	}
@@ -925,7 +937,7 @@ class Administrador extends CI_Controller {
 			);
 			$this->load->view('administrador/header_admin',$data);
 			$data2 = array(
-				'id_persona'=>$id_persona,
+				'id_persona'	=>$id_persona,
 				'residuos' 		=> $residuos,
 				'areas' 		=> $areas);
 
@@ -946,350 +958,12 @@ class Administrador extends CI_Controller {
 		}
 		else
 		{
-			redirect('administrador/bitacora');
+			redirect('administrador/bitacora_residuo');
 		}
 	}
 
-	public function modificar_bitacora()
-	{
-		if($this->input->post()){
-			$id_persona = $this->input->post('id_persona');
-			$id_bitacora = $this->input->post('id_bitacora');
-			$status = 0;
-			$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
-			$data = array(
-				'mensajes'=> $mensajesnuevos,
-			);
-			$this->load->view('administrador/header_admin',$data);
+	public function guardar_registro_nueva() {
 
-			#	Obtengo a todos mis clientes para seleccionar uno en opcion dar de baja y los mando al modal
-			$id_tipo_persona=3;
-			$id_status_persona=1;
-				// Mandar una variable para selecciar solo a los clientes que ya llenaron su info
-			$lleno_datos = 1;
-			$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona,$id_tipo_persona,$lleno_datos);
-			$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
-			#	Obtengo todos los registros de residuos peligrosos
-			$otro_residuo = "";
-			$residuos_peligrosos = $this->residuo_peligroso_model->get_bitacora($id_bitacora);
-			if( $residuos_peligrosos->residuo != "Aceite dieléctricos gastados" && 
-				$residuos_peligrosos->residuo != "Aceites hidráulicos gastados" && 
-				$residuos_peligrosos->residuo != "Aceites lubricantes usados" && 
-				$residuos_peligrosos->residuo != "Acumuladores de vehículos automotrices conteniendo plomo " && 
-				$residuos_peligrosos->residuo != "Aditamentos que contengan mercurio, cadmio plomo" && 
-				$residuos_peligrosos->residuo != "Baterías eléctricas a base de mercurio o de níquel-cadmio" && 
-				$residuos_peligrosos->residuo != "Combustóleo contaminado" && 
-				$residuos_peligrosos->residuo != "Diesel contaminado" && 
-				$residuos_peligrosos->residuo != "Disolventes orgánicos usados" && 
-				$residuos_peligrosos->residuo != "Fármacos" && 
-				$residuos_peligrosos->residuo != "Lámparas fluorescentes y de vapor de mercurio" && 
-				$residuos_peligrosos->residuo != "Lodos aceitosos" && 
-				$residuos_peligrosos->residuo != "Plaguicidas y sus envases que contengan remanentes de los mismos" && 
-				$residuos_peligrosos->residuo != "Sólidos con metales pesados" && 
-				$residuos_peligrosos->residuo != "Sólidos de mantenimiento automotriz" && 
-				$residuos_peligrosos->residuo != "Sólidos impregnados con pintura" && 
-				$residuos_peligrosos->residuo != "Sólidos impregnados con sustancias químicas"&&
-				$residuos_peligrosos->residuo != "Solventes orgánicos" && 
-				$residuos_peligrosos->residuo != "Sustancias corrosivas  ácidos" && 
-				$residuos_peligrosos->residuo != "Sustancias corrosivas  álcalis" && 
-				$residuos_peligrosos->residuo != "Telas o pieles impregnadas de residuos peligrosos") 
-			{
-				$otro_residuo = $residuos_peligrosos->residuo;
-				$residuos_peligrosos->residuo = "Otro";
-			}
-
-			$otro_area = "";
-			if ($residuos_peligrosos->area_generacion != "Mantenimiento" && 
-				$residuos_peligrosos->area_generacion != "Laboratorio" ) 
-			{
-				$otro_area = $residuos_peligrosos->area_generacion;
-				$residuos_peligrosos->area_generacion = "Otro";
-			}
-
-			$otro_empresa = "";
-			if ($residuos_peligrosos->emp_tran != "Ricardo Díaz Virgen" && 
-				$residuos_peligrosos->emp_tran != "Alicia Huerta Rodríguez" && 
-				$residuos_peligrosos->emp_tran != "Ecoltec S.A. de C.V." &&
-				$residuos_peligrosos->emp_tran != "EK Ambiental S.A. de C.V." ) 
-			{
-				$otro_empresa = $residuos_peligrosos->emp_tran;
-				$residuos_peligrosos->emp_tran = "Otro";
-			}
-
-			$otro_destino = "";
-			if ($residuos_peligrosos->dest_final != "Ecoltec S.A de C.V." && 
-				$residuos_peligrosos->dest_final != "Francisco Serrano Lomeli" && 
-				$residuos_peligrosos->dest_final != "Alicia Huerta Rodriguez" &&
-				$residuos_peligrosos->dest_final != "EK Ambiental S.A. de C.V." &&
-				$residuos_peligrosos->dest_final != "Sistema de Tratamiento Ambiental S.A. de C.V." &&
-				$residuos_peligrosos->dest_final != "Enertec Exports S. de R.L. de C.V." ) 
-			{
-				$otro_destino = $residuos_peligrosos->dest_final;
-				$residuos_peligrosos->dest_final = "Otro";
-			}
-
-			$otro_manejo = "";
-			if ($residuos_peligrosos->sig_manejo != "Coprocesamiento" && 
-				$residuos_peligrosos->sig_manejo != "Confinamiento controlado" && 
-				$residuos_peligrosos->sig_manejo != "Formulación de combustibles alternos" ) 
-			{
-				$otro_manejo = $residuos_peligrosos->sig_manejo;
-				$residuos_peligrosos->sig_manejo = "Otro";
-			}
-			$caracteristicas = "";
-			$caracteristicas = explode(" ", $residuos_peligrosos->caracteristica);
-			#die(print_r($caracteristicas));
-			$data3 = array(
-				'clientes' => $cliente_baja,
-				'correo' => $correo_clientes,
-				'residuos' => $residuos_peligrosos,
-				'id_persona' => $id_persona,
-				'residuo' => $residuos_peligrosos,
-				'otro_residuo' => $otro_residuo,
-				'otro_area' => $otro_area,
-				'otro_empresa' => $otro_empresa,
-				'otro_destino' => $otro_destino,
-				'otro_manejo' => $otro_manejo,
-				'caracteristicas' => $caracteristicas
-			);
-			$this->load->view('administrador/modificar_bitacora',$data3);
-			$this->load->view('administrador/footeru',$data3);
-		}
-		else
-		{
-			redirect('administrador/bitacora');
-		}
-	}
-
-	public function guardar_registro_nueva()
-	{
-		if($this->input->post()){
-			$id_persona = $this->input->post('id_persona');
-			$residuo = $this->input->post('residuo');
-			$otro_residuo = $this->input->post('otro_residuo');
-			$clave = $this->input->post('clave');
-			$cantidad = $this->input->post('cantidad');
-			$unidad = $this->input->post('unidad');
-			$caracteristica = $this->input->post('caracteristica');
-			$area_generacion = $this->input->post('area_generacion');
-			$otro_area = $this->input->post('otro_area');
-			$fecha_ingreso = $this->input->post('fecha_ingreso');
-			$fecha_salida = $this->input->post('fecha_salida');
-			$emp_tran = $this->input->post('emp_tran');
-			$otro_emp = $this->input->post('otro_emp');
-			$no_auto = $this->input->post('no_auto');
-			$folio_m = $this->input->post('folio');
-			$dest_final = $this->input->post('dest_final');
-			$otro_dest = $this->input->post('otro_dest');
-			$no_auto_dest = $this->input->post('no_auto_dest');
-			$sig_manejo = $this->input->post('sig_manejo');
-			$otro_modalidad = $this->input->post('otro_modalidad');
-			$resp_tec = $this->input->post('resp_tec');
-				
-			$nombre_residuo = "";
-			$clave_residuo = "";
-			if ($residuo == "Otro") {
-				$nombre_residuo = $otro_residuo;
-				$clave_residuo = $clave;
-			} 
-			if($residuo == "O1") {
-				$nombre_residuo = "Aceite dieléctricos gastados";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "O2") {
-				$nombre_residuo = "Aceites hidráulicos gastados";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "RPM/01") {
-				$nombre_residuo = "Aceites lubricantes usados";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "RPM/04") {
-				$nombre_residuo = "Acumuladores de vehículos automotrices conteniendo plomo ";
-				$clave_residuo = $residuo;				
-			} 
-			if($residuo == "RPM/07") {
-				$nombre_residuo = "Aditamentos que contengan mercurio, cadmio plomo";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "RPM/05") {
-				$nombre_residuo = "Baterías eléctricas a base de mercurio o de níquel-cadmio";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "O-1") {
-				$nombre_residuo = "Combustóleo contaminado";
-				$clave_residuo = "O";
-			} 
-			if($residuo == "O-2") {
-				$nombre_residuo = "Diesel contaminado";
-				$clave_residuo = "O";
-			} 
-			if($residuo == "RPM/02") {
-				$nombre_residuo = "Disolventes orgánicos usados";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "RPM/08") {
-				$nombre_residuo = "Fármacos";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "RPM/06") {
-				$nombre_residuo = "Lámparas fluorescentes y de vapor de mercurio";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "L6") {
-				$nombre_residuo = "Lodos aceitosos";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "RPM/09") {
-				$nombre_residuo = "Plaguicidas y sus envases que contengan remanentes de los mismos";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "SO5") {
-				$nombre_residuo = "Sólidos con metales pesados";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "SO2") {
-				$nombre_residuo = "Sólidos de mantenimiento automotriz";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "SO4-1") {
-				$nombre_residuo = "Sólidos impregnados con pintura";
-				$clave_residuo = "SO4";
-			} 
-			if($residuo == "SO4-2") {
-				$nombre_residuo = "Sólidos impregnados con sustancias químicas";
-				$clave_residuo = "SO4";
-			} 
-			if($residuo == "S1") {
-				$nombre_residuo = "Solventes orgánicos";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "C1") {
-				$nombre_residuo = "Sustancias corrosivas  ácidos";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "C2") {
-				$nombre_residuo = "Sustancias corrosivas  álcalis";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "SO1") {
-				$nombre_residuo = "Telas o pieles impregnadas de residuos peligrosos";
-				$clave_residuo = $residuo;
-			}
-			#die($nombre_residuo);
-			$caracteristicas_residuos = "";
-			foreach ($caracteristica as $row) {
-				$caracteristicas_residuos .= $row." ";
-			}
-
-			if($area_generacion == "Otro") {
-				$area_generacion = $otro_area;
-			}
-
-			$nombre_empresa = "";
-			$no_autorizacion_trans = "";
-			if($emp_tran == "Otro")	{
-				$nombre_empresa = $otro_emp;
-				$no_autorizacion_trans = $no_auto;
-			} elseif($emp_tran == "06-10-PS-I-01-2011") {
-				$nombre_empresa = "Ricardo Díaz Virgen";
-				$no_autorizacion_trans = $emp_tran;
-			} elseif($emp_tran == "014-002-682-95") {
-				$nombre_empresa = "Alicia Huerta Rodríguez";
-				$no_autorizacion_trans = $emp_tran;
-			} elseif($emp_tran == "21-015-PS-I-02-07") {
-				$nombre_empresa = "Ecoltec S.A. de C.V.";
-				$no_autorizacion_trans = $emp_tran;
-			} elseif($emp_tran == "09-I-20-11") {
-				$nombre_empresa = "EK Ambiental S.A. de C.V.";
-				$no_autorizacion_trans = $emp_tran;
-			}
-
-			$destino_final = "";
-			$no_autorizacion_dest = "";
-			if($dest_final == "Otro")	{
-				$destino_final = $otro_dest;
-				$no_autorizacion_dest = $no_auto_dest;
-			}else if($dest_final == "06-09-ll-01-2011"){
-				$destino_final = "Ecoltec S.A. de C.V. (acopio)";
-				$no_autorizacion_dest = $dest_final;
-			}else if($dest_final == "6-IV-34-09"){
-				$destino_final = "Ecoltec S.A. de C.V. (destino final)";
-				$no_autorizacion_dest = $dest_final;
-			}elseif($dest_final == "14-030B-PS-ll-43-07") {
-				$destino_final = "Francisco Serrano Lomeli";
-				$no_autorizacion_dest = $dest_final;
-			} else if($dest_final == "14-98B-PS-ll-18-03") {
-				$destino_final = "Alicia Huerta Rodriguez";
-				$no_autorizacion_dest = $dest_final;
-			} else if($dest_final == "14-II-06-11") {
-				$destino_final = "EK Ambiental S.A. de C.V.";
-				$no_autorizacion_dest = $dest_final;
-			} else if($dest_final == "11-V-86-09") {
-				$destino_final = "Sistema de Tratamiento Ambiental S.A. de C.V.";
-				$no_autorizacion_dest = $dest_final;
-			} else if($dest_final == "19-IV-78-11") {
-				$destino_final = "Enertec Exports S. de R.L. de C.V.";
-				$no_autorizacion_dest = $dest_final;
-			}
-
-			if($sig_manejo == "Otro") {
-				$sig_manejo = $otro_modalidad;
-			}
-
-			$fecha_insercion = date("Y-m-d H:i:s");
-			$tipo_bitacora = 1;
-
-			$this->residuo_peligroso_model->inserta_residuo($nombre_residuo,
-															$clave_residuo,
-															$cantidad,
-															$unidad,
-															$caracteristicas_residuos,
-															$area_generacion,
-															$fecha_ingreso,
-															$fecha_salida,
-															$sig_manejo,
-															$nombre_empresa,
-															$no_autorizacion_trans,
-															$folio_m,
-															$destino_final,
-															$no_autorizacion_dest,
-															$resp_tec,
-															$tipo_bitacora,
-															$fecha_insercion);
-
-			$folio_prueba = $this->residuo_peligroso_model->get_id($fecha_insercion);
-			$folio = $folio_prueba->id_residuo_peligroso;
-			$this->bitacora_model->inserta_bitacora($id_persona,$tipo_bitacora,$folio);
-			
-			$status = 0;
-				$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
-				$data = array(
-					'mensajes'=> $mensajesnuevos,
-				);
-			$this->load->view('administrador/header_admin',$data);
-			$id_tipo_persona=3;
-			$id_status_persona=1;
-			$lleno_datos = 1;
-			$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona,$id_tipo_persona,$lleno_datos);
-			$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
-			$residuos_peligrosos = $this->residuo_peligroso_model->get_residuos($id_persona);
-			$data3 = array(
-				'clientes' => $cliente_baja,
-				'correo' => $correo_clientes,
-				'residuos' => $residuos_peligrosos,
-				'id_persona' => $id_persona
-			);
-			$this->load->view('administrador/bitacora_residuo',$data3);
-			$this->load->view('administrador/footeru',$data3);
-		}
-		else
-		{
-			redirect('administrador/bitacora');
-		}
-	}
-
-	public function guardar_registro_nueva_1() {
 		if ( $this->input->post() ) {
 			$data["id_persona"] 		= $this->input->post('id_persona');
 			$data["residuo"] 			= $this->input->post('residuo');
@@ -1321,23 +995,25 @@ class Administrador extends CI_Controller {
 			
 			$folio = $this->residuo_peligroso_model->get_id();		
 			$this->bitacora_model->inserta_bitacora($data["id_persona"], $data["tipo_bitacora"], $folio);
-			redirect('administrador/bitacora');
+			
+
+			redirect('administrador/bitacora/' . $data["id_persona"]);
 
 		} else {
 			redirect('administrador/bitacora');
 		} 
 	}
 
-	public function eliminar_bit($id){
+	public function eliminar_bit($id, $id_persona){
 		$this->residuo_peligroso_model->delete_residuo($id);
 
-		redirect('administrador/bitacora');
+		redirect('administrador/bitacora/' . $id_persona);
 	}
 
 	public function actualizar_registros() {
 		if ( $this->input->post() ) {
 
-			$data["id_persona"] 		= $this->input->post('id_persona');
+			$data["id_persona"] 		= $this->input->post('id_persona'); // refiere al id de administrador
 			$data["fecha_salida"] 		= $this->input->post('fecha_salida');
 			$data["emp_tran"] 			= $this->input->post('emp_tran');
 			$data["otro_emp"] 			= $this->input->post('otro_emp');
@@ -1365,9 +1041,9 @@ class Administrador extends CI_Controller {
 
 			$this->residuo_peligroso_model->actualizar_registros($data);
 			
-			redirect('administrador/bitacora');
+			redirect('administrador/bitacora/' . $data["id_persona"] );
 		} else {
-			redirect('administrador/bitacora');
+			redirect('administrador/bitacora/' . $data["id_persona"] );
 		} 
 	}
 
@@ -1377,14 +1053,20 @@ class Administrador extends CI_Controller {
 		if ($this->input->post()) {
 			if ($this->input->post('residuos_to_update') != NULL ) {
 
+				$id_tipo_persona=3; // para la función de correo en el header
+				$id_status_persona=1; // para la función de correo en el footer
+
 				$id_bitacora 			= $this->input->post('id_residuo_peligroso');
-				$id 					= $this->session->userdata('id');
+				$id_persona				= $this->input->post('id_persona');
+				$id						= $this->session->userdata('id');
 				$status 				= 0;
 				$total					= $this->notificacion_model->obtiene_noticliente($id,$status);
 				$ruta 					= "clientes/".$id;
 				$ruta_carpeta 			= $ruta;
 				$carpetas 				= $this->carpeta_model->obt_carpeta_personal($ruta);
 				$archivos 				= $this->archivo_model->obtienearchivos($ruta_carpeta);
+				$mensajesnuevos 		= $this->contacto_model->contador_mensajes($status);
+				$correo_clientes 		= $this->persona_model->getCorreos($id_tipo_persona);
 
 				$tipo_emp_transportista = $this->emp_transportista_model->get_tipo_emp_transportista();
 				$tipo_emp_destino 		= $this->emp_destino_model->get_tipo_emp_destino();
@@ -1396,6 +1078,9 @@ class Administrador extends CI_Controller {
 					'archivo' 				=> $archivos,
 					'numnoti' 				=> $total,
 					'id' 					=> $id,
+					'id_persona' 			=> $id_persona,
+					'mensajes' 				=> $mensajesnuevos,
+					'correo' 				=> $correo_clientes,
 					'tipo_emp_transportista'=> $tipo_emp_transportista,
 					'tipo_emp_destino' 		=> $tipo_emp_destino,
 					'tipo_modalidad' 		=> $tipo_modalidad,
@@ -1403,252 +1088,105 @@ class Administrador extends CI_Controller {
 				);
 
 				$this->load->view('administrador/header_admin',$data);
-				echo "header";
 				$this->load->view('administrador/actualizar_registros',$data);
-				echo "data";
 				$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
-				$bitacoras = $this->bitacora_model->get_bitacoras();
+				$bitacoras 			= $this->bitacora_model->get_bitacoras();
+
+				$cliente 			= $this->persona_model->obtiene_clientes($id_tipo_persona, $id_status_persona);
+				$correo_clientes 	= $this->persona_model->getCorreos($id_tipo_persona);
 
 
 				$data2 = array(
 					'new_noti' =>$datos_popover,
-					'bitacoras' =>$bitacoras
+					'bitacoras' =>$bitacoras,
+					'clientes' => $cliente,
+					'correo' => $correo_clientes
 				);
+
 				$this->load->view('administrador/footeru',$data2);
 			} else {
-				redirect("administrador/bitacora");
+				redirect("administrador/ver_bitacora");
 			}
-		} else {
-			redirect("administrador/bitacora");
 		}
 
 	}
 
-	public function actualizar_registro()
-	{
-		if($this->input->post()){
-			$id_bitacora = $this->input->post('id_bitacora');
-			$id_persona = $this->input->post('id_persona');
-			$residuo = $this->input->post('residuo');
-			$otro_residuo = $this->input->post('otro_residuo');
-			$clave = $this->input->post('clave');
-			$cantidad = $this->input->post('cantidad');
-			$unidad = $this->input->post('unidad');
-			$caracteristica = $this->input->post('caracteristica');
-			$area_generacion = $this->input->post('area_generacion');
-			$otro_area = $this->input->post('otro_area');
-			$fecha_ingreso = $this->input->post('fecha_ingreso');
-			$fecha_salida = $this->input->post('fecha_salida');
-			$emp_tran = $this->input->post('emp_tran');
-			$otro_emp = $this->input->post('otro_emp');
-			$no_auto = $this->input->post('no_auto');
-			$folio_m = $this->input->post('folio');
-			$dest_final = $this->input->post('dest_final');
-			$otro_dest = $this->input->post('otro_dest');
-			$no_auto_dest = $this->input->post('no_auto_dest');
-			$sig_manejo = $this->input->post('sig_manejo');
-			$otro_modalidad = $this->input->post('otro_modalidad');
-			$resp_tec = $this->input->post('resp_tec');
-			$nombre_residuo = "";
-			$clave_residuo = "";
-			if ($residuo == "Otro") {
-				$nombre_residuo = $otro_residuo;
-				$clave_residuo = $clave;
-			} 
-			if($residuo == "O1") {
-				$nombre_residuo = "Aceite dieléctricos gastados";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "02") {
-				$nombre_residuo = "Aceites hidráulicos gastados";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "RPM/01") {
-				$nombre_residuo = "Aceites lubricantes usados";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "RPM/04") {
-				$nombre_residuo = "Acumuladores de vehículos automotrices conteniendo plomo ";
-				$clave_residuo = $residuo;				
-			} 
-			if($residuo == "RPM/07") {
-				$nombre_residuo = "Aditamentos que contengan mercurio, cadmio plomo";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "RPM/05") {
-				$nombre_residuo = "Baterías eléctricas a base de mercurio o de níquel-cadmio";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "O-1") {
-				$nombre_residuo = "Combustóleo contaminado";
-				$clave_residuo = "O";
-			} 
-			if($residuo == "O-2") {
-				$nombre_residuo = "Diesel contaminado";
-				$clave_residuo = "O";
-			} 
-			if($residuo == "RPM/02") {
-				$nombre_residuo = "Disolventes orgánicos usados";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "RPM/08") {
-				$nombre_residuo = "Fármacos";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "RPM/06") {
-				$nombre_residuo = "Lámparas fluorescentes y de vapor de mercurio";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "L6") {
-				$nombre_residuo = "Lodos aceitosos";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "RPM/09") {
-				$nombre_residuo = "Plaguicidas y sus envases que contengan remanentes de los mismos";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "SO5") {
-				$nombre_residuo = "Sólidos con metales pesados";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "SO2") {
-				$nombre_residuo = "Sólidos de mantenimiento automotriz";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "SO4-1") {
-				$nombre_residuo = "Sólidos impregnados con pintura";
-				$clave_residuo = "SO4";
-			} 
-			if($residuo == "SO4-2") {
-				$nombre_residuo = "Sólidos impregnados con sustancias químicas";
-				$clave_residuo = "SO4";
-			} 
-			if($residuo == "S1") {
-				$nombre_residuo = "Solventes orgánicos";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "C1") {
-				$nombre_residuo = "Sustancias corrosivas  ácidos";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "C2") {
-				$nombre_residuo = "Sustancias corrosivas  álcalis";
-				$clave_residuo = $residuo;
-			} 
-			if($residuo == "SO1") {
-				$nombre_residuo = "Telas o pieles impregnadas de residuos peligrosos";
-				$clave_residuo = $residuo;
-			}
-			#die($nombre_residuo);
-			$caracteristicas_residuos = "";
-			foreach ($caracteristica as $row) {
-				$caracteristicas_residuos .= $row." ";
-			}
+	public function update_bit($id_bit = null){
+		
+		if(($this->input->post()) || ($id_bit != null) ){
+		
+			$id_tipo_persona=3; // para la función de correo en el header
+			$id_status_persona=1; // para la función de correo en el footer
 
-			if($area_generacion == "Otro") {
-				$area_generacion = $otro_area;
-			}
+			$residuo_ident 			= $this->residuo_peligroso_model->get_ident_residuo($id_bit);
 
-			$nombre_empresa = "";
-			$no_autorizacion_trans = "";
-			if($emp_tran == "Otro")	{
-				$nombre_empresa = $otro_emp;
-				$no_autorizacion_trans = $no_auto;
-			} elseif($emp_tran == "06-10-PS-I-01-2011") {
-				$nombre_empresa = "Ricardo Díaz Virgen";
-				$no_autorizacion_trans = $emp_tran;
-			} elseif($emp_tran == "014-002-682-95") {
-				$nombre_empresa = "Alicia Huerta Rodríguez";
-				$no_autorizacion_trans = $emp_tran;
-			} elseif($emp_tran == "21-015-PS-I-02-07") {
-				$nombre_empresa = "Ecoltec S.A. de C.V.";
-				$no_autorizacion_trans = $emp_tran;
-			} elseif($emp_tran == "09-I-20-11") {
-				$nombre_empresa = "EK Ambiental S.A. de C.V.";
-				$no_autorizacion_trans = $emp_tran;
-			}
+			print_r($residuo_ident);
+			
+			$id_bitacora 			= $id_bit;
+			$id 					= $this->session->userdata('id');
+			$status 				= 0;
+			$total					= $this->notificacion_model->obtiene_noticliente($id,$status);
+			$bitacora 				= $this->residuo_peligroso_model->get_bitacora($id_bitacora);
+			$peligrosidad 			= $bitacora->caracteristica;
+			$peligrosidad2 			= explode(" ", $peligrosidad);
 
-			$destino_final = "";
-			$no_autorizacion_dest = "";
-			if($dest_final == "Otro")	{
-				$destino_final = $otro_dest;
-				$no_autorizacion_dest = $no_auto_dest;
-			}else if($dest_final == "06-09-ll-01-2011"){
-				$destino_final = "Ecoltec S.A. de C.V. (acopio)";
-				$no_autorizacion_dest = $dest_final;
-			}else if($dest_final == "6-IV-34-09"){
-				$destino_final = "Ecoltec S.A. de C.V. (destino final)";
-				$no_autorizacion_dest = $dest_final;
-			}elseif($dest_final == "14-030B-PS-ll-43-07") {
-				$destino_final = "Francisco Serrano Lomeli";
-				$no_autorizacion_dest = $dest_final;
-			} else if($dest_final == "14-98B-PS-ll-18-03") {
-				$destino_final = "Alicia Huerta Rodriguez";
-				$no_autorizacion_dest = $dest_final;
-			} else if($dest_final == "14-II-06-11") {
-				$destino_final = "EK Ambiental S.A. de C.V.";
-				$no_autorizacion_dest = $dest_final;
-			} else if($dest_final == "11-V-86-09") {
-				$destino_final = "Sistema de Tratamiento Ambiental S.A. de C.V.";
-				$no_autorizacion_dest = $dest_final;
-			} else if($dest_final == "19-IV-78-11") {
-				$destino_final = "Enertec Exports S. de R.L. de C.V.";
-				$no_autorizacion_dest = $dest_final;
-			}
+			$residuos 				= $this->residuo_peligroso_model->get_tipo_residuos();
+			$areas 					= $this->area_model->get_areas();
+			$tipo_emp_transportista = $this->emp_transportista_model->get_tipo_emp_transportista();
+			$tipo_emp_destino 		= $this->emp_destino_model->get_tipo_emp_destino();
+			$tipo_modalidad 		= $this->modalidad_model->get_tipo_modalidad();
 
-			if($sig_manejo == "Otro") {
-				$sig_manejo = $otro_modalidad;
-			}
-
-			$fecha_insercion = date("Y-m-d H:i:s");
-			$tipo_bitacora = 1;
-
-			$this->residuo_peligroso_model->actualizar_registro(
-															$id_bitacora,
-															$nombre_residuo,
-															$clave_residuo,
-															$cantidad,
-															$unidad,
-															$caracteristicas_residuos,
-															$area_generacion,
-															$fecha_ingreso,
-															$fecha_salida,
-															$sig_manejo,
-															$nombre_empresa,
-															$no_autorizacion_trans,
-															$folio_m,
-															$destino_final,
-															$no_autorizacion_dest,
-															$resp_tec,
-															$tipo_bitacora,
-															$fecha_insercion);
+			$nombre_residuo 		= $this->residuo_peligroso_model->get_nombre_residuo($id_bitacora);
+			$nombre_area 			= $this->area_model->get_nombre_area($id_bitacora);
+			$nombre_emp_trans		= $this->emp_transportista_model->get_nombre_trans($id_bitacora);
+			$nombre_emp_dest		= $this->emp_destino_model->get_nombre_dest($id_bitacora);
+			$nombre_modalidad		= $this->modalidad_model->get_nombre_modalidad($id_bitacora);
 
 			$status = 0;
-				$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
-				$data = array(
-					'mensajes'=> $mensajesnuevos,
-				);
-			$this->load->view('administrador/header_admin',$data);
-			$id_tipo_persona=3;
-			$id_status_persona=1;
-			$lleno_datos = 1;
-			$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona,$id_tipo_persona,$lleno_datos);
-			$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
-			$residuos_peligrosos = $this->residuo_peligroso_model->get_residuos($id_persona);
-			$data3 = array(
-				'clientes' => $cliente_baja,
-				'correo' => $correo_clientes,
-				'residuos' => $residuos_peligrosos,
-				'id_persona' => $id_persona
+			$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
+
+			$data = array(
+				'numnoti'=>$total,
+				'id'=>$id,
+				'bitacora' => $bitacora,
+				'mensajes' => $mensajesnuevos,
+				'peligrosidad' => $peligrosidad2,
+				'residuos' => $residuos,
+				'areas' => $areas,
+				'tipo_emp_transportista' => $tipo_emp_transportista,
+				'tipo_emp_destino' => $tipo_emp_destino,
+				'tipo_modalidad' => $tipo_modalidad,
+				'nombre_residuo' => $nombre_residuo,
+				'nombre_area' => $nombre_area,
+				'nombre_emp_trans' => $nombre_emp_trans,
+				'nombre_emp_dest' => $nombre_emp_dest,
+				'nombre_modalidad' => $nombre_modalidad
 			);
-			$this->load->view('administrador/bitacora_residuo',$data3);
-			$this->load->view('administrador/footeru',$data3);
-		}
-		else
-		{
-			redirect('administrador/bitacora');
-		}
+
+			$this->load->view('administrador/header_admin',$data);
+			$this->load->view('administrador/modificar_bitacora',$data);
+			$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
+			
+			// Obtenemos las bitacoras que hay
+			$bitacoras = $this->bitacora_model->get_bitacoras();
+			
+			$cliente 			= $this->persona_model->obtiene_clientes($id_tipo_persona, $id_status_persona);
+			$correo_clientes 	= $this->persona_model->getCorreos($id_tipo_persona);
+
+			$data2 = array(
+					'new_noti' =>$datos_popover,
+					'bitacoras' =>$bitacoras,
+					'clientes' => $cliente,
+					'correo' => $correo_clientes
+			);
+
+			$this->load->view('administrador/footeru',$data2);
+		}else{
+			redirect('administrador/');
+		}	
+			
 	}
+
 
 	public function renombrar_carpeta(){
 		#die('Estamos Trabajando');

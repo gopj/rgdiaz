@@ -1,6 +1,6 @@
 <div class="span9">
 	<legend><center>Nuevo Registro</center></legend>
-	<form id="form_bitacora_residuo_peligroso" action="<?php echo site_url('administrador/guardar_registro_nueva_1'); ?>" method="post">
+	<form id="form_bitacora_residuo_peligroso" action="<?php echo site_url('administrador/guardar_registro_nueva'); ?>" method="post">
 	<div class="well">
 		<br>
 		<div class="form-horizontal">
@@ -97,6 +97,11 @@
 	</div>
 	<input type="hidden" name="id_persona" value="<?php echo $id_persona; ?>">
 	<input type="button" onclick="reg_bit_new();" class="btn btn-primary pull-right" value="Guardar">
+	</form>
+
+	<form id="regresar_bitacora" method='post' action="<?php echo site_url('administrador/bitacora');?>">
+		<input type="hidden" name="id_persona" value="<?php echo $id_persona; ?>">
+		<input class="btn btn-warning pull-left" id="regresar_bitacora"  type="submit" value="Cancelar">
 	</form>
 </div>
 

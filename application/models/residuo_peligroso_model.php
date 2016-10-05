@@ -51,7 +51,6 @@ class Residuo_peligroso_model extends CI_Model {
 				r.folio_manifiesto as folio,
 				b.id_persona as id_persona,
 				r.status
-
 			FROM 
 				residuos_peligrosos as r
 					LEFT JOIN areas a ON (r.id_area = a.id_area)
@@ -60,11 +59,12 @@ class Residuo_peligroso_model extends CI_Model {
 					LEFT JOIN tipo_emp_destino ed ON (r.id_tipo_emp_destino = ed.id_tipo_emp_destino),
 				bitacora as b, 
 				tipo_residuos as tr
-
 			WHERE
 				r.id_residuo_peligroso = b.id_bitacora  and 
 				r.id_tipo_residuo = tr.id_tipo_residuo and
-				b.id_persona = {$id_persona}" )->result();
+				b.id_persona = {$id_persona}
+			ORDER BY
+				r.fecha_ingreso asc;")->result();
 	}
 
 	public function get_bitacora($id_bitacora){
@@ -72,9 +72,17 @@ class Residuo_peligroso_model extends CI_Model {
 						->from('residuos_peligrosos')
 						->get()
 						->row();
-	 }
+	}
 
-
+	public function get_ident_residuo($id_bitacora){
+		return $this->db->from('residuos_peligrosos r')
+						->join('tipo_residuos t', 't.id_tipo_residuo = r.id_tipo_residuo', 'left')
+						->join('tipo_emp_transportista et', 'et.id_tipo_emp_transportista = r.id_tipo_emp_transportista', 'left')
+						->join('tipo_emp_destino ed', 'ed.id_tipo_emp_destino = r.id_tipo_emp_destino', 'left')
+						->where('r.id_residuo_peligroso', $id_bitacora)
+						->get()
+						->row();
+	}
 
 	public function inserta_residuo($data) {	
 

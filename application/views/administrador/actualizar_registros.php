@@ -1,5 +1,5 @@
 <?php
-	//Numero de Registros seleccionados
+	//Numero de Registros seleccionados	
 	$nvals = count($actualizar_registros);
 	$str_act_reg = "";
 	for ($i = 0; $i < $nvals; $i++) {
@@ -12,7 +12,7 @@
 ?>
 
 <div class="span9">
-	<legend><center>Actualizar Registros - <?= $str_act_reg; ?> </center></legend>
+	<legend><center>Actualizar Registros - <?php echo $str_act_reg; ?> </center></legend>
 	<form id="form_actualizar_registros" action="<?php echo site_url('administrador/actualizar_registros'); ?>" method="post">
 	<div class="well">
 		<br>
@@ -103,7 +103,7 @@
 			</div>
 		</div>
 	</div>
-	<input type="hidden" name="id_persona" value="<?php echo $id; ?>">
+	<input type="hidden" name="id_persona" value="<?php echo $id_persona; ?>">
 	<input type="hidden" name="registros" value="<?php echo $str_act_reg ?>">
 	<input type="submit" class="btn btn-primary pull-right" value="Guardar">
 	<!-- <input type="button" onclick="reg_bit_update();" class="btn btn-primary pull-right" value="Guardar"> -->

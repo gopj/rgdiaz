@@ -4,7 +4,7 @@
 ?>
 <div class="span9">
 	<legend><center>Nuevo Registro</center></legend>
-	<form id="form_bitacora_residuo_peligroso" action="<?php echo site_url('cliente/guardar_registro_nueva_1'); ?>" method="post">
+	<form id="form_bitacora_residuo_peligroso" action="<?php echo site_url('cliente/guardar_registro_nueva'); ?>" method="post">
 	<div class="well">
 		<br>
 		<div class="form-horizontal">

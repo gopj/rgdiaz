@@ -1,13 +1,13 @@
 <div class="span12">
 	<form id="form_bitacora_actualizar_registros" action="<?php echo site_url('administrador/bitacora_actualiza_reg'); ?>" method="post">
-	<center><legend>Bitácora Residuos Peligrosos</legend></center>
+	<center><legend> Bitácora Residuos Peligrosos - <?= $nombre_cliente; ?> </legend></center>
 	<div class="row">
 		<div class="span12">
 			<div style="overflow:scroll; width:100%; height:450px;">
 				<table class="table table-hover" id="header-fixed">
 					<thead>
 						<th class="table-residuos">#</th>
-						<th class="table-residuos">SELECCIONA</th>
+						<th class="table-residuos" width="10%">SELECCIONA</th>
 						<th class="table-residuos">FOLIO DEL MANIFIESTO</th>
 						<th class="table-residuos">RESIDUO PELIGROSO</th>
 						<th class="table-residuos">CLAVE</th>
@@ -23,7 +23,7 @@
 						<th class="table-residuos">NO. AUTORIZACIÓN</th>
 						<th class="table-residuos">MODALIDAD DE MANEJO</th>
 						<th class="table-residuos">RESPONSABLE TÉCNICO</th>
-						<th class="table-residuos">OPCIÓN</th>
+						<th class="table-residuos" width="40%">OPCIÓN</th>
 					</thead>
 					<tbody>
 						<?php foreach ($residuos as $row) { ?>
@@ -52,10 +52,13 @@
 									<td><?php echo $row->sig_manejo; ?></td>
 									<td><?php echo $row->resp_tec; ?></td>
 									<td class="center center-align">
-										<form action="<?php echo site_url('cliente/update_bit');?>" method="post">
+										<form action="<?php echo site_url('administrador/update_bit/');?>" method="post">
 											<input type="hidden" name="id_residuo_peligroso" disabled value="<?php echo $row->id_residuo_peligroso;?>" >
-											<?php $url_delete = site_url('administrador/eliminar_bit/') . "/"; ?>
-											<button type='button' class='btn btn-danger btn-mini' data-toggle='modal' data-target='.bs-modal-del' id='eliminar' onclick='delete_residuo(<?= $row->id_residuo_peligroso ?>, <?= "\"$row->residuo\"" ?>, <?= "\"$url_delete\"" ?> )'> Eliminar </button>
+
+											<a href="<?= site_url('administrador/update_bit') . "/" . $row->id_residuo_peligroso ?>"  class="btn btn-primary btn-mini"> <i class="icon-pencil"></i> </a>
+											
+											<?php $url_delete = site_url('administrador/eliminar_bit/'); ?>
+											<button type='button' class='btn btn-danger btn-mini' data-toggle='modal' data-target='.bs-modal-del' id='eliminar' onclick='delete_residuo(<?= $row->id_residuo_peligroso ?>, <?= "\"$row->residuo\"" ?>, <?= "\"$url_delete\"" ?>, <?= "\"$id_persona\"" ?> )'> <i class="icon-remove"></i>  </button>
 										</form>
 									</td>
 								</tr>
@@ -65,6 +68,7 @@
 			</div>
 		</div>
 	</div>
+	</form>
 	<div class="row" style="margin-top:10px;">
 		<div class="span5"></div>
 		<div class="span1">
@@ -75,15 +79,15 @@
 		</div>
 		<div class="span2">
 			<input type="submit" class="btn btn-primary pull-left" value="Registrar Salidas">
+			<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
 		</div>
 		<div class="span2">
-			<form action="<?php echo site_url('cliente/generar_excel'); ?>" method="POST">
+			<form action="<?php echo site_url('administrador/generar_excel'); ?>" method="POST">
 				<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
 				<input type="submit" class="btn btn-primary pull-left" name="excel" value="Generar Ecxel">
 			</form>
 		</div>
 	</div>
-	</form>
 </div>
 
 

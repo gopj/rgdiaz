@@ -88,7 +88,6 @@ session_start();
   							</button>
   						</form>
   						<br>
-						<br>
 						<form>
 							<button class="well-notificacion" href="#correo" data-toggle="modal">
 								<div style="inline:block;">
