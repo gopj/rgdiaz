@@ -17,7 +17,7 @@ public function __construct() {
 				WHERE r.id_tipo_emp_transportista = e.id_tipo_emp_transportista and r.id_residuo_peligroso =" . $id . ";";
 		$nombre_emp_trans = $this->db->query($sql)->result();
 
-		return $nombre_emp_trans[0]->nombre_empresa;
+		return @$nombre_emp_trans[0]->nombre_empresa;
 	}
 
 	public function _emp_tran($data){

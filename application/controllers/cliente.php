@@ -18,8 +18,8 @@ class Cliente extends CI_Controller {
 		$this->load->library('Excel');
 		$this->load->library('session');
 		$this->load->library('email');
-		if(empty($this->session->userdata("tipo")))
-			redirect(site_url(),'refresh');
+		/*if(empty($this->session->userdata("tipo")))
+			redirect(site_url(),'refresh');*/
 	}
 
 	#	Metodo index carga la vista principal del cliente
@@ -385,11 +385,9 @@ class Cliente extends CI_Controller {
 
 	public function bitacora_actualiza_reg(){
 
-
 		if ($this->input->post()) {
 			if ($this->input->post('residuos_to_update') != NULL ) {
 
-		
 				$id_bitacora 			= $this->input->post('id_residuo_peligroso');
 				$id 					= $this->session->userdata('id');
 				$status 				= 0;
@@ -398,10 +396,6 @@ class Cliente extends CI_Controller {
 				$ruta_carpeta 			= $ruta;
 				$carpetas 				= $this->carpeta_model->obt_carpeta_personal($ruta);
 				$archivos 				= $this->archivo_model->obtienearchivos($ruta_carpeta);
-				$bitacora 				= $this->residuo_peligroso_model->get_bitacora($id_bitacora);
-				$peligrosidad 			= $bitacora->caracteristica;
-				$peligrosidad2 			= explode(" ", $peligrosidad);
-
 				$tipo_emp_transportista = $this->emp_transportista_model->get_tipo_emp_transportista();
 				$tipo_emp_destino 		= $this->emp_destino_model->get_tipo_emp_destino();
 				$tipo_modalidad 		= $this->modalidad_model->get_tipo_modalidad();
@@ -432,8 +426,10 @@ class Cliente extends CI_Controller {
 			} else {
 				redirect("cliente/ver_bitacora");
 			}
+		} else {
+			redirect("cliente/ver_bitacora");
+			
 		}
-
 	}
 
 	public function cambia_status_notificacion(){
