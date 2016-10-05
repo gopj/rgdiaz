@@ -30,6 +30,7 @@ session_start();
 			<script type="text/javascript" src="js/swith.js"></script>
 			<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
 			<script type="text/javascript" src="js/formulario_bitacora.js"></script>
+			<script type="text/javascript" src="js/jquery.validate.js"></script>
 		</head>
 		<body>
 			<nav>

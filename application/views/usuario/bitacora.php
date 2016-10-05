@@ -84,7 +84,7 @@
 			</form>
 		</div>
 		<div class="span2">
-			<input type="submit" class="btn btn-primary pull-left" value="Actaulizar Registros">
+			<input type="submit" class="btn btn-primary pull-left" value="Registrar Salidas">
 		</div>
 		<div class="span2">
 			<form action="<?php echo site_url('cliente/generar_excel'); ?>" method="POST">

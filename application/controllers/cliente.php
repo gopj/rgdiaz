@@ -18,8 +18,11 @@ class Cliente extends CI_Controller {
 		$this->load->library('Excel');
 		$this->load->library('session');
 		$this->load->library('email');
+<<<<<<< HEAD
 		/*if(empty($this->session->userdata("tipo")))
 			redirect(site_url(),'refresh');*/
+=======
+>>>>>>> origin/master
 	}
 
 	#	Metodo index carga la vista principal del cliente
@@ -396,6 +399,10 @@ class Cliente extends CI_Controller {
 				$ruta_carpeta 			= $ruta;
 				$carpetas 				= $this->carpeta_model->obt_carpeta_personal($ruta);
 				$archivos 				= $this->archivo_model->obtienearchivos($ruta_carpeta);
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 				$tipo_emp_transportista = $this->emp_transportista_model->get_tipo_emp_transportista();
 				$tipo_emp_destino 		= $this->emp_destino_model->get_tipo_emp_destino();
 				$tipo_modalidad 		= $this->modalidad_model->get_tipo_modalidad();
