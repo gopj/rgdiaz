@@ -57,14 +57,14 @@
 										<td class="center center-align">
 										<!-- Modificar -->
 											<a  class="btn btn-primary btn-mini" disabled> 
-												<i class="icon-pencil"></i> 
+												<i class="icon-pencil"></i> Modificar
 											</a>
 										</td>
 									<?php } else { ?>
 										<td class="center center-align">
 										<!-- Modificar -->
 											<a href="<?= site_url('cliente/update_bit') . "/" . $row->id_residuo_peligroso ?>"  class="btn btn-primary btn-mini" > 
-												<i class="icon-pencil"></i> 
+												<i class="icon-pencil"></i> Modificar
 											</a>
 										</td>
 									<?php } ?>
@@ -112,7 +112,7 @@
 			</div>
 			<div class=modal-footer>
 				<button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-        		<a href="" id='residuo_delete' class='btn btn-danger'role='button'> Eliminar</a>
+        		<a href="" id='residuo_delete' class='btn btn-danger' role='button'> Eliminar</a>
 			</div>
 		</div> 
 	</div>
