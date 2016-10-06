@@ -256,6 +256,6 @@ function delete_residuo(id, nombre, url_delete, id_persona){
 	console.log(url_delete + id);
 
 	document.getElementById('eliminar_span').textContent = nombre;
-	document.getElementById("residuo_delete").setAttribute("href", url_delete + id + "/" + id_persona);
+	document.getElementById("residuo_delete").setAttribute("href", url_delete + "/" + id + "/" + id_persona);
 	
 }

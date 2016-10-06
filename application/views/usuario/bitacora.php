@@ -52,21 +52,20 @@
 									<td><?php echo $row->no_aut_dest_final; ?></td>
 									<td><?php echo $row->sig_manejo; ?></td>
 									<td><?php echo $row->resp_tec; ?></td>
+									
 									<?php if ($row->status == "R") { ?>
 										<td class="center center-align">
-											<form action="<?php echo site_url('cliente/update_bit');?>" method="post">
-												<input type="hidden" name="id_residuo_peligroso" disabled value="<?php echo $row->id_residuo_peligroso;?>" >
-												<?php $url_delete = site_url('cliente/eliminar_bit/') . "/"; ?>
-												<button type='button' class='btn btn-danger btn-mini' disabled data-toggle='modal' data-target='.bs-modal-del' id='eliminar' onclick='delete_residuo(<?= $row->id_residuo_peligroso ?>, <?= "\"$row->residuo\"" ?>, <?= "\"$url_delete\"" ?> )'> Eliminar </button>
-											</form>
+										<!-- Modificar -->
+											<a  class="btn btn-primary btn-mini" disabled> 
+												<i class="icon-pencil"></i> 
+											</a>
 										</td>
 									<?php } else { ?>
 										<td class="center center-align">
-											<form action="<?php echo site_url('cliente/update_bit');?>" method="post">
-												<input type="hidden" name="id_residuo_peligroso" value="<?php echo $row->id_residuo_peligroso;?>" >
-												<?php $url_delete = site_url('cliente/eliminar_bit/') . "/"; ?>
-												<button type='button' class='btn btn-danger btn-mini' data-toggle='modal' data-target='.bs-modal-del' id='eliminar' onclick='delete_residuo(<?= $row->id_residuo_peligroso ?>, <?= "\"$row->residuo\"" ?>, <?= "\"$url_delete\"" ?> )'> Eliminar </button>
-											</form>
+										<!-- Modificar -->
+											<a href="<?= site_url('cliente/update_bit') . "/" . $row->id_residuo_peligroso ?>"  class="btn btn-primary btn-mini" > 
+												<i class="icon-pencil"></i> 
+											</a>
 										</td>
 									<?php } ?>
 								</tr>

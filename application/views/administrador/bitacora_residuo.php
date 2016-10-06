@@ -55,7 +55,8 @@
 										<form action="<?php echo site_url('administrador/update_bit/');?>" method="post">
 											<input type="hidden" name="id_residuo_peligroso" disabled value="<?php echo $row->id_residuo_peligroso;?>" >
 
-											<a href="<?= site_url('administrador/update_bit') . "/" . $row->id_residuo_peligroso ?>"  class="btn btn-primary btn-mini"> <i class="icon-pencil"></i> </a>
+											<!-- Modificar -->
+											<a href="<?= site_url('administrador/update_bit') . "/" . $id_persona . "/" . $row->id_residuo_peligroso ?>"  class="btn btn-primary btn-mini"> <i class="icon-pencil"></i> </a>
 											
 											<?php $url_delete = site_url('administrador/eliminar_bit/'); ?>
 											<button type='button' class='btn btn-danger btn-mini' data-toggle='modal' data-target='.bs-modal-del' id='eliminar' onclick='delete_residuo(<?= $row->id_residuo_peligroso ?>, <?= "\"$row->residuo\"" ?>, <?= "\"$url_delete\"" ?>, <?= "\"$id_persona\"" ?> )'> <i class="icon-remove"></i>  </button>

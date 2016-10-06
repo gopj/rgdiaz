@@ -1047,6 +1047,64 @@ class Administrador extends CI_Controller {
 		} 
 	}
 
+	public function update_bitacora_admin(){
+
+		if($this->input->post()){
+			$data["id_residuo_peligroso"]= $this->input->post('id_residuo_peligroso');
+			$data["id_persona"] 		= $this->input->post('id_persona');
+			$data["residuo"] 			= $this->input->post('residuo');
+			$data["otro_residuo"] 		= $this->input->post('otro_residuo');
+			$data["clave"] 				= $this->input->post('clave');
+			$data["cantidad"] 			= $this->input->post('cantidad');
+			$data["unidad"] 			= $this->input->post('unidad');
+			$data["caracteristica"] 	= $this->input->post('caracteristica');
+			$data["area_generacion"] 	= $this->input->post('area_generacion');
+			$data["otro_area"] 			= $this->input->post('otro_area');
+			$data["fecha_ingreso"] 		= $this->input->post('fecha_ingreso');
+			$data["fecha_salida"] 		= $this->input->post('fecha_salida');
+			$data["emp_tran"] 			= $this->input->post('emp_tran');
+			$data["otro_emp"] 			= $this->input->post('otro_emp');
+			$data["no_auto"] 			= $this->input->post('no_auto');
+			$data["folio_manifiesto"]	= $this->input->post('folio');
+			$data["dest_final"] 		= $this->input->post('dest_final');
+			$data["otro_dest"] 			= $this->input->post('otro_dest');
+			$data["no_auto_dest"] 		= $this->input->post('no_auto_dest');
+			$data["sig_manejo"] 		= $this->input->post('sig_manejo');
+			$data["otro_modalidad"]		= $this->input->post('otro_modalidad');
+			$data["resp_tec"] 			= $this->input->post('resp_tec');
+
+			//Residuo					
+			if ($data["residuo"] != "Otro") {
+				$id_residuo = explode(",", $data["residuo"]);
+				$data["residuo"] = $id_residuo[0];
+			} 
+			
+			//Caracteristicas
+			$data["caracteristicas_residuos"] = "";
+			foreach ($data["caracteristica"] as $row) {
+				$data["caracteristicas_residuos"] .= $row . " ";
+			}
+			unset($data["caracteristica"]);
+			
+			// Empresa transportista
+			if($data["emp_tran"] != "Otro")	{
+				$id_emp_tran = explode(",", $data["emp_tran"]);
+				$data["emp_tran"] = $id_emp_tran[0];
+			} 
+
+			// Empresa de destino
+			if($data["dest_final"] != "Otro")	{
+				$id_emp_final = explode(",", $data["dest_final"]);
+				$data["dest_final"] = $id_emp_final[0];
+			}
+
+			$this->residuo_peligroso_model->actualizar_registro($data);
+															
+			redirect('administrador/bitacora/' . $data["id_persona"] );
+		}else{
+			redirect('administrador/bitacora/' . $data["id_persona"] );
+		}
+	}
 
 	public function bitacora_actualiza_reg(){
 
@@ -1111,22 +1169,19 @@ class Administrador extends CI_Controller {
 
 	}
 
-	public function update_bit($id_bit = null){
+	public function update_bit($id_persona, $id_bit){
 		
 		if(($this->input->post()) || ($id_bit != null) ){
 		
 			$id_tipo_persona=3; // para la función de correo en el header
 			$id_status_persona=1; // para la función de correo en el footer
 
-			$residuo_ident 			= $this->residuo_peligroso_model->get_ident_residuo($id_bit);
-
-			print_r($residuo_ident);
+			$bitacora 				= $this->residuo_peligroso_model->get_ident_residuo($id_bit);
 			
 			$id_bitacora 			= $id_bit;
 			$id 					= $this->session->userdata('id');
 			$status 				= 0;
 			$total					= $this->notificacion_model->obtiene_noticliente($id,$status);
-			$bitacora 				= $this->residuo_peligroso_model->get_bitacora($id_bitacora);
 			$peligrosidad 			= $bitacora->caracteristica;
 			$peligrosidad2 			= explode(" ", $peligrosidad);
 
@@ -1136,19 +1191,13 @@ class Administrador extends CI_Controller {
 			$tipo_emp_destino 		= $this->emp_destino_model->get_tipo_emp_destino();
 			$tipo_modalidad 		= $this->modalidad_model->get_tipo_modalidad();
 
-			$nombre_residuo 		= $this->residuo_peligroso_model->get_nombre_residuo($id_bitacora);
-			$nombre_area 			= $this->area_model->get_nombre_area($id_bitacora);
-			$nombre_emp_trans		= $this->emp_transportista_model->get_nombre_trans($id_bitacora);
-			$nombre_emp_dest		= $this->emp_destino_model->get_nombre_dest($id_bitacora);
-			$nombre_modalidad		= $this->modalidad_model->get_nombre_modalidad($id_bitacora);
-
 			$status = 0;
 			$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
 
 			$data = array(
 				'numnoti'=>$total,
 				'id'=>$id,
-				'bitacora' => $bitacora,
+				'id_persona'=>$id_persona,
 				'mensajes' => $mensajesnuevos,
 				'peligrosidad' => $peligrosidad2,
 				'residuos' => $residuos,
@@ -1156,11 +1205,7 @@ class Administrador extends CI_Controller {
 				'tipo_emp_transportista' => $tipo_emp_transportista,
 				'tipo_emp_destino' => $tipo_emp_destino,
 				'tipo_modalidad' => $tipo_modalidad,
-				'nombre_residuo' => $nombre_residuo,
-				'nombre_area' => $nombre_area,
-				'nombre_emp_trans' => $nombre_emp_trans,
-				'nombre_emp_dest' => $nombre_emp_dest,
-				'nombre_modalidad' => $nombre_modalidad
+				'bitacora' => $bitacora
 			);
 
 			$this->load->view('administrador/header_admin',$data);
