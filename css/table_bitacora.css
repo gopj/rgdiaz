@@ -1,0 +1,46 @@
+html {
+  font-family: verdana;
+  font-size: 10pt;
+  line-height: 25px;
+}
+body {
+  margin: 0 0 100px;
+  background-color: #F1F1F1;
+}
+footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+table {
+    border-collapse: collapse;
+    width: 1170px;
+    overflow-x: scroll;
+    display: block;
+}
+thead {
+    background-color: #88B22F;
+}
+thead, tbody {
+    display: block;
+}
+tbody {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 400px;
+}
+th {
+    min-width: 198px;
+    height: 40px;
+    border: dashed 1px green;
+}
+td {
+    min-width: 200px;
+    height: 40px;
+    border: dashed 1px green;
+    text-align: center;
+}
+tbody tr:nth-child(odd) {
+   background-color: #BAEA4B;
+}

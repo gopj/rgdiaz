@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="css/table_bitacora.css">
+
 <div class="span12">
 	<form id="form_bitacora_actualizar_registros" action="<?php echo site_url('cliente/bitacora_actualiza_reg'); ?>" method="post">
 	<center><legend>Bitácora Residuos Peligrosos</legend></center>
@@ -8,7 +10,7 @@
 					<!-- <th class="table-residuos">#</th> -->
 					<th>SELECCIONA</th>
 					<th>FOLIO DEL MANIFIESTO</th>
-					<th style="width: 100px;">RESIDUO PELIGROSO</th>
+					<th>RESIDUO PELIGROSO</th>
 					<th>CLAVE</th>
 					<th>CANTIDAD</th>
 					<th>UNIDAD MEDIDA</th>
@@ -28,23 +30,23 @@
 					<?php foreach ($residuos as $row) { ?>
 						<?php if ($row->status == "R") { ?>
 							<tr bgcolor="#dcf29f">
-								<td class="center" hidden="true"> <strong> <?php echo $row->id_residuo_peligroso; ?> </strong> </td>
-								<td class="center"> <input type="checkbox" id="check" name="residuos_to_update[]" disabled value=""></td>	
+								<td hidden="true"> <strong> <?php echo $row->id_residuo_peligroso; ?> </strong> </td>
+								<td> <input type="checkbox" id="check" name="residuos_to_update[]" disabled value=""></td>	
 						<?php } else { ?>
 							<tr bgcolor="#f9f936">
-								<td class="center" hidden="true"> <strong> <?php echo $row->id_residuo_peligroso; ?> </strong> </td>
-								<td class="center"> <input type="checkbox" id="check" name="residuos_to_update[]" value="<?php echo $row->id_residuo_peligroso; ?>"></td>
+								<td hidden="true"> <strong> <?php echo $row->id_residuo_peligroso; ?> </strong> </td>
+								<td> <input type="checkbox" id="check" name="residuos_to_update[]" value="<?php echo $row->id_residuo_peligroso; ?>"></td>
 						<?php } ?>
 								
-								<td class="center"><?php echo $row->folio; ?></td>
+								<td><?php echo $row->folio; ?></td>
 								<td><?php echo $row->residuo; ?></td>
-								<td class="center"><?php echo $row->clave; ?></td>
-								<td class="center"><?php echo $row->cantidad; ?></td>
-								<td class="center"><?php echo $row->unidad; ?></td>
+								<td><?php echo $row->clave; ?></td>
+								<td><?php echo $row->cantidad; ?></td>
+								<td><?php echo $row->unidad; ?></td>
 								<td><?php echo $row->caracteristica; ?></td>
 								<td><?php echo $row->area_generacion ?></td>
-								<td class="center"><?php echo $row->fecha_ingreso; ?></td>
-								<td class="center"><?php echo $row->fecha_salida; ?></td>
+								<td><?php echo $row->fecha_ingreso; ?></td>
+								<td><?php echo $row->fecha_salida; ?></td>
 								<td><?php echo $row->emp_tran; ?></td>
 								<td><?php echo $row->no_aut_transp; ?></td>
 								<td><?php echo $row->dest_final; ?></td>

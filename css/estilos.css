@@ -1,9 +1,6 @@
 html {
-  /*position: relative;
-  min-height: 100%;*/
-  font-family: verdana;
-  font-size: 10pt;
-  line-height: 25px;
+  position: relative;
+  min-height: 100%;
 }
 body {
   margin: 0 0 100px;
@@ -14,35 +11,6 @@ footer {
   left: 0;
   bottom: 0;
   width: 100%;
-}
-table {
-    border-collapse: collapse;
-    width: 1170px;
-    overflow-x: scroll;
-    display: block;
-}
-thead {
-    background-color: #88B22F;
-}
-thead, tbody {
-    display: block;
-}
-tbody {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    height: 400px;
-}
-td {
-    min-width: 200px;
-    height: 40px;
-    width: 50px;
-    border: dashed 2px lightgreen;
-}
-th {
-    min-width: 198px;
-    height: 40px;
-    width: 50px;
-    border: dashed 2px lightgreen;
 }
 article,
 aside,
@@ -235,4 +203,13 @@ input[type="file"] {
 .nombre-carpeta {
   background: none;
   border: 0px transparent;
+}
+::-moz-selection { /* Code for Firefox */
+    color: white;
+    background: #4CAF76;
+}
+
+::selection {
+    color: white;
+    background: #4CAF76;
 }

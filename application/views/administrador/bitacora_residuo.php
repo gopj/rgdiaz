@@ -1,72 +1,78 @@
+<link rel="stylesheet" type="text/css" href="css/table_bitacora.css">
+
 <div class="span12">
 	<form id="form_bitacora_actualizar_registros" action="<?php echo site_url('administrador/bitacora_actualiza_reg'); ?>" method="post">
 	<center><legend> Bitácora Residuos Peligrosos - <?= $nombre_cliente; ?> </legend></center>
 	<div class="row">
 		<div class="span12">
-			<div style="overflow:scroll; width:100%; height:450px;">
-				<table class="table table-hover" id="header-fixed">
-					<thead>
-						<th class="table-residuos">#</th>
-						<th class="table-residuos" width="10%">SELECCIONA</th>
-						<th class="table-residuos">FOLIO DEL MANIFIESTO</th>
-						<th class="table-residuos">RESIDUO PELIGROSO</th>
-						<th class="table-residuos">CLAVE</th>
-						<th class="table-residuos">CANTIDAD</th>
-						<th class="table-residuos">UNIDAD MEDIDA</th>
-						<th class="table-residuos">CARACTERÍSTICA PELIGROSIDAD</th>
-						<th class="table-residuos">ÁREA DE GENERACIÓN</th>
-						<th class="table-residuos">FECHA INGRESO</th>
-						<th class="table-residuos">FECHA SALIDA</th>
-						<th class="table-residuos">EMPRESA TRANSPORTISTA</th>
-						<th class="table-residuos">NO. AUTORIZACIÓN</th>
-						<th class="table-residuos">DESTINO FINAL</th>
-						<th class="table-residuos">NO. AUTORIZACIÓN</th>
-						<th class="table-residuos">MODALIDAD DE MANEJO</th>
-						<th class="table-residuos">RESPONSABLE TÉCNICO</th>
-						<th class="table-residuos" width="40%">OPCIÓN</th>
-					</thead>
-					<tbody>
-						<?php foreach ($residuos as $row) { ?>
-							<?php if ($row->status == "R") { ?>
-								<tr bgcolor="#dcf29f">
-									<td class="center"> <strong> <?php echo $row->id_residuo_peligroso; ?> </strong> </td>
-									<td class="center"> <input type="checkbox" id="check" name="residuos_to_update[]" disabled value=""></td>	
-							<?php } else { ?>
-								<tr bgcolor="#f9f936">
-									<td class="center"> <strong> <?php echo $row->id_residuo_peligroso; ?> </strong> </td>
-									<td class="center"> <input type="checkbox" id="check" name="residuos_to_update[]" value="<?php echo $row->id_residuo_peligroso; ?>"></td>
-							<?php } ?>
-									<td class="center"><?php echo $row->folio; ?></td>
-									<td><?php echo $row->residuo; ?></td>
-									<td class="center"><?php echo $row->clave; ?></td>
-									<td class="center"><?php echo $row->cantidad; ?></td>
-									<td class="center"><?php echo $row->unidad; ?></td>
-									<td><?php echo $row->caracteristica; ?></td>
-									<td><?php echo $row->area_generacion ?></td>
-									<td class="center"><?php echo $row->fecha_ingreso; ?></td>
-									<td class="center"><?php echo $row->fecha_salida; ?></td>
-									<td><?php echo $row->emp_tran; ?></td>
-									<td><?php echo $row->no_aut_transp; ?></td>
-									<td><?php echo $row->dest_final; ?></td>
-									<td><?php echo $row->no_aut_dest_final; ?></td>
-									<td><?php echo $row->sig_manejo; ?></td>
-									<td><?php echo $row->resp_tec; ?></td>
-									<td class="center center-align">
-										<form action="<?php echo site_url('administrador/update_bit/');?>" method="post">
-											<input type="hidden" name="id_residuo_peligroso" disabled value="<?php echo $row->id_residuo_peligroso;?>" >
-
-											<!-- Modificar -->
-											<a href="<?= site_url('administrador/update_bit') . "/" . $id_persona . "/" . $row->id_residuo_peligroso ?>"  class="btn btn-primary btn-mini"> <i class="icon-pencil"></i> </a>
-											
-											<?php $url_delete = site_url('administrador/eliminar_bit/'); ?>
-											<button type='button' class='btn btn-danger btn-mini' data-toggle='modal' data-target='.bs-modal-del' id='eliminar' onclick='delete_residuo(<?= $row->id_residuo_peligroso ?>, <?= "\"$row->residuo\"" ?>, <?= "\"$url_delete\"" ?>, <?= "\"$id_persona\"" ?> )'> <i class="icon-remove"></i>  </button>
-										</form>
-									</td>
-								</tr>
+			<table>
+				<thead>
+					<!-- <th class="table-residuos">#</th> -->
+					<th>SELECCIONA</th>
+					<th>FOLIO DEL MANIFIESTO</th>
+					<th style="width: 100px;">RESIDUO PELIGROSO</th>
+					<th>CLAVE</th>
+					<th>CANTIDAD</th>
+					<th>UNIDAD MEDIDA</th>
+					<th>CARACTERÍSTICA PELIGROSIDAD</th>
+					<th>ÁREA DE GENERACIÓN</th>
+					<th>FECHA INGRESO</th>
+					<th>FECHA SALIDA</th>
+					<th>EMPRESA TRANSPORTISTA</th>
+					<th>NO. AUTORIZACIÓN</th>
+					<th>DESTINO FINAL</th>
+					<th>NO. AUTORIZACIÓN</th>
+					<th>MODALIDAD DE MANEJO</th>
+					<th>RESPONSABLE TÉCNICO</th>
+					<th>OPCIÓN</th>
+				</thead>
+				<tbody>
+					<?php foreach ($residuos as $row) { ?>
+						<?php if ($row->status == "R") { ?>
+							<tr bgcolor="#dcf29f">
+								<td hidden="true"> <strong> <?php echo $row->id_residuo_peligroso; ?> </strong> </td>
+								<td> <input type="checkbox" id="check" name="residuos_to_update[]" disabled value=""></td>	
+						<?php } else { ?>
+							<tr bgcolor="#f9f936">
+								<td hidden="true"> <strong> <?php echo $row->id_residuo_peligroso; ?> </strong> </td>
+								<td> <input type="checkbox" id="check" name="residuos_to_update[]" value="<?php echo $row->id_residuo_peligroso; ?>"></td>
 						<?php } ?>
-					</tbody>
-				</table>
-			</div>
+								
+								<td><?php echo $row->folio; ?></td>
+								<td><?php echo $row->residuo; ?></td>
+								<td><?php echo $row->clave; ?></td>
+								<td><?php echo $row->cantidad; ?></td>
+								<td><?php echo $row->unidad; ?></td>
+								<td><?php echo $row->caracteristica; ?></td>
+								<td><?php echo $row->area_generacion ?></td>
+								<td><?php echo $row->fecha_ingreso; ?></td>
+								<td><?php echo $row->fecha_salida; ?></td>
+								<td><?php echo $row->emp_tran; ?></td>
+								<td><?php echo $row->no_aut_transp; ?></td>
+								<td><?php echo $row->dest_final; ?></td>
+								<td><?php echo $row->no_aut_dest_final; ?></td>
+								<td><?php echo $row->sig_manejo; ?></td>
+								<td><?php echo $row->resp_tec; ?></td>
+								
+								<?php if ($row->status == "R") { ?>
+									<td class="center center-align">
+									<!-- Modificar -->
+										<a  class="btn btn-primary btn-mini" disabled> 
+											<i class="icon-pencil"></i> Modificar
+										</a>
+									</td>
+								<?php } else { ?>
+									<td class="center center-align">
+									<!-- Modificar -->
+										<a href="<?= site_url('cliente/update_bit') . "/" . $row->id_residuo_peligroso ?>"  class="btn btn-primary btn-mini" > 
+											<i class="icon-pencil"></i> Modificar
+										</a>
+									</td>
+								<?php } ?>
+							</tr>
+					<?php } ?>
+				</tbody>
+			</table>
 		</div>
 	</div>
 	</form>
@@ -113,5 +119,7 @@
 </div><!-- Modal -->
 
 <script type="text/javascript">
-	
+    $('table').on('scroll', function () {
+    $("table > *").width($("table").width() + $("table").scrollLeft());
+});
 </script>
