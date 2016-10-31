@@ -48,6 +48,8 @@
 								<li class="divider-vertical"></li>
 								<li><a href="<?php echo site_url('cliente'); ?>">Mi Carpeta</a></li>
 								<li class="divider-vertical"></li>
+								<li><a href="<?php echo site_url('cliente/carpeta_compartida') ?>">Documentos de RDíaz</a></li>
+								<li class="divider-vertical"></li>
 								<li><a href="<?php echo site_url('cliente/ver_bitacora'); ?>">Bitácora</a></li>
 								<li class="divider-vertical"></li>
 								<li><a href="<?php echo site_url('cliente/mis_datos'); ?>">Mis Datos</a></li>

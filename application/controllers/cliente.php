@@ -58,6 +58,40 @@ class Cliente extends CI_Controller {
 		}
 	}
 
+	public function carpeta_compartida(){
+
+		if($this->session->userdata('tipo')==3){
+			$id = $this->session->userdata('id');
+			$ruta = "administrador/1/Documentos de RDiaz";
+			$ruta_carpeta = $ruta;
+			$status=0;
+			$total=$this->notificacion_model->obtiene_noticliente($id,$status);
+			$carpetas=$this->carpeta_model->obt_carpeta_personal($ruta);
+			$archivos=$this->archivo_model->obtienearchivos($ruta_carpeta);
+			$datos=$this->persona_model->obtiene_cliente($id);
+			$data = array( 
+							'carpetas'=> $carpetas,
+							'archivo'=>$archivos,
+							'numnoti'=>$total,
+							'id'=>$id,
+							'datos'=>$datos
+						);
+			$this->load->view('usuario/header_usuario',$data);
+			$this->load->view('usuario/carpeta_compartida',$data); // aqui es donde se carga el numero de notificaciones
+			$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
+			// Obtenemos las bitacoras que hay
+			$bitacoras = $this->bitacora_model->get_bitacoras();
+			$data2 = array(
+							'new_noti' =>$datos_popover,
+							'bitacoras' =>$bitacoras
+						  );
+			$this->load->view('usuario/footer_usuario',$data2);// aqui se carga el modal de notficaciones
+		}else{
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/index');
+		}
+	}
+
 
 	#	Metodo para validar el correo valido de un usuario
 	public function valida_usuario_correo(){
@@ -646,21 +680,23 @@ class Cliente extends CI_Controller {
 	public function generar_excel()
 	{
 		if($this->input->post()){
-		$id=$this->session->userdata('id');
-    	$this->load->view('usuario/exce');
-		$ruta='application/views/usuario/exce.xls';
-		header('Content-Description: File Transfer');
-		header('Content-Type: application/octet-stream');
-		header('Content-Disposition: attachment; filename='.basename($ruta));
-		header('Content-Transfer-Encoding: binary');
-		header('Expires: 0');
-		header('Cache-Control: must-revalidate');
-		header('Pragma: public');
-		header('Content-Length: ' . filesize($ruta));
-		ob_clean();
-		flush();
-		readfile($ruta);
-		exit;	
+			$id=$this->session->userdata('id');
+			$nombre_empresa = $this->persona_model->get_nombre_empresa($id);
+			$this->load->view('usuario/exce');
+			$ruta='application/views/usuario/exce.xls';
+			$fecha=date("d-M-Y");
+			header('Content-Description: File Transfer');
+			header('Content-Type: application/octet-stream');
+			header('Content-Disposition: attachment; filename='.$nombre_empresa."_{$fecha}.xls");
+			header('Content-Transfer-Encoding: binary');
+			header('Expires: 0');
+			header('Cache-Control: must-revalidate');
+			header('Pragma: public');
+			header('Content-Length: ' . filesize($ruta));
+			ob_clean();
+			flush();
+			readfile($ruta);
+			exit;	
 		}
 	}	
 }

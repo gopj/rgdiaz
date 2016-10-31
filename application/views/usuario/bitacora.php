@@ -31,11 +31,11 @@
 						<?php if ($row->status == "R") { ?>
 							<tr bgcolor="#dcf29f">
 								<td hidden="true"> <strong> <?php echo $row->id_residuo_peligroso; ?> </strong> </td>
-								<td> <input type="checkbox" id="check" name="residuos_to_update[]" disabled value=""></td>	
+								<td> <input type="checkbox" id="check" name="residuos_to_update[]" disabled value="" style="width: 7px; height: 7px;"></td>	
 						<?php } else { ?>
 							<tr bgcolor="#f9f936">
 								<td hidden="true"> <strong> <?php echo $row->id_residuo_peligroso; ?> </strong> </td>
-								<td> <input type="checkbox" id="check" name="residuos_to_update[]" value="<?php echo $row->id_residuo_peligroso; ?>"></td>
+								<td> <input type="checkbox" id="check" name="residuos_to_update[]" value="<?php echo $row->id_residuo_peligroso; ?>" style="width: 7px; height: 7px;"></td>
 						<?php } ?>
 								
 								<td><?php echo $row->folio; ?></td>
@@ -75,25 +75,32 @@
 			</table>
 		</div>
 	</div>
+
+	<div style="margin-top:10px;">
+		<div class="span2">
+			<input type="hidden" value="<?php echo $id; ?>" name="id_persona">
+			<input type="submit" class="btn btn-primary pull-left" value="Registrar Salidas">
+		</div>
+	</div>
 	</form>
+
 	<div class="row" style="margin-top:10px;">
 		<div class="span5"></div>
 		<div class="span1">
-			<form action="<?php echo site_url('cliente/bitacora'); ?>" method="POST">
-			<input type="hidden" value="<?php echo $id; ?>" name="id_persona">
+			<form action="<?php echo site_url('administrador/nuevo_registro'); ?>" method="POST">
+				<input type="hidden" value="<?php echo $id; ?>" name="id_persona">
 				<input type="submit" class="btn btn-primary pull-right" value="Nuevo Registro">
 			</form>
 		</div>
+
 		<div class="span2">
-			<input type="submit" class="btn btn-primary pull-left" value="Registrar Salidas">
-		</div>
-		<div class="span2">
-			<form action="<?php echo site_url('cliente/generar_excel'); ?>" method="POST">
+			<form action="<?php echo site_url('administrador/generar_excel'); ?>" method="POST">
 				<input type="hidden" value="<?php echo $id; ?>" name="id_persona">
 				<input type="submit" class="btn btn-primary pull-left" name="excel" value="Generar Ecxel">
 			</form>
 		</div>
 	</div>
+	
 </div>
 
 

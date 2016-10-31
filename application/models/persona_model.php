@@ -72,6 +72,7 @@ class Persona_model extends CI_Model {
 	{
 		return $this->db->where('id_tipo_persona',$id_tipo_persona)
 						->where('lleno_datos',$lleno_datos)
+						->order_by('nombre_empresa','asc')
 						->get('persona');
 	}
 

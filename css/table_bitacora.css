@@ -41,6 +41,16 @@ td {
     border: dashed 1px green;
     text-align: center;
 }
-tbody tr:nth-child(odd) {
+/*tbody tr:nth-child(odd) {
    background-color: #BAEA4B;
+}*/
+
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  padding: 10px;
 }

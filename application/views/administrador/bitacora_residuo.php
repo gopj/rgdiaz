@@ -2,7 +2,7 @@
 
 <div class="span12">
 	<form id="form_bitacora_actualizar_registros" action="<?php echo site_url('administrador/bitacora_actualiza_reg'); ?>" method="post">
-	<center><legend> Bitácora Residuos Peligrosos - <?= $nombre_cliente; ?> </legend></center>
+	<center><legend> Bitácora Residuos Peligrosos - <?= $nombre_empresa; ?> </legend></center>
 	<div class="row">
 		<div class="span12">
 			<table>
@@ -31,11 +31,11 @@
 						<?php if ($row->status == "R") { ?>
 							<tr bgcolor="#dcf29f">
 								<td hidden="true"> <strong> <?php echo $row->id_residuo_peligroso; ?> </strong> </td>
-								<td> <input type="checkbox" id="check" name="residuos_to_update[]" disabled value=""></td>	
+								<td> <input type="checkbox" id="check" name="residuos_to_update[]" disabled value="" style="width: 7px; height: 7px;"></td>	
 						<?php } else { ?>
 							<tr bgcolor="#f9f936">
 								<td hidden="true"> <strong> <?php echo $row->id_residuo_peligroso; ?> </strong> </td>
-								<td> <input type="checkbox" id="check" name="residuos_to_update[]" value="<?php echo $row->id_residuo_peligroso; ?>"></td>
+								<td> <input type="checkbox" id="check" name="residuos_to_update[]" value="<?php echo $row->id_residuo_peligroso; ?>" style="width: 7px; height: 7px;"></td>
 						<?php } ?>
 								
 								<td><?php echo $row->folio; ?></td>
@@ -54,40 +54,38 @@
 								<td><?php echo $row->sig_manejo; ?></td>
 								<td><?php echo $row->resp_tec; ?></td>
 								
-								<?php if ($row->status == "R") { ?>
-									<td class="center center-align">
-									<!-- Modificar -->
-										<a  class="btn btn-primary btn-mini" disabled> 
-											<i class="icon-pencil"></i> Modificar
-										</a>
-									</td>
-								<?php } else { ?>
-									<td class="center center-align">
-									<!-- Modificar -->
-										<a href="<?= site_url('cliente/update_bit') . "/" . $row->id_residuo_peligroso ?>"  class="btn btn-primary btn-mini" > 
-											<i class="icon-pencil"></i> Modificar
-										</a>
-									</td>
-								<?php } ?>
+								
+								<td class="center center-align">
+								<!-- Modificar -->
+									<a href="<?= site_url('administrador/update_bit') . "/" . $id_persona . "/" . $row->id_residuo_peligroso ?>"  class="btn btn-primary btn-mini" > 
+										<i class="icon-pencil"></i> Modificar
+									</a>
+								</td>
+								
 							</tr>
 					<?php } ?>
 				</tbody>
 			</table>
 		</div>
 	</div>
+
+	<div style="margin-top:10px;">
+		<div class="span2">
+			<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
+			<input type="submit" class="btn btn-primary pull-left" value="Registrar Salidas">
+		</div>
+	</div>
 	</form>
+
 	<div class="row" style="margin-top:10px;">
 		<div class="span5"></div>
 		<div class="span1">
 			<form action="<?php echo site_url('administrador/nuevo_registro'); ?>" method="POST">
-				<input type="submit" class="btn btn-primary pull-right" value="Nuevo Registro">
 				<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
+				<input type="submit" class="btn btn-primary pull-right" value="Nuevo Registro">
 			</form>
 		</div>
-		<div class="span2">
-			<input type="submit" class="btn btn-primary pull-left" value="Registrar Salidas">
-			<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
-		</div>
+
 		<div class="span2">
 			<form action="<?php echo site_url('administrador/generar_excel'); ?>" method="POST">
 				<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
@@ -95,6 +93,8 @@
 			</form>
 		</div>
 	</div>
+
+	
 </div>
 
 

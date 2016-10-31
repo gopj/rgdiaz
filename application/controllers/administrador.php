@@ -700,6 +700,7 @@ class Administrador extends CI_Controller {
 				$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona,$id_tipo_persona,$lleno_datos);
 				$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
 				$nombre_cliente = $this->persona_model->get_nombre_cliente($id_persona);
+				$nombre_empresa = $this->persona_model->get_nombre_empresa($id_persona);
 			#	Obtengo todos los registros de residuos peligrosos
 				$residuos_peligrosos = $this->residuo_peligroso_model->get_residuos($id_persona);
 				$data3 = array(
@@ -707,7 +708,8 @@ class Administrador extends CI_Controller {
 					'correo' => $correo_clientes,
 					'residuos' => $residuos_peligrosos,
 					'id_persona' => $id_persona,
-					'nombre_cliente' => $nombre_cliente
+					'nombre_cliente' => $nombre_cliente,
+					'nombre_empresa' => $nombre_empresa
 				);
 				$this->load->view('administrador/bitacora_residuo',$data3);
 				$this->load->view('administrador/footeru',$data3);
@@ -847,19 +849,18 @@ class Administrador extends CI_Controller {
 		}
 	}
 
-	public function generar_ecxel()
+	public function generar_excel()
 	{
 		if($this->input->post()){
 	    	$this->load->view('administrador/exce');
-	    	
 			$ruta='application/views/administrador/exce.xls';
 			$id_persona = $this->input->post('id_persona');
 			$nombre_cliente = $this->persona_model->get_nombre_cliente($id_persona);
 			$nombre_empresa = $this->persona_model->get_nombre_empresa($id_persona);
-
+			$fecha=date("d-M-Y");
 			header('Content-Description: File Transfer');
 			header('Content-Type: application/octet-stream');
-			header('Content-Disposition: attachment; filename='.basename($ruta));
+			header('Content-Disposition: attachment; filename='.$nombre_empresa."_{$fecha}.xls");
 			header('Content-Transfer-Encoding: binary');
 			header('Expires: 0');
 			header('Cache-Control: must-revalidate');
@@ -1119,7 +1120,7 @@ class Administrador extends CI_Controller {
 				$id						= $this->session->userdata('id');
 				$status 				= 0;
 				$total					= $this->notificacion_model->obtiene_noticliente($id,$status);
-				$ruta 					= "clientes/".$id;
+				$ruta 					= "administrador/".$id;
 				$ruta_carpeta 			= $ruta;
 				$carpetas 				= $this->carpeta_model->obt_carpeta_personal($ruta);
 				$archivos 				= $this->archivo_model->obtienearchivos($ruta_carpeta);
@@ -1163,13 +1164,13 @@ class Administrador extends CI_Controller {
 
 				$this->load->view('administrador/footeru',$data2);
 			} else {
-				redirect("administrador/ver_bitacora");
+				redirect('administrador/bitacora/' . $data["id_persona"] );
 			}
 		}
 
 	}
 
-	public function update_bit($id_persona, $id_bit){
+	public function update_bit($id_persona = null, $id_bit = null){
 		
 		if(($this->input->post()) || ($id_bit != null) ){
 		
@@ -1227,7 +1228,7 @@ class Administrador extends CI_Controller {
 
 			$this->load->view('administrador/footeru',$data2);
 		}else{
-			redirect('administrador/');
+			redirect('administrador/bitacora/' . $id_bitacora );
 		}	
 			
 	}
