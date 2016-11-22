@@ -99,7 +99,7 @@
 			</div>
 		</div>
 	</div>
-	<input type="hidden" name="id_persona" value="<?php echo $id; ?>">
+	<input type="hidden" name="id_persona" value="<?php echo $id_persona; ?>">
 	<input type="button" onclick="reg_bit_new();" class="btn btn-primary pull-right" value="Guardar">
 	</form>
 </div>

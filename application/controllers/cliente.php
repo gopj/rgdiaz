@@ -415,6 +415,53 @@ class Cliente extends CI_Controller {
 		$this->load->view('usuario/footer_usuario',$data2);
 	}
 
+	public function nuevo_registro() {
+
+		if($this->input->post()){
+			$id_persona = $this->input->post('id_persona');
+			$id_bitacora = $this->input->post('id_bitacora');
+			$status = 0;
+			$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
+			$residuos = $this->residuo_peligroso_model->get_tipo_residuos();
+			$areas = $this->area_model->get_areas();
+			$tipo_emp_transportista = $this->emp_transportista_model->get_tipo_emp_transportista();
+			$tipo_emp_destino = $this->emp_destino_model->get_tipo_emp_destino();
+			$tipo_modalidad = $this->modalidad_model->get_tipo_modalidad();
+			$total					= $this->notificacion_model->obtiene_noticliente($id_persona,$status);
+
+			$data = array(
+				'mensajes'=> $mensajesnuevos,
+				'numnoti' => $total,
+				'id'  => $id_persona
+
+			);
+			$this->load->view('usuario/header_usuario',$data);
+			$data2 = array(
+				'id_persona'	=> $id_persona,
+				'residuos' 		=> $residuos,
+				'areas' 		=> $areas);
+
+			#	Obtengo a todos mis clientes para seleccionar uno en opcion dar de baja y los mando al modal
+			$id_tipo_persona=3;
+			$id_status_persona=1;
+				// Mandar una variable para selecciar solo a los clientes que ya llenaron su info
+			$lleno_datos = 1;
+			$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona,$id_tipo_persona,$lleno_datos);
+			$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
+			$data3 = array(
+				'clientes' => $cliente_baja,
+				'correo' => $correo_clientes,
+				'id_persona' => $id_persona
+			);
+			$this->load->view('usuario/nuevo_registro',$data2);
+			//$this->load->view('usuario/footer_usuario',$data3);
+		}
+		else
+		{
+			redirect('usuario/bitacora');
+		}
+	}
+
 	public function bitacora_actualiza_reg(){
 
 		if ($this->input->post()) {

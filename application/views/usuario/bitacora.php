@@ -87,14 +87,14 @@
 	<div class="row" style="margin-top:10px;">
 		<div class="span5"></div>
 		<div class="span1">
-			<form action="<?php echo site_url('administrador/nuevo_registro'); ?>" method="POST">
+			<form action="<?php echo site_url('cliente/nuevo_registro'); ?>" method="POST">
 				<input type="hidden" value="<?php echo $id; ?>" name="id_persona">
 				<input type="submit" class="btn btn-primary pull-right" value="Nuevo Registro">
 			</form>
 		</div>
 
 		<div class="span2">
-			<form action="<?php echo site_url('administrador/generar_excel'); ?>" method="POST">
+			<form action="<?php echo site_url('cliente/generar_excel'); ?>" method="POST">
 				<input type="hidden" value="<?php echo $id; ?>" name="id_persona">
 				<input type="submit" class="btn btn-primary pull-left" name="excel" value="Generar Ecxel">
 			</form>
