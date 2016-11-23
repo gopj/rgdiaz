@@ -49,7 +49,7 @@ class Residuo_peligroso_model extends CI_Model {
 				et.no_autorizacion_transportista as no_aut_transp,
 				ed.no_autorizacion_destino as no_aut_dest_final,
 				r.folio_manifiesto as folio,
-				b.id_persona as id_persona,
+				r.id_persona as id_persona,
 				r.status
 			FROM 
 				residuos_peligrosos as r
@@ -57,12 +57,10 @@ class Residuo_peligroso_model extends CI_Model {
 					LEFT JOIN tipo_modalidad m ON (r.id_tipo_modalidad = m.id_tipo_modalidad)
 					LEFT JOIN tipo_emp_transportista et ON (r.id_tipo_emp_transportista = et.id_tipo_emp_transportista)
 					LEFT JOIN tipo_emp_destino ed ON (r.id_tipo_emp_destino = ed.id_tipo_emp_destino),
-				bitacora as b, 
 				tipo_residuos as tr
 			WHERE
-				r.id_residuo_peligroso = b.id_bitacora  and 
 				r.id_tipo_residuo = tr.id_tipo_residuo and
-				b.id_persona = {$id_persona}
+				r.id_persona = {$id_persona}
 			ORDER BY
 				r.fecha_ingreso asc;")->result();
 	}
@@ -102,7 +100,7 @@ class Residuo_peligroso_model extends CI_Model {
 				et.no_autorizacion_transportista as no_aut_transp,
 				ed.no_autorizacion_destino as no_aut_dest_final,
 				r.folio_manifiesto as folio,
-				b.id_persona as id_persona,
+				r.id_persona as id_persona,
 				r.status
 			FROM 
 				residuos_peligrosos as r
@@ -110,10 +108,8 @@ class Residuo_peligroso_model extends CI_Model {
 					LEFT JOIN tipo_modalidad m ON (r.id_tipo_modalidad = m.id_tipo_modalidad)
 					LEFT JOIN tipo_emp_transportista et ON (r.id_tipo_emp_transportista = et.id_tipo_emp_transportista)
 					LEFT JOIN tipo_emp_destino ed ON (r.id_tipo_emp_destino = ed.id_tipo_emp_destino),
-				bitacora as b, 
 				tipo_residuos as tr
 			WHERE
-				r.id_residuo_peligroso = b.id_bitacora  and 
 				r.id_tipo_residuo = tr.id_tipo_residuo and
 				r.id_residuo_peligroso = {$id_bitacora}
 		;")->row();
@@ -124,16 +120,19 @@ class Residuo_peligroso_model extends CI_Model {
 		$data['residuo'] = $this->_tipo_residuo($data);
 		$data['area_generacion'] = $this->area_model->_area($data);
 
-		return $this->db->set('id_tipo_residuo'				,$data['residuo'])
-						->set('id_area'						,$data['area_generacion'])
-						->set('cantidad'					,$data['cantidad'])
-						->set('unidad'						,$data['unidad'])
-						->set('caracteristica'				,$data['caracteristicas_residuos'])
-						->set('fecha_ingreso'				,$data['fecha_ingreso'])
-						->set('fecha_insercion'				,$data['fecha_insercion'])
-						->set('tipo_bitacora'				,$data['tipo_bitacora'])
-						->set('status'						,"W")
-						->insert('residuos_peligrosos');
+		$this->db
+				->set('id_persona'					,$data['id_persona'])
+				->set('id_tipo_residuo'				,$data['residuo'])
+				->set('id_area'						,$data['area_generacion'])
+				->set('cantidad'					,$data['cantidad'])
+				->set('unidad'						,$data['unidad'])
+				->set('caracteristica'				,$data['caracteristicas_residuos'])
+				->set('fecha_ingreso'				,$data['fecha_ingreso'])
+				->set('fecha_insercion'				,$data['fecha_insercion'])
+				->set('status'						,"W")
+				->insert('residuos_peligrosos');
+
+		return $this->db->insert_id();
 	}
 
 	public function actualizar_registros($data) {

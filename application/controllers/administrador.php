@@ -9,7 +9,6 @@ class Administrador extends CI_Controller {
 		$this->load->model('archivo_model');
 		$this->load->model('notificacion_model');
 		$this->load->model('residuo_peligroso_model');
-		$this->load->model('bitacora_model');
 		$this->load->model('area_model');
 		$this->load->model('emp_transportista_model');
 		$this->load->model('emp_destino_model');
@@ -925,7 +924,6 @@ class Administrador extends CI_Controller {
 
 		if($this->input->post()){
 			$id_persona = $this->input->post('id_persona');
-			$id_bitacora = $this->input->post('id_bitacora');
 			$status = 0;
 			$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
 			$residuos = $this->residuo_peligroso_model->get_tipo_residuos();
@@ -991,12 +989,7 @@ class Administrador extends CI_Controller {
 			}
 			unset($data["caracteristica"]);
 
-			$data["tipo_bitacora"] = 1;
 			$this->residuo_peligroso_model->inserta_residuo($data);
-			
-			$folio = $this->residuo_peligroso_model->get_id();		
-			$this->bitacora_model->inserta_bitacora($data["id_persona"], $data["tipo_bitacora"], $folio);
-			
 
 			redirect('administrador/bitacora/' . $data["id_persona"]);
 
@@ -1036,7 +1029,7 @@ class Administrador extends CI_Controller {
 
 			// Empresa de destino
 			if($data["dest_final"] != "Otro")	{
-				$id_emp_final = explode(",", $data["emp_tran"]);
+				$id_emp_final = explode(",", $data["dest_final"]);
 				$data["dest_final"] = $id_emp_final[0];
 			}
 
@@ -1149,7 +1142,7 @@ class Administrador extends CI_Controller {
 				$this->load->view('administrador/header_admin',$data);
 				$this->load->view('administrador/actualizar_registros',$data);
 				$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
-				$bitacoras 			= $this->bitacora_model->get_bitacoras();
+			
 
 				$cliente 			= $this->persona_model->obtiene_clientes($id_tipo_persona, $id_status_persona);
 				$correo_clientes 	= $this->persona_model->getCorreos($id_tipo_persona);
@@ -1157,7 +1150,6 @@ class Administrador extends CI_Controller {
 
 				$data2 = array(
 					'new_noti' =>$datos_popover,
-					'bitacoras' =>$bitacoras,
 					'clientes' => $cliente,
 					'correo' => $correo_clientes
 				);
@@ -1214,14 +1206,13 @@ class Administrador extends CI_Controller {
 			$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
 			
 			// Obtenemos las bitacoras que hay
-			$bitacoras = $this->bitacora_model->get_bitacoras();
+			
 			
 			$cliente 			= $this->persona_model->obtiene_clientes($id_tipo_persona, $id_status_persona);
 			$correo_clientes 	= $this->persona_model->getCorreos($id_tipo_persona);
 
 			$data2 = array(
 					'new_noti' =>$datos_popover,
-					'bitacoras' =>$bitacoras,
 					'clientes' => $cliente,
 					'correo' => $correo_clientes
 			);

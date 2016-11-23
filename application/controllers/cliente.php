@@ -9,7 +9,6 @@ class Cliente extends CI_Controller {
 		$this->load->model('archivo_model');
 		$this->load->model('notificacion_model');
 		$this->load->model('residuo_peligroso_model');
-		$this->load->model('bitacora_model');
 		$this->load->model('area_model');
 		$this->load->model('emp_transportista_model');
 		$this->load->model('emp_destino_model');
@@ -45,11 +44,10 @@ class Cliente extends CI_Controller {
 			$this->load->view('usuario/header_usuario',$data);
 			$this->load->view('usuario/carpeta_usuario',$data); // aqui es donde se carga el numero de notificaciones
 			$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
+			
 			// Obtenemos las bitacoras que hay
-			$bitacoras = $this->bitacora_model->get_bitacoras();
 			$data2 = array(
 							'new_noti' =>$datos_popover,
-							'bitacoras' =>$bitacoras
 						  );
 			$this->load->view('usuario/footer_usuario',$data2);// aqui se carga el modal de notficaciones
 		}else{
@@ -79,11 +77,10 @@ class Cliente extends CI_Controller {
 			$this->load->view('usuario/header_usuario',$data);
 			$this->load->view('usuario/carpeta_compartida',$data); // aqui es donde se carga el numero de notificaciones
 			$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
-			// Obtenemos las bitacoras que hay
-			$bitacoras = $this->bitacora_model->get_bitacoras();
+
+		
 			$data2 = array(
 							'new_noti' =>$datos_popover,
-							'bitacoras' =>$bitacoras
 						  );
 			$this->load->view('usuario/footer_usuario',$data2);// aqui se carga el modal de notficaciones
 		}else{
@@ -379,7 +376,7 @@ class Cliente extends CI_Controller {
 	}
 
 	public function bitacora(){
-		$tipo_bitacora = $this->input->post('id_bitacora');
+		
 		$id = $this->session->userdata('id');
 		$ruta = "clientes/".$id;
 		$ruta_carpeta = $ruta;
@@ -398,7 +395,6 @@ class Cliente extends CI_Controller {
 			'archivo' 		=> $archivos,
 			'numnoti' 		=> $total,
 			'id' 			=> $id,
-			'tipo_bitacora' => $tipo_bitacora,
 			'residuos' 		=> $residuos,
 			'areas' 		=> $areas
 		);
@@ -610,11 +606,8 @@ class Cliente extends CI_Controller {
 			}
 			unset($data["caracteristica"]);
 
-			$data["tipo_bitacora"] = 1;
 			$this->residuo_peligroso_model->inserta_residuo($data);
 			
-			$folio = $this->residuo_peligroso_model->get_id();		
-			$this->bitacora_model->inserta_bitacora($data["id_persona"], $data["tipo_bitacora"], $folio);
 			redirect('cliente/ver_bitacora');
 
 		} else {
@@ -647,7 +640,7 @@ class Cliente extends CI_Controller {
 
 			// Empresa de destino
 			if($data["dest_final"] != "Otro")	{
-				$id_emp_final = explode(",", $data["emp_tran"]);
+				$id_emp_final = explode(",", $data["dest_final"]);
 				$data["dest_final"] = $id_emp_final[0];
 			}
 

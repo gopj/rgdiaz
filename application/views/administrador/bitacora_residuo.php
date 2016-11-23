@@ -27,6 +27,7 @@
 					<th>OPCIÓN</th>
 				</thead>
 				<tbody>
+				
 					<?php foreach ($residuos as $row) { ?>
 						<?php if ($row->status == "R") { ?>
 							<tr bgcolor="#dcf29f">
@@ -37,7 +38,6 @@
 								<td hidden="true"> <strong> <?php echo $row->id_residuo_peligroso; ?> </strong> </td>
 								<td> <input type="checkbox" id="check" name="residuos_to_update[]" value="<?php echo $row->id_residuo_peligroso; ?>" style="width: 7px; height: 7px;"></td>
 						<?php } ?>
-								
 								<td><?php echo $row->folio; ?></td>
 								<td><?php echo $row->residuo; ?></td>
 								<td><?php echo $row->clave; ?></td>
