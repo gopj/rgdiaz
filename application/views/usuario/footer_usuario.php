@@ -1,35 +1,3 @@
-		<!--*********************MODAL DE BITACORA **************************************-->
-		<div id="bit" class="modal hide fade">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<big style="font-weight:bold;">Bitacoras</big>
-				</div>
-				<form id="form_bitacora" method="post" action="<?php echo site_url('cliente/bitacora');?>">
-					<div class="modal-body">
-						Bitacora
-						<div class='input-prepend'>
-							<span class='add-on'>
-								<img src="img/glyphicons_029_notes_2.png" height="18" width="18">
-							</span>
-							<select name="id_bitacora" id="id_bitacora">
-								<option value="">Seleccione una Bitacora</option>
-								<?php 
-									foreach($bitacoras->result() as $row){
-								?>
-									<option value="<?php echo $row->id_tipo_bitacora?>"><?php echo $row->nombre;?></option>
-								<?php
-									}
-								?>
-							</select>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<input type="button"  onclick="select_bitacora();" class="btn btn-primary" value="Ver Bitacora">
-					</div>
-				</form>
-			</div>
-
-			<!-- ************************************************************************* -->
 			<?php
 				$notif = "";
 				if (count($new_noti) > 0) {

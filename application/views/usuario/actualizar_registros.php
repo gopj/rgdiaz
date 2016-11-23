@@ -60,7 +60,7 @@
 						<select class="txt" name="dest_final" id="dest_final" onchange="otra_destino(this.value);">
 							<option value="">Seleccione una opción</option>
 							<?php foreach ($tipo_emp_destino as $row) {
-								echo "<option value='{$row->id_tipo_destino}, {$row->no_autorizacion_destino}'> ".   mb_strimwidth($row->nombre_destino, 0, 55, '...') . "</option>";
+								echo "<option value='{$row->id_emp_tipo_destino}, {$row->no_autorizacion_destino}'> ".   mb_strimwidth($row->nombre_destino, 0, 55, '...') . "</option>";
 							} ?>
 							<option value="Otro">Otro</option>
 						</select>
