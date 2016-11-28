@@ -31,11 +31,11 @@
 						<?php if ($row->status == "R") { ?>
 							<tr bgcolor="#dcf29f">
 								<td hidden="true"> <strong> <?php echo $row->id_residuo_peligroso; ?> </strong> </td>
-								<td> <input type="checkbox" id="check" name="residuos_to_update[]" disabled value="" style="width: 7px; height: 7px;"></td>	
+								<td> <input type="checkbox" id="check" name="residuos_to_update[]" disabled value="" style="width: 12px; height: 12px;"></td>	
 						<?php } else { ?>
 							<tr bgcolor="#f9f936">
 								<td hidden="true"> <strong> <?php echo $row->id_residuo_peligroso; ?> </strong> </td>
-								<td> <input type="checkbox" id="check" name="residuos_to_update[]" value="<?php echo $row->id_residuo_peligroso; ?>" style="width: 7px; height: 7px;"></td>
+								<td> <input type="checkbox" id="check" name="residuos_to_update[]" value="<?php echo $row->id_residuo_peligroso; ?>" style="width: 12px; height: 12px;"></td>
 						<?php } ?>
 								
 								<td><?php echo $row->folio; ?></td>

@@ -5,10 +5,26 @@
 						define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 						date_default_timezone_set('Europe/London');
 						$id_persona = $this->input->post('id_persona');
-			    		$objReader = PHPExcel_IOFactory::createReader('Excel5');
-			    		$objPHPExcel = $objReader->load("plantilla/plantilla.xls");
-			    		$residuos_peligrosos = $this->residuo_peligroso_model->get_residuos($id_persona);
-			    		$baseRow = 3;
+						$objReader = PHPExcel_IOFactory::createReader('Excel5');
+						$objPHPExcel = $objReader->load("plantilla/plantilla.xls");
+						$residuos_peligrosos = $this->residuo_peligroso_model->get_residuos($id_persona);
+						$baseRow = 3;
+
+						$style = array(
+							'alignment' => array(
+								'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
+							),
+							'font' => array(
+								'bold' => true
+							)
+
+						);
+
+						$objPHPExcel->getActiveSheet()->mergeCells('B1:P1');
+						$objPHPExcel->getActiveSheet()
+										->setCellValue('B1', $nombre_empresa)
+										->getStyle("B1")->applyFromArray($style);
+
 						foreach($residuos_peligrosos as $row =>$r) {
 							$col = $baseRow + $row;
 							$objPHPExcel->getActiveSheet()
