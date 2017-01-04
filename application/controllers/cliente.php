@@ -156,7 +156,7 @@ class Cliente extends CI_Controller {
 			$this->load->view('usuario/act_password');
 			$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
 			// Obtenemos las bitacoras que hay
-			$bitacoras = $this->bitacora_model->get_bitacoras();
+			$bitacoras = $this->residuo_peligroso_model->get_bitacora($id);
 			$data2 = array(
 							'new_noti' =>$datos_popover,
 							'bitacoras' =>$bitacoras
@@ -290,7 +290,7 @@ class Cliente extends CI_Controller {
 
 			$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
 			// Obtenemos las bitacoras que hay
-			$bitacoras = $this->bitacora_model->get_bitacoras();
+			$bitacoras = $this->residuo_peligroso_model->get_bitacora($id);
 			$data2 = array(
 							'new_noti' =>$datos_popover,
 							'bitacoras' =>$bitacoras
@@ -315,7 +315,7 @@ class Cliente extends CI_Controller {
 
 		$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
 			// Obtenemos las bitacoras que hay
-			$bitacoras = $this->bitacora_model->get_bitacoras();
+			$bitacoras = $this->residuo_peligroso_model->get_bitacora($id);
 			$data2 = array(
 							'new_noti' =>$datos_popover,
 							'bitacoras' =>$bitacoras
@@ -367,7 +367,7 @@ class Cliente extends CI_Controller {
 		$this->load->view('usuario/bitacora',$data3);
 		$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
 			// Obtenemos las bitacoras que hay
-			$bitacoras = $this->bitacora_model->get_bitacoras();
+			$bitacoras = $this->residuo_peligroso_model->get_bitacora($id);
 			$data2 = array(
 							'new_noti' =>$datos_popover,
 							'bitacoras' =>$bitacoras
@@ -403,7 +403,7 @@ class Cliente extends CI_Controller {
 		$this->load->view('usuario/nuevo_registro',$data);
 		$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
 		// Obtenemos las bitacoras que hay
-		$bitacoras = $this->bitacora_model->get_bitacoras();
+		$bitacoras = $this->residuo_peligroso_model->get_bitacora($id);
 		$data2 = array(
 						'new_noti' =>$datos_popover,
 						'bitacoras' =>$bitacoras
@@ -492,7 +492,7 @@ class Cliente extends CI_Controller {
 				$this->load->view('usuario/header_usuario',$data);
 				$this->load->view('usuario/actualizar_registros',$data);
 				$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
-				$bitacoras = $this->bitacora_model->get_bitacoras();
+				$bitacoras = $this->residuo_peligroso_model->get_bitacora($id);
 
 
 				$data2 = array(
@@ -560,7 +560,7 @@ class Cliente extends CI_Controller {
 			$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
 			
 			// Obtenemos las bitacoras que hay
-			$bitacoras = $this->bitacora_model->get_bitacoras();
+			$bitacoras = $this->residuo_peligroso_model->get_bitacora($id);
 			
 			$cliente 			= $this->persona_model->obtiene_clientes($id_tipo_persona, $id_status_persona);
 			$correo_clientes 	= $this->persona_model->getCorreos($id_tipo_persona);
