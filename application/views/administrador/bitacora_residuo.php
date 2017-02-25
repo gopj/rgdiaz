@@ -56,10 +56,14 @@
 								
 								
 								<td class="center center-align">
-								<!-- Modificar -->
+									<!-- Modificar -->
 									<a href="<?= site_url('administrador/update_bit') . "/" . $id_persona . "/" . $row->id_residuo_peligroso ?>"  class="btn btn-primary btn-mini" > 
 										<i class="icon-pencil"></i> Modificar
 									</a>
+
+									<!-- ELiminar -->
+									<?php $url_delete = site_url('administrador/eliminar_bit'). "/" . $id_persona . "/" . $row->id_residuo_peligroso; ?>
+									<button type='button' class='btn btn-danger btn-mini' data-toggle='modal' data-target='.bs-modal-del' id='eliminar' onclick='delete_residuo(<?= $row->id_residuo_peligroso ?>, <?= "\"$row->residuo\"" ?>, <?= "\"$url_delete\""?>, <?= "\"$id_persona\"" ?> , <?= "\"$row->folio\"" ?> )'> <i class="icon-remove"></i>  </button>
 								</td>
 								
 							</tr>
@@ -100,12 +104,11 @@
 
 <div class="modal fade bs-modal-del" tabindex=-1 role=dialog aria-labelledby=mySmallModalLabel> <!-- modal bs-modal-del -->
 	<div class="modal-dialog modal-sm"> 
-		<div class=modal-content> 
-			<div class=modal-header> 
-				<button type=button class=close data-dismiss=modal aria-label=Close>
-				<span aria-hidden=true>&times;</span>
-
-				</button> <h4 class=modal-title id=mySmallModalLabel>Eliminar</h4> 
+		<div class="modal-content"> 
+			<div class="modal-header"> 
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button> <h5 class="modal-title" id="mySmallModalLabel">Eliminar - Folio: <span id="folio_span"></span> </h5>
 			</div> 
 			<div class=modal-body>
 				¿Deseas eliminar registro de residuo: <strong> <span id="eliminar_span"></span></strong>?

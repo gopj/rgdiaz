@@ -249,13 +249,13 @@ $( document ).ready(function () {
 	});
 });
 
-function delete_residuo(id, nombre, url_delete, id_persona){
+function delete_residuo(id, nombre, url_delete, id_persona, folio){
 	
-	/*console.log(id);
+	console.log(id);
 	console.log(nombre);
-	console.log(url_delete + id);*/
 
 	document.getElementById('eliminar_span').textContent = nombre;
-	document.getElementById("residuo_delete").setAttribute("href", url_delete + "/" + id + "/" + id_persona);
+	document.getElementById('folio_span').textContent = folio;
+	document.getElementById("residuo_delete").setAttribute("href", url_delete);
 	
 }

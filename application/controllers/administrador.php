@@ -998,10 +998,12 @@ class Administrador extends CI_Controller {
 		} 
 	}
 
-	public function eliminar_bit($id, $id_persona){
-		$this->residuo_peligroso_model->delete_residuo($id);
+	public function eliminar_bit($id_persona, $id_residuo_peligroso){
+		$this->residuo_peligroso_model->delete_residuo($id_residuo_peligroso);
 
 		redirect('administrador/bitacora/' . $id_persona);
+
+		echo " test!!!!!!!!!!!!!!!!!! !";
 	}
 
 	public function actualizar_registros() {

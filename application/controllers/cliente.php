@@ -711,10 +711,10 @@ class Cliente extends CI_Controller {
 		}
 	}
 
-	public function eliminar_bit($id){
-		$this->residuo_peligroso_model->delete_residuo($id);
+	public function eliminar_bit($id_persona, $id_residuo_peligroso){
+		$this->residuo_peligroso_model->delete_residuo($id_residuo_peligroso);
 
-		redirect('cliente/ver_bitacora');
+		redirect('cliente/bitacora/' . $id_persona);
 	}
 
 	public function generar_excel()
