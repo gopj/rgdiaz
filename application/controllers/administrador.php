@@ -1,4 +1,5 @@
 ﻿<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
 class Administrador extends CI_Controller {
 
 	public function __construct(){
@@ -1002,8 +1003,6 @@ class Administrador extends CI_Controller {
 		$this->residuo_peligroso_model->delete_residuo($id_residuo_peligroso);
 
 		redirect('administrador/bitacora/' . $id_persona);
-
-		echo " test!!!!!!!!!!!!!!!!!! !";
 	}
 
 	public function actualizar_registros() {
@@ -1160,6 +1159,7 @@ class Administrador extends CI_Controller {
 			} else {
 				redirect('administrador/bitacora/' . $data["id_persona"] );
 			}
+			redirect('administrador/bitacora/' . $data["id_persona"] );
 		}
 
 	}
@@ -1392,3 +1392,4 @@ class Administrador extends CI_Controller {
 		}
 	}
 }
+?>
