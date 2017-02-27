@@ -20,6 +20,7 @@ class Administrador extends CI_Controller {
 		$this->load->library('Excel');
 		$this->load->library('MY_Output');
 		$this->load->helper('file');
+		$this->load->helper('url');
 	}
 	
 	#	Metodo index carga la vista principal del administrador
@@ -958,7 +959,8 @@ class Administrador extends CI_Controller {
 		}
 		else
 		{
-			redirect('administrador/bitacora_residuo');
+			redirect('administrador/bitacora_residuo', 'refresh');
+
 		}
 	}
 
@@ -992,10 +994,15 @@ class Administrador extends CI_Controller {
 
 			$this->residuo_peligroso_model->inserta_residuo($data);
 
+			echo "TESTING!";
+			phpinfo();
+
+			//$this->load->view('administrador/bitacora/' . $data["id_persona"]);
 			redirect('administrador/bitacora/' . $data["id_persona"]);
 
 		} else {
-			redirect('administrador/bitacora');
+			//$this->load->view('administrador/bitacora/' . $data["id_persona"]);
+			redirect('administrador/bitacora' .  $data["id_persona"]);
 		} 
 	}
 
