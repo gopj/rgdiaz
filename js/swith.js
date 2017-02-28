@@ -505,3 +505,9 @@ function update(){
 			}
 		);
 }
+
+function enable_fields(){
+	$("#nombre_empresa").prop('readonly', false);
+	$("#password_contacto").prop('readonly', false);
+	$("#activar_campos").prop('disabled', true);
+}

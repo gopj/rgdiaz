@@ -250,9 +250,6 @@ $( document ).ready(function () {
 });
 
 function delete_residuo(id, nombre, url_delete, id_persona, folio){
-	
-	console.log(id);
-	console.log(nombre);
 
 	document.getElementById('eliminar_span').textContent = nombre;
 	document.getElementById('folio_span').textContent = folio;
