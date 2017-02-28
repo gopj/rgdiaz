@@ -994,9 +994,6 @@ class Administrador extends CI_Controller {
 
 			$this->residuo_peligroso_model->inserta_residuo($data);
 
-			echo "TESTING!";
-			phpinfo();
-
 			//$this->load->view('administrador/bitacora/' . $data["id_persona"]);
 			redirect('administrador/bitacora/' . $data["id_persona"]);
 
@@ -1013,6 +1010,7 @@ class Administrador extends CI_Controller {
 	}
 
 	public function actualizar_registros() {
+
 		if ( $this->input->post() ) {
 
 			$data["id_persona"] 		= $this->input->post('id_persona'); // refiere al id de administrador
@@ -1113,6 +1111,8 @@ class Administrador extends CI_Controller {
 		if ($this->input->post()) {
 			if ($this->input->post('residuos_to_update') != NULL ) {
 
+				
+
 				$id_tipo_persona=3; // para la función de correo en el header
 				$id_status_persona=1; // para la función de correo en el footer
 
@@ -1166,7 +1166,8 @@ class Administrador extends CI_Controller {
 			} else {
 				redirect('administrador/bitacora/' . $data["id_persona"] );
 			}
-			redirect('administrador/bitacora/' . $data["id_persona"] );
+			
+			
 		}
 
 	}
