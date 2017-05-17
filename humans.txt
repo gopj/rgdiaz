@@ -1,8 +1,0 @@
-/*itcolima.com. - http://itcolima.edu.mx*/
-
-/* TEAM */
-
-	Creator: Adán Cruz Huerta, Christian Ramón Magallon Garcia, Jonathan Yaran Ramos Vazquez, Erick Alejandro Sandoval Flores.
-	Contact: adancruzhuerta [at] gmail.com
-	from: Colima Col. Mexico
-	facebook: adan.cruzbdle
