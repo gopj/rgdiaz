@@ -1399,5 +1399,9 @@ class Administrador extends CI_Controller {
 			echo json_encode($resp);
 		}
 	}
+
+	public function manifiesto(){
+		$this->load->view("administrador/manifiesto.php");
+	}
 }
 ?>

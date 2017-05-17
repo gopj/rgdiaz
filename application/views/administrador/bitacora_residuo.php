@@ -78,12 +78,17 @@
 			<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
 			<input type="submit" class="btn btn-primary pull-left" value="Registrar Salidas">
 		</div>
+
+		<div class="span2">
+				<a href="<?= site_url('administrador/manifiesto/' . $id_persona) ?>" class="btn btn-primary pull-left" > Generar Manifiesto </a>
+		</div>
 	</div>
+
 	</form>
 
 	<div class="row" style="margin-top:10px;">
-		<div class="span5"></div>
-		<div class="span1">
+		<div class="span3"></div>
+		<div class="span2">
 			<form action="<?php echo site_url('administrador/nuevo_registro'); ?>" method="POST">
 				<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
 				<input type="submit" class="btn btn-primary pull-right" value="Nuevo Registro">
