@@ -149,7 +149,7 @@ if (!defined('PDF_HEADER_TITLE')) {
 }
 
 if (!defined('PDF_HEADER_STRING')) {
-	define ('PDF_HEADER_STRING', "by Nicola Asuni - Tecnick.com\nwww.tcpdf.org");
+	define ('PDF_HEADER_STRING', 'RDiaz - rdiaz.com.mx');
 }
 
 if (!defined('PDF_UNIT')) {
