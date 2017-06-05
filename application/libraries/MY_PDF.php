@@ -31,21 +31,46 @@ class MY_PDF extends TCPDF {
 		$this->SetFont('helvetica', 'B', 11);
 		
 		$subt = 'MANIFIESTO DE ENTREGA, TRANSPORTE Y';
-		$this->MultiCell(0, 0, $subt, 0, 'C', '', 1, '', 32, false);
+		$this->MultiCell(0, 0, $subt, 0, 'C', '', 1, '', 34, false);
 		
 		$subt = 'RECEPCIÓN DE RESIDUOS PELIGROSOS';
-		$this->MultiCell(0, 0, $subt, 0, 'C', '', 1, '', 36, false);
+		$this->MultiCell(0, 0, $subt, 0, 'C', '', 1, '', 40, false);
 
 	}
 
 	// Page footer
 	public function Footer() {
+		// Start Transformation to rotate Generador
+		$this->StartTransform();
+		// Rotate 20 degrees counter-clockwise centered by (70,110) which is the lower left corner of the rectangle
+		$this->Rotate(90, 70, 110);
+		$this->Text(60, 55, 'Generador');
+		// Stop Transformation
+		$this->StopTransform();
+
+		// Start Transformation to rotate Transportista
+		$this->StartTransform();
+		// Rotate 20 degrees counter-clockwise centered by (70,110) which is the lower left corner of the rectangle
+		$this->Rotate(90, 110, 110);
+		$this->Text(0, 15, 'Transportista');
+		// Stop Transformation
+		$this->StopTransform();
+
+		// Start Transformation to rotate Destinatario
+		$this->StartTransform();
+		// Rotate 20 degrees counter-clockwise centered by (70,110) which is the lower left corner of the rectangle
+		$this->Rotate(90, 139, 124);
+		$this->Text(0, 0, 'Destinatario');
+		// Stop Transformation
+		$this->StopTransform();
+
+
 		// Position at 15 mm from bottom
-		$this->SetY(-15);
+		$this->SetY(-20);
 		// Set font
-		$this->SetFont('helvetica', 'I', 8);
+		$this->SetFont('helvetica', 'B', 8);
 		// Page number
-		$this->Cell(0, 10, 'Página '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
+		$this->Cell(0, 10, 'ESTE DOCUMENTO NO ES VALIDO SIN EL SELLO DE RECEPCION Y LA FIRMA DEL ALMACENISTA', 0, false, 'C', 0, '', 0, false, 'T', 'M');
 	}
 
 }

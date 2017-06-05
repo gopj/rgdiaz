@@ -26,9 +26,36 @@
 
 		// Image method signature:
 		// Image($file, $x='', $y='', $w=0, $h=0, $type='', $link='', $align='', $resize=false, $dpi=300, $palign='', $ismask=false, $imgmask=false, $border=0, $fitbox=false, $hidden=false, $fitonpage=false)
+		$table_data_html = '';
+    	 for ($i=0; $i <= 17; $i++) {
+
+			if ($i <= 3) {
+				$table_data_html = $table_data_html . '
+					<tr>
+						<td width="342" align="left" class="data"> SÓLIDOS CONTAMINADOS CON METALES PESADOS (Macías-OPE-007)  </td>
+						<td width="43" align="center" class="data"> T </td>
+						<td width="45" align="center" class="data"> 1 </td>
+						<td width="45" align="center" class="data"> bolsa </td>
+						<td width="67" align="center" class="data"> 12.3 </td>
+						<td width="67" align="center" class="data"> KG </td>
+					</tr>
+				';
+			} else {
+				$table_data_html = $table_data_html . '
+					<tr>
+						<td width="342" align="left" class="data"> </td>
+						<td width="43" align="center" class="data"> </td>
+						<td width="45" align="center" class="data"> </td>
+						<td width="45" align="center" class="data"> </td>
+						<td width="67" align="center" class="data"> </td>
+						<td width="67" align="center" class="data"> </td>
+					</tr>
+				';
+    	 	}
+    	 } 
 
 // define some HTML content with style
-$html = <<<EOF
+$html = '
 <style>
 table.manifiesto {
 	font-family: helvetica;
@@ -83,11 +110,11 @@ td.bodes_no {
 
 </style>
 
-<br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br />
 
 <table class="manifiesto" border="1">
 	<tr>
-		<td width="20" rowspan="20"> </td>
+		<td width="20" rowspan="29"> </td>
 		<td width="215" align="left" class="defined"> 1.- No. DE REGISTRO AMBIENTAL </td>
 		<td width="170">  AHKTS0600711 </td>
 		<td width="90"  class="defined"> 2.- NO. MANIFIESTO </td>
@@ -115,105 +142,22 @@ td.bodes_no {
 		<td width="394" align="center">  </td>
 	</tr>
 	<tr>
-		<td width="342" align="left" class="defined"> 5.- DESCRIPCIÓN (Nombre del residuo y característica CRETI) </td>
-		<td width="43" align="center" class="defined"> CRETI </td>
-		<td align="center">
-			<table class="manifiesto" border="1">
-				<tr>
-					<td class="defined" width="86" align="center"> CONTENEDOR </td>
-				</tr>
-				<tr> 
-					<td width="43" class="defined" style="font-size: 5pt;"> CANTIDAD </td>
-					<td width="43" class="defined" style="font-size: 5pt;"> TIPO </td>
-				</tr>
-			</table>
-		</td>
-		<td width="67" align="left" class="defined"> CANTIDAD TOTAL DE RESIDUO </td>
-		<td width="67" align="center" class="defined"> UNIDAD VOL/PESO </td>
+		<td width="342" align="left" class="defined" rowspan="2" > &nbsp;<br/> 5.- DESCRIPCIÓN (Nombre del residuo y característica CRETI)  </td>
+		<td width="43" align="center" class="defined" rowspan="2"> &nbsp;<br/> CRETI </td>
+		<td class="defined" width="90" align="center"> CONTENEDOR </td>
+		<td width="67" class="defined" rowspan="2" style="line-height:10px;"> CANTIDAD TOTAL DE RESIDUO </td>
+		<td width="67" align="center" class="defined" rowspan="2"> UNIDAD VOL/PESO </td>
 	</tr>
-	<tr>
-		<td width="342" align="left" class="data"> SÓLIDOS CONTAMINADOS CON METALES PESADOS (Macías-OPE-007)  </td>
-		<td width="43" align="center" class="data"> T </td>
-		<td width="45" align="center" class="data"> 1 </td>
-		<td width="45" align="center" class="data"> bolsa </td>
-		<td width="67" align="center" class="data"> 12.3 </td>
-		<td width="67" align="center" class="data"> KG </td>
+	<tr> 
+		<td width="45" class="defined" style="font-size: 5pt;"> CANTIDAD </td>
+		<td width="45" class="defined" style="font-size: 5pt;"> TIPO </td>
 	</tr>
-	<tr>
-		<td width="342" align="left" class="data"> SÓLIDOS CONTAMINADOS CON METALES PESADOS (Macías-OPE-007)  </td>
-		<td width="43" align="center" class="data"> T </td>
-		<td width="45" align="center" class="data"> 1 </td>
-		<td width="45" align="center" class="data"> bolsa </td>
-		<td width="67" align="center" class="data"> 12.3 </td>
-		<td width="67" align="center" class="data"> KG </td>
-	</tr>
-	<tr>
-		<td width="342" align="left" class="data"> SÓLIDOS CONTAMINADOS CON METALES PESADOS (Macías-OPE-007)  </td>
-		<td width="43" align="center" class="data"> T </td>
-		<td width="45" align="center" class="data"> 1 </td>
-		<td width="45" align="center" class="data"> bolsa </td>
-		<td width="67" align="center" class="data"> 12.3 </td>
-		<td width="67" align="center" class="data"> KG </td>
-	</tr>
-	<tr>
-		<td width="342" align="left" class="data"> Residuos punzo-cortantes en contacto con humanos o animales o sus muestras biológicas, incluyendo navajas de bisturí, lancetas, jeringas con aguja integrada, agujas hipodérmicas, de acupuntura y para tatuajes </td>
-		<td width="43" align="center" class="data">  </td>
-		<td width="45" align="center" class="data">  </td>
-		<td width="45" align="center" class="data">  </td>
-		<td width="67" align="center" class="data">  </td>
-		<td width="67" align="center" class="data">  </td>
-	</tr>
-	<tr>
-		<td width="342" align="left" class="data">  </td>
-		<td width="43" align="center" class="data">  </td>
-		<td width="45" align="center" class="data">  </td>
-		<td width="45" align="center" class="data">  </td>
-		<td width="67" align="center" class="data">  </td>
-		<td width="67" align="center" class="data">  </td>
-	</tr>
-	<tr>
-		<td width="342" align="left" class="data">  </td>
-		<td width="43" align="center" class="data">  </td>
-		<td width="45" align="center" class="data">  </td>
-		<td width="45" align="center" class="data">  </td>
-		<td width="67" align="center" class="data">  </td>
-		<td width="67" align="center" class="data">  </td>
-	</tr>
-	<tr>
-		<td width="342" align="left" class="data">  </td>
-		<td width="43" align="center" class="data">  </td>
-		<td width="45" align="center" class="data">  </td>
-		<td width="45" align="center" class="data">  </td>
-		<td width="67" align="center" class="data">  </td>
-		<td width="67" align="center" class="data">  </td>
-	</tr>
-	<tr>
-		<td width="342" align="left" class="data">  </td>
-		<td width="43" align="center" class="data">  </td>
-		<td width="45" align="center" class="data">  </td>
-		<td width="45" align="center" class="data">  </td>
-		<td width="67" align="center" class="data">  </td>
-		<td width="67" align="center" class="data">  </td>
-	</tr>
-	<tr>
-		<td width="342" align="left" class="data">  </td>
-		<td width="43" align="center" class="data">  </td>
-		<td width="45" align="center" class="data">  </td>
-		<td width="45" align="center" class="data">  </td>
-		<td width="67" align="center" class="data">  </td>
-		<td width="67" align="center" class="data">  </td>
-	</tr>
-	<tr>
-		<td width="342" align="left" class="data">  </td>
-		<td width="43" align="center" class="data">  </td>
-		<td width="45" align="center" class="data">  </td>
-		<td width="45" align="center" class="data">  </td>
-		<td width="67" align="center" class="data">  </td>
-		<td width="67" align="center" class="data">  </td>
-	</tr>
+
+	  	' . $table_data_html . ' 
+
 	<tr>
 		<td width="304" align="left" class="defined"> 6 - INSTRUCCIONES ESPECIALES E INFORMACION ADICIONAL PARA EL MANEJO SEGURO </td>
-		<td width="305" align="center" class="data"> Usar guantes, gogles y cubreboca  </td>
+		<td width="305" align="center" class="data"> &nbsp;<br/> Usar guantes, gogles y cubreboca  </td>
 	</tr>
 	<tr>
 		<td width="304" align="left" class="defined"> 7 - CERTIFICACIÓN DEL GENERADOR</td>
@@ -281,18 +225,26 @@ td.bodes_no {
 
 	<tr>
 		<td width="20" align="center" rowspan="9"> </td>
-		<td width="215" align="left" class="defined"> 12 - NOMBRE DE LA EMPRESA </td>
-		<td width="260" align="center">  GEOCYCLE MÉXICO S.A. DE C.V.  </td>
-		<td width="134" align="left" class="defined"> AUTORIZACIÓN DE SEMARNAT </td>
+		<td width="215" align="left" class="defined" rowspan="2"> &nbsp;<br/> 12 - NOMBRE DE LA EMPRESA </td>
+		<td width="260" align="center" rowspan="2"> Gestión Integral Ambiental de Occidente S.A. de C.V. </td>
+		<td class="defined" width="134" align="center"> AUTORIZACION SEMARNAT </td>
+	</tr>
+	<tr> 
+		<td width="134" class="data"> 06-09-PS-II-01-2011 </td>
 	</tr>
 	<tr>
-		<td width="609" align="left"> </td>
+		<td width="215" align="left" class="defined"> 4.- DOMICILIO </td>
+		<td width="260" align="center"> CARRETERA A CALERAS KM 1.5 </td>
+		<td width="67" align="center" class="defined"> C.P. </td>
+		<td width="67" align="center"> 28130 </td>
 	</tr>
 	<tr>
-		<td width="215" align="left" class="defined"> DOMICILIO </td>
-		<td width="260" align="center">  CARRETERA A CALERAS KM 1.5; TECOMÁN, COL.;  C.P. 28130 </td>
-		<td width="134" align="center"> 06-09-PS-II-01-2011 </td>
+		<td width="215" align="left" class="defined"> MUNICIPIO </td>
+		<td width="170" align="center"> TECOMÁN </td>
+		<td width="90" align="center" class="defined"> ESTADO </td>
+		<td width="134" align="center"> COLIMA </td>
 	</tr>
+
 	<tr>
 		<td width="607" align="left" class="defined borde_inferior"> 13 - RECIBI LOS RESIDUOS DESCRITOS EN EL MANIFIESTO </td>
 	</tr>
@@ -314,36 +266,11 @@ td.bodes_no {
 		<td width="113" align="center" class="defined" height="20"> FIRMA </td>
 		<td width="191" align="center"></td>
 	</tr>
-
 </table>
-EOF;
-
+';
 		// output the HTML content
 		$pdf->writeHTML($html, true, false, true, false, '');
 
-		// Start Transformation to rotate Generador
-		$pdf->StartTransform();
-		// Rotate 20 degrees counter-clockwise centered by (70,110) which is the lower left corner of the rectangle
-		$pdf->Rotate(90, 70, 110);
-		$pdf->Text(60, 55, 'Generador');
-		// Stop Transformation
-		$pdf->StopTransform();
-
-		// Start Transformation to rotate Transportista
-		$pdf->StartTransform();
-		// Rotate 20 degrees counter-clockwise centered by (70,110) which is the lower left corner of the rectangle
-		$pdf->Rotate(90, 100, 110);
-		$pdf->Text(0, 25, 'Transportista');
-		// Stop Transformation
-		$pdf->StopTransform();
-
-		// Start Transformation to rotate Destinatario
-		$pdf->StartTransform();
-		// Rotate 20 degrees counter-clockwise centered by (70,110) which is the lower left corner of the rectangle
-		$pdf->Rotate(90, 135, 120);
-		$pdf->Text(0, 0, 'Destinatario');
-		// Stop Transformation
-		$pdf->StopTransform();
 
 		// add a page
 		$pdf->AddPage();
