@@ -34,36 +34,65 @@ table.manifiesto {
 	font-family: helvetica;
 	font-size: 8pt;
 	font-weight: bold;
+	text-align: center;
+	height: 15px;
+	line-height:15px;
 }
 td.defined {
 	font-family: helvetica;
 	font-size: 6pt;
 	font-weight: normal;
+	text-align: center;
+	height: 15px;
+	line-height:15px;
 }
 
 td.data {
 	font-family: helvetica;
 	font-size: 7pt;
 	font-weight: bold;
+	text-align: center;
+	height: 15px;
+	line-height:15px;
+
 }
-tr.borde_inferior {
-	border-bottom: 1px solid blue important!;
+td.borde_inferior {
+	border-bottom: 3px solid #FFFFFF;
 }
-td.second {
-		border: 2px solid #FFFFFF;
-	}
+
+td.borde_izquierdo {
+	border-left: 3px solid #FFFFFF;
+}
+
+td.borde_derecho {
+	border-right: 3px solid #FFFFFF;
+}
+
+td.borde_top {
+	border-top: 3px solid #FFFFFF;
+}
+
+td.bodes_no {
+	border-top: 3px solid #FFFFFF;
+	border-bottom: 3px solid #FFFFFF;
+	border-left: 3px solid #FFFFFF;
+	border-right: 3px solid #FFFFFF;
+}
+
+
+
 </style>
 
 <br /><br /><br /><br /><br />
 
-<table class="manifiesto" border="1" >
+<table class="manifiesto" border="1">
 	<tr>
-		<td width="20" align="center" rowspan="20"> </td>
+		<td width="20" rowspan="20"> </td>
 		<td width="215" align="left" class="defined"> 1.- No. DE REGISTRO AMBIENTAL </td>
-		<td width="170" align="center"> AHKTS0600711 </td>
-		<td width="90" align="left" class="defined"> 2.- NO. MANIFIESTO </td>
-		<td width="67" align="center" style="color: red;"> 0613 </td>
-		<td width="67" align="center" class="defined">  PÁGINA 1/1  </td>
+		<td width="170">  AHKTS0600711 </td>
+		<td width="90"  class="defined"> 2.- NO. MANIFIESTO </td>
+		<td width="67" style="color: red;"> 0613 </td>
+		<td width="67"  class="defined">  PÁGINA 1/1  </td>
 	</tr>
 	<tr>
 		<td width="215" align="left" class="defined"> 3.- RAZÓN SOCIAL DE LA EMPRESA GENERADORA </td>
@@ -127,7 +156,7 @@ td.second {
 		<td width="67" align="center" class="data"> KG </td>
 	</tr>
 	<tr>
-		<td width="342" align="left" class="data">  </td>
+		<td width="342" align="left" class="data"> Residuos punzo-cortantes en contacto con humanos o animales o sus muestras biológicas, incluyendo navajas de bisturí, lancetas, jeringas con aguja integrada, agujas hipodérmicas, de acupuntura y para tatuajes </td>
 		<td width="43" align="center" class="data">  </td>
 		<td width="45" align="center" class="data">  </td>
 		<td width="45" align="center" class="data">  </td>
@@ -227,7 +256,7 @@ td.second {
 	<tr>
 		<td width="113" align="left" class="defined"> FECHA DE EMBARQUE </td>
 		<td width="192" align="center"> 08 de Abril del 2017  </td>
-		<td width="136" align="left" class="defined"> FIRMA </td>
+		<td width="136" align="left" height="15" class="defined"> FIRMA </td>
 		<td width="168" align="center">  </td>
 	</tr>
 	<tr>
@@ -264,13 +293,27 @@ td.second {
 		<td width="260" align="center">  CARRETERA A CALERAS KM 1.5; TECOMÁN, COL.;  C.P. 28130 </td>
 		<td width="134" align="center"> 06-09-PS-II-01-2011 </td>
 	</tr>
-	<tr class="borde_inferior">
-		<td width="609" align="left" class="second"> 13 - RECIBI LOS RESIDUOS DESCRITOS EN EL MANIFIESTO </td>
+	<tr>
+		<td width="607" align="left" class="defined borde_inferior"> 13 - RECIBI LOS RESIDUOS DESCRITOS EN EL MANIFIESTO </td>
 	</tr>
 	<tr>
-		<td width="609" align="left" class="defined" style="border-top: none !important;"> OBSERVACIONES </td>
+		<td width="609" height="15" align="left" class="defined"> OBSERVACIONES </td>
 	</tr>
-	
+	<tr>
+		<td width="609" height="15" align="left" class="defined"> </td>
+	</tr>
+	<tr>
+		<td width="113" align="center" class="defined" height="20"> NOMBRE </td>
+		<td width="192" align="center"></td>
+		<td width="113" align="center" class="defined" height="20"> CARGO </td>
+		<td width="191" align="center"></td>
+	</tr>
+	<tr>
+		<td width="113" align="center" class="defined" height="20"> FECHA </td>
+		<td width="192" align="center"></td>
+		<td width="113" align="center" class="defined" height="20"> FIRMA </td>
+		<td width="191" align="center"></td>
+	</tr>
 
 </table>
 EOF;
@@ -278,21 +321,36 @@ EOF;
 		// output the HTML content
 		$pdf->writeHTML($html, true, false, true, false, '');
 
-		// Start Transformation to rotate
+		// Start Transformation to rotate Generador
 		$pdf->StartTransform();
 		// Rotate 20 degrees counter-clockwise centered by (70,110) which is the lower left corner of the rectangle
 		$pdf->Rotate(90, 70, 110);
-		$pdf->Text(82, 55, 'Generador');
+		$pdf->Text(60, 55, 'Generador');
 		// Stop Transformation
 		$pdf->StopTransform();
 
-		// Start Transformation to rotate
+		// Start Transformation to rotate Transportista
 		$pdf->StartTransform();
 		// Rotate 20 degrees counter-clockwise centered by (70,110) which is the lower left corner of the rectangle
-		$pdf->Rotate(90, 70, 110);
-		$pdf->Text(28, 55, 'Transportista');
+		$pdf->Rotate(90, 100, 110);
+		$pdf->Text(0, 25, 'Transportista');
 		// Stop Transformation
 		$pdf->StopTransform();
+
+		// Start Transformation to rotate Destinatario
+		$pdf->StartTransform();
+		// Rotate 20 degrees counter-clockwise centered by (70,110) which is the lower left corner of the rectangle
+		$pdf->Rotate(90, 135, 120);
+		$pdf->Text(0, 0, 'Destinatario');
+		// Stop Transformation
+		$pdf->StopTransform();
+
+		// add a page
+		$pdf->AddPage();
+
+		// output the HTML content
+		$pdf->writeHTML($html, true, false, true, false, '');
+
 
 		// reset pointer to the last page
 		$pdf->lastPage();
