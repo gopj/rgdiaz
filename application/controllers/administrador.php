@@ -1403,10 +1403,50 @@ class Administrador extends CI_Controller {
 
 	public function manifiesto($id_persona){
 
-		$this->load->view("administrador/manifiesto.php");
+		$status = 0;
+		$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
+		$data = array(
+			'mensajes'=> $mensajesnuevos,
+		);
+		$this->load->view('administrador/header_admin',$data);
+
+		#	Obtengo a todos mis clientes para seleccionar uno en opcion dar de baja y los mando al modal
+		$id_tipo_persona=3;
+		$id_status_persona=1;
+		// Mandar una variable para selecciar solo a los clientes que ya llenaron su info
+		$lleno_datos = 1;
+		$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona,$id_tipo_persona,$lleno_datos);
+		$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
+		$nombre_cliente = $this->persona_model->get_nombre_cliente($id_persona);
+		$nombre_empresa = $this->persona_model->get_nombre_empresa($id_persona);
+
+		$cliente_manifiestos = $this->residuo_peligroso_model->cliente_manifiestos($id_persona);
+
+		#	Obtengo todos los registros de residuos peligrosos
+		$residuos_peligrosos = $this->residuo_peligroso_model->get_residuos($id_persona);
+		$data3 = array(
+			'clientes' => $cliente_baja,
+			'correo' => $correo_clientes,
+			'residuos' => $residuos_peligrosos,
+			'id_persona' => $id_persona,
+			'nombre_cliente' => $nombre_cliente,
+			'nombre_empresa' => $nombre_empresa,
+			'cliente_manifiestos' => $cliente_manifiestos
+		);
+		
+		$this->load->view("administrador/manifiesto.php", $data3);
+	
+		$this->load->view('administrador/footeru',$data3);
+
 
 	}
 
+
+	public function generar_manifiesto($id_persona) {
+
+		$this->load->view("administrador/generar_manifiesto.php");
+
+	}
 
 }
 ?>

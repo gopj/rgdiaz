@@ -208,4 +208,11 @@ class Residuo_peligroso_model extends CI_Model {
 
 	}
 
+	public function cliente_manifiestos($id_persona){
+
+		return $this->db->query("SELECT folio_manifiesto FROM residuos_peligrosos where id_persona={$id_persona} and fecha_ingreso and folio_manifiesto is not null group by folio_manifiesto order by id_residuo_peligroso desc;")->result();
+
+	}
+
+
 }
