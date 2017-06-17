@@ -678,13 +678,21 @@ class Administrador extends CI_Controller {
 	}
 
 	public function bitacora($id = null){
-		if(($this->input->post()) || ($id != null) ){
+		
+
+		if(($this->input->post()) || ($id != null) ){			
 
 			//redirect
 			if ($this->input->post()) {
 				$id_persona = $this->input->post('id_persona');
 			} elseif ($id) {
 				$id_persona = $id;
+			}
+			
+			//PDF
+			$pdfpath = $_SERVER['DOCUMENT_ROOT'] . "rgdiaz/img/pdf/rdiaztmp{$id_persona}.pdf";
+			if (file_exists($pdfpath)) {
+				unlink($pdfpath);
 			}
 			
 			$status = 0;
@@ -1422,12 +1430,10 @@ class Administrador extends CI_Controller {
 
 		$cliente_manifiestos = $this->residuo_peligroso_model->cliente_manifiestos($id_persona);
 
-		#	Obtengo todos los registros de residuos peligrosos
-		$residuos_peligrosos = $this->residuo_peligroso_model->get_residuos($id_persona);
+
 		$data3 = array(
 			'clientes' => $cliente_baja,
 			'correo' => $correo_clientes,
-			'residuos' => $residuos_peligrosos,
 			'id_persona' => $id_persona,
 			'nombre_cliente' => $nombre_cliente,
 			'nombre_empresa' => $nombre_empresa,
@@ -1444,7 +1450,17 @@ class Administrador extends CI_Controller {
 
 	public function generar_manifiesto($id_persona) {
 
-		$this->load->view("administrador/generar_manifiesto.php");
+		if ($this->input->post()) {
+
+			$data["id_persona"] = $id_persona;
+			$data["manifiesto"] = $this->input->post('manifiesto');
+			$data["nombre_cliente"] = $this->persona_model->get_nombre_cliente($id_persona);
+			$data["nombre_empresa"] = $this->persona_model->get_nombre_empresa($id_persona);
+			$data["residuos_manifiesto"] = $this->residuo_peligroso_model->get_residuos_manifiesto($id_persona, $data["manifiesto"]);
+			$data["datos_empresa"] = $this->persona_model->get_datos_empresa($id_persona);
+
+			$this->load->view("administrador/generar_manifiesto.php", $data);
+		}
 
 	}
 

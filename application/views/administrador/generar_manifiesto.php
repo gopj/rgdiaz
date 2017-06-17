@@ -1,4 +1,15 @@
 <?php
+		echo "<pre>";
+		print_r($datos_empresa);
+		echo "</pre>";
+
+		echo $datos_empresa->nombre_empresa;
+
+		echo "<pre>";
+		print_r($residuos_manifiesto);
+		echo "</pre>";
+		die();
+
 		// create new PDF document
 		$pdf = new MY_PDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
@@ -28,6 +39,10 @@
 		// Image($file, $x='', $y='', $w=0, $h=0, $type='', $link='', $align='', $resize=false, $dpi=300, $palign='', $ismask=false, $imgmask=false, $border=0, $fitbox=false, $hidden=false, $fitonpage=false)
 		$table_data_html = '';
     	 for ($i=0; $i <= 17; $i++) {
+
+    	 	$residuos_manifiesto_arr[] = $residuos_manifiesto[$i]->residuo;
+    	 	$residuos_manifiesto_arr[] = $residuos_manifiesto[$i]->característica;
+    	 	$residuos_manifiesto_arr[] = $residuos_manifiesto[$i]->cantidad;
 
 			if ($i <= 3) {
 				$table_data_html = $table_data_html . '
@@ -116,30 +131,30 @@ td.bodes_no {
 	<tr>
 		<td width="20" rowspan="29"> </td>
 		<td width="215" align="left" class="defined"> 1.- No. DE REGISTRO AMBIENTAL </td>
-		<td width="170">  AHKTS0600711 </td>
+		<td width="170">  '. $datos_empresa->numero_empresa .' </td>
 		<td width="90"  class="defined"> 2.- NO. MANIFIESTO </td>
-		<td width="67" style="color: red;"> 0613 </td>
+		<td width="67" style="color: red;"> '. $residuos_manifiesto[0]->folio .' </td>
 		<td width="67"  class="defined">  PÁGINA 1/1  </td>
 	</tr>
 	<tr>
 		<td width="215" align="left" class="defined"> 3.- RAZÓN SOCIAL DE LA EMPRESA GENERADORA </td>
-		<td width="394" align="center"> ALFRED H. KNIGHT S.A. DE C.V. </td>
+		<td width="394" align="center"> '. $datos_empresa->nombre_empresa .' </td>
 	</tr>
 	<tr>
 		<td width="215" align="left" class="defined"> 4.- DOMICILIO </td>
-		<td width="260" align="center"> DEL TRABAJO 101, TAPEIXTLES </td>
+		<td width="260" align="center"> '. $datos_empresa->calle_empresa .', ' . $datos_empresa->colonia_empresa . ' </td>
 		<td width="67" align="center" class="defined"> C.P. </td>
-		<td width="67" align="center"> 28239 </td>
+		<td width="67" align="center"> '. $datos_empresa->cp_empresa .' </td>
 	</tr>
 	<tr>
 		<td width="215" align="left" class="defined"> MUNICIPIO </td>
-		<td width="170" align="center"> MANZANILLO </td>
+		<td width="170" align="center"> '. $datos_empresa->municipio .' </td>
 		<td width="90" align="center" class="defined"> ESTADO </td>
-		<td width="134" align="center"> COLIMA </td>
+		<td width="134" align="center"> '. $datos_empresa->estado .' </td>
 	</tr>
 	<tr>
 		<td width="215" align="left" class="defined"> TELEFONO </td>
-		<td width="394" align="center">  </td>
+		<td width="394" align="center"> '. $datos_empresa->telefono_empresa .' </td>
 	</tr>
 	<tr>
 		<td width="342" align="left" class="defined" rowspan="2" > &nbsp;<br/> 5.- DESCRIPCIÓN (Nombre del residuo y característica CRETI)  </td>
@@ -273,14 +288,22 @@ td.bodes_no {
 
 
 		// add a page
-		$pdf->AddPage();
+		//$pdf->AddPage();
 
 		// output the HTML content
-		$pdf->writeHTML($html, true, false, true, false, '');
+		//$pdf->writeHTML($html, true, false, true, false, '');
 
 
 		// reset pointer to the last page
-		$pdf->lastPage();
+		//$pdf->lastPage();
+
+		//$filename= "{$nombre_empresa}_{$manifiesto}.pdf";
+		$filename= "rdiaztmp{$id_persona}.pdf"; 
+		$filelocation = $_SERVER['DOCUMENT_ROOT'] ."rgdiaz/img/pdf";
+		$fileNL = $filelocation."/".$filename; //Linux
+
 		//Close and output PDF document
-		$pdf->Output('Manifiesto_00001.pdf', 'I');
+		$pdf->Output($fileNL, 'F');
+
+		redirect('administrador/manifiesto/' . $id_persona, 'refresh');
 ?>

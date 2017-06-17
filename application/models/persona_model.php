@@ -103,6 +103,12 @@ class Persona_model extends CI_Model {
 		return $result[0]->nombre_empresa;
 	}
 
+	public function get_datos_empresa($id){
+		$result = $this->db->query("SELECT * FROM persona WHERE  id_persona = {$id} LIMIT 1;")->result();  
+
+		return $result[0];
+	}
+
 	public function regisdatos_persona($nombre,
 										$telefono_personal,
 										$telefono_personal_alt,

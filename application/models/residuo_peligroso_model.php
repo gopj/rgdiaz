@@ -183,6 +183,7 @@ class Residuo_peligroso_model extends CI_Model {
 	}
 	
 	public function delete_residuo($id_residuo_peligroso){
+
 		//$this->db->query(" DELETE FROM bitacora where id_bitacora={$id_residuo_peligroso};");
 		return $this->db->query(" DELETE FROM residuos_peligrosos where id_residuo_peligroso={$id_residuo_peligroso};");				
 	}
@@ -213,6 +214,43 @@ class Residuo_peligroso_model extends CI_Model {
 		return $this->db->query("SELECT folio_manifiesto FROM residuos_peligrosos where id_persona={$id_persona} and fecha_ingreso and folio_manifiesto is not null group by folio_manifiesto order by id_residuo_peligroso desc;")->result();
 
 	}
+
+	public function get_residuos_manifiesto($id_persona, $manifiesto){
+		return $this->db->query("
+			SELECT 
+				r.id_residuo_peligroso,
+				tr.residuo as residuo,
+				tr.clave as clave,
+				r.cantidad as cantidad,
+				r.unidad as unidad,
+				r.caracteristica as caracteristica,
+				a.area as area_generacion,
+				r.fecha_ingreso as fecha_ingreso,
+				r.fecha_salida as fecha_salida,
+				m.modalidad as sig_manejo,
+				et.nombre_empresa as emp_tran,
+				ed.nombre_destino as dest_final,
+				r.resp_tec as resp_tec,
+				et.no_autorizacion_transportista as no_aut_transp,
+				ed.no_autorizacion_destino as no_aut_dest_final,
+				r.folio_manifiesto as folio,
+				r.id_persona as id_persona,
+				r.status
+			FROM 
+				residuos_peligrosos as r
+					LEFT JOIN areas a ON (r.id_area = a.id_area)
+					LEFT JOIN tipo_modalidad m ON (r.id_tipo_modalidad = m.id_tipo_modalidad)
+					LEFT JOIN tipo_emp_transportista et ON (r.id_tipo_emp_transportista = et.id_tipo_emp_transportista)
+					LEFT JOIN tipo_emp_destino ed ON (r.id_tipo_emp_destino = ed.id_tipo_emp_destino),
+				tipo_residuos as tr
+			WHERE
+				r.id_tipo_residuo = tr.id_tipo_residuo and
+				r.id_persona = {$id_persona} and
+				r.folio_manifiesto = {$manifiesto}
+			ORDER BY
+				r.fecha_ingreso asc;")->result();
+	}
+
 
 
 }
