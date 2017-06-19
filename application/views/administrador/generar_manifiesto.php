@@ -1,14 +1,32 @@
 <?php
-		echo "<pre>";
+		function creti($string){
+			$creti = explode(" ", $string);
+			$creti_count = count($creti);
+
+			$creti_r = "";
+			for ($i = 0; $i < $creti_count; $i++) {
+				if ($i < ($creti_count-1)) {
+					$creti_r .= substr($creti[$i], 0, 1) . " ";	
+				} else {
+					$creti_r .= substr($creti[$i], 0, 1);
+				}
+			}
+
+			return $creti_r;
+		}
+
+
+/*		echo "<pre>";
 		print_r($datos_empresa);
 		echo "</pre>";
 
-		echo $datos_empresa->nombre_empresa;
+		echo count($residuos_manifiesto);
+
 
 		echo "<pre>";
 		print_r($residuos_manifiesto);
-		echo "</pre>";
-		die();
+		echo "</pre>";*/
+
 
 		// create new PDF document
 		$pdf = new MY_PDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -37,26 +55,26 @@
 
 		// Image method signature:
 		// Image($file, $x='', $y='', $w=0, $h=0, $type='', $link='', $align='', $resize=false, $dpi=300, $palign='', $ismask=false, $imgmask=false, $border=0, $fitbox=false, $hidden=false, $fitonpage=false)
+		$res_man_cant = count($residuos_manifiesto);
+    	$r = 0;
+		
 		$table_data_html = '';
     	 for ($i=0; $i <= 17; $i++) {
 
-    	 	$residuos_manifiesto_arr[] = $residuos_manifiesto[$i]->residuo;
-    	 	$residuos_manifiesto_arr[] = $residuos_manifiesto[$i]->característica;
-    	 	$residuos_manifiesto_arr[] = $residuos_manifiesto[$i]->cantidad;
-
-			if ($i <= 3) {
-				$table_data_html = $table_data_html . '
+    	 	if ($res_man_cant > $i) {
+    	 		$table_data_html = $table_data_html . '
 					<tr>
-						<td width="342" align="left" class="data"> SÓLIDOS CONTAMINADOS CON METALES PESADOS (Macías-OPE-007)  </td>
-						<td width="43" align="center" class="data"> T </td>
-						<td width="45" align="center" class="data"> 1 </td>
-						<td width="45" align="center" class="data"> bolsa </td>
-						<td width="67" align="center" class="data"> 12.3 </td>
-						<td width="67" align="center" class="data"> KG </td>
+						<td width="342" align="left" class="data"> ' . $residuos_manifiesto[$r]->residuo . '</td>
+						<td width="43" align="center" class="data"> ' . creti($residuos_manifiesto[$r]->caracteristica) . ' </td>
+						<td width="45" align="center" class="data"> ' . "NULL" . ' </td>
+						<td width="45" align="center" class="data"> ' . "NULL" . ' </td>
+						<td width="67" align="center" class="data"> ' . $residuos_manifiesto[$r]->cantidad . ' </td>
+						<td width="67" align="center" class="data"> ' . $residuos_manifiesto[$r]->unidad . ' </td>
 					</tr>
-				';
-			} else {
-				$table_data_html = $table_data_html . '
+					';
+				$r++;
+    	 	} else {
+    	 		$table_data_html = $table_data_html . '
 					<tr>
 						<td width="342" align="left" class="data"> </td>
 						<td width="43" align="center" class="data"> </td>
@@ -65,9 +83,15 @@
 						<td width="67" align="center" class="data"> </td>
 						<td width="67" align="center" class="data"> </td>
 					</tr>
-				';
+					';
     	 	}
-    	 } 
+
+    	} 
+
+/*		echo "<pre>";
+		print_r($residuos_manifiesto_arr);
+		echo "</pre>";
+    	die();*/
 
 // define some HTML content with style
 $html = '
