@@ -77,6 +77,13 @@
 					</span>
 					<input class="txt-well" id="numero_empresa" name="numero_empresa" type='text'>
 				</div>
+				Número de Registro Ambiental
+				<div class='input-prepend'>
+					<span class='add-on'>
+						<img src="img/glyphicons_242_google_maps.png" class="icon-form">
+					</span>
+					<input class="txt-well" id="numero_registro_ambiental" name="numero_registro_ambiental" type='text'>
+				</div>
 				Colonia
 				<div class='input-prepend'>
 					<span class='add-on'>

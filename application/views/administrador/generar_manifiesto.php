@@ -1,4 +1,5 @@
 <?php
+
 		function creti($string){
 			$creti = explode(" ", $string);
 			$creti_count = count($creti);
@@ -14,19 +15,6 @@
 
 			return $creti_r;
 		}
-
-
-/*		echo "<pre>";
-		print_r($datos_empresa);
-		echo "</pre>";
-
-		echo count($residuos_manifiesto);
-
-
-		echo "<pre>";
-		print_r($residuos_manifiesto);
-		echo "</pre>";*/
-
 
 		// create new PDF document
 		$pdf = new MY_PDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -87,11 +75,6 @@
     	 	}
 
     	} 
-
-/*		echo "<pre>";
-		print_r($residuos_manifiesto_arr);
-		echo "</pre>";
-    	die();*/
 
 // define some HTML content with style
 $html = '

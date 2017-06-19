@@ -28,6 +28,13 @@
 										</span>
 										<input class="txt-well" id="numEmp" type='text' placeholder='Ejemplo: 45'  name="numero_empresa">
 									</div>
+									Número de Registro Ambiental
+									<div class='input-prepend'>
+										<span class='add-on'>
+											<img src="img/glyphicons_242_google_maps.png" class="icon-form">
+										</span>
+										<input class="txt-well" id="numRegAmb" type='text' placeholder='Ejemplo: 45'  name="numero_registro_ambiental">
+									</div>
 									Colonia
 									<div class='input-prepend'>
 										<span class='add-on'>

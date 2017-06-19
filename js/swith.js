@@ -176,6 +176,7 @@ function compruebausuario(id){
 	$("#municipio_empresa").val("");
 	$("#estado_empresa").val("");
 	$("#telefono_empresa").val("");
+	$("#numero_registro_ambiental").val("");
 	$("#persona_expediente").val("");
 	$("#persona_bitacora").val("");
 	$("#ruta").val("");
@@ -214,58 +215,59 @@ function compruebausuario(id){
 			function(resp)
 			{
 				var miJson = jQuery.parseJSON(resp);
-				  var id_persona = miJson.id_persona;
-				  var nombre = miJson.nombre;
-				  var correo = miJson.correo;
-				  var password_contacto = miJson.password_contacto;
-				  var telefono_personal = miJson.telefono_personal;
-				  var telefono_personal_alt = miJson.telefono_personal_alt;
-				  var nombre_empresa = miJson.nombre_empresa;
-				  var calle_empresa = miJson.calle_empresa;
-				  var correo_empresa = miJson.correo_empresa;
-				  var cp_empresa = miJson.cp_empresa;
-				  var colonia_empresa = miJson.colonia_empresa;
-				  var numero_empresa = miJson.numero_empresa;
-				  var status_persona = miJson.id_status_persona;
-				  var municipio = miJson.municipio;
-				  var estado = miJson.estado;
-				  var telefono_empresa = miJson.telefono_empresa;
-				  var ruta_carpeta = "clientes/"+id_persona;
-				  if(status_persona == 1){
-				  	var status_persona = "Activo";
-				  }else{
-				  	var status_persona = "Inactivo";
-				  }
-				  var ruta = miJson.ruta;
-				  
-				  $("#persona").val(ruta_carpeta);
-				  $("#persona").val(id_persona);
-				  $("#persona3").val(id_persona);
-				  $("#nombre_empresa").val(nombre_empresa);
-				  $("#cp_empresa").val(cp_empresa);
-				  $("#colonia_empresa").val(colonia_empresa);
-				  $("#calle_empresa").val(calle_empresa);
-				  $("#numero_empresa").val(numero_empresa);
-				  $("#email_empresa").val(correo_empresa);
-				  $("#municipio_empresa").val(municipio);
-				  $("#estado_empresa").val(estado);
-				  $("#telefono_empresa").val(telefono_empresa);
-				  $("#persona_expediente").val(id_persona);
-				  $("#persona_bitacora").val(id_persona);
-				  $("#ruta").val(ruta);
+				var id_persona = miJson.id_persona;
+				var nombre = miJson.nombre;
+				var correo = miJson.correo;
+				var password_contacto = miJson.password_contacto;
+				var telefono_personal = miJson.telefono_personal;
+				var telefono_personal_alt = miJson.telefono_personal_alt;
+				var nombre_empresa = miJson.nombre_empresa;
+				var calle_empresa = miJson.calle_empresa;
+				var correo_empresa = miJson.correo_empresa;
+				var cp_empresa = miJson.cp_empresa;
+				var colonia_empresa = miJson.colonia_empresa;
+				var numero_empresa = miJson.numero_empresa;
+				var status_persona = miJson.id_status_persona;
+				var municipio = miJson.municipio;
+				var estado = miJson.estado;
+				var telefono_empresa = miJson.telefono_empresa;
+				var numero_registro_ambiental = miJson.numero_registro_ambiental;
+				var ruta_carpeta = "clientes/"+id_persona;
+				if(status_persona == 1){
+					var status_persona = "Activo";
+				}else{
+					var status_persona = "Inactivo";
+				}
+				var ruta = miJson.ruta;
+				$("#persona").val(ruta_carpeta);
+				$("#persona").val(id_persona);
+				$("#persona3").val(id_persona);
+				$("#nombre_empresa").val(nombre_empresa);
+				$("#cp_empresa").val(cp_empresa);
+				$("#colonia_empresa").val(colonia_empresa);
+				$("#calle_empresa").val(calle_empresa);
+				$("#numero_empresa").val(numero_empresa);
+				$("#email_empresa").val(correo_empresa);
+				$("#municipio_empresa").val(municipio);
+				$("#estado_empresa").val(estado);
+				$("#telefono_empresa").val(telefono_empresa);
+				$("#numero_registro_ambiental").val(numero_registro_ambiental);
+				$("#persona_expediente").val(id_persona);
+				$("#persona_bitacora").val(id_persona);
+				$("#ruta").val(ruta);
 
-				  $("#nombre_contacto").val(nombre);
-				  $("#telefono_contacto").val(telefono_personal);
-				  $("#telefono_contacto_alt").val(telefono_personal_alt);
-				  $("#email_contacto").val(correo);
-				  $("#password_contacto").val(password_contacto);
-				  $("#estado_cuenta").val(status_persona);
+				$("#nombre_contacto").val(nombre);
+				$("#telefono_contacto").val(telefono_personal);
+				$("#telefono_contacto_alt").val(telefono_personal_alt);
+				$("#email_contacto").val(correo);
+				$("#password_contacto").val(password_contacto);
+				$("#estado_cuenta").val(status_persona);
 
-				  if(status_persona == "Inactivo"){
-				  	   $("#update_status").removeAttr('disabled');
-				  }else{
-				  	   $("#update_status").attr('disabled','disabled');
-				  }  
+				if(status_persona == "Inactivo"){
+					$("#update_status").removeAttr('disabled');
+				}else{
+					$("#update_status").attr('disabled','disabled');
+				}  
 			}
 		);
 
@@ -286,6 +288,7 @@ function alta_cliente_admin(){
 	var municipio = document.getElementById('munEmp');
 	var estado =  document.getElementById('esEmp');
 	var telefono_empresa = document.getElementById('telEmp');
+	var numero_registro_ambiental = document.getElementById('numRegAmb');
 
 
 	var nombreContacto = document.getElementById('nomCont');
@@ -325,6 +328,10 @@ function alta_cliente_admin(){
 	}else if(!telefono_empresa.value){
 		alert("EL CAMPO TELEFONO DE LA EMPRESA ES REQUERIDO");
 		telefono_empresa.focus();
+		valida = false;
+	}else if(!numero_registro_ambiental.value){
+		alert("EL CAMPO No REGISTRO AMBIENTAL ES REQUERIDO");
+		numero_registro_ambiental.focus();
 		valida = false;
 	} else if(!emailEmpresa.value || !expRegEmail.exec(emailEmpresa.value)){
 		alert("EL CAMPO CORREO DE LA EMPRESA ES REQUERIDO");

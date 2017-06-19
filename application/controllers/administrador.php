@@ -358,6 +358,7 @@ class Administrador extends CI_Controller {
         				   'municipio' => $persona->municipio,
         				   'estado' => $persona->estado,
         				   'telefono_empresa' => $persona->telefono_empresa,
+        				   'numero_registro_ambiental' => $persona->numero_registro_ambiental,
         				   'password_contacto' =>$persona->password,
         				   'ruta' => $ruta->ruta_carpeta
 						);
@@ -908,6 +909,7 @@ class Administrador extends CI_Controller {
 			$municipio = $this->input->post('municipio');
 			$estado = $this->input->post('estado');
 			$telefono_empresa = $this->input->post('telefono_empresa'); 
+			$numero_registro_ambiental = $this->input->post('numero_registro_ambiental'); 
 			
 			$id_persona = $this->input->post('id_persona');
 			
@@ -926,7 +928,8 @@ class Administrador extends CI_Controller {
 														$numero_empresa,
 														$municipio,
 														$estado,
-														$telefono_empresa);
+														$telefono_empresa,
+														$numero_registro_ambiental);
 			redirect('administrador/admin_clientes');
 		}
 	}
