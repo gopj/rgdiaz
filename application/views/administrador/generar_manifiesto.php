@@ -138,7 +138,7 @@ td.bodes_no {
 	<tr>
 		<td width="20" rowspan="29"> </td>
 		<td width="215" align="left" class="defined"> 1.- No. DE REGISTRO AMBIENTAL </td>
-		<td width="170">  '. $datos_empresa->numero_empresa .' </td>
+		<td width="170">  '. $datos_empresa->numero_registro_ambiental .' </td>
 		<td width="90"  class="defined"> 2.- NO. MANIFIESTO </td>
 		<td width="67" style="color: red;"> '. $residuos_manifiesto[0]->folio .' </td>
 		<td width="67"  class="defined">  PÁGINA 1/1  </td>
