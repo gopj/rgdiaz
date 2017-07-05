@@ -221,6 +221,7 @@ class Residuo_peligroso_model extends CI_Model {
 				r.id_residuo_peligroso,
 				tr.residuo as residuo,
 				tr.clave as clave,
+				tr.abreviacion,
 				r.cantidad as cantidad,
 				r.unidad as unidad,
 				r.caracteristica as caracteristica,

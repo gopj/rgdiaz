@@ -39,6 +39,9 @@
 			
 	<?php } ?>
 
+	<br/><br/>
+
+	<?php echo anchor('administrador/bitacora/' . $id_persona, 'Regresar', 'class="btn btn-warning"'); ?>
 	
 
 </div>
