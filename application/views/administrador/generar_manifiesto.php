@@ -172,7 +172,7 @@ for ($h=0; $h < $num_table_res; $h++) {
 			<td width="215" align="left" class="defined"> 1.- No. DE REGISTRO AMBIENTAL </td>
 			<td width="170">  '. $datos_empresa->numero_registro_ambiental .' </td>
 			<td width="90"  class="defined"> 2.- NO. MANIFIESTO </td>
-			<td width="67" style="color: red;"> '. $residuos_manifiesto[0]->folio .' </td>
+			<td width="67" style="color: red;"> '. $residuos_manifiesto[0]->id_persona . "-" . $residuos_manifiesto[0]->folio .' </td>
 			<td width="67"  class="defined">  PÁGINA ' . ($h+1) . '/' . $num_table_res . ' </td>
 		</tr>
 		<tr>
@@ -222,13 +222,13 @@ for ($h=0; $h < $num_table_res; $h++) {
 		</tr>
 		<tr>
 			<td width="215" align="left" class="defined"> NOMBRE Y FIRMA DEL RESPONSABLE </td>
-			<td width="394" align="center" class="data"> Joel Alejandro Esponda Esponda </td>
+			<td width="394" align="center" class="data"> ' . $residuos_manifiesto[0]->resp_tec . ' </td>
 		</tr>
 
 		<tr>
 			<td width="20" align="center" rowspan="10"> </td>
 			<td width="215" align="left" class="defined"> 8 - NOMBRE DE LA EMPRESA TRANSPORTADORA </td>
-			<td width="394" align="center">  Ricardo Díaz Virgen </td>
+			<td width="394" align="center"> ' . $residuos_manifiesto[0]->emṕ_trans . ' </td>
 		</tr>	
 		<tr>
 			<td width="113" align="left" class="defined"> DOMICILIO</td>
