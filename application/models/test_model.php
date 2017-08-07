@@ -10,7 +10,7 @@ public function __construct() {
 	public function datafix_folio(){
 
 		for ($i=1; $i < 100; $i++) { 
-			$result = $this->db->query("SELECT id_residuo_peligroso, id_persona, folio_manifiesto FROM residuos_peligrosos WHERE id_persona={$i} group by folio_manifiesto asc;")->result(); 
+			$result = $this->db->query("SELECT id_residuo_peligroso, id_persona, folio_manifiesto FROM residuos_peligrosos WHERE id_persona={$i} group by folio_manifiesto order by id_persona, id_residuo_peligroso asc;")->result(); 
 			$num = 1;
 	
 			foreach ($result as $row)  {

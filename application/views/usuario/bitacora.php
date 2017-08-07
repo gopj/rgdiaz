@@ -38,7 +38,7 @@
 								<td> <input type="checkbox" id="check" name="residuos_to_update[]" value="<?php echo $row->id_residuo_peligroso; ?>" style="width: 12px; height: 12px;"></td>
 						<?php } ?>
 								
-								<td><?php echo $row->folio; ?></td>
+								<td><?php echo $row->id_persona . "-" . $row->folio;  ?></td>
 								<td><?php echo $row->residuo; ?></td>
 								<td><?php echo $row->clave; ?></td>
 								<td><?php echo $row->cantidad; ?></td>

@@ -29,6 +29,7 @@
 			<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
 			<script type="text/javascript" src="js/formulario_bitacora.js"></script>
 			<script type="text/javascript" src="js/jquery.validate.js"></script>
+			<script type="text/javascript" src="js/bitacora.js"></script>
 		</head>
 		<body>
 			<nav>

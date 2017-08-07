@@ -36,9 +36,9 @@
 						<?php } else { ?>
 							<tr bgcolor="#f9f936">
 								<td hidden="true"> <strong> <?php echo $row->id_residuo_peligroso; ?> </strong> </td>
-								<td> <input type="checkbox" id="check" name="residuos_to_update[]" value="<?php echo $row->id_residuo_peligroso; ?>" style="width: 12px; height: 12px;"></td>
+								<td> <input type="checkbox" id="check" name="residuos_to_update[]" onclick='activarSalidas();' value="<?php echo $row->id_residuo_peligroso; ?>" style="width: 12px; height: 12px;"></td>
 						<?php } ?>
-								<td><?php echo $row->folio; ?></td>
+								<td><?php echo $row->id_persona . "-" . $row->folio; ?></td>
 								<td><?php echo $row->residuo; ?></td>
 								<td><?php echo $row->clave; ?></td>
 								<td><?php echo $row->cantidad; ?></td>
@@ -73,32 +73,32 @@
 		</div>
 	</div>
 
-	<div style="margin-top:10px;">
-		<div class="span2">
-			<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
-			<input type="submit" class="btn btn-primary pull-left" value="Registrar Salidas">
-		</div>
-
-		<div class="span2">
-				<a href="<?= site_url('administrador/manifiesto/' . $id_persona) ?>" class="btn btn-primary pull-left" > Generar Manifiesto </a>
-		</div>
-	</div>
-
 	</form>
 
-	<div class="row" style="margin-top:10px;">
-		<div class="span3"></div>
+	<div style="margin-top:10px;">
+		<!-- <div class="span3"></div> -->
 		<div class="span2">
 			<form action="<?php echo site_url('administrador/nuevo_registro'); ?>" method="POST">
 				<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
-				<input type="submit" class="btn btn-primary pull-right" value="Nuevo Registro">
+				<button type="submit" class="btn btn-primary pull-left" ><i class="icon-plus"></i> Nuevo Registro </button>
 			</form>
+		</div>
+
+		<div class="span2">
+			<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona" >		
+			<button id="reg_salidas" type="submit" form="form_bitacora_actualizar_registros" class="btn btn-primary pull-left" disabled="false"><i class="icon-check"></i> Registrar Salidas </button>
+		</div>		
+
+		<div class="span3"></div>
+
+		<div class="span2">
+				<a href="<?= site_url('administrador/manifiesto/' . $id_persona) ?>" class="btn btn-primary pull-left" > <i class="icon-file"></i> Generar Manifiesto </a>
 		</div>
 
 		<div class="span2">
 			<form action="<?php echo site_url('administrador/generar_excel'); ?>" method="POST">
 				<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
-				<input type="submit" class="btn btn-primary pull-left" name="excel" value="Generar Ecxel">
+				<button type="submit" class="btn btn-primary pull-left" name="excel" ><i class="icon-list-alt"></i> Generar Ecxel </button>
 			</form>
 		</div>
 	</div>
