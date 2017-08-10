@@ -106,7 +106,7 @@ function date_bitacora($s_date){
 		<div class="span2">
 			<form action="<?php echo site_url('administrador/generar_excel'); ?>" method="POST">
 				<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
-				<button type="submit" class="btn btn-primary pull-right" name="excel" ><i class="icon-list-alt"></i> Generar Ecxel </button>
+				<button type="submit" class="btn btn-primary pull-right" name="excel" ><i class="icon-list-alt"></i> Generar Excel </button>
 			</form>
 		</div>
 	</div>
