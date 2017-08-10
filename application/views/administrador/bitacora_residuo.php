@@ -1,3 +1,10 @@
+<?php 
+function date_bitacora($s_date){
+	$date = date_create($s_date);
+
+	return date_format($date, "d-m-Y");
+}
+?>
 <link rel="stylesheet" type="text/css" href="css/table_bitacora.css">
 
 <div class="span12">
@@ -45,8 +52,8 @@
 								<td><?php echo $row->unidad; ?></td>
 								<td><?php echo $row->caracteristica; ?></td>
 								<td><?php echo $row->area_generacion ?></td>
-								<td><?php echo $row->fecha_ingreso; ?></td>
-								<td><?php echo $row->fecha_salida; ?></td>
+								<td><?php echo date_bitacora($row->fecha_ingreso); ?></td>
+								<td><?php echo date_bitacora($row->fecha_salida); ?></td>
 								<td><?php echo $row->emp_tran; ?></td>
 								<td><?php echo $row->no_aut_transp; ?></td>
 								<td><?php echo $row->dest_final; ?></td>
@@ -73,6 +80,8 @@
 		</div>
 	</div>
 
+	<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona" >		
+
 	</form>
 
 	<div style="margin-top:10px;">
@@ -85,20 +94,19 @@
 		</div>
 
 		<div class="span2">
-			<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona" >		
 			<button id="reg_salidas" type="submit" form="form_bitacora_actualizar_registros" class="btn btn-primary pull-left" disabled="false"><i class="icon-check"></i> Registrar Salidas </button>
 		</div>		
 
 		<div class="span3"></div>
 
 		<div class="span2">
-				<a href="<?= site_url('administrador/manifiesto/' . $id_persona) ?>" class="btn btn-primary pull-left" > <i class="icon-file"></i> Generar Manifiesto </a>
+				<a href="<?= site_url('administrador/manifiesto/' . $id_persona) ?>" class="btn btn-primary pull-right" > <i class="icon-file"></i> Generar Manifiesto </a>
 		</div>
 
 		<div class="span2">
 			<form action="<?php echo site_url('administrador/generar_excel'); ?>" method="POST">
 				<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
-				<button type="submit" class="btn btn-primary pull-left" name="excel" ><i class="icon-list-alt"></i> Generar Ecxel </button>
+				<button type="submit" class="btn btn-primary pull-right" name="excel" ><i class="icon-list-alt"></i> Generar Ecxel </button>
 			</form>
 		</div>
 	</div>
