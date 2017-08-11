@@ -252,6 +252,34 @@ class Residuo_peligroso_model extends CI_Model {
 				r.fecha_ingreso asc;")->result();
 	}
 
+	function get_siguiente_folio($id_persona){
+
+		$result = $this->db->query("
+			SELECT 
+				count(*) as total
+			FROM 
+				residuos_peligrosos as r
+					LEFT JOIN areas a ON (r.id_area = a.id_area)
+					LEFT JOIN tipo_modalidad m ON (r.id_tipo_modalidad = m.id_tipo_modalidad)
+					LEFT JOIN tipo_emp_transportista et ON (r.id_tipo_emp_transportista = et.id_tipo_emp_transportista)
+					LEFT JOIN tipo_emp_destino ed ON (r.id_tipo_emp_destino = ed.id_tipo_emp_destino),
+				tipo_residuos as tr
+			WHERE
+				r.id_tipo_residuo = tr.id_tipo_residuo and
+				r.id_persona = {$id_persona} and r.folio_manifiesto is not null
+			GROUP BY
+				folio_manifiesto
+			ORDER BY
+				r.fecha_ingreso asc;")->result()[0]->total;
+
+
+		print_r($result);
+		die();
+
+		return $result;
+
+	}
+
 
 
 }

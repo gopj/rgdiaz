@@ -1144,6 +1144,7 @@ class Administrador extends CI_Controller {
 				$tipo_emp_destino 		= $this->emp_destino_model->get_tipo_emp_destino();
 				$tipo_modalidad 		= $this->modalidad_model->get_tipo_modalidad();
 				$actualizar_registros	= $this->input->post("residuos_to_update");
+				$siguente_folio 		= $this->residuo_peligroso_model->get_siguiente_folio($id_persona);
 				
 				$data = array(
 					'carpetas' 				=> $carpetas,
