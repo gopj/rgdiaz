@@ -1,8 +1,14 @@
 <?php 
 function date_bitacora($s_date){
-	$date = date_create($s_date);
 
-	return date_format($date, "d-m-Y");
+	if ($s_date == ""){
+		$date = "";
+	} else {
+		$date = date_create($s_date);
+		$date = date_format($date, "d-m-Y");
+	}
+
+	return $date;
 }
 ?>
 <link rel="stylesheet" type="text/css" href="css/table_bitacora.css">

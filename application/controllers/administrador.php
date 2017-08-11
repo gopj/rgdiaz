@@ -868,10 +868,15 @@ class Administrador extends CI_Controller {
 			$id_persona = $this->input->post('id_persona');
 			$nombre_cliente = $this->persona_model->get_nombre_cliente($id_persona);
 			$nombre_empresa = $this->persona_model->get_nombre_empresa($id_persona);
+			$nombre_empresa = str_replace(" ", "_", $nombre_empresa);
+			
 			$fecha=date("d-M-Y");
+			
+			$nombre_excel = $nombre_empresa . "_" . $fecha . ".xls";
+			
 			header('Content-Description: File Transfer');
 			header('Content-Type: application/octet-stream');
-			header('Content-Disposition: attachment; filename='.$nombre_empresa."_{$fecha}.xls");
+			header('Content-Disposition: attachment; filename='. $nombre_excel);
 			header('Content-Transfer-Encoding: binary');
 			header('Expires: 0');
 			header('Cache-Control: must-revalidate');
@@ -1144,7 +1149,7 @@ class Administrador extends CI_Controller {
 				$tipo_emp_destino 		= $this->emp_destino_model->get_tipo_emp_destino();
 				$tipo_modalidad 		= $this->modalidad_model->get_tipo_modalidad();
 				$actualizar_registros	= $this->input->post("residuos_to_update");
-				$siguente_folio 		= $this->residuo_peligroso_model->get_siguiente_folio($id_persona);
+				$siguiente_folio 		= $this->residuo_peligroso_model->get_siguiente_folio($id_persona);
 				
 				$data = array(
 					'carpetas' 				=> $carpetas,
@@ -1157,7 +1162,8 @@ class Administrador extends CI_Controller {
 					'tipo_emp_transportista'=> $tipo_emp_transportista,
 					'tipo_emp_destino' 		=> $tipo_emp_destino,
 					'tipo_modalidad' 		=> $tipo_modalidad,
-					'actualizar_registros' 	=> $actualizar_registros
+					'actualizar_registros' 	=> $actualizar_registros,
+					'siguiente_folio'		=> $siguiente_folio
 				);
 
 				$this->load->view('administrador/header_admin',$data);

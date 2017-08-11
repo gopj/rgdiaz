@@ -62,7 +62,7 @@ class Residuo_peligroso_model extends CI_Model {
 				r.id_tipo_residuo = tr.id_tipo_residuo and
 				r.id_persona = {$id_persona}
 			ORDER BY
-				r.fecha_ingreso asc;")->result();
+				r.folio_manifiesto asc;")->result();
 	}
 
 	public function get_bitacora($id_bitacora){
@@ -256,25 +256,17 @@ class Residuo_peligroso_model extends CI_Model {
 
 		$result = $this->db->query("
 			SELECT 
-				count(*) as total
+				folio_manifiesto
 			FROM 
-				residuos_peligrosos as r
-					LEFT JOIN areas a ON (r.id_area = a.id_area)
-					LEFT JOIN tipo_modalidad m ON (r.id_tipo_modalidad = m.id_tipo_modalidad)
-					LEFT JOIN tipo_emp_transportista et ON (r.id_tipo_emp_transportista = et.id_tipo_emp_transportista)
-					LEFT JOIN tipo_emp_destino ed ON (r.id_tipo_emp_destino = ed.id_tipo_emp_destino),
-				tipo_residuos as tr
+				residuos_peligrosos
 			WHERE
-				r.id_tipo_residuo = tr.id_tipo_residuo and
-				r.id_persona = {$id_persona} and r.folio_manifiesto is not null
+				id_persona = {$id_persona} and folio_manifiesto is not null
 			GROUP BY
 				folio_manifiesto
 			ORDER BY
-				r.fecha_ingreso asc;")->result()[0]->total;
+				folio_manifiesto desc limit 1;")->result()[0]->folio_manifiesto;
 
-
-		print_r($result);
-		die();
+		$result = $result + 1;
 
 		return $result;
 
