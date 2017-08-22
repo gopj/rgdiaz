@@ -71,6 +71,22 @@
 				</div>
 			</div>
 			<div class="control-group">
+				<label for="" class="control-label">Tipo de Contenedor:</label>
+				<div class="controls">
+					<div class="form-inline">
+						<input type="number" id="cantidad" class="txt" style="width:58%;" name="cantidad">
+						&nbsp;
+						<label for="radio1" class="radio">
+							<input type="radio" id="radio_bolsa" name="unidad" value="Bolsa" checked> Bolsa
+						</label>
+						&nbsp;
+						<label for="radio2" class="radio">
+							<input type="radio" id="radio_cubeta" name="unidad" value="Cubeta"> Cubeta
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="control-group">
 				<label for="" class="control-label">Area de generacion:</label>
 				<div class="controls">
 					<div class="form-inline">
