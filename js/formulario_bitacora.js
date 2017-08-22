@@ -76,23 +76,26 @@ function otra_destino(dato) {
 
 // Validaciones Cliente 
 function reg_bit_new(){ 
-	var expRegNum = /^\d*$/; // Expresion regular números positivos
-	var expRegNom = /^\s*$/; // Expresion regular nombre valido
-	var formulario = document.getElementById('form_bitacora_residuo_peligroso');
-	var residuo = document.getElementById('residuo');
-	var otro_residuo = document.getElementById('otro_residuo');
-	var clave = document.getElementById('clave');
-	var cantidad = document.getElementById('cantidad');
-	var radio1 = document.getElementById('radio1');
-	var radio2 = document.getElementById('radio2');
-	var check1 = document.getElementById('check1');	
-	var check2 = document.getElementById('check2');
-	var check3 = document.getElementById('check3');
-	var check4 = document.getElementById('check4');
-	var area_generacion = document.getElementById('area_generacion');
-	var otro_area = document.getElementById('otro_area');
-	var fecha_ingreso = document.getElementById('fecha_ingreso');
-	var valida = true;
+	var expRegNum 			= /^\d*$/; // Expresion regular números positivos
+	var expRegNom 			= /^\s*$/; // Expresion regular nombre valido
+	var formulario 			= document.getElementById('form_bitacora_residuo_peligroso');
+	var residuo 			= document.getElementById('residuo');
+	var otro_residuo 		= document.getElementById('otro_residuo');
+	var clave				= document.getElementById('clave');
+	var cantidad			= document.getElementById('cantidad');
+	var radio1				= document.getElementById('radio1');
+	var radio2				= document.getElementById('radio2');
+	var check1				= document.getElementById('check1');	
+	var check2				= document.getElementById('check2');
+	var check3				= document.getElementById('check3');
+	var check4				= document.getElementById('check4');
+	var cantidad_contenedor = document.getElementById('cantidad_contenedor');
+	var radio_bolsa 		= document.getElementById('radio_bolsa');
+	var radio_cubeta 		= document.getElementById('radio_cubeta');
+	var area_generacion 	= document.getElementById('area_generacion');
+	var otro_area 			= document.getElementById('otro_area');
+	var fecha_ingreso 		= document.getElementById('fecha_ingreso');
+	var valida 				= true;
 
 	if(!residuo.value){
 		alert("INGRESA EL CAMPO RESIDUO PELIGROSO");
@@ -154,6 +157,13 @@ function reg_bit_new(){
 	}else if(!check1.checked && !check2.checked && !check3.checked && !check4.checked){
 		alert("SELECCIONA ALGUNA CARACTERISTICA DE PELIGROSIDAD");
 		valida = false;
+	}else if(!cantidad_contenedor.value || !expRegNum.exec(cantidad_contenedor.value) || cantidad_contenedor.value == 0){
+		alert("INGRESA CANTIDAD DE CONTENEDOR O UN NUMERO VALIDO ");
+		cantidad_contenedor.focus();
+		valida = false;
+	}else if(!radio_bolsa.checked && !radio_cubeta.checked){
+		alert("INGRESA TIPO DE CONTENEDOR 'Bolsa o Cubeta'");
+		valida = false;
 	}else if(!area_generacion.value){
 			alert("SELECCIONA UN AREA DE GENERACION");
 			area_generacion.focus();
@@ -173,6 +183,7 @@ function reg_bit_new(){
 			fecha_ingreso.focus();
 			valida = false;
 	}
+
 	
 	
 	if(valida){

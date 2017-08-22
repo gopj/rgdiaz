@@ -995,6 +995,8 @@ class Administrador extends CI_Controller {
 			$data["otro_area"] 			= $this->input->post('otro_area');
 			$data["fecha_ingreso"] 		= $this->input->post('fecha_ingreso');
 			$data["fecha_insercion"] 	= date("Y-m-d H:i:s");
+			$data["cantidad_contenedor"]= $this->input->post('cantidad_contenedor');
+			$data["tipo_contenedor"]	= $this->input->post('tipo_contenedor');
 
 			//Residuo					
 			if ($data["residuo"] != "Otro") {
@@ -1471,6 +1473,34 @@ class Administrador extends CI_Controller {
 
 			$this->load->view("administrador/generar_manifiesto.php", $data);
 		}
+
+	}
+
+	public function transportistas_destinos() {
+
+		$status = 0;
+		$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
+
+		// Obtengo a todos mis clientes para seleccionar uno en opcion dar de baja y los mando al modal
+		$id_tipo_persona=3;
+		$id_status_persona=1;
+
+		// Mandar una variable para selecciar solo a los clientes que ya llenaron su info
+		$lleno_datos = 1;
+		$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona, $id_tipo_persona, $lleno_datos);
+		$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
+
+		$data = array(
+			'mensajes'=> $mensajesnuevos,
+			'clientes' => $cliente_baja,
+			'correo' => $correo_clientes,
+			'nombre_cliente' => $nombre_cliente,
+			'nombre_empresa' => $nombre_empresa
+		);
+
+		$this->load->view('administrador/header_admin', $data);
+		$this->load->view("administrador/transportistas_destinos.php", $data);
+		$this->load->view('administrador/footeru', $data);
 
 	}
 

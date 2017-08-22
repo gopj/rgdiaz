@@ -16,6 +16,61 @@ function creti($string){
 	return $creti_r;
 }
 
+function date_manifiesto($s_date){
+
+	if ($s_date == ""){
+		$date = "";
+	} else {
+		$date = date_create($s_date);
+		$date = date_format($date, "d-n-Y");
+
+		$date_split = explode("-", $date);
+
+		switch ($date_split[1]) {
+			case '1':
+				$date_split[1] = "Enero";
+				break;
+			case '2':
+				$date_split[1] = "Febrero";
+				break;
+			case '3':
+				$date_split[1] = "Marzo";
+				break;
+			case '4':
+				$date_split[1] = "Abril";
+				break;
+			case '5':
+				$date_split[1] = "Mayo";
+				break;
+			case '6':
+				$date_split[1] = "Junio";
+				break;
+			case '7':
+				$date_split[1] = "Julio";
+				break;
+			case '8':
+				$date_split[1] = "Agosto";
+				break;
+			case '9':
+				$date_split[1] = "Septiembre";
+				break;
+			case '10':
+				$date_split[1] = "Octubre";
+				break;
+			case '11':
+				$date_split[1] = "Noviembre";
+				break;
+			case '12':
+				$date_split[1] = "Diciembre";
+				break;
+		}
+
+		$date = $date_split[0] . " de " . $date_split[1] . " del " . $date_split[2];
+	}
+
+	return $date;
+}
+
 // create new PDF document
 $pdf = new MY_PDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
@@ -64,8 +119,8 @@ for ($i=0; $i < $num_table_res; $i++) {
 
 			$arr_residuos_manifiesto[$i][$j][] = $residuo_final;
 			$arr_residuos_manifiesto[$i][$j][] = creti($residuos_manifiesto[$r]->caracteristica);
-			$arr_residuos_manifiesto[$i][$j][] = "NULL";
-			$arr_residuos_manifiesto[$i][$j][] = "NULL";
+			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->cantidad_contenedor;;
+			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->tipo_contenedor;;
 			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->cantidad;
 			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->unidad;
 
@@ -228,19 +283,19 @@ for ($h=0; $h < $num_table_res; $h++) {
 		<tr>
 			<td width="20" align="center" rowspan="10"> </td>
 			<td width="215" align="left" class="defined"> 8 - NOMBRE DE LA EMPRESA TRANSPORTADORA </td>
-			<td width="394" align="center"> ' . $residuos_manifiesto[0]->emṕ_trans . ' </td>
+			<td width="394" align="center"> ' . $residuos_manifiesto[0]->emp_tran . ' </td>
 		</tr>	
 		<tr>
 			<td width="113" align="left" class="defined"> DOMICILIO</td>
-			<td width="192" align="center"> Monthatlán 281, Col. Villa Izcalli </td>
+			<td width="192" align="center"> ' . $residuos_manifiesto[0]->domicilio_transportista . ' </td>
 			<td width="136" align="left" class="defined"> TELEFONO</td>
-			<td width="168" align="center"> (312) 157 8255 </td>
+			<td width="168" align="center"> ' . $residuos_manifiesto[0]->telefono . ' </td>
 		</tr>
 		<tr>
 			<td width="113" align="left" class="defined"> NO. DE AUTORIZACIÓN SCT </td>
-			<td width="192" align="center"> 0617DIVR03082011230301001 </td>
+			<td width="192" align="center"> ' . $residuos_manifiesto[0]->no_autorizacion_sct . ' </td>
 			<td width="136" align="left" class="defined"> No. DE AUTORIZACION  SEMARNAT </td>
-			<td width="168" align="center"> 06-10-PS-I-01-2011 </td>
+			<td width="168" align="center"> ' . $residuos_manifiesto[0]->no_aut_transp . ' </td>
 		</tr>
 		<tr>
 			<td width="325" align="left" class="defined"> 9 - RECIBI LOS MATERIALES DESCRITOS EN EL MANIFIESTO PARA SU TRANSPORTE</td>
@@ -249,11 +304,11 @@ for ($h=0; $h < $num_table_res; $h++) {
 		</tr>
 		<tr>
 			<td width="113" align="left" class="defined"> NOMBRE </td>
-			<td width="192" align="center">  Ricardo Díaz Virgen </td>
+			<td width="192" align="center">  ' . $residuos_manifiesto[0]->resp_tec . ' </td>
 		</tr>
 		<tr>
 			<td width="113" align="left" class="defined"> FECHA DE EMBARQUE </td>
-			<td width="192" align="center"> 08 de Abril del 2017  </td>
+			<td width="192" align="center"> ' . date_manifiesto($residuos_manifiesto[0]->fecha_salida) . ' </td>
 			<td width="136" align="left" height="15" class="defined"> FIRMA </td>
 			<td width="168" align="center">  </td>
 		</tr>
@@ -270,31 +325,29 @@ for ($h=0; $h < $num_table_res; $h++) {
 			<td width="90" align="left" class="defined">  No. DE PLACA </td>
 		</tr>
 		<tr>
-			<td width="215" align="center"> Nissan estacas 	</td>
-			<td width="90" align="center">  637-EP-5</td>
-			<td width="214" align="center">  </td>
-			<td width="90" align="center">  </td>
+			<td width="215" align="center"> </td>
+			<td width="90" align="center"> </td>
+			<td width="214" align="center"> </td>
+			<td width="90" align="center"> </td>
 		</tr>	
 
 
 		<tr>
 			<td width="20" align="center" rowspan="9"> </td>
 			<td width="215" align="left" class="defined" rowspan="2"> &nbsp;<br/> 12 - NOMBRE DE LA EMPRESA </td>
-			<td width="260" align="center" rowspan="2"> Gestión Integral Ambiental de Occidente S.A. de C.V. </td>
+			<td width="260" align="center" rowspan="2"> ' . $residuos_manifiesto[0]->dest_final . ' </td>
 			<td class="defined" width="134" align="center"> AUTORIZACION SEMARNAT </td>
 		</tr>
 		<tr> 
-			<td width="134" class="data"> 06-09-PS-II-01-2011 </td>
+			<td width="134" class="data"> ' . $residuos_manifiesto[0]->no_aut_dest_final . ' </td>
 		</tr>
 		<tr>
 			<td width="215" align="left" class="defined"> 4.- DOMICILIO </td>
-			<td width="260" align="center"> CARRETERA A CALERAS KM 1.5 </td>
-			<td width="67" align="center" class="defined"> C.P. </td>
-			<td width="67" align="center"> 28130 </td>
+			<td width="394" align="center">' . $residuos_manifiesto[0]->domicilio_transportista . ' </td>
 		</tr>
 		<tr>
 			<td width="215" align="left" class="defined"> MUNICIPIO </td>
-			<td width="170" align="center"> TECOMÁN </td>
+			<td width="170" align="center"> </td>
 			<td width="90" align="center" class="defined"> ESTADO </td>
 			<td width="134" align="center"> COLIMA </td>
 		</tr>

@@ -57,7 +57,7 @@
 				<label for="dest_final" class="control-label">Nombre y Número de Autorización de Centro de Acopio o Destino final:</label>
 				<div class="controls">
 					<div class="form-inline" style="margin-bottom:10px;">
-						<select class="txt" name="dest_final" id="dest_final" onchange="otra_destino(this.value);">
+						<select class="txt" name="dest_final" id="dest_final" onchange="otra_destino(this.value);" style="width:50%">
 							<option value="">Seleccione una opción</option>
 							<?php foreach ($tipo_emp_destino as $row) {
 								echo "<option value='{$row->id_tipo_emp_destino}, {$row->no_autorizacion_destino}'> ".   mb_strimwidth($row->nombre_destino, 0, 55, '...') . "</option>";

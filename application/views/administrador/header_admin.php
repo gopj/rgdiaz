@@ -53,6 +53,7 @@
                           					<li><a href="#alta" data-toggle="modal">Dar de alta</a></li>
                           					<li><a href="#baja" data-toggle="modal">Dar de baja</a></li>
                           					<li><a href="<?php echo site_url('administrador/admin_clientes') ?>">Consulta</a></li>
+                          					<li><a href="<?php echo site_url('administrador/transportistas_destinos') ?>">Transportistas | Destinos</a></li>
                         				</ul>
 									</li>
 									<li class="divider-vertical"></li>
