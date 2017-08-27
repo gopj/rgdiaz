@@ -787,6 +787,7 @@ class Administrador extends CI_Controller {
 																	   $this->input->post('cp_empresa'),
 																	   $this->input->post('colonia_empresa'),
 																	   $this->input->post('numero_empresa'),
+																	   $this->input->post('numero_registro_ambiental'),
 																	   $this->input->post('estado'),
 																	   $this->input->post('municipio'),
 																	   $this->input->post('telefono_empresa'));
