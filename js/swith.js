@@ -29,7 +29,7 @@ function alta_cliente(){
 		//alert(email);
 		jQuery.ajax({
 			url:'http://localhost/rgdiaz/index.php/administrador/verifica_correo',	//<-- Url que va procesar la peticion
-			//url:'http://rgdiaz.com.mx/index.php/administrador/verifica_correo',
+			//url:'http://rdiaz.mx/index.php/administrador/verifica_correo',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -143,7 +143,7 @@ function eliminar_carpeta(){
 		//	---------------------	
 			jQuery.ajax({
 			url:'http://localhost/rgdiaz/index.php/administrador/eliminar_carpeta',	//<-- Url que va procesar la peticion
-			//url:'http://rgdiaz.com.mx/index.php/administrador/eliminar_carpeta',
+			//url:'http://rdiaz.mx/index.php/administrador/eliminar_carpeta',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -205,7 +205,7 @@ function compruebausuario(id){
 	//AJAX
 	jQuery.ajax({
 			url:'http://localhost/rgdiaz/index.php/administrador/obtiene_cliente',	//<-- Url que va procesar la peticion
-			//url:'http://rgdiaz.com.mx/index.php/administrador/obtiene_cliente',
+			//url:'http://rdiaz.mx/index.php/administrador/obtiene_cliente',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -272,6 +272,45 @@ function compruebausuario(id){
 		);
 
 	//echo site_url('administrador/obtiene_cliente'); ?>"  <--	Ruta de la peticion
+}
+
+function comprueba_emp_trans(id){
+	$("#nombre_emp_trans").val("");
+	$("#no_aut_trans").val("");
+	$("#no_aut_trans_sct").val("");
+	$("#domicilio_emp_trans").val("");
+	$("#tel_emp_trans").val("");
+
+	var id_tipo_emp_trans = id;
+
+	//AJAX
+	jQuery.ajax({
+			url:'http://localhost/rgdiaz/index.php/administrador/obtiene_emp_trans',	//<-- Url que va procesar la peticion
+			//url:'http://rdiaz.mx/index.php/administrador/obtiene_cliente',
+			timeout: 3000, //sets timeout to 3 seconds
+			type:'post',
+			data:{
+				id_tipo_emp_trans: id_tipo_emp_trans,
+			}
+		}).done(
+			function(resp)
+			{
+				var json_data = jQuery.parseJSON(resp);
+
+				alert(json_data.nombre_emp_trans);
+				var nombre_emp_trans = json_data.nombre_emp_trans;
+				var no_autorizacion_transportista = json_data.no_autorizacion_transportista;
+				var no_autorizacion_sct = json_data.no_autorizacion_sct;
+				var domicilio = json_data.domicilio;
+				var telefono = json_data.telefono;
+
+				$("#nombre_emp_trans").val(nombre_emp_trans);
+				$("#no_autorizacion_transportista").val(no_autorizacion_transportista);
+				$("#no_autorizacion_sct").val(no_autorizacion_sct);
+				$("#domicilio").val(domicilio);
+				$("#telefono").val(telefono);
+			}
+		);
 }
 
 function alta_cliente_admin(){
@@ -356,7 +395,7 @@ function alta_cliente_admin(){
 		var empresa = nombreEmpresa.value;
 	jQuery.ajax({
 			url:'http://localhost/rgdiaz/index.php/administrador/verifica_correo',	//<-- Url que va procesar la peticion
-			//url:'http://rgdiaz.com.mx/index.php/administrador/verifica_correo',
+			//url:'http://rdiaz.mx/index.php/administrador/verifica_correo',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -408,7 +447,7 @@ function envia_correo_admin(){
 		//AJAX
 	jQuery.ajax({
 			url:'http://localhost/rgdiaz/index.php/administrador/envia_correo_admin',	//<-- Url que va procesar la peticion
-			//url:'http://rgdiaz.com.mx/index.php/administrador/envia_correo_admin',
+			//url:'http://rdiaz.mx/index.php/administrador/envia_correo_admin',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -493,7 +532,7 @@ function update(){
 	// AJAX
 	jQuery.ajax({
 			url:'http://localhost/rgdiaz/index.php/administrador/update_status_cliente',	//<-- Url que va procesar la peticion
-			//url:'http://rgdiaz.com.mx/index.php/administrador/update_status_cliente',
+			//url:'http://rdiaz.mx/index.php/administrador/update_status_cliente',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{

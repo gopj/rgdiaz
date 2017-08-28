@@ -11,6 +11,10 @@ public function __construct() {
 		return $this->db->query("SELECT * FROM tipo_emp_transportista;")->result();
 	}
 
+	public function get_by_id_tipo_emp_transportista($id){
+		return $this->db->query("SELECT * FROM tipo_emp_transportista WHERE id_tipo_emp_transportista=" . $id . ";")->result();
+	}
+
 	public function get_nombre_trans($id){
 		$sql = "SELECT e.nombre_empresa
 				FROM residuos_peligrosos as r, tipo_emp_transportista as e

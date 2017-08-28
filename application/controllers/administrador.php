@@ -1490,19 +1490,84 @@ class Administrador extends CI_Controller {
 		$lleno_datos = 1;
 		$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona, $id_tipo_persona, $lleno_datos);
 		$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
+		$emp_transportista = $this->emp_transportista_model->get_tipo_emp_transportista();
 
 		$data = array(
 			'mensajes'=> $mensajesnuevos,
 			'clientes' => $cliente_baja,
 			'correo' => $correo_clientes,
-			'nombre_cliente' => $nombre_cliente,
-			'nombre_empresa' => $nombre_empresa
+			'emp_transportista' => $emp_transportista
 		);
 
 		$this->load->view('administrador/header_admin', $data);
 		$this->load->view("administrador/transportistas_destinos.php", $data);
 		$this->load->view('administrador/footeru', $data);
 
+	}
+
+	public function obtiene_emp_trans(){
+		$emp_transportista= $this->emp_transportista_model->get_by_id_tipo_emp_transportista($this->input->post('id_tipo_emp_trans'));
+
+		$data = array (
+				'id_persona' => $emp_transportista->id_tipo_emp_transportista,
+				'nombre_emp_trans' => $emp_transportista->nombre_empresa,
+				'no_autorizacion_transportista' => $emp_transportista->no_autorizacion_transportista,
+				'no_autorizacion_sct' => $emp_transportista->no_autorizacion_sct,
+				'domicilio' => $emp_transportista->domicilio,
+				'telefono' => $emp_transportista->telefono,
+		);
+
+		print_r($data);
+		die();
+
+		echo json_encode($data);
+	}
+
+	public function actualizar_transportistas() {
+
+		$status = 0;
+		$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
+
+		// Obtengo a todos mis clientes para seleccionar uno en opcion dar de baja y los mando al modal
+		$id_tipo_persona=3;
+		$id_status_persona=1;
+
+		// Mandar una variable para selecciar solo a los clientes que ya llenaron su info
+		$lleno_datos = 1;
+		$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona, $id_tipo_persona, $lleno_datos);
+		$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
+		$emp_transportista = $this->emp_transportista_model->get_tipo_emp_transportista();
+
+		$data = array(
+			'mensajes'=> $mensajesnuevos,
+			'clientes' => $cliente_baja,
+			'correo' => $correo_clientes,
+			'emp_transportista' => $emp_transportista
+		);
+
+		$this->load->view('administrador/header_admin', $data);
+		$this->load->view("administrador/transportistas_destinos.php", $data);
+		$this->load->view('administrador/footeru', $data);
+
+	}
+
+	public function mail_test() { 
+		$correo = "gopixc@gmail.com";
+		$de = "diaz281@yahoo.com.mx";
+		$para = "$correo";
+		$asunto = "RDÍAZ Servicios Integrales en Materia Ambiental";
+		$mensaje = "DATOS DE ACCESO AL SISTEMA<br/>";
+		$mensaje .= "Tu Correo es: $correo<br>";
+		$mensaje .= "Tu contraseña es: 123 <br/><br/>";
+		$mensaje .= "Accede a tu cuenta de usuario en el siguiente enlace: <br/>";
+		$mensaje .= "<a href='http://rgdiaz.com.mx/index.php/home/sesion'>rgdiaz.com.mx/index.php/home/sesion</a>";
+
+		
+		$cabeceras = "MIME-Version: 1.0\r\n";
+		$cabeceras .= "Content-type: text/html; charset=iso-8859-1\r\n";
+		$cabeceras .= "From: $de\r\n";
+
+		mail($para,$asunto,$mensaje,$cabeceras);
 	}
 
 }
