@@ -1506,7 +1506,8 @@ class Administrador extends CI_Controller {
 	}
 
 	public function obtiene_emp_trans(){
-		$emp_transportista= $this->emp_transportista_model->get_by_id_tipo_emp_transportista($this->input->post('id_tipo_emp_trans'));
+		//$emp_transportista= $this->emp_transportista_model->get_by_id_tipo_emp_transportista($this->input->post('id_tipo_emp_trans'));
+		$emp_transportista= $this->emp_transportista_model->get_by_id_tipo_emp_transportista(1);
 
 		$data = array (
 				'id_persona' => $emp_transportista->id_tipo_emp_transportista,
