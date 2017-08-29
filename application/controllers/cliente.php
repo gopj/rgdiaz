@@ -14,9 +14,13 @@ class Cliente extends CI_Controller {
 		$this->load->model('emp_destino_model');
 		$this->load->model('modalidad_model');
 		$this->load->helper('download');
-		$this->load->library('Excel');
 		$this->load->library('session');
 		$this->load->library('email');
+		$this->load->library('Excel');
+		$this->load->library('MY_PDF');
+		$this->load->library('MY_Output');
+		$this->load->helper('file');
+		$this->load->helper('url');
 	}
 
 	#	Metodo index carga la vista principal del cliente
@@ -477,6 +481,7 @@ class Cliente extends CI_Controller {
 				$tipo_emp_destino 		= $this->emp_destino_model->get_tipo_emp_destino();
 				$tipo_modalidad 		= $this->modalidad_model->get_tipo_modalidad();
 				$actualizar_registros	= $this->input->post("residuos_to_update");
+				$siguiente_folio 		= $this->residuo_peligroso_model->get_siguiente_folio($id);
 				
 				$data = array(
 					'carpetas' 				=> $carpetas,
@@ -486,7 +491,8 @@ class Cliente extends CI_Controller {
 					'tipo_emp_transportista'=> $tipo_emp_transportista,
 					'tipo_emp_destino' 		=> $tipo_emp_destino,
 					'tipo_modalidad' 		=> $tipo_modalidad,
-					'actualizar_registros' 	=> $actualizar_registros
+					'actualizar_registros' 	=> $actualizar_registros,
+					'siguiente_folio'		=> $siguiente_folio
 				);
 
 				$this->load->view('usuario/header_usuario',$data);
@@ -592,6 +598,8 @@ class Cliente extends CI_Controller {
 			$data["otro_area"] 			= $this->input->post('otro_area');
 			$data["fecha_ingreso"] 		= $this->input->post('fecha_ingreso');
 			$data["fecha_insercion"] 	= date("Y-m-d H:i:s");
+			$data["cantidad_contenedor"]= $this->input->post('cantidad_contenedor');
+			$data["tipo_contenedor"]	= $this->input->post('tipo_contenedor');
 
 			//Residuo					
 			if ($data["residuo"] != "Otro") {
@@ -720,14 +728,20 @@ class Cliente extends CI_Controller {
 	public function generar_excel()
 	{
 		if($this->input->post()){
-			$id=$this->session->userdata('id');
-			$nombre_empresa = $this->persona_model->get_nombre_empresa($id);
 			$this->load->view('usuario/exce');
 			$ruta='application/views/usuario/exce.xls';
+			$id_persona = $this->input->post('id_persona');
+			$nombre_cliente = $this->persona_model->get_nombre_cliente($id_persona);
+			$nombre_empresa = $this->persona_model->get_nombre_empresa($id_persona);
+			$nombre_empresa = str_replace(" ", "_", $nombre_empresa);
+			
 			$fecha=date("d-M-Y");
+			
+			$nombre_excel = $nombre_empresa . "_" . $fecha . ".xls";
+			
 			header('Content-Description: File Transfer');
 			header('Content-Type: application/octet-stream');
-			header('Content-Disposition: attachment; filename='.$nombre_empresa."_{$fecha}.xls");
+			header('Content-Disposition: attachment; filename='. $nombre_excel);
 			header('Content-Transfer-Encoding: binary');
 			header('Expires: 0');
 			header('Cache-Control: must-revalidate');
@@ -737,6 +751,69 @@ class Cliente extends CI_Controller {
 			flush();
 			readfile($ruta);
 			exit;	
+		} else{
+			redirect('cliente');
 		}
+	}
+
+	public function manifiesto($id_persona){
+
+		$status = 0;
+		$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
+		$total			= $this->notificacion_model->obtiene_noticliente($id_persona, $status);
+		$data = array(
+			'mensajes'=> $mensajesnuevos,
+			'numnoti' => $total,
+			'id' => $id_persona,
+
+		);
+		$this->load->view('usuario/header_usuario',$data);
+
+		#	Obtengo a todos mis clientes para seleccionar uno en opcion dar de baja y los mando al modal
+		$id_tipo_persona=3;
+		$id_status_persona=1;
+		// Mandar una variable para selecciar solo a los clientes que ya llenaron su info
+		$lleno_datos = 1;
+		$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona,$id_tipo_persona,$lleno_datos);
+		$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
+		$nombre_cliente = $this->persona_model->get_nombre_cliente($id_persona);
+		$nombre_empresa = $this->persona_model->get_nombre_empresa($id_persona);
+		$email = $this->persona_model->getCorreo($id_persona);
+		$datos_popover = $this->notificacion_model->get_new_noti($status, $id_persona);
+		$cliente_manifiestos = $this->residuo_peligroso_model->cliente_manifiestos($id_persona);
+
+
+		$data3 = array(
+			'clientes' => $cliente_baja,
+			'correo' => $correo_clientes,
+			'id_persona' => $id_persona,
+			'nombre_cliente' => $nombre_cliente,
+			'nombre_empresa' => $nombre_empresa,
+			'email' => $email,
+			'cliente_manifiestos' => $cliente_manifiestos,
+			'new_noti' =>$datos_popover,
+		);
+		
+		$this->load->view("usuario/manifiesto.php", $data3);
+	
+		$this->load->view('usuario/footer_usuario',$data3);
+
+
+	}
+
+	public function generar_manifiesto($id_persona) {
+
+		if ($this->input->post()) {
+
+			$data["id_persona"] = $id_persona;
+			$data["manifiesto"] = $this->input->post('manifiesto');
+			$data["nombre_cliente"] = $this->persona_model->get_nombre_cliente($id_persona);
+			$data["nombre_empresa"] = $this->persona_model->get_nombre_empresa($id_persona);
+			$data["residuos_manifiesto"] = $this->residuo_peligroso_model->get_residuos_manifiesto($id_persona, $data["manifiesto"]);
+			$data["datos_empresa"] = $this->persona_model->get_datos_empresa($id_persona);
+
+			$this->load->view("usuario/generar_manifiesto.php", $data);
+		}
+
 	}	
 }

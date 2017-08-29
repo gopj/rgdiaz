@@ -1,3 +1,17 @@
+<?php 
+function date_bitacora($s_date){
+
+	if ($s_date == ""){
+		$date = "";
+	} else {
+		$date = date_create($s_date);
+		$date = date_format($date, "d-m-Y");
+	}
+
+	return $date;
+}
+?>
+
 <link rel="stylesheet" type="text/css" href="css/table_bitacora.css">
 
 <div class="span12">
@@ -10,11 +24,13 @@
 					<!-- <th class="table-residuos">#</th> -->
 					<th>SELECCIONA</th>
 					<th>FOLIO DEL MANIFIESTO</th>
-					<th>RESIDUO PELIGROSO</th>
+					<th style="width: 100px;">RESIDUO PELIGROSO</th>
 					<th>CLAVE</th>
 					<th>CANTIDAD</th>
 					<th>UNIDAD MEDIDA</th>
 					<th>CARACTERÍSTICA PELIGROSIDAD</th>
+					<th>CANTIDAD CONTENEDOR</th>
+					<th>TIPO CONTENEDOR</th>
 					<th>ÁREA DE GENERACIÓN</th>
 					<th>FECHA INGRESO</th>
 					<th>FECHA SALIDA</th>
@@ -35,18 +51,20 @@
 						<?php } else { ?>
 							<tr bgcolor="#f9f936">
 								<td hidden="true"> <strong> <?php echo $row->id_residuo_peligroso; ?> </strong> </td>
-								<td> <input type="checkbox" id="check" name="residuos_to_update[]" value="<?php echo $row->id_residuo_peligroso; ?>" style="width: 12px; height: 12px;"></td>
+								<td> <input type="checkbox" id="check" name="residuos_to_update[]" onclick='activarSalidas();' value="<?php echo $row->id_residuo_peligroso; ?>" style="width: 12px; height: 12px;"></td>
 						<?php } ?>
 								
-								<td><?php echo $row->id_persona . "-" . $row->folio;  ?></td>
+								<td><?php echo $row->id_persona . "-" . $row->folio; ?></td>
 								<td><?php echo $row->residuo; ?></td>
 								<td><?php echo $row->clave; ?></td>
 								<td><?php echo $row->cantidad; ?></td>
 								<td><?php echo $row->unidad; ?></td>
 								<td><?php echo $row->caracteristica; ?></td>
+								<td><?php echo $row->cantidad_contenedor; ?></td>
+								<td><?php echo $row->tipo_contenedor; ?></td>
 								<td><?php echo $row->area_generacion ?></td>
-								<td><?php echo $row->fecha_ingreso; ?></td>
-								<td><?php echo $row->fecha_salida; ?></td>
+								<td><?php echo date_bitacora($row->fecha_ingreso); ?></td>
+								<td><?php echo date_bitacora($row->fecha_salida); ?></td>
 								<td><?php echo $row->emp_tran; ?></td>
 								<td><?php echo $row->no_aut_transp; ?></td>
 								<td><?php echo $row->dest_final; ?></td>
@@ -76,28 +94,32 @@
 			</table>
 		</div>
 	</div>
-
-	<div style="margin-top:10px;">
-		<div class="span2">
-			<input type="hidden" value="<?php echo $id; ?>" name="id_persona">
-			<input type="submit" class="btn btn-primary pull-left" value="Registrar Salidas">
-		</div>
-	</div>
 	</form>
 
-	<div class="row" style="margin-top:10px;">
-		<div class="span5"></div>
-		<div class="span1">
+
+	<div style="margin-top:10px;">
+		<!-- <div class="span3"></div> -->
+		<div class="span2">
 			<form action="<?php echo site_url('cliente/nuevo_registro'); ?>" method="POST">
 				<input type="hidden" value="<?php echo $id; ?>" name="id_persona">
-				<input type="submit" class="btn btn-primary pull-right" value="Nuevo Registro">
+				<button type="submit" class="btn btn-primary pull-left" ><i class="icon-plus"></i> Nuevo Registro </button>
 			</form>
+		</div>
+
+		<div class="span2">
+			<button id="reg_salidas" type="submit" form="form_bitacora_actualizar_registros" class="btn btn-primary pull-left" disabled="false"><i class="icon-check"></i> Registrar Salidas </button>
+		</div>		
+
+		<div class="span3"></div>
+
+		<div class="span2">
+				<a href="<?= site_url('cliente/manifiesto/' . $id) ?>" class="btn btn-primary pull-right" > <i class="icon-file"></i> Generar Manifiesto </a>
 		</div>
 
 		<div class="span2">
 			<form action="<?php echo site_url('cliente/generar_excel'); ?>" method="POST">
 				<input type="hidden" value="<?php echo $id; ?>" name="id_persona">
-				<input type="submit" class="btn btn-primary pull-left" name="excel" value="Generar Ecxel">
+				<button type="submit" class="btn btn-primary pull-right" name="excel" ><i class="icon-list-alt"></i> Generar Excel </button>
 			</form>
 		</div>
 	</div>

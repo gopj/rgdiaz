@@ -315,6 +315,8 @@ function comprueba_emp_dest(id){
 	$("#nombre_emp_dest").val("");
 	$("#no_aut_dest").val("");
 	$("#domicilio_emp_dest").val("");
+	$("#municipio_emp_dest").val("");
+	$("#estado_emp_dest").val("");
 
 	var id_tipo_emp_dest = id;
 
@@ -331,13 +333,17 @@ function comprueba_emp_dest(id){
 			function(resp)
 			{
 				var json_data = jQuery.parseJSON(resp);
-				var nombre_emp_dest = json_data.nombre_emp_trans;
+				var nombre_emp_dest = json_data.nombre_emp_dest;
 				var no_aut_dest = json_data.no_autorizacion_destino;
 				var domicilio_emp_dest = json_data.domicilio;
+				var municipio_emp_dest = json_data.municipio;
+				var estado_emp_dest = json_data.estado;
 
 				$("#nombre_emp_dest").val(nombre_emp_dest);
 				$("#no_aut_dest").val(no_aut_dest);
 				$("#domicilio_emp_dest").val(domicilio_emp_dest);
+				$("#municipio_emp_dest").val(municipio_emp_dest);
+				$("#estado_emp_dest").val(estado_emp_dest);
 			}
 		);
 }

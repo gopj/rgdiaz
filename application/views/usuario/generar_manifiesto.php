@@ -390,5 +390,5 @@ $fileNL = $filelocation."/".$filename; //Linux
 //Close and output PDF document
 $pdf->Output($fileNL, 'F');
 
-redirect('administrador/manifiesto/' . $id_persona, 'refresh');
+redirect('cliente/manifiesto/' . $id_persona, 'refresh');
 ?>

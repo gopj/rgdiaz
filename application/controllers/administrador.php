@@ -1440,6 +1440,7 @@ class Administrador extends CI_Controller {
 		$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
 		$nombre_cliente = $this->persona_model->get_nombre_cliente($id_persona);
 		$nombre_empresa = $this->persona_model->get_nombre_empresa($id_persona);
+		$email = $this->persona_model->getCorreo($id_persona);
 
 		$cliente_manifiestos = $this->residuo_peligroso_model->cliente_manifiestos($id_persona);
 
@@ -1450,6 +1451,7 @@ class Administrador extends CI_Controller {
 			'id_persona' => $id_persona,
 			'nombre_cliente' => $nombre_cliente,
 			'nombre_empresa' => $nombre_empresa,
+			'email' => $email,
 			'cliente_manifiestos' => $cliente_manifiestos
 		);
 		
@@ -1527,9 +1529,11 @@ class Administrador extends CI_Controller {
 		//$emp_destino = $this->emp_destino_model->get_by_id_tipo_emp_destino(1);
 
 		$data = array (
-				'nombre_emp_trans' => $emp_destino->nombre_destino,
+				'nombre_emp_dest' => $emp_destino->nombre_destino,
 				'no_autorizacion_destino' => $emp_destino->no_autorizacion_destino,
 				'domicilio' => $emp_destino->domicilio,
+				'municipio' => $emp_destino->municipio,
+				'estado' => $emp_destino->estado,
 		);
 
 		echo json_encode($data);
@@ -1561,6 +1565,8 @@ class Administrador extends CI_Controller {
 			$data["nombre_emp_dest"]	= $this->input->post('nombre_emp_dest');
 			$data["no_aut_dest"]		= $this->input->post('no_aut_dest');
 			$data["domicilio_emp_dest"]	= $this->input->post('domicilio_emp_dest');
+			$data["municipio_emp_dest"]	= $this->input->post('municipio_emp_dest');
+			$data["estado_emp_dest"]	= $this->input->post('estado_emp_dest');
 
 			$this->emp_destino_model->actualiza_emp_destino($data);
 

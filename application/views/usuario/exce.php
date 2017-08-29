@@ -8,6 +8,7 @@
 						$objReader = PHPExcel_IOFactory::createReader('Excel5');
 						$objPHPExcel = $objReader->load("plantilla/plantilla.xls");
 						$residuos_peligrosos = $this->residuo_peligroso_model->get_residuos($id_persona);
+						$nombre_empresa = $this->persona_model->get_nombre_empresa($id_persona);
 						$baseRow = 3;
 
 						$style = array(
@@ -17,7 +18,6 @@
 							'font' => array(
 								'bold' => true
 							)
-
 						);
 
 						$objPHPExcel->getActiveSheet()->mergeCells('B1:P1');
@@ -42,8 +42,7 @@
 							                ->setCellValue('M'.$col, $r->dest_final)
 							               	->setCellValue('N'.$col, $r->no_aut_dest_final)
 							               	->setCellValue('O'.$col, $r->sig_manejo)
-							               	->setCellValue('P'.$col, $r->resp_tec);
-							                              
+							               	->setCellValue('P'.$col, $r->resp_tec);                    
 						}
 						echo date('H:i:s') , " Write to Excel5 format" , EOL;
 						$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');

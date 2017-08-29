@@ -1,7 +1,3 @@
-<?php 
-//print_r($tipo_emp_transportista);
-
-?>
 <div class="span9">
 	<legend><center>Nuevo Registro</center></legend>
 	<form id="form_bitacora_residuo_peligroso" action="<?php echo site_url('cliente/guardar_registro_nueva'); ?>" method="post">
@@ -43,7 +39,7 @@
 						<input type="number" id="cantidad" class="txt" style="width:58%;" name="cantidad">
 						&nbsp;
 						<label for="radio1" class="radio">
-							<input type="radio" id="radio1" name="unidad" value="Kg" checked>Kg
+							<input type="radio" id="radio1" name="unidad" value="Kg">Kg
 						</label>
 						&nbsp;
 						<label for="radio2" class="radio">
@@ -75,6 +71,25 @@
 				</div>
 			</div>
 			<div class="control-group">
+				<label for="" class="control-label">Cantidad Contenedor:</label>
+				<div class="controls">
+					<div class="form-inline">
+						<input type="number" id="cantidad_contenedor" class="txt" style="width:58%;" name="cantidad_contenedor">
+						&nbsp;
+	
+						<label>Tipo: </label> &nbsp;&nbsp;
+	
+						<label for="radio1" class="radio">
+							<input type="radio" id="radio_bolsa" name="tipo_contenedor" value="Bolsa"> Bolsa
+						</label>
+						&nbsp;
+						<label for="radio2" class="radio">
+							<input type="radio" id="radio_cubeta" name="tipo_contenedor" value="Cubeta"> Cubeta
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="control-group">
 				<label for="" class="control-label">Area de generacion:</label>
 				<div class="controls">
 					<div class="form-inline">
@@ -101,6 +116,11 @@
 	</div>
 	<input type="hidden" name="id_persona" value="<?php echo $id_persona; ?>">
 	<input type="button" onclick="reg_bit_new();" class="btn btn-primary pull-right" value="Guardar">
+	</form>
+
+	<form id="regresar_bitacora" method='post' action="<?php echo site_url('administrador/bitacora');?>">
+		<input type="hidden" name="id_persona" value="<?php echo $id_persona; ?>">
+		<input class="btn btn-warning pull-left" id="regresar_bitacora"  type="submit" value="Cancelar">
 	</form>
 </div>
 

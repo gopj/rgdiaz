@@ -1,5 +1,5 @@
 <?php
-	//Numero de Registros seleccionados
+	//Numero de Registros seleccionados	
 	$nvals = count($actualizar_registros);
 	$str_act_reg = "";
 	for ($i = 0; $i < $nvals; $i++) {
@@ -12,7 +12,7 @@
 ?>
 
 <div class="span9">
-	<legend><center>Actualizar Registros - <?= $str_act_reg; ?> </center></legend>
+	<legend><center>Actualizar Registros - <?php echo $str_act_reg; ?> </center></legend>
 	<form id="form_actualizar_registros" action="<?php echo site_url('cliente/actualizar_registros'); ?>" method="post">
 	<div class="well">
 		<br>
@@ -50,14 +50,14 @@
 			<div class="control-group">
 				<label for="folio" class="control-label">Folio del Manifiesto:</label>
 				<div class="controls">
-					<input type="text" id="folio" name="folio" class="txt" style="width:48%">
+					<input type="text" id="folio" name="folio" class="txt" style="width:48%" value="<?= $siguiente_folio ?>" readonly>
 				</div>
 			</div>
 			<div class="control-group">
 				<label for="dest_final" class="control-label">Nombre y Número de Autorización de Centro de Acopio o Destino final:</label>
 				<div class="controls">
 					<div class="form-inline" style="margin-bottom:10px;">
-						<select class="txt" name="dest_final" id="dest_final" onchange="otra_destino(this.value);">
+						<select class="txt" name="dest_final" id="dest_final" onchange="otra_destino(this.value);" style="width:50%">
 							<option value="">Seleccione una opción</option>
 							<?php foreach ($tipo_emp_destino as $row) {
 								echo "<option value='{$row->id_tipo_emp_destino}, {$row->no_autorizacion_destino}'> ".   mb_strimwidth($row->nombre_destino, 0, 55, '...') . "</option>";
@@ -107,6 +107,11 @@
 	<input type="hidden" name="registros" value="<?php echo $str_act_reg ?>">
 	<input type="submit" class="btn btn-primary pull-right" value="Guardar">
 	<!-- <input type="button" onclick="reg_bit_update();" class="btn btn-primary pull-right" value="Guardar"> -->
+	</form>
+
+	<form id="regresar_bitacora" method='post' action="<?php echo site_url('cliente/ver_bitacora/');?>">
+		<input type="hidden" name="id_persona" value="<?php echo $id; ?>">
+		<input class="btn btn-warning pull-left" id="regresar_bitacora"  type="submit" value="Cancelar">
 	</form>
 </div>
 

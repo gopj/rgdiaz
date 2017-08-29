@@ -104,6 +104,20 @@
 								</span>
 								<input class="txt-well" id="domicilio_emp_dest" name="domicilio_emp_dest" type='text'>
 							</div>
+							Municipio
+							<div class='input-prepend'>
+								<span class='add-on'>
+									<img class="icon-g-google-maps">
+								</span>
+								<input class="txt-well" id="municipio_emp_dest" name="municipio_emp_dest" type='text'>
+							</div>
+							Estado
+							<div class='input-prepend'>
+								<span class='add-on'>
+									<img class="icon-g-google-maps">
+								</span>
+								<input class="txt-well" id="estado_emp_dest" name="estado_emp_dest" type='text'>
+							</div>
 
 							<br/>
 							<?php echo anchor('administrador/admin_clientes/', 'Regresar', 'class="btn btn-warning"'); ?>	

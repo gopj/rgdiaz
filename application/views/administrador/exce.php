@@ -18,7 +18,6 @@
 							'font' => array(
 								'bold' => true
 							)
-
 						);
 
 						$objPHPExcel->getActiveSheet()->mergeCells('B1:P1');
@@ -43,8 +42,7 @@
 							                ->setCellValue('M'.$col, $r->dest_final)
 							               	->setCellValue('N'.$col, $r->no_aut_dest_final)
 							               	->setCellValue('O'.$col, $r->sig_manejo)
-							               	->setCellValue('P'.$col, $r->resp_tec);
-							                              
+							               	->setCellValue('P'.$col, $r->resp_tec);                        
 						}
 						echo date('H:i:s') , " Write to Excel5 format" , EOL;
 						$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');

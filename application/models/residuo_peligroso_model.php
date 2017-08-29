@@ -241,6 +241,8 @@ class Residuo_peligroso_model extends CI_Model {
 				et.telefono as telefono,
 				ed.nombre_destino as dest_final,
 				ed.domicilio as domicilio_destino,
+				ed.municipio as municipio_destino,
+                ed.estado as estado_destino,
 				r.resp_tec as resp_tec,
 				et.no_autorizacion_transportista as no_aut_transp,
 				ed.no_autorizacion_destino as no_aut_dest_final,

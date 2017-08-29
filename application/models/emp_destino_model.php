@@ -49,6 +49,8 @@ public function __construct() {
 				->set('nombre_destino'			,$data['nombre_emp_dest'])
 				->set('no_autorizacion_destino'	,$data['no_aut_dest'])
 				->set('domicilio'				,$data['domicilio_emp_dest'])
+				->set('municipio'				,$data['municipio_emp_dest'])
+				->set('estado'					,$data['estado_emp_dest'])
 				->where('id_tipo_emp_destino'	,$data['id_emp_destino'])
 				->update('tipo_emp_destino');
 

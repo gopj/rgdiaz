@@ -1,6 +1,6 @@
 <div class="span9">
 	<center><legend>Generador de Manifiesto - <?= $email->correo; ?></legend></center>
-	<form id="generar_manifiesto" action="<?php echo site_url('administrador/generar_manifiesto'). "/" . $id_persona; ?>" method="post">
+	<form id="generar_manifiesto" action="<?php echo site_url('cliente/generar_manifiesto'). "/" . $id_persona; ?>" method="post">
 		<div class="row">
 			<div class="span3">
 				<div class='input-prepend'>
@@ -41,7 +41,7 @@
 
 	<br/><br/>
 
-	<?php echo anchor('administrador/bitacora/' . $id_persona, 'Regresar', 'class="btn btn-warning"'); ?>
+	<?php echo anchor('cliente/ver_bitacora/', 'Regresar', 'class="btn btn-warning"'); ?>
 	
 
 </div>
