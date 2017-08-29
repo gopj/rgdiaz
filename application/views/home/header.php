@@ -144,5 +144,13 @@
 				<div class="row">
 					<div class="span12">
 						<img src="img/logo.png" style="height:119px; width:300px;">
+
+						<a href="https://www.facebook.com/RD%C3%ADaz-304155623326307/" target="_blank" class="pull-right" style="padding-top:50px;">
+							<img src="img/Facebook_Logo.png" style="height:60px; width:55px;">
+						</a>
 					</div>
 				</div>
+
+					
+				
+				
