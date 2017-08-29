@@ -384,7 +384,7 @@ for ($h=0; $h < $num_table_res; $h++) {
 
 //$filename= "{$nombre_empresa}_{$manifiesto}.pdf";
 $filename= "rdiaztmp{$id_persona}.pdf"; 
-$filelocation = $_SERVER['DOCUMENT_ROOT'] ."rgdiaz/img/pdf";
+$filelocation = $_SERVER['DOCUMENT_ROOT'] ."img/pdf";
 $fileNL = $filelocation."/".$filename; //Linux
 
 //Close and output PDF document

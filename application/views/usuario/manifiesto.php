@@ -26,7 +26,7 @@
 
 	<?php 
 
-		$pdfpath = $_SERVER['DOCUMENT_ROOT'] . "rgdiaz/img/pdf/rdiaztmp{$id_persona}.pdf";
+		$pdfpath = $_SERVER['DOCUMENT_ROOT'] . "img/pdf/rdiaztmp{$id_persona}.pdf";
 		if (file_exists($pdfpath)) { 
 	?>
 

@@ -1,4 +1,4 @@
-﻿<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Cliente extends CI_Controller {
 
 	public function __construct(){
@@ -228,7 +228,7 @@ class Cliente extends CI_Controller {
 								}
 								// Sesion del Auxiliar
 								else if($this->session->userdata('status')== 1 && $this->session->userdata('tipo')==2){
-									#	Cargar la vista de usuaria
+									#	Cargar la vista de usuario
 									redirect('administrador/auxiliar');
 								}
 								// Sesion de Cliente 
@@ -363,6 +363,13 @@ class Cliente extends CI_Controller {
 					   'id'=>$id
 					 );
 		$this->load->view('usuario/header_usuario',$data);
+
+		//PDF
+		$pdfpath = $_SERVER['DOCUMENT_ROOT'] . "rgdiaz/img/pdf/rdiaztmp{$id_persona}.pdf";
+		if (file_exists($pdfpath)) {
+			unlink($pdfpath);
+		}
+
 		#	Obtengo todos los registros de residuos peligrosos
 			$residuos_peligrosos = $this->residuo_peligroso_model->get_residuos($id);
 			$data3 = array(

@@ -1,4 +1,4 @@
-﻿<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Administrador extends CI_Controller {
 
@@ -864,7 +864,7 @@ class Administrador extends CI_Controller {
 	public function generar_excel()
 	{
 		if($this->input->post()){
-	    	$this->load->view('administrador/exce');
+			$this->load->view('administrador/exce');
 			$ruta='application/views/administrador/exce.xls';
 			$id_persona = $this->input->post('id_persona');
 			$nombre_cliente = $this->persona_model->get_nombre_cliente($id_persona);
