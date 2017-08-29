@@ -266,7 +266,7 @@ class Residuo_peligroso_model extends CI_Model {
 
 	function get_siguiente_folio($id_persona){
 
-		$result = $this->db->query("
+		@$result = @$this->db->query("
 			SELECT 
 				folio_manifiesto
 			FROM 
@@ -277,6 +277,10 @@ class Residuo_peligroso_model extends CI_Model {
 				folio_manifiesto
 			ORDER BY
 				folio_manifiesto desc limit 1;")->result()[0]->folio_manifiesto;
+
+		if ($result == ""){
+			$result = 0;
+		}
 
 		$result = $result + 1;
 

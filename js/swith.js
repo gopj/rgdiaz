@@ -323,7 +323,7 @@ function comprueba_emp_dest(id){
 	//AJAX
 	jQuery.ajax({
 			url:'http://localhost/rgdiaz/index.php/administrador/obtiene_emp_dest',	//<-- Url que va procesar la peticion
-			//url:'http://rdiaz.mx/index.php/administrador/obtiene_emp_trans',
+			//url:'http://rdiaz.mx/index.php/administrador/obtiene_emp_dest',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
