@@ -1488,15 +1488,17 @@ class Administrador extends CI_Controller {
 
 		// Mandar una variable para selecciar solo a los clientes que ya llenaron su info
 		$lleno_datos = 1;
-		$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona, $id_tipo_persona, $lleno_datos);
-		$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
-		$emp_transportista = $this->emp_transportista_model->get_tipo_emp_transportista();
+		$cliente_baja 		= $this->persona_model->obtiene_clientes_baja($id_status_persona, $id_tipo_persona, $lleno_datos);
+		$correo_clientes 	= $this->persona_model->getCorreos($id_tipo_persona);
+		$emp_transportista 	= $this->emp_transportista_model->get_tipo_emp_transportista();
+		$emp_destino 		= $this->emp_destino_model->get_tipo_emp_destino();
 
 		$data = array(
 			'mensajes'=> $mensajesnuevos,
 			'clientes' => $cliente_baja,
 			'correo' => $correo_clientes,
-			'emp_transportista' => $emp_transportista
+			'emp_transportista' => $emp_transportista,
+			'emp_destino' => $emp_destino,
 		);
 
 		$this->load->view('administrador/header_admin', $data);
@@ -1506,11 +1508,10 @@ class Administrador extends CI_Controller {
 	}
 
 	public function obtiene_emp_trans(){
-		//$emp_transportista= $this->emp_transportista_model->get_by_id_tipo_emp_transportista($this->input->post('id_tipo_emp_trans'));
-		$emp_transportista= $this->emp_transportista_model->get_by_id_tipo_emp_transportista(1);
+		$emp_transportista = $this->emp_transportista_model->get_by_id_tipo_emp_transportista($this->input->post('id_tipo_emp_trans'));
+		//$emp_transportista = $this->emp_transportista_model->get_by_id_tipo_emp_transportista(1);
 
 		$data = array (
-				'id_persona' => $emp_transportista->id_tipo_emp_transportista,
 				'nombre_emp_trans' => $emp_transportista->nombre_empresa,
 				'no_autorizacion_transportista' => $emp_transportista->no_autorizacion_transportista,
 				'no_autorizacion_sct' => $emp_transportista->no_autorizacion_sct,
@@ -1518,38 +1519,54 @@ class Administrador extends CI_Controller {
 				'telefono' => $emp_transportista->telefono,
 		);
 
-		print_r($data);
-		die();
+		echo json_encode($data);
+	}
+
+	public function obtiene_emp_dest(){
+		$emp_destino = $this->emp_destino_model->get_by_id_tipo_emp_destino($this->input->post('id_tipo_emp_dest'));
+		//$emp_destino = $this->emp_destino_model->get_by_id_tipo_emp_destino(1);
+
+		$data = array (
+				'nombre_emp_trans' => $emp_destino->nombre_destino,
+				'no_autorizacion_destino' => $emp_destino->no_autorizacion_destino,
+				'domicilio' => $emp_destino->domicilio,
+		);
 
 		echo json_encode($data);
 	}
 
 	public function actualizar_transportistas() {
 
-		$status = 0;
-		$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
+		if ( $this->input->post() ) {
 
-		// Obtengo a todos mis clientes para seleccionar uno en opcion dar de baja y los mando al modal
-		$id_tipo_persona=3;
-		$id_status_persona=1;
+			$data["id_emp_transportista"]	= $this->input->post('id_tipo_emp_transportista');
+			$data["nombre_emp_trans"] 		= $this->input->post('nombre_emp_trans');
+			$data["no_aut_trans"] 			= $this->input->post('no_aut_trans');
+			$data["no_aut_trans_sct"] 		= $this->input->post('no_aut_trans_sct');
+			$data["domicilio_emp_trans"] 	= $this->input->post('domicilio_emp_trans');
+			$data["tel_emp_trans"] 			= $this->input->post('tel_emp_trans');
 
-		// Mandar una variable para selecciar solo a los clientes que ya llenaron su info
-		$lleno_datos = 1;
-		$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona, $id_tipo_persona, $lleno_datos);
-		$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
-		$emp_transportista = $this->emp_transportista_model->get_tipo_emp_transportista();
+			$this->emp_transportista_model->actualiza_emp_transportista($data);
 
-		$data = array(
-			'mensajes'=> $mensajesnuevos,
-			'clientes' => $cliente_baja,
-			'correo' => $correo_clientes,
-			'emp_transportista' => $emp_transportista
-		);
+		} 
 
-		$this->load->view('administrador/header_admin', $data);
-		$this->load->view("administrador/transportistas_destinos.php", $data);
-		$this->load->view('administrador/footeru', $data);
+		redirect('administrador/transportistas_destinos');
+	}
 
+	public function actualizar_destinos() {
+
+		if ( $this->input->post() ) {
+
+			$data["id_emp_destino"]		= $this->input->post('id_tipo_emp_destino');
+			$data["nombre_emp_dest"]	= $this->input->post('nombre_emp_dest');
+			$data["no_aut_dest"]		= $this->input->post('no_aut_dest');
+			$data["domicilio_emp_dest"]	= $this->input->post('domicilio_emp_dest');
+
+			$this->emp_destino_model->actualiza_emp_destino($data);
+
+		} 
+
+		redirect('administrador/transportistas_destinos');
 	}
 
 	public function mail_test() { 

@@ -18,6 +18,7 @@
 			<link rel="stylesheet" type="text/css" href="css/estilos.css">
 			<link rel="stylesheet" type="text/css" href="css/demo_table_jui.css">
 			<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.8.4.custom.css">
+			<link rel="stylesheet" type="text/css" href="css/glyphicons.css">
 			<script type="text/javascript" src="js/jquery.js"></script>
 			<script type="text/javascript" src="js/bootstrap.js"></script>
 			<script type="text/javascript" src="js/jquery.dataTables.js"></script>

@@ -296,8 +296,6 @@ function comprueba_emp_trans(id){
 			function(resp)
 			{
 				var json_data = jQuery.parseJSON(resp);
-
-				alert(json_data.nombre_emp_trans);
 				var nombre_emp_trans = json_data.nombre_emp_trans;
 				var no_autorizacion_transportista = json_data.no_autorizacion_transportista;
 				var no_autorizacion_sct = json_data.no_autorizacion_sct;
@@ -305,10 +303,41 @@ function comprueba_emp_trans(id){
 				var telefono = json_data.telefono;
 
 				$("#nombre_emp_trans").val(nombre_emp_trans);
-				$("#no_autorizacion_transportista").val(no_autorizacion_transportista);
-				$("#no_autorizacion_sct").val(no_autorizacion_sct);
-				$("#domicilio").val(domicilio);
-				$("#telefono").val(telefono);
+				$("#no_aut_trans").val(no_autorizacion_transportista);
+				$("#no_aut_trans_sct").val(no_autorizacion_sct);
+				$("#domicilio_emp_trans").val(domicilio);
+				$("#tel_emp_trans").val(telefono);
+			}
+		);
+}
+
+function comprueba_emp_dest(id){
+	$("#nombre_emp_dest").val("");
+	$("#no_aut_dest").val("");
+	$("#domicilio_emp_dest").val("");
+
+	var id_tipo_emp_dest = id;
+
+	//AJAX
+	jQuery.ajax({
+			url:'http://localhost/rgdiaz/index.php/administrador/obtiene_emp_dest',	//<-- Url que va procesar la peticion
+			//url:'http://rdiaz.mx/index.php/administrador/obtiene_emp_trans',
+			timeout: 3000, //sets timeout to 3 seconds
+			type:'post',
+			data:{
+				id_tipo_emp_dest: id_tipo_emp_dest,
+			}
+		}).done(
+			function(resp)
+			{
+				var json_data = jQuery.parseJSON(resp);
+				var nombre_emp_dest = json_data.nombre_emp_trans;
+				var no_aut_dest = json_data.no_autorizacion_destino;
+				var domicilio_emp_dest = json_data.domicilio;
+
+				$("#nombre_emp_dest").val(nombre_emp_dest);
+				$("#no_aut_dest").val(no_aut_dest);
+				$("#domicilio_emp_dest").val(domicilio_emp_dest);
 			}
 		);
 }

@@ -10,6 +10,10 @@ public function __construct() {
 	public function get_tipo_emp_destino() {
 		return $this->db->query("SELECT * FROM tipo_emp_destino;")->result();
 	}
+
+	public function get_by_id_tipo_emp_destino($id){
+		return $this->db->query("SELECT * FROM tipo_emp_destino WHERE id_tipo_emp_destino=" . $id . ";")->row();
+	}
 	
 	public function get_nombre_dest($id){
 		$sql = "SELECT d.nombre_destino
@@ -37,6 +41,19 @@ public function __construct() {
 		}
 
 		return $id_tipo_emp_destino;
+	}
+
+	public function actualiza_emp_destino($data) {
+
+		$this->db
+				->set('nombre_destino'			,$data['nombre_emp_dest'])
+				->set('no_autorizacion_destino'	,$data['no_aut_dest'])
+				->set('domicilio'				,$data['domicilio_emp_dest'])
+				->where('id_tipo_emp_destino'	,$data['id_emp_destino'])
+				->update('tipo_emp_destino');
+
+		return "OK";
+		
 	}
 
 }

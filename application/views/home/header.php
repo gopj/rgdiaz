@@ -118,6 +118,11 @@
 								<span class="icon-bar"></span>
 							</a>
 							<div id="menu" class="collapse nav-collapse">
+								<ul class="nav pull-left">
+									<a href="https://www.facebook.com/RD%C3%ADaz-304155623326307/" target="_blank" >
+										<img src="img/Facebook_Logo.png" style="height:45px; width:41px;">
+									</a>
+								</ul>
 								<ul class="nav pull-right">
 									<li class="divider-vertical"></li>
 									<li><a href="<?php echo site_url('home/index')?>">Inicio</a></li>
@@ -143,11 +148,7 @@
 			<div class="container" style="padding-top:50px;">
 				<div class="row">
 					<div class="span12">
-						<img src="img/logo.png" style="height:119px; width:300px;">
-
-						<a href="https://www.facebook.com/RD%C3%ADaz-304155623326307/" target="_blank" class="pull-right" style="padding-top:50px;">
-							<img src="img/Facebook_Logo.png" style="height:60px; width:55px;">
-						</a>
+						<img src="img/logo.png" style="height:119px; width:300px;">					
 					</div>
 				</div>
 

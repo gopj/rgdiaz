@@ -12,7 +12,7 @@ public function __construct() {
 	}
 
 	public function get_by_id_tipo_emp_transportista($id){
-		return $this->db->query("SELECT * FROM tipo_emp_transportista WHERE id_tipo_emp_transportista=" . $id . ";")->result();
+		return $this->db->query("SELECT * FROM tipo_emp_transportista WHERE id_tipo_emp_transportista=" . $id . ";")->row();
 	}
 
 	public function get_nombre_trans($id){
@@ -42,6 +42,21 @@ public function __construct() {
 
 		return $id_tipo_emp_transportista;
 
+	}
+
+	public function actualiza_emp_transportista($data) {
+
+		$this->db
+				->set('nombre_empresa'					,$data['nombre_emp_trans'])
+				->set('no_autorizacion_transportista'	,$data['no_aut_trans'])
+				->set('no_autorizacion_sct'				,$data['no_aut_trans_sct'])
+				->set('domicilio'						,$data['domicilio_emp_trans'])
+				->set('telefono'						,$data['tel_emp_trans'])
+				->where('id_tipo_emp_transportista'		,$data['id_emp_transportista'])
+				->update('tipo_emp_transportista');
+
+		return "OK";
+		
 	}
 
 }
