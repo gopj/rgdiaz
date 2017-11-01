@@ -304,7 +304,7 @@ class Cliente extends CI_Controller {
 
 		public function mis_datos()
 	{
-		$id_persona =$this->session->userdata('id');
+		$id_persona =$this->sessistudioon->userdata('id');
 		$id=$id_persona;
 		$status=0;
 		$total=$this->notificacion_model->obtiene_noticliente($id,$status);
