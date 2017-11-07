@@ -14,7 +14,7 @@
 								<span class='add-on'>
 									<img class="icon-lock">
 								</span>
-								<select id="id_tipo_emp_transportista" name="id_tipo_emp_transportista" onchange="comprueba_emp_trans(this.value)">
+								<select id="id_tipo_emp_transportista" name="id_tipo_emp_transportista" onchange="comprueba_emp_trans(this.value)" style="width: 446px">
 										<option value="">Selecciona Empresa Transportista</option>
 									<?php foreach($emp_transportista as $row){ ?>
 										<option value="<?php echo $row->id_tipo_emp_transportista;?>"><?php echo $row->nombre_empresa; ?></option>
@@ -75,13 +75,13 @@
 								<span class='add-on'>
 									<img class="icon-lock">
 								</span>
-								<select id="id_tipo_emp_destino" name="id_tipo_emp_destino" onchange="comprueba_emp_dest(this.value)">
+								<select id="id_tipo_emp_destino" name="id_tipo_emp_destino" onchange="comprueba_emp_trans(this.value)" style="width: 446px">
 										<option value="">Selecciona Empresa Destino</option>
 									<?php foreach($emp_destino as $row){ ?>
 										<option value="<?php echo $row->id_tipo_emp_destino;?>"><?php echo $row->nombre_destino; ?></option>
 									<?php } ?>
 								</select>
-							</div>
+							</div>	
 								
 							Nombre Empresa Destino
 							<div class='input-prepend'>
