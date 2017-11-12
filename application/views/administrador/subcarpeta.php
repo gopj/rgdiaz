@@ -34,9 +34,13 @@
                           <input class="btn btn-mini btn-primary"  type="submit" value="Ver Carpeta">
                         </form>
                         </div>
+                        
+                        <?php 
+                         if ( $carpe->nombre != "Documentos de RDiaz" ) {
+                        ?> 
+
                         <div class="span4">
-                          <input type="hidden" value="<?php echo $carpe->id_carpeta.$carpe->nombre; ?>" id="id_formulario_renombra">
-                          
+                          <input type="hidden" value="<?php echo $carpe->id_carpeta.$carpe->nombre; ?>" id="id_formulario_renombra">                       
                         <form id="<?php echo $carpe->id_carpeta.$carpe->nombre; ?>" method='post' action="<?php echo site_url('administrador/renombrar_carpeta'); ?>">
                           <input type="hidden" value="<?php echo $carpe->id_persona; ?>" name="id_persona">
                           <input type="hidden" value="<?php echo $carpe->nombre; ?>" name="nombre_carpeta">
@@ -57,7 +61,9 @@
                         </div>
                       </div>
                     </td>        
-                    <?php                                         
+                    <?php
+
+                        }
                         echo "</tr>";
                       }
                     ?> 
