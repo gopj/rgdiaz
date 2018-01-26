@@ -74,121 +74,11 @@ function otra_destino(dato) {
 	}
 }
 
-// Validaciones Cliente 
-function reg_bit_new(){ 
-	var expRegNum 			= /^\d*$/; // Expresion regular números positivos
-	var expRegNom 			= /^\s*$/; // Expresion regular nombre valido
-	var formulario 			= document.getElementById('form_bitacora_residuo_peligroso');
-	var residuo 			= document.getElementById('residuo');
-	var otro_residuo 		= document.getElementById('otro_residuo');
-	var clave				= document.getElementById('clave');
-	var cantidad			= document.getElementById('cantidad');
-	var radio1				= document.getElementById('radio1');
-	var radio2				= document.getElementById('radio2');
-	var check1				= document.getElementById('check1');	
-	var check2				= document.getElementById('check2');
-	var check3				= document.getElementById('check3');
-	var check4				= document.getElementById('check4');
-	var area_generacion 	= document.getElementById('area_generacion');
-	var otro_area 			= document.getElementById('otro_area');
-	var fecha_ingreso 		= document.getElementById('fecha_ingreso');
-	var valida 				= true;
-
-	if(!residuo.value){
-		alert("INGRESA EL CAMPO RESIDUO PELIGROSO");
-		residuo.focus();
-		valida = false;
-	}else if(residuo.value == "Otro"){
-		if(!otro_residuo.value || expRegNom.test(otro_residuo.value)){
-			alert("INGRESA EL NOMBRE DE OTRO RESIDUO");
-			otro_residuo.focus();
-			valida = false;
-		}else if(!clave.value || expRegNom.test(clave.value)){
-			alert("INGRESA CLAVE DE OTRO RESIDUO");
-			clave.focus();
-			valida = false;
-		}else if(!cantidad.value || !expRegNum.exec(cantidad.value) || cantidad.value == 0){
-			alert("INGRESA EL CAMPO CANTIDAD O UN NUMERO VALIDO");
-			cantidad.focus();
-			valida = false;
-		}else if (cantidad.value <= 0){
-			alert("INGRESA EL CAMPO CANTIDAD O UN NUMERO VALIDO");
-			cantidad.focus();
-			valida = false;
-		}else if(!radio1.checked && !radio2.checked){
-			alert("INGRESA UNIDAD DE MEDIDA 'Kg o Ton'");
-			valida = false;
-		}else if(!check1.checked && !check2.checked && !check3.checked && !check4.checked){
-			alert("SELECCIONA ALGUNA CARACTERISTICA DE PELIGROSIDAD");
-			valida = false;
-		}else if(!area_generacion.value){
-			alert("SELECCIONA UN AREA DE GENERACION");
-			area_generacion.focus();
-			valida = false;
-		}else if(area_generacion.value == "Otro"){
-			if(!otro_area.value || expRegNom.test(otro_area.value)){
-				alert("INGRESA OTRA AREA DE GENERACION");
-				otro_area.focus();
-				valida = false;
-			}else if(!fecha_ingreso.value){
-				alert("INGRESA UNA FECHA DE INGRESO");
-			fecha_ingreso.focus();
-			valida = false;
-			}
-		}else if(!fecha_ingreso.value){
-			alert("INGRESA UNA FECHA DE INGRESO");
-			fecha_ingreso.focus();
-			valida = false;
-		}
-	}else if(!cantidad.value || !expRegNum.exec(cantidad.value) || cantidad.value == 0){
-		alert("INGRESA EL CAMPO CANTIDAD O UN NUMERO VALIDO");
-		cantidad.focus();
-		valida = false;
-	}else if (cantidad.value <= 0){
-			alert("INGRESA EL CAMPO CANTIDAD O UN NUMERO VALIDO");
-			cantidad.focus();
-			valida = false;
-	}else if(!radio1.checked && !radio2.checked){
-		alert("INGRESA UNIDAD DE MEDIDA 'Kg o Ton'");
-		valida = false;
-	}else if(!check1.checked && !check2.checked && !check3.checked && !check4.checked){
-		alert("SELECCIONA ALGUNA CARACTERISTICA DE PELIGROSIDAD");
-		valida = false;
-	}else if(!area_generacion.value){
-			alert("SELECCIONA UN AREA DE GENERACION");
-			area_generacion.focus();
-			valida = false;
-	}else if(area_generacion.value == "Otro"){
-		if(!otro_area.value || expRegNom.test(otro_area.value)){
-			alert("INGRESA OTRA AREA DE GENERACION");
-			otro_area.focus();
-			valida = false;
-		}else if(!fecha_ingreso.value){
-			alert("INGRESA UNA FECHA DE INGRESO");
-			fecha_ingreso.focus();
-			valida = false;
-		}
-	}else if(!fecha_ingreso.value){
-			alert("INGRESA UNA FECHA DE INGRESO");
-			fecha_ingreso.focus();
-			valida = false;
-	}
-
-	
-	
-	if(valida){
-		alert('DATOS GUARDADOS CORRECTAMENTE');
-		formulario.submit(); 
-		/*var ok = confirm("¡REVISA QUE LOS DATOS SEAN CORRECTOS, UNA VEZ INGRESADOS NO PODRÁS MODIFICARLOS!");
-		if(ok == true){
-			alert('DATOS GUARDADOS CORRECTAMENTE');
-			formulario.submit();
-		}*/
-	}
-				
-}
 
 $( document ).ready(function () {
+
+	var alert = "<br> <div class='alert alert-error'> <button type='button' class='close' data-dismiss='alert'>&times;</button>";
+
 	$("#form_actualizar_registros" ).validate( { 
 		rules: {
 			fecha_salida: {
@@ -227,28 +117,31 @@ $( document ).ready(function () {
 
 		},
 		messages: {
-			fecha_salida: "Por favor ingresa fecha de salida",
-			emp_tran: "Por favor ingresa empresa transportista",
-			otro_empresa: "Por favor ingresa otra empresa",
-			no_auto: "Por favor ingresa numero de autorización de transportista",
-			folio: "Por favor ingresa el folio",
-			dest_final: "Por favor ingresa el destino final",
-			otro_dest: "Por favor ingresa otro desitno final",
-			no_auto_dest: "Por favor ingresa numero de autorización de destino",
-			sig_manejo: "Por favor ingresa la modalidad",
-			otro_modalidad: "Por favor ingresa otra otro_modalidad_trabajo",
-			resp_tec: "Por favor ingresa al nombre del Responsable Técnico"
+			fecha_salida: 	alert + " Por favor ingresa fecha de salida",
+			emp_tran: 		alert + " Por favor ingresa empresa transportista",
+			otro_empresa: 	alert + " Por favor ingresa otra empresa",
+			no_auto: 		alert + " Por favor ingresa numero de autorización de transportista",
+			folio: 			alert + " Por favor ingresa el folio",
+			dest_final: 	alert + " Por favor ingresa el destino final",
+			otro_dest: 		alert + " Por favor ingresa otro desitno final",
+			no_auto_dest: 	alert + " Por favor ingresa numero de autorización de destino",
+			sig_manejo: 	alert + " Por favor ingresa la modalidad",
+			otro_modalidad: alert + " Por favor ingresa otra otro_modalidad_trabajo",
+			resp_tec: 		alert + " Por favor ingresa al nombre del Responsable Técnico"
 
 		},
 		highlight: function ( element ) { 
 			  $(element).closest('.control-group').removeClass('success').addClass('error');
 		},
 		success: function (element) {
-            element.text('OK!').addClass('valid')
-                .closest('.control-group').removeClass('error').addClass('success');
-        }
+			element.text('OK!').addClass('valid')
+			//element.addClass('valid')
+			.closest('.control-group').removeClass('error').addClass('success');
+		}
 	});
 });
+
+
 
 function delete_residuo(id, nombre, url_delete, id_persona, folio){
 

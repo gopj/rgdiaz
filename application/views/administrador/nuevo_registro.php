@@ -8,7 +8,9 @@
 				<label for="" class="control-label">Residuo peligoso:</label>
 				<div class="controls">
 					<div class="form-inline">
-						<select id="residuo" class="txt"  style="width:60%;" name="residuo" type="text" onchange="otro_residuo_peligroso(this.value);" required>
+						<select id="residuo" class="txt"  style="width:60%;" name="residuo" type="text" onchange="otro_residuo_peligroso(this.value);" 
+						required oninvalid="this.setCustomValidity('Selecciona residuo peligoso')"
+						oninput="setCustomValidity('')" >
 							<option value="">Seleccione una opción</option>
 							<?php foreach ($residuos as $row) {
 								echo "<option value='{$row->id_tipo_residuo}, {$row->clave}'> ". mb_strimwidth($row->residuo, 0, 55, '...') . "</option>";
@@ -25,10 +27,11 @@
 				<label for="" class="control-label">Otro:</label>
 				<div class="controls">
 					<div class="form-inline"  style="margin-bottom:10px;">
-						<input type="text" class="txt" style="width:58%" name="otro_residuo" id="otro_residuo" disabled>
+						<input type="text" class="txt" style="width:58%" name="otro_residuo" id="otro_residuo" disabled required oninvalid="this.setCustomValidity('Ingresa nombre de residuo peligroso')"
+						>
 						&nbsp;
 						<label for="">Clave:</label>
-						<input type="text" class="txt" style="width:19%" name="clave" id="clave" disabled>
+						<input type="text" class="txt" style="width:19%" name="clave" id="clave" disabled required oninvalid="this.setCustomValidity('Ingresa clave de residuo peligoso')">
 					</div>
 				</div>
 			</div>
@@ -36,14 +39,16 @@
 				<label for="" class="control-label">Cantidad:</label>
 				<div class="controls">
 					<div class="form-inline">
-						<input type="number" id="cantidad" class="txt" style="width:58%;" name="cantidad">
+						<input type="number" id="cantidad" class="txt" style="width:58%;" name="cantidad" required oninvalid="this.setCustomValidity('Ingresa cantidad')"
+						oninput="setCustomValidity('')">
 						&nbsp;
 						<label for="radio1" class="radio">
-							<input type="radio" id="radio1" name="unidad" value="Kg">Kg
+							<input type="radio" id="radio1" name="unidad" value="Kg" required oninvalid="this.setCustomValidity('Selecciona Kg o Ton')"
+						oninput="setCustomValidity('')">Kg
 						</label>
 						&nbsp;
 						<label for="radio2" class="radio">
-							<input type="radio" id="radio2" name="unidad" value="Ton">Ton
+							<input type="radio" id="radio2" name="unidad" value="Ton"> Ton
 						</label>
 					</div>
 				</div>
@@ -53,19 +58,23 @@
 				<div class="controls">
 					<div class="form-inline">
 						<label for="check1" class="checkbox">
-							<input type="checkbox" id="check1" name="caracteristica[]" value="Toxico">Toxico
+							<input type="checkbox" id="check1" name="caracteristica[]" value="Toxico" required oninvalid="this.setCustomValidity('Selecciona residuo peligoso')"
+						oninput="setCustomValidity('')">Toxico
 						</label>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<label for="check2" class="checkbox">
-							<input type="checkbox" id="check2" name="caracteristica[]" value="Inflamable">Inflamable
+							<input type="checkbox" id="check2" name="caracteristica[]" value="Inflamable" required oninvalid="this.setCustomValidity('Selecciona residuo peligoso')"
+						oninput="setCustomValidity('')">Inflamable
 						</label>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<label for="check3" class="checkbox">
-							<input type="checkbox" id="check3" name="caracteristica[]" value="Corrosivo">Corrosivo
+							<input type="checkbox" id="check3" name="caracteristica[]" value="Corrosivo" required oninvalid="this.setCustomValidity('Selecciona residuo peligoso')"
+						oninput="setCustomValidity('')">Corrosivo
 						</label>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<label for="check4" class="checkbox">
-							<input type="checkbox" id="check4" name="caracteristica[]" value="Reactivo">Reactivo
+							<input type="checkbox" id="check4" name="caracteristica[]" value="Reactivo" required oninvalid="this.setCustomValidity('Selecciona residuo peligoso')"
+						oninput="setCustomValidity('')">Reactivo
 						</label>
 					</div>
 				</div>
@@ -74,7 +83,8 @@
 				<label for="" class="control-label">Area de generacion:</label>
 				<div class="controls">
 					<div class="form-inline">
-						<select id="area_generacion" class="txt" name="area_generacion" onchange="otra_area_generacion(this.value);" style="width:60%" required>
+						<select id="area_generacion" class="txt" name="area_generacion" onchange="otra_area_generacion(this.value);" style="width:60%" required oninvalid="this.setCustomValidity('Selecciona residuo peligoso')"
+						oninput="setCustomValidity('')">
 							<option value="">Seleccione una opción</option>
 							<?php foreach ($areas as $row) {
 								echo "<option value='{$row->id_area}'> ".   mb_strimwidth($row->area, 0, 55, '...') . "</option>";
@@ -83,20 +93,22 @@
 						</select>
 						&nbsp;
 						<label for="">Otro:</label>
-						<input type="text" class="txt" id="otro_area" name="otro_area" style="width:20%" disabled>
+						<input type="text" class="txt" id="otro_area" name="otro_area" style="width:20%" disabled required oninvalid="this.setCustomValidity('Selecciona residuo peligoso')"
+						oninput="setCustomValidity('')">
 					</div>
 				</div>
 			</div>
 			<div class="control-group">
 				<label for="" class="control-label">Fecha de entrada en almacen:</label>
 				<div class="controls">
-					<input class="txt" style="width:58%; text-align: center;" name="fecha_ingreso" id="fecha_ingreso" type="text" placeholder="aaaa/mm/dd" data-date-format="yyyy-mm-dd">
+					<input class="txt" style="width:58%; text-align: center;" name="fecha_ingreso" id="fecha_ingreso" type="text" placeholder="aaaa/mm/dd" data-date-format="yyyy-mm-dd" required oninvalid="this.setCustomValidity('Selecciona residuo peligoso')"
+						oninput="setCustomValidity('')">
 				</div>
 			</div>
 		</div>
 	</div>
 	<input type="hidden" name="id_persona" value="<?php echo $id_persona; ?>">
-	<input type="button" onclick="reg_bit_new();" class="btn btn-primary pull-right" value="Guardar">
+	<input type="submit" class="btn btn-primary pull-right" value="Guardar">
 	</form>
 
 	<form id="regresar_bitacora" method='post' action="<?php echo site_url('administrador/bitacora');?>">

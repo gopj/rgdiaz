@@ -50,7 +50,7 @@
 			<div class="control-group">
 				<label for="folio" class="control-label">Folio del Manifiesto:</label>
 				<div class="controls">
-					<input type="text" id="folio" name="folio" class="txt" style="width:48%" value="<?= $siguiente_folio ?>" readonly>
+					<input type="text" id="folio" name="folio" class="txt" style="width:48%" value="<?= $siguiente_folio ?>" required>
 				</div>
 			</div>
 			<div class="control-group">
