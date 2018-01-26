@@ -42,8 +42,6 @@ class Residuo_peligroso_model extends CI_Model {
 				a.area as area_generacion,
 				r.fecha_ingreso as fecha_ingreso,
 				r.fecha_salida as fecha_salida,
-				r.cantidad_contenedor as cantidad_contenedor,
-				r.tipo_contenedor as tipo_contenedor,
 				m.modalidad as sig_manejo,
 				et.nombre_empresa as emp_tran,
 				ed.nombre_destino as dest_final,
@@ -131,8 +129,6 @@ class Residuo_peligroso_model extends CI_Model {
 				->set('caracteristica'				,$data['caracteristicas_residuos'])
 				->set('fecha_ingreso'				,$data['fecha_ingreso'])
 				->set('fecha_insercion'				,$data['fecha_insercion'])
-				->set('cantidad_contenedor'			,$data['cantidad_contenedor'])
-				->set('tipo_contenedor'				,$data['tipo_contenedor'])
 				->set('status'						,"W")
 				->insert('residuos_peligrosos');
 
@@ -232,8 +228,6 @@ class Residuo_peligroso_model extends CI_Model {
 				a.area as area_generacion,
 				r.fecha_ingreso as fecha_ingreso,
 				r.fecha_salida as fecha_salida,
-				r.cantidad_contenedor as cantidad_contenedor,
-				r.tipo_contenedor as tipo_contenedor,
 				m.modalidad as sig_manejo,
 				et.nombre_empresa as emp_tran,
 				et.no_autorizacion_sct as no_autorizacion_sct,
