@@ -74,6 +74,10 @@ function otra_destino(dato) {
 	}
 }
 
+function clearValidity()
+{
+document.getElementById('unidad').setCustomValidity('');
+}
 
 $( document ).ready(function () {
 

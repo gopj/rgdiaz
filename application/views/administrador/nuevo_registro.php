@@ -9,8 +9,8 @@
 				<div class="controls">
 					<div class="form-inline">
 						<select id="residuo" class="txt"  style="width:60%;" name="residuo" type="text" onchange="otro_residuo_peligroso(this.value);" 
-						required oninvalid="this.setCustomValidity('Selecciona residuo peligoso')"
-						oninput="setCustomValidity('')" >
+						 oninvalid="this.setCustomValidity('Selecciona residuo peligoso')"
+						oninput="setCustomValidity('')"  required>
 							<option value="">Seleccione una opción</option>
 							<?php foreach ($residuos as $row) {
 								echo "<option value='{$row->id_tipo_residuo}, {$row->clave}'> ". mb_strimwidth($row->residuo, 0, 55, '...') . "</option>";
@@ -27,11 +27,10 @@
 				<label for="" class="control-label">Otro:</label>
 				<div class="controls">
 					<div class="form-inline"  style="margin-bottom:10px;">
-						<input type="text" class="txt" style="width:58%" name="otro_residuo" id="otro_residuo" disabled required oninvalid="this.setCustomValidity('Ingresa nombre de residuo peligroso')"
-						>
+						<input type="text" class="txt" style="width:58%" name="otro_residuo" id="otro_residuo" disabled  oninvalid="this.setCustomValidity('Ingresa nombre de residuo peligroso')" required	>
 						&nbsp;
 						<label for="">Clave:</label>
-						<input type="text" class="txt" style="width:19%" name="clave" id="clave" disabled required oninvalid="this.setCustomValidity('Ingresa clave de residuo peligoso')">
+						<input type="text" class="txt" style="width:19%" name="clave" id="clave" disabled  oninvalid="this.setCustomValidity('Ingresa clave de residuo peligoso')" required>
 					</div>
 				</div>
 			</div>
@@ -39,16 +38,15 @@
 				<label for="" class="control-label">Cantidad:</label>
 				<div class="controls">
 					<div class="form-inline">
-						<input type="number" id="cantidad" class="txt" style="width:58%;" name="cantidad" required oninvalid="this.setCustomValidity('Ingresa cantidad')"
-						oninput="setCustomValidity('')">
+						<input type="number" id="cantidad" class="txt" style="width:58%;" name="cantidad" min="1" oninvalid="this.setCustomValidity('Ingresa cantidad que sea mayor a 0')"
+						oninput="setCustomValidity('')" required>
 						&nbsp;
 						<label for="radio1" class="radio">
-							<input type="radio" id="radio1" name="unidad" value="Kg" required oninvalid="this.setCustomValidity('Selecciona Kg o Ton')"
-						oninput="setCustomValidity('')">Kg
+							<input type="radio" id="unidad" name="unidad" value="Kg"  oninvalid="this.setCustomValidity('Selecciona Kilogramos o Toneladas')" onclick="clearValidity();" required>Kg
 						</label>
 						&nbsp;
 						<label for="radio2" class="radio">
-							<input type="radio" id="radio2" name="unidad" value="Ton"> Ton
+							<input type="radio" name="unidad" value="Ton" onclick="clearValidity();" > Ton
 						</label>
 					</div>
 				</div>
