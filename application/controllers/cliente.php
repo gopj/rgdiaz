@@ -605,8 +605,6 @@ class Cliente extends CI_Controller {
 			$data["otro_area"] 			= $this->input->post('otro_area');
 			$data["fecha_ingreso"] 		= $this->input->post('fecha_ingreso');
 			$data["fecha_insercion"] 	= date("Y-m-d H:i:s");
-			$data["cantidad_contenedor"]= $this->input->post('cantidad_contenedor');
-			$data["tipo_contenedor"]	= $this->input->post('tipo_contenedor');
 
 			//Residuo					
 			if ($data["residuo"] != "Otro") {

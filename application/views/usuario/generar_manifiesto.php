@@ -119,8 +119,6 @@ for ($i=0; $i < $num_table_res; $i++) {
 
 			$arr_residuos_manifiesto[$i][$j][] = $residuo_final;
 			$arr_residuos_manifiesto[$i][$j][] = creti($residuos_manifiesto[$r]->caracteristica);
-			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->cantidad_contenedor;;
-			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->tipo_contenedor;;
 			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->cantidad;
 			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->unidad;
 
@@ -256,10 +254,6 @@ for ($h=0; $h < $num_table_res; $h++) {
 			<td class="defined" width="90" align="center"> CONTENEDOR </td>
 			<td width="67" class="defined" rowspan="2" style="line-height:10px;"> CANTIDAD TOTAL DE RESIDUO </td>
 			<td width="67" align="center" class="defined" rowspan="2"> UNIDAD VOL/PESO </td>
-		</tr>
-		<tr> 
-			<td width="45" class="defined" style="font-size: 5pt;"> CANTIDAD </td>
-			<td width="45" class="defined" style="font-size: 5pt;"> TIPO </td>
 		</tr>
 
 		  	' . $table_data_html . ' 

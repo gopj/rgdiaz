@@ -89,9 +89,6 @@ function reg_bit_new(){
 	var check2				= document.getElementById('check2');
 	var check3				= document.getElementById('check3');
 	var check4				= document.getElementById('check4');
-	var cantidad_contenedor = document.getElementById('cantidad_contenedor');
-	var radio_bolsa 		= document.getElementById('radio_bolsa');
-	var radio_cubeta 		= document.getElementById('radio_cubeta');
 	var area_generacion 	= document.getElementById('area_generacion');
 	var otro_area 			= document.getElementById('otro_area');
 	var fecha_ingreso 		= document.getElementById('fecha_ingreso');
@@ -156,13 +153,6 @@ function reg_bit_new(){
 		valida = false;
 	}else if(!check1.checked && !check2.checked && !check3.checked && !check4.checked){
 		alert("SELECCIONA ALGUNA CARACTERISTICA DE PELIGROSIDAD");
-		valida = false;
-	}else if(!cantidad_contenedor.value || !expRegNum.exec(cantidad_contenedor.value) || cantidad_contenedor.value == 0){
-		alert("INGRESA CANTIDAD DE CONTENEDOR O UN NUMERO VALIDO ");
-		cantidad_contenedor.focus();
-		valida = false;
-	}else if(!radio_bolsa.checked && !radio_cubeta.checked){
-		alert("INGRESA TIPO DE CONTENEDOR 'Bolsa o Cubeta'");
 		valida = false;
 	}else if(!area_generacion.value){
 			alert("SELECCIONA UN AREA DE GENERACION");

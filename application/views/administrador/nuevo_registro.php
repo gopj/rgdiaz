@@ -71,25 +71,6 @@
 				</div>
 			</div>
 			<div class="control-group">
-				<label for="" class="control-label">Cantidad Contenedor:</label>
-				<div class="controls">
-					<div class="form-inline">
-						<input type="number" id="cantidad_contenedor" class="txt" style="width:58%;" name="cantidad_contenedor">
-						&nbsp;
-	
-						<label>Tipo: </label> &nbsp;&nbsp;
-	
-						<label for="radio1" class="radio">
-							<input type="radio" id="radio_bolsa" name="tipo_contenedor" value="Bolsa"> Bolsa
-						</label>
-						&nbsp;
-						<label for="radio2" class="radio">
-							<input type="radio" id="radio_cubeta" name="tipo_contenedor" value="Cubeta"> Cubeta
-						</label>
-					</div>
-				</div>
-			</div>
-			<div class="control-group">
 				<label for="" class="control-label">Area de generacion:</label>
 				<div class="controls">
 					<div class="form-inline">

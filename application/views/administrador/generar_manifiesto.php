@@ -119,8 +119,6 @@ for ($i=0; $i < $num_table_res; $i++) {
 
 			$arr_residuos_manifiesto[$i][$j][] = $residuo_final;
 			$arr_residuos_manifiesto[$i][$j][] = creti($residuos_manifiesto[$r]->caracteristica);
-			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->cantidad_contenedor;;
-			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->tipo_contenedor;;
 			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->cantidad;
 			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->unidad;
 

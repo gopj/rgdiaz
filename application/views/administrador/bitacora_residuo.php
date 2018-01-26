@@ -28,8 +28,6 @@ function date_bitacora($s_date){
 					<th>CANTIDAD</th>
 					<th>UNIDAD MEDIDA</th>
 					<th>CARACTERÍSTICA PELIGROSIDAD</th>
-					<th>CANTIDAD CONTENEDOR</th>
-					<th>TIPO CONTENEDOR</th>
 					<th>ÁREA DE GENERACIÓN</th>
 					<th>FECHA INGRESO</th>
 					<th>FECHA SALIDA</th>
@@ -59,8 +57,6 @@ function date_bitacora($s_date){
 								<td><?php echo $row->cantidad; ?></td>
 								<td><?php echo $row->unidad; ?></td>
 								<td><?php echo $row->caracteristica; ?></td>
-								<td><?php echo $row->cantidad_contenedor; ?></td>
-								<td><?php echo $row->tipo_contenedor; ?></td>
 								<td><?php echo $row->area_generacion ?></td>
 								<td><?php echo date_bitacora($row->fecha_ingreso); ?></td>
 								<td><?php echo date_bitacora($row->fecha_salida); ?></td>
@@ -107,13 +103,9 @@ function date_bitacora($s_date){
 			<button id="reg_salidas" type="submit" form="form_bitacora_actualizar_registros" class="btn btn-primary pull-left" disabled="false"><i class="icon-check"></i> Registrar Salidas </button>
 		</div>		
 
-		<div class="span3"></div>
+		<div class="span2"></div>
 
-		<div class="span2">
-				<a href="<?= site_url('administrador/manifiesto/' . $id_persona) ?>" class="btn btn-primary pull-right" > <i class="icon-file"></i> Generar Manifiesto </a>
-		</div>
-
-		<div class="span2">
+		<div class="span5">
 			<form action="<?php echo site_url('administrador/generar_excel'); ?>" method="POST">
 				<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
 				<button type="submit" class="btn btn-primary pull-right" name="excel" ><i class="icon-list-alt"></i> Generar Excel </button>

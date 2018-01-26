@@ -29,8 +29,6 @@ function date_bitacora($s_date){
 					<th>CANTIDAD</th>
 					<th>UNIDAD MEDIDA</th>
 					<th>CARACTERÍSTICA PELIGROSIDAD</th>
-					<th>CANTIDAD CONTENEDOR</th>
-					<th>TIPO CONTENEDOR</th>
 					<th>ÁREA DE GENERACIÓN</th>
 					<th>FECHA INGRESO</th>
 					<th>FECHA SALIDA</th>
@@ -60,8 +58,6 @@ function date_bitacora($s_date){
 								<td><?php echo $row->cantidad; ?></td>
 								<td><?php echo $row->unidad; ?></td>
 								<td><?php echo $row->caracteristica; ?></td>
-								<td><?php echo $row->cantidad_contenedor; ?></td>
-								<td><?php echo $row->tipo_contenedor; ?></td>
 								<td><?php echo $row->area_generacion ?></td>
 								<td><?php echo date_bitacora($row->fecha_ingreso); ?></td>
 								<td><?php echo date_bitacora($row->fecha_salida); ?></td>
