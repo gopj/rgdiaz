@@ -74,9 +74,10 @@ function otra_destino(dato) {
 	}
 }
 
-function clearValidity()
-{
-document.getElementById('unidad').setCustomValidity('');
+function clearValidity(rc) {
+    alert(rc);
+
+	//document.getElementById(radio_cehck).setCustomValidity('');
 }
 
 $( document ).ready(function () {
