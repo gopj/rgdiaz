@@ -74,6 +74,7 @@ function otra_destino(dato) {
 	}
 }
 
+<<<<<<< HEAD
 function clearValidity(){
 	document.getElementById('unidad').setCustomValidity('');
 }
@@ -87,6 +88,12 @@ function clearRequired(){
 	} else {
 		document.getElementById('check1').required = true;
 	}
+=======
+function clearValidity(rc) {
+    alert(rc);
+
+	//document.getElementById(radio_cehck).setCustomValidity('');
+>>>>>>> master
 }
 
 $( document ).ready(function () {
