@@ -74,9 +74,19 @@ function otra_destino(dato) {
 	}
 }
 
-function clearValidity()
-{
-document.getElementById('unidad').setCustomValidity('');
+function clearValidity(){
+	document.getElementById('unidad').setCustomValidity('');
+}
+
+function clearRequired(){
+	var numberOfChecked = $('input:checkbox:checked').length;
+
+	if (numberOfChecked > 0){
+		document.getElementById('check1').setCustomValidity('');
+		document.getElementById('check1').required = false;
+	} else {
+		document.getElementById('check1').required = true;
+	}
 }
 
 $( document ).ready(function () {
@@ -153,4 +163,4 @@ function delete_residuo(id, nombre, url_delete, id_persona, folio){
 	document.getElementById('folio_span').textContent = folio;
 	document.getElementById("residuo_delete").setAttribute("href", url_delete);
 	
-}
+} 

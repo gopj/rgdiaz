@@ -56,23 +56,19 @@
 				<div class="controls">
 					<div class="form-inline">
 						<label for="check1" class="checkbox">
-							<input type="checkbox" id="check1" name="caracteristica[]" value="Toxico" required oninvalid="this.setCustomValidity('Selecciona residuo peligoso')"
-						oninput="setCustomValidity('')">Toxico
+							<input type="checkbox" id="check1" name="caracteristica[]" value="Toxico" oninvalid="this.setCustomValidity('Selecciona característica de peligrosidad')" onclick="clearRequired();" required="required">Toxico
 						</label>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<label for="check2" class="checkbox">
-							<input type="checkbox" id="check2" name="caracteristica[]" value="Inflamable" required oninvalid="this.setCustomValidity('Selecciona residuo peligoso')"
-						oninput="setCustomValidity('')">Inflamable
+							<input type="checkbox" name="caracteristica[]" value="Inflamable" onclick="clearRequired();">Inflamable
 						</label>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<label for="check3" class="checkbox">
-							<input type="checkbox" id="check3" name="caracteristica[]" value="Corrosivo" required oninvalid="this.setCustomValidity('Selecciona residuo peligoso')"
-						oninput="setCustomValidity('')">Corrosivo
+							<input type="checkbox" name="caracteristica[]" value="Corrosivo" onclick="clearRequired();">Corrosivo
 						</label>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<label for="check4" class="checkbox">
-							<input type="checkbox" id="check4" name="caracteristica[]" value="Reactivo" required oninvalid="this.setCustomValidity('Selecciona residuo peligoso')"
-						oninput="setCustomValidity('')">Reactivo
+							<input type="checkbox" name="caracteristica[]" value="Reactivo" onclick="clearRequired();">Reactivo
 						</label>
 					</div>
 				</div>
@@ -81,7 +77,7 @@
 				<label for="" class="control-label">Area de generacion:</label>
 				<div class="controls">
 					<div class="form-inline">
-						<select id="area_generacion" class="txt" name="area_generacion" onchange="otra_area_generacion(this.value);" style="width:60%" required oninvalid="this.setCustomValidity('Selecciona residuo peligoso')"
+						<select id="area_generacion" class="txt" name="area_generacion" onchange="otra_area_generacion(this.value);" style="width:60%" required oninvalid="this.setCustomValidity('Selecciona área de generación')"
 						oninput="setCustomValidity('')">
 							<option value="">Seleccione una opción</option>
 							<?php foreach ($areas as $row) {
@@ -91,16 +87,14 @@
 						</select>
 						&nbsp;
 						<label for="">Otro:</label>
-						<input type="text" class="txt" id="otro_area" name="otro_area" style="width:20%" disabled required oninvalid="this.setCustomValidity('Selecciona residuo peligoso')"
-						oninput="setCustomValidity('')">
+						<input type="text" class="txt" id="otro_area" name="otro_area" style="width:20%" disabled  oninvalid="this.setCustomValidity('Ingresa nueva área de generación')" oninput="setCustomValidity('')" required>
 					</div>
 				</div>
 			</div>
 			<div class="control-group">
 				<label for="" class="control-label">Fecha de entrada en almacen:</label>
 				<div class="controls">
-					<input class="txt" style="width:58%; text-align: center;" name="fecha_ingreso" id="fecha_ingreso" type="text" placeholder="aaaa/mm/dd" data-date-format="yyyy-mm-dd" required oninvalid="this.setCustomValidity('Selecciona residuo peligoso')"
-						oninput="setCustomValidity('')">
+					<input class="txt" style="width:58%; text-align: center;" name="fecha_ingreso" id="fecha_ingreso" type="text" placeholder="aaaa/mm/dd" data-date-format="yyyy-mm-dd"  oninvalid="this.setCustomValidity('Selecciona fecha de ingreso')" oninput="setCustomValidity('')" required>
 				</div>
 			</div>
 		</div>

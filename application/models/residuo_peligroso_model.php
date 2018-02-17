@@ -282,6 +282,4 @@ class Residuo_peligroso_model extends CI_Model {
 
 	}
 
-
-
 }
