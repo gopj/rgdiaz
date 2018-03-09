@@ -86,6 +86,19 @@ function clearRequired(){
 		document.getElementById('check1').required = false;
 	} else {
 		document.getElementById('check1').required = true;
+	}
+}
+
+function dateClearRequired(){
+
+	if (document.getElementById('fecha_ingreso').value == "") { 
+		document.getElementById('fecha_ingreso').required = true;
+	} else {
+		document.getElementById('fecha_ingreso').setCustomValidity('');
+		document.getElementById('fecha_ingreso').required = false;
+	}
+
+
 }
 
 $( document ).ready(function () {

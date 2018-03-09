@@ -41,12 +41,12 @@
 						<input type="number" id="cantidad" class="txt" style="width:58%;" name="cantidad" min="1" oninvalid="this.setCustomValidity('Ingresa cantidad que sea mayor a 0')"
 						oninput="setCustomValidity('')" required>
 						&nbsp;
-						<label for="unidad1" class="radio">
-							<input type="radio" id="unidad1" name="unidad" value="Kg"  oninvalid="this.setCustomValidity('Selecciona Kilogramos o Toneladas')" onclick="clearValidity('unidad1')" required>Kg
+						<label for="unidad" class="radio">
+							<input type="radio" id="unidad" name="unidad" value="Kg"  oninvalid="this.setCustomValidity('Selecciona Kilogramos o Toneladas')" onclick="clearValidity();" required>Kg
 						</label>
 						&nbsp;
 						<label for="unidad2" class="radio">
-							<input type="radio" name="unidad" value="Ton" onclick="clearValidity('unidad1')"> Ton
+							<input type="radio" name="unidad" value="Ton" onclick="clearValidity();"> Ton
 						</label>
 					</div>
 				</div>
@@ -93,7 +93,7 @@
 			<div class="control-group">
 				<label for="fecha_ingreso" class="control-label">Fecha de entrada en almacen:</label>
 				<div class="controls">
-					<input class="txt" style="width:58%; text-align: center;" name="fecha_ingreso" id="fecha_ingreso" type="text" placeholder="aaaa/mm/dd" data-date-format="yyyy-mm-dd"  oninvalid="this.setCustomValidity('Selecciona fecha de entrada')" oninput="setCustomValidity('')" required>
+					<input class="txt" style="width:58%; text-align: center;" name="fecha_ingreso" id="fecha_ingreso" type="text" placeholder="aaaa/mm/dd" data-date-format="yyyy-mm-dd"  oninvalid="this.setCustomValidity('Selecciona fecha de entrada')" required>
 				</div>
 			</div>
 		</div>
