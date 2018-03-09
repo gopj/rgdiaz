@@ -89,85 +89,18 @@ function clearRequired(){
 	}
 }
 
-function dateClearRequired(){
+function clearDateRequired(){
+	var txtDate = $('#fecha_ingreso').val();
 
-	if (document.getElementById('fecha_ingreso').value == "") { 
+	//alert(txtDate);
+	if (txtDate == "") { 
 		document.getElementById('fecha_ingreso').required = true;
 	} else {
 		document.getElementById('fecha_ingreso').setCustomValidity('');
 		document.getElementById('fecha_ingreso').required = false;
 	}
 
-
 }
-
-$( document ).ready(function () {
-
-	var alert = "<br> <div class='alert alert-error'> <button type='button' class='close' data-dismiss='alert'>&times;</button>";
-
-	$("#form_actualizar_registros" ).validate( { 
-		rules: {
-			fecha_salida: {
-				required: true
-			},
-			emp_tran:{
-				required: true
-			},
-			otro_empresa:{
-				required: true
-			},
-			no_auto:{
-				required: true
-			},
-			folio:{
-				required: true
-			},
-			dest_final:{
-				required: true
-			},
-			otro_dest:{
-				required: true
-			},
-			no_auto_dest:{
-				required: true
-			},
-			sig_manejo:{
-				required: true
-			},
-			otro_modalidad:{
-				required: true
-			},
-			resp_tec:{
-				required: true
-			}
-
-		},
-		messages: {
-			fecha_salida: 	alert + " Por favor ingresa fecha de salida",
-			emp_tran: 		alert + " Por favor ingresa empresa transportista",
-			otro_empresa: 	alert + " Por favor ingresa otra empresa",
-			no_auto: 		alert + " Por favor ingresa numero de autorización de transportista",
-			folio: 			alert + " Por favor ingresa el folio",
-			dest_final: 	alert + " Por favor ingresa el destino final",
-			otro_dest: 		alert + " Por favor ingresa otro desitno final",
-			no_auto_dest: 	alert + " Por favor ingresa numero de autorización de destino",
-			sig_manejo: 	alert + " Por favor ingresa la modalidad",
-			otro_modalidad: alert + " Por favor ingresa otra otro_modalidad_trabajo",
-			resp_tec: 		alert + " Por favor ingresa al nombre del Responsable Técnico"
-
-		},
-		highlight: function ( element ) { 
-			  $(element).closest('.control-group').removeClass('success').addClass('error');
-		},
-		success: function (element) {
-			element.text('OK!').addClass('valid')
-			//element.addClass('valid')
-			.closest('.control-group').removeClass('error').addClass('success');
-		}
-	});
-});
-
-
 
 function delete_residuo(id, nombre, url_delete, id_persona, folio){
 

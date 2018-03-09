@@ -93,7 +93,7 @@
 			<div class="control-group">
 				<label for="fecha_ingreso" class="control-label">Fecha de entrada en almacen:</label>
 				<div class="controls">
-					<input class="txt" style="width:58%; text-align: center;" name="fecha_ingreso" id="fecha_ingreso" type="text" placeholder="aaaa/mm/dd" data-date-format="yyyy-mm-dd"  oninvalid="this.setCustomValidity('Selecciona fecha de entrada')" required>
+					<input type="date" class="txt" style="width:58%; text-align: center;" name="fecha_ingreso" id="fecha_ingreso"  placeholder="aaaa/mm/dd" data-date-format="yyyy-mm-dd" oninvalid="this.setCustomValidity('Selecciona fecha de entrada');" onchange="clearDateRequired()"  required>
 				</div>
 			</div>
 		</div>
@@ -103,12 +103,12 @@
 	</form>
 
 	<form id="regresar_bitacora" method='post' action="<?php echo site_url('administrador/bitacora');?>">
-		<input type="hidden" name="id_persona" value="<?php echo $id_persona; ?>">
+		<input type="hidden" name="id_persona" value="<?php echo $id_persona; ?>" onclick="">
 		<input class="btn btn-warning pull-left" id="regresar_bitacora"  type="submit" value="Cancelar">
 	</form>
 </div>
 
 <script type="text/javascript">
-	$('#fecha_ingreso').datepicker();
+	//$('#fecha_ingreso').datepicker();
 	$('#fecha_salida').datepicker();
 </script>
