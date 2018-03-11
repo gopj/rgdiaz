@@ -27,10 +27,10 @@
 				<label for="" class="control-label">Otro:</label>
 				<div class="controls">
 					<div class="form-inline"  style="margin-bottom:10px;">
-						<input type="text" class="txt" style="width:58%" name="otro_residuo" id="otro_residuo" disabled  oninvalid="this.setCustomValidity('Ingresa nombre de residuo peligroso')" required	>
+						<input type="text" class="txt" style="width:58%" name="otro_residuo" id="otro_residuo"  oninvalid="this.setCustomValidity('Ingresa nombre de residuo peligroso')" required	disabled>
 						&nbsp;
 						<label for="">Clave:</label>
-						<input type="text" class="txt" style="width:19%" name="clave" id="clave" disabled  oninvalid="this.setCustomValidity('Ingresa clave de residuo peligoso')" required>
+						<input type="text" class="txt" style="width:19%" name="clave" id="clave" oninvalid="this.setCustomValidity('Ingresa clave de residuo peligoso')" required disabled>
 					</div>
 				</div>
 			</div>
