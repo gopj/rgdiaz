@@ -79,7 +79,7 @@ class Home extends CI_Controller {
 								// Sesion del Auxiliar
 								else if($this->session->userdata('status')== 1 && $this->session->userdata('tipo')==2){
 									#	Cargar la vista de usuaria
-									redirect('administrador/auxiliar');
+									redirect('recolector');
 								}
 								// Sesion de Cliente 
 								else if($this->session->userdata('status')== 1 && $this->session->userdata('tipo')==3){

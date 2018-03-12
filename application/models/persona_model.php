@@ -91,6 +91,15 @@ class Persona_model extends CI_Model {
 						->row();
 	}
 
+	public function alta_recolector($data){
+		return $this->db->set('correo',$data['correo'])
+						->set('password',$data['clave'])
+						->set('id_tipo_persona',2)
+						->set('id_status_persona',1)
+						->set('lleno_datos',1)
+						->insert('persona');
+	}
+
 	public function get_nombre_cliente($id){
 		$result = $this->db->query("SELECT nombre FROM persona WHERE  id_persona = {$id} LIMIT 1;")->result();  
 

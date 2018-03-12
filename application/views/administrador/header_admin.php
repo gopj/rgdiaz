@@ -61,7 +61,7 @@
 									<li class="dropdown">
 										<a href="" class="dropdown-toggle" data-toggle="dropdown">Recolectores<b class="caret"></b></a>
 										<ul class="dropdown-menu">
-												<li><a href="<?php echo site_url('administrador/reolector_alta')?>">Alta</a></li>
+												<li><a href="<?php echo site_url('administrador/recolector_alta')?>">Alta</a></li>
 												<li><a href="<?php echo site_url('administrador/transportistas_destinos') ?>">Transportistas | Destinos</a></li>
 										</ul>
 									</li>
