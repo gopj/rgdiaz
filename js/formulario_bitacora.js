@@ -89,15 +89,16 @@ function clearRequired(){
 	}
 }
 
-function clearDateRequired(){
-	var txtDate = $('#fecha_ingreso').val();
+function clearDateRequired(fecha){
+	var txtDate = $('#' + fecha).val();
 
-	//alert(txtDate);
+	//console.log(fecha);
+
 	if (txtDate == "") { 
-		document.getElementById('fecha_ingreso').required = true;
+		document.getElementById(fecha).required = true;
 	} else {
-		document.getElementById('fecha_ingreso').setCustomValidity('');
-		document.getElementById('fecha_ingreso').required = false;
+		document.getElementById(fecha).setCustomValidity('');
+		document.getElementById(fecha).required = false;
 	}
 
 }
