@@ -92,7 +92,8 @@ class Persona_model extends CI_Model {
 	}
 
 	public function alta_recolector($data){
-		return $this->db->set('correo',$data['correo'])
+		return $this->db->set('nombre',$data['nombre'])
+						->set('correo',$data['correo'])
 						->set('password',$data['clave'])
 						->set('id_tipo_persona',2)
 						->set('id_status_persona',1)

@@ -1575,6 +1575,7 @@ class Administrador extends CI_Controller {
 
 	public function recolector_alta() {
 		if ($this->session->userdata('tipo')==1){
+
 			if ($this->input->post()) {
 
 				$data["nombre"] = $this->input->post("nombre_recolector");

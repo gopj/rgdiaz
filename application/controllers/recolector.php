@@ -26,13 +26,18 @@ class Recolector extends CI_Controller {
 
 	public function index(){
 		if ($this->session->userdata('tipo') == 2){
-			$data["mensajes"] = $this->contacto_model->contador_mensajes(0);
-			$data["clientes"] = $this->persona_model->obtiene_clientes_baja(3,1,1);
-			$data["correo"] = $this->persona_model->getCorreos();
+			$data["id_tipo_persona"] 	= 2;
+			$data["mensajes"] 			= $this->contacto_model->contador_mensajes(0);
+			$data["clientes"] 			= $this->persona_model->obtiene_clientes_baja(3,1,1);
+			$data["correo"] 			= $this->persona_model->getCorreos($data["id_tipo_persona"]);
+			$data["id"]					= $this->session->userdata('id');
+			$data["status"] 			= 0;
+			$data["numnoti"] 			= $this->notificacion_model->obtiene_noticliente($data["id"],$data["status"]);
+			$data["new_noti"] 			= $this->notificacion_model->get_new_noti($data["status"],$data["id"]);
 
 		
 			$this->load->view('recolector/header', $data);
-			$this->load->view("recolector", $data);
+			$this->load->view("recolector/index", $data);
 			$this->load->view('recolector/footer', $data);	
 		}else{
 			$this->session->sess_destroy(); #destruye session
