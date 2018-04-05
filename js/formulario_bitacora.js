@@ -110,6 +110,12 @@ function delete_residuo(id, nombre, url_delete, id_persona, folio){
 	document.getElementById("residuo_delete").setAttribute("href", url_delete);
 	
 } 
+function input_pass(){
+	var pass = document.getElementById('clave').value;
+
+	document.getElementById('clave2').value = pass;
+
+}
 
 function automatic_pass() {
 	var numberOfChecked = $('input:checkbox:checked').length;

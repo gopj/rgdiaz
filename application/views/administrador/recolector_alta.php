@@ -22,11 +22,11 @@
 					<div class="controls">
 						<div class="form-inline">
 							<div class="form-inline">
-								<input type="text" class="txt" style="width:68%; text-align: center;" name="clave" id="clave"  oninvalid="this.setCustomValidity('Ingresa una clave')" oninput="setCustomValidity('')" disabled required>
+								<input type="text" class="txt" style="width:68%; text-align: center;" name="clave" id="clave"  oninvalid="this.setCustomValidity('Ingresa una clave')" oninput="setCustomValidity('')" onchange="input_pass()" disabled required>
 								<input type="hidden" class="txt" name="clave2" id="clave2">
 								&nbsp;&nbsp;&nbsp;
-								<label for="unidad" class="checkbox">
-									<input type="checkbox" id="clave_automatica" name="clave_automatica" onclick="automatic_pass()" checked> Aleatoria
+								<label for="clave_automatica" class="checkbox">
+									<input class="controls" type="checkbox" id="clave_automatica" name="clave_automatica" onclick="automatic_pass()" checked> Aleatoria
 								</label>
 							</div>
 						</div>
