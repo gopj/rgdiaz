@@ -34,7 +34,9 @@ class Recolector extends CI_Controller {
 			$data["status"] 			= 0;
 			$data["numnoti"] 			= $this->notificacion_model->obtiene_noticliente($data["id"],$data["status"]);
 			$data["new_noti"] 			= $this->notificacion_model->get_new_noti($data["status"],$data["id"]);
-
+			$id_tipo_persona = 3;
+			$lleno_datos = 1;	// <-- Mandamos 1 para que nos cargue solo a los clientes que ya cargaron sus datos
+			$data["tclientes"]			= $this->persona_model->obtienetodoclientes($id_tipo_persona,$lleno_datos);
 		
 			$this->load->view('recolector/header', $data);
 			$this->load->view("recolector/index", $data);
