@@ -592,3 +592,41 @@ function enable_fields(){
 	$("#password_contacto").prop('readonly', false);
 	$("#activar_campos").prop('disabled', true);
 }
+
+
+function tran_get_bitacora(id){
+	
+	var id_per = id;
+
+	/*if(id_per == 0){
+		
+	}
+	else{
+		
+	}*/
+
+	//AJAX
+	jQuery.ajax({
+			url:'http://localhost/rgdiaz/index.php/recolector/get_bitacora',	//<-- Url que va procesar la peticion
+			//url:'http://rdiaz.mx/index.php/recolector/get_bitacora',
+			timeout: 3000, //sets timeout to 3 seconds
+			type:'post',
+			data:{
+				id_persona: id_per,
+			}
+		}).done(
+			function(resp)
+			{
+				var miJson = jQuery.parseJSON(resp);
+				var id_persona = miJson.id_persona;
+
+				if(status_persona == "Inactivo"){
+					$("#update_status").removeAttr('disabled');
+				}else{
+					$("#update_status").attr('disabled','disabled');
+				}  
+			}
+		);
+
+	//echo site_url('administrador/obtiene_cliente'); ?>"  <--	Ruta de la peticion
+}

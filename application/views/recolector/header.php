@@ -29,7 +29,7 @@
 		<script type="text/javascript" src="js/bootstrap-table.js"></script>
 		<script type="text/javascript" src="js/jquery.validate.js"></script>
 		<script type="text/javascript" src="js/jquery.validate.messages.js"></script>
-		<script type="text/javascript" src="js/bitacora.js"></script>
+		<script type="text/javascript" src="js/swith.js"></script>
 		<!-- <link rel="stylesheet/less" type="text/css" href="less/tabla_bitacora.less">
 		<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js"></script> -->
 	</head>
