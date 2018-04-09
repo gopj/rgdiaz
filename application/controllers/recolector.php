@@ -27,16 +27,10 @@ class Recolector extends CI_Controller {
 
 	public function index(){
 		if ($this->session->userdata('tipo') == 2){
-			$data["id_tipo_persona"] 	= 2;
-			$data["mensajes"] 			= $this->contacto_model->contador_mensajes(0);
-			$data["clientes"] 			= $this->persona_model->obtiene_clientes_baja(3,1,1);
-			$data["correo"] 			= $this->persona_model->getCorreos($data["id_tipo_persona"]);
+
+			$id_tipo_persona 			= 3;
+			$lleno_datos 				= 1;	// <-- Mandamos 1 para que nos cargue solo a los clientes que ya cargaron sus datos
 			$data["id"]					= $this->session->userdata('id');
-			$data["status"] 			= 0;
-			$data["numnoti"] 			= $this->notificacion_model->obtiene_noticliente($data["id"],$data["status"]);
-			$data["new_noti"] 			= $this->notificacion_model->get_new_noti($data["status"],$data["id"]);
-			$id_tipo_persona = 3;
-			$lleno_datos = 1;	// <-- Mandamos 1 para que nos cargue solo a los clientes que ya cargaron sus datos
 			$data["tclientes"]			= $this->persona_model->obtienetodoclientes($id_tipo_persona,$lleno_datos);
 			//$data["bitacora"]			= $this->tran_residuo_model->get_residuos($id_persona);
 
@@ -53,14 +47,15 @@ class Recolector extends CI_Controller {
 	public function get_bitacora() {
 		
 		$bitacora = $this->tran_residuo_model->get_bitacora($this->input->post('id_persona'));
-
-		/*print_r($bitacora);
-
-		die();*/
 		
 		echo json_encode($bitacora);
+	}
 
-
+	public function get_bitacora_test_ajax() {
+		
+		$bitacora = $this->tran_residuo_model->get_bitacora($this->input->post('id_persona'));
+		
+		echo json_encode($bitacora);
 	}
 
 }

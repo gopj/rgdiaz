@@ -1,52 +1,16 @@
-			<?php
-				$notif = "";
-				if (count($new_noti) > 0) {
-					$notif = "<div class='cont-not'>";
-					foreach ($new_noti as $row) {
-						$ruta = $row->ruta_archivo;
-						$array = explode("/", $ruta);
-						$pos = count($array);
-						$notif .= "<div class='notif'><span class='notif1'>Se agregó <b>".$array[$pos-1]."</b> en la carpeta <b>".$array[$pos-2]."</b></span></div>";
-					}
-					$notif .= "</div>";
-				}
-			?>
-		<footer>
-			<div class="footer" style="color:#fff; font-weight:bold; ">
-					<div class="container">
-						<div style="">
-							Derechos reservados &copy; <?php echo date("Y"); ?> RDíaz
-						</div>
-						<!-- <div class="pull-right" style="font-weight:normal; font-size:14px;">
-							Desarrollado por: <a href="http://gopj.com.mx" style="color:#fff;" target="_blank">Gopycom</a> -->
-						</div>
-					</div>
-				</div>
-		</footer>		
+	
+	<footer class="footer">
+		<div class="container">
+			<span class="text-muted"> Todos los derechos reservados &copy; <?php echo date("Y"); ?> RDíaz </span>
+		</div>	
+	</footer>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 	</body>
-	<script>
-		$(document).ready(function(){
-			$('#tabla').dataTable({
-              	"bJQueryUI":true
-            });
-        })
-		
-		$('#notificaciones').popover({
-			animation: true,
-			html: true,
-			content: "<?php echo $notif; ?>",
-			placement: "bottom",
-			trigger: "click"
-		});
-
-		$('body').on('click', function (e) {
-			$('[data-toggle="popover"]').each(function () {
-		   		if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
-			   		$(this).popover('hide');
-		   		}
-			});
-		});
-
-		$('.dropdown-toggle').dropdown()
-	</script>
+	
 </html>
