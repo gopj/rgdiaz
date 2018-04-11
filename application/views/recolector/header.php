@@ -26,7 +26,7 @@
 			</a>
 		</nav>
 
-		<div class="container" style="padding-top:20px;">
+		<div class="container" style="padding-top:10px;">
 			<div class="row">
 				<div class="span14">
 					<img src="img/logo.png" style="width:300px;">
