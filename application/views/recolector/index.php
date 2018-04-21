@@ -9,7 +9,7 @@
 			
 			<input type="text" class="form-control form-control-lg" id="search_cliente"> <br>
 
-			<select class="form-control" onclick="get_cliente(this.value)" id="id_persona" name="id_persona" size="24" style="width: 100%;">
+			<select class="form-control" onclick="get_cliente(this.value)" id="id_persona" name="id_persona" size="20" style="width: 100%;">
 				<option value="">-</option>
 
 				<?php foreach($tclientes->result() as $row){ ?>
