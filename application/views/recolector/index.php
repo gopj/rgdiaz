@@ -6,8 +6,10 @@
 		<div class="col-md-4 order-md-1">
 
 			<h4 class="mb-3"> <img src="img/iconos_bt4/person-4x.png" /> Selecciona Cliente</h4> <hr>
-				
-			<select class="form-control" onclick="tran_get_bitacora(this.value)" multiple id="id_persona" name="id_persona" size="27" style="width: 100%;">
+			
+			<input type="text" class="form-control form-control-lg" id="search_cliente"> <br>
+
+			<select class="form-control" onclick="get_cliente(this.value)" id="id_persona" name="id_persona" size="24" style="width: 100%;">
 				<option value="">-</option>
 
 				<?php foreach($tclientes->result() as $row){ ?>
@@ -76,7 +78,7 @@
 
 				</div>
 				<div class="form-group col-md-4">
-					<button type="button" class="btn btn-primary btn-lg btn-block">Ver Manifiestos</button>
+					<button type="button" class="btn btn-primary btn-lg btn-block" id="ver_manifiestos" disabled>Ver Manifiestos</button>
 				</div>
 				<div class="form-group col-md-4">
 
@@ -87,9 +89,3 @@
 	</div>		
 			
 </main>
-
-<script type="text/javascript">
-$('#id_persona').multiSelect()
-
-</script>
-

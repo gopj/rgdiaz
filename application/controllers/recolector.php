@@ -44,6 +44,13 @@ class Recolector extends CI_Controller {
 		
 	}
 
+	public function get_cliente() {
+		
+		$cliente = $this->persona_model->obtiene_cliente($this->input->post('id_persona'));
+		
+		echo json_encode($cliente);
+	}
+
 	public function get_bitacora() {
 		
 		$bitacora = $this->tran_residuo_model->get_bitacora($this->input->post('id_persona'));

@@ -595,78 +595,7 @@ function enable_fields(){
 }
 
 
-function tran_get_bitacora(id){
-	
-	var id_per = id;
 
-
-	//AJAX
-	jQuery.ajax({
-			url:'http://localhost/rgdiaz/index.php/recolector/get_bitacora',	//<-- Url que va procesar la peticion
-			//url:'http://rdiaz.mx/index.php/recolector/get_bitacora',
-			timeout: 3000, //sets timeout to 3 seconds
-			type:'post',
-			data:{
-				id_persona: id_per,
-			}
-		}).done(
-			function(resp)
-			{
-				var json_obj = jQuery.parseJSON(resp);
-
-				var html;
-				var tr;
-				var folio;
-				var empresa_destino;
-				var fecha_ingreso;
-				var fecha_salida;
-
-				for (var i = 0; i < json_obj.length; i++) {
-					
-					folio = '"' + json_obj[i].folio + '", ';
-					empresa_destino = '"' + json_obj[i].empresa_destino + '", ';
-					fecha_ingreso = '"' + json_obj[i].fecha_ingreso + '", ';
-					fecha_salida = '"' + json_obj[i].fecha_salida + '" ';
-
-					tr += '[' + folio + empresa_destino + fecha_ingreso + fecha_salida + '],';
-
-				}
-
-				tr = tr.replace("undefined", "");
-
-				html = ' ['  + tr + ' ] ' ;
-
-				console.log(html);
-
-				$('#tabla_bit').dataTable( {
-					"aaData": [
-            /* Reduced data set */
-            [ "Trident", "Internet Explorer 4.0", "Win 95+", 4, "X" ],
-            [ "Trident", "Internet Explorer 5.0", "Win 95+", 5, "C" ],
-            [ "Trident", "Internet Explorer 5.5", "Win 95+", 5.5, "A" ],
-            [ "Trident", "Internet Explorer 6.0", "Win 98+", 6, "A" ],
-            [ "Trident", "Internet Explorer 7.0", "Win XP SP2+", 7, "A" ],
-            [ "Gecko", "Firefox 1.5", "Win 98+ / OSX.2+", 1.8, "A" ],
-            [ "Gecko", "Firefox 2", "Win 98+ / OSX.2+", 1.8, "A" ],
-            [ "Gecko", "Firefox 3", "Win 2k+ / OSX.3+", 1.9, "A" ],
-            [ "Webkit", "Safari 1.2", "OSX.3", 125.5, "A" ],
-            [ "Webkit", "Safari 1.3", "OSX.3", 312.8, "A" ],
-            [ "Webkit", "Safari 2.0", "OSX.4+", 419.3, "A" ],
-            [ "Webkit", "Safari 3.0", "OSX.4+", 522.1, "A" ]
-        ],
-        "aoColumns": [
-            { "sTitle": "Engine" },
-            { "sTitle": "Browser" },
-            { "sTitle": "Platform" },
-            { "sTitle": "Version", "sClass": "center" },
-            { "sTitle": "Grade", "sClass": "center" }
-        ]
-				} );
-			}
-		);
-
-	//echo site_url('administrador/obtiene_cliente'); ?>"  <--	Ruta de la peticion
-}
 
 
 /*[
