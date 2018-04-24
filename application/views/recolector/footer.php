@@ -10,6 +10,9 @@
 	<script type="text/javascript" src="js/bootstrap4/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap4/popper.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap4/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap4/dataTables.bootstrap4.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap4/dataTables.jQueryui.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap4/dataTables.semanticui.min.js"></script>
 	<script type="text/javascript" src="js/recolector.js"></script>
 
 	</body>

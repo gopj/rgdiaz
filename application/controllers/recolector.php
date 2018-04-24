@@ -50,19 +50,5 @@ class Recolector extends CI_Controller {
 		
 		echo json_encode($cliente);
 	}
-
-	public function get_bitacora() {
-		
-		$bitacora = $this->tran_residuo_model->get_bitacora($this->input->post('id_persona'));
-		
-		echo json_encode($bitacora);
-	}
-
-	public function get_bitacora_test_ajax() {
-		
-		$bitacora = $this->tran_residuo_model->get_bitacora($this->input->post('id_persona'));
-		
-		echo json_encode($bitacora);
-	}
-
+	
 }
