@@ -15,8 +15,23 @@
 		<link href="css/bootstrap4/open-iconic-bootstrap.css" rel="stylesheet">
     	<link href="css/bootstrap4/sticky-footer.css" rel="stylesheet">
     	<link href="css/bootstrap4/multi-select.css" rel="stylesheet">
-    	<link href="css/bootstrap4/dataTables.bootstrap.min.css" rel="stylesheet">
+    	<link href="css/bootstrap4/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    	<style type="text/css">
+			table.dataTable thead tr {
+				background-color: #28A745;
+				color: white;
+			}
+			table.dataTable tfoot tr { 
+				background-color: #28A745;
+				color: white;	
+			}
+			.page-item.active .page-link {
+				background-color: #28A745;
+				border-color: black;
+			}
+			
+    	</style>
 		<title>Recolector</title>
 	</head>
 	<body>

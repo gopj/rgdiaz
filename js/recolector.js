@@ -80,3 +80,8 @@ jQuery.fn.filterByText = function(textbox) {
 $(function() {
 	$('#id_persona').filterByText($('#search_cliente'));
 });
+
+
+$(document).ready(function() {
+    $('#example').DataTable();
+} );	

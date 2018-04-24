@@ -130,7 +130,7 @@ function date_bitacora($s_date){
 			</div>
 			<div class=modal-footer>
 				<button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-        		<a href="" id='residuo_delete' class='btn btn-danger'role='button'> Eliminar</a>
+        		<a href="" id='residuo_delete' class='btn btn-danger' role='button'> Eliminar</a>
 			</div>
 		</div> 
 	</div>

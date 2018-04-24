@@ -44,6 +44,35 @@ class Recolector extends CI_Controller {
 		
 	}
 
+	public function ver_manifiestos() {
+
+		if ($this->input->post()){
+
+
+			$data["id_cliente"] = $this->input->post("id_persona");
+
+			$data["bitacora"] = $this->tran_residuo_model->get_bitacora($data["id_cliente"]);
+			
+			$this->load->view("recolector/header");
+			$this->load->view("recolector/ver_manifiestos", $data);
+			$this->load->view("recolector/footer");	
+		} else {
+			redirect("recolector/index");
+		}
+		
+	
+	}
+
+	public function crear_manifiesto($id_cliente) {
+
+		$data["id_cliente"] = $id_cliente;
+
+		$this->load->view("recolector/header");
+		$this->load->view("recolector/crear_manifiesto", $data);
+		$this->load->view("recolector/footer");			
+	
+	}
+
 	public function get_cliente() {
 		
 		$cliente = $this->persona_model->obtiene_cliente($this->input->post('id_persona'));
