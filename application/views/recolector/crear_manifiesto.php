@@ -2,22 +2,17 @@
 	<center><h2 class="bd-title" id="content">Crear Manifiesto</h1></center>
 	<hr>
 	<div class="col-md-12">
-		
-		<div class="form-group">
-			<label class="col-form-label" for="nombre_empresa"> <center> Empresa Destino </center> </label>
-			<select class="form-control" style="width: 100%;">
-				<option value="">Selecciona empresa destino</option>
-			</select>
-		</div>
 
 		<div class="form-row">
-			<div class="form-group col-md-6">
-				<label class="col-form-label" for="calle"> <center> Fecha de ingreso </center> </label>
-				<input type="text" class="form-control form-control-lg" id="fecha_ingreso">
+			<div class="form-group col-md-9">
+				<label class="col-form-label" for="nombre_empresa"> <center> Empresa Destino </center> </label>
+				<select class="form-control" style="width: 100%;">
+					<option value="">Selecciona empresa destino</option>
+				</select>
 			</div>
-			<div class="form-group col-md-6">
-				<label class="col-form-label" for="numero"> <center> Fecha de Salida </center> </label>
-				<input type="text" class="form-control form-control-lg" id="fecha_salida">
+			<div class="form-group col-md-3">
+				<label class="col-form-label" for="numero"> <center> Fecha de Embarque </center> </label>
+				<input type="text" class="form-control" id="fecha_salida">
 			</div>		
 		</div>
 
