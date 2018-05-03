@@ -17,29 +17,50 @@
 		</div>
 
 		<div class="form-row">
-			<div class="form-group col-md-6">
-				<label class="col-form-label" for="municipio"> <center> Municipio </center> </label>
-				<input type="text" class="form-control form-control-lg" id="municipio" disabled>
-			</div>
-			<div class="form-group col-md-6">
-				<label class="col-form-label" for="estado"> <center> Estado </center> </label>
-				<input type="text" class="form-control form-control-lg" id="estado" disabled>
-			</div>
-		</div>	
-
-		<div class="form-row">
-			<div class="form-group col-md-6">
-				<label class="col-form-label" for="telefono"> <center> Télefono </center> </label>
-				<input type="text" class="form-control form-control-lg" id="telefono" disabled>
-			</div>
-			<div class="form-group col-md-6">
-				<label class="col-form-label" for="email"> <center> Dirección de Email </center> </label>
-				<input type="text" class="form-control form-control-lg" id="email" disabled>
-			</div>
+			<div class="form-group col-md-9">
+				<label class="col-form-label" for="responsable_tecnico"> <center> Nombre del Responable Técnico</center> </label>
+				<input type="text" class="form-control" id="responsable_tecnico">
+			</div>		
 		</div>
+
 
 		<div class="form-row">
 			<div class="form-group col-md-12">
+
+				<center><h2 class="bd-title" id="content">Recolección de Residuos</h1></center>
+				<hr>
+				<table id="tabla_residuos" class="table table-striped table-bordered" style="width:100%">
+					<thead>
+						<tr>
+							<th style="width: 390px;">Folio</th>
+							<th>Nombre residuo</th>
+							<th>CRETI</th>
+							<th>Contenedor Cantidad</th>
+							<th>Contenedor Tipo</th>
+							<th>Cantidad Total</th>
+							<th>Unidad Vol/Peso</th>
+							<th>Area de Generación</th>
+							<th>Modalidad</th>
+							<th>Opciones</th>
+						</tr>
+					</thead>
+					<tbody>
+							<tr>
+								<td> 1 </td>
+								<td> sadddddddddddddddddddddddddddd asd asda sd asd sad sad asd asd asd sad asd asd</td>
+								<td> T </td>
+								<td> </td>
+								<td> </td>
+								<td> </td>
+								<td> </td>
+								<td> </td>
+								<td> </td>
+								<td> </td>
+							</tr>
+					</tbody>
+					
+				</table>
+
 			</div>
 		</div>
 		<div class="form-row">

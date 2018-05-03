@@ -83,5 +83,20 @@ $(function() {
 
 
 $(document).ready(function() {
-    $('#example').DataTable();
+	$('#tabla_manifiestos').DataTable();
 } );	
+
+$(document).ready(function() {
+	var table = $('#tabla_residuos').DataTable( {
+		scrollY:        "300px",
+        scrollX:        true,
+        scrollCollapse: true,
+ fixedColumns:   {
+            leftColumns: 1,
+            rightColumns: 1
+        },
+        columnDefs: [
+    { "width": "200px", "targets": 0 }
+  ]
+	} );
+} );

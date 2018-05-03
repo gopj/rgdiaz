@@ -1,7 +1,7 @@
 <main role="main" class="container" style="padding-top:-10px;">
 	<center><h2 class="bd-title" id="content">Manifiestos</h1></center>
 	<hr>
-	<table id="example" class="table table-striped table-bordered" style="width:100%">
+	<table id="tabla_manifiestos" class="table table-striped table-bordered" style="width:100%">
 		<thead>
 			<tr>
 				<th>Folio</th>
