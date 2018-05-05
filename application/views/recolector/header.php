@@ -16,6 +16,7 @@
     	<link href="css/bootstrap4/sticky-footer.css" rel="stylesheet">
     	<!-- <link href="css/bootstrap4/dataTables.bootstrap4.min.css" rel="stylesheet"> -->
     	<link href="css/bootstrap4/jquery.dataTables.min.css" rel="stylesheet">
+    	<link href="css/recolector.css" rel="stylesheet">
     	
 
     	<style type="text/css">

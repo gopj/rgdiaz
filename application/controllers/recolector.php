@@ -67,6 +67,8 @@ class Recolector extends CI_Controller {
 
 		$data["id_cliente"] = $id_cliente;
 
+		$data["empresa_destino"] = $this->emp_destino_model->get_tipo_emp_destino();
+
 		$this->load->view("recolector/header");
 		$this->load->view("recolector/crear_manifiesto", $data);
 		$this->load->view("recolector/footer");			
