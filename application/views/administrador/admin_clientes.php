@@ -131,7 +131,7 @@
 			</div>		
 		</div>
 		<div class="span1"></div>
-		<div class="span6">
+		<div class="span4">
 			<legend>Datos del contacto</legend>
 			<div id="datoscontacto" class="well">
 				<br>

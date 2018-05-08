@@ -1,0 +1,29 @@
+input[type=radio].css-checkbox {
+							position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+						}
+
+						input[type=radio].css-checkbox + label.css-label {
+							padding-left:41px;
+							height:36px; 
+							display:inline-block;
+							line-height:36px;
+							background-repeat:no-repeat;
+							background-position: 0 0;
+							font-size:36px;
+							vertical-align:middle;
+							cursor:pointer;
+
+						}
+
+						input[type=radio].css-checkbox:checked + label.css-label {
+							background-position: 0 -36px;
+						}
+						label.css-label {
+				background-image:url(http://localhost/rgdiaz/img/iconos_bt4/csscheckbox.png);
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+				-khtml-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}

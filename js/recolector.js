@@ -100,3 +100,29 @@ $(document).ready(function() {
   ]
 	} );
 } );
+
+function update_clave(id_clave) {
+	var id = id_clave;
+
+	//AJAX
+	jQuery.ajax({
+		url:'http://localhost/rgdiaz/index.php/recolector/get_clave_residuo',	//<-- Url que va procesar la peticion
+		//url:'http://rdiaz.mx/index.php/recolector/get_cliente',
+		timeout: 3000, //sets timeout to 3 seconds
+		type:'post',
+		data:{
+			id: id
+		}
+	}).done(
+		function(resp) {
+			var json_data = jQuery.parseJSON(resp);
+			var clave = json_data.clave;
+			
+			console.log(clave);
+			$("#clave").val(clave);
+		}
+	);
+}
+
+
+ $("input[type='number']").InputSpinner();

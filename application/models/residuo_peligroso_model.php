@@ -21,6 +21,10 @@ class Residuo_peligroso_model extends CI_Model {
 		return $this->db->query("SELECT * FROM tipo_residuos;")->result();
 	}
 
+	public function get_tipo_residuo($id){
+		return $this->db->query("SELECT * FROM tipo_residuos WHERE id_tipo_residuo = {$id};")->row();
+	}
+
 	public function get_nombre_residuo($id){
 		$sql = "SELECT tr.residuo
 				FROM residuos_peligrosos as r, tipo_residuos as tr

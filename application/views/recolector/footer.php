@@ -10,6 +10,7 @@
 	<!-- <script type="text/javascript" src="js/bootstrap4/jquery-3.3.1.min.js"></script> -->
 	<script type="text/javascript" src="js/bootstrap4/jquery-1.12.4.js"></script>
 	<script type="text/javascript" src="js/bootstrap4/popper.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap4/InputSpinner.js"></script>
 	<script type="text/javascript" src="js/bootstrap4/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap4/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap4/dataTables.fixedColumns.min.js"></script>

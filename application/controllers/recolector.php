@@ -36,7 +36,7 @@ class Recolector extends CI_Controller {
 
 			$this->load->view('recolector/header', $data);
 			$this->load->view("recolector/index", $data);
-			$this->load->view('recolector/footer', $data);	
+			$this->load->view('recolector/footer', $data);
 		}else{
 			$this->session->sess_destroy(); #destruye session
 			redirect('home/index');
@@ -46,32 +46,71 @@ class Recolector extends CI_Controller {
 
 	public function ver_manifiestos() {
 
-		if ($this->input->post()){
+		if ($this->session->userdata('tipo') == 2){
+
+			if ($this->input->post()){
 
 
-			$data["id_cliente"] = $this->input->post("id_persona");
+				$data["id_cliente"] = $this->input->post("id_persona");
 
-			$data["bitacora"] = $this->tran_residuo_model->get_bitacora($data["id_cliente"]);
-			
-			$this->load->view("recolector/header");
-			$this->load->view("recolector/ver_manifiestos", $data);
-			$this->load->view("recolector/footer");	
-		} else {
-			redirect("recolector/index");
-		}
+				$data["bitacora"] = $this->tran_residuo_model->get_bitacora($data["id_cliente"]);
+				
+				$this->load->view("recolector/header");
+				$this->load->view("recolector/ver_manifiestos", $data);
+				$this->load->view("recolector/footer");
+			} else {
+				redirect("recolector/index");
+			}
 		
+		}else{
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/index');
+		}
 	
 	}
 
 	public function crear_manifiesto($id_cliente) {
 
-		$data["id_cliente"] = $id_cliente;
+		if ($this->session->userdata('tipo') == 2){
 
-		$data["empresa_destino"] = $this->emp_destino_model->get_tipo_emp_destino();
+			$data["id_cliente"] 		= $id_cliente;
+			$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
+			$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
+			$data["areas"] 				= $this->area_model->get_areas();
+			$data["modalidades"] 		= $this->modalidad_model->get_tipo_modalidad();
 
-		$this->load->view("recolector/header");
-		$this->load->view("recolector/crear_manifiesto", $data);
-		$this->load->view("recolector/footer");			
+			$this->load->view("recolector/header");
+			$this->load->view("recolector/crear_manifiesto", $data);
+			$this->load->view("recolector/footer");
+
+		}else{
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/index');
+		}	
+	
+	}
+
+	public function crear_manifiestos($id_cliente) {
+
+		print_r($this->input->post());
+		die();
+
+		if ($this->session->userdata('tipo') == 2){
+
+			$data["id_cliente"] 		= $id_cliente;
+			$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
+			$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
+			$data["areas"] 				= $this->area_model->get_areas();
+			$data["modalidades"] 		= $this->modalidad_model->get_tipo_modalidad();
+
+			$this->load->view("recolector/header");
+			$this->load->view("recolector/crear_manifiesto", $data);
+			$this->load->view("recolector/footer");
+
+		}else{
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/index');
+		}	
 	
 	}
 
@@ -82,4 +121,10 @@ class Recolector extends CI_Controller {
 		echo json_encode($cliente);
 	}
 	
+	public function get_clave_residuo() {
+
+		$clave = $this->residuo_peligroso_model->get_tipo_residuo($this->input->post('id'));
+		
+		echo json_encode($clave);	
+	}
 }
