@@ -1,7 +1,7 @@
 <main role="main" class="container" style="padding-top:-10px;">
 	<center><h2 class="bd-title" id="content">Crear Manifiesto</h2></center>
 	<hr>
-	<form id="form_manifiesto_recolector" action="<?= site_url('recolector/crear_manifiesto/' . $id_cliente); ?>" method="post">
+	<form id="form_manifiesto_recolector" action="<?= site_url('recolector/crear_manifiestos/' . $id_cliente . '/' . $folio); ?>" method="post">
 		<div class="col-md-12">
 			<div class="form-row">
 				<div class="form-group col-md-9">

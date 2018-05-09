@@ -49,8 +49,6 @@ class Recolector extends CI_Controller {
 		if ($this->session->userdata('tipo') == 2){
 
 			if ($this->input->post()){
-
-
 				$data["id_cliente"] = $this->input->post("id_persona");
 
 				$data["bitacora"] = $this->tran_residuo_model->get_bitacora($data["id_cliente"]);
@@ -73,15 +71,42 @@ class Recolector extends CI_Controller {
 
 		if ($this->session->userdata('tipo') == 2){
 
-			$data["id_cliente"] 		= $id_cliente;
-			$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
-			$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
-			$data["areas"] 				= $this->area_model->get_areas();
-			$data["modalidades"] 		= $this->modalidad_model->get_tipo_modalidad();
+			if ($this->input->post()) {
 
-			$this->load->view("recolector/header");
-			$this->load->view("recolector/crear_manifiesto", $data);
-			$this->load->view("recolector/footer");
+				$data["id_cliente"] 		= $id_cliente;
+				$data["id_emp_destino"]		= $this->input->post("empresa_destino");
+				$data["residuo"]			= $this->input->post("residuo_peligroso");
+				$data["fecha_emabarque"]	= $this->input->post("fecha_emabarque");
+				$data["responsable_tecnico"]= $this->input->post("responsable_tecnico");
+				$data["cantidad"]			= $this->input->post("cantidad");
+				$data["unidad"]				= $this->input->post("unidadRadio");
+				$data["cantidad_contenedor"]= $this->input->post("cantidad_tipo");
+				$data["contenedor"]			= $this->input->post("tipoRadio");
+				$data["caracteristica_r"]	= $this->input->post("caracteristica_check");
+				$data["caracteristicas"] 	= "";
+				$data["folio"]				= $this->tran_residuo_model->get_bitacora_count($data["id_cliente"]) + 1;
+				
+				foreach ($data["caracteristica_r"] as $key => $value) {
+					$data["caracteristicas"] .= $value . " ";
+				}
+
+				$this->tran_residuo_model->inserta_tran_residuo($data);
+
+				$this->load->view("recolector/header");
+				$this->load->view("recolector/crear_manifiestos", $data);
+				$this->load->view("recolector/footer");
+
+			} else {
+
+				$data["id_cliente"] 		= $id_cliente;
+				$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
+				$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
+
+				$this->load->view("recolector/header");
+				$this->load->view("recolector/crear_manifiesto", $data);
+				$this->load->view("recolector/footer");
+
+			}
 
 		}else{
 			$this->session->sess_destroy(); #destruye session
@@ -92,20 +117,44 @@ class Recolector extends CI_Controller {
 
 	public function crear_manifiestos($id_cliente) {
 
-		print_r($this->input->post());
-		die();
-
 		if ($this->session->userdata('tipo') == 2){
 
-			$data["id_cliente"] 		= $id_cliente;
-			$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
-			$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
-			$data["areas"] 				= $this->area_model->get_areas();
-			$data["modalidades"] 		= $this->modalidad_model->get_tipo_modalidad();
+			if ($this->input->post()) {
 
-			$this->load->view("recolector/header");
-			$this->load->view("recolector/crear_manifiesto", $data);
-			$this->load->view("recolector/footer");
+				$data["id_cliente"] 		= $id_cliente;
+				$data["id_emp_destino"]		= $this->input->post("empresa_destino");
+				$data["residuo"]			= $this->input->post("residuo_peligroso");
+				$data["fecha_emabarque"]	= $this->input->post("fecha_emabarque");
+				$data["responsable_tecnico"]= $this->input->post("responsable_tecnico");
+				$data["cantidad"]			= $this->input->post("cantidad");
+				$data["unidad"]				= $this->input->post("unidadRadio");
+				$data["cantidad_contenedor"]= $this->input->post("cantidad_tipo");
+				$data["contenedor"]			= $this->input->post("tipoRadio");
+				$data["caracteristica_r"]	= $this->input->post("caracteristica_check");
+				$data["caracteristicas"] 	= "";
+				$data["folio"]				= $folio;
+
+				foreach ($data["caracteristica_r"] as $key => $value) {
+					$data["caracteristicas"] .= $value . " ";
+				}
+
+				$this->tran_residuo_model->inserta_tran_residuo($data);
+
+				$this->load->view("recolector/header");
+				$this->load->view("recolector/crear_manifiestos", $data);
+				$this->load->view("recolector/footer");
+			} else {
+
+				$data["id_cliente"] 		= $id_cliente;
+				$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
+				$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
+				$data["folio"]				= $folio;
+
+				$this->load->view("recolector/header");
+				$this->load->view("recolector/crear_manifiestos", $data);
+				$this->load->view("recolector/footer");
+
+			}
 
 		}else{
 			$this->session->sess_destroy(); #destruye session

@@ -6,8 +6,7 @@
 			<tr>
 				<th>Folio</th>
 				<th>Empresa Destino</th>
-				<th>Fecha de Entrada</th>
-				<th>Fecha de Salida</th>
+				<th>Fecha de Embarque</th>
 				<th>Opciones</th>
 			</tr>
 		</thead>
@@ -18,7 +17,6 @@
 					<td> <?= $bit->folio; ?> </td>
 					<td> <?= $bit->empresa_destino; ?> </td>
 					<td> <?= $bit->fecha_ingreso; ?> </td>
-					<td> <?= $bit->fecha_salida; ?> </td>
 					<td> <button type="button" class="btn btn-primary btn-sm"> Ver </button> </td>
 				</tr>
 
@@ -29,7 +27,6 @@
 				<th>Folio</th>
 				<th>Empresa Destino</th>
 				<th>Fecha de Entrada</th>
-				<th>Fecha de Salida</th>
 				<th>Opciones</th>
 			</tr>
 		</tfoot>
