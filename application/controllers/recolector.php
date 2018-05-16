@@ -73,6 +73,12 @@ class Recolector extends CI_Controller {
 
 			if ($this->input->post()) {
 
+				$folio = $this->tran_residuo_model->get_bitacora_count($id_cliente);
+
+				$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
+				$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
+				$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
+
 				$data["id_cliente"] 		= $id_cliente;
 				$data["id_emp_destino"]		= $this->input->post("empresa_destino");
 				$data["residuo"]			= $this->input->post("residuo_peligroso");
@@ -84,7 +90,7 @@ class Recolector extends CI_Controller {
 				$data["contenedor"]			= $this->input->post("tipoRadio");
 				$data["caracteristica_r"]	= $this->input->post("caracteristica_check");
 				$data["caracteristicas"] 	= "";
-				$data["folio"]				= $this->tran_residuo_model->get_bitacora_count($data["id_cliente"]) + 1;
+				$data["folio"]				= $folio + 1;
 				
 				foreach ($data["caracteristica_r"] as $key => $value) {
 					$data["caracteristicas"] .= $value . " ";
@@ -115,11 +121,17 @@ class Recolector extends CI_Controller {
 	
 	}
 
-	public function crear_manifiestos($id_cliente) {
+	public function crear_manifiestos($id_cliente, $folio) {
 
 		if ($this->session->userdata('tipo') == 2){
 
 			if ($this->input->post()) {
+
+				$folio = $this->tran_residuo_model->get_bitacora_count($id_cliente);
+				
+				$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
+				$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
+				$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
 
 				$data["id_cliente"] 		= $id_cliente;
 				$data["id_emp_destino"]		= $this->input->post("empresa_destino");
@@ -144,12 +156,11 @@ class Recolector extends CI_Controller {
 				$this->load->view("recolector/crear_manifiestos", $data);
 				$this->load->view("recolector/footer");
 			} else {
-
 				$data["id_cliente"] 		= $id_cliente;
 				$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
 				$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
-				$data["folio"]				= $folio;
-
+				$data["bitacora_manifiesto"]= $this->residuo_peligroso_model->get_bitacora_manifiesto($id_cliente, $folio);
+				
 				$this->load->view("recolector/header");
 				$this->load->view("recolector/crear_manifiestos", $data);
 				$this->load->view("recolector/footer");

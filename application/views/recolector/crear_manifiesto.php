@@ -47,9 +47,9 @@
 						</thead>
 						<tbody>
 								<tr>
-									<td> 1 </td>
-									<td> sadddddddddddddddddddddddddddd asd asda sd asd sad sad asd asd asd sad asd asd</td>
-									<td> T </td>
+									<td> </td>
+									<td> </td>
+									<td> </td>
 									<td> </td>
 									<td> </td>
 									<td> </td>

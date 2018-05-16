@@ -1,3 +1,4 @@
+Manifiestos
 <main role="main" class="container" style="padding-top:-10px;">
 	<center><h2 class="bd-title" id="content">Crear Manifiesto</h2></center>
 	<hr>
@@ -6,23 +7,25 @@
 			<div class="form-row">
 				<div class="form-group col-md-9">
 					<label class="col-form-label" for="nombre_empresa"> <center> Empresa Destino </center> </label>
-					<select class="form-control" style="width: 100%;" name="empresa_destino" id="empresa_destino">
-						<option value="">Selecciona empresa destino</option>
-						<?php foreach ($empresa_destino as $key) { ?>
-							<option value="<?= $key->id_tipo_emp_destino; ?>"> <?= $key->nombre_destino; ?> </option>
-						<?php } ?>
+					<select class="form-control" style="width: 100%;" name="empresa_destino" id="empresa_destino" readonly>
+						<?php foreach ($empresa_destino as $key) { 
+							    print_r($empresa_destino);
+								if ($id_emp_destino == $key->id_tipo_emp_destino) { ?>
+									<option value="<?= $key->id_tipo_emp_destino; ?>"> <?= $key->nombre_destino; ?> </option>
+						<?php	} 
+							  }	 	?>
 					</select>
 				</div>
 				<div class="form-group col-md-3">
 					<label class="col-form-label" for="fecha_salida"> <center> Fecha de Embarque </center> </label>
-					<input type="date" class="form-control" id="fecha_emabarque" name="fecha_emabarque">
+					<input type="date" class="form-control" id="fecha_emabarque" name="fecha_emabarque" value="<?= $fecha_emabarque ?>" readonly>
 				</div>		
 			</div>
 
 			<div class="form-row">
 				<div class="form-group col-md-9">
 					<label class="col-form-label" for="responsable_tecnico"> <center> Nombre del Responable Técnico</center> </label>
-					<input type="text" class="form-control" id="responsable_tecnico" name="responsable_tecnico" >
+					<input type="text" class="form-control" id="responsable_tecnico" name="responsable_tecnico" value="<?= $responsable_tecnico ?>" readonly>
 				</div>		
 			</div>
 
@@ -46,16 +49,18 @@
 							</tr>
 						</thead>
 						<tbody>
+							<?php foreach ($bitacora_manifiesto as $key) { ?>
 								<tr>
-									<td> 1 </td>
-									<td> sadddddddddddddddddddddddddddd asd asda sd asd sad sad asd asd asd sad asd asd</td>
-									<td> T </td>
-									<td> </td>
-									<td> </td>
-									<td> </td>
-									<td> </td>
-									<td> </td>
+									<td> <?= $key->folio ?> </td>
+									<td> <?= $key->residuo ?> </td>
+									<td> <?= $key->caracteristica ?> </td>
+									<td> <?= $key->contenedor_cantidad ?> </td>
+									<td> <?= $key->contenedor_tipo ?> </td>
+									<td> <?= $key->residuo_cantidad ?> </td>
+									<td> <?= $key->unidad ?> </td>
+									<td> Botones </td>
 								</tr>
+							<?php } ?>
 						</tbody>
 						
 					</table>

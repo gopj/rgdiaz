@@ -50,6 +50,30 @@ class Tran_residuo_model extends CI_Model {
 		return $result;
 	}
 
+	public function get_bitacora_manifiesto($id_cliente, $folio){
+		
+		$result = $this->db->query("
+			SELECT 
+				r.folio,
+				tr.residuo,
+				r.caracteristica,
+				r.contenedor_cantidad,
+				r.contenedor_tipo,
+				r.residuo_cantidad,
+				r.unidad
+			FROM 
+				tran_residuos as r
+					LEFT JOIN tipo_emp_destino ed ON (r.id_tipo_emp_destino = ed.id_tipo_emp_destino),
+				tipo_residuos as tr
+			WHERE
+				r.id_tipo_residuo = tr.id_tipo_residuo and
+				id_persona 	= {$id_cliente} and 
+				folio 		= {$folio};
+		")->result();
+
+		return $result;
+	}
+
 	public function inserta_tran_residuo($data) {	
 
 		$this->db
