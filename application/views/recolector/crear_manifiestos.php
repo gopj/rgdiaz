@@ -1,4 +1,3 @@
-Manifiestos
 <main role="main" class="container" style="padding-top:-10px;">
 	<center><h2 class="bd-title" id="content">Crear Manifiesto</h2></center>
 	<hr>
@@ -75,7 +74,7 @@ Manifiestos
 
 			<div class="form-row">
 				<div class="form-group col-md-4">
-					<button type="button" class="btn btn-warning btn-lg btn-block" id="cancelar">Cancelar</button>
+					<a href="<?= site_url('recolector/ver_manifiestos/' . $id_cliente); ?>"  class="btn btn-warning btn-lg btn-block" id="regresar"> Regresar </a>
 				</div>
 				<div class="form-group col-md-4">
 					<button type="button" class="btn btn-primary btn-lg btn-block" id="agregar_residuos" data-toggle="modal" data-target="#myModal">Agregar Residuo</button>

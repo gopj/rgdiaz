@@ -70,13 +70,13 @@
 
 			<div class="form-row">
 				<div class="form-group col-md-4">
-					<button type="button" class="btn btn-warning btn-lg btn-block" id="cancelar">Cancelar</button>
+					<a href="<?= site_url('recolector/ver_manifiestos/' . $id_cliente); ?>"  class="btn btn-warning btn-lg btn-block" id="regresar"> Regresar </a>
 				</div>
 				<div class="form-group col-md-4">
 					<button type="button" class="btn btn-primary btn-lg btn-block" id="agregar_residuos" data-toggle="modal" data-target="#myModal">Agregar Residuo</button>
 				</div>
 				<div class="form-group col-md-4">
-					<button type="button" class="btn btn-success btn-lg btn-block" id="termminar">Terminar Manifiesto</button>
+					<button type="button" class="btn btn-success btn-lg btn-block" id="termminar" disabled>Terminar Manifiesto</button>
 				</div>
 			</div>
 
