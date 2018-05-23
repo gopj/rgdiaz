@@ -18,7 +18,8 @@ class Tran_residuo_model extends CI_Model {
 				tr.clave as clave,
 				r.unidad as unidad,
 				r.caracteristica as caracteristica,
-				r.fecha_ingreso as fecha_ingreso
+				r.fecha_ingreso as fecha_ingreso,
+				status
 			FROM 
 				tipo_residuos as tr,
 			 	tran_residuos as r

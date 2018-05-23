@@ -11,15 +11,17 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach ($bitacora as $bit) { ?>
-				
+			<?php foreach ($bitacora as $bit) { ?>			
 				<tr>
 					<td> <?= $bit->folio; ?> </td>
 					<td> <?= $bit->empresa_destino; ?> </td>
 					<td> <?= $bit->fecha_ingreso; ?> </td>
-					<td> <a href="<?=site_url('recolector/ver_manifiesto/' . $id_cliente . '/' . $bit->folio);?>" class="btn btn-primary btn-sm" role="button"> Ver </button> </td>
+					<?php if ($bit->status == 'R'){ ?>
+						<td style="text-align: center;"> <a href="<?=site_url('recolector/ver_manifiesto/' . $id_cliente . '/' . $bit->folio);?>" class="btn btn-primary btn-sm btn-block" role="button"> Ver </button> </td>
+					<?php } elseif ($bit->status == 'W') {?>
+						<td> <a href="<?=site_url('recolector/ver_manifiesto/' . $id_cliente . '/' . $bit->folio);?>" class="btn btn-success btn-sm btn-block" role="button"> Terminar </button> </td>
+					<?php } ?>
 				</tr>
-
 			<?php } ?>
 		</tbody>
 		<tfoot>
