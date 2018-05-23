@@ -1,5 +1,5 @@
 <main role="main" class="container" style="padding-top:-10px;">
-	<center><h2 class="bd-title" id="content">Crear Manifiesto</h2></center>
+	<center><h2 class="bd-title" id="content"><h2>Crear Manifiesto</h2></center>
 	<hr>
 	<form id="form_manifiesto_recolector" action="<?= site_url('recolector/crear_manifiesto/' . $id_cliente); ?>" method="post">
 		<div class="col-md-12">
@@ -15,7 +15,7 @@
 				</div>
 				<div class="form-group col-md-3">
 					<label class="col-form-label" for="fecha_salida"> <center> Fecha de Embarque </center> </label>
-					<input type="date" class="form-control" id="fecha_emabarque" name="fecha_emabarque">
+					<input type="date" class="form-control" id="fecha_embarque" name="fecha_embarque">
 				</div>		
 			</div>
 

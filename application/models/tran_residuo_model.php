@@ -47,6 +47,10 @@ class Tran_residuo_model extends CI_Model {
 			LIMIT 1;
 		")->row("folio");
 
+		if ($result == null) {
+			$result = 0;
+		}
+
 		return $result;
 	}
 
@@ -74,6 +78,28 @@ class Tran_residuo_model extends CI_Model {
 		return $result;
 	}
 
+	public function get_manifiesto($id_cliente, $folio){
+		
+		$result = $this->db->query("
+			SELECT 
+				r.folio,
+				r.fecha_ingreso,
+				r.responsable_tecnico,
+				ed.nombre_destino as empresa_destino
+			FROM 
+				tran_residuos as r
+					LEFT JOIN tipo_emp_destino ed ON (r.id_tipo_emp_destino = ed.id_tipo_emp_destino),
+				tipo_residuos as tr
+			WHERE
+				r.id_tipo_residuo = tr.id_tipo_residuo and
+				id_persona 	= {$id_cliente} and 
+				folio 		= {$folio}
+			LIMIT 1;
+		")->row();
+
+		return $result;
+	}
+
 	public function inserta_tran_residuo($data) {	
 
 		$this->db
@@ -88,7 +114,7 @@ class Tran_residuo_model extends CI_Model {
 				->set('unidad'						,$data['unidad'])
 				->set('responsable_tecnico'			,$data['responsable_tecnico'])
 				->set('fecha_insercion'				,'NOW()', FALSE)
-				->set('fecha_ingreso'				,$data['fecha_emabarque'])
+				->set('fecha_ingreso'				,$data['fecha_embarque'])
 				->set('status'						,"W")
 				->insert('tran_residuos');
 

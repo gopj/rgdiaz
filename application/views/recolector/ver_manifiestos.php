@@ -17,7 +17,7 @@
 					<td> <?= $bit->folio; ?> </td>
 					<td> <?= $bit->empresa_destino; ?> </td>
 					<td> <?= $bit->fecha_ingreso; ?> </td>
-					<td> <button type="button" class="btn btn-primary btn-sm"> Ver </button> </td>
+					<td> <a href="<?=site_url('recolector/ver_manifiesto/' . $id_cliente . '/' . $bit->folio);?>" class="btn btn-primary btn-sm" role="button"> Ver </button> </td>
 				</tr>
 
 			<?php } ?>

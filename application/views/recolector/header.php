@@ -51,7 +51,7 @@
 	<body>
 	
 		<nav class="navbar navbar-dark bg-success">
-			<a class="navbar-brand" href="#">
+			<a class="navbar-brand" href="<?= site_url('recolector'); ?>">
 				Recolector
 			</a>
 		</nav>

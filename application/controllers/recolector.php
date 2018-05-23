@@ -75,6 +75,32 @@ class Recolector extends CI_Controller {
 	
 	}
 
+	public function ver_manifiesto($id_cliente, $folio){
+ 
+		if ($this->session->userdata('tipo') == 2){
+
+			$data["empresa_destino"] 	= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->empresa_destino;
+			$data["fecha_embarque"] 	= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->fecha_ingreso;
+			$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
+			$data["responsable_tecnico"]= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->responsable_tecnico;
+			$data["id_cliente"]			= $id_cliente;
+
+/*			echo "<pre>";
+			print_r($data);
+			echo "</pre>";
+			die();*/
+
+			$this->load->view("recolector/header");
+			$this->load->view("recolector/ver_manifiesto", $data);
+			$this->load->view("recolector/footer");
+		
+		}else{
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/index');
+		}
+
+	}
+
 	public function crear_manifiesto($id_cliente) {
 
 		if ($this->session->userdata('tipo') == 2){
@@ -90,7 +116,7 @@ class Recolector extends CI_Controller {
 				$data["id_cliente"] 		= $id_cliente;
 				$data["id_emp_destino"]		= $this->input->post("empresa_destino");
 				$data["residuo"]			= $this->input->post("residuo_peligroso");
-				$data["fecha_emabarque"]	= $this->input->post("fecha_emabarque");
+				$data["fecha_embarque"]	= $this->input->post("fecha_embarque");
 				$data["responsable_tecnico"]= $this->input->post("responsable_tecnico");
 				$data["cantidad"]			= $this->input->post("cantidad");
 				$data["unidad"]				= $this->input->post("unidadRadio");
@@ -145,7 +171,7 @@ class Recolector extends CI_Controller {
 				$data["id_cliente"] 		= $id_cliente;
 				$data["id_emp_destino"]		= $this->input->post("empresa_destino");
 				$data["residuo"]			= $this->input->post("residuo_peligroso");
-				$data["fecha_emabarque"]	= $this->input->post("fecha_emabarque");
+				$data["fecha_embarque"]	= $this->input->post("fecha_embarque");
 				$data["responsable_tecnico"]= $this->input->post("responsable_tecnico");
 				$data["cantidad"]			= $this->input->post("cantidad");
 				$data["unidad"]				= $this->input->post("unidadRadio");
