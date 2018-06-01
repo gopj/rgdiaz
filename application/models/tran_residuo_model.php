@@ -104,22 +104,58 @@ class Tran_residuo_model extends CI_Model {
 	public function inserta_tran_residuo($data) {	
 
 		$this->db
-			 	->set('id_persona'					,$data['id_cliente'])
-			 	->set('id_tipo_residuo'				,$data['residuo'])
-				->set('id_tipo_emp_destino'			,$data['id_emp_destino'])
-				->set('folio'						,$data['folio'])
-				->set('caracteristica'				,$data['caracteristicas'])
-				->set('contenedor_cantidad'			,$data['cantidad_contenedor'])
-				->set('contenedor_tipo'				,$data['contenedor'])
-				->set('residuo_cantidad'			,$data['cantidad'])
-				->set('unidad'						,$data['unidad'])
-				->set('responsable_tecnico'			,$data['responsable_tecnico'])
-				->set('fecha_insercion'				,'NOW()', FALSE)
-				->set('fecha_ingreso'				,$data['fecha_embarque'])
-				->set('status'						,"W")
+				->set('id_persona'			,$data['id_cliente'])
+				->set('id_tipo_residuo'		,$data['residuo'])
+				->set('id_tipo_emp_destino'	,$data['id_emp_destino'])
+				->set('folio'				,$data['folio'])
+				->set('caracteristica'		,$data['caracteristicas'])
+				->set('contenedor_cantidad'	,$data['cantidad_contenedor'])
+				->set('contenedor_tipo'		,$data['contenedor'])
+				->set('residuo_cantidad'	,$data['cantidad'])
+				->set('unidad'				,$data['unidad'])
+				->set('responsable_tecnico'	,$data['responsable_tecnico'])
+				->set('fecha_insercion'		,'NOW()', FALSE)
+				->set('fecha_ingreso'		,$data['fecha_embarque'])
+				->set('status'				,"W")
 				->insert('tran_residuos');
 
 		return $this->db->insert_id();
+	}
+
+	public function update_prev_reg($id_cliente, $folio, $data) {	
+
+		$sql_text = "
+			SELECT 
+				fecha_ingreso,
+				responsable_tecnico,
+				id_tipo_emp_destino
+			FROM 
+				tran_residuos
+			WHERE
+				id_persona 	= {$id_cliente} and 
+				folio 		= {$folio}
+			LIMIT 1;
+		";
+
+		$result = $this->db->query($sql_text)->row();
+
+		if ( ($result->fecha_ingreso != $data["fecha_embarque"]) || ($result->responsable_tecnico != $data["responsable_tecnico"]) || ($result->id_tipo_emp_destino != $data["id_emp_destino"])) {
+			
+			$sql_text = "
+				UPDATE 
+					tran_residuos 
+				SET 
+					id_tipo_emp_destino = {$data["id_emp_destino"]}, 
+					responsable_tecnico = {$data["responsable_tecnico"]}, 
+					fecha_ingreso = '{$data["fecha_embarque"]}'
+				WHERE 
+					id_persona={$id_cliente} and folio={$folio};
+			";
+
+			$this->db->query($sql_text);
+		}
+
+		return $sql_text;
 	}
 
 }

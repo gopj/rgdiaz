@@ -67,7 +67,6 @@ function date_bitacora($s_date){
 								<td><?php echo $row->sig_manejo; ?></td>
 								<td><?php echo $row->resp_tec; ?></td>
 								
-								
 								<td class="center center-align">
 									<!-- Modificar -->
 									<a href="<?= site_url('administrador/update_bit') . "/" . $id_persona . "/" . $row->id_residuo_peligroso ?>"  class="btn btn-primary btn-mini" > 

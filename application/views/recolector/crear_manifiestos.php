@@ -6,24 +6,26 @@
 			<div class="form-row">
 				<div class="form-group col-md-9">
 					<label class="col-form-label" for="nombre_empresa"> <center> Empresa Destino </center> </label>
-					<select class="form-control" style="width: 100%;" name="empresa_destino" id="empresa_destino" readonly>
-						<?php foreach ($empresa_destino as $key) { 
-								if ($id_emp_destino == $key->id_tipo_emp_destino) { ?>
+					<select class="form-control" style="width: 100%;" name="empresa_destino" id="empresa_destino">
+						<?php foreach ($empresa_destino as $key) { ?>
+								<? if ($id_emp_destino == $key->id_tipo_emp_destino) { ?>
+									<option value="<?= $key->id_tipo_emp_destino; ?>" selected> <?= $key->nombre_destino; ?> </option>
+								<?php } else { ?>
 									<option value="<?= $key->id_tipo_emp_destino; ?>"> <?= $key->nombre_destino; ?> </option>
-						<?php	} 
-							  }	 	?>
+								<?php } ?>
+						<?php }	?>
 					</select>
 				</div>
 				<div class="form-group col-md-3">
 					<label class="col-form-label" for="fecha_salida"> <center> Fecha de Embarque </center> </label>
-					<input type="date" class="form-control" id="fecha_embarque" name="fecha_embarque" value="<?= $fecha_embarque ?>" readonly>
+					<input type="date" class="form-control" id="fecha_embarque" name="fecha_embarque" value="<?= $fecha_embarque ?>">
 				</div>		
 			</div>
 
 			<div class="form-row">
 				<div class="form-group col-md-9">
 					<label class="col-form-label" for="responsable_tecnico"> <center> Nombre del Responable Técnico</center> </label>
-					<input type="text" class="form-control" id="responsable_tecnico" name="responsable_tecnico" value="<?= $responsable_tecnico ?>" readonly>
+					<input type="text" class="form-control" id="responsable_tecnico" name="responsable_tecnico" value="<?= $responsable_tecnico ?>">
 				</div>		
 			</div>
 

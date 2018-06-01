@@ -30,7 +30,7 @@
 			<div class="form-row">
 				<div class="form-group col-md-12">
 
-					<center><h2 class="bd-title" id="content">Recolección de Residuos</h1></center>
+					<center><h3 class="bd-title" id="content">Recolección de Residuos</h3></center>
 					<hr>
 					<table id="tabla_residuos" class="table table-striped table-bordered" style="width:100%">
 						<thead>

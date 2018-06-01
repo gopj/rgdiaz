@@ -85,16 +85,11 @@ class Recolector extends CI_Controller {
 			$data["responsable_tecnico"]= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->responsable_tecnico;
 			$data["id_cliente"]			= $id_cliente;
 
-/*			echo "<pre>";
-			print_r($data);
-			echo "</pre>";
-			die();*/
-
 			$this->load->view("recolector/header");
 			$this->load->view("recolector/ver_manifiesto", $data);
 			$this->load->view("recolector/footer");
 		
-		}else{
+		} else {
 			$this->session->sess_destroy(); #destruye session
 			redirect('home/index');
 		}
@@ -116,7 +111,7 @@ class Recolector extends CI_Controller {
 				$data["id_cliente"] 		= $id_cliente;
 				$data["id_emp_destino"]		= $this->input->post("empresa_destino");
 				$data["residuo"]			= $this->input->post("residuo_peligroso");
-				$data["fecha_embarque"]	= $this->input->post("fecha_embarque");
+				$data["fecha_embarque"]		= $this->input->post("fecha_embarque");
 				$data["responsable_tecnico"]= $this->input->post("responsable_tecnico");
 				$data["cantidad"]			= $this->input->post("cantidad");
 				$data["unidad"]				= $this->input->post("unidadRadio");
@@ -150,7 +145,7 @@ class Recolector extends CI_Controller {
 
 			}
 
-		}else{
+		} else {
 			$this->session->sess_destroy(); #destruye session
 			redirect('home/index');
 		}	
@@ -158,6 +153,62 @@ class Recolector extends CI_Controller {
 	}
 
 	public function crear_manifiestos($id_cliente, $folio) {
+
+		if ($this->session->userdata('tipo') == 2){
+
+			if ($this->input->post()) {
+				
+				$folio = $this->tran_residuo_model->get_bitacora_count($id_cliente);
+
+				$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
+				$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
+
+				$data["id_cliente"] 		= $id_cliente;
+				$data["id_emp_destino"]		= $this->input->post("empresa_destino");
+				$data["residuo"]			= $this->input->post("residuo_peligroso");
+				$data["fecha_embarque"]		= $this->input->post("fecha_embarque");
+				$data["responsable_tecnico"]= $this->input->post("responsable_tecnico");
+				$data["cantidad"]			= $this->input->post("cantidad");
+				$data["unidad"]				= $this->input->post("unidadRadio");
+				$data["cantidad_contenedor"]= $this->input->post("cantidad_tipo");
+				$data["contenedor"]			= $this->input->post("tipoRadio");
+				$data["caracteristica_r"]	= @$this->input->post("caracteristica_check");
+				$data["caracteristicas"] 	= "";
+				$data["folio"]				= $folio;
+
+				foreach (@$data["caracteristica_r"] as $key => $value) {
+					$data["caracteristicas"] .= $value . " ";
+				}
+				
+				$this->tran_residuo_model->update_prev_reg($id_cliente, $folio, $data);
+
+				$this->tran_residuo_model->inserta_tran_residuo($data);
+
+				$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
+
+				$this->load->view("recolector/header");
+				$this->load->view("recolector/crear_manifiestos", $data);
+				$this->load->view("recolector/footer");
+			} else {
+				$data["id_cliente"] 		= $id_cliente;
+				$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
+				$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
+				$data["bitacora_manifiesto"]= $this->residuo_peligroso_model->get_bitacora_manifiesto($id_cliente, $folio);
+				
+				$this->load->view("recolector/header");
+				$this->load->view("recolector/crear_manifiestos", $data);
+				$this->load->view("recolector/footer");
+
+			}
+
+		} else {
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/index');
+		}	
+	
+	}
+
+	public function terminar_manifiesto($id_cliente, $folio) {
 
 		if ($this->session->userdata('tipo') == 2){
 
@@ -171,7 +222,7 @@ class Recolector extends CI_Controller {
 				$data["id_cliente"] 		= $id_cliente;
 				$data["id_emp_destino"]		= $this->input->post("empresa_destino");
 				$data["residuo"]			= $this->input->post("residuo_peligroso");
-				$data["fecha_embarque"]	= $this->input->post("fecha_embarque");
+				$data["fecha_embarque"]		= $this->input->post("fecha_embarque");
 				$data["responsable_tecnico"]= $this->input->post("responsable_tecnico");
 				$data["cantidad"]			= $this->input->post("cantidad");
 				$data["unidad"]				= $this->input->post("unidadRadio");
@@ -204,7 +255,7 @@ class Recolector extends CI_Controller {
 
 			}
 
-		}else{
+		} else {
 			$this->session->sess_destroy(); #destruye session
 			redirect('home/index');
 		}	
