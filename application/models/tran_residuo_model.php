@@ -59,6 +59,7 @@ class Tran_residuo_model extends CI_Model {
 		
 		$result = $this->db->query("
 			SELECT 
+				r.id_tran_residuo,
 				r.folio,
 				tr.residuo,
 				r.caracteristica,
@@ -156,6 +157,31 @@ class Tran_residuo_model extends CI_Model {
 		}
 
 		return $sql_text;
+	}
+
+	public function get_reg_tran_residuos($id_cliente, $folio) {	
+
+		$sql_text = "
+			SELECT 
+				fecha_ingreso,
+				responsable_tecnico,
+				id_tipo_emp_destino
+			FROM 
+				tran_residuos
+			WHERE
+				id_persona 	= {$id_cliente} and 
+				folio 		= {$folio}
+			LIMIT 1;
+		";
+
+		$result = $this->db->query($sql_text)->row();
+
+		return $result;
+	}
+
+	public function delete_tran_residuos($id) {	
+
+		return $this->db->query(" DELETE FROM tran_residuos where id_tran_residuo={$id};");	
 	}
 
 }

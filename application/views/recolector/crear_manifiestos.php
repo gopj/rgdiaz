@@ -1,3 +1,5 @@
+<?php $total_reg = count($bitacora_manifiesto); echo $total_reg; ?>
+
 <main role="main" class="container" style="padding-top:-10px;">
 	<center><h2 class="bd-title" id="content"><h2>Crear Manifiesto</h2></center>
 	<hr>
@@ -33,7 +35,7 @@
 			<div class="form-row">
 				<div class="form-group col-md-12">
 
-					<center><h2 class="bd-title" id="content">Recolección de Residuos</h1></center>
+					<center><h3 class="bd-title" id="content">Recolección de Residuos</h3></center>
 					<hr>
 					<table id="tabla_residuos" class="table table-striped table-bordered" style="width:100%">
 						<thead>
@@ -58,7 +60,15 @@
 									<td> <?= $key->contenedor_tipo ?> </td>
 									<td> <?= $key->residuo_cantidad ?> </td>
 									<td> <?= $key->unidad ?> </td>
-									<td> Botones </td>
+									<?php if ($total_reg == 1) { ?>
+										<td style="text-align: center;">
+											<button class="btn btn-danger btn-sm btn-block" disabled> Eliminar </button>
+										</td>
+									<?php } else { ?>
+										<td style="text-align: center;"> 
+										<a href="<?=site_url('recolector/eliminar_tran_residuo/' . $id_cliente . '/' . $key->folio . '/' . $key->id_tran_residuo);?>" class="btn btn-danger btn-sm btn-block" role="button"> Eliminar </button> 
+									</td>
+									<?php } ?>
 								</tr>
 							<?php } ?>
 						</tbody>

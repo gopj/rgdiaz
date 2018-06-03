@@ -50,7 +50,7 @@
 									<td> <?= $key->contenedor_tipo ?> </td>
 									<td> <?= $key->residuo_cantidad ?> </td>
 									<td> <?= $key->unidad ?> </td>
-									<td> Botones </td>
+									<td> <button class="btn btn-danger btn-sm btn-block" disabled> Eliminar </button> </td>
 								</tr>
 							<?php } ?>
 						</tbody>

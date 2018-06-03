@@ -19,7 +19,7 @@
 					<?php if ($bit->status == 'R'){ ?>
 						<td style="text-align: center;"> <a href="<?=site_url('recolector/ver_manifiesto/' . $id_cliente . '/' . $bit->folio);?>" class="btn btn-primary btn-sm btn-block" role="button"> Ver </button> </td>
 					<?php } elseif ($bit->status == 'W') {?>
-						<td> <a href="<?=site_url('recolector/ver_manifiesto/' . $id_cliente . '/' . $bit->folio);?>" class="btn btn-success btn-sm btn-block" role="button"> Terminar </button> </td>
+						<td> <a href="<?=site_url('recolector/crear_manifiestos/' . $id_cliente . '/' . $bit->folio);?>" class="btn btn-success btn-sm btn-block" role="button"> Terminar </button> </td>
 					<?php } ?>
 				</tr>
 			<?php } ?>

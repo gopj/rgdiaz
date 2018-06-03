@@ -127,7 +127,7 @@ class Recolector extends CI_Controller {
 
 				$this->tran_residuo_model->inserta_tran_residuo($data);
 
-				$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
+				$data["bitacora_manifiesto"] = $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
 
 				$this->load->view("recolector/header");
 				$this->load->view("recolector/crear_manifiestos", $data);
@@ -184,16 +184,20 @@ class Recolector extends CI_Controller {
 
 				$this->tran_residuo_model->inserta_tran_residuo($data);
 
-				$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
+				$data["bitacora_manifiesto"] = $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
 
 				$this->load->view("recolector/header");
 				$this->load->view("recolector/crear_manifiestos", $data);
 				$this->load->view("recolector/footer");
 			} else {
+				$tran_resiudos 				= $this->tran_residuo_model->get_reg_tran_residuos($id_cliente, $folio);
+				$data["fecha_embarque"]		= $tran_resiudos->fecha_ingreso;
+				$data["responsable_tecnico"]= $tran_resiudos->responsable_tecnico;
 				$data["id_cliente"] 		= $id_cliente;
 				$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
 				$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
-				$data["bitacora_manifiesto"]= $this->residuo_peligroso_model->get_bitacora_manifiesto($id_cliente, $folio);
+				$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
+				$data["folio"]				= $folio;
 				
 				$this->load->view("recolector/header");
 				$this->load->view("recolector/crear_manifiestos", $data);
@@ -254,6 +258,32 @@ class Recolector extends CI_Controller {
 				$this->load->view("recolector/footer");
 
 			}
+
+		} else {
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/index');
+		}	
+	
+	}
+
+	public function eliminar_tran_residuo($id_cliente, $folio, $id_tran_residuo) {
+
+		if ($this->session->userdata('tipo') == 2){
+			
+			$this->tran_residuo_model->delete_tran_residuos($id_tran_residuo);
+
+			$tran_resiudos 				= $this->tran_residuo_model->get_reg_tran_residuos($id_cliente, $folio);
+			$data["fecha_embarque"]		= $tran_resiudos->fecha_ingreso;
+			$data["responsable_tecnico"]= $tran_resiudos->responsable_tecnico;
+			$data["id_cliente"] 		= $id_cliente;
+			$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
+			$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
+			$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
+			$data["folio"]				= $folio;
+			
+			$this->load->view("recolector/header");
+			$this->load->view("recolector/crear_manifiestos", $data);
+			$this->load->view("recolector/footer");
 
 		} else {
 			$this->session->sess_destroy(); #destruye session
