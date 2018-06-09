@@ -184,4 +184,18 @@ class Tran_residuo_model extends CI_Model {
 		return $this->db->query(" DELETE FROM tran_residuos where id_tran_residuo={$id};");	
 	}
 
+	public function terminar_manifiesto($id_cliente, $folio) {	
+
+		$sql_text = "
+				UPDATE 
+					tran_residuos 
+				SET 
+					status = 'R', 
+				WHERE 
+					id_persona={$id_cliente} and folio={$folio};
+		";
+
+		return $this->db->query($sql_text);
+	}
+
 }

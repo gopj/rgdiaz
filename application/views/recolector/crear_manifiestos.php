@@ -1,4 +1,4 @@
-<?php $total_reg = count($bitacora_manifiesto); echo $total_reg; ?>
+<?php $total_reg = count($bitacora_manifiesto); ?>
 
 <main role="main" class="container" style="padding-top:-10px;">
 	<center><h2 class="bd-title" id="content"><h2>Crear Manifiesto</h2></center>
@@ -66,7 +66,7 @@
 										</td>
 									<?php } else { ?>
 										<td style="text-align: center;"> 
-										<a href="<?=site_url('recolector/eliminar_tran_residuo/' . $id_cliente . '/' . $key->folio . '/' . $key->id_tran_residuo);?>" class="btn btn-danger btn-sm btn-block" role="button"> Eliminar </button> 
+										<a href="<?=site_url('recolector/eliminar_tran_residuo/' . $id_cliente . '/' . $key->folio . '/' . $key->id_tran_residuo);?>" class="btn btn-danger btn-sm btn-block" role="button"> Eliminar </a> 
 									</td>
 									<?php } ?>
 								</tr>
@@ -91,7 +91,7 @@
 					<button type="button" class="btn btn-primary btn-lg btn-block" id="agregar_residuos" data-toggle="modal" data-target="#myModal">Agregar Residuo</button>
 				</div>
 				<div class="form-group col-md-4">
-					<button type="button" class="btn btn-success btn-lg btn-block" id="termminar">Terminar Manifiesto</button>
+					<a href="<?=site_url('recolector/terminar_manifiesto/' . $id_cliente . '/' . $key->folio);?>" class="btn btn-success btn-lg btn-block" role="button"> Terminar Manifiesto </a> 
 				</div>
 			</div>
 
