@@ -193,6 +193,7 @@ class Recolector extends CI_Controller {
 				$tran_resiudos 				= $this->tran_residuo_model->get_reg_tran_residuos($id_cliente, $folio);
 				$data["fecha_embarque"]		= $tran_resiudos->fecha_ingreso;
 				$data["responsable_tecnico"]= $tran_resiudos->responsable_tecnico;
+				$data["id_emp_destino"]		= $tran_resiudos->id_tipo_emp_destino;
 				$data["id_cliente"] 		= $id_cliente;
 				$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
 				$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
@@ -216,23 +217,24 @@ class Recolector extends CI_Controller {
 
 		if ($this->session->userdata('tipo') == 2){
 
-			$data["fecha_embarque"]		= $this->input->post("fecha_embarque");
-			$data["responsable_tecnico"]= $this->input->post("responsable_tecnico");
+			if ($this->input->post()) {
 
-			$this->tran_residuo_model->update_prev_reg($id_cliente, $folio, $data);
+				$data["id_emp_destino"]		= $this->input->post("terminar_empresa_destino");
+				$data["fecha_embarque"]		= $this->input->post("terminar_fecha");
+				$data["responsable_tecnico"]= $this->input->post("terminar_responsable");
 
-			$this->tran_residuo_model->terminar_manifiesto($id_cliente, $folio);
+				$this->tran_residuo_model->update_regs($id_cliente, $folio, $data);
+				$this->tran_residuo_model->terminar_manifiesto($id_cliente, $folio);
 
+				$data["id_cliente"] = $id_cliente;
+				$data["bitacora"] = $this->tran_residuo_model->get_bitacora($id_cliente);
+				
+				$this->load->view("recolector/header");
+				$this->load->view("recolector/ver_manifiestos", $data);
+				$this->load->view("recolector/footer");
+			}
 
-			$data["id_cliente"] = $this->input->post("id_persona");
-
-			$data["bitacora"] = $this->tran_residuo_model->get_bitacora($data["id_cliente"]);
-			
-			$this->load->view("recolector/header");
-			$this->load->view("recolector/ver_manifiestos/" . $id_cliente	, $data);
-			$this->load->view("recolector/footer");
-
-		} else {
+		} else { 
 			$this->session->sess_destroy(); #destruye session
 			redirect('home/index');
 		}	

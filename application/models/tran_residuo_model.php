@@ -75,7 +75,7 @@ class Tran_residuo_model extends CI_Model {
 				r.id_tipo_residuo = tr.id_tipo_residuo and
 				id_persona 	= {$id_cliente} and 
 				folio 		= {$folio};
-		")->result();
+		")->result();  
 
 		return $result;
 	}
@@ -180,8 +180,22 @@ class Tran_residuo_model extends CI_Model {
 	}
 
 	public function delete_tran_residuos($id) {	
-
 		return $this->db->query(" DELETE FROM tran_residuos where id_tran_residuo={$id};");	
+	}
+
+	public function update_regs($id_cliente, $folio, $data){
+		$sql_text = "
+			UPDATE 
+				tran_residuos 
+			SET 
+				id_tipo_emp_destino = {$data["id_emp_destino"]}, 
+				responsable_tecnico = {$data["responsable_tecnico"]}, 
+				fecha_ingreso = '{$data["fecha_embarque"]}'
+			WHERE 
+				id_persona={$id_cliente} and folio={$folio};
+		";
+
+		$this->db->query($sql_text);
 	}
 
 	public function terminar_manifiesto($id_cliente, $folio) {	
@@ -190,7 +204,7 @@ class Tran_residuo_model extends CI_Model {
 				UPDATE 
 					tran_residuos 
 				SET 
-					status = 'R', 
+					status='R'
 				WHERE 
 					id_persona={$id_cliente} and folio={$folio};
 		";

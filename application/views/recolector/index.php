@@ -1,5 +1,5 @@
 <main role="main" class="container" style="padding-top:-10px;">
-	<center><h2 class="bd-title" id="content">Manifiestos</h1></center>
+	<center><h2 class="bd-title" id="content">Clientes</h1></center>
 	<hr>
 
 	<form method="post" action="<?php echo site_url('recolector/ver_manifiestos')?>">
