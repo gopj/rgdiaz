@@ -189,7 +189,7 @@ class Tran_residuo_model extends CI_Model {
 				tran_residuos 
 			SET 
 				id_tipo_emp_destino = {$data["id_emp_destino"]}, 
-				responsable_tecnico = {$data["responsable_tecnico"]}, 
+				responsable_tecnico = '{$data["responsable_tecnico"]}',
 				fecha_ingreso = '{$data["fecha_embarque"]}'
 			WHERE 
 				id_persona={$id_cliente} and folio={$folio};

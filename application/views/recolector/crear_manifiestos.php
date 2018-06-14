@@ -38,7 +38,7 @@
 
 						<!-- Modal Header -->
 						<div class="modal-header">
-							<h4 class="modal-title">Ingresa Resiudo</h4>
+							<h4 class="modal-title">Ingresa Residuo</h4>
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
 						</div>
 

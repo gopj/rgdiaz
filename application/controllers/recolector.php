@@ -32,8 +32,7 @@ class Recolector extends CI_Controller {
 			$lleno_datos 				= 1;	// <-- Mandamos 1 para que nos cargue solo a los clientes que ya cargaron sus datos
 			$data["id"]					= $this->session->userdata('id');
 			$data["tclientes"]			= $this->persona_model->obtienetodoclientes($id_tipo_persona,$lleno_datos);
-			//$data["bitacora"]			= $this->tran_residuo_model->get_residuos($id_persona);
-
+			
 			$this->load->view('recolector/header', $data);
 			$this->load->view("recolector/index", $data);
 			$this->load->view('recolector/footer', $data);
