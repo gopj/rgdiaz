@@ -1,7 +1,7 @@
 <main role="main" class="container" style="padding-top:-10px;">
 	<center><h2 class="bd-title" id="content"><h2>Crear Manifiesto</h2></center>
 	<hr>
-	<form id="form_manifiesto_recolector" action="<?= site_url('recolector/crear_manifiesto/' . $id_cliente); ?>" method="post">
+	<form id="form_manifiesto_recolector" action="<?= site_url('recolector/crear_manifiesto/' . $id_cliente); ?>" method="post" novalidate>
 		<div class="col-md-12">
 			<div class="form-row">
 				<div class="form-group col-md-9">
@@ -16,6 +16,9 @@
 				<div class="form-group col-md-3">
 					<label class="col-form-label" for="fecha_salida"> <center> Fecha de Embarque </center> </label>
 					<input type="date" class="form-control" id="fecha_embarque" name="fecha_embarque">
+					<div class="invalid-feedback">
+						Que pedo con la fecha?
+					</div>
 				</div>		
 			</div>
 
@@ -23,6 +26,9 @@
 				<div class="form-group col-md-9">
 					<label class="col-form-label" for="responsable_tecnico"> <center> Nombre del Responable Técnico</center> </label>
 					<input type="text" class="form-control" id="responsable_tecnico" name="responsable_tecnico" >
+					<div class="invalid-feedback">
+						Que pedo con el responsable?
+					</div>
 				</div>		
 			</div>
 
@@ -122,7 +128,7 @@
 						<div class="form-row">
 							<div class="form-group col-md-4">
 								<label class="col-form-label" for="nombre_residuo"> Cantidad Residuo </label>
-								<input readonly type="number" class="form-control" id="cantidad" name="cantidad" min="1" oninvalid="this.setCustomValidity('Ingresa cantidad que sea mayor a 0')" oninput="setCustomValidity('')" style="text-align:center" value="1" required>
+								<input readonly type="number" class="form-control" id="cantidad" name="cantidad" min="1" style="text-align:center" value="1" >
 							</div>	
 
 							<div class="form-group col-md-4">
@@ -142,7 +148,7 @@
 						<div class="form-row">
 							<div class="form-group col-md-4">
 								<label class="col-form-label" for="nombre_residuo"> Cantidad Tipo </label>
-								<input readonly type="number" class="form-control" id="cantidad_tipo" name="cantidad_tipo" min="1" oninvalid="this.setCustomValidity('Ingresa cantidad que sea mayor a 0')" oninput="setCustomValidity('')" style="text-align:center" value="1" required >
+								<input readonly type="number" class="form-control" id="cantidad_tipo" name="cantidad_tipo" min="1" style="text-align:center" value="1">
 							</div>	
 
 							<div class="form-group col-md-6">
@@ -198,3 +204,25 @@
 		</form>
 	</div>
 </main>
+
+
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+	'use strict';
+		window.addEventListener('load', function() {
+			// Fetch all the forms we want to apply custom Bootstrap validation styles to
+			var forms = document.getElementsByClassName('form_manifiesto_recolector');
+			// Loop over them and prevent submission
+			var validation = Array.prototype.filter.call(forms, function(form) {
+			form.addEventListener('submit', function(event) {
+				if (form.checkValidity() === false) {
+					event.preventDefault();
+					event.stopPropagation();
+				}
+				form.classList.add('was-validated');
+			}, false);
+		});
+	}, false);
+})();
+</script>
