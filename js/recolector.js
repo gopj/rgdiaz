@@ -160,3 +160,17 @@ function terminar_manifiesto() {
 	$("#terminar_fecha").val(fecha_embarque);
 	$("#terminar_empresa_destino").val(s_empresa_destino);
 }
+
+(function() {
+	'use strict';
+		window.addEventListener('load', function() {
+			var form = document.getElementById('needs-validation');
+			form.addEventListener('submit', function(event) {
+				if (form.checkValidity() === false) {
+					event.preventDefault();
+					event.stopPropagation();
+				}
+				form.classList.add('was-validated');
+			}, false);
+		}, false);
+})();
