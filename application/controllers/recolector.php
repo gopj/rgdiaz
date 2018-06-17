@@ -279,4 +279,11 @@ class Recolector extends CI_Controller {
 		
 		echo json_encode($clave);	
 	}
+
+	public function test() {
+		$this->load->view("recolector/header_test");
+		$this->load->view("recolector/test");
+		$this->load->view("recolector/footer_test");
+	
+	}
 }

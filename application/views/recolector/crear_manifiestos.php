@@ -8,7 +8,7 @@
 			<div class="form-row">
 				<div class="form-group col-md-9">
 					<label class="col-form-label" for="nombre_empresa"> <center> Empresa Destino </center> </label>
-					<select class="form-control" style="width: 100%;" name="empresa_destino" id="empresa_destino" onchange="terminar_manifiesto();">
+					<select class="form-control" style="width: 100%;" name="empresa_destino" id="empresa_destino" onchange="terminar_manifiesto();" required>
 						<?php foreach ($empresa_destino as $key) { ?>
 								<? if ($id_emp_destino == $key->id_tipo_emp_destino) { ?>
 									<option value="<?= $key->id_tipo_emp_destino; ?>" selected> <?= $key->nombre_destino; ?> </option>
@@ -20,7 +20,7 @@
 				</div>
 				<div class="form-group col-md-3">
 					<label class="col-form-label" for="fecha_salida"> <center> Fecha de Embarque </center> </label>
-					<input type="date" class="form-control" id="fecha_embarque" name="fecha_embarque" value="<?= $fecha_embarque ?>" onchange="terminar_manifiesto();">
+					<input type="date" class="form-control" id="fecha_embarque" name="fecha_embarque" value="<?= $fecha_embarque ?>" onchange="terminar_manifiesto();" required>
 				</div>		
 			</div>
 

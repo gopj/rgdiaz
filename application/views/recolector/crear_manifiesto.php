@@ -6,16 +6,22 @@
 			<div class="form-row">
 				<div class="form-group col-md-9">
 					<label class="col-form-label" for="nombre_empresa"> <center> Empresa Destino </center> </label>
-					<select class="form-control" style="width: 100%;" name="empresa_destino" id="empresa_destino">
+					<select class="form-control" style="width: 100%;" name="empresa_destino" id="empresa_destino" required>
 						<option value="">Selecciona empresa destino</option>
 						<?php foreach ($empresa_destino as $key) { ?>
 							<option value="<?= $key->id_tipo_emp_destino; ?>"> <?= $key->nombre_destino; ?> </option>
 						<?php } ?>
 					</select>
+					<div class="invalid-feedback">
+						Selecciona empresa destino.
+					</div>
+					<div class="valid-feedback">
+						Cool!
+					</div>
 				</div>
 				<div class="form-group col-md-3">
 					<label class="col-form-label" for="fecha_salida"> <center> Fecha de Embarque </center> </label>
-					<input type="date" class="form-control" id="fecha_embarque" name="fecha_embarque">
+					<input type="date" class="form-control" id="fecha_embarque" name="fecha_embarque" required>
 					<div class="invalid-feedback">
 						Que pedo con la fecha?
 					</div>
@@ -128,14 +134,14 @@
 						<div class="form-row">
 							<div class="form-group col-md-4">
 								<label class="col-form-label" for="nombre_residuo"> Cantidad Residuo </label>
-								<input readonly type="number" class="form-control" id="cantidad" name="cantidad" min="1" style="text-align:center" value="1" >
+								<input readonly type="number" class="form-control" id="cantidad" name="cantidad" min="1" style="text-align:center" value="1" required>
 							</div>	
 
 							<div class="form-group col-md-4">
 								<label class="col-form-label" for="nombre_residuo"> Unidad </label>
 								<br>
 								<div class="form-check form-check-inline">
-									<input class="magic-radio" type="radio" name="unidadRadio" id="unidad_radio1" value="Kg">
+									<input class="magic-radio" type="radio" name="unidadRadio" id="unidad_radio1" value="Kg" required>
 									<label class="form-check-label" for="unidad_radio1">Kg</label>
 								</div>
 								<div class="form-check form-check-inline">
@@ -148,14 +154,14 @@
 						<div class="form-row">
 							<div class="form-group col-md-4">
 								<label class="col-form-label" for="nombre_residuo"> Cantidad Tipo </label>
-								<input readonly type="number" class="form-control" id="cantidad_tipo" name="cantidad_tipo" min="1" style="text-align:center" value="1">
+								<input readonly type="number" class="form-control" id="cantidad_tipo" name="cantidad_tipo" min="1" style="text-align:center" value="1" required>
 							</div>	
 
 							<div class="form-group col-md-6">
 								<label class="col-form-label" for="nombre_residuo"> Tipo </label>
 								<br>
 								<div class="form-check form-check-inline">
-									<input class="magic-radio" type="radio" name="tipoRadio" id="tipo_radio1" value="Bolsa">
+									<input class="magic-radio" type="radio" name="tipoRadio" id="tipo_radio1" value="Bolsa" required>
 									<label class="form-check-label" for="tipo_radio1">Bolsa</label>
 								</div>
 								<div class="form-check form-check-inline">
@@ -174,7 +180,7 @@
 								<label class="col-form-label" for="nombre_residuo">Caracteristica de Peligrosidad </label>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<div class="form-check form-check-inline">
-									<input class="magic-checkbox" type="checkbox" id="caracteristica_check1" value="Toxico" name="caracteristica_check[]">
+									<input class="magic-checkbox" type="checkbox" id="caracteristica_check1" value="Toxico" name="caracteristica_check[]" required>
 									<label class="form-check-label" for="caracteristica_check1">Tóxico</label>
 								</div>
 								<div class="form-check form-check-inline">
@@ -204,25 +210,3 @@
 		</form>
 	</div>
 </main>
-
-
-<script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-	'use strict';
-		window.addEventListener('load', function() {
-			// Fetch all the forms we want to apply custom Bootstrap validation styles to
-			var forms = document.getElementsByClassName('form_manifiesto_recolector');
-			// Loop over them and prevent submission
-			var validation = Array.prototype.filter.call(forms, function(form) {
-			form.addEventListener('submit', function(event) {
-				if (form.checkValidity() === false) {
-					event.preventDefault();
-					event.stopPropagation();
-				}
-				form.classList.add('was-validated');
-			}, false);
-		});
-	}, false);
-})();
-</script>
