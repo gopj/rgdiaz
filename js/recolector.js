@@ -161,16 +161,32 @@ function terminar_manifiesto() {
 	$("#terminar_empresa_destino").val(s_empresa_destino);
 }
 
+function clearRequired(){
+	var numberOfChecked = $('input:checkbox:checked').length;
+
+	if (numberOfChecked > 0){
+		document.getElementById('caracteristica_check1').required = false;
+		document.getElementById('caracteristica_check2').required = false;
+		document.getElementById('caracteristica_check3').required = false;
+		document.getElementById('caracteristica_check4').required = false;
+	} else {
+		document.getElementById('caracteristica_check1').required = true;
+		document.getElementById('caracteristica_check2').required = true;
+		document.getElementById('caracteristica_check3').required = true;
+		document.getElementById('caracteristica_check4').required = true;
+	}
+}
+
 (function() {
 	'use strict';
-		window.addEventListener('load', function() {
-			var form = document.getElementById('needs-validation');
-			form.addEventListener('submit', function(event) {
-				if (form.checkValidity() === false) {
-					event.preventDefault();
-					event.stopPropagation();
-				}
-				form.classList.add('was-validated');
-			}, false);
+	window.addEventListener('load', function() {
+		var form = document.getElementById('form_manifiesto_recolector');
+		form.addEventListener('submit', function(event) {
+			if (form.checkValidity() === false) {
+				event.preventDefault();
+				event.stopPropagation();
+			}
+			form.classList.add('was-validated');
 		}, false);
+	}, false);
 })();
