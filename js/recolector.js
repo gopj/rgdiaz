@@ -161,7 +161,7 @@ function terminar_manifiesto() {
 	$("#terminar_empresa_destino").val(s_empresa_destino);
 }
 
-function clearRequired(){
+function clear_required(){
 	var numberOfChecked = $('input:checkbox:checked').length;
 
 	if (numberOfChecked > 0){
@@ -174,6 +174,17 @@ function clearRequired(){
 		document.getElementById('caracteristica_check2').required = true;
 		document.getElementById('caracteristica_check3').required = true;
 		document.getElementById('caracteristica_check4').required = true;
+	}
+}
+
+function check_resposanble() {
+
+	$tecnico = document.getElementById('terminar_responsable').value;
+
+	if ($tecnico == "") {
+		$("#b_terminar_manifiesto").attr('disabled','disabled');
+	} else {
+		$("#b_terminar_manifiesto").removeAttr('disabled');
 	}
 }
 
@@ -190,3 +201,4 @@ function clearRequired(){
 		}, false);
 	}, false);
 })();
+

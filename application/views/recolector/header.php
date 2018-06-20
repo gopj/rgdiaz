@@ -18,6 +18,8 @@
     	<link href="css/bootstrap4/magic-check.css" rel="stylesheet">    	
     	<link href="css/bootstrap4/jquery.dataTables.min.css" rel="stylesheet">
     	<link href="css/recolector.css" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
     	
 
     	<style type="text/css">

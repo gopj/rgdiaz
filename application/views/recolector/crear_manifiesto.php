@@ -19,7 +19,7 @@
 				</div>
 				<div class="form-group col-md-3">
 					<label class="col-form-label" for="fecha_salida"> <center> Fecha de Embarque </center> </label>
-					<input type="date" class="form-control" id="fecha_embarque" name="fecha_embarque" required>
+					<input class="form-control" id="fecha_embarque" name="fecha_embarque" required>
 					<div class="invalid-feedback">
 						Selecciona la fecha de embarque
 					</div>
@@ -183,21 +183,22 @@
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 								<div class="custom-control custom-checkbox custom-control-inline">
-									<input type="checkbox" class="custom-control-input" id="caracteristica_check1" value="Toxico" name="caracteristica_check[]" onclick="clearRequired();" required>
+									<input type="checkbox" class="custom-control-input" id="caracteristica_check1" value="Toxico" name="caracteristica_check[]" onclick="clear_required();" required>
 									<label class="custom-control-label" for="caracteristica_check1">Tóxico</label>
 								</div>
 								<div class="custom-control custom-checkbox custom-control-inline">
-									<input type="checkbox" class="custom-control-input" id="caracteristica_check2" value="Inflamable" name="caracteristica_check[]" onclick="clearRequired();" required>
+									<input type="checkbox" class="custom-control-input" id="caracteristica_check2" value="Inflamable" name="caracteristica_check[]" onclick="clear_required();" required>
 									<label class="custom-control-label" for="caracteristica_check2">Inflamable</label>
 								</div>
 								<div class="custom-control custom-checkbox custom-control-inline">
-									<input type="checkbox" class="custom-control-input" id="caracteristica_check3" value="Corrosivo" name="caracteristica_check[]" onclick="clearRequired();" required>
+									<input type="checkbox" class="custom-control-input" id="caracteristica_check3" value="Corrosivo" name="caracteristica_check[]" onclick="clear_required();" required>
 									<label class="custom-control-label" for="caracteristica_check3">Corrosivo</label>
 								</div>
 								<div class="custom-control custom-checkbox custom-control-inline">
-									<input type="checkbox" class="custom-control-input" id="caracteristica_check4" value="Reactivo" name="caracteristica_check[]" onclick="clearRequired();" required>
+									<input type="checkbox" class="custom-control-input" id="caracteristica_check4" value="Reactivo" name="caracteristica_check[]" onclick="clear_required();" required>
 									<label class="custom-control-label" for="caracteristica_check4">Reactivo</label>
-									<div class="invalid-feedback"> &nbsp; Selecciona al menos una caracteristica de peligrosidad.</div>
+									<br>
+									<div class="invalid-feedback">&nbsp; Selecciona al menos una caracteristica de peligrosidad.</div>
 								</div>
 							</div>	
 						</div>

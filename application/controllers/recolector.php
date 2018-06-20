@@ -105,12 +105,11 @@ class Recolector extends CI_Controller {
 
 				$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
 				$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
-				
 
 				$data["id_cliente"] 		= $id_cliente;
 				$data["id_emp_destino"]		= $this->input->post("empresa_destino");
 				$data["residuo"]			= $this->input->post("residuo_peligroso");
-				$data["fecha_embarque"]		= $this->input->post("fecha_embarque");
+				$data["fecha_embarque"]		= _fix_date($this->input->post("fecha_embarque"));
 				$data["responsable_tecnico"]= $this->input->post("responsable_tecnico");
 				$data["cantidad"]			= $this->input->post("cantidad");
 				$data["unidad"]				= $this->input->post("unidadRadio");
@@ -165,7 +164,7 @@ class Recolector extends CI_Controller {
 				$data["id_cliente"] 		= $id_cliente;
 				$data["id_emp_destino"]		= $this->input->post("empresa_destino");
 				$data["residuo"]			= $this->input->post("residuo_peligroso");
-				$data["fecha_embarque"]		= $this->input->post("fecha_embarque");
+				$data["fecha_embarque"]		= _fix_date($this->input->post("fecha_embarque"));
 				$data["responsable_tecnico"]= $this->input->post("responsable_tecnico");
 				$data["cantidad"]			= $this->input->post("cantidad");
 				$data["unidad"]				= $this->input->post("unidadRadio");
@@ -219,7 +218,7 @@ class Recolector extends CI_Controller {
 			if ($this->input->post()) {
 
 				$data["id_emp_destino"]		= $this->input->post("terminar_empresa_destino");
-				$data["fecha_embarque"]		= $this->input->post("terminar_fecha");
+				$data["fecha_embarque"]		= _fix_date($this->input->post("terminar_fecha"));
 				$data["responsable_tecnico"]= $this->input->post("terminar_responsable");
 
 				$this->tran_residuo_model->update_regs($id_cliente, $folio, $data);
@@ -278,6 +277,13 @@ class Recolector extends CI_Controller {
 		$clave = $this->residuo_peligroso_model->get_tipo_residuo($this->input->post('id'));
 		
 		echo json_encode($clave);	
+	}
+
+	function _fix_date($date){
+		$date_arr = explode("/", $date);
+		$date_fix = $date_arr[2] . "/" . $date_arr[1] . "/" . $date_arr[0];
+
+		return $date_fix;
 	}
 
 	public function test() {
