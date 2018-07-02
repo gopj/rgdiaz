@@ -106,10 +106,12 @@ class Recolector extends CI_Controller {
 				$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
 				$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
 
+				$fecha_embarque = $this->input->post("fecha_embarque");
+
 				$data["id_cliente"] 		= $id_cliente;
 				$data["id_emp_destino"]		= $this->input->post("empresa_destino");
 				$data["residuo"]			= $this->input->post("residuo_peligroso");
-				$data["fecha_embarque"]		= _fix_date($this->input->post("fecha_embarque"));
+				$data["fecha_embarque"]		= $this->_fix_date($fecha_embarque);
 				$data["responsable_tecnico"]= $this->input->post("responsable_tecnico");
 				$data["cantidad"]			= $this->input->post("cantidad");
 				$data["unidad"]				= $this->input->post("unidadRadio");
@@ -125,7 +127,8 @@ class Recolector extends CI_Controller {
 
 				$this->tran_residuo_model->inserta_tran_residuo($data);
 
-				$data["bitacora_manifiesto"] = $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
+				$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
+				$data["fecha_embarque"]		= $fecha_embarque;
 
 				$this->load->view("recolector/header");
 				$this->load->view("recolector/crear_manifiestos", $data);
@@ -161,10 +164,12 @@ class Recolector extends CI_Controller {
 				$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
 				$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
 
+				$fecha_embarque = $this->input->post("fecha_embarque");
+
 				$data["id_cliente"] 		= $id_cliente;
 				$data["id_emp_destino"]		= $this->input->post("empresa_destino");
 				$data["residuo"]			= $this->input->post("residuo_peligroso");
-				$data["fecha_embarque"]		= _fix_date($this->input->post("fecha_embarque"));
+				$data["fecha_embarque"]		= $this->_fix_date($fecha_embarque);
 				$data["responsable_tecnico"]= $this->input->post("responsable_tecnico");
 				$data["cantidad"]			= $this->input->post("cantidad");
 				$data["unidad"]				= $this->input->post("unidadRadio");
@@ -182,14 +187,15 @@ class Recolector extends CI_Controller {
 
 				$this->tran_residuo_model->inserta_tran_residuo($data);
 
-				$data["bitacora_manifiesto"] = $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
+				$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
+				$data["fecha_embarque"]		= $fecha_embarque;
 
 				$this->load->view("recolector/header");
 				$this->load->view("recolector/crear_manifiestos", $data);
 				$this->load->view("recolector/footer");
 			} else {
 				$tran_resiudos 				= $this->tran_residuo_model->get_reg_tran_residuos($id_cliente, $folio);
-				$data["fecha_embarque"]		= $tran_resiudos->fecha_ingreso;
+				$data["fecha_embarque"]		= $this->_fix_date_2($tran_resiudos->fecha_ingreso);
 				$data["responsable_tecnico"]= $tran_resiudos->responsable_tecnico;
 				$data["id_emp_destino"]		= $tran_resiudos->id_tipo_emp_destino;
 				$data["id_cliente"] 		= $id_cliente;
@@ -218,7 +224,7 @@ class Recolector extends CI_Controller {
 			if ($this->input->post()) {
 
 				$data["id_emp_destino"]		= $this->input->post("terminar_empresa_destino");
-				$data["fecha_embarque"]		= _fix_date($this->input->post("terminar_fecha"));
+				$data["fecha_embarque"]		= $this->_fix_date($this->input->post("terminar_fecha"));
 				$data["responsable_tecnico"]= $this->input->post("terminar_responsable");
 
 				$this->tran_residuo_model->update_regs($id_cliente, $folio, $data);
@@ -281,19 +287,22 @@ class Recolector extends CI_Controller {
 
 	function _fix_date($date){
 		$date_arr = explode("/", $date);
-		$date_fix = $date_arr[2] . "/" . $date_arr[1] . "/" . $date_arr[0];
+		$date_fix = $date_arr[2] . "-" . $date_arr[1] . "-" . $date_arr[0];
 
 		return $date_fix;
 	}
 
-	function _fix_date($date){
-		$date_arr = explode("/", $date);
+	function _fix_date_2($date){
+		$date_arr = explode("-", $date);
 		$date_fix = $date_arr[2] . "/" . $date_arr[1] . "/" . $date_arr[0];
 
 		return $date_fix;
 	}
 
 	public function test() {
+
+		echo $this->_fix_date('');
+
 		$this->load->view("recolector/header_test");
 		$this->load->view("recolector/test");
 		$this->load->view("recolector/footer_test");
