@@ -286,6 +286,13 @@ class Recolector extends CI_Controller {
 		return $date_fix;
 	}
 
+	function _fix_date($date){
+		$date_arr = explode("/", $date);
+		$date_fix = $date_arr[2] . "/" . $date_arr[1] . "/" . $date_arr[0];
+
+		return $date_fix;
+	}
+
 	public function test() {
 		$this->load->view("recolector/header_test");
 		$this->load->view("recolector/test");
