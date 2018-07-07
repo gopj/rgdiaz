@@ -19,7 +19,7 @@
 				</div>
 				<div class="form-group col-md-3">
 					<label class="col-form-label" for="fecha_salida"> <center> Fecha de Embarque </center> </label>
-					<input class="form-control" id="fecha_embarque" name="fecha_embarque" required>
+					<input style="text-align: center;" class="form-control" id="fecha_embarque" name="fecha_embarque" required>
 					<div class="invalid-feedback">
 						Selecciona la fecha de embarque
 					</div>
