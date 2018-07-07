@@ -188,6 +188,10 @@ function check_resposanble() {
 	}
 }
 
+$( document ).ready(function() {
+    check_resposanble();
+});
+
 (function() {
 	'use strict';
 	window.addEventListener('load', function() {

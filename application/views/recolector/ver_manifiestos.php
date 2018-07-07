@@ -11,11 +11,14 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach ($bitacora as $bit) { ?>			
+			<?php 
+				foreach ($bitacora as $bit) { 
+					$fecha =  date_create_from_format("Y-m-d", $bit->fecha_ingreso);
+			?>			
 				<tr>
 					<td> <?= $bit->folio; ?> </td>
 					<td> <?= $bit->empresa_destino; ?> </td>
-					<td> <?= $bit->fecha_ingreso; ?> </td>
+					<td style="text-align: center;"> <?= date_format($fecha, "d/m/Y"); ?> </td>
 					<?php if ($bit->status == 'R'){ ?>
 						<td style="text-align: center;"> <a href="<?=site_url('recolector/ver_manifiesto/' . $id_cliente . '/' . $bit->folio);?>" class="btn btn-primary btn-sm btn-block" role="button"> Ver </button> </td>
 					<?php } elseif ($bit->status == 'W') {?>
