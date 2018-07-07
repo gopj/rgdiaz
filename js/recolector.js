@@ -83,18 +83,17 @@ $(function() {
 
 
 $(document).ready(function() {
-	$('#tabla_manifiestos').DataTable(
-		{
+	$('#tabla_manifiestos').DataTable( {
 		"pageLength": 50,
-        "language": {
-            "lengthMenu": "Mostrar _MENU_ registros por página",
-            "search": "Buscar:",
-            "zeroRecords": "Nada encontrado",
-            "info": "Mostrando página _PAGE_ de _PAGES_",
-            "infoEmpty": "No hay registros disponibles",
-            "infoFiltered": "(filtered from _MAX_ total records)"
-        }
-    } );
+		"language": {
+			"lengthMenu": "Mostrar _MENU_ registros por página",
+			"search": "Buscar:",
+			"zeroRecords": "No hay datos aun",
+			"info": "Mostrando página _PAGE_ de _PAGES_",
+			"infoEmpty": "No hay registros disponibles",
+			"infoFiltered": "(filtered from _MAX_ total records)"
+		}
+	} );
 } );	
 
 $(document).ready(function() {
