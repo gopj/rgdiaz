@@ -283,16 +283,16 @@ class Recolector extends CI_Controller {
 	
 	}
 
-	public function generar_manifiesto($id_persona, $folio) {
+	public function generar_manifiesto($id_cliente, $folio) {
 
 		if ($this->input->post()) {
 
-			$data["id_persona"] 		= $id_persona;
+			$data["id_persona"] 		= $id_cliente;
 			$data["manifiesto"] 		= $folio;
-			$data["nombre_cliente"] 	= $this->persona_model->get_nombre_cliente($id_persona);
-			$data["nombre_empresa"] 	= $this->persona_model->get_nombre_empresa($id_persona);
+			$data["nombre_cliente"] 	= $this->persona_model->get_nombre_cliente($id_cliente);
+			$data["nombre_empresa"] 	= $this->persona_model->get_nombre_empresa($id_cliente);
 			$data["residuos_manifiesto"]= $this->residuo_peligroso_model->get_residuos_manifiesto($id_persona, $data["manifiesto"]);
-			$data["datos_empresa"] 		= $this->persona_model->get_datos_empresa($id_persona);
+			$data["datos_empresa"] 		= $this->persona_model->get_datos_empresa($id_cliente);
 
 			$this->load->view("administrador/generar_manifiesto.php", $data);
 		}
