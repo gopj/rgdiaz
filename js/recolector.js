@@ -98,16 +98,28 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 	var table = $('#tabla_residuos').DataTable( {
-		scrollY:        "300px",
-        scrollX:        true,
-        scrollCollapse: true,
- fixedColumns:   {
-            leftColumns: 1,
-            rightColumns: 1
+		"scrollY": 			true,
+		"scrollX": 			true,
+		"scrollCollapse": 	true,
+		"pageLength": 		10,
+		"language": {
+			"lengthMenu": "Mostrar _MENU_ registros por página",
+			"search": "Buscar:",
+			"zeroRecords": "No hay datos aun",
+			"info": "Mostrando página _PAGE_ de _PAGES_",
+			"infoEmpty": "No hay registros disponibles",
+			"infoFiltered": "(filtered from _MAX_ total records)"
+		},
+ 		"fixedColumns": {
+            "leftColumns": 	1,
+            "rightColumns": 1
         },
-        columnDefs: [
-    { "width": "200px", "targets": 0 }
-  ]
+        "columnDefs": [
+    		{ 
+    			"width": "500px", 
+    			"targets": 1 
+    		}
+  		]
 	} );
 } );
 

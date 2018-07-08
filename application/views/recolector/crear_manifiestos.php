@@ -1,7 +1,7 @@
 <?php $total_reg = count($bitacora_manifiesto); ?>
 
 <main role="main" class="container" style="padding-top:-10px;">
-	<center><h2 class="bd-title" id="content"><h2>Crear Manifiesto</h2></center>
+	<center><h2 class="bd-title" id="content"><h2>Crear Manifiesto | <?= $id_cliente . "-" . $folio; ?></h2></center>
 	<hr>
 	<form id="form_manifiesto_recolector" action="<?= site_url('recolector/crear_manifiestos/' . $id_cliente . '/' . $folio); ?>" method="post" novalidate>
 		<div class="col-md-12">
@@ -171,7 +171,7 @@
 			<table id="tabla_residuos" class="table table-striped table-bordered" style="width:100%">
 				<thead>
 					<tr>
-						<th style="width: 390px;">Folio</th>
+						<th> # </th>
 						<th>Nombre residuo</th>
 						<th>CRETI</th>
 						<th>Contenedor Cantidad</th>
@@ -182,9 +182,12 @@
 					</tr>
 				</thead>
 				<tbody>
-					<?php foreach ($bitacora_manifiesto as $key) { ?>
+					<?php 
+						$x=1;
+						foreach ($bitacora_manifiesto as $key) { 
+					?>
 						<tr>
-							<td> <?= $key->folio ?> </td>
+							<td> <?= $x++ ?> </td>
 							<td> <?= $key->residuo ?> </td>
 							<td> <?= $key->caracteristica ?> </td>
 							<td> <?= $key->contenedor_cantidad ?> </td>

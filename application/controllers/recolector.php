@@ -45,6 +45,12 @@ class Recolector extends CI_Controller {
 
 	public function ver_manifiestos($id_persona=null) {
 
+		//PDF
+		$pdfpath = $_SERVER['DOCUMENT_ROOT'] . "rgdiaz/img/pdf/rdiaztmp{$id_persona}.pdf";
+		if (file_exists($pdfpath)) {
+			unlink($pdfpath);
+		}
+
 		if ($this->session->userdata('tipo') == 2){
 
 			if ($this->input->post()){
@@ -83,6 +89,7 @@ class Recolector extends CI_Controller {
 			$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
 			$data["responsable_tecnico"]= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->responsable_tecnico;
 			$data["id_cliente"]			= $id_cliente;
+			$data["folio"]				= $folio;
 
 			$this->load->view("recolector/header");
 			$this->load->view("recolector/ver_manifiesto", $data);
@@ -274,6 +281,22 @@ class Recolector extends CI_Controller {
 			redirect('home/index');
 		}	
 	
+	}
+
+	public function generar_manifiesto($id_persona, $folio) {
+
+		if ($this->input->post()) {
+
+			$data["id_persona"] 		= $id_persona;
+			$data["manifiesto"] 		= $folio;
+			$data["nombre_cliente"] 	= $this->persona_model->get_nombre_cliente($id_persona);
+			$data["nombre_empresa"] 	= $this->persona_model->get_nombre_empresa($id_persona);
+			$data["residuos_manifiesto"]= $this->residuo_peligroso_model->get_residuos_manifiesto($id_persona, $data["manifiesto"]);
+			$data["datos_empresa"] 		= $this->persona_model->get_datos_empresa($id_persona);
+
+			$this->load->view("administrador/generar_manifiesto.php", $data);
+		}
+
 	}
 
 	public function get_cliente() {

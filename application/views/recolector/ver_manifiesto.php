@@ -1,5 +1,5 @@
 <main role="main" class="container" style="padding-top:-10px;">
-	<center><h2 class="bd-title" id="content"><h2>Ver Manifiesto</h2></center>
+	<center><h2 class="bd-title" id="content"><h2>Ver Manifiesto | <?= $id_cliente . "-" . $folio; ?></h2></center>
 	<hr>
 		<div class="col-md-12">
 			<div class="form-row">
@@ -30,7 +30,7 @@
 					<table id="tabla_residuos" class="table table-striped table-bordered" style="width:100%">
 						<thead>
 							<tr>
-								<th style="width: 390px;">Folio</th>
+								<th>#</th>
 								<th>Nombre residuo</th>
 								<th>CRETI</th>
 								<th>Contenedor Cantidad</th>
@@ -41,9 +41,12 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach ($bitacora_manifiesto as $key) { ?>
+							<?php 
+								$x = 1;
+								foreach ($bitacora_manifiesto as $key) { 
+							?>
 								<tr>
-									<td> <?= $key->folio ?> </td>
+									<th> <?= $x++ ?> </th>
 									<td> <?= $key->residuo ?> </td>
 									<td> <?= $key->caracteristica ?> </td>
 									<td> <?= $key->contenedor_cantidad ?> </td>
@@ -69,10 +72,10 @@
 					<a href="<?= site_url('recolector/ver_manifiestos/' . $id_cliente); ?>"  class="btn btn-warning btn-lg btn-block" id="regresar"> Regresar </a>
 				</div>
 				<div class="form-group col-md-4">
-					<button type="button" class="btn btn-primary btn-lg btn-block" id="agregar_residuos" data-toggle="modal" data-target="#myModal">Agregar Residuo</button>
+					<button type="button" class="btn btn-primary btn-lg btn-block" id="agregar_residuos" data-toggle="modal" data-target="#myModal" disabled>Agregar Residuo</button>
 				</div>
 				<div class="form-group col-md-4">
-					<button type="button" class="btn btn-success btn-lg btn-block" id="termminar">Terminar Manifiesto</button>
+					<button type="button" class="btn btn-success btn-lg btn-block" id="termminar" disabled>Terminar Manifiesto</button>
 				</div>
 			</div>
 		</div>

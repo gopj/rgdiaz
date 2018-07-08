@@ -43,7 +43,7 @@
 					<table id="tabla_residuos" class="table table-striped table-bordered" style="width:100%">
 						<thead>
 							<tr>
-								<th style="width: 390px;">Folio</th>
+								<th>#</th>
 								<th>Nombre residuo</th>
 								<th>CRETI</th>
 								<th>Contenedor Cantidad</th>
