@@ -27,42 +27,18 @@ function date_manifiesto($s_date){
 		$date_split = explode("-", $date);
 
 		switch ($date_split[1]) {
-			case '1':
-				$date_split[1] = "Enero";
-				break;
-			case '2':
-				$date_split[1] = "Febrero";
-				break;
-			case '3':
-				$date_split[1] = "Marzo";
-				break;
-			case '4':
-				$date_split[1] = "Abril";
-				break;
-			case '5':
-				$date_split[1] = "Mayo";
-				break;
-			case '6':
-				$date_split[1] = "Junio";
-				break;
-			case '7':
-				$date_split[1] = "Julio";
-				break;
-			case '8':
-				$date_split[1] = "Agosto";
-				break;
-			case '9':
-				$date_split[1] = "Septiembre";
-				break;
-			case '10':
-				$date_split[1] = "Octubre";
-				break;
-			case '11':
-				$date_split[1] = "Noviembre";
-				break;
-			case '12':
-				$date_split[1] = "Diciembre";
-				break;
+			case '1': $date_split[1] = "Enero"; break;
+			case '2': $date_split[1] = "Febrero"; break;
+			case '3': $date_split[1] = "Marzo"; break;
+			case '4': $date_split[1] = "Abril"; break;
+			case '5': $date_split[1] = "Mayo"; break;
+			case '6': $date_split[1] = "Junio"; break;
+			case '7': $date_split[1] = "Julio"; break;
+			case '8': $date_split[1] = "Agosto"; break;
+			case '9': $date_split[1] = "Septiembre"; break;
+			case '10': $date_split[1] = "Octubre"; break;
+			case '11': $date_split[1] = "Noviembre"; break;
+			case '12': $date_split[1] = "Diciembre"; break;
 		}
 
 		$date = $date_split[0] . " de " . $date_split[1] . " del " . $date_split[2];
@@ -119,7 +95,9 @@ for ($i=0; $i < $num_table_res; $i++) {
 
 			$arr_residuos_manifiesto[$i][$j][] = $residuo_final;
 			$arr_residuos_manifiesto[$i][$j][] = creti($residuos_manifiesto[$r]->caracteristica);
-			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->cantidad;
+			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->contenedor_cantidad;
+			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->contenedor_tipo;
+			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->residuo_cantidad;
 			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->unidad;
 
 			$r++;
@@ -134,6 +112,12 @@ for ($i=0; $i < $num_table_res; $i++) {
 	}
 
 }
+
+/*echo "<pre>";
+print_r($arr_residuos_manifiesto);
+echo "</pre>";
+
+die();*/
 
 for ($h=0; $h < $num_table_res; $h++) { 
 	// add a page
@@ -225,7 +209,7 @@ for ($h=0; $h < $num_table_res; $h++) {
 			<td width="215" align="left" class="defined"> 1.- No. DE REGISTRO AMBIENTAL </td>
 			<td width="170">  '. $datos_empresa->numero_registro_ambiental .' </td>
 			<td width="90"  class="defined"> 2.- NO. MANIFIESTO </td>
-			<td width="67" style="color: red;"> '. $residuos_manifiesto[0]->id_persona . "-" . $residuos_manifiesto[0]->folio .' </td>
+			<td width="67" style="color: red;"> '. $residuos_manifiesto[0]->id_cliente . "-" . $residuos_manifiesto[0]->folio .' </td>
 			<td width="67"  class="defined">  PÁGINA ' . ($h+1) . '/' . $num_table_res . ' </td>
 		</tr>
 		<tr>
@@ -275,25 +259,25 @@ for ($h=0; $h < $num_table_res; $h++) {
 		</tr>
 		<tr>
 			<td width="215" align="left" class="defined"> NOMBRE Y FIRMA DEL RESPONSABLE </td>
-			<td width="394" align="left" class="data"> ' . $residuos_manifiesto[0]->resp_tec . ' </td>
+			<td width="394" align="left" class="data"> ' . $residuos_manifiesto[0]->responsable_tecnico . ' </td>
 		</tr>
 
 		<tr>
 			<td width="20" align="center" rowspan="10"> </td>
 			<td width="215" align="left" class="defined"> 8 - NOMBRE DE LA EMPRESA TRANSPORTADORA </td>
-			<td width="394" align="center"> ' . $residuos_manifiesto[0]->emp_tran . ' </td>
+			<td width="394" align="center"> ' . @$residuos_manifiesto[0]->emp_tran . ' </td>
 		</tr>	
 		<tr>
 			<td width="113" align="left" class="defined"> DOMICILIO</td>
-			<td width="192" align="center"> ' . $residuos_manifiesto[0]->domicilio_transportista . ' </td>
+			<td width="192" align="center"> ' . @$residuos_manifiesto[0]->responsable_tecnico . ' </td>
 			<td width="136" align="left" class="defined"> TELEFONO</td>
-			<td width="168" align="center"> ' . $residuos_manifiesto[0]->telefono . ' </td>
+			<td width="168" align="center"> ' . @$residuos_manifiesto[0]->responsable_tecnico . ' </td>
 		</tr>
 		<tr>
 			<td width="113" align="left" class="defined"> NO. DE AUTORIZACIÓN SCT </td>
-			<td width="192" align="center"> ' . $residuos_manifiesto[0]->no_autorizacion_sct . ' </td>
+			<td width="192" align="center"> ' . @$residuos_manifiesto[0]->responsable_tecnico . ' </td>
 			<td width="136" align="left" class="defined"> No. DE AUTORIZACION  SEMARNAT </td>
-			<td width="168" align="center"> ' . $residuos_manifiesto[0]->no_aut_transp . ' </td>
+			<td width="168" align="center"> ' . @$residuos_manifiesto[0]->responsable_tecnico . ' </td>
 		</tr>
 		<tr>
 			<td width="325" align="left" class="defined"> 9 - RECIBI LOS MATERIALES DESCRITOS EN EL MANIFIESTO PARA SU TRANSPORTE</td>
@@ -302,11 +286,11 @@ for ($h=0; $h < $num_table_res; $h++) {
 		</tr>
 		<tr>
 			<td width="113" align="left" class="defined"> NOMBRE </td>
-			<td width="192" align="center">  ' . $residuos_manifiesto[0]->resp_tec . ' </td>
+			<td width="192" align="center">  ' . @$residuos_manifiesto[0]->responsable_tecnico . ' </td>
 		</tr>
 		<tr>
 			<td width="113" align="left" class="defined"> FECHA DE EMBARQUE </td>
-			<td width="192" align="center"> ' . date_manifiesto($residuos_manifiesto[0]->fecha_salida) . ' </td>
+			<td width="192" align="center"> ' . @date_manifiesto($residuos_manifiesto[0]->fecha_ingreso) . ' </td>
 			<td width="136" align="left" height="15" class="defined"> FIRMA </td>
 			<td width="168" align="center">  </td>
 		</tr>
@@ -337,17 +321,17 @@ for ($h=0; $h < $num_table_res; $h++) {
 			<td class="defined" width="134" align="center"> AUTORIZACION SEMARNAT </td>
 		</tr>
 		<tr> 
-			<td width="134" class="data"> ' . $residuos_manifiesto[0]->no_aut_dest_final . ' </td>
+			<td width="134" class="data"> ' . $residuos_manifiesto[0]->dest_final . ' </td>
 		</tr>
 		<tr>
 			<td width="215" align="left" class="defined"> 4.- DOMICILIO </td>
-			<td width="394" align="center">' . $residuos_manifiesto[0]->domicilio_destino . ' </td>
+			<td width="394" align="center">' . $residuos_manifiesto[0]->dest_final . ' </td>
 		</tr>
 		<tr>
 			<td width="215" align="left" class="defined"> MUNICIPIO </td>
-			<td width="170" align="center"> ' . $residuos_manifiesto[0]->municipio_destino . ' </td>
+			<td width="170" align="center"> ' . $residuos_manifiesto[0]->dest_final . ' </td>
 			<td width="90" align="center" class="defined"> ESTADO </td>
-			<td width="134" align="center"> ' . $residuos_manifiesto[0]->estado_destino . ' </td>
+			<td width="134" align="center"> ' . $residuos_manifiesto[0]->dest_final . ' </td>
 		</tr>
 
 		<tr>
@@ -375,18 +359,21 @@ for ($h=0; $h < $num_table_res; $h++) {
 	';
 
 	// output the HTML content
+
+	echo $html;
+	die();
 	$pdf->writeHTML($html, true, false, true, false, '');
 	$table_data_html = '';
 }
 
 
-//$filename= "{$nombre_empresa}_{$manifiesto}.pdf";
-$filename= "rdiaztmp{$id_persona}.pdf"; 
-$filelocation = $_SERVER['DOCUMENT_ROOT'] ."img/pdf";
+$filename= "{$nombre_empresa}_{$manifiesto}.pdf";
+$filename= "rdiaztmp{$id_cliente}.pdf"; 
+$filelocation = $_SERVER['DOCUMENT_ROOT'] ."rgdiaz/img/pdf";
 $fileNL = $filelocation."/".$filename; //Linux
 
 //Close and output PDF document
 $pdf->Output($fileNL, 'F');
 
-redirect('administrador/manifiesto/' . $id_persona, 'refresh');
+//redirect('recolector/ver_manifiestos/' . $id_cliente, 'refresh');
 ?>

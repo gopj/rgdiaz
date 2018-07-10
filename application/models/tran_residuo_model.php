@@ -212,47 +212,33 @@ class Tran_residuo_model extends CI_Model {
 		return $this->db->query($sql_text);
 	}
 
-	public function get_residuos_manifiesto($id_persona, $manifiesto){
+	public function get_residuos_manifiesto($id_cliente, $folio){
 		return $this->db->query("
 			SELECT 
-				r.id_residuo_peligroso,
-				tr.residuo as residuo,
-				tr.clave as clave,
+				r.id_persona as id_cliente,
+				r.id_tran_residuo,
+				r.folio,
+				r.responsable_tecnico,
+				tr.residuo,
 				tr.abreviacion,
-				r.cantidad as cantidad,
-				r.unidad as unidad,
-				r.caracteristica as caracteristica,
-				a.area as area_generacion,
-				r.fecha_ingreso as fecha_ingreso,
-				r.fecha_salida as fecha_salida,
-				m.modalidad as sig_manejo,
-				et.nombre_empresa as emp_tran,
-				et.no_autorizacion_sct as no_autorizacion_sct,
-				et.domicilio as domicilio_transportista,
-				et.telefono as telefono,
+				r.caracteristica,
+				r.contenedor_cantidad,
+				r.contenedor_tipo,
+				r.residuo_cantidad,
+				r.unidad,
 				ed.nombre_destino as dest_final,
-				ed.domicilio as domicilio_destino,
+				ed.no_autorizacion_destino as no_aut_dest_final
+				/*ed.domicilio as domicilio_destino,
 				ed.municipio as municipio_destino,
-                ed.estado as estado_destino,
-				r.resp_tec as resp_tec,
-				et.no_autorizacion_transportista as no_aut_transp,
-				ed.no_autorizacion_destino as no_aut_dest_final,
-				r.folio_manifiesto as folio,
-				r.id_persona as id_persona,
-				r.status
+				ed.estado as estado_destino,*/
 			FROM 
-				residuos_peligrosos as r
-					LEFT JOIN areas a ON (r.id_area = a.id_area)
-					LEFT JOIN tipo_modalidad m ON (r.id_tipo_modalidad = m.id_tipo_modalidad)
-					LEFT JOIN tipo_emp_transportista et ON (r.id_tipo_emp_transportista = et.id_tipo_emp_transportista)
+				tran_residuos as r
 					LEFT JOIN tipo_emp_destino ed ON (r.id_tipo_emp_destino = ed.id_tipo_emp_destino),
 				tipo_residuos as tr
 			WHERE
 				r.id_tipo_residuo = tr.id_tipo_residuo and
-				r.id_persona = {$id_persona} and
-				r.folio_manifiesto = {$manifiesto}
-			ORDER BY
-				r.fecha_ingreso asc;")->result();
+				id_persona 	= {$id_cliente} and 
+				folio 		= {$folio};")->result();
 	}
 
 }

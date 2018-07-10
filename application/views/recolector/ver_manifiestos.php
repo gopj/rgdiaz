@@ -23,7 +23,7 @@
 						<td style="text-align: center;"> 
 							<a href="<?=site_url('recolector/ver_manifiesto/' . $id_cliente . '/' . $bit->folio);?>" class="btn btn-primary btn-sm" role="button"> Ver </button> 
 
-								<a href="<?=site_url('recolector/ver_manifiesto/' . $id_cliente . '/' . $bit->folio);?>" class="btn btn-danger btn-sm" role="button"> PDF </button>
+								<a href="<?=site_url('recolector/generar_manifiesto/' . $id_cliente . '/' . $bit->folio);?>" class="btn btn-danger btn-sm" role="button"> PDF </button>
 						</td>
 					<?php } elseif ($bit->status == 'W') {?>
 						<td> 

@@ -285,17 +285,18 @@ class Recolector extends CI_Controller {
 
 	public function generar_manifiesto($id_cliente, $folio) {
 
-		if ($this->input->post()) {
+		$data["id_cliente"] 		= $id_cliente;
+		$data["manifiesto"] 		= $folio;
+		$data["nombre_cliente"] 	= $this->persona_model->get_nombre_cliente($id_cliente);
+		$data["nombre_empresa"] 	= $this->persona_model->get_nombre_empresa($id_cliente);
+		$data["residuos_manifiesto"]= $this->tran_residuo_model->get_residuos_manifiesto($id_cliente, $folio);
+		$data["datos_empresa"] 		= $this->persona_model->get_datos_empresa($id_cliente);
 
-			$data["id_persona"] 		= $id_cliente;
-			$data["manifiesto"] 		= $folio;
-			$data["nombre_cliente"] 	= $this->persona_model->get_nombre_cliente($id_cliente);
-			$data["nombre_empresa"] 	= $this->persona_model->get_nombre_empresa($id_cliente);
-			$data["residuos_manifiesto"]= $this->residuo_peligroso_model->get_residuos_manifiesto($id_persona, $data["manifiesto"]);
-			$data["datos_empresa"] 		= $this->persona_model->get_datos_empresa($id_cliente);
+		/*$data["empresa_destino"] 	= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->empresa_destino;
+		$data["fecha_embarque"] 	= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->fecha_ingreso;
+		$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);*/
 
-			$this->load->view("administrador/generar_manifiesto.php", $data);
-		}
+		$this->load->view("recolector/generar_manifiesto.php", $data);
 
 	}
 
