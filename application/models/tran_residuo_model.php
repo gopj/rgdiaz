@@ -220,7 +220,6 @@ class Tran_residuo_model extends CI_Model {
 				r.folio,
 				r.responsable_tecnico,
 				tr.residuo,
-				tr.abreviacion,
 				r.caracteristica,
 				r.contenedor_cantidad,
 				r.contenedor_tipo,

@@ -83,17 +83,16 @@ for ($i=0; $i < $num_table_res; $i++) {
 	
 	for ($j=0; $j < 18; $j++) {
 
-
 		if ($res_man_cant > $r) {
 
-			//Residuo final, puede tener abrevicacion
-			if ($residuos_manifiesto[$r]->abreviacion != "") {
+			//Residuo final, puede tener abreviacion
+			/*if ($residuos_manifiesto[$r]->abreviacion != "") {
 				$residuo_final = $residuos_manifiesto[$r]->abreviacion;
 			} else {
 				$residuo_final = $residuos_manifiesto[$r]->residuo;
-			}
+			}*/
 
-			$arr_residuos_manifiesto[$i][$j][] = $residuo_final;
+			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->residuo;
 			$arr_residuos_manifiesto[$i][$j][] = creti($residuos_manifiesto[$r]->caracteristica);
 			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->contenedor_cantidad;
 			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->contenedor_tipo;
@@ -360,8 +359,7 @@ for ($h=0; $h < $num_table_res; $h++) {
 
 	// output the HTML content
 
-	echo $html;
-	die();
+	/*echo $html;*/
 	$pdf->writeHTML($html, true, false, true, false, '');
 	$table_data_html = '';
 }
@@ -369,11 +367,13 @@ for ($h=0; $h < $num_table_res; $h++) {
 
 $filename= "{$nombre_empresa}_{$manifiesto}.pdf";
 $filename= "rdiaztmp{$id_cliente}.pdf"; 
-$filelocation = $_SERVER['DOCUMENT_ROOT'] ."rgdiaz/img/pdf";
-$fileNL = $filelocation."/".$filename; //Linux
+$filelocation = $_SERVER['DOCUMENT_ROOT'] ."rgdiaz/img/pdf/";
+$fileNL = $filelocation . $filename; //Linux
 
 //Close and output PDF document
-$pdf->Output($fileNL, 'F');
+$pdf->Output($fileNL, 'D');
+
+/*$pdf->Output($fileNL, 'F');*/
 
 //redirect('recolector/ver_manifiestos/' . $id_cliente, 'refresh');
 ?>
