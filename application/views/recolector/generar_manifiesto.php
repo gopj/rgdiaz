@@ -74,14 +74,15 @@ $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 // Image($file, $x='', $y='', $w=0, $h=0, $type='', $link='', $align='', $resize=false, $dpi=300, $palign='', $ismask=false, $imgmask=false, $border=0, $fitbox=false, $hidden=false, $fitonpage=false)
  
 $res_man_cant = count($residuos_manifiesto);
-$num_table_res = (ceil($res_man_cant/18));
+$num_table_res = (ceil($res_man_cant/16));
 $r = 0;
 $table_data_html = '';
 $residuo_final="";
+/*$nombre_residuo_size= coun*/
 
 for ($i=0; $i < $num_table_res; $i++) { 
 	
-	for ($j=0; $j < 18; $j++) {
+	for ($j=0; $j < 16; $j++) {
 
 		if ($res_man_cant > $r) {
 
@@ -122,7 +123,7 @@ for ($h=0; $h < $num_table_res; $h++) {
 	// add a page
 	$pdf->AddPage();
 
-	for ($i=0; $i < 18; $i++) {
+	for ($i=0; $i < 16; $i++) {
 
 		$table_data_html = $table_data_html . '
 		<tr>
