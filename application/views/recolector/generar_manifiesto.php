@@ -80,6 +80,7 @@ $table_data_html = '';
 $residuo_final="";
 /*$nombre_residuo_size= coun*/
 
+
 for ($i=0; $i < $num_table_res; $i++) { 
 	
 	for ($j=0; $j < 18; $j++) {
@@ -101,14 +102,14 @@ for ($i=0; $i < $num_table_res; $i++) {
 			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->unidad;
 
 			$r++;
-		} else {
+		} /*else {
 			$arr_residuos_manifiesto[$i][$j][] = "";
 			$arr_residuos_manifiesto[$i][$j][] = "";
 			$arr_residuos_manifiesto[$i][$j][] = "";
 			$arr_residuos_manifiesto[$i][$j][] = "";
 			$arr_residuos_manifiesto[$i][$j][] = "";
 			$arr_residuos_manifiesto[$i][$j][] = "";
-		}
+		}*/
 	}
 
 }
@@ -125,30 +126,46 @@ for ($h=0; $h < $num_table_res; $h++) {
 
 	for ($i=0; $i < 18; $i++) {
 
-		if (strlen($arr_residuos_manifiesto[$h][$i][0]) > 75) {
+		if (@$arr_residuos_manifiesto[$h][$i][0] == null) {
+			
 			$table_data_html = $table_data_html . '
 				<tr>
-					<td width="342" align="left" class="defined_s" rowspan="2"> ' . $arr_residuos_manifiesto[$h][$i][0] . '</td>
-					<td width="43" align="center" class="data" rowspan="2"> ' . $arr_residuos_manifiesto[$h][$i][1] . ' </td>
-					<td width="45" align="center" class="data" rowspan="2"> ' . $arr_residuos_manifiesto[$h][$i][2] . ' </td>
-					<td width="45" align="center" class="data" rowspan="2"> ' . $arr_residuos_manifiesto[$h][$i][3] . ' </td>
-					<td width="67" align="center" class="data" rowspan="2"> ' . $arr_residuos_manifiesto[$h][$i][4] . ' </td>
-					<td width="67" align="center" class="data" rowspan="2"> ' . $arr_residuos_manifiesto[$h][$i][5] . ' </td>
+					<td width="342" align="left" class="defined_s"> </td>
+					<td width="43" align="center" class="data"> </td>
+					<td width="45" align="center" class="data"> </td>
+					<td width="45" align="center" class="data"> </td>
+					<td width="67" align="center" class="data"> </td>
+					<td width="67" align="center" class="data"> </td>
 				</tr>
 			';
-			$i++;
+
 		} else {
-			$table_data_html = $table_data_html . '
-				<tr>
-					<td width="342" align="left" class="defined_s"> ' . $arr_residuos_manifiesto[$h][$i][0] . '</td>
-					<td width="43" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][1] . ' </td>
-					<td width="45" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][2] . ' </td>
-					<td width="45" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][3] . ' </td>
-					<td width="67" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][4] . ' </td>
-					<td width="67" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][5] . ' </td>
-				</tr>
-			';
+			if (strlen(@$arr_residuos_manifiesto[$h][$i][0]) > 75) {
+				$table_data_html = $table_data_html . '
+					<tr>
+						<td width="342" align="left" class="defined_s"> ' . $arr_residuos_manifiesto[$h][$i][0] . '</td>
+						<td width="43" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][1] . ' </td>
+						<td width="45" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][2] . ' </td>
+						<td width="45" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][3] . ' </td>
+						<td width="67" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][4] . ' </td>
+						<td width="67" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][5] . ' </td>
+					</tr>
+				';
+			} else {
+				$table_data_html = $table_data_html . '
+					<tr>
+						<td width="342" align="left" class="defined_s"> ' . $arr_residuos_manifiesto[$h][$i][0] . '</td>
+						<td width="43" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][1] . ' </td>
+						<td width="45" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][2] . ' </td>
+						<td width="45" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][3] . ' </td>
+						<td width="67" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][4] . ' </td>
+						<td width="67" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][5] . ' </td>
+					</tr>
+				';
+			} 
 		}
+		
+			
 			
 	}
 
