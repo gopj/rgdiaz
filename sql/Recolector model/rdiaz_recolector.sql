@@ -10475,7 +10475,7 @@ CREATE TABLE `tran_residuos` (
   `responsable_tecnico` varchar(60) NOT NULL,
   `fecha_insercion` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `fecha_ingreso` date NOT NULL,
-  `status` int(11) NOT NULL
+  `status` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -10483,10 +10483,10 @@ CREATE TABLE `tran_residuos` (
 --
 
 INSERT INTO `tran_residuos` (`id_tran_residuo`, `id_persona`, `id_tipo_residuo`, `id_tipo_emp_destino`, `folio`, `caracteristica`, `contenedor_cantidad`, `contenedor_tipo`, `residuo_cantidad`, `unidad`, `responsable_tecnico`, `fecha_insercion`, `fecha_ingreso`, `status`) VALUES
-(1, 21, 1, 2, '1', 'Toxico', 1, 'Cubeta', '12', 'Kg', 'Jesus Gonzalez', '2018-04-08 00:00:00', '0000-00-00', 0),
-(2, 21, 2, 2, '1', 'Toxico', 1, 'Cubeta', '12', 'Kg', 'Jesus Gonzalez', '2018-04-08 18:17:52', '0000-00-00', 0),
-(3, 21, 1, 2, '2', 'Toxico', 1, 'Cubeta', '12', 'Kg', 'Jesus Gonzalez', '2018-04-08 18:22:36', '0000-00-00', 0),
-(9, 21, 1, 1, '3', 'Corrosivo ', 1, 'Cubeta', '1', 'Kg', '123', '2018-05-09 01:09:11', '2018-05-09', 0);
+(1, 21, 1, 2, '1', 'Toxico', 1, 'Cubeta', '12', 'Kg', 'Jesus Gonzalez', '2018-04-08 00:00:00', '0000-00-00', 'R'),
+(2, 21, 2, 2, '1', 'Toxico', 1, 'Cubeta', '12', 'Kg', 'Jesus Gonzalez', '2018-04-08 18:17:52', '0000-00-00', 'R'),
+(3, 21, 1, 2, '2', 'Toxico', 1, 'Cubeta', '12', 'Kg', 'Jesus Gonzalez', '2018-04-08 18:22:36', '0000-00-00', 'R'),
+(9, 21, 1, 1, '3', 'Corrosivo ', 1, 'Cubeta', '1', 'Kg', '123', '2018-05-09 01:09:11', '2018-05-09', 'R');
 
 -- --------------------------------------------------------
 

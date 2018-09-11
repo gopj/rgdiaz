@@ -73,18 +73,17 @@ $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 // Image method signature:
 // Image($file, $x='', $y='', $w=0, $h=0, $type='', $link='', $align='', $resize=false, $dpi=300, $palign='', $ismask=false, $imgmask=false, $border=0, $fitbox=false, $hidden=false, $fitonpage=false)
  
-$nrs = 18; //nombre_residuo_size
 $res_man_cant = count($residuos_manifiesto);
-$num_table_res = (ceil($res_man_cant/$nrs));
+$num_table_res = (ceil($res_man_cant/18));
 $r = 0;
 $table_data_html = '';
 $residuo_final="";
-
+/*$nombre_residuo_size = coun*/
 
 //Llenar array de arr_residuos_manifiesto
 for ($i=0; $i < $num_table_res; $i++) { 
 	
-	for ($j=0; $j < $nrs; $j++) {
+	for ($j=0; $j < 18; $j++) {
 
 		if ($res_man_cant > $r) {
 
@@ -125,13 +124,13 @@ for ($h=0; $h < $num_table_res; $h++) {
 	// add a page
 	$pdf->AddPage();
 
-	for ($i=0; $i < $nrs; $i++) {
+	for ($i=0; $i < 18; $i++) {
 
 		if (@$arr_residuos_manifiesto[$h][$i][0] == null) {
 			
 			$table_data_html = $table_data_html . '
 				<tr>
-					<td width="342" align="left" class="defined_s"> ' . $i . '</td>
+					<td width="342" align="left" class="defined_s"> ' . $i . ' </td>
 					<td width="43" align="center" class="data"> </td>
 					<td width="45" align="center" class="data"> </td>
 					<td width="45" align="center" class="data"> </td>
@@ -141,30 +140,20 @@ for ($h=0; $h < $num_table_res; $h++) {
 			';
 
 		} else {
-			if (strlen(@$arr_residuos_manifiesto[$h][$i][0]) > 162) {
+			if (strlen(@$arr_residuos_manifiesto[$h][$i][0]) > 75) {
 				$table_data_html = $table_data_html . '
 					<tr>
-						<td width="342" align="left" class="defined_s"> ' . $i . ' ' . $arr_residuos_manifiesto[$h][$i][0] . '</td>
-						<td width="43" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][1] . ' </td>
-						<td width="45" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][2] . ' </td>
-						<td width="45" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][3] . ' </td>
-						<td width="67" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][4] . ' </td>
-						<td width="67" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][5] . ' </td>
+						<td width="342" align="left" class="defined_s" rowspan="2"> ' . $i . ' ' . $arr_residuos_manifiesto[$h][$i][0] . '</td>
+						<td width="43" align="center" class="data" rowspan="2"> ' . $arr_residuos_manifiesto[$h][$i][1] . ' </td>
+						<td width="45" align="center" class="data" rowspan="2"> ' . $arr_residuos_manifiesto[$h][$i][2] . ' </td>
+						<td width="45" align="center" class="data" rowspan="2"> ' . $arr_residuos_manifiesto[$h][$i][3] . ' </td>
+						<td width="67" align="center" class="data" rowspan="2"> ' . $arr_residuos_manifiesto[$h][$i][4] . ' </td>
+						<td width="67" align="center" class="data" rowspan="2"> ' . $arr_residuos_manifiesto[$h][$i][5] . ' </td>
 					</tr>
-				';
-				$nrs=$nrs-2;
-			} elseif (strlen(@$arr_residuos_manifiesto[$h][$i][0]) > 72) { 
-				$table_data_html = $table_data_html . '
 					<tr>
-						<td width="342" align="left" class="defined_s"> ' . $i . ' ' . $arr_residuos_manifiesto[$h][$i][0] . '</td>
-						<td width="43" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][1] . ' </td>
-						<td width="45" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][2] . ' </td>
-						<td width="45" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][3] . ' </td>
-						<td width="67" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][4] . ' </td>
-						<td width="67" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][5] . ' </td>
 					</tr>
 				';
-				$nrs--;
+				$i++;
 			} else {
 				$table_data_html = $table_data_html . '
 					<tr>
@@ -404,6 +393,8 @@ for ($h=0; $h < $num_table_res; $h++) {
 	';
 
 	// output the HTML content
+
+	//echo $html;
 	$pdf->writeHTML($html, true, false, true, false, '');
 	$table_data_html = '';
 }
@@ -415,9 +406,9 @@ $filelocation = $_SERVER['DOCUMENT_ROOT'] ."rgdiaz/img/pdf/";
 $fileNL = $filelocation . $filename; //Linux
 
 //Close and output PDF document
-$pdf->Output($fileNL, 'D');
+//$pdf->Output($fileNL, 'D');
 
-//$pdf->Output($fileNL, 'F');
+$pdf->Output($fileNL, 'F');
 
 //redirect('recolector/ver_manifiestos/' . $id_cliente, 'refresh');
 ?>

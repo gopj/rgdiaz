@@ -106,7 +106,7 @@
 							<div class="form-group col-md-8">
 								<label class="col-form-label" for="nombre_residuo"> Residuo Peligroso </label>
 								<select class="form-control" onchange="update_clave(this.value);" name="residuo_peligroso" required>
-									<option value="">Selecciona Residuo</option>
+									<option value=""> <strong> Selecciona Residuo </strong> </option>
 									<?php foreach ($residuos as $key) { ?>
 										<option value="<?= $key->id_tipo_residuo; ?>"> <?= mb_strimwidth($key->residuo, 0, 55, '...'); ?></option>
 									<?php } ?>
