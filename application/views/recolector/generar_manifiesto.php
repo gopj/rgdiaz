@@ -178,9 +178,6 @@ for ($h=0; $h < $num_table_res; $h++) {
 				';
 			} 
 		}
-		
-			
-			
 	}
 
 	// define some HTML content with style
@@ -193,7 +190,9 @@ for ($h=0; $h < $num_table_res; $h++) {
 		text-align: center;
 		height: 15px;
 		line-height:15px;
+		margin-left:40px;
 	}
+
 	td.defined {
 		font-family: helvetica;
 		font-size: 6pt;
@@ -221,23 +220,24 @@ for ($h=0; $h < $num_table_res; $h++) {
 		line-height:15px;
 
 	}
-	td.borde_inferior {
+
+	td.bott_border {
 		border-bottom: 3px solid #FFFFFF;
 	}
 
-	td.borde_izquierdo {
+	td.left_border {
 		border-left: 3px solid #FFFFFF;
 	}
 
-	td.borde_derecho {
+	td.right_border {
 		border-right: 3px solid #FFFFFF;
 	}
 
-	td.borde_top {
+	td.top_border {
 		border-top: 3px solid #FFFFFF;
 	}
 
-	td.bodes_no {
+	td.borders {
 		border-top: 3px solid #FFFFFF;
 		border-bottom: 3px solid #FFFFFF;
 		border-left: 3px solid #FFFFFF;
@@ -248,164 +248,173 @@ for ($h=0; $h < $num_table_res; $h++) {
 
 	<br /><br /><br /><br /><br /><br />
 
-	<table class="manifiesto" border="1">
-		<tr>
-			<td width="20" rowspan="29"> </td>
-			<td width="215" align="left" class="defined"> 1.- No. DE REGISTRO AMBIENTAL </td>
-			<td width="170">  '. $datos_empresa->numero_registro_ambiental .' </td>
-			<td width="90"  class="defined"> 2.- NO. MANIFIESTO </td>
-			<td width="67" style="color: red;"> '. $residuos_manifiesto[0]->id_cliente . "-" . $residuos_manifiesto[0]->folio .' </td>
-			<td width="67"  class="defined">  PÁGINA ' . ($h+1) . '/' . $num_table_res . ' </td>
-		</tr>
-		<tr>
-			<td width="215" align="left" class="defined"> 3.- RAZÓN SOCIAL DE LA EMPRESA GENERADORA </td>
-			<td width="394" align="center"> '. $datos_empresa->nombre_empresa .' </td>
-		</tr>
-		<tr>
-			<td width="215" align="left" class="defined"> 4.- DOMICILIO </td>
-			<td width="260" align="center"> '. $datos_empresa->calle_empresa .', ' . $datos_empresa->colonia_empresa . ' </td>
-			<td width="67" align="center" class="defined"> C.P. </td>
-			<td width="67" align="center"> '. $datos_empresa->cp_empresa .' </td>
-		</tr>
-		<tr>
-			<td width="215" align="left" class="defined"> MUNICIPIO </td>
-			<td width="170" align="center"> '. $datos_empresa->municipio .' </td>
-			<td width="90" align="center" class="defined"> ESTADO </td>
-			<td width="134" align="center"> '. $datos_empresa->estado .' </td>
-		</tr>
-		<tr>
-			<td width="215" align="left" class="defined"> TELEFONO </td>
-			<td width="394" align="center"> '. $datos_empresa->telefono_empresa .' </td>
-		</tr>
-		<tr>
-			<td width="342" align="left" class="defined" rowspan="2" > &nbsp;<br/> 5.- DESCRIPCIÓN (Nombre del residuo y característica CRETI)  </td>
-			<td width="43" align="center" class="defined" rowspan="2"> &nbsp;<br/> CRETI </td>
-			<td class="defined" width="90" align="center"> CONTENEDOR </td>
-			<td width="67" class="defined" rowspan="2" style="line-height:10px;"> CANTIDAD TOTAL DE RESIDUO </td>
-			<td width="67" align="center" class="defined" rowspan="2"> UNIDAD VOL/PESO </td>
-		</tr>
-		<tr> 
-			<td width="45" class="defined" style="font-size: 5pt;"> CANTIDAD </td>
-			<td width="45" class="defined" style="font-size: 5pt;"> TIPO </td>
-		</tr>
+	<table>
+	<tr>
+		<td width="18"></td>
+		<td>
+			<table class="manifiesto" border="1">
+				<tr>
+					<td width="215" align="left" class="defined"> 1.- No. DE REGISTRO AMBIENTAL </td>
+					<td width="170">  '. $datos_empresa->numero_registro_ambiental .' </td>
+					<td width="90"  class="defined"> 2.- NO. MANIFIESTO </td>
+					<td width="67" style="color: red;"> '. $residuos_manifiesto[0]->id_cliente . "-" . $residuos_manifiesto[0]->folio .' </td>
+					<td width="67"  class="defined">  PÁGINA ' . ($h+1) . '/' . $num_table_res . ' </td>
+				</tr>
+				<tr>
+					<td width="215" align="left" class="defined"> 3.- RAZÓN SOCIAL DE LA EMPRESA GENERADORA </td>
+					<td width="394" align="center"> '. $datos_empresa->nombre_empresa .' </td>
+				</tr>
+				<tr>
+					<td width="215" align="left" class="defined"> 4.- DOMICILIO </td>
+					<td width="260" align="center"> '. $datos_empresa->calle_empresa .', ' . $datos_empresa->colonia_empresa . ' </td>
+					<td width="67" align="center" class="defined"> C.P. </td>
+					<td width="67" align="center"> '. $datos_empresa->cp_empresa .' </td>
+				</tr>
+				<tr>
+					<td width="215" align="left" class="defined"> MUNICIPIO </td>
+					<td width="170" align="center"> '. $datos_empresa->municipio .' </td>
+					<td width="90" align="center" class="defined"> ESTADO </td>
+					<td width="134" align="center"> '. $datos_empresa->estado .' </td>
+				</tr>
+				<tr>
+					<td width="215" align="left" class="defined"> TELEFONO </td>
+					<td width="394" align="center"> '. $datos_empresa->telefono_empresa .' </td>
+				</tr>
+				<tr>
+					<td width="342" align="left" class="defined" rowspan="2" > &nbsp;<br/> 5.- DESCRIPCIÓN (Nombre del residuo y característica CRETI)  </td>
+					<td width="43" align="center" class="defined" rowspan="2"> &nbsp;<br/> CRETI </td>
+					<td class="defined" width="90" align="center"> CONTENEDOR </td>
+					<td width="67" class="defined" rowspan="2" style="line-height:10px;"> CANTIDAD TOTAL DE RESIDUO </td>
+					<td width="67" align="center" class="defined" rowspan="2"> UNIDAD VOL/PESO </td>
+				</tr>
+				<tr> 
+					<td width="45" class="defined" style="font-size: 5pt;"> CANTIDAD </td>
+					<td width="45" class="defined" style="font-size: 5pt;"> TIPO </td>
+				</tr>
 
-		  	' . $table_data_html . ' 
+				  	' . $table_data_html . ' 
 
-		<tr>
-			<td width="304" align="left" class="defined"> 6 - INSTRUCCIONES ESPECIALES E INFORMACION ADICIONAL PARA EL MANEJO SEGURO </td>
-			<td width="305" align="center" class="data"> &nbsp;<br/> Usar guantes, gogles y cubreboca  </td>
-		</tr>
-		<tr>
-			<td width="304" align="left" class="defined"> 7 - CERTIFICACIÓN DEL GENERADOR</td>
-			<td width="305" align="center" class="data"> </td>
-		</tr>
-		<tr>
-			<td width="609" align="left" class="defined"> Declaro que el contenido de este lote está correctamente descrito mediante el nombre del residuo,  características CRETIB, bien empacado, marcado y rotulado; y que se han previsto las condiciones de seguridad para su transporte por vía terrestre de acuerdo a la Legislación Nacional vigente</td>
-		</tr>
-		<tr>
-			<td width="215" align="left" class="defined"> NOMBRE Y FIRMA DEL RESPONSABLE </td>
-			<td width="394" align="left" class="data"> ' . $residuos_manifiesto[0]->responsable_tecnico . ' </td>
-		</tr>
+				<tr>
+					<td width="304" align="left" class="defined"> 6 - INSTRUCCIONES ESPECIALES E INFORMACION ADICIONAL PARA EL MANEJO SEGURO </td>
+					<td width="305" align="center" class="data"> &nbsp;<br/> Usar guantes, gogles y cubreboca  </td>
+				</tr>
+				<tr>
+					<td width="304" align="left" class="defined"> 7 - CERTIFICACIÓN DEL GENERADOR</td>
+					<td width="305" align="center" class="data"> </td>
+				</tr>
+				<tr>
+					<td width="609" align="left" class="defined"> Declaro que el contenido de este lote está correctamente descrito mediante el nombre del residuo,  características CRETIB, bien empacado, marcado y rotulado; y que se han previsto las condiciones de seguridad para su transporte por vía terrestre de acuerdo a la Legislación Nacional vigente</td>
+				</tr>
+				<tr>
+					<td width="215" align="left" class="defined"> NOMBRE Y FIRMA DEL RESPONSABLE </td>
+					<td width="394" align="left" class="data"> ' . $residuos_manifiesto[0]->responsable_tecnico . ' </td>
+				</tr>
 
-		<tr>
-			<td width="20" align="center" rowspan="10"> </td>
-			<td width="215" align="left" class="defined"> 8 - NOMBRE DE LA EMPRESA TRANSPORTADORA </td>
-			<td width="394" align="center"> ' . @$residuos_manifiesto[0]->emp_tran . ' </td>
-		</tr>	
-		<tr>
-			<td width="113" align="left" class="defined"> DOMICILIO</td>
-			<td width="192" align="center"> ' . @$residuos_manifiesto[0]->responsable_tecnico . ' </td>
-			<td width="136" align="left" class="defined"> TELEFONO</td>
-			<td width="168" align="center"> ' . @$residuos_manifiesto[0]->responsable_tecnico . ' </td>
-		</tr>
-		<tr>
-			<td width="113" align="left" class="defined"> NO. DE AUTORIZACIÓN SCT </td>
-			<td width="192" align="center"> ' . @$residuos_manifiesto[0]->responsable_tecnico . ' </td>
-			<td width="136" align="left" class="defined"> No. DE AUTORIZACION  SEMARNAT </td>
-			<td width="168" align="center"> ' . @$residuos_manifiesto[0]->responsable_tecnico . ' </td>
-		</tr>
-		<tr>
-			<td width="325" align="left" class="defined"> 9 - RECIBI LOS MATERIALES DESCRITOS EN EL MANIFIESTO PARA SU TRANSPORTE</td>
-			<td width="96" align="left" class="defined"> CARGO </td>
-			<td width="188" align="center"> Responsable </td>
-		</tr>
-		<tr>
-			<td width="113" align="left" class="defined"> NOMBRE </td>
-			<td width="192" align="center">  ' . @$residuos_manifiesto[0]->responsable_tecnico . ' </td>
-		</tr>
-		<tr>
-			<td width="113" align="left" class="defined"> FECHA DE EMBARQUE </td>
-			<td width="192" align="center"> ' . @date_manifiesto($residuos_manifiesto[0]->fecha_ingreso) . ' </td>
-			<td width="136" align="left" height="15" class="defined"> FIRMA </td>
-			<td width="168" align="center">  </td>
-		</tr>
-		<tr>
-			<td width="609" align="left" class="defined"> 10 - RUTA DE LA EMPRESA GENERADORA HASTA SU ENTREGA </td>
-		</tr>
-		<tr>
-			<td width="609" align="left"> Manzanillo-Tecomán, Col. </td>
-		</tr>
-		<tr>
-			<td width="215" align="left" class="defined"> 11 - TIPO VEHICULO </td>
-			<td width="90" align="left" class="defined">  No. DE PLACA </td>
-			<td width="214" align="left" class="defined"> TIPO VEHICULO </td>
-			<td width="90" align="left" class="defined">  No. DE PLACA </td>
-		</tr>
-		<tr>
-			<td width="215" align="center"> </td>
-			<td width="90" align="center"> </td>
-			<td width="214" align="center"> </td>
-			<td width="90" align="center"> </td>
-		</tr>	
+				<tr>
+					<td width="215" align="left" class="defined"> 8 - NOMBRE DE LA EMPRESA TRANSPORTADORA </td>
+					<td width="394" align="center"> ' . @$residuos_manifiesto[0]->emp_tran . ' </td>
+				</tr>	
+				<tr>
+					<td width="113" align="left" class="defined"> DOMICILIO</td>
+					<td width="192" align="center"> ' . @$residuos_manifiesto[0]->responsable_tecnico . ' </td>
+					<td width="136" align="left" class="defined"> TELEFONO</td>
+					<td width="168" align="center"> ' . @$residuos_manifiesto[0]->responsable_tecnico . ' </td>
+				</tr>
+				<tr>
+					<td width="113" align="left" class="defined"> NO. DE AUTORIZACIÓN SCT </td>
+					<td width="192" align="center"> ' . @$residuos_manifiesto[0]->responsable_tecnico . ' </td>
+					<td width="136" align="left" class="defined"> No. DE AUTORIZACION  SEMARNAT </td>
+					<td width="168" align="center"> ' . @$residuos_manifiesto[0]->responsable_tecnico . ' </td>
+				</tr>
+				<tr>
+					<td width="325" align="left" class="defined"> 9 - RECIBI LOS MATERIALES DESCRITOS EN EL MANIFIESTO PARA SU TRANSPORTE</td>
+					<td width="96" align="left" class="defined"> CARGO </td>
+					<td width="188" align="center"> Responsable </td>
+				</tr>
+				<tr>
+					<td width="113" align="left" class="defined"> NOMBRE </td>
+					<td width="192" align="center">  ' . @$residuos_manifiesto[0]->responsable_tecnico . ' </td>
+				</tr>
+				<tr>
+					<td width="113" align="left" class="defined"> FECHA DE EMBARQUE </td>
+					<td width="192" align="center"> ' . @date_manifiesto($residuos_manifiesto[0]->fecha_ingreso) . ' </td>
+					<td width="136" align="left" height="15" class="defined"> FIRMA </td>
+					<td width="168" align="center">  </td>
+				</tr>
+				<tr>
+					<td width="609" align="left" class="defined"> 10 - RUTA DE LA EMPRESA GENERADORA HASTA SU ENTREGA </td>
+				</tr>
+				<tr>
+					<td width="609" align="left"> Manzanillo-Tecomán, Col. </td>
+				</tr>
+				<tr>
+					<td width="215" align="left" class="defined"> 11 - TIPO VEHICULO </td>
+					<td width="90" align="left" class="defined">  No. DE PLACA </td>
+					<td width="214" align="left" class="defined"> TIPO VEHICULO </td>
+					<td width="90" align="left" class="defined">  No. DE PLACA </td>
+				</tr>
+				<tr>
+					<td width="215" align="center"> </td>
+					<td width="90" align="center"> </td>
+					<td width="214" align="center"> </td>
+					<td width="90" align="center"> </td>
+				</tr>	
 
 
-		<tr>
-			<td width="20" align="center" rowspan="9"> </td>
-			<td width="215" align="left" class="defined" rowspan="2"> &nbsp;<br/> 12 - NOMBRE DE LA EMPRESA </td>
-			<td width="260" align="center" rowspan="2"> ' . $residuos_manifiesto[0]->dest_final . ' </td>
-			<td class="defined" width="134" align="center"> AUTORIZACION SEMARNAT </td>
-		</tr>
-		<tr> 
-			<td width="134" class="data"> ' . $residuos_manifiesto[0]->dest_final . ' </td>
-		</tr>
-		<tr>
-			<td width="215" align="left" class="defined"> 4.- DOMICILIO </td>
-			<td width="394" align="center">' . $residuos_manifiesto[0]->dest_final . ' </td>
-		</tr>
-		<tr>
-			<td width="215" align="left" class="defined"> MUNICIPIO </td>
-			<td width="170" align="center"> ' . $residuos_manifiesto[0]->dest_final . ' </td>
-			<td width="90" align="center" class="defined"> ESTADO </td>
-			<td width="134" align="center"> ' . $residuos_manifiesto[0]->dest_final . ' </td>
-		</tr>
+				<tr>
+					<td width="215" align="left" class="defined" rowspan="2"> &nbsp;<br/> 12 - NOMBRE DE LA EMPRESA </td>
+					<td width="260" align="center" rowspan="2"> ' . $residuos_manifiesto[0]->dest_final . ' </td>
+					<td class="defined" width="134" align="center"> AUTORIZACION SEMARNAT </td>
+				</tr>
+				<tr> 
+					<td width="134" class="data"> ' . $residuos_manifiesto[0]->dest_final . ' </td>
+				</tr>
+				<tr>
+					<td width="215" align="left" class="defined"> 4.- DOMICILIO </td>
+					<td width="394" align="center">' . $residuos_manifiesto[0]->dest_final . ' </td>
+				</tr>
+				<tr>
+					<td width="215" align="left" class="defined"> MUNICIPIO </td>
+					<td width="170" align="center"> ' . $residuos_manifiesto[0]->dest_final . ' </td>
+					<td width="90" align="center" class="defined"> ESTADO </td>
+					<td width="134" align="center"> ' . $residuos_manifiesto[0]->dest_final . ' </td>
+				</tr>
 
-		<tr>
-			<td width="607" align="left" class="defined borde_inferior"> 13 - RECIBI LOS RESIDUOS DESCRITOS EN EL MANIFIESTO </td>
-		</tr>
-		<tr>
-			<td width="609" height="15" align="left" class="defined"> OBSERVACIONES </td>
-		</tr>
-		<tr>
-			<td width="609" height="15" align="left" class="defined"> </td>
-		</tr>
-		<tr>
-			<td width="113" align="center" class="defined" height="20"> NOMBRE </td>
-			<td width="192" align="center"></td>
-			<td width="113" align="center" class="defined" height="20"> CARGO </td>
-			<td width="191" align="center"></td>
-		</tr>
-		<tr>
-			<td width="113" align="center" class="defined" height="20"> FECHA </td>
-			<td width="192" align="center"></td>
-			<td width="113" align="center" class="defined" height="20"> FIRMA </td>
-			<td width="191" align="center"></td>
-		</tr>
+				<tr>
+					<td width="607" align="left" class="defined borde_inferior"> 13 - RECIBI LOS RESIDUOS DESCRITOS EN EL MANIFIESTO </td>
+				</tr>
+				<tr>
+					<td width="609" height="15" align="left" class="defined"> OBSERVACIONES </td>
+				</tr>
+				<tr>
+					<td width="609" height="15" align="left" class="defined"> </td>
+				</tr>
+				<tr>
+					<td width="113" align="center" class="defined" height="20"> NOMBRE </td>
+					<td width="192" align="center"></td>
+					<td width="113" align="center" class="defined" height="20"> CARGO </td>
+					<td width="191" align="center"></td>
+				</tr>
+				<tr>
+					<td width="113" align="center" class="defined" height="20"> FECHA </td>
+					<td width="192" align="center"></td>
+					<td width="113" align="center" class="defined" height="20"> FIRMA </td>
+					<td width="191" align="center"></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
 	</table>
+
+	
 	';
 
 	// output the HTML content
 	$pdf->writeHTML($html, true, false, true, false, '');
 	$table_data_html = '';
+
+/*	echo $html;
+	die();*/
 }
 
 
