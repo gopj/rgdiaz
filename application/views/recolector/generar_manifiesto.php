@@ -88,13 +88,6 @@ for ($i=0; $i < $num_table_res; $i++) {
 
 		if ($res_man_cant > $r) {
 
-			//Residuo final, puede tener abreviacion
-			/*if ($residuos_manifiesto[$r]->abreviacion != "") {
-				$residuo_final = $residuos_manifiesto[$r]->abreviacion;
-			} else {
-				$residuo_final = $residuos_manifiesto[$r]->residuo;
-			}*/
-
 			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->residuo;
 			$arr_residuos_manifiesto[$i][$j][] = creti($residuos_manifiesto[$r]->caracteristica);
 			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->contenedor_cantidad;
@@ -103,23 +96,11 @@ for ($i=0; $i < $num_table_res; $i++) {
 			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->unidad;
 
 			$r++;
-		} /*else {
-			$arr_residuos_manifiesto[$i][$j][] = "";
-			$arr_residuos_manifiesto[$i][$j][] = "";
-			$arr_residuos_manifiesto[$i][$j][] = "";
-			$arr_residuos_manifiesto[$i][$j][] = "";
-			$arr_residuos_manifiesto[$i][$j][] = "";
-			$arr_residuos_manifiesto[$i][$j][] = "";
-		}*/
+		} 
 	}
 
 }
 
-/*echo "<pre>";
-print_r($arr_residuos_manifiesto);
-echo "</pre>";
-
-die();*/
 
 for ($h=0; $h < $num_table_res; $h++) { 
 	// add a page
@@ -190,7 +171,7 @@ for ($h=0; $h < $num_table_res; $h++) {
 		text-align: center;
 		height: 15px;
 		line-height:15px;
-		margin-left:40px;
+		padding-left: 3px;
 	}
 
 	td.defined {
@@ -250,7 +231,7 @@ for ($h=0; $h < $num_table_res; $h++) {
 
 	<table>
 	<tr>
-		<td width="18"></td>
+		<td width="18" ></td>
 		<td>
 			<table class="manifiesto" border="1">
 				<tr>
@@ -381,7 +362,7 @@ for ($h=0; $h < $num_table_res; $h++) {
 				</tr>
 
 				<tr>
-					<td width="607" align="left" class="defined borde_inferior"> 13 - RECIBI LOS RESIDUOS DESCRITOS EN EL MANIFIESTO </td>
+					<td width="609" align="left" class="defined borde_inferior"> 13 - RECIBI LOS RESIDUOS DESCRITOS EN EL MANIFIESTO </td>
 				</tr>
 				<tr>
 					<td width="609" height="15" align="left" class="defined"> OBSERVACIONES </td>
@@ -413,7 +394,7 @@ for ($h=0; $h < $num_table_res; $h++) {
 	$pdf->writeHTML($html, true, false, true, false, '');
 	$table_data_html = '';
 
-/*	echo $html;
+	/*echo $html;
 	die();*/
 }
 

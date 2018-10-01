@@ -40,6 +40,10 @@ class MY_PDF extends TCPDF {
 
 	// Page footer
 	public function Footer() {
+
+
+		$style = array('dash' => 0);
+
 		// Start Transformation to rotate Generador
 		$this->StartTransform();
 		// Rotate 20 degrees counter-clockwise centered by (70,110) which is the lower left corner of the rectangle
@@ -47,6 +51,15 @@ class MY_PDF extends TCPDF {
 		$this->Text(60, 55, 'Generador');
 		// Stop Transformation
 		$this->StopTransform();
+
+		// Start rect Generador
+		$this->StartTransform();
+		//Rect($x, $y, $w, $h, $style='', $border_style=array(), $fill_color=array()) 
+		$this->SetLineStyle( array( 'width' => 0.4, 'color' => array(0,0,0)));
+		$this->Rect(14, 53.5, 5.9, 131.2, 'D');
+		// Stop Transformation
+		$this->StopTransform();
+
 
 		// Start Transformation to rotate Transportista
 		$this->StartTransform();
@@ -56,11 +69,28 @@ class MY_PDF extends TCPDF {
 		// Stop Transformation
 		$this->StopTransform();
 
+		// Start rect Transportista
+		$this->StartTransform();
+		//Rect($x, $y, $w, $h, $style='', $border_style=array(), $fill_color=array()) 
+		$this->SetLineStyle( array( 'width' => 0.4, 'color' => array(0,0,0)));
+		$this->Rect(14, 184.7, 5.9, 42.3, 'D');
+		// Stop Transformation
+		$this->StopTransform();
+
+
 		// Start Transformation to rotate Destinatario
 		$this->StartTransform();
 		// Rotate 20 degrees counter-clockwise centered by (70,110) which is the lower left corner of the rectangle
 		$this->Rotate(90, 139, 124);
 		$this->Text(0, 0, 'Destinatario');
+		// Stop Transformation
+		$this->StopTransform();
+
+		// Start rect Transportista
+		$this->StartTransform();
+		//Rect($x, $y, $w, $h, $style='', $border_style=array(), $fill_color=array()) 
+		$this->SetLineStyle( array( 'width' => 0.4, 'color' => array(0,0,0)));
+		$this->Rect(14, 227, 5.9, 40.9, 'D');
 		// Stop Transformation
 		$this->StopTransform();
 
