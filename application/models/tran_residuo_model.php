@@ -108,6 +108,7 @@ class Tran_residuo_model extends CI_Model {
 				->set('id_persona'			,$data['id_cliente'])
 				->set('id_tipo_residuo'		,$data['residuo'])
 				->set('id_tipo_emp_destino'	,$data['id_emp_destino'])
+				->set('id_recolector'		,$data['id_recolector'])
 				->set('folio'				,$data['folio'])
 				->set('caracteristica'		,$data['caracteristicas'])
 				->set('contenedor_cantidad'	,$data['cantidad_contenedor'])

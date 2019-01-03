@@ -116,6 +116,7 @@ class Recolector extends CI_Controller {
 				$fecha_embarque 			= date_create_from_format("d/m/Y", $this->input->post("fecha_embarque"));
 
 				$data["id_cliente"] 		= $id_cliente;
+				$data["id_recolector"] 		= $this->session->userdata("id");
 				$data["id_emp_destino"]		= $this->input->post("empresa_destino");
 				$data["residuo"]			= $this->input->post("residuo_peligroso");
 				$data["fecha_embarque"]		= date_format($fecha_embarque, "Y-m-d");

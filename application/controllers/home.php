@@ -54,7 +54,7 @@ class Home extends CI_Controller {
 		if($this->input->post())
 		{
 			$id_status_persona = 1;
-			$login=$this->persona_model->login($this->input->post('correo'), $this->input->post('password'),$id_status_persona);
+			$login = $this->persona_model->login($this->input->post('correo'), $this->input->post('password'),$id_status_persona);
  
 			if(!is_object($login)){
 						//contraseña y/o usuario invalido
@@ -77,7 +77,7 @@ class Home extends CI_Controller {
 									redirect('administrador');
 								}
 								// Sesion del Auxiliar
-								else if($this->session->userdata('status')== 1 && $this->session->userdata('tipo')==2){
+								else if($this->session->userdata('status') == 1 && $this->session->userdata('tipo')==2){
 									#	Cargar la vista de usuaria
 									redirect('recolector');
 								}

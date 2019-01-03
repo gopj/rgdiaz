@@ -10,6 +10,7 @@ class Administrador extends CI_Controller {
 		$this->load->model('archivo_model');
 		$this->load->model('notificacion_model');
 		$this->load->model('residuo_peligroso_model');
+		$this->load->model('tran_residuo_model');
 		$this->load->model('area_model');
 		$this->load->model('emp_transportista_model');
 		$this->load->model('emp_destino_model');
@@ -1604,6 +1605,63 @@ class Administrador extends CI_Controller {
 			redirect('home');
 		}
 		
+	}
+
+	public function recolector_index() {
+	
+		if ($this->session->userdata('tipo') == 1){
+
+			$id_tipo_persona 			= 3;
+			$lleno_datos 				= 1;	// <-- Mandamos 1 para que nos cargue solo a los clientes que ya cargaron sus datos
+			$data["id"]					= $this->session->userdata('id');
+			$data["tclientes"]			= $this->persona_model->obtienetodoclientes($id_tipo_persona,$lleno_datos);
+			
+			$this->load->view('administrador/recolector/header', $data);
+			$this->load->view('administrador/recolector/index', $data);
+			$this->load->view('administrador/recolector/footer', $data);
+		} else {
+			
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/index');
+		}
+		
+	}
+
+	public function recolector_ver_manifiestos($id_persona=null) {
+
+		//PDF
+		$pdfpath = $_SERVER['DOCUMENT_ROOT'] . "rgdiaz/img/pdf/rdiaztmp{$id_persona}.pdf";
+		if (file_exists($pdfpath)) {
+			unlink($pdfpath);
+		}
+
+		if ($this->session->userdata('tipo') == 1){
+
+			if ($this->input->post()){
+				$data["id_cliente"] = $this->input->post("id_persona");
+
+				$data["bitacora"] = $this->tran_residuo_model->get_bitacora($data["id_cliente"]);
+				
+				$this->load->view("administrador/recolector/header");
+				$this->load->view("administrador/recolector/ver_manifiestos", $data);
+				$this->load->view("administrador/recolector/footer");
+			} elseif ($id_persona) {
+				$data["id_cliente"] = $id_persona;
+
+				$data["bitacora"] = $this->tran_residuo_model->get_bitacora($data["id_cliente"]);
+				
+				$this->load->view("administrador/recolector/header");
+				$this->load->view("administrador/recolector/ver_manifiestos", $data);
+				$this->load->view("administrador/recolector/footer");
+			} else {
+				redirect("administrador/recolector_index");
+			}
+		
+		}else{
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/index');
+		}
+	
 	}
 
 	public function mail_test() { 

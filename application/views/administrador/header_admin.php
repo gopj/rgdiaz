@@ -63,6 +63,7 @@
 										<ul class="dropdown-menu">
 												<li><a href="<?php echo site_url('administrador/recolector_alta')?>">Alta</a></li>
 												<li><a href="<?php echo site_url('administrador/transportistas_destinos') ?>">Transportistas | Destinos</a></li>
+												<li><a href="<?php echo site_url('administrador/recolector_index') ?>">Consultas</a></li>
 										</ul>
 									</li>
 									
