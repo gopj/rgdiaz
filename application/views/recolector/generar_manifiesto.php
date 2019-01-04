@@ -293,19 +293,19 @@ for ($h=0; $h < $num_table_res; $h++) {
 
 				<tr>
 					<td width="215" align="left" class="defined"> 8 - NOMBRE DE LA EMPRESA TRANSPORTADORA </td>
-					<td width="394" align="center"> ' . @$residuos_manifiesto[0]->emp_tran . ' </td>
+					<td width="394" align="center"> ' . $datos_empresa_tran[0]->nombre_empresa . ' </td>
 				</tr>	
 				<tr>
 					<td width="113" align="left" class="defined"> DOMICILIO</td>
-					<td width="192" align="center"> ' . @$residuos_manifiesto[0]->responsable_tecnico . ' </td>
+					<td width="192" align="center"> ' . $datos_empresa_tran[0]->calle_empresa . ' '. $datos_empresa_tran[0]->numero_empresa . ', ' . $datos_empresa_tran[0]->colonia_empresa . ' </td>
 					<td width="136" align="left" class="defined"> TELEFONO</td>
-					<td width="168" align="center"> ' . @$residuos_manifiesto[0]->responsable_tecnico . ' </td>
+					<td width="168" align="center"> ' . $datos_empresa_tran[0]->telefono_empresa . ' </td>
 				</tr>
 				<tr>
 					<td width="113" align="left" class="defined"> NO. DE AUTORIZACIÓN SCT </td>
-					<td width="192" align="center"> ' . @$residuos_manifiesto[0]->responsable_tecnico . ' </td>
+					<td width="192" align="center"> ' . @$datos_empresa_tran[0]->numero_registro_ambiental . ' </td>
 					<td width="136" align="left" class="defined"> No. DE AUTORIZACION  SEMARNAT </td>
-					<td width="168" align="center"> ' . @$residuos_manifiesto[0]->responsable_tecnico . ' </td>
+					<td width="168" align="center"> ' . @$datos_empresa_tran[0]->no_autorizacion_transportista . ' </td>
 				</tr>
 				<tr>
 					<td width="325" align="left" class="defined"> 9 - RECIBI LOS MATERIALES DESCRITOS EN EL MANIFIESTO PARA SU TRANSPORTE</td>
@@ -314,7 +314,7 @@ for ($h=0; $h < $num_table_res; $h++) {
 				</tr>
 				<tr>
 					<td width="113" align="left" class="defined"> NOMBRE </td>
-					<td width="192" align="center">  ' . @$residuos_manifiesto[0]->responsable_tecnico . ' </td>
+					<td width="192" align="center">  ' . @$datos_recolector . ' </td>
 				</tr>
 				<tr>
 					<td width="113" align="left" class="defined"> FECHA DE EMBARQUE </td>
@@ -348,17 +348,17 @@ for ($h=0; $h < $num_table_res; $h++) {
 					<td class="defined" width="134" align="center"> AUTORIZACION SEMARNAT </td>
 				</tr>
 				<tr> 
-					<td width="134" class="data"> ' . $residuos_manifiesto[0]->dest_final . ' </td>
+					<td width="134" class="data"> ' . $residuos_manifiesto[0]->no_aut_dest_final . ' </td>
 				</tr>
 				<tr>
 					<td width="215" align="left" class="defined"> 4.- DOMICILIO </td>
-					<td width="394" align="center">' . $residuos_manifiesto[0]->dest_final . ' </td>
+					<td width="394" align="center">' . 'no hay informacion' . ' </td>
 				</tr>
 				<tr>
 					<td width="215" align="left" class="defined"> MUNICIPIO </td>
-					<td width="170" align="center"> ' . $residuos_manifiesto[0]->dest_final . ' </td>
+					<td width="170" align="center"> ' . 'no hay informacion' . ' </td>
 					<td width="90" align="center" class="defined"> ESTADO </td>
-					<td width="134" align="center"> ' . $residuos_manifiesto[0]->dest_final . ' </td>
+					<td width="134" align="center"> ' . 'no hay informacion' . ' </td>
 				</tr>
 
 				<tr>
@@ -402,7 +402,7 @@ for ($h=0; $h < $num_table_res; $h++) {
 $filename= "{$nombre_empresa}_{$manifiesto}.pdf";
 $filename= "rdiaztmp{$id_cliente}.pdf"; 
 $filelocation = $_SERVER['DOCUMENT_ROOT'] ."rgdiaz/img/pdf/";
-$fileNL = $filelocation . $filename; //Linux
+$fileNL = $filename; //Linux
 
 //Close and output PDF document
 $pdf->Output($fileNL, 'D');

@@ -15,18 +15,19 @@ public function __construct() {
 		return $this->db->query("SELECT * FROM tipo_emp_transportista WHERE id_tipo_emp_transportista=" . $id . ";")->row();
 	}
 
-	public function get_nombre_trans($id){
-		$sql = "SELECT e.nombre_empresa
-				FROM residuos_peligrosos as r, tipo_emp_transportista as e
-				WHERE r.id_tipo_emp_transportista = e.id_tipo_emp_transportista and r.id_residuo_peligroso =" . $id . ";";
-		$nombre_emp_trans = $this->db->query($sql)->result();
+	public function get_datos_emp_trans($id){
+		$sql = "SELECT et.*, p.*
+				FROM rdiaz.tipo_emp_transportista et, rdiaz.persona p
+				WHERE 
+				p.nombre_empresa =et.nombre_empresa 
+				and et.id_tipo_emp_transportista=" . $id . ";";
 
-		return @$nombre_emp_trans[0]->nombre_empresa;
+		return $this->db->query($sql)->result();
 	}
 
 	public function _emp_tran($data){
 
-		// Tipo empresa transportista, Insersion de nuevo residui en tabla tipo_emp_transportista
+		// Tipo empresa transportista, Insercion de nuevo residui en tabla tipo_emp_transportista
 		if ($data['emp_tran'] == "Otro") {
 			$this->db->set('nombre_empresa', $data['otro_emp'])
 					 ->set('no_autorizacion_transportista', $data['no_auto'])

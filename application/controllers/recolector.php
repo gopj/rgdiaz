@@ -283,7 +283,7 @@ class Recolector extends CI_Controller {
 		}	
 	
 	}
-
+ 
 	public function generar_manifiesto($id_cliente, $folio) {
 
 		$data["id_cliente"] 		= $id_cliente;
@@ -292,6 +292,8 @@ class Recolector extends CI_Controller {
 		$data["nombre_empresa"] 	= $this->persona_model->get_nombre_empresa($id_cliente);
 		$data["residuos_manifiesto"]= $this->tran_residuo_model->get_residuos_manifiesto($id_cliente, $folio);
 		$data["datos_empresa"] 		= $this->persona_model->get_datos_empresa($id_cliente);
+		$data["datos_empresa_tran"] = $this->emp_transportista_model->get_datos_emp_trans(1);
+		$data["datos_recolector"] 	= $this->persona_model->get_nombre_cliente($this->session->userdata("id"));
 
 		/*$data["empresa_destino"] 	= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->empresa_destino;
 		$data["fecha_embarque"] 	= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->fecha_ingreso;

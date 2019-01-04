@@ -114,7 +114,7 @@ define ('PDF_HEADER_TITLE', 'TCPDF Example');
 /**
  * Header description string.
  */
-define ('PDF_HEADER_STRING', 'RDiaz - rdiaz.com.mx');
+define ('PDF_HEADER_STRING', 'RDiaz - rdiaz.mx');
 
 /**
  * Document unit of measure [pt=point, mm=millimeter, cm=centimeter, in=inch].
