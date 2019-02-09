@@ -50,10 +50,40 @@
 	</head>
 	<body>
 	
-		<nav class="navbar navbar-dark bg-success">
-			<a class="navbar-brand" href="<?= site_url('recolector'); ?>">
-				Recolector
+		<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+			<a class="navbar-brand" href="<?=site_url('administrador');?>"> 
+				<?php echo $this->session->userdata('nombre');?>
 			</a>
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="<?=site_url('administrador');?>"> Mi Carpeta </a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="<?php echo site_url('administrador/admin_clientes')?>">Clientes</a>
+					</li>
+					<li class="nav-item dropdown active">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Recolectores
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="<?php echo site_url('administrador/recolector_alta')?>">Alta</a>
+							<a class="dropdown-item" href="<?php echo site_url('administrador/transportistas_destinos')?>">Transportistas | Destinos</a>
+							<a class="dropdown-item" href="<?php echo site_url('administrador/recolector_index')?>">Consultas</a>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="<?php echo site_url('administrador/subir_archivo');?>">Administrar Carpetas</a>
+					</li>
+				</ul>
+			</div>
+
+			<a class="btn btn-primary btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="<?=site_url();?>"> Cerrar Sesión </a>
 		</nav>
 
 		<div class="container" style="padding-top:10px;">
