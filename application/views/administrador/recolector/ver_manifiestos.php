@@ -21,12 +21,12 @@
 					<td style="text-align: center;"> <?= date_format($fecha, "d/m/Y"); ?> </td>
 					<?php if ($bit->status == 'R'){ ?>
 						<td style="text-align: center;"> 
-							<a href="<?=site_url('recolector/ver_manifiesto/' . $id_cliente . '/' . $bit->folio);?>" class="btn btn-primary btn-sm" role="button"> Ver </button> 
-							<a href="<?=site_url('recolector/generar_manifiesto/' . $id_cliente . '/' . $bit->folio);?>" class="btn btn-danger btn-sm" role="button"> PDF </button>
+							<a href="<?=site_url('administrador/recolector_ver_manifiesto/' . $id_cliente . '/' . $bit->folio);?>" class="btn btn-primary btn-sm" role="button"> Ver </button> 
+							<a href="<?=site_url('administrador/recolector_generar_manifiesto/' . $id_cliente . '/' . $bit->folio);?>" class="btn btn-danger btn-sm" role="button"> PDF </button>
 						</td>
 					<?php } elseif ($bit->status == 'W') {?>
 						<td> 
-							<a href="<?=site_url('recolector/crear_manifiestos/' . $id_cliente . '/' . $bit->folio);?>" class="btn btn-success btn-sm" role="button"> Terminar </button> &nbsp;&nbsp;&nbsp;
+							<a href="<?=site_url('administrador/crear_manifiestos/' . $id_cliente . '/' . $bit->folio);?>" class="btn btn-success btn-sm" role="button"> Terminar </button> &nbsp;&nbsp;&nbsp;
 							<a href="#" class="btn btn-danger btn-sm" role="button" disabled> PDF </button>
 						</td>
 					<?php } ?>
@@ -43,5 +43,5 @@
 		</tfoot>
 	</table>
 
-	<a href="<?=site_url('recolector/crear_manifiesto/' . $id_cliente);?>" class="btn btn-primary" role="button"> Crear Manifiesto</a>
+	<a href="<?=site_url('administrador/recolector_crear_manifiesto/' . $id_cliente);?>" class="btn btn-primary" role="button"> Crear Manifiesto</a>
 </main>

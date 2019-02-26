@@ -409,5 +409,5 @@ $pdf->Output($fileNL, 'D');
 
 //$pdf->Output($fileNL, 'F');
 
-//redirect('recolector/ver_manifiestos/' . $id_cliente, 'refresh');
+//redirect('administriador/recolector_ver_manifiestos/' . $id_cliente, 'refresh');
 ?>
