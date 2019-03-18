@@ -26,8 +26,9 @@
 						</td>
 					<?php } elseif ($bit->status == 'W') {?>
 						<td> 
-							<a href="<?=site_url('administrador/crear_manifiestos/' . $id_cliente . '/' . $bit->folio);?>" class="btn btn-success btn-sm" role="button"> Terminar </button> &nbsp;&nbsp;&nbsp;
-							<a href="#" class="btn btn-danger btn-sm" role="button" disabled> PDF </button>
+							<a href="<?=site_url('administrador/recolector_crear_manifiestos/' . $id_cliente . '/' . $bit->folio);?>" class="btn btn-success btn-sm" role="button"> Terminar </button> &nbsp;&nbsp;&nbsp;
+								
+							<button class="btn btn-danger btn-sm" role="button" disabled> PDF </button>
 						</td>
 					<?php } ?>
 				</tr>

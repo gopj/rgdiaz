@@ -4,6 +4,16 @@
 
 	function refresh(){
 		var select = document.getElementById('id_persona').value;
+		
+		var prev_selected_client = document.getElementById('prev_selected').value;
+		console.log(prev_selected_client);
+
+		compruebausuario(prev_selected_client);
+
+		$("#id_persona option[value='" + prev_selected_client + "']").attr("selected","selected");
+
+		if(prev_selected_client){select=1;}
+
 		if(select == 0){
 			$("#btn_expediente").attr('disabled','disabled');
 			$("#btn_bitacora").attr('disabled','disabled');
@@ -15,6 +25,8 @@
 		}
 	}						
 </script>
+
+<input type="hidden" id="prev_selected" name="prev_selected" value="<?php echo $id_persona; ?>">
 
 <div class="span9">
 	<center><legend>Consulta de Clientes</legend></center>
@@ -36,12 +48,13 @@
 			<form method='post' action="<?php echo site_url('administrador/versubcarpeta');?>">
                 <input type="hidden" id="persona" name="ruta_carpeta">
                 <input type="hidden" id="ruta" name="ruta_carpeta" >
-                <input type="hidden" id="persona_expediente" name="id_persona" >
+                <input type="hidden" id="persona_expediente" name="id_persona_expediente" >
+                
                 <input class="btn btn-primary" id="btn_expediente" disabled type="submit" value="Ver Expediente">
             </form>
 		</div>
 		<div style="float:right;" class="span2">
-			<form id="ver_bitacora" method='post' action="<?php echo site_url('administrador/bitacora');?>">
+			<form id="ver_bitacora" method='post' action="<?php echo site_url('administrador/bitacora/');?>">
                 <input type="hidden" id="persona_bitacora" name="id_persona">
                 <input class="btn btn-primary" id="btn_bitacora" disabled type="submit" value="Ver Bitacora">
             </form>

@@ -1,3 +1,7 @@
+          <?php 
+            //echo $anterior;
+          ?>
+
           <div class="span9">
             <center><legend>Administrar Carpetas</legend>
             Ubicación: <strong style="font-family:Californian FB;color:#4249D6; font-size:20px;"><?php echo $direccion_real; ?></strong><br/>
@@ -126,13 +130,19 @@
                <?php if($anterior == "administrador/") { ?>
                 <div class="span2" style="margin-top:20px;">
                   <form method="post" action="<?php echo site_url('administrador');?>">
-                    <input type="submit" class="btn btn-primary" value="Regresar">
+                    <button type="submit" class="btn btn pull-left" ><i class="icon-arrow-left"></i> Regresar </button>
+                  </form>
+                </div>
+               <?php } else if($anterior == "clientes/") { ?>
+                <div class="span2" style="margin-top:20px;">
+                  <form method="post" action="<?php echo site_url('administrador/admin_clientes/' . $id_persona);?>">
+                    <button type="submit" class="btn btn pull-left" ><i class="icon-arrow-left"></i> Regresar </button>
                   </form>
                 </div>
                 <?php } else if($raiz==$anterior) { ?>
                 <div class="span2" style="margin-top:20px;">
                   <form method="post" action="<?php echo site_url('administrador/subir_archivo');?>">
-                    <input type="submit" class="btn btn-primary" value="Regresar">
+                    <button type="submit" class="btn btn pull-left" ><i class="icon-arrow-left"></i> Regresar </button>
                   </form>
 
               </div>
@@ -141,7 +151,7 @@
                 <form method="post" action="<?php echo site_url('administrador/versubcarpeta');?>">
                   <input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
                   <input type="hidden" value="<?php echo $anterior; ?>" name="ruta_carpeta">
-                  <input type="submit" class="btn btn-primary" value="Regresar">
+                  <button type="submit" class="btn btn pull-left" ><i class="icon-arrow-left"></i> Regresar </button>
                 </form>
               </div>
               <?php } ?> 

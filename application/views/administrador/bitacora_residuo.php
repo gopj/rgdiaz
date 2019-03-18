@@ -90,7 +90,12 @@ function date_bitacora($s_date){
 	</form>
 
 	<div style="margin-top:10px;">
-		<!-- <div class="span3"></div> -->
+		<div class="span2">
+			<form action="<?php echo site_url('administrador/admin_clientes/' . $id_persona); ?>" method="POST">
+				<button type="submit" class="btn btn pull-left" ><i class="icon-arrow-left"></i> Regresar </button>
+			</form>
+		</div>
+
 		<div class="span2">
 			<form action="<?php echo site_url('administrador/nuevo_registro'); ?>" method="POST">
 				<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">

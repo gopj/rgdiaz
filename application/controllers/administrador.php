@@ -294,8 +294,8 @@ class Administrador extends CI_Controller {
 		}
 	}
 
-	public function admin_clientes()
-	{
+	public function admin_clientes($id = null) {
+
 		if ($this->session->userdata('tipo')==1){
 			#	Cargamos los mensajes nuevos y los mandamos a la vista --------
 				$status = 0;
@@ -312,7 +312,8 @@ class Administrador extends CI_Controller {
 				$lleno_datos = 1;	// <-- Mnadamos 1 para que nos cargue solo a los clientes que ya cargaron sus datos
 				$tclientes=$this->persona_model->obtienetodoclientes($id_tipo_persona,$lleno_datos);
 				$data3 = array(
-					'todosclientes' => $tclientes
+					'todosclientes' => $tclientes,
+					'id_persona' => $id
 				);
 
 				$this->load->view('administrador/admin_clientes',$data3);
@@ -432,14 +433,14 @@ class Administrador extends CI_Controller {
 
 	}
 
-	public function versubcarpeta()
+	public function versubcarpeta($id = null)
 	{
 		if($this->input->post()){
 		$status = 0;
-		$id_persona=$this->input->post('id_persona');
+		$id_persona=$this->input->post('id_persona_expediente');
 		$direccion=$this->input->post('ruta_carpeta'); // Direccion de carpeta
 		$nombre_empresa = $this->persona_model->get_nombre($id_persona);
-		$nombre = $nombre_empresa->nombre_empresa;	//Nombre de la empresa
+		$nombre = @$nombre_empresa->nombre_empresa;	//Nombre de la empresa
 		$ruta = explode("/", $direccion);
 
 		$ruta[1] = $nombre;
@@ -1782,9 +1783,9 @@ class Administrador extends CI_Controller {
 				$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
 				$data["fecha_embarque"]		= date_format($fecha_embarque, "d/m/Y");
 
-				$this->load->view("recolector/header");
-				$this->load->view("recolector/crear_manifiestos", $data);
-				$this->load->view("recolector/footer");
+				$this->load->view("administrador/recolector/header");
+				$this->load->view("administrador/recolector/crear_manifiestos", $data);
+				$this->load->view("administrador/recolector/footer");
 			} else {
 
 				$tran_resiudos 				= $this->tran_residuo_model->get_reg_tran_residuos($id_cliente, $folio);
@@ -1799,9 +1800,9 @@ class Administrador extends CI_Controller {
 				$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
 				$data["folio"]				= $folio;
 				
-				$this->load->view("recolector/header");
-				$this->load->view("recolector/crear_manifiestos", $data);
-				$this->load->view("recolector/footer");
+				$this->load->view("administrador/recolector/header");
+				$this->load->view("administrador/recolector/crear_manifiestos", $data);
+				$this->load->view("administrador/recolector/footer");
 
 			}
 

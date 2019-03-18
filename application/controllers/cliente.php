@@ -302,9 +302,9 @@ class Cliente extends CI_Controller {
 		$this->load->view('usuario/footer_usuario',$data2);
 	}
 
-		public function mis_datos()
+	public function mis_datos()
 	{
-		$id_persona =$this->sessistudioon->userdata('id');
+		$id_persona =$this->session->userdata('id');
 		$id=$id_persona;
 		$status=0;
 		$total=$this->notificacion_model->obtiene_noticliente($id,$status);
@@ -351,6 +351,7 @@ class Cliente extends CI_Controller {
 
 	public function ver_bitacora(){
 		$id = $this->session->userdata('id');
+		$id_persona = $id;
 		$ruta = "clientes/".$id;
 		$ruta_carpeta = $ruta;
 		$status=0;
@@ -360,7 +361,8 @@ class Cliente extends CI_Controller {
 		$data = array('carpetas'=> $carpetas,
 					   'archivo'=>$archivos,
 					   'numnoti'=>$total,
-					   'id'=>$id
+					   'id'=>$id,
+					   'id_persona' => $id_persona
 					 );
 		$this->load->view('usuario/header_usuario',$data);
 

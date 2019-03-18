@@ -56,7 +56,7 @@
 				<div class="controls">
 					<div class="form-inline">
 						<label for="check1" class="checkbox">
-							<input type="checkbox" id="check1" name="caracteristica[]" value="Toxico" oninvalid="this.setCustomValidity('Selecciona característica de peligrosidad')" onclick="clearRequired();" required="required">Toxico
+							<input type="checkbox" id="check1" name="caracteristica[]" value="Toxico" oninvalid="this.setCustomValidity('Selecciona característica de peligrosidad')" onclick="clearRequired();" required="required" checked>Tóxico
 						</label>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<label for="check2" class="checkbox">
