@@ -1,9 +1,11 @@
-<?php ob_start(); session_start(); ?>
+<?php ob_start(); session_start(); 
+header("Content-Type: text/html;charset=utf-8");
+?>
 <!DOCTYPE html>
 	<html>
 		<head>
 			<base href="<?php echo base_url(); ?>"/>
-			<meta charset="UTF-8"/>
+			<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 			<meta http-equiv="cache-control" content="max-age=0" />
 			<meta http-equiv="cache-control" content="no-cache" />
 			<meta http-equiv="expires" content="-1" />
