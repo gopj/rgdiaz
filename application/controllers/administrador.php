@@ -1894,7 +1894,7 @@ class Administrador extends CI_Controller {
 		$para = "$correo";
 		$asunto = "RDÍAZ Servicios Integrales en Materia Ambiental";
 		$mensaje = "DATOS DE ACCESO AL SISTEMA<br/>";
-		$mensaje .= "Tu Correo es: $correo<br>";
+		$mensaje .= "Tu Correo es: $correo <br>";
 		$mensaje .= "Tu contraseña es: 123 <br/><br/>";
 		$mensaje .= "Accede a tu cuenta de usuario en el siguiente enlace: <br/>";
 		$mensaje .= "<a href='http://rgdiaz.com.mx/index.php/home/sesion'>rgdiaz.com.mx/index.php/home/sesion</a>";
@@ -1905,6 +1905,46 @@ class Administrador extends CI_Controller {
 		$cabeceras .= "From: $de\r\n";
 
 		mail($para,$asunto,$mensaje,$cabeceras);
+	}
+
+
+	public function mail_test2() { 
+
+		$data["mensajes"] = $this->contacto_model->contador_mensajes(0);
+		$data["clientes"] = $this->persona_model->obtiene_clientes_baja(3,1,1);
+		$data["correo"] = $this->persona_model->getCorreos(3);
+
+		$this->load->view("administrador/header_admin", $data);
+		$this->load->view("administrador/admin_test", $data);
+		$this->load->view("administrador/footeru" ,$data);
+
+		if (isset($_REQUEST['email']))  {
+
+			/*//Email information
+			$admin_email = "gopixc@example.com";
+			$email = $_REQUEST['email'];
+			$subject = $_REQUEST['subject'];
+			$comment = $_REQUEST['comment'];
+
+			//send email
+			mail($admin_email, "$subject", $comment, "From:" . $email);
+
+			//Email response
+			echo "Thank you for contacting us!";*/
+
+
+			$this->email->from('admin@rdiaz.mx', 'Admin RDíaz');
+			$this->email->to('gopixc@gmail.com'); 
+			$this->email->cc(''); 
+			$this->email->bcc(''); 
+
+			$this->email->subject($_REQUEST['subject']);
+			$this->email->message($_REQUEST['comment']);	
+
+			$this->email->send();
+
+			echo $this->email->print_debugger();
+		}
 	}
 
 }
