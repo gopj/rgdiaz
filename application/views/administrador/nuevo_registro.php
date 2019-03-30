@@ -42,7 +42,7 @@
 						oninput="setCustomValidity('')" required>
 						&nbsp;
 						<label for="unidad" class="radio">
-							<input type="radio" id="unidad" name="unidad" value="Kg"  oninvalid="this.setCustomValidity('Selecciona Kilogramos o Toneladas')" onclick="clearValidity();" required>Kg
+							<input type="radio" id="unidad" name="unidad" value="Kg"  oninvalid="this.setCustomValidity('Selecciona Kilogramos o Toneladas')" onclick="clearValidity();" required checked>Kg
 						</label>
 						&nbsp;
 						<label for="unidad2" class="radio">

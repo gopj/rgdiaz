@@ -39,7 +39,7 @@
 						<input type="number" id="cantidad" class="txt" style="width:58%;" name="cantidad">
 						&nbsp;
 						<label for="radio1" class="radio">
-							<input type="radio" id="radio1" name="unidad" value="Kg">Kg
+							<input type="radio" id="radio1" name="unidad" value="Kg" checked>Kg
 						</label>
 						&nbsp;
 						<label for="radio2" class="radio">
@@ -53,7 +53,7 @@
 				<div class="controls">
 					<div class="form-inline">
 						<label for="check1" class="checkbox">
-							<input type="checkbox" id="check1" name="caracteristica[]" value="Toxico">Toxico
+							<input type="checkbox" id="check1" name="caracteristica[]" value="Toxico" checked>Tóxico
 						</label>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<label for="check2" class="checkbox">
