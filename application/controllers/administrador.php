@@ -152,6 +152,18 @@ class Administrador extends CI_Controller {
 	}
 	}
 
+	public function eliminar_mensaje($id) {
+		#	Validamos usuario tipo administrador 1
+		if ($this->session->userdata('tipo')==1) {
+			
+			$this->contacto_model->delete_residuo($id);
+			redirect('administrador/mensajes_contacto');
+
+		}else{
+			redirect('home');
+		}
+	}
+
 	public function subir_archivo(){
 		if ($this->session->userdata('tipo')==1){
 			$status = 0;
@@ -1024,9 +1036,15 @@ class Administrador extends CI_Controller {
 	}
 
 	public function eliminar_bit($id_persona, $id_residuo_peligroso){
-		$this->residuo_peligroso_model->delete_residuo($id_residuo_peligroso);
+		if ($this->session->userdata('tipo')==1) {
+			
+			$this->residuo_peligroso_model->delete_residuo($id_residuo_peligroso);
+			redirect('administrador/bitacora/' . $id_persona);
 
-		redirect('administrador/bitacora/' . $id_persona);
+		}else{
+			redirect('home');
+		}
+		
 	}
 
 	public function actualizar_registros() {
@@ -1919,19 +1937,6 @@ class Administrador extends CI_Controller {
 		$this->load->view("administrador/footeru" ,$data);
 
 		if (isset($_REQUEST['email']))  {
-
-			/*//Email information
-			$admin_email = "gopixc@example.com";
-			$email = $_REQUEST['email'];
-			$subject = $_REQUEST['subject'];
-			$comment = $_REQUEST['comment'];
-
-			//send email
-			mail($admin_email, "$subject", $comment, "From:" . $email);
-
-			//Email response
-			echo "Thank you for contacting us!";*/
-
 
 			$this->email->from('admin@rdiaz.mx', 'Admin RDíaz');
 			$this->email->to('gopixc@gmail.com'); 

@@ -121,20 +121,20 @@ function date_bitacora($s_date){
 </div>
 
 
-<div class="modal fade bs-modal-del" tabindex=-1 role=dialog aria-labelledby=mySmallModalLabel> <!-- modal bs-modal-del -->
+<div class="modal fade bs-modal-del" tabindex=-1 role=dialog aria-labelledby=delete_resiudo_modal> <!-- modal bs-modal-del -->
 	<div class="modal-dialog modal-sm"> 
 		<div class="modal-content"> 
 			<div class="modal-header"> 
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
-				</button> <h5 class="modal-title" id="mySmallModalLabel">Eliminar - Folio: <span id="folio_span"></span> </h5>
+				</button> <h5 class="modal-title" id="delete_resiudo_modal">Eliminar - Folio: <span id="folio_span"></span> </h5>
 			</div> 
 			<div class=modal-body>
 				¿Deseas eliminar registro de residuo: <strong> <span id="eliminar_span"></span></strong>?
 			</div>
 			<div class=modal-footer>
 				<button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-        		<a href="" id='residuo_delete' class='btn btn-danger' role='button'> Eliminar</a>
+				<a href="" id='residuo_delete' class='btn btn-danger' role='button'> Eliminar</a>
 			</div>
 		</div> 
 	</div>

@@ -109,7 +109,18 @@ function delete_residuo(id, nombre, url_delete, id_persona, folio){
 	document.getElementById('folio_span').textContent = folio;
 	document.getElementById("residuo_delete").setAttribute("href", url_delete);
 	
+}
+
+function delete_mensaje(id, url_delete){
+
+	console.log(id);
+	console.log(url_delete);
+
+	document.getElementById('id_contacto').textContent = id;
+	document.getElementById("mensaje_delete").setAttribute("href", url_delete);
+	
 } 
+
 function input_pass(){
 	var pass = document.getElementById('clave').value;
 

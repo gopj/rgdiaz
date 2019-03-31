@@ -49,6 +49,10 @@ public function __construct()
                         ->row();
 
      }
+
+    public function delete_residuo($id){
+        return $this->db->query(" DELETE FROM contacto where id_contacto={$id};");                
+    }
  }
 
 
