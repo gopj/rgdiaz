@@ -481,7 +481,7 @@ function envia_correo_admin(){
 		var asun = asunto.value;
 		var mens = mensaje.value;
 		//AJAX
-	jQuery.ajax({
+		jQuery.ajax({
 			url:'http://localhost/rgdiaz/index.php/administrador/envia_correo_admin',	//<-- Url que va procesar la peticion
 			//url:'http://rdiaz.mx/index.php/administrador/envia_correo_admin',
 			timeout: 3000, //sets timeout to 3 seconds
@@ -492,8 +492,7 @@ function envia_correo_admin(){
 				mensaje:mens
 			}
 		}).done(
-			function(resp)
-			{
+			function(resp) {
 				var miJson = jQuery.parseJSON(resp);
 
 				if(miJson){
@@ -593,23 +592,3 @@ function enable_fields(){
 	$("#password_contacto").prop('readonly', false);
 	$("#activar_campos").prop('disabled', true);
 }
-
-
-
-
-
-/*[
-		[
-			"21-1", 
-			"Ecoltec S.A. de C.V. (destino final)", 
-			"0000-00-00", 
-			"0000-00-00" 
-		],
-		[
-			"21-2", 
-			"Ecoltec S.A. de C.V. (destino final)",
-			"0000-00-00",
-			"0000-00-00"
-		],
-	] 
-*/

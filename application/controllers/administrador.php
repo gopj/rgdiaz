@@ -851,27 +851,31 @@ class Administrador extends CI_Controller {
 	}
 
 	public function envia_correo_admin(){
-		if ($this->input->post()) {
+
+		if($this->input->post()){
 			$id_persona = $this->input->post('id_persona');
 			$get_correo = $this->persona_model->getCorreo($id_persona);
 			$correo = $get_correo->correo;
-			$para = "$correo";
-			$de = "diaz281@yahoo.com.mx";
+
+			$para 	= $correo . ", " . "diaz281@yahoo.com.mx, rigediaz@hotmail.com";
 			$asunto = $this->input->post('asunto');
 			$mensaje = $this->input->post('mensaje');
 
-			$cabeceras = "MIME-Version: 1.0\r\n";
-			$cabeceras .= "Content-type: text/html; charset=iso-8859-1\r\n";
-			$cabeceras .= "From: $de\r\n";
+			$this->email->from('admin@rdiaz.mx', 'Admin RDíaz');
+			$this->email->to($para); 
+			$this->email->cc(''); 
+			$this->email->bcc(''); 
 
-			if(mail($para,$asunto,$mensaje,$cabeceras)){
-				$bandera = true;
-				echo json_encode($bandera);
+			$this->email->subject($asunto);
+			$this->email->message($mensaje );	
+
+			if($this->email->send()){
+				$bandera = true;	
 			}else{
 				$bandera = false;
-				echo json_encode($bandera);
 			}
 
+			echo json_encode($bandera);
 		}
 	}
 
@@ -1931,6 +1935,11 @@ class Administrador extends CI_Controller {
 		$data["mensajes"] = $this->contacto_model->contador_mensajes(0);
 		$data["clientes"] = $this->persona_model->obtiene_clientes_baja(3,1,1);
 		$data["correo"] = $this->persona_model->getCorreos(3);
+		$data["email"] = $this->persona_model->getCorreo(2);
+		$data["email"] = $data["email"]->correo;
+
+		$data["email"] = $data["email"] . ", " . "diaz281@yahoo.com.mx, jesus.igp92@gmail.com, gopixc@gmail.com, gopi_xc@hotmail.com";
+
 
 		$this->load->view("administrador/header_admin", $data);
 		$this->load->view("administrador/admin_test", $data);
