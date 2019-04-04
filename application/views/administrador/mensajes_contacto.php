@@ -40,7 +40,7 @@
 		</tbody>
 	</table>
 </div>
-<div class="modal fade modal-del-mensaje" tabindex=-1 role=dialog aria-labelledby=delete_mensaje_modal> <!-- modal bs-modal-del -->
+<div class="modal fade modal-del-mensaje" tabindex=-1 role=dialog aria-labelledby=delete_mensaje_modal> <!-- modal bs-modal-del-mensaje -->
 	<div class="modal-dialog modal-sm"> 
 		<div class="modal-content"> 
 			<div class="modal-header"> 

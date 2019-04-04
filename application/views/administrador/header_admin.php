@@ -1,16 +1,10 @@
 <?php ob_start(); session_start(); 
-header("Content-Type: text/html;charset=utf-8");
+//header("Content-Type: text/html;charset=utf-8");
 ?>
 <!DOCTYPE html>
 	<html>
 		<head>
 			<base href="<?php echo base_url(); ?>"/>
-			<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-			<meta http-equiv="cache-control" content="max-age=0" />
-			<meta http-equiv="cache-control" content="no-cache" />
-			<meta http-equiv="expires" content="-1" />
-			<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
-			<meta http-equiv="pragma" content="no-cache" />
 			<title>RDíaz</title>
 			<link href="img/minilogo.png" type="image/x-icon" rel="shortcut icon" />
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">

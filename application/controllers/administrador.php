@@ -262,7 +262,7 @@ class Administrador extends CI_Controller {
 						echo "Ya existe una carpeta con ese nombre"."<br>";
 					}
 
-				redirect('administrador');
+				redirect('administrador/mensajes_contacto');
 
 			}
 		}else{

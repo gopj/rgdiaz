@@ -50,7 +50,6 @@ function alta_cliente(){
 				}
 			}
 		);
-		
 	}
 }   
 
