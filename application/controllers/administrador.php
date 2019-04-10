@@ -879,6 +879,64 @@ class Administrador extends CI_Controller {
 		}
 	}
 
+	public function envia_correo_contestar(){
+
+		$data["mensajes"] = $this->contacto_model->contador_mensajes(0);
+		$data["clientes"] = $this->persona_model->obtiene_clientes_baja(3,1,1);
+		$data["correo"] = $this->persona_model->getCorreos(3);
+		$data["email"] = $this->persona_model->getCorreo(2);
+		$data["email"] = $data["email"]->correo;
+
+		$data["email"] = "gopixc@gmail.com";
+
+
+		$this->load->view("administrador/header_admin", $data);
+		$this->load->view("administrador/admin_test", $data);
+		$this->load->view("administrador/footeru" ,$data);
+
+		if (isset($_REQUEST['email']))  {
+
+			$this->email->from('admin@rdiaz.mx', 'Admin RDíaz');
+			$this->email->to('gopixc@gmail.com'); 
+			$this->email->cc(''); 
+			$this->email->bcc(''); 
+
+			$this->email->subject($_REQUEST['subject']);
+			$this->email->message($_REQUEST['comment']);	
+
+			$this->email->send();
+
+			echo $this->email->print_debugger();
+		}
+
+		if($this->input->post()){
+			$id_persona = $this->input->post('id_persona');
+			$get_correo = $this->persona_model->getCorreo($id_persona);
+			$correo = $get_correo->correo;
+
+			/*$para 	= $correo . ", " . "diaz281@yahoo.com.mx, rigediaz@hotmail.com";*/
+			$para 	= $correo . ", " . "gopixc@gmail.com";
+			$asunto = $this->input->post('asunto');
+			$mensaje = $this->input->post('mensaje');
+
+			$this->email->from('admin@rdiaz.mx', 'Admin RDíaz');
+			$this->email->to($para); 
+			$this->email->cc(''); 
+			$this->email->bcc(''); 
+
+			$this->email->subject($asunto);
+			$this->email->message($mensaje );	
+
+			if($this->email->send()){
+				$bandera = true;	
+			}else{
+				$bandera = false;
+			}
+
+			echo json_encode($bandera);
+		}
+	}
+
 	public function generar_excel()
 	{
 		if($this->input->post()){
@@ -973,7 +1031,7 @@ class Administrador extends CI_Controller {
 				'mensajes'=> $mensajesnuevos,
 			);
 			$this->load->view('administrador/header_admin',$data);
-			
+
 			$data2 = array(
 				'id_persona'	=>$id_persona,
 				'residuos' 		=> $residuos,
