@@ -2,7 +2,7 @@
 	<center><legend>Mensajes de Contacto</legend></center>
 	<table id="tabla" class="display">
 		<thead>
-			<tr>
+			<tr>	
 				<th>No.</th>
 				<th>Nombre</th>
 				<th>Asunto</th>

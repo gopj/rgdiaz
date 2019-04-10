@@ -973,6 +973,7 @@ class Administrador extends CI_Controller {
 				'mensajes'=> $mensajesnuevos,
 			);
 			$this->load->view('administrador/header_admin',$data);
+			
 			$data2 = array(
 				'id_persona'	=>$id_persona,
 				'residuos' 		=> $residuos,

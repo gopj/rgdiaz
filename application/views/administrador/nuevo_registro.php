@@ -13,7 +13,7 @@
 						oninput="setCustomValidity('')"  required>
 							<option value="">Seleccione una opción</option>
 							<?php foreach ($residuos as $row) {
-								echo "<option value='{$row->id_tipo_residuo}, {$row->clave}'> ". mb_strimwidth($row->residuo, 0, 55, '...') . "</option>";
+								echo "<option value='{$row->id_tipo_residuo}, {$row->clave}'> ". mb_strimwidth($row->residuo, 0, 55, '...', 'UTF-8') . "</option>";
 							} ?>
 							<option value="Otro">Otro</option>
 						</select>
@@ -80,7 +80,7 @@
 						<select id="area_generacion" class="txt" name="area_generacion" onchange="otra_area_generacion(this.value);" style="width:60%"  oninvalid="this.setCustomValidity('Selecciona área de generación')" oninput="setCustomValidity('')" required>
 							<option value="">Seleccione una opción</option>
 							<?php foreach ($areas as $row) {
-								echo "<option value='{$row->id_area}'> ".   mb_strimwidth($row->area, 0, 55, '...') . "</option>";
+								echo "<option value='{$row->id_area}'> ".   mb_strimwidth($row->area, 0, 55, '...', 'UTF-8') . "</option>";
 							} ?>
 							<option value="Otro">Otro</option>
 						</select>

@@ -11,9 +11,9 @@
 						<select id="residuo" class="txt"  style="width:60%;" name="residuo" type="text" onchange="otro_residuo_peligroso(this.value);" required>
 							<?php foreach ($residuos as $row) {
 								if ($bitacora->residuo == $row->residuo) {
-									echo "<option value='{$row->id_tipo_residuo}, {$row->clave}' selected> " . mb_strimwidth($row->residuo, 0, 55, '...') . "</option>";
+									echo "<option value='{$row->id_tipo_residuo}, {$row->clave}' selected> " . mb_strimwidth($row->residuo, 0, 55, '...', 'UTF-8') . "</option>";
 								} else {
-									echo "<option value='{$row->id_tipo_residuo}, {$row->clave}' > " . mb_strimwidth($row->residuo, 0, 55, '...') . "</option>";
+									echo "<option value='{$row->id_tipo_residuo}, {$row->clave}' > " . mb_strimwidth($row->residuo, 0, 55, '...', 'UTF-8') . "</option>";
 								}
 							} ?>
 							<option value="Otro">Otro</option>
@@ -80,9 +80,9 @@
 						<select id="area_generacion" class="txt" name="area_generacion" onchange="otra_area_generacion(this.value);" style="width:60%" required>
 							<?php foreach ($areas as $row) {
 								if ($bitacora->area_generacion == $row->area) {
-									echo "<option value='{$row->id_area}' selected> ".   mb_strimwidth($row->area, 0, 55, '...') . "</option>";
+									echo "<option value='{$row->id_area}' selected> ".   mb_strimwidth($row->area, 0, 55, '...', 'UTF-8') . "</option>";
 								} else {
-									echo "<option value='{$row->id_area}'> ".   mb_strimwidth($row->area, 0, 55, '...') . "</option>";
+									echo "<option value='{$row->id_area}'> ".   mb_strimwidth($row->area, 0, 55, '...', 'UTF-8') . "</option>";
 								}
 							} ?>
 							<option value="Otro">Otro</option>
@@ -112,9 +112,9 @@
 						<select class="txt" name="emp_tran" onchange="otra_empresa_transportista(this.value);" style="width:60%" required>
 							<?php foreach ($tipo_emp_transportista as $row) {
 								if ($bitacora->emp_tran == $row->nombre_empresa) {
-									echo "<option value='{$row->id_tipo_emp_transportista}, {$row->no_autorizacion_transportista}' selected> ".   mb_strimwidth($row->nombre_empresa, 0, 55, '...') . "</option>";
+									echo "<option value='{$row->id_tipo_emp_transportista}, {$row->no_autorizacion_transportista}' selected> ".   mb_strimwidth($row->nombre_empresa, 0, 55, '...', 'UTF-8') . "</option>";
 								} else {
-									echo "<option value='{$row->id_tipo_emp_transportista}, {$row->no_autorizacion_transportista}'> ".   mb_strimwidth($row->nombre_empresa, 0, 55, '...') . "</option>";
+									echo "<option value='{$row->id_tipo_emp_transportista}, {$row->no_autorizacion_transportista}'> ".   mb_strimwidth($row->nombre_empresa, 0, 55, '...', 'UTF-8') . "</option>";
 								}
 							} ?>
 							<option value="Otro">Otro</option>
@@ -145,9 +145,9 @@
 						<select class="txt" name="dest_final" onchange="otra_destino(this.value);" style="width:60%" required>
 							<?php foreach ($tipo_emp_destino as $row) {
 								if ($bitacora->dest_final == $row->nombre_destino) {
-									echo "<option value='{$row->id_tipo_emp_destino}, {$row->no_autorizacion_destino}' selected> ".   mb_strimwidth($row->nombre_destino, 0, 55, '...') . "</option>";
+									echo "<option value='{$row->id_tipo_emp_destino}, {$row->no_autorizacion_destino}' selected> ".   mb_strimwidth($row->nombre_destino, 0, 55, '...', 'UTF-8') . "</option>";
 								} else {
-									echo "<option value='{$row->id_tipo_emp_destino}, {$row->no_autorizacion_destino}'> ".   mb_strimwidth($row->nombre_destino, 0, 55, '...') . "</option>";
+									echo "<option value='{$row->id_tipo_emp_destino}, {$row->no_autorizacion_destino}'> ".   mb_strimwidth($row->nombre_destino, 0, 55, '...', 'UTF-8') . "</option>";
 								}
 							} ?>
 							<option value="Otro">Otro</option>
@@ -172,9 +172,9 @@
 						<select class="txt" name="sig_manejo" onchange="otro_modalidad_trabajo(this.value);" style="width:60%" required>
 							<?php foreach ($tipo_modalidad as $row) {
 								if ($bitacora->sig_manejo == $row->modalidad) {
-									echo "<option value='{$row->id_tipo_modalidad}' selected> ".   mb_strimwidth($row->modalidad, 0, 55, '...') . "</option>";
+									echo "<option value='{$row->id_tipo_modalidad}' selected> ".   mb_strimwidth($row->modalidad, 0, 55, '...', 'UTF-8') . "</option>";
 								} else {
-									echo "<option value='{$row->id_tipo_modalidad}'> ".   mb_strimwidth($row->modalidad, 0, 55, '...') . "</option>";
+									echo "<option value='{$row->id_tipo_modalidad}'> ".   mb_strimwidth($row->modalidad, 0, 55, '...', 'UTF-8') . "</option>";
 								}
 							} ?>
 							<option value="Otro">Otro</option>

@@ -108,7 +108,7 @@
 								<select class="form-control" onchange="update_clave(this.value);" name="residuo_peligroso" required>
 									<option value=""> <strong> Selecciona Residuo </strong> </option>
 									<?php foreach ($residuos as $key) { ?>
-										<option value="<?= $key->id_tipo_residuo; ?>"> <?= mb_strimwidth($key->residuo, 0, 55, '...'); ?></option>
+										<option value="<?= $key->id_tipo_residuo; ?>"> <?= mb_strimwidth($key->residuo, 0, 55, '...', 'UTF-8'); ?></option>
 									<?php } ?>
 								</select>
 								<div class="invalid-feedback">

@@ -32,7 +32,7 @@
 						 oninput="setCustomValidity('')" required>
 							<option value="">Seleccione una opción</option>
 							<?php foreach ($tipo_emp_transportista as $row) {
-								echo "<option value='{$row->id_tipo_emp_transportista}, {$row->no_autorizacion_transportista}'> ".   mb_strimwidth($row->nombre_empresa, 0, 55, '...') . "</option>";
+								echo "<option value='{$row->id_tipo_emp_transportista}, {$row->no_autorizacion_transportista}'> ".   mb_strimwidth($row->nombre_empresa, 0, 55, '...', 'UTF-8') . "</option>";
 							} ?>
 							<option value="Otro">Otro</option>
 						</select>
@@ -64,7 +64,7 @@
 						 oninput="setCustomValidity('')" required>
 							<option value="">Seleccione una opción</option>
 							<?php foreach ($tipo_emp_destino as $row) {
-								echo "<option value='{$row->id_tipo_emp_destino}, {$row->no_autorizacion_destino}'> ".   mb_strimwidth($row->nombre_destino, 0, 55, '...') . "</option>";
+								echo "<option value='{$row->id_tipo_emp_destino}, {$row->no_autorizacion_destino}'> ".   mb_strimwidth($row->nombre_destino, 0, 55, '...', 'UTF-8') . "</option>";
 							} ?>
 							<option value="Otro">Otro</option>
 						</select>
@@ -88,7 +88,7 @@
 						<select class="txt" name="sig_manejo" id="sig_manejo" onchange="otro_modalidad_trabajo(this.value);" style="width:50%" onchange="otro_residuo_peligroso(this.value);" oninvalid="this.setCustomValidity('Selecciona modalidad de manejo')" oninput="setCustomValidity('')" required>
 							<option value="">Seleccione una opción</option>
 							<?php foreach ($tipo_modalidad as $row) {
-								echo "<option value='{$row->id_tipo_modalidad}'> ".   mb_strimwidth($row->modalidad, 0, 55, '...') . "</option>";
+								echo "<option value='{$row->id_tipo_modalidad}'> ".   mb_strimwidth($row->modalidad, 0, 55, '...', 'UTF-8') . "</option>";
 							} ?>
 							<option value="Otro">Otro</option>
 						</select>
