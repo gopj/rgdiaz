@@ -16,6 +16,7 @@ class Administrador extends CI_Controller {
 		$this->load->model('emp_destino_model');
 		$this->load->model('modalidad_model');
 		$this->load->helper('download');
+		$this->load->helper('file');
 		$this->load->library('session');
 		$this->load->library('email');
 		$this->load->library('Excel');
@@ -851,89 +852,93 @@ class Administrador extends CI_Controller {
 	}
 
 	public function envia_correo_admin(){
+		if ($this->session->userdata('tipo')==1){
 
-		if($this->input->post()){
-			$id_persona = $this->input->post('id_persona');
-			$get_correo = $this->persona_model->getCorreo($id_persona);
-			$correo = $get_correo->correo;
+			if($this->input->post()){
+				$id_persona = $this->input->post('id_persona');
+				$get_correo = $this->persona_model->getCorreo($id_persona);
+				$correo = $get_correo->correo;
 
-			$para 	= $correo . ", " . "diaz281@yahoo.com.mx, rigediaz@hotmail.com";
-			$asunto = $this->input->post('asunto');
-			$mensaje = $this->input->post('mensaje');
+				$para 	= $correo . ", " . "diaz281@yahoo.com.mx, rigediaz@hotmail.com";
+				$asunto = $this->input->post('asunto');
+				$mensaje = $this->input->post('mensaje');
 
-			$this->email->from('admin@rdiaz.mx', 'Admin RDíaz');
-			$this->email->to($para); 
-			$this->email->cc(''); 
-			$this->email->bcc(''); 
+				$this->email->from('admin@rdiaz.mx', 'Admin RDíaz');
+				$this->email->to($para); 
+				$this->email->cc(''); 
+				$this->email->bcc(''); 
 
-			$this->email->subject($asunto);
-			$this->email->message($mensaje );	
+				$this->email->subject($asunto);
+				$this->email->message($mensaje);	
 
-			if($this->email->send()){
-				$bandera = true;	
-			}else{
-				$bandera = false;
+				if($this->email->send()){
+					$bandera = true;	
+				}else{
+					$bandera = false;
+				}
+
+				echo json_encode($bandera);
 			}
-
-			echo json_encode($bandera);
 		}
 	}
 
-	public function envia_correo_contestar(){
+	public function contestar_mensaje_contacto($id_contacto){
+		if ($this->session->userdata('tipo')==1){
 
-		$data["mensajes"] = $this->contacto_model->contador_mensajes(0);
-		$data["clientes"] = $this->persona_model->obtiene_clientes_baja(3,1,1);
-		$data["correo"] = $this->persona_model->getCorreos(3);
-		$data["email"] = $this->persona_model->getCorreo(2);
-		$data["email"] = $data["email"]->correo;
+			$data["mensajes"] 	= $this->contacto_model->contador_mensajes(0);
+			$data["clientes"] 	= $this->persona_model->obtiene_clientes_baja(3,1,1);
+			$data["correo"] 	= $this->persona_model->getCorreos(3);
+			$data["email"] 		= $this->persona_model->getCorreo(2);
+			$data["email"] 		= $data["email"]->correo;
+			$data["completo"] 	= $this->contacto_model->obtienemensaje($id_contacto); 
 
-		$data["email"] = "gopixc@gmail.com";
+			if($this->input->post()){
+				
+				$correo = $this->input->post('correo');
+				$asunto = $this->input->post('asunto');
+				$mensaje_contacto = $this->input->post('mensaje_contacto');
+				$mensaje = $this->input->post('texto_mensaje');
+				$completo = $data["completo"];
 
+				/*$para 	= $correo . ", " . "diaz281@yahoo.com.mx, rigediaz@hotmail.com";*/
 
-		$this->load->view("administrador/header_admin", $data);
-		$this->load->view("administrador/admin_test", $data);
-		$this->load->view("administrador/footeru" ,$data);
+				$para 	= $correo . ", " . "gopixc@gmail.com";
+				$this->email->from('admin@rdiaz.mx', 'Admin RDíaz');
+				$this->email->to($para); 
+				$this->email->cc(''); 
+				$this->email->bcc('');
 
-		if (isset($_REQUEST['email']))  {
+				$image = "img/logo.png"; // image path
 
-			$this->email->from('admin@rdiaz.mx', 'Admin RDíaz');
-			$this->email->to('gopixc@gmail.com'); 
-			$this->email->cc(''); 
-			$this->email->bcc(''); 
+				$fileExt = get_mime_by_extension($image); // <- what the file helper is used for (to get the mime type)
 
-			$this->email->subject($_REQUEST['subject']);
-			$this->email->message($_REQUEST['comment']);	
+				//$this->email->message('<img src="data:'.$fileExt.';base64,'.base64_encode(file_get_contents($image)).'" alt="Test Image" />'); // Get the content of the file, and base64 encode it
 
-			$this->email->send();
+				$mensaje =  $mensaje ."
+				=======================================================================
+				De: {$correo}
+				Asunto: {$completo->asunto}
+				Mensaje: {$mensaje_contacto}
 
-			echo $this->email->print_debugger();
-		}
+				<img src='data:".$fileExt.";base64,".base64_encode(file_get_contents($image))."' alt='Test Image' />
 
-		if($this->input->post()){
-			$id_persona = $this->input->post('id_persona');
-			$get_correo = $this->persona_model->getCorreo($id_persona);
-			$correo = $get_correo->correo;
+				";
+				/*<img src='http://rdiaz.mx/index.php/img/logo.png' height='300' width='300'>*/
 
-			/*$para 	= $correo . ", " . "diaz281@yahoo.com.mx, rigediaz@hotmail.com";*/
-			$para 	= $correo . ", " . "gopixc@gmail.com";
-			$asunto = $this->input->post('asunto');
-			$mensaje = $this->input->post('mensaje');
+				$this->email->subject($asunto);
+				$this->email->message($mensaje);	
 
-			$this->email->from('admin@rdiaz.mx', 'Admin RDíaz');
-			$this->email->to($para); 
-			$this->email->cc(''); 
-			$this->email->bcc(''); 
+				$this->email->send();
 
-			$this->email->subject($asunto);
-			$this->email->message($mensaje );	
-
-			if($this->email->send()){
-				$bandera = true;	
-			}else{
-				$bandera = false;
+				echo $this->email->print_debugger();
+				die();
+				redirect('administrador/mensajes_contacto');
 			}
 
-			echo json_encode($bandera);
+			$this->load->view("administrador/header_admin", $data);
+			$this->load->view("administrador/contestar_mensaje_contacto", $data);
+			$this->load->view("administrador/footeru" ,$data);
+
 		}
 	}
 

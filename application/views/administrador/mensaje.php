@@ -39,7 +39,7 @@
 
 				</form>
 					<div class="span3">
-						<form action="<?php echo site_url('administrador/contestar_mensaje_contacto');?>">
+						<form action="<?php echo site_url('administrador/contestar_mensaje_contacto/'. $completo->id_contacto);?>">
 								<button class="btn btn-primary pull-right" style="margin-top: 15px;" type="submit" value="contestar_mensaje_contacto"> <i class="icon-envelope"></i> Contestar Mensaje </button>
 						</form>
 					</div>
@@ -96,7 +96,7 @@
 <div id="entrada" class="modal hide fade">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		Mensaje resivido
+		Mensaje Recibido
 	</div>
 	<div class="modal-body">
 		De:

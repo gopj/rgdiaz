@@ -11,7 +11,4 @@
   <input type="submit" value="Submit" />
   </form>
 
-  <?php echo CI_VERSION;
-
-  echo $email;
-   ?>
+  <?php echo CI_VERSION; ?>

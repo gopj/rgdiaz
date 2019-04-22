@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-#$config['base_url']	='http://rgdiaz.com.mx';
+#$config['base_url']	='http://rdiaz.mx/';
 $config['base_url']='http://localhost/rgdiaz/';
 
 /*
@@ -70,7 +70,7 @@ $config['url_suffix'] = '';
 | than english.
 |
 */
-$config['language']	= 'spanish';
+$config['language']	= 'english';
 
 /*
 |--------------------------------------------------------------------------
