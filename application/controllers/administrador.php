@@ -79,6 +79,7 @@ class Administrador extends CI_Controller {
 			$status = 0;
 			$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
 			$todosmensajes = $this->contacto_model->mensajescontacto();
+
 			$data = array(
 				'mensajes'=> $mensajesnuevos,
 				'mensajitos' => $todosmensajes
@@ -866,10 +867,24 @@ class Administrador extends CI_Controller {
 				$this->email->from('admin@rdiaz.mx', 'Admin RDíaz');
 				$this->email->to($para); 
 				$this->email->cc(''); 
-				$this->email->bcc(''); 
+				$this->email->bcc('');
+
+				$image = "http://rdiaz.mx/img/logo_mini.png"; // image path
+
+				$mensaje = "
+				<html>
+					<head> </head>
+					<body>
+						" . $mensaje ." <br>
+						<br> <br>
+						<img src='{$image}' alt='Logo' />
+					</body>
+				</html>
+				";
 
 				$this->email->subject($asunto);
-				$this->email->message($mensaje);	
+				$this->email->message($mensaje);
+				$this->email->set_mailtype('html');
 
 				if($this->email->send()){
 					$bandera = true;	
@@ -900,38 +915,38 @@ class Administrador extends CI_Controller {
 				$mensaje = $this->input->post('texto_mensaje');
 				$completo = $data["completo"];
 
-				/*$para 	= $correo . ", " . "diaz281@yahoo.com.mx, rigediaz@hotmail.com";*/
-
-				$para 	= $correo . ", " . "gopixc@gmail.com";
+				$para 	= $correo . ", " . "diaz281@yahoo.com.mx, rigediaz@hotmail.com";
 				$this->email->from('admin@rdiaz.mx', 'Admin RDíaz');
 				$this->email->to($para); 
 				$this->email->cc(''); 
 				$this->email->bcc('');
 
-				$image = "img/logo.png"; // image path
+				$image = "http://rdiaz.mx/img/logo_mini.png"; // image path
 
-				$fileExt = get_mime_by_extension($image); // <- what the file helper is used for (to get the mime type)
+				$mensaje = "
+				<html>
+					<head> </head>
+					<body>
+						" . $mensaje ." <br>
+						======================================================================= <br>
+						<strong> De: </strong> {$correo} <br>
+						<strong> Asunto: </strong> {$completo->asunto} <br>
+						<strong> Mensaje: </strong> <br> {$mensaje_contacto} <br>
 
-				//$this->email->message('<img src="data:'.$fileExt.';base64,'.base64_encode(file_get_contents($image)).'" alt="Test Image" />'); // Get the content of the file, and base64 encode it
-
-				$mensaje =  $mensaje ."
-				=======================================================================
-				De: {$correo}
-				Asunto: {$completo->asunto}
-				Mensaje: {$mensaje_contacto}
-
-				<img src='data:".$fileExt.";base64,".base64_encode(file_get_contents($image))."' alt='Test Image' />
-
+						<br> <br>
+						<img src='{$image}' alt='Logo' />
+					</body>
+				</html>
 				";
-				/*<img src='http://rdiaz.mx/index.php/img/logo.png' height='300' width='300'>*/
 
 				$this->email->subject($asunto);
-				$this->email->message($mensaje);	
+				$this->email->message($mensaje);
+				$this->email->set_mailtype('html');
 
 				$this->email->send();
 
-				echo $this->email->print_debugger();
-				die();
+				/*echo $this->email->print_debugger();
+				die();*/
 				redirect('administrador/mensajes_contacto');
 			}
 

@@ -125,7 +125,8 @@
 	<script type="text/javascript">
 				$(document).ready(function(){
 	                $('#tabla').dataTable({
-	                	"bJQueryUI":true
+	                	"bJQueryUI":true,
+	                	"order": [[ 0, "desc" ]]
 	                });
 	                
 	                $('.dropdown-toggle').dropdown();

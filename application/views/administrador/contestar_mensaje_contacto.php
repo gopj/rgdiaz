@@ -17,7 +17,7 @@
 				<center>
 				<br>
 				Asunto<br>
-				<input class="txt-well" type="text" value="<?php echo $completo->asunto; ?>" readonly><br>
+				<input name="asunto" class="txt-well" type="text" value="<?php echo $completo->asunto; ?>" readonly><br>
 				Teléfono<br>
 				<input class="txt-well" type="text" value="<?php  echo $completo->telefono;?>" readonly><br>
 				</center>

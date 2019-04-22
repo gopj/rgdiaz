@@ -32,6 +32,7 @@ public function __construct()
                          ->select('contacto.fecha_mensaje as fecha')
                          ->select('estado.nombre as status')
                          ->from('contacto')
+                         ->order_by('numero', 'desc')
                          ->join('status_contacto as estado ','contacto.status_contacto = estado.id_status_contacto')
                          ->get();
      }
