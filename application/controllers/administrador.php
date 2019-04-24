@@ -28,45 +28,45 @@ class Administrador extends CI_Controller {
 	
 	#	Metodo index carga la vista principal del administrador
 	public function index(){
-			if ($this->session->userdata('tipo')==1){
-				$status = 0;
-				$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
-				#$todosmensajes = $this->contacto_model->mensajescontacto();
-				$data = array(
-					'mensajes'=> $mensajesnuevos,
-					#'mensajitos' => $todosmensajes
-				);
-				$this->load->view('administrador/header_admin',$data);
-				$id_tipo_persona=3;
-				$id_status_persona=1;
-				$cliente=$this->persona_model->obtiene_clientes($id_status_persona,$id_tipo_persona);
-				$ruta='administrador/';
-				$carpetas=$this->carpeta_model->obtiene_carpetasraiz_administrador($ruta);
-				$data2 = array( 
-							    'carpetas'=> $carpetas
-				              );
-				
-				$this->load->view('administrador/carpeta_personal',$data2);
-				#	---------------------------------------------------------------
-
-			#	Obtengo a todos mis clientes para seleccionar uno en opcion dar de baja y los mando al modal
-				$id_tipo_persona=3;
-				$id_status_persona=1;
-				// Mandar una variable para selecciar solo a los clientes que ya llenaron su info
-				$lleno_datos = 1;
-				$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona,$id_tipo_persona,$lleno_datos);
-				$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
-				#exit(var_dump($correo_clientes));
-				$data3 = array(
-					'clientes' => $cliente_baja,
-					'correo' => $correo_clientes
-				);
-				$this->load->view('administrador/footeru',$data3);
+		if ($this->session->userdata('tipo')==1){
+			$status = 0;
+			$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
+			#$todosmensajes = $this->contacto_model->mensajescontacto();
+			$data = array(
+				'mensajes'=> $mensajesnuevos,
+				#'mensajitos' => $todosmensajes
+			);
+			$this->load->view('administrador/header_admin',$data);
+			$id_tipo_persona=3;
+			$id_status_persona=1;
+			$cliente=$this->persona_model->obtiene_clientes($id_status_persona,$id_tipo_persona);
+			$ruta='administrador/';
+			$carpetas=$this->carpeta_model->obtiene_carpetasraiz_administrador($ruta);
+			$data2 = array( 
+						    'carpetas'=> $carpetas
+			              );
+			
+			$this->load->view('administrador/carpeta_personal',$data2);
 			#	---------------------------------------------------------------
-			}else{
-				$this->session->sess_destroy(); #destruye session
-				redirect('home/index');
-			}
+
+		#	Obtengo a todos mis clientes para seleccionar uno en opcion dar de baja y los mando al modal
+			$id_tipo_persona=3;
+			$id_status_persona=1;
+			// Mandar una variable para selecciar solo a los clientes que ya llenaron su info
+			$lleno_datos = 1;
+			$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona,$id_tipo_persona,$lleno_datos);
+			$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
+			#exit(var_dump($correo_clientes));
+			$data3 = array(
+				'clientes' => $cliente_baja,
+				'correo' => $correo_clientes
+			);
+			$this->load->view('administrador/footeru',$data3);
+		#	---------------------------------------------------------------
+		}else{
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/index');
+		}
 		
 	}
 //	Metodo que obtiene todos los mensajes de contacto
@@ -877,7 +877,7 @@ class Administrador extends CI_Controller {
 					<body>
 						" . $mensaje ." <br>
 						<br> <br>
-						<img src='{$image}' alt='Logo' />
+						<img href='http://rdiaz.mx/' src='{$image}' alt='Logo' />
 					</body>
 				</html>
 				";
@@ -934,7 +934,7 @@ class Administrador extends CI_Controller {
 						<strong> Mensaje: </strong> <br> {$mensaje_contacto} <br>
 
 						<br> <br>
-						<img src='{$image}' alt='Logo' />
+						<img href='http://rdiaz.mx/' src='{$image}' alt='Logo' />
 					</body>
 				</html>
 				";
@@ -957,165 +957,173 @@ class Administrador extends CI_Controller {
 		}
 	}
 
-	public function generar_excel()
-	{
-		if($this->input->post()){
-			$this->load->view('administrador/exce');
-			$ruta='application/views/administrador/exce.xls';
-			$id_persona = $this->input->post('id_persona');
-			$nombre_cliente = $this->persona_model->get_nombre_cliente($id_persona);
-			$nombre_empresa = $this->persona_model->get_nombre_empresa($id_persona);
-			$nombre_empresa = str_replace(" ", "_", $nombre_empresa);
-			
-			$fecha=date("d-M-Y");
-			
-			$nombre_excel = $nombre_empresa . "_" . $fecha . ".xls";
-			
-			header('Content-Description: File Transfer');
-			header('Content-Type: application/octet-stream');
-			header('Content-Disposition: attachment; filename='. $nombre_excel);
-			header('Content-Transfer-Encoding: binary');
-			header('Expires: 0');
-			header('Cache-Control: must-revalidate');
-			header('Pragma: public');
-			header('Content-Length: ' . filesize($ruta));
-			ob_clean();
-			flush();
-			readfile($ruta);
-			exit;	
-		} else{
-			redirect('administrador');
+	public function generar_excel() {
+		if ($this->session->userdata('tipo')==1){
+			if($this->input->post()){
+				$this->load->view('administrador/exce');
+				$ruta='application/views/administrador/exce.xls';
+				$id_persona = $this->input->post('id_persona');
+				$nombre_cliente = $this->persona_model->get_nombre_cliente($id_persona);
+				$nombre_empresa = $this->persona_model->get_nombre_empresa($id_persona);
+				$nombre_empresa = str_replace(" ", "_", $nombre_empresa);
+				
+				$fecha=date("d-M-Y");
+				
+				$nombre_excel = $nombre_empresa . "_" . $fecha . ".xls";
+				
+				header('Content-Description: File Transfer');
+				header('Content-Type: application/octet-stream');
+				header('Content-Disposition: attachment; filename='. $nombre_excel);
+				header('Content-Transfer-Encoding: binary');
+				header('Expires: 0');
+				header('Cache-Control: must-revalidate');
+				header('Pragma: public');
+				header('Content-Length: ' . filesize($ruta));
+				ob_clean();
+				flush();
+				readfile($ruta);
+				exit;	
+			} else {
+				redirect('home');
+			}
 		}
 	}
 
 	public function actualiza_datos_admin(){
-		if($this->input->post()){
-			//insertamos datos en la base de datos
-			$nombre = $this->input->post('nombre_contacto');//1
-			$correo = $this->input->post('email_contacto');//2
-			$telefono_personal = $this->input->post('telefono_contacto');//3
-			$telefono_personal_alt = $this->input->post('telefono_contacto_alt');
-			$password_contacto = $this->input->post('password_contacto');
-			$nombre_empresa = $this->input->post('nombre_empresa');//4
-			$status_persona = $this->input->post('estado_cuenta');//5
-			if($status_persona == "Activo"){
-				$id_status_persona = 1;
-			}else{
-				$id_status_persona = 0;	
+		if ($this->session->userdata('tipo')==1){
+			if($this->input->post()){
+				//insertamos datos en la base de datos
+				$nombre = $this->input->post('nombre_contacto');//1
+				$correo = $this->input->post('email_contacto');//2
+				$telefono_personal = $this->input->post('telefono_contacto');//3
+				$telefono_personal_alt = $this->input->post('telefono_contacto_alt');
+				$password_contacto = $this->input->post('password_contacto');
+				$nombre_empresa = $this->input->post('nombre_empresa');//4
+				$status_persona = $this->input->post('estado_cuenta');//5
+				if($status_persona == "Activo"){
+					$id_status_persona = 1;
+				}else{
+					$id_status_persona = 0;	
+				}
+				$calle_empresa = $this->input->post('calle_empresa');//6
+				$correo_empresa = $this->input->post('email_empresa');//7
+				$cp_empresa = $this->input->post('cp_empresa');//8
+				$colonia_empresa =$this->input->post('colonia_empresa');//9
+				$numero_empresa = $this->input->post('numero_empresa');//10
+				$municipio = $this->input->post('municipio');
+				$estado = $this->input->post('estado');
+				$telefono_empresa = $this->input->post('telefono_empresa'); 
+				$numero_registro_ambiental = $this->input->post('numero_registro_ambiental'); 
+				
+				$id_persona = $this->input->post('id_persona');
+				
+				$this->persona_model->actualiza_datos_admin($id_persona,
+															$nombre,
+															$correo,
+															$telefono_personal,
+															$telefono_personal_alt,
+															$password_contacto,
+															$nombre_empresa,
+															$id_status_persona,
+															$calle_empresa,
+															$correo_empresa,
+															$cp_empresa,
+															$colonia_empresa,
+															$numero_empresa,
+															$municipio,
+															$estado,
+															$telefono_empresa,
+															$numero_registro_ambiental);
+				redirect('administrador/admin_clientes');
 			}
-			$calle_empresa = $this->input->post('calle_empresa');//6
-			$correo_empresa = $this->input->post('email_empresa');//7
-			$cp_empresa = $this->input->post('cp_empresa');//8
-			$colonia_empresa =$this->input->post('colonia_empresa');//9
-			$numero_empresa = $this->input->post('numero_empresa');//10
-			$municipio = $this->input->post('municipio');
-			$estado = $this->input->post('estado');
-			$telefono_empresa = $this->input->post('telefono_empresa'); 
-			$numero_registro_ambiental = $this->input->post('numero_registro_ambiental'); 
-			
-			$id_persona = $this->input->post('id_persona');
-			
-			$this->persona_model->actualiza_datos_admin($id_persona,
-														$nombre,
-														$correo,
-														$telefono_personal,
-														$telefono_personal_alt,
-														$password_contacto,
-														$nombre_empresa,
-														$id_status_persona,
-														$calle_empresa,
-														$correo_empresa,
-														$cp_empresa,
-														$colonia_empresa,
-														$numero_empresa,
-														$municipio,
-														$estado,
-														$telefono_empresa,
-														$numero_registro_ambiental);
-			redirect('administrador/admin_clientes');
+		} else {
+			redirect('home');
 		}
 	}
 
 	public function nuevo_registro() {
+		if ($this->session->userdata('tipo')==1){
+			if($this->input->post()){
+				$id_persona = $this->input->post('id_persona');
+				$status = 0;
+				$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
+				$residuos = $this->residuo_peligroso_model->get_tipo_residuos();
+				$areas = $this->area_model->get_areas();
+				$tipo_emp_transportista = $this->emp_transportista_model->get_tipo_emp_transportista();
+				$tipo_emp_destino = $this->emp_destino_model->get_tipo_emp_destino();
+				$tipo_modalidad = $this->modalidad_model->get_tipo_modalidad();
+				$data = array(
+					'mensajes'=> $mensajesnuevos,
+				);
+				$this->load->view('administrador/header_admin',$data);
 
-		if($this->input->post()){
-			$id_persona = $this->input->post('id_persona');
-			$status = 0;
-			$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
-			$residuos = $this->residuo_peligroso_model->get_tipo_residuos();
-			$areas = $this->area_model->get_areas();
-			$tipo_emp_transportista = $this->emp_transportista_model->get_tipo_emp_transportista();
-			$tipo_emp_destino = $this->emp_destino_model->get_tipo_emp_destino();
-			$tipo_modalidad = $this->modalidad_model->get_tipo_modalidad();
-			$data = array(
-				'mensajes'=> $mensajesnuevos,
-			);
-			$this->load->view('administrador/header_admin',$data);
+				$data2 = array(
+					'id_persona'	=>$id_persona,
+					'residuos' 		=> $residuos,
+					'areas' 		=> $areas);
 
-			$data2 = array(
-				'id_persona'	=>$id_persona,
-				'residuos' 		=> $residuos,
-				'areas' 		=> $areas);
-
-			#	Obtengo a todos mis clientes para seleccionar uno en opcion dar de baja y los mando al modal
-			$id_tipo_persona=3;
-			$id_status_persona=1;
-				// Mandar una variable para selecciar solo a los clientes que ya llenaron su info
-			$lleno_datos = 1;
-			$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona,$id_tipo_persona,$lleno_datos);
-			$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
-			$data3 = array(
-				'clientes' => $cliente_baja,
-				'correo' => $correo_clientes,
-				'id_persona' => $id_persona
-			);
-			$this->load->view('administrador/nuevo_registro',$data2);
-			$this->load->view('administrador/footeru',$data3);
-		}
-		else
-		{
-			redirect('administrador/bitacora_residuo', 'refresh');
-
+				#	Obtengo a todos mis clientes para seleccionar uno en opcion dar de baja y los mando al modal
+				$id_tipo_persona=3;
+				$id_status_persona=1;
+					// Mandar una variable para selecciar solo a los clientes que ya llenaron su info
+				$lleno_datos = 1;
+				$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona,$id_tipo_persona,$lleno_datos);
+				$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
+				$data3 = array(
+					'clientes' => $cliente_baja,
+					'correo' => $correo_clientes,
+					'id_persona' => $id_persona
+				);
+				$this->load->view('administrador/nuevo_registro',$data2);
+				$this->load->view('administrador/footeru',$data3);
+			} else {
+				redirect('administrador/bitacora_residuo', 'refresh');
+			}
+		} else { 
+			redirect('home'); 
 		}
 	}
 
 	public function guardar_registro_nueva() {
-
-		if ( $this->input->post() ) {
-			$data["id_persona"] 		= $this->input->post('id_persona');
-			$data["residuo"] 			= $this->input->post('residuo');
-			$data["otro_residuo"] 		= $this->input->post('otro_residuo');
-			$data["clave"] 				= $this->input->post('clave');
-			$data["cantidad"] 			= $this->input->post('cantidad');
-			$data["unidad"] 			= $this->input->post('unidad');
-			$data["caracteristica"] 	= $this->input->post('caracteristica');
-			$data["area_generacion"] 	= $this->input->post('area_generacion');
-			$data["otro_area"] 			= $this->input->post('otro_area');
-			$data["fecha_ingreso"] 		= $this->input->post('fecha_ingreso');
-			$data["fecha_insercion"] 	= date("Y-m-d H:i:s");
-
-			//Residuo					
-			if ($data["residuo"] != "Otro") {
-				$id_residuo = explode(",", $data["residuo"]);
-				$data["residuo"] = $id_residuo[0];
-			} 
+		if ($this->session->userdata('tipo')==1){
 			
-			//Caracteristicas
-			$data["caracteristicas_residuos"] = "";
-			foreach ($data["caracteristica"] as $row) {
-				$data["caracteristicas_residuos"] .= $row . " ";
+			if ( $this->input->post() ) {
+				$data["id_persona"] 		= $this->input->post('id_persona');
+				$data["residuo"] 			= $this->input->post('residuo');
+				$data["otro_residuo"] 		= $this->input->post('otro_residuo');
+				$data["clave"] 				= $this->input->post('clave');
+				$data["cantidad"] 			= $this->input->post('cantidad');
+				$data["unidad"] 			= $this->input->post('unidad');
+				$data["caracteristica"] 	= $this->input->post('caracteristica');
+				$data["area_generacion"] 	= $this->input->post('area_generacion');
+				$data["otro_area"] 			= $this->input->post('otro_area');
+				$data["fecha_ingreso"] 		= $this->input->post('fecha_ingreso');
+				$data["fecha_insercion"] 	= date("Y-m-d H:i:s");
+
+				//Residuo					
+				if ($data["residuo"] != "Otro") {
+					$id_residuo = explode(",", $data["residuo"]);
+					$data["residuo"] = $id_residuo[0];
+				} 
+				
+				//Caracteristicas
+				$data["caracteristicas_residuos"] = "";
+				foreach ($data["caracteristica"] as $row) {
+					$data["caracteristicas_residuos"] .= $row . " ";
+				}
+				unset($data["caracteristica"]);
+
+				$this->residuo_peligroso_model->inserta_residuo($data);
+
+				redirect('administrador/bitacora/' . $data["id_persona"]);
+
+			} else {
+				redirect('administrador/bitacora' .  $data["id_persona"]);
 			}
-			unset($data["caracteristica"]);
 
-			$this->residuo_peligroso_model->inserta_residuo($data);
-
-			//$this->load->view('administrador/bitacora/' . $data["id_persona"]);
-			redirect('administrador/bitacora/' . $data["id_persona"]);
-
-		} else {
-			//$this->load->view('administrador/bitacora/' . $data["id_persona"]);
-			redirect('administrador/bitacora' .  $data["id_persona"]);
-		} 
+		} else { 
+			redirect('home'); 
+		}
 	}
 
 	public function eliminar_bit($id_persona, $id_residuo_peligroso){
@@ -1124,243 +1132,300 @@ class Administrador extends CI_Controller {
 			$this->residuo_peligroso_model->delete_residuo($id_residuo_peligroso);
 			redirect('administrador/bitacora/' . $id_persona);
 
-		}else{
+		} else {
 			redirect('home');
 		}
 		
 	}
 
 	public function actualizar_registros() {
+		if ($this->session->userdata('tipo')==1) {
+			if ( $this->input->post() ) {
 
-		if ( $this->input->post() ) {
+				$data["id_persona"] 		= $this->input->post('id_persona'); // refiere al id de administrador
+				$data["fecha_salida"] 		= $this->input->post('fecha_salida');
+				$data["emp_tran"] 			= $this->input->post('emp_tran');
+				$data["otro_emp"] 			= $this->input->post('otro_emp');
+				$data["no_auto"] 			= $this->input->post('no_auto');
+				$data["folio_manifiesto"]	= $this->input->post('folio');
+				$data["dest_final"] 		= $this->input->post('dest_final');
+				$data["otro_dest"] 			= $this->input->post('otro_dest');
+				$data["no_auto_dest"] 		= $this->input->post('no_auto_dest');
+				$data["sig_manejo"] 		= $this->input->post('sig_manejo');
+				$data["otro_modalidad"]		= $this->input->post('otro_modalidad');
+				$data["resp_tec"] 			= $this->input->post('resp_tec');
+				$data["registros"]			= explode(" ", $this->input->post('registros'));
 
-			$data["id_persona"] 		= $this->input->post('id_persona'); // refiere al id de administrador
-			$data["fecha_salida"] 		= $this->input->post('fecha_salida');
-			$data["emp_tran"] 			= $this->input->post('emp_tran');
-			$data["otro_emp"] 			= $this->input->post('otro_emp');
-			$data["no_auto"] 			= $this->input->post('no_auto');
-			$data["folio_manifiesto"]	= $this->input->post('folio');
-			$data["dest_final"] 		= $this->input->post('dest_final');
-			$data["otro_dest"] 			= $this->input->post('otro_dest');
-			$data["no_auto_dest"] 		= $this->input->post('no_auto_dest');
-			$data["sig_manejo"] 		= $this->input->post('sig_manejo');
-			$data["otro_modalidad"]		= $this->input->post('otro_modalidad');
-			$data["resp_tec"] 			= $this->input->post('resp_tec');
-			$data["registros"]			= explode(" ", $this->input->post('registros'));
+				// Empresa transportista
+				if($data["emp_tran"] != "Otro")	{
+					$id_emp_tran = explode(",", $data["emp_tran"]);
+					$data["emp_tran"] = $id_emp_tran[0];
+					$no_aut_em_tr = $id_emp_tran[1];
+				} 
 
-			// Empresa transportista
-			if($data["emp_tran"] != "Otro")	{
-				$id_emp_tran = explode(",", $data["emp_tran"]);
-				$data["emp_tran"] = $id_emp_tran[0];
-			} 
+				// Empresa de destino
+				if($data["dest_final"] != "Otro")	{
+					$id_emp_final = explode(",", $data["dest_final"]);
+					$data["dest_final"] = $id_emp_final[0];
+					$no_aut_de_fi = $id_emp_final[1];
+				}
 
-			// Empresa de destino
-			if($data["dest_final"] != "Otro")	{
-				$id_emp_final = explode(",", $data["dest_final"]);
-				$data["dest_final"] = $id_emp_final[0];
+				//$this->residuo_peligroso_model->actualizar_registros($data);
+				
+				$correo = $this->input->post('correo');
+				$asunto = "RDíaz - Folio {$data['folio_manifiesto']} Actualizado";
+				$mensaje_contacto = $this->input->post('mensaje_contacto');
+				$completo = $data["completo"];
+
+				//para 	= $correo . ", " . "diaz281@yahoo.com.mx, rigediaz@hotmail.com";
+
+				$para 	= "gopixc@gmail.com";
+				$this->email->from('admin@rdiaz.mx', 'Admin RDíaz');
+				$this->email->to($para); 
+				$this->email->cc(''); 
+				$this->email->bcc('');
+
+				$image = "http://rdiaz.mx/img/logo_mini.png"; // image path
+
+				$mensaje = "
+				<html>
+					<head> </head>
+					<body>
+						Se ha actuliazido el folio: {$data['folio_manifiesto']} <br>
+						Empresa transportista: {$data['emp_tran']} <br>
+						No de autorización: {$no_aut_em_tr} <br>
+						Empresa destino: {$data['dest_final']} <br>
+						No de autorización: {$no_aut_de_fi} <br>
+
+						<br> <br>
+						<img href='http://rdiaz.mx/' src='{$image}' alt='Logo' />
+					</body>
+				</html>
+				";
+
+				$this->email->subject($asunto);
+				$this->email->message($mensaje);
+				$this->email->set_mailtype('html');
+
+				$this->email->send();
+
+				echo $this->email->print_debugger();
+
+				die();
+				
+				redirect('administrador/bitacora/' . $data["id_persona"] );
+			} else {
+				redirect('administrador/bitacora/' . $data["id_persona"] );
 			}
 
-			$this->residuo_peligroso_model->actualizar_registros($data);
-			
-			redirect('administrador/bitacora/' . $data["id_persona"] );
 		} else {
-			redirect('administrador/bitacora/' . $data["id_persona"] );
-		} 
+			redirect('home');
+		}
 	}
 
 	public function update_bitacora_admin(){
 
-		if($this->input->post()){
-			$data["id_residuo_peligroso"]= $this->input->post('id_residuo_peligroso');
-			$data["id_persona"] 		= $this->input->post('id_persona');
-			$data["residuo"] 			= $this->input->post('residuo');
-			$data["otro_residuo"] 		= $this->input->post('otro_residuo');
-			$data["clave"] 				= $this->input->post('clave');
-			$data["cantidad"] 			= $this->input->post('cantidad');
-			$data["unidad"] 			= $this->input->post('unidad');
-			$data["caracteristica"] 	= $this->input->post('caracteristica');
-			$data["area_generacion"] 	= $this->input->post('area_generacion');
-			$data["otro_area"] 			= $this->input->post('otro_area');
-			$data["fecha_ingreso"] 		= $this->input->post('fecha_ingreso');
-			$data["fecha_salida"] 		= $this->input->post('fecha_salida');
-			$data["emp_tran"] 			= $this->input->post('emp_tran');
-			$data["otro_emp"] 			= $this->input->post('otro_emp');
-			$data["no_auto"] 			= $this->input->post('no_auto');
-			$data["folio_manifiesto"]	= $this->input->post('folio');
-			$data["dest_final"] 		= $this->input->post('dest_final');
-			$data["otro_dest"] 			= $this->input->post('otro_dest');
-			$data["no_auto_dest"] 		= $this->input->post('no_auto_dest');
-			$data["sig_manejo"] 		= $this->input->post('sig_manejo');
-			$data["otro_modalidad"]		= $this->input->post('otro_modalidad');
-			$data["resp_tec"] 			= $this->input->post('resp_tec');
+		if ($this->session->userdata('tipo')==1) {
 
-			//Residuo					
-			if ($data["residuo"] != "Otro") {
-				$id_residuo = explode(",", $data["residuo"]);
-				$data["residuo"] = $id_residuo[0];
-			} 
-			
-			//Caracteristicas
-			$data["caracteristicas_residuos"] = "";
-			foreach ($data["caracteristica"] as $row) {
-				$data["caracteristicas_residuos"] .= $row . " ";
+			if($this->input->post()){
+				$data["id_residuo_peligroso"]= $this->input->post('id_residuo_peligroso');
+				$data["id_persona"] 		= $this->input->post('id_persona');
+				$data["residuo"] 			= $this->input->post('residuo');
+				$data["otro_residuo"] 		= $this->input->post('otro_residuo');
+				$data["clave"] 				= $this->input->post('clave');
+				$data["cantidad"] 			= $this->input->post('cantidad');
+				$data["unidad"] 			= $this->input->post('unidad');
+				$data["caracteristica"] 	= $this->input->post('caracteristica');
+				$data["area_generacion"] 	= $this->input->post('area_generacion');
+				$data["otro_area"] 			= $this->input->post('otro_area');
+				$data["fecha_ingreso"] 		= $this->input->post('fecha_ingreso');
+				$data["fecha_salida"] 		= $this->input->post('fecha_salida');
+				$data["emp_tran"] 			= $this->input->post('emp_tran');
+				$data["otro_emp"] 			= $this->input->post('otro_emp');
+				$data["no_auto"] 			= $this->input->post('no_auto');
+				$data["folio_manifiesto"]	= $this->input->post('folio');
+				$data["dest_final"] 		= $this->input->post('dest_final');
+				$data["otro_dest"] 			= $this->input->post('otro_dest');
+				$data["no_auto_dest"] 		= $this->input->post('no_auto_dest');
+				$data["sig_manejo"] 		= $this->input->post('sig_manejo');
+				$data["otro_modalidad"]		= $this->input->post('otro_modalidad');
+				$data["resp_tec"] 			= $this->input->post('resp_tec');
+
+				//Residuo					
+				if ($data["residuo"] != "Otro") {
+					$id_residuo = explode(",", $data["residuo"]);
+					$data["residuo"] = $id_residuo[0];
+				} 
+				
+				//Caracteristicas
+				$data["caracteristicas_residuos"] = "";
+				foreach ($data["caracteristica"] as $row) {
+					$data["caracteristicas_residuos"] .= $row . " ";
+				}
+				unset($data["caracteristica"]);
+				
+				// Empresa transportista
+				if($data["emp_tran"] != "Otro")	{
+					$id_emp_tran = explode(",", $data["emp_tran"]);
+					$data["emp_tran"] = $id_emp_tran[0];
+				} 
+
+				// Empresa de destino
+				if($data["dest_final"] != "Otro")	{
+					$id_emp_final = explode(",", $data["dest_final"]);
+					$data["dest_final"] = $id_emp_final[0];
+				}
+
+				$this->residuo_peligroso_model->actualizar_registro($data);
+																
+				redirect('administrador/bitacora/' . $data["id_persona"] );
+			}else{
+				redirect('administrador/bitacora/' . $data["id_persona"] );
 			}
-			unset($data["caracteristica"]);
-			
-			// Empresa transportista
-			if($data["emp_tran"] != "Otro")	{
-				$id_emp_tran = explode(",", $data["emp_tran"]);
-				$data["emp_tran"] = $id_emp_tran[0];
-			} 
 
-			// Empresa de destino
-			if($data["dest_final"] != "Otro")	{
-				$id_emp_final = explode(",", $data["dest_final"]);
-				$data["dest_final"] = $id_emp_final[0];
-			}
-
-			$this->residuo_peligroso_model->actualizar_registro($data);
-															
-			redirect('administrador/bitacora/' . $data["id_persona"] );
-		}else{
-			redirect('administrador/bitacora/' . $data["id_persona"] );
+		} else {
+			redirect('home');
 		}
 	}
 
 	public function bitacora_actualiza_reg(){
 
-		if ($this->input->post()) {
-			if ($this->input->post('residuos_to_update') != NULL ) {
+		if ($this->session->userdata('tipo')==1) {
 
+			if ($this->input->post()) {
+				if ($this->input->post('residuos_to_update') != NULL ) {
+					$id_tipo_persona=3; // para la función de correo en el header
+					$id_status_persona=1; // para la función de correo en el footer
+
+					$id_bitacora 			= $this->input->post('id_residuo_peligroso');
+					$id_persona				= $this->input->post('id_persona');
+					$id						= $this->session->userdata('id');
+					$status 				= 0;
+					$total					= $this->notificacion_model->obtiene_noticliente($id,$status);
+					$ruta 					= "administrador/".$id;
+					$ruta_carpeta 			= $ruta;
+					$carpetas 				= $this->carpeta_model->obt_carpeta_personal($ruta);
+					$archivos 				= $this->archivo_model->obtienearchivos($ruta_carpeta);
+					$mensajesnuevos 		= $this->contacto_model->contador_mensajes($status);
+					$correo_clientes 		= $this->persona_model->getCorreos($id_tipo_persona);
+
+					$tipo_emp_transportista = $this->emp_transportista_model->get_tipo_emp_transportista();
+					$tipo_emp_destino 		= $this->emp_destino_model->get_tipo_emp_destino();
+					$tipo_modalidad 		= $this->modalidad_model->get_tipo_modalidad();
+					$actualizar_registros	= $this->input->post("residuos_to_update");
+					$siguiente_folio 		= $this->residuo_peligroso_model->get_siguiente_folio($id_persona);
+					
+					$data = array(
+						'carpetas' 				=> $carpetas,
+						'archivo' 				=> $archivos,
+						'numnoti' 				=> $total,
+						'id' 					=> $id,
+						'id_persona' 			=> $id_persona,
+						'mensajes' 				=> $mensajesnuevos,
+						'correo' 				=> $correo_clientes,
+						'tipo_emp_transportista'=> $tipo_emp_transportista,
+						'tipo_emp_destino' 		=> $tipo_emp_destino,
+						'tipo_modalidad' 		=> $tipo_modalidad,
+						'actualizar_registros' 	=> $actualizar_registros,
+						'siguiente_folio'		=> $siguiente_folio
+					);
+
+					$this->load->view('administrador/header_admin',$data);
+					$this->load->view('administrador/actualizar_registros',$data);
+					$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
 				
 
-				$id_tipo_persona=3; // para la función de correo en el header
-				$id_status_persona=1; // para la función de correo en el footer
-
-				$id_bitacora 			= $this->input->post('id_residuo_peligroso');
-				$id_persona				= $this->input->post('id_persona');
-				$id						= $this->session->userdata('id');
-				$status 				= 0;
-				$total					= $this->notificacion_model->obtiene_noticliente($id,$status);
-				$ruta 					= "administrador/".$id;
-				$ruta_carpeta 			= $ruta;
-				$carpetas 				= $this->carpeta_model->obt_carpeta_personal($ruta);
-				$archivos 				= $this->archivo_model->obtienearchivos($ruta_carpeta);
-				$mensajesnuevos 		= $this->contacto_model->contador_mensajes($status);
-				$correo_clientes 		= $this->persona_model->getCorreos($id_tipo_persona);
-
-				$tipo_emp_transportista = $this->emp_transportista_model->get_tipo_emp_transportista();
-				$tipo_emp_destino 		= $this->emp_destino_model->get_tipo_emp_destino();
-				$tipo_modalidad 		= $this->modalidad_model->get_tipo_modalidad();
-				$actualizar_registros	= $this->input->post("residuos_to_update");
-				$siguiente_folio 		= $this->residuo_peligroso_model->get_siguiente_folio($id_persona);
-				
-				$data = array(
-					'carpetas' 				=> $carpetas,
-					'archivo' 				=> $archivos,
-					'numnoti' 				=> $total,
-					'id' 					=> $id,
-					'id_persona' 			=> $id_persona,
-					'mensajes' 				=> $mensajesnuevos,
-					'correo' 				=> $correo_clientes,
-					'tipo_emp_transportista'=> $tipo_emp_transportista,
-					'tipo_emp_destino' 		=> $tipo_emp_destino,
-					'tipo_modalidad' 		=> $tipo_modalidad,
-					'actualizar_registros' 	=> $actualizar_registros,
-					'siguiente_folio'		=> $siguiente_folio
-				);
-
-				$this->load->view('administrador/header_admin',$data);
-				$this->load->view('administrador/actualizar_registros',$data);
-				$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
-			
-
-				$cliente 			= $this->persona_model->obtiene_clientes($id_tipo_persona, $id_status_persona);
-				$correo_clientes 	= $this->persona_model->getCorreos($id_tipo_persona);
+					$cliente 			= $this->persona_model->obtiene_clientes($id_tipo_persona, $id_status_persona);
+					$correo_clientes 	= $this->persona_model->getCorreos($id_tipo_persona);
 
 
-				$data2 = array(
-					'new_noti' =>$datos_popover,
-					'clientes' => $cliente,
-					'correo' => $correo_clientes
-				);
+					$data2 = array(
+						'new_noti' =>$datos_popover,
+						'clientes' => $cliente,
+						'correo' => $correo_clientes
+					);
 
-				$this->load->view('administrador/footeru',$data2);
-			} else {
-				redirect('administrador/bitacora/' . $data["id_persona"] );
+					$this->load->view('administrador/footeru',$data2);
+				} else {
+					redirect('administrador/bitacora/' . $data["id_persona"] );
+				}
 			}
-			
-			
-		}
 
+		} else {
+			redirect('home');
+		}
 	}
 
 	public function update_bit($id_persona = null, $id_bit = null){
+
+		if ($this->session->userdata('tipo')==1) {
 		
-		if(($this->input->post()) || ($id_bit != null) ){
-		
-			$id_tipo_persona=3; // para la función de correo en el header
-			$id_status_persona=1; // para la función de correo en el footer
-
-			$bitacora 				= $this->residuo_peligroso_model->get_ident_residuo($id_bit);
+			if(($this->input->post()) || ($id_bit != null) ){
 			
-			$id_bitacora 			= $id_bit;
-			$id 					= $this->session->userdata('id');
-			$status 				= 0;
-			$total					= $this->notificacion_model->obtiene_noticliente($id,$status);
-			$peligrosidad 			= $bitacora->caracteristica;
-			$peligrosidad2 			= explode(" ", $peligrosidad);
+				$id_tipo_persona=3; // para la función de correo en el header
+				$id_status_persona=1; // para la función de correo en el footer
 
-			$residuos 				= $this->residuo_peligroso_model->get_tipo_residuos();
-			$areas 					= $this->area_model->get_areas();
-			$tipo_emp_transportista = $this->emp_transportista_model->get_tipo_emp_transportista();
-			$tipo_emp_destino 		= $this->emp_destino_model->get_tipo_emp_destino();
-			$tipo_modalidad 		= $this->modalidad_model->get_tipo_modalidad();
+				$bitacora 				= $this->residuo_peligroso_model->get_ident_residuo($id_bit);
+				
+				$id_bitacora 			= $id_bit;
+				$id 					= $this->session->userdata('id');
+				$status 				= 0;
+				$total					= $this->notificacion_model->obtiene_noticliente($id,$status);
+				$peligrosidad 			= $bitacora->caracteristica;
+				$peligrosidad2 			= explode(" ", $peligrosidad);
 
-			$status = 0;
-			$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
+				$residuos 				= $this->residuo_peligroso_model->get_tipo_residuos();
+				$areas 					= $this->area_model->get_areas();
+				$tipo_emp_transportista = $this->emp_transportista_model->get_tipo_emp_transportista();
+				$tipo_emp_destino 		= $this->emp_destino_model->get_tipo_emp_destino();
+				$tipo_modalidad 		= $this->modalidad_model->get_tipo_modalidad();
 
-			$data = array(
-				'numnoti'=>$total,
-				'id'=>$id,
-				'id_persona'=>$id_persona,
-				'mensajes' => $mensajesnuevos,
-				'peligrosidad' => $peligrosidad2,
-				'residuos' => $residuos,
-				'areas' => $areas,
-				'tipo_emp_transportista' => $tipo_emp_transportista,
-				'tipo_emp_destino' => $tipo_emp_destino,
-				'tipo_modalidad' => $tipo_modalidad,
-				'bitacora' => $bitacora
-			);
+				$status = 0;
+				$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
 
-			$this->load->view('administrador/header_admin',$data);
-			$this->load->view('administrador/modificar_bitacora',$data);
-			$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
-			
-			// Obtenemos las bitacoras que hay
-			
-			
-			$cliente 			= $this->persona_model->obtiene_clientes($id_tipo_persona, $id_status_persona);
-			$correo_clientes 	= $this->persona_model->getCorreos($id_tipo_persona);
+				$data = array(
+					'numnoti'=>$total,
+					'id'=>$id,
+					'id_persona'=>$id_persona,
+					'mensajes' => $mensajesnuevos,
+					'peligrosidad' => $peligrosidad2,
+					'residuos' => $residuos,
+					'areas' => $areas,
+					'tipo_emp_transportista' => $tipo_emp_transportista,
+					'tipo_emp_destino' => $tipo_emp_destino,
+					'tipo_modalidad' => $tipo_modalidad,
+					'bitacora' => $bitacora
+				);
 
-			$data2 = array(
-					'new_noti' =>$datos_popover,
-					'clientes' => $cliente,
-					'correo' => $correo_clientes
-			);
+				$this->load->view('administrador/header_admin',$data);
+				$this->load->view('administrador/modificar_bitacora',$data);
+				$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
+				
+				// Obtenemos las bitacoras que hay
+				
+				
+				$cliente 			= $this->persona_model->obtiene_clientes($id_tipo_persona, $id_status_persona);
+				$correo_clientes 	= $this->persona_model->getCorreos($id_tipo_persona);
 
-			$this->load->view('administrador/footeru',$data2);
-		}else{
-			redirect('administrador/bitacora/' . $id_bitacora );
-		}	
-			
+				$data2 = array(
+						'new_noti' =>$datos_popover,
+						'clientes' => $cliente,
+						'correo' => $correo_clientes
+				);
+
+				$this->load->view('administrador/footeru',$data2);
+			}else{
+				redirect('administrador/bitacora/' . $id_bitacora );
+			}	
+
+		} else {
+			redirect('home');
+		}
 	}
 
 
 	public function renombrar_carpeta(){
-		#die('Estamos Trabajando');
-		#die(var_dump($this->input->post()));
+
 		if($this->input->post()) {
 			$id_persona = $this->input->post('id_persona');
 			$nombre_carpeta = $this->input->post('nombre_carpeta');
