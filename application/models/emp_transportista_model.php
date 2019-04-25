@@ -19,7 +19,7 @@ public function __construct() {
 		$sql = "SELECT et.*, p.*
 				FROM rdiaz.tipo_emp_transportista et, rdiaz.persona p
 				WHERE 
-				p.nombre_empresa =et.nombre_empresa 
+				p.nombre_empresa=et.nombre_empresa 
 				and et.id_tipo_emp_transportista=" . $id . ";";
 
 		return $this->db->query($sql)->result();

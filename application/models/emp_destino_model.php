@@ -16,9 +16,10 @@ public function __construct() {
 	}
 	
 	public function get_nombre_dest($id){
-		$sql = "SELECT d.nombre_destino
-				FROM residuos_peligrosos as r, tipo_emp_destino as d
-				WHERE r.id_tipo_emp_destino = d.id_tipo_emp_destino and r.id_residuo_peligroso =" . $id . ";";
+		$sql = "SELECT nombre_destino
+				FROM tipo_emp_destino
+				WHERE id_tipo_emp_destino =" . $id . ";";
+				
 		$nombre_emp_destino = $this->db->query($sql)->result();
 
 		return @$nombre_emp_destino[0]->nombre_destino;

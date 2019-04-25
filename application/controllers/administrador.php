@@ -1170,7 +1170,9 @@ class Administrador extends CI_Controller {
 					$no_aut_de_fi = $id_emp_final[1];
 				}
 
-				//$this->residuo_peligroso_model->actualizar_registros($data);
+				$this->residuo_peligroso_model->actualizar_registros($data);
+				$nombre_empresa_transportista 	= $this->emp_transportista_model->get_datos_emp_trans($data['emp_tran'])[0]->nombre_empresa;
+				$nombre_empresa_destino 		= $this->emp_destino_model->get_nombre_dest($data['dest_final']);
 				
 				$correo = $this->input->post('correo');
 				$asunto = "RDíaz - Folio {$data['folio_manifiesto']} Actualizado";
@@ -1191,11 +1193,11 @@ class Administrador extends CI_Controller {
 				<html>
 					<head> </head>
 					<body>
-						Se ha actuliazido el folio: {$data['folio_manifiesto']} <br>
-						Empresa transportista: {$data['emp_tran']} <br>
-						No de autorización: {$no_aut_em_tr} <br>
-						Empresa destino: {$data['dest_final']} <br>
-						No de autorización: {$no_aut_de_fi} <br>
+						<strong> Se ha actuliazido el folio: </strong> {$data['folio_manifiesto']} <br>
+						<strong> Empresa transportista: </strong> {$nombre_empresa_transportista} <br>
+						<strong> No de autorización: </strong> {$no_aut_em_tr} <br>
+						<strong> Empresa destino: </strong> {$nombre_empresa_destino} <br>
+						<strong> No de autorización: </strong> {$no_aut_de_fi} <br>
 
 						<br> <br>
 						<img href='http://rdiaz.mx/' src='{$image}' alt='Logo' />
@@ -1208,10 +1210,6 @@ class Administrador extends CI_Controller {
 				$this->email->set_mailtype('html');
 
 				$this->email->send();
-
-				echo $this->email->print_debugger();
-
-				die();
 				
 				redirect('administrador/bitacora/' . $data["id_persona"] );
 			} else {

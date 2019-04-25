@@ -131,7 +131,7 @@
 	                
 	                $('.dropdown-toggle').dropdown();
 
-	                document.getElementById("file").onchange = function () {
+	                	document.getElementById("file").onchange = function () {
     					document.getElementById("name").value = this.value;
 					};
 	            });
