@@ -1170,18 +1170,19 @@ class Administrador extends CI_Controller {
 					$no_aut_de_fi = $id_emp_final[1];
 				}
 
+				//Actualiza los registros al finalizar el manifiesto
 				$this->residuo_peligroso_model->actualizar_registros($data);
+
 				$nombre_empresa_transportista 	= $this->emp_transportista_model->get_datos_emp_trans($data['emp_tran'])[0]->nombre_empresa;
 				$nombre_empresa_destino 		= $this->emp_destino_model->get_nombre_dest($data['dest_final']);
-				
-				$correo = $this->input->post('correo');
-				$asunto = "RDíaz - Folio {$data['folio_manifiesto']} Actualizado";
+				$correo 						= $this->persona_model->get_datos_empresa($this->input->post('id_persona'))->correo_empresa;
+
+				$asunto = "RDíaz - Folio {$data['folio_manifiesto']} Generado";
 				$mensaje_contacto = $this->input->post('mensaje_contacto');
 				$completo = $data["completo"];
 
-				//para 	= $correo . ", " . "diaz281@yahoo.com.mx, rigediaz@hotmail.com";
-
-				$para 	= "gopixc@gmail.com";
+				$para 	= $correo . ", " . "diaz281@yahoo.com.mx, rigediaz@hotmail.com";
+	
 				$this->email->from('admin@rdiaz.mx', 'Admin RDíaz');
 				$this->email->to($para); 
 				$this->email->cc(''); 
@@ -1193,6 +1194,9 @@ class Administrador extends CI_Controller {
 				<html>
 					<head> </head>
 					<body>
+
+						<br> <br>
+
 						<strong> Se ha actuliazido el folio: </strong> {$data['folio_manifiesto']} <br>
 						<strong> Empresa transportista: </strong> {$nombre_empresa_transportista} <br>
 						<strong> No de autorización: </strong> {$no_aut_em_tr} <br>
