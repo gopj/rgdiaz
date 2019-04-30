@@ -182,7 +182,7 @@ class Persona_model extends CI_Model {
 										   $psw_nva,$nombre_empresa,$id_status_persona,
 										   $id_tipo_persona,$calle_empresa,$correo_empresa,
 										   $lleno_datos,$cp_empresa,$colonia_empresa,
-										   $numero_empresa,$estado,$municipio,$telefono_empresa, $numero_registro_ambiental){
+										   $numero_empresa, $numero_registro_ambiental, $estado,$municipio,$telefono_empresa){
 		return $this->db->set('nombre',$nombre)
 						->set('correo',$correo)
 						->set('telefono_personal',$telefono_personal)

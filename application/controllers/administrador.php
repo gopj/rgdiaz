@@ -750,30 +750,32 @@ class Administrador extends CI_Controller {
 
 	public function alta_cliente_admin(){
 		$status = 0;
-				$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
-				#$todosmensajes = $this->contacto_model->mensajescontacto();
-				$data = array(
-					'mensajes'=> $mensajesnuevos,
-					#'mensajitos' => $todosmensajes
-				);
+		$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
+		#$todosmensajes = $this->contacto_model->mensajescontacto();
+		$data = array(
+			'mensajes'=> $mensajesnuevos,
+			#'mensajitos' => $todosmensajes
+		);
+
 		$this->load->view('administrador/header_admin',$data);
 		$this->load->view('administrador/alta_cliente_admin');
 
 		#	Obtenemos a todos los clientes activos de RDIAZ-----------------------
-			$id_tipo_persona=3;
-			$id_status_persona=1;
-			// Mandar una variable para selecciar solo a los clientes que ya llenaron su info
-			$lleno_datos = 1;
-			$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona,$id_tipo_persona,$lleno_datos);
-			//$cliente=$this->persona_model->obtiene_clientes($id_tipo_persona,$id_status_persona,$lleno_datos);
-			$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
-			$data2 = array(
-				'clientes' => $cliente_baja,
-				'correo' => $correo_clientes
-			);
+		$id_tipo_persona=3;
+		$id_status_persona=1;
+		// Mandar una variable para selecciar solo a los clientes que ya llenaron su info
+		$lleno_datos = 1;
+		$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona,$id_tipo_persona,$lleno_datos);
+		//$cliente=$this->persona_model->obtiene_clientes($id_tipo_persona,$id_status_persona,$lleno_datos);
 
-			$this->load->view('administrador/footeru',$data2);
-		#-------------------------------------------------------------------------
+		$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
+		$data2 = array(
+			'clientes' => $cliente_baja,
+			'correo' => $correo_clientes
+		);
+
+		$this->load->view('administrador/footeru',$data2);
+	#-------------------------------------------------------------------------
 	}
 
 	public function registra_cliente_admin(){
@@ -789,64 +791,85 @@ class Administrador extends CI_Controller {
 				$id_status_persona=1;
 				$lleno_datos = 1;
 				#	Insertamos en la base de datos 
-				$inserta = $this->persona_model->inserta_cliente_admin($this->input->post('nombre'),
-															           $this->input->post('correo'),
-															           $this->input->post('telefono_personal'),
-															           $this->input->post('telefono_personal_alt'),
-															           $psw_nva,
-															           $this->input->post('nombre_empresa'),
-															           $id_status_persona,
-															           $id_tipo_persona,
-															           $this->input->post('calle_empresa'),
-															           $this->input->post('correo_empresa'),
-															           $lleno_datos,
-																	   $this->input->post('cp_empresa'),
-																	   $this->input->post('colonia_empresa'),
-																	   $this->input->post('numero_empresa'),
-																	   $this->input->post('numero_registro_ambiental'),
-																	   $this->input->post('estado'),
-																	   $this->input->post('municipio'),
-																	   $this->input->post('telefono_empresa'));
+				$inserta = $this->persona_model->inserta_cliente_admin(
+					$this->input->post('nombre'),
+					$this->input->post('correo'),
+					$this->input->post('telefono_personal'),
+					$this->input->post('telefono_personal_alt'),
+					$psw_nva,
+					$this->input->post('nombre_empresa'),
+					$id_status_persona,
+					$id_tipo_persona,
+					$this->input->post('calle_empresa'),
+					$this->input->post('correo_empresa'),
+					$lleno_datos,
+					$this->input->post('cp_empresa'),
+					$this->input->post('colonia_empresa'),
+					$this->input->post('numero_empresa'),
+					$this->input->post('numero_registro_ambiental'),
+					$this->input->post('estado'),
+					$this->input->post('municipio'),
+					$this->input->post('telefono_empresa')
+				);
+
 				#	Mandamos Correo con datos de acceso al nuevo cliente
 				#	Mandamos mail con datos de acceso al cliente---------------------------------
-			$correo = $this->input->post('correo'); 
-			$de = "diaz281@yahoo.com.mx";
-			$para = "$correo";
-			$asunto = "RDÍAZ Servicios Integrales en Materia Ambiental";
-			$mensaje = "DATOS DE ACCESO AL SISTEMA<br/>";
-			$mensaje .= "Tu Correo es: $correo<br>";
-			$mensaje .= "Tu contraseña es: $psw_nva<br/><br/>";
-			$mensaje .= "Accede a tu cuenta de usuario en el siguiente enlace: <br/>";
-			$mensaje .= "<a href='http://rgdiaz.com.mx/index.php/home/sesion'>rgdiaz.com.mx/index.php/home/sesion</a>";
 
+				$correo = $this->input->post('correo_empresa'); 
 			
-			$cabeceras = "MIME-Version: 1.0\r\n";
-			$cabeceras .= "Content-type: text/html; charset=iso-8859-1\r\n";
-			$cabeceras .= "From: $de\r\n";
+				$para 	= $correo . ", " . "diaz281@yahoo.com.mx, rigediaz@hotmail.com";
+				$asunto = "RDíaz - Alta completada";
 
-			mail($para,$asunto,$mensaje,$cabeceras);
+				$this->email->from('admin@rdiaz.mx', 'Admin RDíaz');
+				$this->email->to($para); 
+				$this->email->cc(''); 
+				$this->email->bcc('');
 
-			//-------------------------------------------------------------
-			$datocliente=$this->persona_model->obtenerid($this->input->post('correo'),$psw_nva);
+				$image = "http://rdiaz.mx/img/logo_mini.png"; // image path
+
+				$mensaje = "
+				<html>
+					<head> </head>
+					<body>
+						<br>
+						La alta de cliente ha quedado registrada. <br>
+
+						Usuario: {$correo} <br>
+						Contraseña: {$psw_nva}	<br>
+						<br>
+
+						Favor de utilizar el siguiente link para iniciar sesión: http://rdiaz.mx
+
+						<br> <br>
+						<img href='http://rdiaz.mx/' src='{$image}' alt='Logo' />
+					</body>
+				</html>
+				";
+
+				$this->email->subject($asunto);
+				$this->email->message($mensaje);
+				$this->email->set_mailtype('html');
+
+				$this->email->send();
+
+				//-------------------------------------------------------------
+				$datocliente=$this->persona_model->obtenerid($this->input->post('correo'),$psw_nva);
 				$nombrecarpeta=$datocliente->id_persona;
 				$id_persona=$nombrecarpeta;
 				$ruta_anterior='clientes/';
 				$ruta_carpeta= 'clientes/'.$nombrecarpeta;
 				$id_status_carpeta=1;
-				if($ruta_carpeta =='')
-					{
-						echo "Ingresa un nombre a la carpeta"."<br>";
-					}
-				else if(!is_dir($ruta_carpeta))
-					{
-						mkdir($ruta_carpeta, 0755);
-						chmod($ruta_carpeta, 0755);
-						$this->carpeta_model->registrarcarpeta($nombrecarpeta,$id_persona,$ruta_carpeta,$id_status_carpeta,$ruta_anterior);
-					}
-				else
-					{
-						echo "Ya existe una carpeta con ese nombre"."<br>";
-					}
+
+				if($ruta_carpeta =='') {
+					echo "Ingresa un nombre a la carpeta"."<br>";
+				} else if(!is_dir($ruta_carpeta)) {
+					mkdir($ruta_carpeta, 0755);
+					chmod($ruta_carpeta, 0755);
+					$this->carpeta_model->registrarcarpeta($nombrecarpeta,$id_persona,$ruta_carpeta,$id_status_carpeta,$ruta_anterior);
+				} else {
+					echo "Ya existe una carpeta con ese nombre"."<br>";
+				}
+
 				redirect('administrador');
 			}
 		}
