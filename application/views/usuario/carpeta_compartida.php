@@ -159,7 +159,7 @@
 								</center>
 								<br>
 							</div>
-						</div>zz
+						</div>
 						<div class="span2"></div>
 						<div class="span5">
 							<legend>Datos del Contacto</legend>

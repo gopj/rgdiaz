@@ -425,11 +425,13 @@ class Cliente extends CI_Controller {
 		$total=$this->notificacion_model->obtiene_noticliente($id,$status);
 		$carpetas=$this->carpeta_model->obt_carpeta_personal($ruta);
 		$archivos=$this->archivo_model->obtienearchivos($ruta_carpeta);
+		$datos=$this->persona_model->obtiene_cliente($id);
 		$data = array('carpetas'=> $carpetas,
 					   'archivo'=>$archivos,
 					   'numnoti'=>$total,
 					   'id'=>$id,
-					   'id_persona' => $id_persona
+					   'id_persona' => $id_persona,
+					   'datos' => $datos	
 					 );
 		$this->load->view('usuario/header_usuario',$data);
 

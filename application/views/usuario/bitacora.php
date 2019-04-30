@@ -14,6 +14,8 @@ function date_bitacora($s_date){
 
 <link rel="stylesheet" type="text/css" href="css/table_bitacora.css">
 
+<?php if ($this->session->userdata('completo') == 1) { ?>
+
 <div class="span12">
 	<form id="form_bitacora_actualizar_registros" action="<?php echo site_url('cliente/bitacora_actualiza_reg'); ?>" method="post">
 	<center><legend>Bitácora Residuos Peligrosos</legend></center>
@@ -143,3 +145,140 @@ function date_bitacora($s_date){
     $("table > *").width($("table").width() + $("table").scrollLeft());
 });
 </script>
+
+<?php } else { ?>
+				<div class="span9">
+					<form method="post" action="<?php echo site_url('cliente/regisdatos_persona'); ?>">
+					<div class="row-fluid">
+						<div class="span5">
+							<legend>Datos de la Empresa</legend>
+							<div class="well">
+								<br>
+								<center>
+									Nombre o Razón Social
+									<div class='input-prepend'>
+										<span class='add-on'>
+											<img src="img/glyphicons_450_factory.png" class="icon-form">
+										</span>
+										<input class="txt-well" id="nombre" type='text' name="nombre_empresa" required>
+									</div>
+									Calle
+									<div class='input-prepend'>
+										<span class='add-on'>
+											<img src="img/glyphicons_242_google_maps.png" class="icon-form">
+										</span>
+										<input class="txt-well" id="calle_empresa" name="calle_empresa" type='text' required>
+									</div>
+									Número
+									<div class='input-prepend'>
+										<span class='add-on'>
+											<img src="img/glyphicons_242_google_maps.png" class="icon-form">
+										</span>
+										<input class="txt-well" id="numero_empresa" name="numero_empresa" type='text' required>
+									</div>
+									Número de Registro Ambiental
+									<div class='input-prepend'>
+										<span class='add-on'>
+											<img src="img/glyphicons_242_google_maps.png" class="icon-form">
+										</span>
+										<input class="txt-well" id="numRegAmb" type='text' placeholder=''  name="numero_registro_ambiental">
+									</div>
+									Colonia
+									<div class='input-prepend'>
+										<span class='add-on'>
+											<img src="img/glyphicons_242_google_maps.png" class="icon-form">
+										</span>
+										<input class="txt-well" id="colonia_empresa" name="colonia_empresa" type='text' required>
+									</div>
+									Municipio
+									<div class='input-prepend'>
+										<span class='add-on'>
+											<img src="img/glyphicons_242_google_maps.png" class="icon-form">
+										</span>
+										<input class="txt-well" id="municipio" name="municipio" type='text' required>
+									</div>
+									Código Postal
+									<div class='input-prepend'>
+										<span class='add-on'>
+											<img src="img/glyphicons_242_google_maps.png" class="icon-form">
+										</span>
+										<input class="txt-well" id="cp_empresa" name="cp_empresa" type='text' required>
+									</div>
+									Estado
+									<div class='input-prepend'>
+										<span class='add-on'>
+											<img src="img/glyphicons_242_google_maps.png" class="icon-form">
+										</span>
+										<input class="txt-well" id="estado" name="estado" type='text' required>
+									</div>
+									Teléfono
+									<div class='input-prepend'>
+										<span class='add-on'>
+											<img src="img/glyphicons_442_earphone.png" class="icon-form">
+										</span>
+										<input class="txt-well" id="telefono_empresa" name="telefono_empresa" type='text' required>
+									</div>
+									Direcion de Email
+									<div class='input-prepend'>
+										<span class='add-on'>
+											<img src="img/glyphicons_010_envelope.png" class="icon-form">
+										</span>
+										<input class="txt-well" id="email" type='text' name="correo_empresa">
+									</div>
+								</center>
+								<br>
+							</div>
+						</div>
+						<div class="span2"></div>
+						<div class="span5">
+							<legend>Datos del Contacto</legend>
+							<div class="well">
+								<br>
+								<center>
+									Nombre
+									<div class='input-prepend'>
+										<span class='add-on'>
+											<img src="img/glyphicons_003_user.png" class="icon-form">
+										</span>
+										<input class="txt-well" id="nombre" type='text' name="nombre" required>
+									</div>
+									Telefono
+									<div class='input-prepend'>
+										<span class='add-on'>
+											<img src="img/glyphicons_442_earphone.png" class="icon-form">
+										</span>
+										<input class="txt-well" id="email" type='text' name="telefono_personal" required>
+									</div>
+									Telefono Alternativo
+									<div class='input-prepend'>
+										<span class='add-on'>
+											<img src="img/glyphicons_442_earphone.png" class="icon-form">
+										</span>
+										<input class="txt-well" id="email" type='text' name="telefono_personal_alt">
+									</div>
+									Direcion de Email
+									<div class='input-prepend'>
+										<span class='add-on'>
+											<img src="img/glyphicons_010_envelope.png" class="icon-form">
+										</span>
+										<input class="txt-well" type='text' name="correo" value="<?php echo $datos->correo; ?>" readonly>
+									</div>
+									Contraseña
+									<div class='input-prepend'>
+										<span class='add-on'>
+											<img src="img/glyphicons_203_lock.png" class="icon-form">
+										</span>
+										<input class="txt-well" type='password' name="password" value="<?php echo $datos->password?>" readonly>
+									</div>
+								</center>
+								<br>
+							</div>
+						</div>
+					</div>
+					<input type="hidden" value="<?php echo $this->session->userdata('id'); ?>" name="id_persona" >
+					<input type="submit" value="Guardar" id="enviar" class="btn btn-primary pull-right">
+					</form>
+				</div>
+			</div>
+		</div>
+<?php } ?>
