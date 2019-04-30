@@ -19,11 +19,11 @@
     	$objPHPExcel = new PHPExcel();
 
     	$objPHPExcel->getProperties()->setCreator("Reporte") // Nombre del autor
-    		->setLastModifiedBy("Jonathan Ramos") //Ultimo usuario que lo modificó
+    		->setLastModifiedBy("RDiaz") //Ultimo usuario que lo modificó
     		->setTitle("Reporte Excel con PHP y MySQL") // Titulo
     		->setSubject("Reporte Excel con PHP y MySQL") //Asunto
-    		->setDescription("Reporte de alumnos") //Descripción
-    		->setKeywords("reporte alumnos carreras") //Etiquetas
+    		->setDescription("Reporte de Residuos") //Descripción
+    		->setKeywords("Reporte Bitacora") //Etiquetas
     		->setCategory("Reporte excel"); //Categorias
 
 		// Se agregan los titulos del reporte
