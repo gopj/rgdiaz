@@ -102,7 +102,7 @@
 	<input type="submit" class="btn btn-primary pull-right" value="Guardar">
 	</form>
 
-	<form id="regresar_bitacora" method='post' action="<?php echo site_url('administrador/bitacora');?>">
+	<form id="regresar_bitacora" method='post' action="<?php echo site_url('cliente/ver_bitacora');?>">
 		<input type="hidden" name="id_persona" value="<?php echo $id_persona; ?>" onclick="">
 		<input class="btn btn-warning pull-left" id="regresar_bitacora"  type="submit" value="Cancelar">
 	</form>
