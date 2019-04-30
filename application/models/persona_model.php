@@ -129,11 +129,11 @@ class Persona_model extends CI_Model {
 										$cp_empresa,
 										$colonia_empresa,
 										$numero_empresa,
+										$numero_registro_ambiental,
 										$id_persona,
 										$municipio,
 										$estado,
 										$telefono_empresa,
-										$numero_registro_ambiental,
 										$completo)
 	{
 		$this->db->set('nombre',$nombre)

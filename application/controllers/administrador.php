@@ -211,7 +211,7 @@ class Administrador extends CI_Controller {
 	# Revisamos si el usuario es administrador---------------
 		if ($this->session->userdata('tipo')==1){
 
-			if($this->input->post()){
+			if($this->input->post()) {
 			#	Asignamos una contraseña al usuario y lo insertamos como cliente -----------	
 				$str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
 				$psw_nva = ""; #password nueva
@@ -222,59 +222,72 @@ class Administrador extends CI_Controller {
 				$id_status_persona=1;
 				$lleno_datos = 0;
 				$this->persona_model->alta_cliente($this->input->post('correo'),$psw_nva,$id_tipo_persona,$id_status_persona,$lleno_datos);
-			#--------------------------------------------------------------------------------
-			#	Mandamos mail con datos de acceso al cliente---------------------------------
-			$correo = $this->input->post('correo'); 
-			$de = "diaz281@yahoo.com.mx";
-			$para = "$correo";
-			$asunto = "RDÍAZ Servicios Integrales en Materia Ambiental";
-			$mensaje = "DATOS DE ACCESO AL SISTEMA<br/>";
-			$mensaje .= "Tu Correo es: $correo<br>";
-			$mensaje .= "Tu contraseña es: $psw_nva<br/><br/>";
-			$mensaje .= "Accede a tu cuenta de usuario en el siguiente enlace: <br/>";
-			$mensaje .= "<a href='http://rgdiaz.com.mx/index.php/home/sesion'>rgdiaz.com.mx/index.php/home/sesion</a>";
 
+				#	Mandamos Correo con datos de acceso al nuevo cliente
+				#	Mandamos mail con datos de acceso al cliente---------------------------------
+
+				$correo = $this->input->post('correo'); 
 			
-			$cabeceras = "MIME-Version: 1.0\r\n";
-			$cabeceras .= "Content-type: text/html; charset=iso-8859-1\r\n";
-			$cabeceras .= "From: $de\r\n";
+				$para 	= $correo . ", " . "diaz281@yahoo.com.mx, rigediaz@hotmail.com";
+				$asunto = "RDíaz - Favor de completar alta";
 
-			mail($para,$asunto,$mensaje,$cabeceras);
+				$this->email->from('admin@rdiaz.mx', 'Admin RDíaz');
+				$this->email->to($para); 
+				$this->email->cc(''); 
+				$this->email->bcc('');
 
+				$image = "http://rdiaz.mx/img/logo_mini.png"; // image path
 
-			//-------------------------------------------------------------
-			$datocliente=$this->persona_model->obtenerid($this->input->post('correo'),$psw_nva);
+				$mensaje = "
+				<html>
+					<head> </head>
+					<body>
+						<br>
+						Utilizar el siguiente link para completar el registro: <strong> http://rdiaz.mx/index.php/home/sesion </strong> <br>
+
+						Usuario: {$correo} <br>
+						Contraseña: {$psw_nva}	<br>
+						
+						<br> <br>
+						<img href='http://rdiaz.mx/' src='{$image}' alt='Logo' />
+					</body>
+				</html>
+				";
+
+				$this->email->subject($asunto);
+				$this->email->message($mensaje);
+				$this->email->set_mailtype('html');
+
+				$this->email->send();
+				//-------------------------------------------------------------
+
+				//-------------------------------------------------------------
+				$datocliente=$this->persona_model->obtenerid($this->input->post('correo'),$psw_nva);
 				$nombrecarpeta=$datocliente->id_persona;
 				$id_persona=$nombrecarpeta;
 				$ruta_anterior='clientes/';
 				$ruta_carpeta= 'clientes/'.$nombrecarpeta;
 				$id_status_carpeta=1;
-				if($ruta_carpeta =='')
-					{
-						echo "Ingresa un nombre a la carpeta"."<br>";
-					}
-				else if(!is_dir($ruta_carpeta))
-					{
-						mkdir($ruta_carpeta, 0755);
-						chmod($ruta_carpeta, 0755);
-						$this->carpeta_model->registrarcarpeta($nombrecarpeta,$id_persona,$ruta_carpeta,$id_status_carpeta,$ruta_anterior);
-					}
-				else
-					{
-						echo "Ya existe una carpeta con ese nombre"."<br>";
-					}
+				
+				if($ruta_carpeta =='') {
+					echo "Ingresa un nombre a la carpeta"."<br>";
+				} else if(!is_dir($ruta_carpeta)) {
+					mkdir($ruta_carpeta, 0755);
+					chmod($ruta_carpeta, 0755);
+					$this->carpeta_model->registrarcarpeta($nombrecarpeta,$id_persona,$ruta_carpeta,$id_status_carpeta,$ruta_anterior);
+				} else {
+					echo "Ya existe una carpeta con ese nombre"."<br>";
+				}
 
-				redirect('administrador/mensajes_contacto');
-
+				redirect('administrador');
 			}
-		}else{
 
+		} else {
 			redirect('home');
 		}
 	}
 
-	public function baja_cliente()
-	{
+	public function baja_cliente() {
 		if ($this->session->userdata('tipo')==1){
 			if($this->input->post())
 			{	
@@ -287,23 +300,43 @@ class Administrador extends CI_Controller {
 				$this->persona_model->baja_cliente($id_status_persona,$this->input->post('id_persona'));
 
 				#	--------------- MANDAMOS MAIL DE AVISO DE DADO DE BAJA -----------------------------
-				$de = "diaz281@yahoo.com.mx";
-				$para = "$correo";
-				$asunto = "RDÍAZ Servicios Integrales en Materia Ambiental";
-				$mensaje = "Usted ha sido dado de baja.\n";
-				$mensaje .= "Para activar su cuenta pongase en contacto con: $de";
+			
+				$para 	= $correo . ", " . "diaz281@yahoo.com.mx, rigediaz@hotmail.com";
+				$asunto = "RDíaz - Baja de cliente {$correo} ";
 
-				
-				$cabeceras = "MIME-Version: 1.0\r\n";
-				$cabeceras .= "Content-type: text/html; charset=iso-8859-1\r\n";
-				$cabeceras .= "From: $de\r\n";
+				$this->email->from('admin@rdiaz.mx', 'Admin RDíaz');
+				$this->email->to($para); 
+				$this->email->cc(''); 
+				$this->email->bcc('');
 
-				mail($para,$asunto,$mensaje,$cabeceras);
+				$image = "http://rdiaz.mx/img/logo_mini.png"; // image path
+
+				$mensaje = "
+				<html>
+					<head> </head>
+					<body>
+						<br>
+						Usted ha sido dado de baja. <br>
+						Si desea volver a activar su cuenta pongase en contacto con: diaz281@yahoo.com.mx <br>
+
+						<br> <br>
+						<img href='http://rdiaz.mx/' src='{$image}' alt='Logo' />
+					</body>
+				</html>
+				";
+
+				$this->email->subject($asunto);
+				$this->email->message($mensaje);
+				$this->email->set_mailtype('html');
+
+				$this->email->send();
+				//-------------------------------------------------------------
+
+
 
 				redirect('administrador');
 			}
 		}else{
-
 			redirect('home/logout');
 		}
 	}
@@ -389,20 +422,16 @@ class Administrador extends CI_Controller {
 		$id_persona=$this->input->post('id_persona');
 		$id_status_carpeta=1;
 		$ruta_carpeta= $ruta_anterior.'/'.$nombrecarpeta;
-		if($ruta_carpeta =='')
-					{
-						echo "Ingresa un nombre a la carpeta"."<br>";
-					}
-				else if(!is_dir($ruta_carpeta))
-					{
-						mkdir($ruta_carpeta, 0755);
-						chmod($ruta_carpeta, 0755);
-						$this->carpeta_model->registrarcarpeta($nombrecarpeta,$id_persona,$ruta_carpeta,$id_status_carpeta,$ruta_anterior);	
-					}
-				else
-					{
-						echo "Ya existe una carpeta con ese nombre"."<br>";
-					}
+		if($ruta_carpeta =='') {
+			echo "Ingresa un nombre a la carpeta"."<br>";
+		} else if (!is_dir($ruta_carpeta)) {
+			mkdir($ruta_carpeta, 0755);
+			chmod($ruta_carpeta, 0755);
+			$this->carpeta_model->registrarcarpeta($nombrecarpeta,$id_persona,$ruta_carpeta,$id_status_carpeta,$ruta_anterior);	
+		} else {
+			echo "Ya existe una carpeta con ese nombre"."<br>";
+		}
+		
 		$status = 0;
 		$ruta_carpeta=$ruta_anterior;
 		$direccion = $ruta_anterior;
@@ -815,7 +844,7 @@ class Administrador extends CI_Controller {
 				#	Mandamos Correo con datos de acceso al nuevo cliente
 				#	Mandamos mail con datos de acceso al cliente---------------------------------
 
-				$correo = $this->input->post('correo_empresa'); 
+				$correo = $this->input->post('correo'); 
 			
 				$para 	= $correo . ", " . "diaz281@yahoo.com.mx, rigediaz@hotmail.com";
 				$asunto = "RDíaz - Alta completada";
@@ -853,6 +882,7 @@ class Administrador extends CI_Controller {
 				$this->email->send();
 
 				//-------------------------------------------------------------
+
 				$datocliente=$this->persona_model->obtenerid($this->input->post('correo'),$psw_nva);
 				$nombrecarpeta=$datocliente->id_persona;
 				$id_persona=$nombrecarpeta;
@@ -2080,26 +2110,6 @@ class Administrador extends CI_Controller {
 	}
 
 	public function mail_test() { 
-		$correo = "gopixc@gmail.com";
-		$de = "diaz281@yahoo.com.mx";
-		$para = "$correo";
-		$asunto = "RDÍAZ Servicios Integrales en Materia Ambiental";
-		$mensaje = "DATOS DE ACCESO AL SISTEMA<br/>";
-		$mensaje .= "Tu Correo es: $correo <br>";
-		$mensaje .= "Tu contraseña es: 123 <br/><br/>";
-		$mensaje .= "Accede a tu cuenta de usuario en el siguiente enlace: <br/>";
-		$mensaje .= "<a href='http://rgdiaz.com.mx/index.php/home/sesion'>rgdiaz.com.mx/index.php/home/sesion</a>";
-
-		
-		$cabeceras = "MIME-Version: 1.0\r\n";
-		$cabeceras .= "Content-type: text/html; charset=iso-8859-1\r\n";
-		$cabeceras .= "From: $de\r\n";
-
-		mail($para,$asunto,$mensaje,$cabeceras);
-	}
-
-
-	public function mail_test2() { 
 
 		$data["mensajes"] = $this->contacto_model->contador_mensajes(0);
 		$data["clientes"] = $this->persona_model->obtiene_clientes_baja(3,1,1);

@@ -125,20 +125,45 @@ class Cliente extends CI_Controller {
 			#------------  ENVIO DE CORREO DE CONFIRMACION  -------------------------
 
 			$correo = $this->input->post('correo'); 
-			$de = "diaz281@yahoo.com.mx";
-			$para = "$correo";
-			$asunto = "RDÍAZ Servicios Integrales en Materia Ambiental";
-			$mensaje = "Has echo una peticion para recuperar contraseña de acceso al sistema.<br/>\n";
-			$mensaje .= "Se te ha generado una contraseña de acceso. \n";
-			$mensaje .= "Tus datos de acceso son:<br/>\n";
-			$mensaje .= "Cuenta de usuario: $correo <br/> Contraseña: $psw_nva";
+		
+			$para 	= $correo . ", " . "diaz281@yahoo.com.mx, rigediaz@hotmail.com";
+			$asunto = "RDíaz - Cambio de contraseña";
 
-			
-			$cabeceras = "MIME-Version: 1.0\r\n";
-			$cabeceras .= "Content-type: text/html; charset=iso-8859-1\r\n";
-			$cabeceras .= "From: $de\r\n";
+			$this->email->from('admin@rdiaz.mx', 'Admin RDíaz');
+			$this->email->to($para); 
+			$this->email->cc(''); 
+			$this->email->bcc('');
 
-			if(mail($para,$asunto,$mensaje,$cabeceras)){
+			$image = "http://rdiaz.mx/img/logo_mini.png"; // image path
+
+			$mensaje = "
+			<html>
+				<head> </head>
+				<body>
+					<br>
+					Has echo una peticion para recuperar contraseña de acceso al sistema. <br>
+					Se te ha generado una contraseña de acceso. <br>
+
+					Datos de acceso <br>
+					---------------------------------------------- <br>
+					Usuario: {$correo} <br>
+					Contraseña: {$psw_nva}	<br>
+					
+					<br> <br>
+					<img href='http://rdiaz.mx/' src='{$image}' alt='Logo' />
+				</body>
+			</html>
+			";
+
+			$this->email->subject($asunto);
+			$this->email->message($mensaje);
+			$this->email->set_mailtype('html');
+
+			$this->email->send();
+			//-------------------------------------------------------------
+
+
+			if($this->email->send()){
 				$respuesta = true;
 				echo json_encode($respuesta);
 			}else{
@@ -198,6 +223,7 @@ class Cliente extends CI_Controller {
 														 $this->input->post('cp_empresa'),
 														 $this->input->post('colonia_empresa'),
 														 $this->input->post('numero_empresa'),
+														 $this->input->post('numero_registro_ambiental'),
 														 $this->input->post('id_persona'),
 														 $this->input->post('municipio'),
 														 $this->input->post('estado'),
@@ -207,6 +233,47 @@ class Cliente extends CI_Controller {
 				$correo=$this->session->userdata('correo');
 				$status=1;
 				$login=$this->persona_model->login($correo,$password,$status);
+
+
+				#------------  ENVIO DE CORREO DE CONFIRMACION  -------------------------
+
+				$para 	= $correo . ", " . "diaz281@yahoo.com.mx, rigediaz@hotmail.com";
+				$asunto = "RDíaz - Alta completada";
+
+				$this->email->from('admin@rdiaz.mx', 'Admin RDíaz');
+				$this->email->to($para); 
+				$this->email->cc(''); 
+				$this->email->bcc('');
+
+				$image = "http://rdiaz.mx/img/logo_mini.png"; // image path
+
+				$mensaje = "
+				<html>
+					<head> </head>
+					<body>
+						<br>
+						La alta de cliente ha quedado registrada. <br>
+
+						Usuario: {$correo} <br>
+						Contraseña: {$psw_nva}	<br>
+						<br>
+
+						Favor de utilizar el siguiente link para iniciar sesión: http://rdiaz.mx
+
+						<br> <br>
+						<img href='http://rdiaz.mx/' src='{$image}' alt='Logo' />
+					</body>
+				</html>
+				";
+
+				$this->email->subject($asunto);
+				$this->email->message($mensaje);
+				$this->email->set_mailtype('html');
+
+				$this->email->send();
+				//-------------------------------------------------------------
+
+
 			if(!is_object($login)){
 						//contraseña y/o usuario invalido			
 						$this->session->sess_destroy(); #destruye session

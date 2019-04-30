@@ -76,8 +76,7 @@
 			</div>
 		</div>
 		<?php 
-			}
-			else{
+			} else {
 		?>
 				<div class="span9">
 					<form method="post" action="<?php echo site_url('cliente/regisdatos_persona'); ?>">
@@ -107,6 +106,13 @@
 											<img src="img/glyphicons_242_google_maps.png" class="icon-form">
 										</span>
 										<input class="txt-well" id="numero_empresa" name="numero_empresa" type='text' required>
+									</div>
+									Número de Registro Ambiental
+									<div class='input-prepend'>
+										<span class='add-on'>
+											<img src="img/glyphicons_242_google_maps.png" class="icon-form">
+										</span>
+										<input class="txt-well" id="numRegAmb" type='text' placeholder=''  name="numero_registro_ambiental">
 									</div>
 									Colonia
 									<div class='input-prepend'>
@@ -153,7 +159,7 @@
 								</center>
 								<br>
 							</div>
-						</div>
+						</div>zz
 						<div class="span2"></div>
 						<div class="span5">
 							<legend>Datos del Contacto</legend>

@@ -109,10 +109,6 @@ function date_bitacora($s_date){
 		<div class="span3"></div>
 
 		<div class="span2">
-				<a href="<?= site_url('cliente/manifiesto/' . $id) ?>" class="btn btn-primary pull-right" > <i class="icon-file"></i> Generar Manifiesto </a>
-		</div>
-
-		<div class="span2">
 			<form action="<?php echo site_url('cliente/generar_excel'); ?>" method="POST">
 				<input type="hidden" value="<?php echo $id; ?>" name="id_persona">
 				<button type="submit" class="btn btn-primary pull-right" name="excel" ><i class="icon-list-alt"></i> Generar Excel </button>
