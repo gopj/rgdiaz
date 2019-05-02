@@ -1226,7 +1226,9 @@ class Administrador extends CI_Controller {
 				//Actualiza los registros al finalizar el manifiesto
 				$this->residuo_peligroso_model->actualizar_registros($data);
 
-				$nombre_empresa_transportista 	= $this->emp_transportista_model->get_datos_emp_trans($data['emp_tran'])[0]->nombre_empresa;
+
+				//Enviar Mail de notificación
+				/*$nombre_empresa_transportista 	= $this->emp_transportista_model->get_datos_emp_trans($data['emp_tran'])[0]->nombre_empresa;
 				$nombre_empresa_destino 		= $this->emp_destino_model->get_nombre_dest($data['dest_final']);
 				$correo 						= $this->persona_model->get_datos_empresa($this->input->post('id_persona'))->correo_empresa;
 
@@ -1266,7 +1268,7 @@ class Administrador extends CI_Controller {
 				$this->email->message($mensaje);
 				$this->email->set_mailtype('html');
 
-				$this->email->send();
+				$this->email->send(); */
 				
 				redirect('administrador/bitacora/' . $data["id_persona"] );
 			} else {
