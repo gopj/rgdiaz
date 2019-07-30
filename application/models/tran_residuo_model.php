@@ -12,23 +12,24 @@ class Tran_residuo_model extends CI_Model {
 		$result = $this->db->query("
 			SELECT 
 				r.id_tran_residuo,
-				r.folio, 
+				tf.folio, 
 				ed.nombre_destino as empresa_destino,
 				tr.residuo as residuo,
 				tr.clave as clave,
 				r.unidad as unidad,
 				r.caracteristica as caracteristica,
 				r.fecha_ingreso as fecha_ingreso,
-				status
+				tf.status
 			FROM 
 				tipo_residuos as tr,
-			 	tran_residuos as r
-					LEFT JOIN tipo_emp_destino ed ON (r.id_tipo_emp_destino = ed.id_tipo_emp_destino)
+			 	tran_residuos as r,
+			 	tran_folios as tf
+					LEFT JOIN tipo_emp_destino ed ON (tf.id_tipo_emp_destino = ed.id_tipo_emp_destino)
 			WHERE
 				r.id_tipo_residuo = tr.id_tipo_residuo and
-				r.id_persona = {$id_cliente}
+				tf.id_persona = {$id_cliente}
 			GROUP BY
-				r.folio asc;
+				tf.folio asc;
 		")->result();
 
 		return $result;
@@ -40,11 +41,11 @@ class Tran_residuo_model extends CI_Model {
 			SELECT 
 				folio
 			FROM 
-				tran_residuos 
+				tran_folios 
 			WHERE
 				id_persona = {$id_cliente}
 			ORDER BY
-				id_tran_residuo desc
+				id_tran_folio desc
 			LIMIT 1;
 		")->row("folio");
 
@@ -105,7 +106,12 @@ class Tran_residuo_model extends CI_Model {
 	public function inserta_tran_residuo($data) {	
 
 		$this->db
-				->set('id_persona'			,$data['id_cliente'])
+			->set('id_persona'			,$data['id_cliente'])
+			->insert('folios');
+
+		$this->db->insert_id();
+
+		$this->db
 				->set('id_tipo_residuo'		,$data['residuo'])
 				->set('id_tipo_emp_destino'	,$data['id_emp_destino'])
 				->set('id_recolector'		,$data['id_recolector'])
