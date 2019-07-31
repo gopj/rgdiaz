@@ -57,6 +57,12 @@ class Recolector extends CI_Controller {
 				$data["id_cliente"] = $this->input->post("id_persona");
 
 				$data["bitacora"] = $this->tran_residuo_model->get_bitacora($data["id_cliente"]);
+
+				echo "<pre>";
+				print_r($data["bitacora"]);
+				echo "</pre>";
+
+				die();
 				
 				$this->load->view("recolector/header");
 				$this->load->view("recolector/ver_manifiestos", $data);

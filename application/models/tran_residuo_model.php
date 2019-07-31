@@ -61,21 +61,25 @@ class Tran_residuo_model extends CI_Model {
 		$result = $this->db->query("
 			SELECT 
 				r.id_tran_residuo,
-				r.folio,
-				tr.residuo,
-				r.caracteristica,
+				tf.id_tran_folio, 
+				tf.folio, 
+				tr.residuo as residuo,
+				r.caracteristica as caracteristica,
 				r.contenedor_cantidad,
 				r.contenedor_tipo,
 				r.residuo_cantidad,
-				r.unidad
+				r.unidad as unidad
 			FROM 
-				tran_residuos as r
-					LEFT JOIN tipo_emp_destino ed ON (r.id_tipo_emp_destino = ed.id_tipo_emp_destino),
-				tipo_residuos as tr
+				tipo_residuos as tr,
+			 	tran_residuos as r,
+			 	tran_folios as tf
+					LEFT JOIN tipo_emp_destino ed ON (tf.id_tipo_emp_destino = ed.id_tipo_emp_destino)
 			WHERE
-				r.id_tipo_residuo = tr.id_tipo_residuo and
-				id_persona 	= {$id_cliente} and 
-				folio 		= {$folio};
+				r.id_tipo_residuo 	= tr.id_tipo_residuo and
+				tf.id_persona 		= {$id_cliente} and 
+				tf.id_tran_folio	= {$folio}
+			GROUP BY
+				tf.id_tran_folio asc;
 		")->result();  
 
 		return $result;
@@ -106,25 +110,31 @@ class Tran_residuo_model extends CI_Model {
 	public function inserta_tran_residuo($data) {	
 
 		$this->db
-			->set('id_persona'			,$data['id_cliente'])
-			->insert('folios');
+			->set('id_persona'			, $data['id_cliente'])
+			->set('id_tipo_emp_destino'	, $data['id_emp_destino'])
+			->set('id_recolector' 		, $data["id_recolector"])
+			->set('folio' 				, $this->db->insert_id())
+			->set('responsable_tecnico'	, $data['responsable_tecnico'])
+			->set('status' 				, 'W')
+			->set('ruta'				, 'ruta... Agregar campo de ruta en UI')
+			->set('observaciones'		, 'Falta agregar observaciones - Agregar campo de observaciones en UI')
+			->insert('tran_folios');
 
-		$this->db->insert_id();
+		$folio = $this->db->insert_id(); 
 
 		$this->db
-				->set('id_tipo_residuo'		,$data['residuo'])
-				->set('id_tipo_emp_destino'	,$data['id_emp_destino'])
-				->set('id_recolector'		,$data['id_recolector'])
-				->set('folio'				,$data['folio'])
-				->set('caracteristica'		,$data['caracteristicas'])
-				->set('contenedor_cantidad'	,$data['cantidad_contenedor'])
-				->set('contenedor_tipo'		,$data['contenedor'])
-				->set('residuo_cantidad'	,$data['cantidad'])
-				->set('unidad'				,$data['unidad'])
-				->set('responsable_tecnico'	,$data['responsable_tecnico'])
-				->set('fecha_insercion'		,'NOW()', FALSE)
-				->set('fecha_ingreso'		,$data['fecha_embarque'])
-				->set('status'				,"W")
+				->set('id_folio'				, $folio)
+				->set('id_tipo_residuo'		, $data['residuo'])
+				->set('caracteristica'		, $data['caracteristicas'])
+				->set('contenedor_cantidad'	, $data['cantidad_contenedor'])
+				->set('contenedor_tipo'		, $data['contenedor'])
+				->set('residuo_cantidad'	, $data['cantidad'])
+				->set('unidad'				, $data['unidad'])
+				->set('fecha_insercion'		, 'NOW()', FALSE)
+				->set('fecha_ingreso'		, $data['fecha_embarque'])
+				->set('status'				, "W")
+				->set('contenedor_capacidad', 1111111)
+				->set('etiqueta' 			, 'falta en ui ETIQUETA ')
 				->insert('tran_residuos');
 
 		return $this->db->insert_id();
