@@ -57,16 +57,11 @@ class Recolector extends CI_Controller {
 				$data["id_cliente"] = $this->input->post("id_persona");
 
 				$data["bitacora"] = $this->tran_residuo_model->get_bitacora($data["id_cliente"]);
-
-				echo "<pre>";
-				print_r($data["bitacora"]);
-				echo "</pre>";
-
-				die();
 				
 				$this->load->view("recolector/header");
 				$this->load->view("recolector/ver_manifiestos", $data);
 				$this->load->view("recolector/footer");
+
 			} elseif ($id_persona) {
 				$data["id_cliente"] = $id_persona;
 
@@ -134,11 +129,15 @@ class Recolector extends CI_Controller {
 				$data["caracteristica_r"]	= $this->input->post("caracteristica_check");
 				$data["caracteristicas"] 	= "";
 				$data["folio"]				= $folio;
-				
+			
+				$this->tran_residuo_model->inserta_tran_folio($data);
+
+
 				foreach ($data["caracteristica_r"] as $key => $value) {
 					$data["caracteristicas"] .= $value . " ";
 				}
 
+				
 				$this->tran_residuo_model->inserta_tran_residuo($data);
 
 				$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
@@ -181,6 +180,7 @@ class Recolector extends CI_Controller {
 				$fecha_embarque 			= date_create_from_format("d/m/Y", $this->input->post("fecha_embarque"));
 
 				$data["id_cliente"] 		= $id_cliente;
+				$data["id_recolector"] 		= $this->session->userdata("id");
 				$data["id_emp_destino"]		= $this->input->post("empresa_destino");
 				$data["residuo"]			= $this->input->post("residuo_peligroso");
 				$data["fecha_embarque"]		= date_format($fecha_embarque, "Y-m-d");
@@ -197,8 +197,6 @@ class Recolector extends CI_Controller {
 					$data["caracteristicas"] .= $value . " ";
 				}
 				
-				$this->tran_residuo_model->update_prev_reg($id_cliente, $folio, $data);
-
 				$this->tran_residuo_model->inserta_tran_residuo($data);
 
 				$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
@@ -211,7 +209,7 @@ class Recolector extends CI_Controller {
 
 				$tran_resiudos 				= $this->tran_residuo_model->get_reg_tran_residuos($id_cliente, $folio);
 
-				$fecha_embarque				= date_create_from_format("Y-m-d", $tran_resiudos->fecha_ingreso);
+				$fecha_embarque				= date_create_from_format("Y-m-d", $tran_resiudos->fecha_embarque);
 				$data["fecha_embarque"]		= date_format($fecha_embarque, "d/m/Y");
 				$data["responsable_tecnico"]= $tran_resiudos->responsable_tecnico;
 				$data["id_emp_destino"]		= $tran_resiudos->id_tipo_emp_destino;

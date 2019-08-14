@@ -13,7 +13,7 @@
 		<tbody>
 			<?php 
 				foreach ($bitacora as $bit) { 
-					$fecha =  date_create_from_format("Y-m-d", $bit->fecha_ingreso);
+					$fecha =  date_create_from_format("Y-m-d", $bit->fecha_embarque);
 			?>			
 				<tr>
 					<td style="text-align: center;"> <?= $id_cliente . "-" . $bit->folio; ?> </td>
