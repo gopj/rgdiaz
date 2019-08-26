@@ -269,7 +269,7 @@ class Recolector extends CI_Controller {
 			$this->tran_residuo_model->delete_tran_residuos($id_tran_residuo);
 
 			$tran_resiudos 				= $this->tran_residuo_model->get_reg_tran_residuos($id_cliente, $folio);
-			$data["fecha_embarque"]		= $tran_resiudos->fecha_ingreso;
+			$data["fecha_embarque"]		= $tran_resiudos->fecha_embarque;
 			$data["responsable_tecnico"]= $tran_resiudos->responsable_tecnico;
 			$data["id_cliente"] 		= $id_cliente;
 			$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();

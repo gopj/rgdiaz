@@ -24,7 +24,7 @@
 							<a href="<?=site_url('recolector/ver_manifiesto/' . $id_cliente . '/' . $bit->folio);?>" class="btn btn-primary btn-sm" role="button"> Ver </button> 
 							<a href="<?=site_url('recolector/generar_manifiesto/' . $id_cliente . '/' . $bit->folio);?>" class="btn btn-danger btn-sm" role="button"> PDF </button>
 						</td>
-					<?php } elseif ($bit->status == 'W') { echo $bit->status?>
+					<?php } elseif ($bit->status == 'W') { ?>
 						<td> 
 							<a href="<?=site_url('recolector/crear_manifiestos/' . $id_cliente . '/' . $bit->folio);?>" class="btn btn-success btn-sm" role="button"> Terminar </button> &nbsp;&nbsp;&nbsp;
 							<a href="#" class="btn btn-danger btn-sm" role="button" disabled> PDF </button>
