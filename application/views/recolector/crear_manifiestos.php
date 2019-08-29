@@ -196,7 +196,7 @@
 							<td> <?= $key->unidad ?> </td>
 							<?php if ($total_reg == 1) { ?>
 								<td style="text-align: center;">
-									<button class="btn btn-danger btn-sm btn-block" disabled> Eliminar </button>
+									<button type="button" class="btn btn-danger btn-sm btn-block" data-toggle="modal" data-target="#deleteLastResiduo">Eliminar </button>
 								</td>
 							<?php } else { ?>
 								<td style="text-align: center;"> 
@@ -236,4 +236,35 @@
 			</form>
 		</div>
 	</div>
+
+	<!-- The Modal -->
+	<div class="modal" id="deleteLastResiduo">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h4 class="modal-title">Eliminar último residuo del folio - </h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body">
+				<div class="form-row">
+					<div class="form-group col-md-8">
+						<label class="col-form-label" for="nombre_residuo"> Eliminando último residuo y folio creado ¿Deseas continuar? </label>
+					</div>	
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+					<a href="<?=site_url('recolector/eliminar_tran_residuo/' . $id_cliente . '/' . $key->folio . '/' . $key->id_tran_residuo);?>" class="btn btn-danger btn-sm btn-block" role="button"> Eliminar </a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
 </main>
