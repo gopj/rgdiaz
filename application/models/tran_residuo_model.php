@@ -33,7 +33,7 @@ class Tran_residuo_model extends CI_Model {
 		
 		$result = $this->db->query("
 			SELECT 
-				folio
+				id_tran_folio
 			FROM 
 				tran_folios 
 			WHERE
@@ -109,7 +109,7 @@ class Tran_residuo_model extends CI_Model {
 			->set('id_persona'			, $data['id_cliente'])
 			->set('id_tipo_emp_destino'	, $data['id_emp_destino'])
 			->set('id_recolector' 		, $data["id_recolector"])
-			->set('folio' 				, $this->db->insert_id()+1)
+			->set('folio' 				, $data['folio'])
 			->set('fecha_embarque' 		, $data['fecha_embarque'])
 			->set('responsable_tecnico'	, $data['responsable_tecnico'])
 			->set('status' 				, 'W')
@@ -144,11 +144,11 @@ class Tran_residuo_model extends CI_Model {
 
 		$sql_text = "
 			SELECT 
-				tf.fecha_embarque,
-				tf.responsable_tecnico,
-				tf.id_tipo_emp_destino
+				fecha_embarque,
+				responsable_tecnico,
+				id_tipo_emp_destino
 			FROM 
-				tran_folios as tf
+				tran_folios
 			WHERE
 				id_persona 	= {$id_cliente} and 
 				id_tran_folio	= {$folio}

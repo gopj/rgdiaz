@@ -109,7 +109,11 @@ class Recolector extends CI_Controller {
 
 			if ($this->input->post()) {
 
-				$folio = $this->tran_residuo_model->get_bitacora_count($id_cliente)+1;
+				$folio = $this->tran_residuo_model->get_bitacora_count($id_cliente);
+
+				if ($folio == 0) {
+					$folio = 1;
+				}
 
 				$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
 				$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
@@ -192,6 +196,9 @@ class Recolector extends CI_Controller {
 				$data["caracteristica_r"]	= @$this->input->post("caracteristica_check");
 				$data["caracteristicas"] 	= "";
 				$data["folio"]				= $folio;
+
+				echo $folio;
+				die();
 
 				foreach (@$data["caracteristica_r"] as $key => $value) {
 					$data["caracteristicas"] .= $value . " ";
