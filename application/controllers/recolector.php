@@ -265,7 +265,7 @@ class Recolector extends CI_Controller {
 	public function eliminar_tran_residuo($id_cliente, $folio, $id_tran_residuo) {
 
 		if ($this->session->userdata('tipo') == 2){
-			
+
 			$this->tran_residuo_model->delete_tran_residuos($id_tran_residuo);
 
 			$tran_resiudos 				= $this->tran_residuo_model->get_reg_tran_residuos($id_cliente, $folio);
@@ -279,6 +279,26 @@ class Recolector extends CI_Controller {
 			
 			$this->load->view("recolector/header");
 			$this->load->view("recolector/crear_manifiestos", $data);
+			$this->load->view("recolector/footer");
+
+		} else {
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/index');
+		}	
+	
+	}
+
+	public function eliminar_ultimo_residuo($id_cliente, $folio, $id_tran_residuo) {
+
+		if ($this->session->userdata('tipo') == 2){
+			
+						
+			$this->tran_residuo_model->delete_tran_residuos($id_tran_residuo);
+			$this->tran_residuo_model->delete_tran_folio($folio);
+
+			
+			$this->load->view("recolector/header");
+			$this->load->view("recolector/ver_manifiestos", $data);
 			$this->load->view("recolector/footer");
 
 		} else {

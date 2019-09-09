@@ -259,7 +259,7 @@
 				<!-- Modal footer -->
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-					<a href="<?=site_url('recolector/eliminar_tran_residuo/' . $id_cliente . '/' . $key->folio . '/' . $key->id_tran_residuo);?>" class="btn btn-danger btn-sm btn-block" role="button"> Eliminar </a>
+					<a href="<?=site_url('recolector/eliminar_ultimo_residuo/' . $id_cliente . '/' . $key->folio . '/' . $key->id_tran_residuo);?>" class="btn btn-danger btn-sm btn-block" role="button"> Eliminar </a>
 				</div>
 
 			</div>

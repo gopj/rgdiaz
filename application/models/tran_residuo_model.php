@@ -148,7 +148,6 @@ class Tran_residuo_model extends CI_Model {
 				tf.responsable_tecnico,
 				tf.id_tipo_emp_destino
 			FROM 
-				tran_residuos as r,
 				tran_folios as tf
 			WHERE
 				id_persona 	= {$id_cliente} and 
@@ -163,6 +162,10 @@ class Tran_residuo_model extends CI_Model {
 
 	public function delete_tran_residuos($id) {	
 		return $this->db->query(" DELETE FROM tran_residuos where id_tran_residuo={$id};");	
+	}
+
+	public function delete_tran_folio($id) {	
+		return $this->db->query(" DELETE FROM tran_folios where id_tran_folio={$id};");	
 	}
 
 	public function update_regs($id_cliente, $folio, $data){
