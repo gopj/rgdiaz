@@ -41,10 +41,12 @@ class Tran_residuo_model extends CI_Model {
 			ORDER BY
 				id_tran_folio desc
 			LIMIT 1;
-		")->row("folio");
+		")->result()["0"];
+
+		$result = $result->id_tran_folio;
 
 		if ($result == null) {
-			$result = 0;
+			$result = 1;
 		}
 
 		return $result;
