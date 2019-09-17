@@ -31,7 +31,7 @@ class Tran_residuo_model extends CI_Model {
 
 	public function get_bitacora_count($id_cliente){
 		
-		$result = $this->db->query("
+		$result = @$this->db->query("
 			SELECT 
 				id_tran_folio
 			FROM 
@@ -43,10 +43,10 @@ class Tran_residuo_model extends CI_Model {
 			LIMIT 1;
 		")->result()["0"];
 
-		$result = $result->id_tran_folio;
+		$result = @$result->id_tran_folio;
 
 		if ($result == null) {
-			$result = 1;
+			$result = 0;
 		}
 
 		return $result;
