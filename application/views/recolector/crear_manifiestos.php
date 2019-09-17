@@ -196,7 +196,7 @@
 							<td> <?= $key->unidad ?> </td>
 							<?php if ($total_reg == 1) { ?>
 								<td style="text-align: center;">
-									<button type="button" class="btn btn-danger btn-sm btn-block" data-toggle="modal" data-target="#deleteLastResiduo">Eliminar </button>
+									<button type="button" class="btn btn-danger btn-sm btn-block" data-toggle="modal" data-target="#deleteLastResiduo"> Eliminar </button>
 								</td>
 							<?php } else { ?>
 								<td style="text-align: center;"> 
@@ -259,7 +259,7 @@
 				<!-- Modal footer -->
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-					<a href="<?=site_url('recolector/eliminar_ultimo_residuo/' . $id_cliente . '/' . $key->folio . '/' . $key->id_tran_residuo);?>" class="btn btn-danger btn-sm btn-block" role="button"> Eliminar </a>
+					<a href="<?=site_url('recolector/eliminar_ultimo_residuo/' . $id_cliente . '/' . $key->folio . '/' . $key->id_tran_residuo);?>" class="btn btn-danger" role="button"> Eliminar </a>
 				</div>
 
 			</div>

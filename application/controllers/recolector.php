@@ -297,7 +297,7 @@ class Recolector extends CI_Controller {
 
 			
 			$this->load->view("recolector/header");
-			$this->load->view("recolector/ver_manifiestos", $data);
+			$this->load->view("recolector/ver_manifiestos/" . $id_cliente , $data);
 			$this->load->view("recolector/footer");
 
 		} else {

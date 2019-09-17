@@ -228,3 +228,11 @@ $( document ).ready(function() {
 	}, false);
 })();
 
+
+function delete_last_residuo(id, nombre, url_delete, id_persona, folio){
+
+	document.getElementById('eliminar_span').textContent = nombre;
+	document.getElementById('folio_span').textContent = folio;
+	document.getElementById("residuo_delete").setAttribute("href", url_delete);
+	
+}
