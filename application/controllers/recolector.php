@@ -109,7 +109,7 @@ class Recolector extends CI_Controller {
 
 			if ($this->input->post()) {
 
-				$folio = $this->tran_residuo_model->get_bitacora_count($id_cliente);
+				$folio = $this->tran_residuo_model->get_bitacora_count($id_cliente)+1;
 
 				$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
 				$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
