@@ -5,13 +5,11 @@
 			<div class="form-row">
 				<div class="form-group col-md-9">
 					<label class="col-form-label" for="nombre_empresa"> <center> Empresa Destino </center> </label>
-					<select class="form-control" style="width: 100%;" name="empresa_destino" id="empresa_destino" readonly>
-						<option> <?= $empresa_destino; ?> </option>
-					</select>
+					<input type="text" class="form-control" id="nombre_empresa" name="fecha_embarque" value="<?= $empresa_destino; ?> " disabled>
 				</div>
 				<div class="form-group col-md-3">
-					<label class="col-form-label" for="fecha_salida"> <center> Fecha de Embarque </center> </label>
-					<input type="date" class="form-control" id="fecha_embarque" name="fecha_embarque" value="<?= $fecha_embarque ?>" readonly>
+					<label class="col-form-label" for="fecha_embarque_terminada"> <center> Fecha de Embarque </center> </label>
+					<input type="text" class="form-control" id="fecha_embarque_terminada" name="fecha_embarque_terminada" style="text-align:center;" value="<?= $fecha_embarque ?>" disabled>
 				</div>		
 			</div>
 

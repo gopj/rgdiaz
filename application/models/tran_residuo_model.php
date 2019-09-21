@@ -133,7 +133,6 @@ class Tran_residuo_model extends CI_Model {
 				->set('residuo_cantidad'	, $data['cantidad'])
 				->set('unidad'				, $data['unidad'])
 				->set('fecha_insercion'		, 'NOW()', FALSE)
-				->set('status'				, "W")
 				->set('contenedor_capacidad', 1111111)
 				->set('etiqueta' 			, 'falta en ui ETIQUETA ')
 				->insert('tran_residuos');
@@ -170,7 +169,7 @@ class Tran_residuo_model extends CI_Model {
 		return $this->db->query(" DELETE FROM tran_folios where id_tran_folio={$id};");	
 	}
 
-	public function update_regs($id_cliente, $folio, $data){
+/*	public function update_regs($id_cliente, $folio, $data){
 		$sql_text = "
 			UPDATE 
 				tran_residuos 
@@ -183,13 +182,13 @@ class Tran_residuo_model extends CI_Model {
 		";
 
 		$this->db->query($sql_text);
-	}
+	}*/
 
 	public function terminar_manifiesto($id_cliente, $folio) {	
 
 		$sql_text = "
 				UPDATE 
-					tran_residuos 
+					tran_folios 
 				SET 
 					status='R'
 				WHERE 

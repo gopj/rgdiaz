@@ -86,7 +86,7 @@ class Recolector extends CI_Controller {
 		if ($this->session->userdata('tipo') == 2){
 
 			$data["empresa_destino"] 	= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->empresa_destino;
-			$data["fecha_embarque"] 	= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->fecha_ingreso;
+			$data["fecha_embarque"] 	= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->fecha_embarque;
 			$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
 			$data["responsable_tecnico"]= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->responsable_tecnico;
 			$data["id_cliente"]			= $id_cliente;
@@ -243,7 +243,6 @@ class Recolector extends CI_Controller {
 				$data["fecha_embarque"]		= date_format($fecha_embarque, "Y-m-d");
 				$data["responsable_tecnico"]= $this->input->post("terminar_responsable");
 
-				$this->tran_residuo_model->update_regs($id_cliente, $folio, $data);
 				$this->tran_residuo_model->terminar_manifiesto($id_cliente, $folio);
 
 				$data["id_cliente"] = $id_cliente;
