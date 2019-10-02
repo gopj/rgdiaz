@@ -109,7 +109,7 @@ class Recolector extends CI_Controller {
 
 			if ($this->input->post()) {
 
-				$folio = $this->tran_residuo_model->get_bitacora_count($id_cliente)+1;
+				$folio = $this->tran_residuo_model->get_bitacora_count($id_cliente);
 
 				$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
 				$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
@@ -294,10 +294,7 @@ class Recolector extends CI_Controller {
 			$this->tran_residuo_model->delete_tran_residuos($id_tran_residuo);
 			$this->tran_residuo_model->delete_tran_folio($folio);
 
-			
-			$this->load->view("recolector/header");
-			$this->load->view("recolector/ver_manifiestos/" . $id_cliente , $data);
-			$this->load->view("recolector/footer");
+			redirect("recolector/ver_manifiestos/" . $id_cliente);
 
 		} else {
 			$this->session->sess_destroy(); #destruye session

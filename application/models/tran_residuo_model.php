@@ -32,21 +32,13 @@ class Tran_residuo_model extends CI_Model {
 	public function get_bitacora_count($id_cliente){
 		
 		$result = @$this->db->query("
-			SELECT 
-				id_tran_folio
-			FROM 
-				tran_folios 
-			WHERE
-				id_persona = {$id_cliente}
-			ORDER BY
-				id_tran_folio desc
-			LIMIT 1;
-		")->result()["0"];
+			SELECT AUTO_INCREMENT FROM information_schema.tables WHERE table_schema='rdiaz' AND table_name='tran_folios';
+		")->row();
 
-		$result = @$result->id_tran_folio;
+		$result = @$result->AUTO_INCREMENT;
 
-		if ($result == null) {
-			$result = 0;
+		if ($result == 0) {
+			$result = 1;
 		}
 
 		return $result;
@@ -111,7 +103,7 @@ class Tran_residuo_model extends CI_Model {
 			->set('id_persona'			, $data['id_cliente'])
 			->set('id_tipo_emp_destino'	, $data['id_emp_destino'])
 			->set('id_recolector' 		, $data["id_recolector"])
-			->set('folio' 				, $data['folio'])
+			->set('folio' 				, $data["folio"])
 			->set('fecha_embarque' 		, $data['fecha_embarque'])
 			->set('responsable_tecnico'	, $data['responsable_tecnico'])
 			->set('status' 				, 'W')
