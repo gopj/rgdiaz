@@ -191,11 +191,15 @@ function clear_required(){
 		document.getElementById('caracteristica_check2').required = false;
 		document.getElementById('caracteristica_check3').required = false;
 		document.getElementById('caracteristica_check4').required = false;
+		document.getElementById('caracteristica_check5').required = false;
+		document.getElementById('caracteristica_check6').required = false;
 	} else {
 		document.getElementById('caracteristica_check1').required = true;
 		document.getElementById('caracteristica_check2').required = true;
 		document.getElementById('caracteristica_check3').required = true;
 		document.getElementById('caracteristica_check4').required = true;
+		document.getElementById('caracteristica_check5').required = true;
+		document.getElementById('caracteristica_check6').required = true;
 	}
 }
 
