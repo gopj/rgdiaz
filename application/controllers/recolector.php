@@ -135,7 +135,6 @@ class Recolector extends CI_Controller {
 				foreach ($data["caracteristica_r"] as $key => $value) {
 					$data["caracteristicas"] .= $value . " ";
 				}
-
 				
 				$this->tran_residuo_model->inserta_tran_residuo($data);
 

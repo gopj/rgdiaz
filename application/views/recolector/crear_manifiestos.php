@@ -42,125 +42,150 @@
 				<div class="modal-dialog modal-lg">
 					<div class="modal-content">
 
-					<!-- Modal Header -->
-					<div class="modal-header">
-						<h4 class="modal-title">Ingresa Residuo</h4>
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-					</div>
-
-					<!-- Modal body -->
-					<div class="modal-body">
-						<div class="form-row">
-							<div class="form-group col-md-8">
-								<label class="col-form-label" for="nombre_residuo"> Residuo Peligroso </label>
-								<select class="form-control" onchange="update_clave(this.value);" name="residuo_peligroso" required>
-									<option value="">Selecciona Residuo</option>
-									<?php foreach ($residuos as $key) { ?>
-										<option value="<?= $key->id_tipo_residuo; ?>"> <?= mb_strimwidth($key->residuo, 0, 55, '...', 'UTF-8'); ?></option>
-									<?php } ?>
-								</select>
-								<div class="invalid-feedback">
-									Selecciona residuo peligroso.
-								</div>
-							</div>	
-
-							<div class="form-group col-md-3">
-								<label class="col-form-label" for="clave"> Clave </label>
-								<input type="text" class="form-control" id="clave" name="clave" value="Clave" disabled> 
-							</div>	
-							<div class="form-group col-md-1">
-								<label class="col-form-label" for="otro_resdiuo"> Otro </label>
-								<br>
-								<label class="switch">
-									<input type="checkbox">
-									<span class="slider round"></span>
-								</label>
-							</div>	
+						<!-- Modal Header -->
+						<div class="modal-header">
+							<h4 class="modal-title">Ingresa Residuo</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
 						</div>
 
-						<div class="form-row">
-							<div class="form-group col-md-4">
-								<label class="col-form-label" for="nombre_residuo"> Cantidad Residuo </label>
-								<input readonly type="number" class="form-control" id="cantidad" name="cantidad" min="1" style="text-align:center" value="1" required>
-							</div>	
+						<!-- Modal body -->
+						<div class="modal-body">
+							<div class="form-row">
+								<div class="form-group col-md-8">
+									<label class="col-form-label" for="nombre_residuo"> Residuo Peligroso </label>
+									<select class="form-control" onchange="update_clave(this.value);" name="residuo_peligroso" required>
+										<option value=""> <strong> Selecciona Residuo </strong> </option>
+										<?php foreach ($residuos as $key) { ?>
+											<option value="<?= $key->id_tipo_residuo; ?>"> <?= mb_strimwidth($key->residuo, 0, 55, '...', 'UTF-8'); ?></option>
+										<?php } ?>
+									</select>
+									<div class="invalid-feedback">
+										Selecciona residuo peligroso.
+									</div>
+								</div>	
 
-							<div class="form-group col-md-8">
-								<label class="col-form-label"> Unidad </label>
-								<br>
-								<div class="custom-control custom-radio custom-control-inline">
-									<input type="radio" class="custom-control-input" id="unidad_radio1" value="Kg" name="unidadRadio" required>
-									<label class="custom-control-label" for="unidad_radio1">Kg</label>
-								</div>
-								<div class="custom-control custom-radio custom-control-inline">
-									<input type="radio" class="custom-control-input" id="unidad_radio2" value="Ton" name="unidadRadio" required>
-									<label class="custom-control-label" for="unidad_radio2">Ton</label>
-									<div class="invalid-feedback"> &nbsp; Selecciona unidad de medida.</div>
-								</div>
-							</div>	
-						</div>
-
-						<div class="form-row">
-							<div class="form-group col-md-4">
-								<label class="col-form-label" for="nombre_residuo"> Cantidad Tipo </label>
-								<input readonly type="number" class="form-control" id="cantidad_tipo" name="cantidad_tipo" min="1" style="text-align:center" value="1" required>
-							</div>	
-
-							<div class="form-group col-md-8">
-								<label class="col-form-label" for="nombre_residuo"> Tipo </label>
-								<br>
-								<div class="custom-control custom-radio custom-control-inline">
-									<input type="radio" class="custom-control-input" id="tipo_radio1" value="Bolsa" name="tipoRadio" required>
-									<label class="custom-control-label" for="tipo_radio1">Bolsa</label>
-								</div>
-								<div class="custom-control custom-radio custom-control-inline">
-									<input type="radio" class="custom-control-input" id="tipo_radio2" value="Cubeta" name="tipoRadio" required>
-									<label class="custom-control-label" for="tipo_radio2">Cubeta</label>
-								</div>
-								<div class="custom-control custom-radio custom-control-inline">
-									<input type="radio" class="custom-control-input" id="tipo_radio3" value="Tambo" name="tipoRadio" required>
-									<label class="custom-control-label" for="tipo_radio3">Tambo</label>
-									<div class="invalid-feedback"> &nbsp; Selecciona tipo de contendor</div>
-								</div>
-							</div>	
-						</div>
-
-						<div class="form-row">
-							<div class="form-group col-md-12">
-								<label>Caracteristica de Peligrosidad </label>
-
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-								<div class="custom-control custom-checkbox custom-control-inline">
-									<input type="checkbox" class="custom-control-input" id="caracteristica_check1" value="Toxico" name="caracteristica_check[]" onclick="clear_required();" required>
-									<label class="custom-control-label" for="caracteristica_check1">Tóxico</label>
-								</div>
-								<div class="custom-control custom-checkbox custom-control-inline">
-									<input type="checkbox" class="custom-control-input" id="caracteristica_check2" value="Inflamable" name="caracteristica_check[]" onclick="clear_required();" required>
-									<label class="custom-control-label" for="caracteristica_check2">Inflamable</label>
-								</div>
-								<div class="custom-control custom-checkbox custom-control-inline">
-									<input type="checkbox" class="custom-control-input" id="caracteristica_check3" value="Corrosivo" name="caracteristica_check[]" onclick="clear_required();" required>
-									<label class="custom-control-label" for="caracteristica_check3">Corrosivo</label>
-								</div>
-								<div class="custom-control custom-checkbox custom-control-inline">
-									<input type="checkbox" class="custom-control-input" id="caracteristica_check4" value="Reactivo" name="caracteristica_check[]" onclick="clear_required();" required>
-									<label class="custom-control-label" for="caracteristica_check4">Reactivo</label>
+								<div class="form-group col-md-3">
+									<label class="col-form-label" for="clave"> Clave </label>
+									<input type="text" class="form-control" id="clave" name="clave" value="Clave" disabled> 
+								</div>	
+								<div class="form-group col-md-1">
+									<label class="col-form-label" for="otro_resdiuo"> Otro </label>
 									<br>
-									<div class="invalid-feedback">&nbsp; Selecciona al menos una caracteristica de peligrosidad.</div>
-								</div>
-							</div>	
-						</div>
+									<label class="switch">
+										<input type="checkbox">
+										<span class="slider round"></span>
+									</label>
+								</div>	
+							</div>
 
-						<!-- Modal footer -->
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-							<button type="submit" class="btn btn-primary">Guardar</button>
-						</div>
+							<div class="form-row">
+								<div class="form-group col-md-4">
+									<label class="col-form-label" for="nombre_residuo"> Cantidad Residuo </label>
+									<input readonly type="number" class="form-control" id="cantidad" name="cantidad" min="1" style="text-align:center" value="1" required>
+								</div>	
 
+								<div class="form-group col-md-8">
+									<label class="col-form-label"> Unidad </label>
+									<br>
+									<div class="custom-control custom-radio custom-control-inline">
+										<input type="radio" class="custom-control-input" id="unidad_radio1" value="Kg" name="unidadRadio" required>
+										<label class="custom-control-label" for="unidad_radio1">Kg</label>
+									</div>
+									<div class="custom-control custom-radio custom-control-inline">
+										<input type="radio" class="custom-control-input" id="unidad_radio2" value="Ton" name="unidadRadio" required>
+										<label class="custom-control-label" for="unidad_radio2">Ton</label>
+										<div class="invalid-feedback"> &nbsp; Selecciona unidad de medida.</div>
+									</div>
+								</div>	
+							</div>
+
+							<div class="form-row">
+								<div class="form-group col-md-4">
+									<label class="col-form-label" for="nombre_residuo"> Cantidad Tipo </label>
+									<input readonly type="number" class="form-control" id="cantidad_tipo" name="cantidad_tipo" min="1" style="text-align:center" value="1" required>
+								</div>	
+
+								<div class="form-group col-md-8">
+									<label class="col-form-label" for="nombre_residuo"> Tipo </label>
+									<br>
+									<div class="custom-control custom-radio custom-control-inline">
+										<input type="radio" class="custom-control-input" id="tipo_radio1" value="Bolsa" name="tipoRadio" required>
+										<label class="custom-control-label" for="tipo_radio1">Bolsa</label>
+									</div>
+									<div class="custom-control custom-radio custom-control-inline">
+										<input type="radio" class="custom-control-input" id="tipo_radio2" value="Cubeta" name="tipoRadio" required>
+										<label class="custom-control-label" for="tipo_radio2">Cubeta</label>
+									</div>
+									<div class="custom-control custom-radio custom-control-inline">
+										<input type="radio" class="custom-control-input" id="tipo_radio3" value="Tambo" name="tipoRadio" required>
+										<label class="custom-control-label" for="tipo_radio3">Tambo</label>
+										<div class="invalid-feedback"> &nbsp; Selecciona tipo de contendor</div>
+									</div>
+								</div>	
+							</div>
+
+							<div class="form-row">
+								<div class="form-group col-md-12">
+									<label>Caracteristica de Peligrosidad </label>
+
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<br />
+
+									<div class="row">
+										<div class="form-check col-sm">
+											<div class="custom-control custom-checkbox">
+												<input type="checkbox" class="custom-control-input" id="caracteristica_check1" value="Toxico" name="caracteristica_check[]" onclick="clear_required();" required>
+												<label class="custom-control-label" for="caracteristica_check1">Tóxico</label>
+											</div>
+											<div class="custom-control custom-checkbox">
+												<input type="checkbox" class="custom-control-input" id="caracteristica_check2" value="Inflamable" name="caracteristica_check[]" onclick="clear_required();" required>
+												<label class="custom-control-label" for="caracteristica_check2">Inflamable</label>
+											</div>
+										
+										</div>
+
+										<div class="form-check col-sm">
+											<div class="custom-control custom-checkbox">
+												<input type="checkbox" class="custom-control-input" id="caracteristica_check3" value="Corrosivo" name="caracteristica_check[]" onclick="clear_required();" required>
+												<label class="custom-control-label" for="caracteristica_check3">Corrosivo</label>
+											</div>
+											<div class="custom-control custom-checkbox">
+												<input type="checkbox" class="custom-control-input" id="caracteristica_check4" value="Mutageno" name="caracteristica_check[]" onclick="clear_required();" required>
+												<label class="custom-control-label" for="caracteristica_check4">Mutágeno</label>
+												<div class="invalid-feedback">
+													<div class="alert alert-danger" role="alert">
+														Selecciona al menos una caracteristica de peligrosidad.
+													</div>
+												</div>
+											</div>
+
+										</div>
+
+										<div class="form-check col-sm">
+											<div class="custom-control custom-checkbox">
+												<input type="checkbox" class="custom-control-input" id="caracteristica_check5" value="Biologico" name="caracteristica_check[]" onclick="clear_required();" required>
+												<label class="custom-control-label" for="caracteristica_check5">Biológico</label>
+											</div>
+											<div class="custom-control custom-checkbox">
+												<input type="checkbox" class="custom-control-input" id="caracteristica_check6" value="Reactivo" name="caracteristica_check[]" onclick="clear_required();" required>
+												<label class="custom-control-label" for="caracteristica_check6">Reactivo</label>
+												
+											</div>
+										</div>
+									</div>
+								</div>	
+							</div>
+
+							<!-- Modal footer -->
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+								<button type="submit" class="btn btn-primary">Guardar</button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>	
-		</div>			
+		</div>		
 	</form>
 
 	<div class="form-row">
