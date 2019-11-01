@@ -15,7 +15,7 @@
 |
 */
 #$config['base_url']	='http://rdiaz.mx/';
-$config['base_url']='http://localhost/rgdiaz/';
+$config['base_url']='http://192.168.0.13/rgdiaz/';
 
 /*
 |--------------------------------------------------------------------------

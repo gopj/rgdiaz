@@ -1,3 +1,6 @@
+var host="localhost/rgdiaz";
+//var host="rdiaz.mx";
+
 function actualiza_noti(){
 	//Cambiamos con ajax el status de las notificaciones
 	var rec = document.getElementById('recibe');
@@ -6,8 +9,7 @@ function actualiza_noti(){
 	var recibe = rec.value;
 
 	jQuery.ajax({
-			url:'http://localhost/rgdiaz/index.php/home/valida_usuario',	//<-- Url que va procesar la peticion
-			//url:'http://rgdiaz.com.mx/index.php/cliente/cambia_status_notificacion',
+			url:'http://${host}/index.php/cliente/cambia_status_notificacion',	//<-- Url que va procesar la peticion
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -90,8 +92,8 @@ function valida_form_password(){
 			var password = psw1.value;
 			var id_persona = id_persona.value;
 			jQuery.ajax({
-			url:'http://localhost/rgdiaz/index.php/home/valida_usuario',	//<-- Url que va procesar la peticion
-			//url:'http://rgdiaz.com.mx/index.php/cliente/update_password',
+			url:'http://${host}/index.php/home/valida_usuario',	//<-- Url que va procesar la peticion
+			//url:'http://rdiaz.mx/index.php/cliente/update_password',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{

@@ -1,3 +1,6 @@
+// Global variable for host
+var host="localhost/rgdiaz";
+
 
 function swith(){
 	// Preguntamos confirmar dar de alta cliente
@@ -29,7 +32,7 @@ function alta_cliente(){
 		var email = document.getElementById('alta_correo').value;
 		//alert(email);
 		jQuery.ajax({
-			url:'http://localhost/rgdiaz/index.php/administrador/verifica_correo',	//<-- Url que va procesar la peticion
+			url:'http://${host}/index.php/administrador/verifica_correo',	//<-- Url que va procesar la peticion
 			//url:'http://rdiaz.mx/index.php/administrador/verifica_correo',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
@@ -142,7 +145,7 @@ function eliminar_carpeta(){
 			var r =  ruta.value;
 		//	---------------------	
 			jQuery.ajax({
-			url:'http://localhost/rgdiaz/index.php/administrador/eliminar_carpeta',	//<-- Url que va procesar la peticion
+			url:'http://${host}/index.php/administrador/eliminar_carpeta',	//<-- Url que va procesar la peticion
 			//url:'http://rdiaz.mx/index.php/administrador/eliminar_carpeta',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
@@ -204,7 +207,7 @@ function compruebausuario(id){
 
 	//AJAX
 	jQuery.ajax({
-			url:'http://localhost/rgdiaz/index.php/administrador/obtiene_cliente',	//<-- Url que va procesar la peticion
+			url:'http://${host}/index.php/administrador/obtiene_cliente',	//<-- Url que va procesar la peticion
 			//url:'http://rdiaz.mx/index.php/administrador/obtiene_cliente',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
@@ -285,7 +288,7 @@ function comprueba_emp_trans(id){
 
 	//AJAX
 	jQuery.ajax({
-			url:'http://localhost/rgdiaz/index.php/administrador/obtiene_emp_trans',	//<-- Url que va procesar la peticion
+			url:'http://${host}/index.php/administrador/obtiene_emp_trans',	//<-- Url que va procesar la peticion
 			//url:'http://rdiaz.mx/index.php/administrador/obtiene_cliente',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
@@ -322,7 +325,7 @@ function comprueba_emp_dest(id){
 
 	//AJAX
 	jQuery.ajax({
-			url:'http://localhost/rgdiaz/index.php/administrador/obtiene_emp_dest',	//<-- Url que va procesar la peticion
+			url:'http://${host}/index.php/administrador/obtiene_emp_dest',	//<-- Url que va procesar la peticion
 			//url:'http://rdiaz.mx/index.php/administrador/obtiene_emp_dest',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
@@ -429,7 +432,7 @@ function alta_cliente_admin(){
 		var email = emailContacto.value;
 		var empresa = nombreEmpresa.value;
 	jQuery.ajax({
-			url:'http://localhost/rgdiaz/index.php/administrador/verifica_correo',	//<-- Url que va procesar la peticion
+			url:'http://${host}/index.php/administrador/verifica_correo',	//<-- Url que va procesar la peticion
 			//url:'http://rdiaz.mx/index.php/administrador/verifica_correo',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
@@ -481,7 +484,7 @@ function envia_correo_admin(){
 		var mens = mensaje.value;
 		//AJAX
 		jQuery.ajax({
-			url:'http://localhost/rgdiaz/index.php/administrador/envia_correo_admin',	//<-- Url que va procesar la peticion
+			url:'http://${host}/index.php/administrador/envia_correo_admin',	//<-- Url que va procesar la peticion
 			//url:'http://rdiaz.mx/index.php/administrador/envia_correo_admin',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
@@ -565,7 +568,7 @@ function update(){
 	var cliente = $("#persona3").val();
 	// AJAX
 	jQuery.ajax({
-			url:'http://localhost/rgdiaz/index.php/administrador/update_status_cliente',	//<-- Url que va procesar la peticion
+			url:'http://${host}/index.php/administrador/update_status_cliente',	//<-- Url que va procesar la peticion
 			//url:'http://rdiaz.mx/index.php/administrador/update_status_cliente',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',

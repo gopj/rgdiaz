@@ -1,3 +1,7 @@
+// Gloval variable for host
+${host} host="${host}";
+//${host}="rdiaz.mx";
+
 function get_cliente(id){
 
 	var id_per = id;
@@ -10,7 +14,7 @@ function get_cliente(id){
 
 	//AJAX
 	jQuery.ajax({
-			url:'http://localhost/rgdiaz/index.php/recolector/get_cliente',	//<-- Url que va procesar la peticion
+			url:'http${host}/index.php/recolector/get_cliente',	//<-- Url que va procesar la peticion
 			//url:'http://rdiaz.mx/index.php/recolector/get_cliente',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
@@ -128,7 +132,7 @@ function update_clave(id_clave) {
 
 	//AJAX
 	jQuery.ajax({
-		url:'http://localhost/rgdiaz/index.php/recolector/get_clave_residuo',	//<-- Url que va procesar la peticion
+		url:'http://${host}/index.php/recolector/get_clave_residuo',	//<-- Url que va procesar la peticion
 		//url:'http://rdiaz.mx/index.php/recolector/get_clave_residuo',
 		timeout: 3000, //sets timeout to 3 seconds
 		type:'post',

@@ -30,7 +30,6 @@
 				<div class="form-group col-md-9">
 					<label class="col-form-label" for="responsable_tecnico"> <center> Nombre del Responable Técnico</center> </label>
 					<input type="text" class="form-control" id="responsable_tecnico" name="responsable_tecnico">
-					
 				</div>		
 			</div>
 
@@ -141,42 +140,43 @@
 									<div class="row">
 										<div class="form-check col-sm">
 											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="caracteristica_check1" value="Toxico" name="caracteristica_check[]" onclick="clear_required();" required>
-												<label class="custom-control-label" for="caracteristica_check1">Tóxico</label>
+												<input type="checkbox" class="custom-control-input" id="caracteristica_check1" value="Corrosivo" name="caracteristica_check[]" onclick="clear_required();" required>
+												<label class="custom-control-label" for="caracteristica_check1">Corrosivo</label>
 											</div>
 											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="caracteristica_check2" value="Inflamable" name="caracteristica_check[]" onclick="clear_required();" required>
-												<label class="custom-control-label" for="caracteristica_check2">Inflamable</label>
+												<input type="checkbox" class="custom-control-input" id="caracteristica_check2" value="Reactivo" name="caracteristica_check[]" onclick="clear_required();" required>
+												<label class="custom-control-label" for="caracteristica_check2">Reactivo</label>
 											</div>
-										
+											<div class="custom-control custom-checkbox">
+												<input type="checkbox" class="custom-control-input" id="caracteristica_check3" value="Toxico" name="caracteristica_check[]" onclick="clear_required();" required>
+												<label class="custom-control-label" for="caracteristica_check3">Explosivo</label>
+											</div>									
 										</div>
 
 										<div class="form-check col-sm">
 											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="caracteristica_check3" value="Corrosivo" name="caracteristica_check[]" onclick="clear_required();" required>
-												<label class="custom-control-label" for="caracteristica_check3">Corrosivo</label>
+												<input type="checkbox" class="custom-control-input" id="caracteristica_check4" value="Toxico" name="caracteristica_check[]" onclick="clear_required();" required>
+												<label class="custom-control-label" for="caracteristica_check4">Tóxico</label>
 											</div>
 											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="caracteristica_check4" value="Mutageno" name="caracteristica_check[]" onclick="clear_required();" required>
-												<label class="custom-control-label" for="caracteristica_check4">Mutágeno</label>
+												<input type="checkbox" class="custom-control-input" id="caracteristica_check5" value="Inflamable" name="caracteristica_check[]" onclick="clear_required();" required>
+												<label class="custom-control-label" for="caracteristica_check5">Inflamable</label>
 												<div class="invalid-feedback">
 													<div class="alert alert-danger" role="alert">
 														Selecciona al menos una caracteristica de peligrosidad.
 													</div>
 												</div>
 											</div>
-
 										</div>
 
 										<div class="form-check col-sm">
 											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="caracteristica_check5" value="Biologico" name="caracteristica_check[]" onclick="clear_required();" required>
-												<label class="custom-control-label" for="caracteristica_check5">Biológico</label>
+												<input type="checkbox" class="custom-control-input" id="caracteristica_check6" value="Biologico" name="caracteristica_check[]" onclick="clear_required();" required>
+												<label class="custom-control-label" for="caracteristica_check6">Biológico</label>
 											</div>
 											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="caracteristica_check6" value="Reactivo" name="caracteristica_check[]" onclick="clear_required();" required>
-												<label class="custom-control-label" for="caracteristica_check6">Reactivo</label>
-												
+												<input type="checkbox" class="custom-control-input" id="caracteristica_check7" value="Mutageno" name="caracteristica_check[]" onclick="clear_required();" required>
+												<label class="custom-control-label" for="caracteristica_check7">Mutágeno</label>
 											</div>
 										</div>
 									</div>
