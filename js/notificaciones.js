@@ -1,3 +1,4 @@
+// Gloval variable for host
 var host="localhost/rgdiaz";
 //var host="rdiaz.mx";
 
