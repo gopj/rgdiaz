@@ -4,6 +4,11 @@
 // --		Erick Alejandro Sandoval Flores
 // -- 		Christian Ramon Magallon Garcia
 //	Script para validar el envio de el formulario de inicio de sesion. Campos vacios y validos!!
+// Global variable for host
+
+var host="localhost/rgdiaz";
+
+
 function validarFormSesion(){
 	var expRegEmail= /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;//Expresion regular correo
 	var verificar = true;
@@ -28,7 +33,7 @@ function validarFormSesion(){
 		/*AJAX*/
 		//$('#loading').html('<img style="width:35px;" src="img/load.gif"/>'); 
 		jQuery.ajax({
-			url:'http://localhost/rgdiaz/index.php/home/valida_usuario',	//<-- Url que va procesar la peticion
+			url:'http://${host}/index.php/home/valida_usuario',	//<-- Url que va procesar la peticion
 			//url:'http://rgdiaz.com.mx/index.php/home/valida_usuario',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
@@ -70,7 +75,7 @@ function recupera_psw(){
 		var usua = $("#recupera_correo").val();
 		/*AJAX -- CHECO SI EXISTE CORREO*/
 		jQuery.ajax({
-			url:'http://localhost/rgdiaz/index.php/cliente/valida_usuario_correo',	//<-- Url que va procesar la peticion
+			url:'http://${host}/index.php/cliente/valida_usuario_correo',	//<-- Url que va procesar la peticion
 			//url:'http://rgdiaz.com.mx/index.php/cliente/valida_usuario_correo',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
@@ -85,7 +90,7 @@ function recupera_psw(){
 					/*AJAX -- MODIFICO PASSWORD*/
 					$('#esperar').text("Espere un momento...");
 					jQuery.ajax({
-						url:'http://localhost/rgdiaz/index.php/cliente/rest_contra', //<-- Url que procesa peticion
+						url:'http://${host}/index.php/cliente/rest_contra', //<-- Url que procesa peticion
 						//url:'http://rgdiaz.com.mx/index.php/cliente/rest_contra',
 						timeout: 3000, //sets timeout to 3 seconds
 						type:'post',
