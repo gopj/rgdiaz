@@ -33,7 +33,7 @@ function validarFormSesion(){
 		/*AJAX*/
 		//$('#loading').html('<img style="width:35px;" src="img/load.gif"/>'); 
 		jQuery.ajax({
-			url:'http://${host}/index.php/home/valida_usuario',	//<-- Url que va procesar la peticion
+			url:'http://' + host + '/index.php/home/valida_usuario',	//<-- Url que va procesar la peticion
 			//url:'http://rgdiaz.com.mx/index.php/home/valida_usuario',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
@@ -75,7 +75,7 @@ function recupera_psw(){
 		var usua = $("#recupera_correo").val();
 		/*AJAX -- CHECO SI EXISTE CORREO*/
 		jQuery.ajax({
-			url:'http://${host}/index.php/cliente/valida_usuario_correo',	//<-- Url que va procesar la peticion
+			url:'http://' + host + '/index.php/cliente/valida_usuario_correo',	//<-- Url que va procesar la peticion
 			//url:'http://rgdiaz.com.mx/index.php/cliente/valida_usuario_correo',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
@@ -90,7 +90,7 @@ function recupera_psw(){
 					/*AJAX -- MODIFICO PASSWORD*/
 					$('#esperar').text("Espere un momento...");
 					jQuery.ajax({
-						url:'http://${host}/index.php/cliente/rest_contra', //<-- Url que procesa peticion
+						url:'http://' + host + '/index.php/cliente/rest_contra', //<-- Url que procesa peticion
 						//url:'http://rgdiaz.com.mx/index.php/cliente/rest_contra',
 						timeout: 3000, //sets timeout to 3 seconds
 						type:'post',

@@ -9,7 +9,7 @@ function actualiza_noti(){
 	var recibe = rec.value;
 
 	jQuery.ajax({
-			url:'http://${host}/index.php/cliente/cambia_status_notificacion',	//<-- Url que va procesar la peticion
+			url:'http://' + host + '/index.php/cliente/cambia_status_notificacion',	//<-- Url que va procesar la peticion
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -92,7 +92,7 @@ function valida_form_password(){
 			var password = psw1.value;
 			var id_persona = id_persona.value;
 			jQuery.ajax({
-			url:'http://${host}/index.php/home/valida_usuario',	//<-- Url que va procesar la peticion
+			url:'http://' + host + '/index.php/home/valida_usuario',	//<-- Url que va procesar la peticion
 			//url:'http://rdiaz.mx/index.php/cliente/update_password',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
