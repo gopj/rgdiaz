@@ -18,7 +18,7 @@
 
 				</div>
 				<div class="form-group col-md-3">
-					<label class="col-form-label" for="fecha_salida"> <center> Fecha de Embarque </center> </label>
+					<label class="col-form-label" for="fecha_salida" style="text-align: center;"> Fecha de Embarque </label>
 					<input style="text-align: center;" class="form-control" id="fecha_embarque" name="fecha_embarque" required>
 					<div class="invalid-feedback">
 						Selecciona la fecha de embarque
@@ -47,8 +47,9 @@
 								<th>CRETI</th>
 								<th>Contenedor Cantidad</th>
 								<th>Contenedor Tipo</th>
-								<th>Cantidad Total</th>
-								<th>Unidad Vol/Peso</th>
+								<th>Contenedor Capacidad</th>
+								<th>Cantidad (KG)</th>
+								<th>Etiqueta</th>
 								<th>Opciones</th>
 							</tr>
 						</thead>
@@ -102,12 +103,12 @@
 						<!-- Modal body -->
 						<div class="modal-body">
 							<div class="form-row">
-								<div class="form-group col-md-8">
+								<div class="form-group col-md-9">
 									<label class="col-form-label" for="nombre_residuo"> Residuo Peligroso </label>
 									<select class="form-control" onchange="update_clave(this.value);" name="residuo_peligroso" required>
 										<option value=""> <strong> Selecciona Residuo </strong> </option>
 										<?php foreach ($residuos as $key) { ?>
-											<option value="<?= $key->id_tipo_residuo; ?>"> <?= mb_strimwidth($key->residuo, 0, 55, '...', 'UTF-8'); ?></option>
+											<option value="<?= $key->id_tipo_residuo; ?>"> <?= mb_strimwidth($key->residuo, 0, 75, '...', 'UTF-8'); ?></option>
 										<?php } ?>
 									</select>
 									<div class="invalid-feedback">
@@ -119,19 +120,12 @@
 									<label class="col-form-label" for="clave"> Clave </label>
 									<input type="text" class="form-control" id="clave" name="clave" value="Clave" disabled> 
 								</div>	
-								<div class="form-group col-md-1">
-									<label class="col-form-label" for="otro_resdiuo"> Otro </label>
-									<br>
-									<label class="switch">
-										<input type="checkbox">
-										<span class="slider round"></span>
-									</label>
-								</div>	
+								
 							</div>
 
 
 							<div class="form-row">
-								<div class="form-group col-md-12">
+								<div class="form-group col-md-10">
 									<label>Clasificación</label>
 
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -179,8 +173,19 @@
 												<label class="custom-control-label" for="caracteristica_check7">Mutágeno</label>
 											</div>
 										</div>
+
 									</div>
-								</div>	
+								</div>
+
+								<div class="form-group col-md-2">
+									<label>Etiqueta</label>
+
+									<label class="switch">
+										<input type="checkbox"  name="tiqueta">
+										<span class="slider round"></span>
+									</label>									
+								</div>
+
 							</div>
 
 							<div class="form-row">
@@ -198,11 +203,11 @@
 									</div>
 									<div class="custom-control custom-radio custom-control-inline">
 										<input type="radio" class="custom-control-input" id="tipo_radio2" value="Cubeta" name="tipoRadio" required>
-										<label class="custom-control-label" for="tipo_radio2">Tote</label>
+										<label class="custom-control-label" for="tipo_radio2">Tambo</label>
 									</div>
 									<div class="custom-control custom-radio custom-control-inline">
 										<input type="radio" class="custom-control-input" id="tipo_radio3" value="Tambo" name="tipoRadio" required>
-										<label class="custom-control-label" for="tipo_radio3">Tambo</label>
+										<label class="custom-control-label" for="tipo_radio3">Tote</label>
 										<div class="invalid-feedback"> &nbsp; Selecciona tipo de contendor</div>
 									</div>
 								</div>	

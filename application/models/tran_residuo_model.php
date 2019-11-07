@@ -55,8 +55,9 @@ class Tran_residuo_model extends CI_Model {
 				r.caracteristica as caracteristica,
 				r.contenedor_cantidad,
 				r.contenedor_tipo,
+				r.contenedor_capacidad,
 				r.residuo_cantidad,
-				r.unidad as unidad
+				r.etiqueta
 			FROM 
 				tipo_residuos as tr,
 			 	tran_residuos as r,
@@ -122,8 +123,9 @@ class Tran_residuo_model extends CI_Model {
 				->set('caracteristica'		, $data['caracteristicas'])
 				->set('contenedor_cantidad'	, $data['cantidad_contenedor'])
 				->set('contenedor_tipo'		, $data['contenedor'])
+				->set('contenedor_capacidad', $data['contenedor_capacidad'])
 				->set('residuo_cantidad'	, $data['cantidad'])
-				->set('unidad'				, $data['unidad'])
+				->set('etiqueta'			, $data['etiqueta'])
 				->set('fecha_insercion'		, 'NOW()', FALSE)
 				->set('contenedor_capacidad', 1111111)
 				->set('etiqueta' 			, 'falta en ui ETIQUETA ')
@@ -201,8 +203,10 @@ class Tran_residuo_model extends CI_Model {
 				r.caracteristica,
 				r.contenedor_cantidad,
 				r.contenedor_tipo,
+				r.contenedor_capacidad,
 				r.residuo_cantidad,
-				r.unidad,
+				r.residuo_cantidad,
+				r.etiqueta
 				ed.nombre_destino as dest_final,
 				ed.no_autorizacion_destino as no_aut_dest_final
 				/*ed.domicilio as domicilio_destino,

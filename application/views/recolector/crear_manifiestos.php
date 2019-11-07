@@ -196,13 +196,14 @@
 			<table id="tabla_residuos" class="table table-striped table-bordered" style="width:100%">
 				<thead>
 					<tr>
-						<th> # </th>
+						<th>#</th>
 						<th>Nombre residuo</th>
 						<th>CRETI</th>
 						<th>Contenedor Cantidad</th>
 						<th>Contenedor Tipo</th>
-						<th>Cantidad Total</th>
-						<th>Unidad Vol/Peso</th>
+						<th>Contenedor Capacidad</th>
+						<th>Cantidad (KG)</th>
+						<th>Etiqueta</th>
 						<th>Opciones</th>
 					</tr>
 				</thead>
@@ -212,13 +213,14 @@
 						foreach ($bitacora_manifiesto as $key) { 
 					?>
 						<tr>
-							<td> <?= $x++ ?> </td>
+							<th> <?= $x++ ?> </th>
 							<td> <?= $key->residuo ?> </td>
 							<td> <?= $key->caracteristica ?> </td>
 							<td> <?= $key->contenedor_cantidad ?> </td>
 							<td> <?= $key->contenedor_tipo ?> </td>
+							<td> <?= $key->contenedor_capacidad ?> </td>
 							<td> <?= $key->residuo_cantidad ?> </td>
-							<td> <?= $key->unidad ?> </td>
+							<td> <?= $key->etiqueta ?> </td>
 							<?php if ($total_reg == 1) { ?>
 								<td style="text-align: center;">
 									<button type="button" class="btn btn-danger btn-sm btn-block" data-toggle="modal" data-target="#deleteLastResiduo"> Eliminar </button>
