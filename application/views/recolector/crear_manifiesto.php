@@ -63,6 +63,7 @@
 									<td> </td>
 									<td> </td>
 									<td> </td>
+									<td> </td>
 								</tr>
 						</tbody>
 						
@@ -181,7 +182,7 @@
 									<label>Etiqueta</label>
 
 									<label class="switch">
-										<input type="checkbox"  name="tiqueta">
+										<input type="checkbox" name="etiqueta" id="etiqueta_check" value="S">
 										<span class="slider round"></span>
 									</label>									
 								</div>

@@ -121,14 +121,11 @@ class Tran_residuo_model extends CI_Model {
 				->set('id_folio'			, $data['folio'])
 				->set('id_tipo_residuo'		, $data['residuo'])
 				->set('caracteristica'		, $data['caracteristicas'])
-				->set('contenedor_cantidad'	, $data['cantidad_contenedor'])
-				->set('contenedor_tipo'		, $data['contenedor'])
-				->set('contenedor_capacidad', $data['contenedor_capacidad'])
-				->set('residuo_cantidad'	, $data['cantidad'])
+				->set('contenedor_cantidad'	, $data['cont_cantidad'])
+				->set('contenedor_tipo'		, $data['contenedor_tipo'])
+				->set('residuo_cantidad'	, $data['residuo_cantidad'])
 				->set('etiqueta'			, $data['etiqueta'])
 				->set('fecha_insercion'		, 'NOW()', FALSE)
-				->set('contenedor_capacidad', 1111111)
-				->set('etiqueta' 			, 'falta en ui ETIQUETA ')
 				->insert('tran_residuos');
 
 		return $this->db->insert_id();

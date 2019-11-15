@@ -122,10 +122,10 @@ class Recolector extends CI_Controller {
 				$data["residuo"]			= $this->input->post("residuo_peligroso");
 				$data["fecha_embarque"]		= date_format($fecha_embarque, "Y-m-d");
 				$data["responsable_tecnico"]= $this->input->post("responsable_tecnico");
-				$data["cantidad"]			= $this->input->post("cantidad");
-				$data["unidad"]				= $this->input->post("unidadRadio");
-				$data["cantidad_contenedor"]= $this->input->post("cantidad_tipo");
-				$data["contenedor"]			= $this->input->post("tipoRadio");
+				$data["residuo_cantidad"]	= $this->input->post("cantidad");
+				$data["cont_cantidad"]		= $this->input->post("cantidad_tipo");
+				$data["etiqueta"]			= $this->input->post("etiqueta");
+				$data["contenedor_tipo"]	= $this->input->post("tipoRadio");
 				$data["caracteristica_r"]	= $this->input->post("caracteristica_check");
 				$data["caracteristicas"] 	= "";
 				$data["folio"]				= $folio;
