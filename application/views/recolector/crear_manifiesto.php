@@ -27,9 +27,14 @@
 			</div>
 
 			<div class="form-row">
-				<div class="form-group col-md-9">
+				<div class="form-group col-md-6">
 					<label class="col-form-label" for="responsable_tecnico"> <center> Nombre del Responable Técnico</center> </label>
 					<input type="text" class="form-control" id="responsable_tecnico" name="responsable_tecnico">
+				</div>		
+
+				<div class="form-group col-md-6">
+					<label class="col-form-label" for="ruta"> <center> Ruta de la empresa generadora</center> </label>
+					<input type="text" class="form-control" id="ruta" name="ruta">
 				</div>		
 			</div>
 
@@ -191,32 +196,42 @@
 
 							<div class="form-row">
 								<div class="form-group col-md-4">
-									<label class="col-form-label" for="nombre_residuo"> Cantidad Tipo </label>
-									<input readonly type="number" class="form-control" id="cantidad_tipo" name="cantidad_tipo" min="1" style="text-align:center" value="1" required>
+									<label class="col-form-label" for="cantidad_tipo"> Envase Cantidad </label>
+									<input readonly type="number" class="form-control" id="cantidad_envase" name="cantidad_envase" min="1" style="text-align:center" value="1" required>
+
+									<label class="col-form-label" for="capacidad_envase"> Capacidad de Envase</label>
+									<input readonly type="number" class="form-control" id="capacidad_envase" name="capacidad_envase" min="1" style="text-align:center" value="1" required>
 								</div>	
 
-								<div class="form-group col-md-4">
+								<div class="form-group col-md-1">
+								</div>
+
+								<div class="form-group col-md-2">
 									<label class="col-form-label" for="nombre_residuo"> Tipo </label>
 									<br>
-									<div class="custom-control custom-radio custom-control-inline">
+									<div class="custom-control custom-radio">
 										<input type="radio" class="custom-control-input" id="tipo_radio1" value="Bolsa" name="tipoRadio" required>
 										<label class="custom-control-label" for="tipo_radio1">Bolsa</label>
 									</div>
-									<div class="custom-control custom-radio custom-control-inline">
+									<div class="custom-control custom-radio">
 										<input type="radio" class="custom-control-input" id="tipo_radio2" value="Cubeta" name="tipoRadio" required>
 										<label class="custom-control-label" for="tipo_radio2">Tambo</label>
 									</div>
-									<div class="custom-control custom-radio custom-control-inline">
+									<div class="custom-control custom-radio">
 										<input type="radio" class="custom-control-input" id="tipo_radio3" value="Tambo" name="tipoRadio" required>
 										<label class="custom-control-label" for="tipo_radio3">Tote</label>
 										<div class="invalid-feedback"> &nbsp; Selecciona tipo de contendor</div>
 									</div>
-								</div>	
+								</div>
+
+								<div class="form-group col-md-1">
+								</div>
 
 								<div class="form-group col-md-4">
-									<label class="col-form-label" for="nombre_residuo"> Cantidad Residuo (KG)</label>
+									<label class="col-form-label" for="cantidad"> Cantidad Residuo (KG)</label>
 									<input readonly type="number" class="form-control" id="cantidad" name="cantidad" min="1" style="text-align:center" value="1" required>
 								</div>	
+
 							</div>
 
 							<!-- Modal footer -->
