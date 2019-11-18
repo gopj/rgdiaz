@@ -38,14 +38,14 @@
 
 				<div class="form-group col-md-6">
 					<label class="col-form-label" for="ruta"> <center> Ruta de la empresa generadora</center> </label>
-					<input type="text" class="form-control" id="ruta" name="ruta" value="<?= $ruta ?>" placeholder="La ruta no está especificada"> 
+					<input type="text" class="form-control" id="ruta" name="ruta" value="<?= $ruta ?>" oninput="terminar_manifiesto();check_resposanble();" placeholder="La ruta no está especificada"> 
 				</div>		
 			</div>
 
 			<div class="form-row">
 				<div class="form-group col-md-12">
 					<label class="col-form-label" for="observaciones"> <center> Observaciones </center> </label>
-					<input type="text" class="form-control" id="observaciones" name="observaciones" value="<?= $observaciones ?>"  placeholder="La ruta no está especificada">  
+					<input type="text" class="form-control" id="observaciones" name="observaciones" value="<?= $observaciones ?>" oninput="terminar_manifiesto();check_resposanble();" placeholder="La ruta no está especificada">  
 				</div>		
 			</div>
 
@@ -63,12 +63,12 @@
 						<!-- Modal body -->
 						<div class="modal-body">
 							<div class="form-row">
-								<div class="form-group col-md-8">
+								<div class="form-group col-md-9">
 									<label class="col-form-label" for="nombre_residuo"> Residuo Peligroso </label>
 									<select class="form-control" onchange="update_clave(this.value);" name="residuo_peligroso" required>
 										<option value=""> <strong> Selecciona Residuo </strong> </option>
 										<?php foreach ($residuos as $key) { ?>
-											<option value="<?= $key->id_tipo_residuo; ?>"> <?= mb_strimwidth($key->residuo, 0, 55, '...', 'UTF-8'); ?></option>
+											<option value="<?= $key->id_tipo_residuo; ?>"> <?= mb_strimwidth($key->residuo, 0, 75, '...', 'UTF-8'); ?></option>
 										<?php } ?>
 									</select>
 									<div class="invalid-feedback">
@@ -80,65 +80,13 @@
 									<label class="col-form-label" for="clave"> Clave </label>
 									<input type="text" class="form-control" id="clave" name="clave" value="Clave" disabled> 
 								</div>	
-								<div class="form-group col-md-1">
-									<label class="col-form-label" for="otro_resdiuo"> Otro </label>
-									<br>
-									<label class="switch">
-										<input type="checkbox">
-										<span class="slider round"></span>
-									</label>
-								</div>	
+								
 							</div>
 
-							<div class="form-row">
-								<div class="form-group col-md-4">
-									<label class="col-form-label" for="nombre_residuo"> Cantidad Residuo </label>
-									<input readonly type="number" class="form-control" id="cantidad" name="cantidad" min="1" style="text-align:center" value="1" required>
-								</div>	
-
-								<div class="form-group col-md-8">
-									<label class="col-form-label"> Unidad </label>
-									<br>
-									<div class="custom-control custom-radio custom-control-inline">
-										<input type="radio" class="custom-control-input" id="unidad_radio1" value="Kg" name="unidadRadio" required>
-										<label class="custom-control-label" for="unidad_radio1">Kg</label>
-									</div>
-									<div class="custom-control custom-radio custom-control-inline">
-										<input type="radio" class="custom-control-input" id="unidad_radio2" value="Ton" name="unidadRadio" required>
-										<label class="custom-control-label" for="unidad_radio2">Ton</label>
-										<div class="invalid-feedback"> &nbsp; Selecciona unidad de medida.</div>
-									</div>
-								</div>	
-							</div>
 
 							<div class="form-row">
-								<div class="form-group col-md-4">
-									<label class="col-form-label" for="nombre_residuo"> Cantidad Tipo </label>
-									<input readonly type="number" class="form-control" id="cantidad_tipo" name="cantidad_tipo" min="1" style="text-align:center" value="1" required>
-								</div>	
-
-								<div class="form-group col-md-8">
-									<label class="col-form-label" for="nombre_residuo"> Tipo </label>
-									<br>
-									<div class="custom-control custom-radio custom-control-inline">
-										<input type="radio" class="custom-control-input" id="tipo_radio1" value="Bolsa" name="tipoRadio" required>
-										<label class="custom-control-label" for="tipo_radio1">Bolsa</label>
-									</div>
-									<div class="custom-control custom-radio custom-control-inline">
-										<input type="radio" class="custom-control-input" id="tipo_radio2" value="Cubeta" name="tipoRadio" required>
-										<label class="custom-control-label" for="tipo_radio2">Cubeta</label>
-									</div>
-									<div class="custom-control custom-radio custom-control-inline">
-										<input type="radio" class="custom-control-input" id="tipo_radio3" value="Tambo" name="tipoRadio" required>
-										<label class="custom-control-label" for="tipo_radio3">Tambo</label>
-										<div class="invalid-feedback"> &nbsp; Selecciona tipo de contendor</div>
-									</div>
-								</div>	
-							</div>
-
-							<div class="form-row">
-								<div class="form-group col-md-12">
-									<label>Caracteristica de Peligrosidad </label>
+								<div class="form-group col-md-10">
+									<label>Clasificación</label>
 
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<br />
@@ -146,46 +94,100 @@
 									<div class="row">
 										<div class="form-check col-sm">
 											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="caracteristica_check1" value="Toxico" name="caracteristica_check[]" onclick="clear_required();" required>
-												<label class="custom-control-label" for="caracteristica_check1">Tóxico</label>
+												<input type="checkbox" class="custom-control-input" id="caracteristica_check1" value="Corrosivo" name="caracteristica_check[]" onclick="clear_required();" required>
+												<label class="custom-control-label" for="caracteristica_check1">Corrosivo</label>
 											</div>
 											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="caracteristica_check2" value="Inflamable" name="caracteristica_check[]" onclick="clear_required();" required>
-												<label class="custom-control-label" for="caracteristica_check2">Inflamable</label>
+												<input type="checkbox" class="custom-control-input" id="caracteristica_check2" value="Reactivo" name="caracteristica_check[]" onclick="clear_required();" required>
+												<label class="custom-control-label" for="caracteristica_check2">Reactivo</label>
 											</div>
-										
+																	
 										</div>
 
 										<div class="form-check col-sm">
 											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="caracteristica_check3" value="Corrosivo" name="caracteristica_check[]" onclick="clear_required();" required>
-												<label class="custom-control-label" for="caracteristica_check3">Corrosivo</label>
-											</div>
+												<input type="checkbox" class="custom-control-input" id="caracteristica_check3" value="Explosivo" name="caracteristica_check[]" onclick="clear_required();" required>
+												<label class="custom-control-label" for="caracteristica_check3">Explosivo</label>
+											</div>			
 											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="caracteristica_check4" value="Mutageno" name="caracteristica_check[]" onclick="clear_required();" required>
-												<label class="custom-control-label" for="caracteristica_check4">Mutágeno</label>
+												<input type="checkbox" class="custom-control-input" id="caracteristica_check4" value="Toxico" name="caracteristica_check[]" onclick="clear_required();" required>
+												<label class="custom-control-label" for="caracteristica_check4">Tóxico</label>
 												<div class="invalid-feedback">
 													<div class="alert alert-danger" role="alert">
 														Selecciona al menos una caracteristica de peligrosidad.
 													</div>
 												</div>
 											</div>
-
 										</div>
 
 										<div class="form-check col-sm">
 											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="caracteristica_check5" value="Biologico" name="caracteristica_check[]" onclick="clear_required();" required>
-												<label class="custom-control-label" for="caracteristica_check5">Biológico</label>
+												<input type="checkbox" class="custom-control-input" id="caracteristica_check5" value="Inflamable" name="caracteristica_check[]" onclick="clear_required();" required>
+												<label class="custom-control-label" for="caracteristica_check5">Inflamable</label>
 											</div>
 											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="caracteristica_check6" value="Reactivo" name="caracteristica_check[]" onclick="clear_required();" required>
-												<label class="custom-control-label" for="caracteristica_check6">Reactivo</label>
-												
+												<input type="checkbox" class="custom-control-input" id="caracteristica_check6" value="Biologico" name="caracteristica_check[]" onclick="clear_required();" required>
+												<label class="custom-control-label" for="caracteristica_check6">Biológico</label>
 											</div>
 										</div>
+
+										<div class="form-check col-sm">
+											<div class="custom-control custom-checkbox">
+												<input type="checkbox" class="custom-control-input" id="caracteristica_check7" value="Mutageno" name="caracteristica_check[]" onclick="clear_required();" required>
+												<label class="custom-control-label" for="caracteristica_check7">Mutágeno</label>
+											</div>
+										</div>
+
 									</div>
+								</div>
+
+						<!--  -->
+							</div>
+
+							<div class="form-row">
+								<div class="form-group col-md-4">
+									<label class="col-form-label" for="cantidad_envase"> Envase Cantidad </label>
+									<input readonly type="number" class="form-control" id="cantidad_envase" name="cantidad_envase" min="1" style="text-align:center" value="1" required>
+
+									<label class="col-form-label" for="capacidad_envase"> Capacidad de Envase</label>
+									<input readonly type="number" class="form-control" id="capacidad_envase" name="capacidad_envase" min="1" style="text-align:center" value="1" required>
 								</div>	
+
+								<div class="form-group col-md-1">
+								</div>
+
+								<div class="form-group col-md-2">
+									<label class="col-form-label" for="nombre_residuo"> Tipo </label>
+									<br>
+									<div class="custom-control custom-radio">
+										<input type="radio" class="custom-control-input" id="tipo_radio1" value="Bolsa" name="tipoRadio" required>
+										<label class="custom-control-label" for="tipo_radio1">Bolsa</label>
+									</div>
+									<div class="custom-control custom-radio">
+										<input type="radio" class="custom-control-input" id="tipo_radio2" value="Cubeta" name="tipoRadio" required>
+										<label class="custom-control-label" for="tipo_radio2">Tambo</label>
+									</div>
+									<div class="custom-control custom-radio">
+										<input type="radio" class="custom-control-input" id="tipo_radio3" value="Tambo" name="tipoRadio" required>
+										<label class="custom-control-label" for="tipo_radio3">Tote</label>
+										<div class="invalid-feedback"> &nbsp; Selecciona tipo de contendor</div>
+									</div>
+								</div>
+
+								<div class="form-group col-md-1">
+								</div>
+
+								<div class="form-group col-md-4">
+									<label class="col-form-label" for="cantidad"> Cantidad Residuo (KG)</label>
+									<input readonly type="number" class="form-control" id="cantidad" name="cantidad" min="1" style="text-align:center" value="1" required>
+
+									<label class="col-form-label " for="etiqueta_check"> Etiqueta </label> <br>
+									<label class="switch">
+										<input type="checkbox" name="etiqueta_check" id="etiqueta_check" value="S">
+										<span class="slider round"></span>
+									</label>
+								</div>	
+
 							</div>
 
 							<!-- Modal footer -->
@@ -196,7 +198,7 @@
 						</div>
 					</div>
 				</div>
-			</div>	
+			</div> <!-- Modal footer -->
 		</div>		
 	</form>
 
@@ -269,6 +271,8 @@
 				<input type="text" name="terminar_responsable" id="terminar_responsable" hidden>
 				<input type="text" name="terminar_fecha" id="terminar_fecha" hidden>
 				<input type="text" name="terminar_empresa_destino" id="terminar_empresa_destino" hidden>
+				<input type="text" name="terminar_ruta" id="terminar_ruta" hidden>
+				<input type="text" name="terminar_observaciones" id="terminar_observaciones" hidden>
 
 				<button type="submit" form="form_terminar_manifiesto" class="btn btn-success btn-lg btn-block" id="b_terminar_manifiesto" disabled> Terminar Manifiesto </button>
 

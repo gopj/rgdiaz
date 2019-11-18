@@ -117,6 +117,10 @@ class Tran_residuo_model extends CI_Model {
 
 	public function inserta_tran_residuo($data) {	
 
+		if ($data['etiqueta']=="0") {
+			$data['etiqueta'] = 'N';
+		}
+
 		$this->db
 				->set('id_folio'			, $data['folio'])
 				->set('id_tipo_residuo'		, $data['residuo'])
@@ -139,7 +143,9 @@ class Tran_residuo_model extends CI_Model {
 			SELECT 
 				fecha_embarque,
 				responsable_tecnico,
-				id_tipo_emp_destino
+				id_tipo_emp_destino,
+				ruta,
+				observaciones
 			FROM 
 				tran_folios
 			WHERE

@@ -151,7 +151,7 @@ function update_clave(id_clave) {
 }
 
 
- $("input[type='number']").InputSpinner();
+$("input[type='number']").InputSpinner();
 
 
 $(document).ready(function() {
@@ -195,8 +195,8 @@ function terminar_manifiesto() {
 	$("#terminar_responsable").val(responsable_tecnico);
 	$("#terminar_fecha").val(fecha_embarque);
 	$("#terminar_empresa_destino").val(s_empresa_destino);
-	$("#terminar_ruta").val(s_empresa_destino);
-	$("#terminar_observaciones").val(s_empresa_destino);
+	$("#terminar_ruta").val(ruta);
+	$("#terminar_observaciones").val(observaciones);
 }
 
 function clear_required(){
@@ -224,8 +224,10 @@ function clear_required(){
 function check_resposanble() {
 
 	$tecnico = document.getElementById('terminar_responsable').value;
+	$ruta = document.getElementById('terminar_ruta').value;
+	$observaciones = document.getElementById('terminar_observaciones').value;
 
-	if ($tecnico == "") {
+	if ( ($tecnico == "") || ($ruta == "") || ($observaciones == "") ){
 		$("#b_terminar_manifiesto").attr('disabled','disabled');
 	} else {
 		$("#b_terminar_manifiesto").removeAttr('disabled');

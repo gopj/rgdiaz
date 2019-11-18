@@ -250,7 +250,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> <!-- Modal footer -->
 		</div>
 	</form>
 </main>
