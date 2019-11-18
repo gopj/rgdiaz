@@ -155,36 +155,48 @@ function update_clave(id_clave) {
 
 
 $(document).ready(function() {
-	var empresa_destino = document.getElementById('empresa_destino');
-	var fecha_embarque = document.getElementById('fecha_embarque').value;
+	var empresa_destino 	= document.getElementById('empresa_destino');
+	var fecha_embarque 		= document.getElementById('fecha_embarque').value;
 	var responsable_tecnico = document.getElementById('responsable_tecnico').value;
+	var ruta 				= document.getElementById('ruta').value;
+	var observaciones		= document.getElementById('observaciones').value;
 
 	var s_empresa_destino = empresa_destino.options[empresa_destino.selectedIndex].value;
 
 	console.log(s_empresa_destino);
 	console.log(fecha_embarque);
 	console.log(responsable_tecnico);
+	console.log(ruta);
+	console.log(observaciones);
 
 	$("#terminar_responsable").val(responsable_tecnico);
 	$("#terminar_fecha").val(fecha_embarque);
 	$("#terminar_empresa_destino").val(s_empresa_destino);
+	$("#terminar_ruta").val(s_empresa_destino);
+	$("#terminar_observaciones").val(s_empresa_destino);
 } );
 
 function terminar_manifiesto() {
 	
-	var empresa_destino = document.getElementById('empresa_destino');
-	var fecha_embarque = document.getElementById('fecha_embarque').value;
+	var empresa_destino 	= document.getElementById('empresa_destino');
+	var fecha_embarque 		= document.getElementById('fecha_embarque').value;
 	var responsable_tecnico = document.getElementById('responsable_tecnico').value;
+	var ruta 				= document.getElementById('ruta').value;
+	var observaciones		= document.getElementById('observaciones').value;
 
 	var s_empresa_destino = empresa_destino.options[empresa_destino.selectedIndex].value;
 
 	console.log(s_empresa_destino);
 	console.log(fecha_embarque);
 	console.log(responsable_tecnico);
+	console.log(ruta);
+	console.log(observaciones);
 
 	$("#terminar_responsable").val(responsable_tecnico);
 	$("#terminar_fecha").val(fecha_embarque);
 	$("#terminar_empresa_destino").val(s_empresa_destino);
+	$("#terminar_ruta").val(s_empresa_destino);
+	$("#terminar_observaciones").val(s_empresa_destino);
 }
 
 function clear_required(){

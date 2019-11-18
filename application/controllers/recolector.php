@@ -122,20 +122,29 @@ class Recolector extends CI_Controller {
 				$data["residuo"]			= $this->input->post("residuo_peligroso");
 				$data["fecha_embarque"]		= date_format($fecha_embarque, "Y-m-d");
 				$data["responsable_tecnico"]= $this->input->post("responsable_tecnico");
+				$data["ruta"]				= $this->input->post("ruta");
+				$data["observaciones"]		= $this->input->post("observaciones");
 				$data["residuo_cantidad"]	= $this->input->post("cantidad");
-				$data["cont_cantidad"]		= $this->input->post("cantidad_tipo");
-				$data["etiqueta"]			= $this->input->post("etiqueta");
+				$data["cont_cantidad"]		= $this->input->post("cantidad_envase");
+				$data["cont_capacidad"]		= $this->input->post("capacidad_envase");
 				$data["contenedor_tipo"]	= $this->input->post("tipoRadio");
+				$data["etiqueta"]			= $this->input->post("etiqueta_check");
 				$data["caracteristica_r"]	= $this->input->post("caracteristica_check");
 				$data["caracteristicas"] 	= "";
 				$data["folio"]				= $folio;
-			
-				$this->tran_residuo_model->inserta_tran_folio($data);
 
 				foreach ($data["caracteristica_r"] as $key => $value) {
 					$data["caracteristicas"] .= $value . " ";
 				}
-				
+
+				/*echo "<pre>";
+				print_r($data);
+				echo "</pre>";
+				die();*/
+
+				// Inserta Folio
+				$this->tran_residuo_model->inserta_tran_folio($data);
+				// Inserta Manifiesto
 				$this->tran_residuo_model->inserta_tran_residuo($data);
 
 				$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);

@@ -108,8 +108,8 @@ class Tran_residuo_model extends CI_Model {
 			->set('fecha_embarque' 		, $data['fecha_embarque'])
 			->set('responsable_tecnico'	, $data['responsable_tecnico'])
 			->set('status' 				, 'W')
-			->set('ruta'				, 'ruta... Agregar campo de ruta en UI')
-			->set('observaciones'		, 'Falta agregar observaciones - Agregar campo de observaciones en UI')
+			->set('ruta'				, $data['ruta'])
+			->set('observaciones'		, $data['observaciones'])
 			->insert('tran_folios');
 
 		return $this->db->insert_id();
@@ -122,6 +122,7 @@ class Tran_residuo_model extends CI_Model {
 				->set('id_tipo_residuo'		, $data['residuo'])
 				->set('caracteristica'		, $data['caracteristicas'])
 				->set('contenedor_cantidad'	, $data['cont_cantidad'])
+				->set('contenedor_capacidad', $data['cont_capacidad'])
 				->set('contenedor_tipo'		, $data['contenedor_tipo'])
 				->set('residuo_cantidad'	, $data['residuo_cantidad'])
 				->set('etiqueta'			, $data['etiqueta'])

@@ -31,9 +31,21 @@
 			</div>
 
 			<div class="form-row">
-				<div class="form-group col-md-9">
+				<div class="form-group col-md-6">
 					<label class="col-form-label" for="responsable_tecnico"> <center> Nombre del Responable Técnico</center> </label>
 					<input type="text" class="form-control" id="responsable_tecnico" name="responsable_tecnico" value="<?= $responsable_tecnico ?>" oninput="terminar_manifiesto();check_resposanble();" placeholder="El nombre del responsable técnico está vacío.">
+				</div>
+
+				<div class="form-group col-md-6">
+					<label class="col-form-label" for="ruta"> <center> Ruta de la empresa generadora</center> </label>
+					<input type="text" class="form-control" id="ruta" name="ruta" value="<?= $ruta ?>" placeholder="La ruta no está especificada"> 
+				</div>		
+			</div>
+
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label class="col-form-label" for="observaciones"> <center> Observaciones </center> </label>
+					<input type="text" class="form-control" id="observaciones" name="observaciones" value="<?= $observaciones ?>"  placeholder="La ruta no está especificada">  
 				</div>		
 			</div>
 

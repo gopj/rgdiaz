@@ -38,6 +38,12 @@
 				</div>		
 			</div>
 
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label class="col-form-label" for="observaciones"> <center> Observaciones </center> </label>
+					<input type="text" class="form-control" id="observaciones" name="observaciones">
+				</div>		
+			</div>
 
 			<div class="form-row">
 				<div class="form-group col-md-12">
@@ -147,20 +153,17 @@
 												<input type="checkbox" class="custom-control-input" id="caracteristica_check2" value="Reactivo" name="caracteristica_check[]" onclick="clear_required();" required>
 												<label class="custom-control-label" for="caracteristica_check2">Reactivo</label>
 											</div>
-											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="caracteristica_check3" value="Toxico" name="caracteristica_check[]" onclick="clear_required();" required>
-												<label class="custom-control-label" for="caracteristica_check3">Explosivo</label>
-											</div>									
+																	
 										</div>
 
 										<div class="form-check col-sm">
 											<div class="custom-control custom-checkbox">
+												<input type="checkbox" class="custom-control-input" id="caracteristica_check3" value="Explosivo" name="caracteristica_check[]" onclick="clear_required();" required>
+												<label class="custom-control-label" for="caracteristica_check3">Explosivo</label>
+											</div>			
+											<div class="custom-control custom-checkbox">
 												<input type="checkbox" class="custom-control-input" id="caracteristica_check4" value="Toxico" name="caracteristica_check[]" onclick="clear_required();" required>
 												<label class="custom-control-label" for="caracteristica_check4">Tóxico</label>
-											</div>
-											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="caracteristica_check5" value="Inflamable" name="caracteristica_check[]" onclick="clear_required();" required>
-												<label class="custom-control-label" for="caracteristica_check5">Inflamable</label>
 												<div class="invalid-feedback">
 													<div class="alert alert-danger" role="alert">
 														Selecciona al menos una caracteristica de peligrosidad.
@@ -171,9 +174,16 @@
 
 										<div class="form-check col-sm">
 											<div class="custom-control custom-checkbox">
+												<input type="checkbox" class="custom-control-input" id="caracteristica_check5" value="Inflamable" name="caracteristica_check[]" onclick="clear_required();" required>
+												<label class="custom-control-label" for="caracteristica_check5">Inflamable</label>
+											</div>
+											<div class="custom-control custom-checkbox">
 												<input type="checkbox" class="custom-control-input" id="caracteristica_check6" value="Biologico" name="caracteristica_check[]" onclick="clear_required();" required>
 												<label class="custom-control-label" for="caracteristica_check6">Biológico</label>
 											</div>
+										</div>
+
+										<div class="form-check col-sm">
 											<div class="custom-control custom-checkbox">
 												<input type="checkbox" class="custom-control-input" id="caracteristica_check7" value="Mutageno" name="caracteristica_check[]" onclick="clear_required();" required>
 												<label class="custom-control-label" for="caracteristica_check7">Mutágeno</label>
@@ -183,20 +193,12 @@
 									</div>
 								</div>
 
-								<div class="form-group col-md-2">
-									<label>Etiqueta</label>
-
-									<label class="switch">
-										<input type="checkbox" name="etiqueta" id="etiqueta_check" value="S">
-										<span class="slider round"></span>
-									</label>									
-								</div>
-
+						<!--  -->
 							</div>
 
 							<div class="form-row">
 								<div class="form-group col-md-4">
-									<label class="col-form-label" for="cantidad_tipo"> Envase Cantidad </label>
+									<label class="col-form-label" for="cantidad_envase"> Envase Cantidad </label>
 									<input readonly type="number" class="form-control" id="cantidad_envase" name="cantidad_envase" min="1" style="text-align:center" value="1" required>
 
 									<label class="col-form-label" for="capacidad_envase"> Capacidad de Envase</label>
@@ -230,6 +232,12 @@
 								<div class="form-group col-md-4">
 									<label class="col-form-label" for="cantidad"> Cantidad Residuo (KG)</label>
 									<input readonly type="number" class="form-control" id="cantidad" name="cantidad" min="1" style="text-align:center" value="1" required>
+
+									<label class="col-form-label " for="etiqueta_check"> Etiqueta </label> <br>
+									<label class="switch">
+										<input type="checkbox" name="etiqueta_check" id="etiqueta_check" value="S">
+										<span class="slider round"></span>
+									</label>
 								</div>	
 
 							</div>
