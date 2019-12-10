@@ -1810,7 +1810,40 @@ class Administrador extends CI_Controller {
 
 				$this->persona_model->alta_recolector($data);
 
-								
+									
+				redirect('administrador');
+
+				
+			} else {
+
+				$data["mensajes"] = $this->contacto_model->contador_mensajes(0);
+				$data["clientes"] = $this->persona_model->obtiene_clientes_baja(3,1,1);
+				$data["correo"] = $this->persona_model->getCorreos(3);
+
+			
+				$this->load->view('administrador/recolector/header', $data);
+				$this->load->view("administrador/recolector/alta", $data);
+				$this->load->view('administrador/recolector/footer', $data);	
+			}
+		} else {
+			redirect('home');
+		}
+		
+	}
+
+/*	public function recolector_alta() {
+		if ($this->session->userdata('tipo')==1){
+
+			if ($this->input->post()) {
+
+				$data["nombre"] = $this->input->post("nombre_recolector");
+				$data["correo"] = $this->input->post("correo");
+				$data["clave"] = $this->input->post("clave2");
+
+
+				$this->persona_model->alta_recolector($data);
+
+									
 				redirect('administrador');
 
 				
@@ -1829,7 +1862,7 @@ class Administrador extends CI_Controller {
 			redirect('home');
 		}
 		
-	}
+	}*/
 
 	public function recolector_index() {
 	
