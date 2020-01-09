@@ -19,6 +19,11 @@
     	<link href="css/bootstrap4/jquery.dataTables.min.css" rel="stylesheet">
     	<link href="css/recolector.css" rel="stylesheet">
 		<link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />	
+		<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+		<script type="text/javascript" src="js/formulario_bitacora.js"></script>
+		<script type="text/javascript" src="js/jquery.validate.js"></script>
+		<script type="text/javascript" src="js/jquery.validate.messages.js"></script>
+		<script type="text/javascript" src="js/bitacora.js"></script>
 
 		<style type="text/css">
 			/*table.dataTable thead tr {
