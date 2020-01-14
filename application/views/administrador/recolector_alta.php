@@ -46,6 +46,13 @@
 </div>
 
 <script type="text/javascript">
+window.onload = function() {
+	var randomstring = gen_pass();
+
+	document.getElementById('clave').value = randomstring;
+	document.getElementById('clave2').value = randomstring;
+};
+
 $(document).ready(function ($) {
 	var randomstring = gen_pass();
 
