@@ -22,19 +22,24 @@
 	                        </div>
 	                    </div>
 
-	                    <div class="form-group row">
+	                    <div class="form-inline row">
 	                        <label class="col-lg-3 col-form-label form-control-label" for="clave">Contraseña</label>
 	                        <div class="col-lg-9">
 	                            <input class="form-control" type="text" class="txt" style="width:54%; text-align: center;" name="clave" id="clave"  oninvalid="this.setCustomValidity('Ingresa una clave')" oninput="setCustomValidity('')" onchange="input_pass()" disabled required>
-									<input type="hidden" class="txt" name="clave2" id="clave2">
-									
-									<label for="clave_automatica" class="checkbox">
-										<input cclass="form-control" type="checkbox" id="clave_automatica" name="clave_automatica" onclick="automatic_pass()" checked> Aleatoria
-									</label>
+
+								<input type="hidden" class="txt" name="clave2" id="clave2">
+
+								&nbsp; &nbsp; &nbsp;
+
+								<div class="custom-control custom-checkbox custom-control-inline">
+									<input type="checkbox" class="custom-control-input" id="clave_automatica" value="Toxico" name="clave_automatica" onclick="automatic_pass();" checked>
+									<label class="custom-control-label" for="clave_automatica">Aleatoria</label>
+								</div>
 	                        </div>
 	                    </div>
 
-	                     <div class="form-group row">
+	                    <br>
+	                    <div class="form-group row">
 	                        <label class="col-lg-3 col-form-label form-control-label"></label>
 	                        <div class="col-lg-9">
 	                            <input type="submit" class="btn btn-primary" value="Guardar">
