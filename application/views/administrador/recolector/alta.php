@@ -1,5 +1,5 @@
  <div class="row">
-    <div class="col-md-12">}
+    <div class="col-md-12">
     	<div class="col-md-6 offset-md-3">
 			<!-- form user info -->
 	        <div class="card card-outline-secondary">
@@ -23,7 +23,7 @@
 	                    </div>
 
 	                    <div class="form-inline row">
-	                        <label class="col-lg-3 col-form-label form-control-label" for="clave">Contraseña</label>
+	                        <label class="col-lg-3 col-form-label form-control-label" for="clave" style="justify-content: left;">Contraseña</label>
 	                        <div class="col-lg-9">
 	                            <input class="form-control" type="text" class="txt" style="width:54%; text-align: center;" name="clave" id="clave"  oninvalid="this.setCustomValidity('Ingresa una clave')" oninput="setCustomValidity('')" onchange="input_pass()" disabled required>
 
