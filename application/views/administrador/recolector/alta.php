@@ -1,6 +1,5 @@
- <div class="row">
-    <div class="col-md-12">
-    	<div class="col-md-6 offset-md-3">
+
+    	<div class="col-md-8" style="padding-top:15px;" >
 			<!-- form user info -->
 	        <div class="card card-outline-secondary">
 	            <div class="card-header">
@@ -51,8 +50,7 @@
 	        </div>
        		<!-- /form user info -->
        	</div>	
-    </div>
-</div>
+
 
 <br><br>
 

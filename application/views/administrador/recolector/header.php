@@ -91,11 +91,19 @@
 			<a class="btn btn-primary btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="<?=site_url();?>"> Cerrar Sesión </a>
 		</nav>
 
-		<div class="container" style="padding-top:10px;">
+		<div class="container-fluid">
+
 			<div class="row">
-				<div class="span14">
-					<img src="img/logo.png" style="width:300px;">
-				</div>
-			</div>
-		</div>
+
+				<!-- <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+					<div class="container" style="padding-top:10px;">
+							<img src="img/logo.png" style="width:300px;">
+						</div>
+				</nav> -->
+					<div class="sidebar-sticky">
+
+						<div class="container" style="padding-top:10px;">
+							<img src="img/logo.png" style="width:300px;">
+						</div>
+					</div>
 					
