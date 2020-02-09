@@ -10,7 +10,7 @@
 					<label class="col-form-label" for="nombre_empresa"> <center> Empresa Destino </center> </label>
 					<select class="form-control" style="width: 100%;" name="empresa_destino" id="empresa_destino" onchange="terminar_manifiesto();" required>
 						<?php foreach ($empresa_destino as $key) { ?>
-								<? if ($id_emp_destino == $key->id_tipo_emp_destino) { ?>
+								<?php if ($id_emp_destino == $key->id_tipo_emp_destino) { ?>
 									<option value="<?= $key->id_tipo_emp_destino; ?>" selected> <?= $key->nombre_destino; ?> </option>
 								<?php } else { ?>
 									<option value="<?= $key->id_tipo_emp_destino; ?>"> <?= $key->nombre_destino; ?> </option>
