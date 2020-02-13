@@ -101,6 +101,14 @@ class Persona_model extends CI_Model {
 						->insert('persona');
 	}
 
+	public function alta_vehiculo($data){
+		return $this->db->set('modelo',$data['modelo'])
+						->set('marca',$data['marca'])
+						->set('tipo_vehiculo',$data['tipo'])
+						->set('numero_placa',$data['placa'])
+						->insert('tran_vehiculos');
+	}
+
 	public function get_nombre_cliente($id){
 		$result = $this->db->query("SELECT nombre FROM persona WHERE  id_persona = {$id} LIMIT 1;")->result();  
 

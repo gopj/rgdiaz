@@ -62,9 +62,46 @@
 							</button>
 						</h2>
 					</div>
-					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionAltaRecolector">
+					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionAltaVehiculo">
 						<div class="card-body">
-							
+							<form class="form" role="form" autocomplete="off" method='post' action="<?php echo site_url('administrador/recolector_alta_vehiculo');?>">
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label" for="modelo">Modelo</label>
+									<div class="col-lg-9">
+										<input class="form-control" type="text" class="txt " style="width:85%; text-align: center;" name="modelo" id="modelo"  oninvalid="this.setCustomValidity('Ingresa moodelo del vehiculo')" oninput="setCustomValidity('')"  required>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label" for="marca">Marca</label>
+									<div class="col-lg-9">
+										<input class="form-control" type="text" class="txt" style="width:85%; text-align: center;" name="marca" id="marca"  oninvalid="this.setCustomValidity('Ingresa marca')" oninput="setCustomValidity('')" required>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label" for="tipo">Tipo</label>
+									<div class="col-lg-9">
+										<input class="form-control" type="text" class="txt" style="width:85%; text-align: center;" name="tipo" id="tipo"  oninvalid="this.setCustomValidity('Ingresa correo')" oninput="setCustomValidity('')" required>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label" for="placa">No. Placa</label>
+									<div class="col-lg-9">
+										<input class="form-control" type="text" class="txt" style="width:85%; text-align: center;" name="placa" id="placa"  oninvalid="this.setCustomValidity('Ingresa correo')" oninput="setCustomValidity('')" required>
+									</div>
+								</div>
+
+								<br>
+
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label"></label>
+									<div class="col-lg-9">
+										<input type="submit" class="btn btn-primary" value="Guardar">
+									</div>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
