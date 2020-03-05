@@ -115,7 +115,7 @@
 					</div>
 					<div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionAltaDestino">
 						<div class="card-body">
-							<form class="form" role="form" autocomplete="off" method='post' action="<?php echo site_url('administrador/recolector_alta_vehiculo');?>">
+							<form class="form" role="form" autocomplete="off" method='post' action="<?php echo site_url('administrador/recolector_alta_destino');?>">
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label" for="nombre_destino">Nombre Empresa Destino</label>
 									<div class="col-lg-9">
@@ -137,10 +137,64 @@
 									</div>
 								</div>
 
+
+								<div class="form-row">
+									
+									<div class="form-group col-lg-3">
+										<label class="col-lg-6 col-form-label form-control-label" for="num_ext">Núm. Ext.</label>
+										<div class="col-lg-15">
+											<input class="form-control" type="text" class="txt" style="width:81%; text-align: center;" name="num_ext" id="num_ext" oninvalid="this.setCustomValidity('Ingresa el número exteriror')" oninput="setCustomValidity('')" required>
+										</div>
+									</div>
+
+									<div class="form-group col-lg-6">
+										<label class="col-lg-3 col-form-label form-control-label" for="num_int">Núm. Int.</label>
+										<div class="col-lg-9">
+											<input class="form-control" type="text" class="txt" style="width:81%; text-align: center;" name="num_int" id="num_int" oninvalid="this.setCustomValidity('Ingresa el número exteriror')" oninput="setCustomValidity('')" required>
+										</div>
+									</div>
+
+									<div class="form-group col-lg-6">
+										<label class="col-lg-3 col-form-label form-control-label" for="cp">Código Postal</label>
+										<div class="col-lg-3">
+											<input class="form-control" type="text" class="txt" style="width:81%; text-align: center;" name="cp" id="cp" oninvalid="this.setCustomValidity('Ingresa el número exteriror')" oninput="setCustomValidity('')" required>
+										</div>
+									</div>
+
+								</div>
+
 								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label" for="num_ext">Núm. Ext.</label>
+									<label class="col-lg-3 col-form-label form-control-label" for="cp">Código Postal</label>
 									<div class="col-lg-9">
-										<input class="form-control" type="text" class="txt" style="width:81%; text-align: center;" name="num_ext" id="num_ext" oninvalid="this.setCustomValidity('Ingresa el número exteriror')" oninput="setCustomValidity('')" required>
+										<input class="form-control" type="text" class="txt" style="width:81%; text-align: center;" name="cp" id="cp" oninvalid="this.setCustomValidity('Ingresa el número exteriror')" oninput="setCustomValidity('')" required>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label" for="colonia">Colonia</label>
+									<div class="col-lg-9">
+										<input class="form-control" type="text" class="txt" style="width:81%; text-align: center;" name="colonia" id="colonia" oninvalid="this.setCustomValidity('Ingresa el número exteriror')" oninput="setCustomValidity('')" required>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label" for="municipio">Municipio</label>
+									<div class="col-lg-9">
+										<input class="form-control" type="text" class="txt" style="width:81%; text-align: center;" name="municipio" id="municipio" oninvalid="this.setCustomValidity('Ingresa el número exteriror')" oninput="setCustomValidity('')" required>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label" for="estado">Estado</label>
+									<div class="col-lg-9">
+										<input class="form-control" type="text" class="txt" style="width:81%; text-align: center;" name="estado" id="estado" oninvalid="this.setCustomValidity('Ingresa el número exteriror')" oninput="setCustomValidity('')" required>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label" for="telefono">Télefono</label>
+									<div class="col-lg-9">
+										<input class="form-control" type="text" class="txt" style="width:81%; text-align: center;" name="telefono" id="telefono" oninvalid="this.setCustomValidity('Ingresa el número exteriror')" oninput="setCustomValidity('')" required>
 									</div>
 								</div>
 

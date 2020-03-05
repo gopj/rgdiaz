@@ -1856,6 +1856,33 @@ class Administrador extends CI_Controller {
 		}
 	}
 
+	public function recolector_alta_destino() {
+
+		if ($this->session->userdata('tipo')==1){
+
+
+			if ($this->input->post()) {
+				
+				$data["nombre_destino"] = $this->input->post("nombre_destino");
+				$data["numero_autorizacion"] = $this->input->post("numero_autorizacion");
+				$data["calle"] = $this->input->post("calle");
+				$data["num_ext"] = $this->input->post("num_ext");
+
+				$this->persona_model->alta_vehiculo($data);
+
+			}
+ 
+
+
+			$this->load->view('administrador/recolector/header', $data);
+			$this->load->view("administrador/recolector/alta", $data);
+			$this->load->view('administrador/recolector/footer', $data);	
+
+
+		}
+		
+	}
+
 /*	public function recolector_alta() {
 		if ($this->session->userdata('tipo')==1){
 
