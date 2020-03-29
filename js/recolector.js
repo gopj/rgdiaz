@@ -52,14 +52,16 @@ function get_recolector(id){
 
 	var id_per = id;
 	
-	if (id_per == 0) {
+	if (id_per != 0) {
 		$("#nombre_recolector").attr('disabled','disabled');
 		$("#correo").attr('disabled','disabled');
 		$("#clave").attr('disabled','disabled');
+		$("#guarda_recolector").attr('disabled','disabled');
 	} else {
 		$("#nombre_recolector").removeAttr('disabled');
 		$("#correo").removeAttr('disabled');
 		$("#clave").removeAttr('disabled');
+		$("#guarda_recolector").removeAttr('disabled');
 	}
     console.log(id_per);
 	//AJAX
@@ -89,6 +91,123 @@ function get_recolector(id){
 	//echo site_url('administrador/obtiene_cliente'); ?>"  <--	Ruta de la peticion
 }
 
+function get_vehiculo(id){
+
+	var id_vehiculo = id;
+	
+	if (id_vehiculo != 0) {
+		$("#modelo").attr('disabled','disabled');
+		$("#marca").attr('disabled','disabled');
+		$("#tipo").attr('disabled','disabled');
+		$("#placa").attr('disabled','disabled');
+		$("#guarda_vehiculo").attr('disabled','disabled');
+	} else {
+		$("#modelo").removeAttr('disabled');
+		$("#marca").removeAttr('disabled');
+		$("#tipo").removeAttr('disabled');
+		$("#placa").removeAttr('disabled');
+		$("#guarda_vehiculo").removeAttr('disabled');
+	}
+    console.log(id_vehiculo);
+	//AJAX
+	jQuery.ajax({
+			url:'http://' + host + '/index.php/administrador/get_vehiculo',	//<-- Url que va procesar la peticion
+			//url:'http://rdiaz.mx/index.php/recolector/get_cliente',
+			timeout: 3000, //sets timeout to 3 seconds
+			type:'post',
+			data:{
+				id_vehiculo: id_vehiculo,
+			}
+		}).done(
+			function(resp) {
+				var json_data = jQuery.parseJSON(resp);
+				var id_vehiculo = json_data.id_vehiculo;
+				var modelo = json_data.modelo;
+				var marca = json_data.marca;
+				var tipo = json_data.tipo_vehiculo;
+				var placa = json_data.numero_placa;
+	
+				$("#modelo").val(modelo);
+				$("#marca").val(marca);
+				$("#tipo").val(tipo);
+				$("#placa").val(placa);
+
+			}
+		);
+
+	//echo site_url('administrador/obtiene_cliente'); ?>"  <--	Ruta de la peticion
+}
+
+function get_destino(id){
+
+	var id_destino = id;
+	
+	if (id_vehiculo != 0) {
+		$("#nombre_destino").attr('disabled','disabled');
+		$("#numero_autorizacion").attr('disabled','disabled');
+		$("#calle").attr('disabled','disabled');
+		$("#num_ext").attr('disabled','disabled');
+		$("#num_int").attr('disabled','disabled');
+		$("#cp").attr('disabled','disabled');
+		$("#colonia").attr('disabled','disabled');
+		$("#municipio").attr('disabled','disabled');
+		$("#estado").attr('disabled','disabled');
+		$("#telefono").attr('disabled','disabled');
+		$("#guarda_destino").attr('disabled','disabled');
+	} else {
+		$("#nombre_destino").removeAttr('disabled');
+		$("#numero_autorizacion").removeAttr('disabled');
+		$("#calle").removeAttr('disabled');
+		$("#num_ext").removeAttr('disabled');
+		$("#num_int").removeAttr('disabled');
+		$("#cp").removeAttr('disabled');
+		$("#colonia").removeAttr('disabled');
+		$("#municipio").removeAttr('disabled');
+		$("#estado").removeAttr('disabled');
+		$("#telefono").removeAttr('disabled');
+		$("#guarda_destino").removeAttr('disabled');
+	}
+    console.log(id_destino);
+	//AJAX
+	jQuery.ajax({
+			url:'http://' + host + '/index.php/administrador/get_destino',	//<-- Url que va procesar la peticion
+			//url:'http://rdiaz.mx/index.php/recolector/get_cliente',
+			timeout: 3000, //sets timeout to 3 seconds
+			type:'post',
+			data:{
+				id_destino: id_destino,
+			}
+		}).done(
+			function(resp) {
+				var json_data = jQuery.parseJSON(resp);
+				var id_destino = json_data.id_destino;
+				var nombre_destino = json_data.nombre_destino;
+				var numero_autorizacion = json_data.no_autorizacion_destino
+				var calle = json_data.calle;
+				var num_ext = json_data.num_ext;
+				var num_int = json_data.num_int;
+				var cp = json_data.cp;
+				var colonia = json_data.colonia;
+				var municipio = json_data.municipio;
+				var estado = json_data.estado;
+				var telefono = json_data.telefono;
+	
+				$("#nombre_destino").val(nombre_destino);
+				$("#numero_autorizacion").val(numero_autorizacion);
+				$("#calle").val(calle);
+				$("#num_ext").val(num_ext);
+				$("#num_int").val(num_int);
+				$("#cp").val(cp);
+				$("#colonia").val(colonia);
+				$("#municipio").val(municipio);
+				$("#estado").val(estado);
+				$("#telefono").val(telefono);
+
+			}
+		);
+
+	//echo site_url('administrador/obtiene_cliente'); ?>"  <--	Ruta de la peticion
+}
 
 //jQuery extension method:
 jQuery.fn.filterByText = function(textbox) {

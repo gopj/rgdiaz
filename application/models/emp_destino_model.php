@@ -48,6 +48,10 @@ public function __construct() {
 		return $this->db->select('*')->get('tipo_emp_destino');
 	}
 
+	public function get_destino($id) {
+		return $this->db->where('id_tipo_emp_destino', $id)->get('tipo_emp_destino')->row();
+	}
+
 	public function actualiza_emp_destino($data) {
 
 		$this->db

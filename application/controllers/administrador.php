@@ -1868,6 +1868,13 @@ class Administrador extends CI_Controller {
 		}
 	}
 
+	public function get_vehiculo() {
+		
+		$vehiculo = $this->tran_vehiculo_model->get_vehiculo($this->input->post('id_vehiculo'));
+		
+		echo json_encode($vehiculo);
+	}
+
 	public function recolector_destino() {
 
 		if ($this->session->userdata('tipo')==1){
@@ -1901,6 +1908,13 @@ class Administrador extends CI_Controller {
 
 		}
 		
+	}
+
+	public function get_destino() {
+		
+		$destino = $this->emp_destino_model->get_destino($this->input->post('id_destino'));
+		
+		echo json_encode($destino);
 	}
 
 /*	public function recolector_alta() {

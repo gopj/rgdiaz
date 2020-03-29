@@ -61,7 +61,7 @@
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label"></label>
 									<div class="col-lg-9">
-										<input type="submit" class="btn btn-primary" value="Guardar">
+										<input type="submit" class="btn btn-primary" value="Guardar" name="guarda_recolector" id="guarda_recolector">
 									</div>
 								</div>
 							</form>
@@ -109,14 +109,14 @@
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label" for="tipo">Tipo</label>
 									<div class="col-lg-9">
-										<input class="form-control" type="text" class="txt" style="width:81%; text-align: center;" name="tipo" id="tipo"  oninvalid="this.setCustomValidity('Ingresa correo')" oninput="setCustomValidity('')" required>
+										<input class="form-control" type="text" class="txt" style="width:81%; text-align: center;" name="tipo" id="tipo"  oninvalid="this.setCustomValidity('Ingresa tipo de vehículo. Ej: Caja seca')" oninput="setCustomValidity('')" required>
 									</div>
 								</div>
 
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label" for="placa">No. Placa</label>
 									<div class="col-lg-9">
-										<input class="form-control" type="text" class="txt" style="width:81%; text-align: center;" name="placa" id="placa"  oninvalid="this.setCustomValidity('Ingresa correo')" oninput="setCustomValidity('')" required>
+										<input class="form-control" type="text" class="txt" style="width:81%; text-align: center;" name="placa" id="placa"  oninvalid="this.setCustomValidity('Ingresa número de placa')" oninput="setCustomValidity('')" required>
 									</div>
 								</div>
 
@@ -125,7 +125,7 @@
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label"></label>
 									<div class="col-lg-9">
-										<input type="submit" class="btn btn-primary" value="Guardar">
+										<input type="submit" class="btn btn-primary" value="Guardar" name="guarda_vehiculo" id="guarda_vehiculo">
 									</div>
 								</div>
 							</form>
@@ -150,7 +150,7 @@
 									<div class="form-group col-lg-9">
 										<label class="col-lg-6 col-form-label form-control-label" for="id_emp_dest"> Selecciona Empresa Destino</label>
 										<div class="col-lg-12">
-											<select class="form-control" style="width:81%;" onclick="//get_cliente(this.value)" id="id_emp_dest" name="id_emp_dest">
+											<select class="form-control" style="width:81%;" onclick="get_destino(this.value)" id="id_emp_dest" name="id_emp_dest">
 												<option value=""> Nuevo </option>
 
 												<?php foreach($destinos->result() as $row){ ?>
@@ -249,7 +249,7 @@
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label"></label>
 									<div class="col-lg-9">
-										<input type="submit" class="btn btn-primary" value="Guardar">
+										<input type="submit" class="btn btn-primary" value="Guardar" name="guarda_destino" id="guarda_destino">
 									</div>
 								</div>
 							</form>
