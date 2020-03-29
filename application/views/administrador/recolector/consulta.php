@@ -190,14 +190,14 @@
 									</div>
 									
 									<div class="form-group col-lg-1">
-										<label class="col-lg-12 col-form-label form-control-label" for="num_ext">Núm. Ext.</label>
+										<label class="col-lg-12 col-form-label form-control-label" for="num_ext"># Ext.</label>
 										<div class="col-lg-12">
 											<input class="form-control" type="text" class="txt" style="text-align: center;" name="num_ext" id="num_ext" oninvalid="this.setCustomValidity('Ingresa el número exteriror')" oninput="setCustomValidity('')" required>
 										</div>
 									</div>
 
 									<div class="form-group col-lg-1">
-										<label class="col-lg-12 col-form-label form-control-label" for="num_int">Núm. Int.</label>
+										<label class="col-lg-12 col-form-label form-control-label" for="num_int"># Int.</label>
 										<div class="col-lg-12">
 											<input class="form-control" type="text" class="txt" style="text-align: center;" name="num_int" id="num_int" oninvalid="this.setCustomValidity('Ingresa el número exteriror')" oninput="setCustomValidity('')" required>
 										</div>
@@ -229,7 +229,7 @@
 									</div>
 
 									<div class="form-group col-lg-3">
-										<label class="col-lg-3 col-form-label form-control-label" for="estado">Estado</label>
+										<label class="col-lg-4 col-form-label form-control-label" for="estado">Estado</label>
 										<div class="col-lg-12">
 											<input class="form-control" type="text" class="txt" style="text-align: center;" name="estado" id="estado" oninvalid="this.setCustomValidity('Ingresa el número exteriror')" oninput="setCustomValidity('')" required>
 										</div>
