@@ -1834,24 +1834,20 @@ class Administrador extends CI_Controller {
 	public function recolector_alta_vehiculo() {
 		if ($this->session->userdata('tipo')==1){
 
-
 			if ($this->input->post()) {
 				
 				$data["modelo"] = $this->input->post("modelo");
-				$data["marca"] = $this->input->post("marca");
-				$data["tipo"] = $this->input->post("tipo");
-				$data["placa"] = $this->input->post("placa");
+				$data["marca"] 	= $this->input->post("marca");
+				$data["tipo"] 	= $this->input->post("tipo");
+				$data["placa"] 	= $this->input->post("placa");
 
 				$this->persona_model->alta_vehiculo($data);
 
 			}
- 
-
 
 			$this->load->view('administrador/recolector/header', $data);
 			$this->load->view("administrador/recolector/alta", $data);
 			$this->load->view('administrador/recolector/footer', $data);	
-
 
 		}
 	}
@@ -1863,16 +1859,20 @@ class Administrador extends CI_Controller {
 
 			if ($this->input->post()) {
 				
-				$data["nombre_destino"] = $this->input->post("nombre_destino");
-				$data["numero_autorizacion"] = $this->input->post("numero_autorizacion");
-				$data["calle"] = $this->input->post("calle");
-				$data["num_ext"] = $this->input->post("num_ext");
+				$data["nombre_destino"] 	= $this->input->post("nombre_destino");
+				$data["numero_autorizacion"]= $this->input->post("numero_autorizacion");
+				$data["calle"] 				= $this->input->post("calle");
+				$data["num_ext"] 			= $this->input->post("num_ext");
+				$data["num_int"] 			= $this->input->post("num_int");
+				$data["cp"] 				= $this->input->post("cp");
+				$data["colonia"] 			= $this->input->post("colonia");
+				$data["municipio"] 			= $this->input->post("municipio");
+				$data["estado"] 			= $this->input->post("estado");
+				$data["telefono"] 			= $this->input->post("telefono");
 
-				$this->persona_model->alta_vehiculo($data);
+				$this->persona_model->alta_destino($data);
 
 			}
- 
-
 
 			$this->load->view('administrador/recolector/header', $data);
 			$this->load->view("administrador/recolector/alta", $data);
