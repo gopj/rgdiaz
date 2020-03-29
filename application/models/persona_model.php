@@ -119,7 +119,7 @@ class Persona_model extends CI_Model {
 						->set('colonia', 			$data['colonia'])
 						->set('estado', 			$data['estado'])
 						->set('telefono', 			$data['telefono'])
-						->insert('tipo_emp_destino')
+						->insert('tipo_emp_destino');
 	}
 
 	public function get_nombre_cliente($id){
@@ -282,6 +282,18 @@ class Persona_model extends CI_Model {
 						->where('id_persona',$id_persona)
 						->update('persona');
 	}
+
+	public function get_recolectores(){
+		return $this->db->where('id_tipo_persona', 2)
+						 ->get('persona');
+	}
+
+	public function get_recolector($id){
+		return $this->db->where('id_tipo_persona', 2)
+						->where('id_persona', $id)
+						->get('persona')->row();
+	}
+
  }
 
 

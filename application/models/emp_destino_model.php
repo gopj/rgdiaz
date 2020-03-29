@@ -44,6 +44,10 @@ public function __construct() {
 		return $id_tipo_emp_destino;
 	}
 
+	public function get_destinos() {
+		return $this->db->select('*')->get('tipo_emp_destino');
+	}
+
 	public function actualiza_emp_destino($data) {
 
 		$this->db

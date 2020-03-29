@@ -11,6 +11,7 @@ class Administrador extends CI_Controller {
 		$this->load->model('notificacion_model');
 		$this->load->model('residuo_peligroso_model');
 		$this->load->model('tran_residuo_model');
+		$this->load->model('tran_vehiculo_model');
 		$this->load->model('area_model');
 		$this->load->model('emp_transportista_model');
 		$this->load->model('emp_destino_model');
@@ -1798,8 +1799,12 @@ class Administrador extends CI_Controller {
 		redirect('administrador/transportistas_destinos');
 	}
 
-	public function recolector_alta() {
+	public function recolector_consulta() {
 		if ($this->session->userdata('tipo')==1){
+
+			$data["recolectores"] = $this->persona_model->get_recolectores();
+			$data["vehiculos"] = $this->tran_vehiculo_model->get_vehiculos();
+			$data["destinos"] = $this->emp_destino_model->get_destinos();
 
 			if ($this->input->post()) {
 
@@ -1822,8 +1827,8 @@ class Administrador extends CI_Controller {
 
 			
 				$this->load->view('administrador/recolector/header', $data);
-				$this->load->view("administrador/recolector/alta", $data);
-				$this->load->view('administrador/recolector/footer', $data);	
+				$this->load->view("administrador/recolector/consulta", $data);
+				$this->load->view('administrador/recolector/footer', $data);
 			}
 		} else {
 			redirect('home');
@@ -1831,8 +1836,19 @@ class Administrador extends CI_Controller {
 		
 	}
 
-	public function recolector_alta_vehiculo() {
+	public function get_recolector() {
+		
+		$recolector = $this->persona_model->get_recolector($this->input->post('id_persona'));
+		
+		echo json_encode($recolector);
+	}
+
+	public function recolector_vehiculo() {
 		if ($this->session->userdata('tipo')==1){
+
+			$data["recolectores"] = $this->persona_model->get_recolectores();
+			$data["vehiculos"] = $this->tran_vehiculo_model->get_vehiculos();
+			$data["destinos"] = $this->emp_destino_model->get_destinos();
 
 			if ($this->input->post()) {
 				
@@ -1846,15 +1862,19 @@ class Administrador extends CI_Controller {
 			}
 
 			$this->load->view('administrador/recolector/header', $data);
-			$this->load->view("administrador/recolector/alta", $data);
+			$this->load->view("administrador/recolector/consulta", $data);
 			$this->load->view('administrador/recolector/footer', $data);	
 
 		}
 	}
 
-	public function recolector_alta_destino() {
+	public function recolector_destino() {
 
 		if ($this->session->userdata('tipo')==1){
+
+			$data["recolectores"] = $this->persona_model->get_recolectores();
+			$data["vehiculos"] = $this->tran_vehiculo_model->get_vehiculos();
+			$data["destinos"] = $this->emp_destino_model->get_destinos();
 
 
 			if ($this->input->post()) {
@@ -1875,7 +1895,7 @@ class Administrador extends CI_Controller {
 			}
 
 			$this->load->view('administrador/recolector/header', $data);
-			$this->load->view("administrador/recolector/alta", $data);
+			$this->load->view("administrador/recolector/consulta", $data);
 			$this->load->view('administrador/recolector/footer', $data);	
 
 

@@ -77,9 +77,8 @@
 							Recolectores
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="<?php echo site_url('administrador/recolector_alta')?>">Alta</a>
-							<a class="dropdown-item" href="<?php echo site_url('administrador/transportistas_destinos')?>">Transportistas | Destinos</a>
-							<a class="dropdown-item" href="<?php echo site_url('administrador/recolector_index')?>">Consultas</a>
+							<a class="dropdown-item" href="<?php echo site_url('administrador/recolector_consulta')?>">Consultas</a>
+							<a class="dropdown-item" href="<?php echo site_url('administrador/recolector_index')?>">Bitacora</a>
 						</div>
 					</li>
 					<li class="nav-item">

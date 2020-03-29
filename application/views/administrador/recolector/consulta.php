@@ -6,14 +6,28 @@
 					<div class="card-header" id="headingOne">
 						<h2 class="mb-0">
 							<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-								Alta Recolector
+								Recolector
 							</button>
 						</h2>
 					</div>
 
 					<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionAltaRecolector">
 						<div class="card-body">
-							<form class="form" role="form" autocomplete="off" method='post' action="<?php echo site_url('administrador/recolector_alta');?>">
+							<form class="form" role="form" autocomplete="off" method='post' action="<?php echo site_url('administrador/recolector_consulta');?>">
+
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label" for="id_persona"> Selecciona Correo </label>
+									<div class="col-lg-9">
+										<select class="form-control" style="width:81%;" onclick="get_recolector(this.value)" id="id_persona" name="id_persona">
+											<option value=""> Nuevo </option>
+												
+											<?php foreach($recolectores->result() as $row){ ?>
+												<option value="<?php echo $row->id_persona;?>"><?php echo $row->correo; ?></option>
+											<?php } ?>
+										</select>
+									</div>
+								</div>
+
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label" for="nombre_recolector">Nombre</label>
 									<div class="col-lg-9">
@@ -58,17 +72,30 @@
 					<div class="card-header" id="headingTwo">
 						<h2 class="mb-0">
 							<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-								Alta Vehículo
+								Vehículo
 							</button>
 						</h2>
 					</div>
-					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionAltaVehiculo">
+					<div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionAltaVehiculo">
 						<div class="card-body">
-							<form class="form" role="form" autocomplete="off" method='post' action="<?php echo site_url('administrador/recolector_alta_vehiculo');?>">
+							<form class="form" role="form" autocomplete="off" method='post' action="<?php echo site_url('administrador/recolector_vehiculo');?>">
+
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label" for="id_vehiculo"> Selecciona Vehículo</label>
+									<div class="col-lg-9">
+										<select class="form-control" style="width:81%;" onclick="get_vehiculo(this.value)" id="id_vehiculo" name="id_vehiculo">
+											<option value=""> Nuevo </option>
+											<?php foreach($vehiculos->result() as $row){ ?>
+												<option value="<?php echo $row->id_vehiculo;?>"><?php echo $row->numero_placa; ?></option>
+											<?php } ?>
+										</select>
+									</div>
+								</div>
+
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label" for="modelo">Modelo</label>
 									<div class="col-lg-9">
-										<input class="form-control" type="text" class="txt " style="width:81%; text-align: center;" name="modelo" id="modelo"  oninvalid="this.setCustomValidity('Ingresa moodelo del vehiculo')" oninput="setCustomValidity('')"  required>
+										<input class="form-control" type="text" class="txt " style="width:81%; text-align: center;" name="modelo" id="modelo"  oninvalid="this.setCustomValidity('Ingresa modelo del vehiculo')" oninput="setCustomValidity('')"  required>
 									</div>
 								</div>
 
@@ -109,20 +136,38 @@
 					<div class="card-header" id="headingTwo">
 						<h2 class="mb-0">
 							<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-								Alta Destino
+								Destino
 							</button>
 						</h2>
 					</div>
-					<div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionAltaDestino">
+					<div id="collapseThree" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionAltaDestino">
 						<div class="card-body">
-							<form class="form" role="form" autocomplete="off" method='post' action="<?php echo site_url('administrador/recolector_alta_destino');?>">
+							<form class="form" role="form" autocomplete="off" method='post' action="<?php echo site_url('administrador/recolector_destino');?>">
+
+
+								<div class="form-row">
+
+									<div class="form-group col-lg-9">
+										<label class="col-lg-6 col-form-label form-control-label" for="id_emp_dest"> Selecciona Empresa Destino</label>
+										<div class="col-lg-12">
+											<select class="form-control" style="width:81%;" onclick="//get_cliente(this.value)" id="id_emp_dest" name="id_emp_dest">
+												<option value=""> Nuevo </option>
+
+												<?php foreach($destinos->result() as $row){ ?>
+													<option value="<?php echo $row->id_tipo_emp_destino;?>"><?php echo $row->nombre_destino; ?></option>
+												<?php } ?>
+											</select>
+										</div>
+									</div>
+
+								</div>
 								
 								<div class="form-row">
 
 									<div class="form-group col-lg-6">
 										<label class="col-lg-6 col-form-label form-control-label" for="nombre_destino">Nombre Empresa Destino</label>
 										<div class="col-lg-12">
-											<input class="form-control" type="text" class="txt " name="nombre_destino" id="nombre_destino"  oninvalid="this.setCustomValidity('Ingresa moodelo de la Empresa Destino')" oninput="setCustomValidity('')"  required>
+											<input class="form-control" type="text" class="txt " name="nombre_destino" id="nombre_destino"  oninvalid="this.setCustomValidity('Ingresa Nombre de Empresa Destino')" oninput="setCustomValidity('')"  required>
 										</div>
 									</div>
 

@@ -48,6 +48,48 @@ function get_cliente(id){
 	//echo site_url('administrador/obtiene_cliente'); ?>"  <--	Ruta de la peticion
 }
 
+function get_recolector(id){
+
+	var id_per = id;
+	
+	if (id_per == 0) {
+		$("#nombre_recolector").attr('disabled','disabled');
+		$("#correo").attr('disabled','disabled');
+		$("#clave").attr('disabled','disabled');
+	} else {
+		$("#nombre_recolector").removeAttr('disabled');
+		$("#correo").removeAttr('disabled');
+		$("#clave").removeAttr('disabled');
+	}
+    console.log(id_per);
+	//AJAX
+	jQuery.ajax({
+			url:'http://' + host + '/index.php/administrador/get_recolector',	//<-- Url que va procesar la peticion
+			//url:'http://rdiaz.mx/index.php/recolector/get_cliente',
+			timeout: 3000, //sets timeout to 3 seconds
+			type:'post',
+			data:{
+				id_persona: id_per,
+			}
+		}).done(
+			function(resp) {
+				var json_data = jQuery.parseJSON(resp);
+				var id_persona = json_data.id_persona;
+				var nombre = json_data.nombre;
+				var correo = json_data.correo;
+				var clave = json_data.password;
+	
+				$("#nombre_recolector").val(nombre);
+				$("#correo").val(correo);
+				$("#clave").val(clave);
+
+			}
+		);
+
+	//echo site_url('administrador/obtiene_cliente'); ?>"  <--	Ruta de la peticion
+}
+
+
 //jQuery extension method:
 jQuery.fn.filterByText = function(textbox) {
 	return this.each(function() {
@@ -79,7 +121,6 @@ jQuery.fn.filterByText = function(textbox) {
 };
 
 
-// You could use it like this:
 
 $(function() {
 	$('#id_persona').filterByText($('#search_cliente'));
