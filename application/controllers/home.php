@@ -49,6 +49,10 @@ class Home extends CI_Controller {
 		$this->load->view('home/footer');
 	}
 
+	public function index2(){
+		$this->load->view('home/index2');
+	}
+
 	public function login()
 	{
 		if($this->input->post())
