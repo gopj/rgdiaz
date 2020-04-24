@@ -50,7 +50,9 @@ class Home extends CI_Controller {
 	}
 
 	public function index2(){
+		$this->load->view('home/header2');
 		$this->load->view('home/index2');
+		$this->load->view('home/footer2');
 	}
 
 	public function login()
