@@ -12,10 +12,10 @@
     <meta name="description" content="Crizal - Multipurpose Responsive + Admin" />
 
     <!-- title  -->
-    <title>Crizal - Multipurpose Responsive + Admin</title>
+    <title>RDíaz - Servicios Integrales en Materia Ambiental</title>
 
     <!-- favicon -->
-    <link rel="shortcut icon" href="img/crizal/logos/favicon.png">
+    <link rel="shortcut icon" href="img/minilogo.png">
     <link rel="apple-touch-icon" href="img/crizal/logos/apple-touch-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="72x72" href="img/crizal/logos/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="img/crizal/logos/apple-touch-icon-114x114.png">
@@ -57,17 +57,14 @@
                         <div class="col-md-9 col-xs-12">
                             <div class="top-bar-info">
                                 <ul>
-                                    <li><i class="fas fa-mobile-alt"></i>(+123) 456 7890</li>
+                                    <li><i class="fas fa-mobile-alt"></i>(+123) 123 123</li>
                                     <li><i class="fas fa-envelope"></i>addyour@emailhere</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-xs-12 col-md-3 xs-display-none">
                             <ul class="top-social-icon">
-                                <li><a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="javascript:void(0)"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="javascript:void(0)"><i class="fab fa-google-plus-g"></i></a></li>
-                                <li><a href="javascript:void(0)"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="https://www.facebook.com/RD%C3%ADaz-304155623326307/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -100,7 +97,7 @@
 
                                     <div class="navbar-header navbar-header-custom">
                                         <!-- start logo -->
-                                        <a href="#" class="navbar-brand"><img id="logo" src="img/logo.png" alt="logo"></a>
+                                        <a href="#" class="navbar-brand"><img id="logo" src="img/logos/logo.png" alt="logo"></a>
                                         <!-- end logo -->
                                     </div>
 
