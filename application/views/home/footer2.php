@@ -44,23 +44,27 @@
                     </div>
 
                     <div class="col-lg-3 col-md-6 offset-lg-1">
-                        <h3 class="footer-title-style2 text-theme-color">Get in Touch</h3>
+                        <h3 class="footer-title-style2 text-theme-color">Ponte en contacto</h3>
                         <ul class="footer-list">
                             <li>
                                 <span class="d-inline-block vertical-align-top font-size18"><i class="fas fa-map-marker-alt text-theme-color"></i></span>
-                                <span class="d-inline-block width-85 vertical-align-top padding-10px-left">74 Norava Street 542B, Great North Town 51 MT.</span>
+                                <span class="d-inline-block width-85 vertical-align-top padding-10px-left">Monthatlán #281, Villa Izcalli CP 28979, Villa de Álvarez, Colima.</span>
                             </li>
                             <li>
                                 <span class="d-inline-block vertical-align-top font-size18"><i class="fas fa-mobile-alt text-theme-color"></i></span>
-                                <span class="d-inline-block width-85 vertical-align-top padding-10px-left">(+44) 123 456 789</span>
+                                <span class="d-inline-block width-85 vertical-align-top padding-10px-left">312 120 9233</span>
+                            </li>
+                            <li>
+                                <span class="d-inline-block vertical-align-top font-size18"><i class="fas fa-phone text-theme-color"></i></span>
+                                <span class="d-inline-block width-85 vertical-align-top padding-10px-left">312 120 9233</span>
                             </li>
                             <li>
                                 <span class="d-inline-block vertical-align-top font-size18"><i class="far fa-envelope text-theme-color"></i></span>
-                                <span class="d-inline-block width-85 vertical-align-top padding-10px-left">addyour@emailhere</span>
+                                <span class="d-inline-block width-85 vertical-align-top padding-10px-left">diaz281@yahoo.com.mx</span>
                             </li>
                             <li>
                                 <span class="d-inline-block vertical-align-top font-size18"><i class="fas fa-globe text-theme-color"></i></span>
-                                <span class="d-inline-block width-85 vertical-align-top padding-10px-left">www.yourwebsitehere.com</span>
+                                <span class="d-inline-block width-85 vertical-align-top padding-10px-left">www.rdiaz.mx</span>
                             </li>
                         </ul>
                     </div>

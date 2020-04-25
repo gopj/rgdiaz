@@ -223,29 +223,47 @@
         <!-- our services section -->
         <section class="bg-light-gray">
             <div class="container">
-                <div class="section-heading title-style4 border-bottom padding-10px-bottom sm-padding-5px-bottom">
+                <div class="section-heading title-style4 border-bottom sm-padding-5px-bottom">
                     <h3><span>Nuestros</span> Servicios</h3>
                 </div>
 
-                <div class="testimonial-style3 owl-carousel owl-theme">
+                <div class="owl-carousel owl-theme">
                     <div class="width-90 sm-width-90 xs-width-80">
                         <div class="container">
                             <div class="row">
-                                <div class="col-lg-5 col-md-12 sm-margin-50px-bottom xs-margin-30px-bottom">
-                                    <img src="img/crizal/content/contant-left02.jpg" alt="" class="border-radius-5 box-shadow-primary">
-                                </div>
-                                <div class="col-lg-7 col-md-12">
+                                <div class="col-lg-12 col-md-12">
                                     <div class="padding-70px-left md-padding-50px-left sm-no-padding">
                                         <div class="display-table-cell vertical-align-middle width-100">
-                                            <h4 class="font-weight-600">Our passion us to work hard and deliver outstanding results.</h4>
-                                            <p>Perspiciatis unde omnis iste natus error sit voluptatem accusantium accusantium laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.</p>
+                                            <h4 class="font-weight-600">DIAGNÓSTICO DE DESEMPEÑO AMBIENTAL</h4>
+                                            <p style="text-align: justify">Con base a los requerimientos establecidos tanto por la normatividad en materia ambiental, de Seguridad e Higiene Laboral, la Norma ISO 14001:2004; así como las buenas prácticas de ingeniería, se determina el grado de cumplimiento, por parte de la empresa, de los requerimientos aplicables; de tal manera que permita establecer la pertinencia para la obtención de los siguientes reconocimientos:</p>
 
-                                            <div class="width-65 xs-width-85">
+                                            <p style="text-align: justify"> <strong> Certificación como Industria Limpia: </strong> certificado promovido y otorgado por la Procuraduría Federal de Protección al Ambiente, PROFEPA; fundamentalmente basado en el cumplimiento de la normatividad ambiental aplicable a la empresa. <p>
+
+                                             <p style="text-align: justify"> <strong> Certificación ISO 14001: </strong> Certificación otorgada por un organismo certificador, acreditado para tal efecto; el cual certifica que la empresa ha implantado un Sistema de Gestión Ambiental en base a la Norma ISO 14001. <p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="width-90 sm-width-90 xs-width-80">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="padding-70px-left md-padding-50px-left sm-no-padding">
+                                        <div class="display-table-cell vertical-align-middle width-100">
+                                            <h4 class="font-weight-600">GESTIÓN</h4>
+                                            <p style="text-align: justify">Ante Unidades de Verificación Ambiental, para que mediante auditorías ambientales certifiquen el cumplimiento de la normatividad aplicable y con ello obtener los certificados mencionados. </p>
+                                            <p style="text-align: justify">Ante autoridades de los tres niveles de gobierno para la obtención permisos, autorizaciones u otros requisitos establecidos por la normatividad, tales como:</p>
+
+                                            <div class="width-90 xs-width-85">
                                                 <ul class="list-style-5 margin-25px-bottom xs-margin-20px-bottom">
-                                                    <li>Ideas for your business</li>
-                                                    <li>Performing at high levels</li>
-                                                    <li>Financial investment planning</li>
-                                                    <li>Strategic & commercial approach</li>
+                                                    <li>Registro como generador de Residuos Peligrosos y/o de Manejo Especial.</li>
+                                                    <li>Obtención de la Licencia Ambiental Única, LAU.</li>
+                                                    <li>Obtención de Licencia Local de Funcionamiento Ambiental.</li>
+                                                    <li>Reporte anual de la Cédula de Operación Anual, COA, tanto federal como estatal.</li>
+                                                    <li>Estudios de ambiente y riesgo laboral establecidos por la normatividad de la STPS, ello mediante laboratorios acreditados ante la EMA.</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -254,347 +272,90 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="testmonial-single center-col width-65 sm-width-90 xs-width-80">
-                        <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa.</p>
-                        <img src="img/testmonials/t-2.jpg" class="rounded-circle" alt="" />
-                        <div class="d-inline-block vertical-align-middle padding-20px-left">
-                            <h4>Stepha Kruse</h4>
-                            <h6>Design Lead</h6>
-                        </div>
-                    </div>
-                    <div class="testmonial-single center-col width-65 sm-width-90 xs-width-80">
-                        <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa.</p>
-                        <img src="img/testmonials/t-3.jpg" class="rounded-circle" alt="" />
-                        <div class="d-inline-block vertical-align-middle padding-20px-left">
-                            <h4>Dunican keithly</h4>
-                            <h6>Networking Lead</h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end testmonials section -->
-        
-        <!-- start about section -->
-        <section>
-            <div class="container">
-
-                <div class="row">
-
-                    <div class="col-lg-5 col-md-12 sm-margin-50px-bottom xs-margin-30px-bottom">
-                        <img src="img/crizal/content/contant-left02.jpg" alt="" class="border-radius-5 box-shadow-primary">
-                    </div>
-
-                    <div class="col-lg-7 col-md-12">
-                        <div class="padding-70px-left md-padding-50px-left sm-no-padding">
-                            <div class="display-table-cell vertical-align-middle width-100">
-                                <h4 class="font-weight-600">Our passion us to work hard and deliver outstanding results.</h4>
-                                <p>Perspiciatis unde omnis iste natus error sit voluptatem accusantium accusantium laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.</p>
-
-                                <div class="width-65 xs-width-85">
-                                    <ul class="list-style-5 margin-25px-bottom xs-margin-20px-bottom">
-                                        <li>Ideas for your business</li>
-                                        <li>Performing at high levels</li>
-                                        <li>Financial investment planning</li>
-                                        <li>Strategic & commercial approach</li>
-                                    </ul>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-4 col-sm-4 mobile-margin-15px-bottom">
-                                        <div class="counter-box-style2 bg-white text-center">
-                                            <h4 class="countup display-block font-size24 sm-font-size22 no-margin font-weight-600">880</h4>
-                                            <div class="separator-line-horrizontal-medium-light3 bg-theme margin-10px-tb sm-margin-5px-tb center-col"></div>
-                                            <p class="text-uppercase font-weight-700 no-margin text-theme-color letter-spacing-1">Projects</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4 mobile-margin-15px-bottom">
-                                        <div class="counter-box-style2 bg-white text-center">
-                                            <h4 class="countup display-block font-size24 sm-font-size22 no-margin font-weight-600">678</h4>
-                                            <div class="separator-line-horrizontal-medium-light3 bg-theme margin-10px-tb sm-margin-5px-tb center-col"></div>
-                                            <p class="text-uppercase font-weight-700 no-margin text-theme-color letter-spacing-1">Clients</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                        <div class="counter-box-style2 bg-white text-center">
-                                            <h4 class="countup display-block font-size24 sm-font-size22 no-margin font-weight-600">112</h4>
-                                            <div class="separator-line-horrizontal-medium-light3 bg-theme margin-10px-tb sm-margin-5px-tb center-col"></div>
-                                            <p class="text-uppercase font-weight-700 no-margin text-theme-color letter-spacing-1">Awards</p>
+                    <div class="width-90 sm-width-90 xs-width-80">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="padding-70px-left md-padding-50px-left sm-no-padding">
+                                        <div class="display-table-cell vertical-align-middle width-100">
+                                            <h4 class="font-weight-600">GENERACIÓN DE DOCUMENTACIÓN</h4>
+                                            <p style="text-align: justify">Requerida tanto por la normatividad en materia ambiental, de Seguridad e Higiene Laboral, y/o la Norma ISO 14001:2004; entre las que destaca:</p>
+                                    
+                                            <div class="width-90 xs-width-85">
+                                                <ul class="list-style-5 margin-25px-bottom xs-margin-20px-bottom">
+                                                    <li>Procedimientos para la prevención y atención de incendios</li>
+                                                    <li>Procedimientos para el manejo de sustancias químicas peligrosas</li>
+                                                    <li>Procedimientos para la comunicación de riesgos por sustancias químicas</li>
+                                                    <li>Procedimientos para el manejo de residuos</li>
+                                                    <li>Programas de capacitación</li>
+                                                    <li>Programas de comunicación y difusión</li>
+                                                    <li>Programa Interno de Protección Civil</li>
+                                                    <li>Plan de Manejo de Residuos Peligrosos</li>
+                                                    <li>Plan de Manejo de Residuos de Manejo Especial</li>
+                                                    <li>Estudios de Riesgo Ambiental por Manejo de Sustancias Químicas Altamente Peligrosas</li>
+                                                    <li>Clasificación del Riesgo de Incendio conforme a la NOM-002-STPS-2010</li>
+                                                    <li>Bitácoras</li>
+                                                    <li>Registro de actividades</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-        <!-- end about section -->
-
-        <!-- start price section -->
-        <section class="price bg-light-gray">
-            <div class="container">
-
-                <div class="section-heading title-style4 border-bottom padding-25px-bottom sm-padding-15px-bottom">
-                    <h3><span>Our</span> Price</h3>
-                    <p class="width-55 sm-width-75 xs-width-95">Business consulting excepteur sint occaecat cupidatat consulting non proident, sunt in culpa qui officia deserunt laborum market.</p>
-                </div>
-
-                <div class="row">
-                    <!-- start table -->
-                    <div class="col-lg-4 sm-margin-30px-bottom">
-                        <div class="item text-center">
-                            <div class="type">
-                                <h4>Basic</h4>
-                            </div>
-                            <div class="value">
-                                <h3>10<span>$</span></h3>
-                                <span class="per">Per Month</span>
-                            </div>
-                            <div class="features">
-                                <ul>
-                                    <li>24/7 Tech Support</li>
-                                    <li>Advanced Options</li>
-                                    <li>1GB Storage</li>
-                                    <li>6GB Bandwidth</li>
-                                    <li>Unlimited Support</li>
-                                </ul>
-                            </div>
-                            <div class="order">
-                                <a href="javascript:void(0);" class="butn small"><span>Purchase Now</span></a>
+                    <div class="width-90 sm-width-90 xs-width-80">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="padding-70px-left md-padding-50px-left sm-no-padding">
+                                        <div class="display-table-cell vertical-align-middle width-100">
+                                            <h4 class="font-weight-600">ASESORÍA Y CAPACITACIÓN</h4>
+                                            <p style="text-align: justify">Para la implantación de las medidas establecidas por la legislación aplicable, tales como:</p>
+                                    
+                                            <div class="width-90 xs-width-85">
+                                                <ul class="list-style-5 margin-25px-bottom xs-margin-20px-bottom">
+                                                    <li>Señalización para protección civil</li>
+                                                    <li>Instalación de sistemas para prevención y combate a incendios</li>
+                                                    <li>Sistemas de protección y dispositivos de seguridad en maquinaria y equipo</li>
+                                                    <li>Manejo de Residuos Sólidos Urbanos, de Manejo Especial, y Peligrosos</li>
+                                                    <li>Constitución, integración, organización y funcionamiento de las Comisiones de Seguridad e Higiene</li>
+                                                    <li>Manejo de sustancias químicas peligrosas</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- end table -->
-
-                    <!-- start table -->
-                    <div class="col-lg-4 sm-margin-30px-bottom">
-                        <div class="item text-center active">
-                            <div class="type">
-                                <h4>Standard</h4>
-                            </div>
-                            <div class="value">
-                                <h3>21<span>$</span></h3>
-                                <span class="per">Per Month</span>
-                            </div>
-                            <div class="features">
-                                <ul>
-                                    <li>24/7 Tech Support</li>
-                                    <li>Advanced Options</li>
-                                    <li>1.5GB Storage</li>
-                                    <li>3GB Bandwidth</li>
-                                    <li>Unlimited Support</li>
-                                </ul>
-                            </div>
-                            <div class="order">
-                                <a href="javascript:void(0);" class="butn theme small"><span>Purchase Now</span></a>
+                    <div class="width-90 sm-width-90 xs-width-80">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="padding-70px-left md-padding-50px-left sm-no-padding">
+                                        <div class="display-table-cell vertical-align-middle width-100">
+                                            <h4 class="font-weight-600">MANEJO DE MATERIALES Y RESIDUOS PELIGROSOS</h4>
+                                            <p style="text-align: justify">Que implica la recolección y transporte en vehículos autorizados tanto por la Secretaría de Comunicaciones y Transporte, como por la Secretaría del Medio Ambiente y Recursos Naturales; SEMARNAT; disposición final por coprocesamiento y/o confinamiento en instalaciones debidamente autorizadas por la SEMARNAT; y, en su defecto la destrucción fiscal de mercancías, materiales peligrosos o no peligrosos, en instalaciones debidamente autorizadas por las autoridades competentes.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- end table -->
-
-                    <!-- start table -->
-                    <div class="col-lg-4">
-                        <div class="item text-center">
-                            <div class="type">
-                                <span class="icon"><i class="icofont icofont-diamond"></i></span>
-                                <h4>Premium</h4>
+                    <div class="width-90 sm-width-90 xs-width-80">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="padding-70px-left md-padding-50px-left sm-no-padding">
+                                        <div class="display-table-cell vertical-align-middle width-100">
+                                            <h4 class="font-weight-600">MANEJO Y CONTROL DE DOCUMENTOS</h4>
+                                            <p style="text-align: justify">Toda la documentación generada en materia ambiental es manejada en una plataforma virtual; a la cual se puede acceder en cualquier momento mediante contraseña de usuario.</p>
+                                            <p style="text-align: justify">Adicional a lo mencionado, de así requerirlo, estamos en condiciones de adaptarnos a sus necesidades previo análisis de las mismas.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="value">
-                                <h3>99<span>$</span></h3>
-                                <span class="per">Per Month</span>
-                            </div>
-                            <div class="features">
-                                <ul>
-                                    <li>24/7 Tech Support</li>
-                                    <li>Advanced Options</li>
-                                    <li>6GB Storage</li>
-                                    <li>12GB Bandwidth</li>
-                                    <li>Unlimited Support</li>
-                                </ul>
-                            </div>
-                            <div class="order">
-                                <a href="javascript:void(0);" class="butn small"><span>Purchase Now</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end table -->
-                </div>
-            </div>
-        </section>
-        <!-- end price section -->
-
-        <!-- start service section -->
-        <section>
-            <div class="container">
-
-                <div class="section-heading title-style4 border-bottom padding-25px-bottom sm-padding-15px-bottom">
-                    <h3><span>Our</span> Services</h3>
-                    <p class="width-55 sm-width-75 xs-width-95">Business consulting excepteur sint occaecat cupidatat consulting non proident, sunt in culpa qui officia deserunt laborum market.</p>
-                </div>
-
-                <div class="row mt-60">
-                    <div class="col-lg-4 col-md-6 margin-30px-bottom xs-margin-20px-bottom">
-                        <div class="service-block4">
-                            <div class="service-icon">
-                                <i class="icon-tools"></i>
-                            </div>
-                            <div class="service-desc">
-                                <h4>Contant Marketing</h4>
-                                <h5>Market Plan</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 margin-30px-bottom xs-margin-20px-bottom">
-                        <div class="service-block4">
-                            <div class="service-icon">
-                                <i class="icon-layers"></i>
-                            </div>
-                            <div class="service-desc">
-                                <h4>Saving Investments</h4>
-                                <h5>Finance Plan</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 margin-30px-bottom xs-margin-20px-bottom">
-                        <div class="service-block4">
-                            <div class="service-icon">
-                                <i class="icon-hotairballoon"></i>
-                            </div>
-                            <div class="service-desc">
-                                <h4>Detail Report</h4>
-                                <h5>Detail Plan</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 sm-margin-30px-bottom xs-margin-20px-bottom">
-                        <div class="service-block4">
-                            <div class="service-icon">
-                                <i class="icon-mobile"></i>
-                            </div>
-                            <div class="service-desc">
-                                <h4>Investment Plan</h4>
-                                <h5>Business Plan</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 xs-margin-20px-bottom">
-                        <div class="service-block4 serv-section-2-act">
-                            <div class="service-icon">
-                                <i class="icon-presentation"></i>
-                            </div>
-                            <div class="service-desc">
-                                <h4>Media Marketing</h4>
-                                <h5>Marketing Plan</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-xs-12">
-                        <div class="service-block4">
-                            <div class="service-icon">
-                                <i class="icon-genius"></i>
-                            </div>
-                            <div class="service-desc">
-                                <h4>Finance Analysis</h4>
-                                <h5>Finance Plan</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end service section -->
-
-        <!-- start team section -->
-        <section class="bg-light-gray">
-            <div class="container">
-
-                <div class="section-heading title-style4 border-bottom padding-25px-bottom sm-padding-15px-bottom">
-                    <h3><span>Our</span> Team</h3>
-                    <p class="width-55 sm-width-75 xs-width-95">Business consulting excepteur sint occaecat cupidatat consulting non proident, sunt in culpa qui officia deserunt laborum market.</p>
-                </div>
-
-                <div class="row">
-                    <div class="col-12 col-sm-6 col-md-3 col-lg-3 xs-margin-20px-bottom mobile-margin-15px-bottom">
-                        <div class="team-members">
-                            <div class="team-members-img"><img alt="img" src="img/crizal/team/team-01.jpg"></div>
-                            <div class="team-members-text">
-                                <h4><a href="javascript:void(0)">Jamara Karle</a></h4><span>Founder</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-3 col-lg-3 xs-margin-20px-bottom mobile-margin-15px-bottom">
-                        <div class="team-members">
-                            <div class="team-members-img"><img alt="img" src="img/crizal/team/team-02.jpg">
-                            </div>
-                            <div class="team-members-text">
-                                <h4><a href="javascript:void(0)">Keir Prestonly</a></h4><span>Co-Founder</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-3 col-lg-3 mobile-margin-15px-bottom">
-                        <div class="team-members">
-                            <div class="team-members-img"><img alt="img" src="img/crizal/team/team-03.jpg"></div>
-                            <div class="team-members-text">
-                                <h4><a href="javascript:void(0)">Finley Walkeror</a></h4><span>Developer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-3 col-lg-3">
-                        <div class="team-members">
-                            <div class="team-members-img"><img alt="img" src="img/crizal/team/team-04.jpg"></div>
-                            <div class="team-members-text">
-                                <h4><a href="javascript:void(0)">Lenethi  Miloler</a></h4><span>Designer</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end team section -->
-
-        <!-- start testmonials section -->
-        <section>
-            <div class="container">
-
-                <div class="section-heading title-style4 border-bottom padding-10px-bottom sm-padding-5px-bottom">
-                    <h3><span>Client</span> Words</h3>
-
-                </div>
-
-                <div class="testimonial-style3 owl-carousel owl-theme">
-                    <div class="testmonial-single center-col width-65 sm-width-90 xs-width-80">
-                        <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa.</p>
-                        <img src="img/crizal/testmonials/t-1.jpg" class="rounded-circle" alt="" />
-                        <div class="d-inline-block vertical-align-middle padding-20px-left">
-                            <h4>Alivin Corondo</h4>
-                            <h6>Networking Lead</h6>
-                        </div>
-                    </div>
-                    <div class="testmonial-single center-col width-65 sm-width-90 xs-width-80">
-                        <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa.</p>
-                        <img src="img/crizal/testmonials/t-2.jpg" class="rounded-circle" alt="" />
-                        <div class="d-inline-block vertical-align-middle padding-20px-left">
-                            <h4>Stepha Kruse</h4>
-                            <h6>Design Lead</h6>
-                        </div>
-                    </div>
-                    <div class="testmonial-single center-col width-65 sm-width-90 xs-width-80">
-                        <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa.</p>
-                        <img src="img/crizal/testmonials/t-3.jpg" class="rounded-circle" alt="" />
-                        <div class="d-inline-block vertical-align-middle padding-20px-left">
-                            <h4>Dunican keithly</h4>
-                            <h6>Networking Lead</h6>
                         </div>
                     </div>
                 </div>
@@ -607,8 +368,8 @@
             <div class="container">
 
                 <div class="section-heading title-style4 white border-bottom border-color-light-white padding-25px-bottom sm-padding-15px-bottom">
-                    <h3><span>Request</span> a call</h3>
-                    <p class="width-55 sm-width-75 xs-width-95">Business consulting excepteur sint occaecat cupidatat consulting non proident, sunt in culpa qui officia deserunt laborum market.</p>
+                    <h3><span>Contác</span>tanos</h3>
+                    <p class="width-55 sm-width-75 xs-width-95">Ante cualquier petición de información o solicitud de alguno de nuestros servicios, envíenos un mensaje llenando los campos adjuntos y pulse “Enviar”. En breve nos pondremos en contacto con usted; de antemano agradecemos su interés por contactarnos.</p>
                 </div>
 
                 <div class="row">
@@ -619,16 +380,22 @@
                                 <input type="hidden" name="form-type" value="contact">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <input type="text" name="name" placeholder="Your Name:" data-constraints="@LettersOnly @NotEmpty">
+                                        <input type="text" name="nombre" id="nombre" placeholder="Nombre del contacto o de la Empresa:" data-constraints="@LettersOnly @NotEmpty">
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="text" name="phone" placeholder="Telephone:" data-constraints="@Phone">
+                                        <input type="text" name="telefono" id="telefono" placeholder="Teléfono:" data-constraints="@Phone">
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="text" name="email" placeholder="Email:" data-constraints="@Email @NotEmpty">
+                                        <input type="text" name="email" id="email" placeholder="Dirección de Email:" data-constraints="@Email @NotEmpty">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" name="asunto" id="asunto" placeholder="Asunto:" data-constraints="@NotEmpty">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <textarea type="text" name="mensaje" id="mensaje" placeholder="Mensaje:" data-constraints="@NotEmpty" rows="3"></textarea>
                                     </div>
                                     <div class="mfControls col-md-6">
-                                        <button type="submit" class="butn white-hover theme">Sumbit</button>
+                                        <button type="submit" class="butn white-hover theme">Enviar</button>
                                     </div>
                                 </div>
                             </form>
@@ -639,90 +406,3 @@
             </div>
         </section>
         <!-- end request form -->
-
-        <!-- start blog section -->
-        <section>
-            <div class="container">
-
-                <div class="section-heading title-style4 border-bottom padding-25px-bottom sm-padding-15px-bottom">
-                    <h3><span>Latest</span> Blog</h3>
-                    <p class="width-55 sm-width-75 xs-width-95">Business consulting excepteur sint occaecat cupidatat consulting non proident, sunt in culpa qui officia deserunt laborum market.</p>
-                </div>
-
-                <div class="row blog-style6">
-                    <div class="col-md-4 xs-margin-20px-bottom">
-                        <div class="blog-item">
-                            <div class="blog-item-thumbnail">
-                                <img src="img/crizal/blog/blog-4.jpg" alt="">
-                            </div>
-                            <div class="blog-item-content">
-                                <div class="blog-meta">
-                                    <div class="date-day">08</div>
-                                    <div class="date-month">AUG</div>
-                                </div>
-                                <div class="post-cat">
-                                    Management
-                                </div>
-                                <div class="blog-title">
-                                    <a href="javascript:void(0)">Business adviser analyzing financial</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 xs-margin-20px-bottom">
-                        <div class="blog-item">
-                            <div class="blog-item-thumbnail">
-                                <img src="img/crizal/blog/blog-5.jpg" alt="">
-                            </div>
-                            <div class="blog-item-content">
-                                <div class="blog-meta">
-                                    <div class="date-day">18</div>
-                                    <div class="date-month">SEP</div>
-                                </div>
-                                <div class="post-cat">
-                                    Progress
-                                </div>
-                                <div class="blog-title">
-                                    <a href="javascript:void(0)">The progress work of the company</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="blog-item">
-                            <div class="blog-item-thumbnail">
-                                <img src="img/crizal/blog/blog-6.jpg" alt="">
-                            </div>
-                            <div class="blog-item-content">
-                                <div class="blog-meta">
-                                    <div class="date-day">22</div>
-                                    <div class="date-month">OCT</div>
-                                </div>
-                                <div class="post-cat">
-                                    Business
-                                </div>
-                                <div class="blog-title">
-                                    <a href="javascript:void(0)">The business woman hard work</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end blog section -->
-
-        <!-- start clients section -->
-        <div class="section-clients bg-light-gray">
-            <div class="container">
-                <div class="owl-carousel owl-theme clients" id="clients">
-                    <div class="item"><img alt="partner-image" src="img/crizal/partners/client-01.png"></div>
-                    <div class="item"><img alt="partner-image" src="img/crizal/partners/client-02.png"></div>
-                    <div class="item"><img alt="partner-image" src="img/crizal/partners/client-03.png"></div>
-                    <div class="item"><img alt="partner-image" src="img/crizal/partners/client-04.png"></div>
-                    <div class="item"><img alt="partner-image" src="img/crizal/partners/client-05.png"></div>
-                    <div class="item"><img alt="partner-image" src="img/crizal/partners/client-06.png"></div>
-                </div>
-            </div>
-        </div>
-        <!-- end clients section -->
