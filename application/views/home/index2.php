@@ -190,18 +190,9 @@
         </div>
         <!-- end revolution slideshow-->
 
-        <!-- start quote -->
+         <!-- start quote -->
         <div class="bg-theme padding-40px-tb">
-            <div class="container">
-                <!--Row Start-->
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <h6 class="text-white margin-10px-bottom line-height-40 font-weight-600">Are you looking for quality long live business for your next project?</h6>
-                        <a href="javascript:void(0)" class="butn white"><span>Get a Quote</span></a>
-                    </div>
-                </div>
-                <!--Row End-->
-            </div>
+     
         </div>
         <!-- end quote -->
 
@@ -209,26 +200,18 @@
         <section>
             <div class="container">
                 <div class="section-heading title-style4 border-bottom padding-25px-bottom sm-padding-15px-bottom">
-                    <h3><span>About</span> Company</h3>
-                    <p class="width-55 sm-width-75 xs-width-95">Business consulting excepteur sint occaecat cupidatat consulting non proident, sunt in culpa qui officia deserunt laborum market.</p>
+                    <h3><span>¿Quiénes</span> somos?</h3>
                 </div>
                 <div class="title-box">
                     <div class="row">
                         <div class="col-md-5 col-sm-12 col-xs-12 text-right xs-text-left">
-                            <h2 class="font-size36 md-font-size32 sm-font-size30 xs-font-size24 font-weight-800 margin-40px-bottom xs-margin-30px-bottom">Trusted and professional business consultant to fulfill your dreams.</h2>
-                            <div class="display-inline-block vertical-align-middle font-weight-700 font-size18 sm-font-size16 margin-25px-right">Our Story</div>
-                            <div class="display-inline-block vertical-align-middle about-video">
-                                <a class="video video_btn video_btn-style2 small" href="video/down-time.mp4"><i class="fas fa-play"></i></a>
-                            </div>
-
+                            <h2 class="font-size27 md-font-size24 sm-font-size30 xs-font-size24 font-weight-800 margin-40px-bottom xs-margin-30px-bottom">Servicios de profesionales de calidad para alcanzar tus metas.</h2>
                         </div>
                         <div class="col-md-7 col-sm-12 col-xs-12 xs-margin-30px-top">
                             <div class="padding-60px-left md-padding-45px-left sm-padding-30px-left xs-no-padding-left">
                                 <div class="margin-30px-bottom sm-margin-20px-bottom">
-                                    <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo risnisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehend voluptate velit esse cillum dolore magnam aliquam quaerat eu fugiat nulla pariatuream.</p>
-                                    <p class="no-margin">Voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos tempora incidunt ut labore et dolore magnam aliquam qui ratione voluptatem sequi nesciunt quaerat voluptatem.</p>
+                                    <p>Una empresa joven, que a fuerza de dedicación y compromiso se ha ido posicionando al adoptar como nuestro el compromiso y/o responsabilidad que nuestros clientes tienen para con el medio ambiente, permitiéndoles así el concentrarse en las tareas sustanciales de sus respectivas empresas.</p>
                                 </div>
-                                <a href="about.html" class="readmore">read more</a>
                             </div>
                         </div>
                     </div>
@@ -237,106 +220,62 @@
         </section>
         <!-- end about section -->
 
-        <!-- start project section -->
-        <section class="project-single-two bg-light-gray">
-
+        <!-- our services section -->
+        <section class="bg-light-gray">
             <div class="container">
-                <div class="section-heading title-style4 border-bottom padding-25px-bottom sm-padding-15px-bottom">
-                    <h3><span>Our</span> Projects</h3>
-                    <p class="width-55 sm-width-75 xs-width-95">Business consulting excepteur sint occaecat cupidatat consulting non proident, sunt in culpa qui officia deserunt laborum market.</p>
+                <div class="section-heading title-style4 border-bottom padding-10px-bottom sm-padding-5px-bottom">
+                    <h3><span>Nuestros</span> Servicios</h3>
                 </div>
-            </div>
 
-            <div class="container-fluid no-padding">
+                <div class="testimonial-style3 owl-carousel owl-theme">
+                    <div class="width-90 sm-width-90 xs-width-80">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-5 col-md-12 sm-margin-50px-bottom xs-margin-30px-bottom">
+                                    <img src="img/crizal/content/contant-left02.jpg" alt="" class="border-radius-5 box-shadow-primary">
+                                </div>
+                                <div class="col-lg-7 col-md-12">
+                                    <div class="padding-70px-left md-padding-50px-left sm-no-padding">
+                                        <div class="display-table-cell vertical-align-middle width-100">
+                                            <h4 class="font-weight-600">Our passion us to work hard and deliver outstanding results.</h4>
+                                            <p>Perspiciatis unde omnis iste natus error sit voluptatem accusantium accusantium laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.</p>
 
-                <div class="owl-carousel owl-theme ">
-
-                    <div class="project-grid-style3">
-                        <div class="inner-box">
-                            <div class="project-image">
-                                <img src="img/crizal/projects/pro-11.jpg" alt="" />
-                                <div class="overlay">
-                                    <div class="overlay-inner">
-                                        <div class="description">
-                                            <div class="text">Lorem ipsum dolor sit amet adipisicing elit sed eiusmod tempor incididunt ut labore et dolore magna aliqua. Utna enim ad minim veniam quis nostrud exercitation ulamco laboris nisi aliquip exea comm ayodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</div>
-                                            <a href="project-detail.html" class="read-more"><span class="fa fa-angle-right"></span> Read More</a>
+                                            <div class="width-65 xs-width-85">
+                                                <ul class="list-style-5 margin-25px-bottom xs-margin-20px-bottom">
+                                                    <li>Ideas for your business</li>
+                                                    <li>Performing at high levels</li>
+                                                    <li>Financial investment planning</li>
+                                                    <li>Strategic & commercial approach</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="project-desc padding-40px-all md-padding-30px-all sm-padding-20px-all">
-                                <div class="category sm-margin-15px-bottom xs-margin-10px-bottom">Saving investments</div>
-                                <h3 class="font-size20 sm-font-size16 xs-font-size15 font-weight-600 no-margin"><a href="project-detail.html">Hands working with finances saving economy</a></h3>
                             </div>
                         </div>
                     </div>
 
-                    <div class="project-grid-style3">
-                        <div class="inner-box">
-                            <div class="project-image">
-                                <img src="img/crizal/projects/pro-10.jpg" alt="" />
-                                <div class="overlay">
-                                    <div class="overlay-inner">
-                                        <div class="description">
-                                            <div class="text">Lorem ipsum dolor sit amet adipisicing elit sed eiusmod tempor incididunt ut labore et dolore magna aliqua. Utna enim ad minim veniam quis nostrud exercitation ulamco laboris nisi aliquip exea comm ayodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</div>
-                                            <a href="project-detail.html" class="read-more"><span class="fa fa-angle-right"></span> Read More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="project-desc padding-40px-all md-padding-30px-all sm-padding-20px-all">
-                                <div class="category sm-margin-15px-bottom xs-margin-10px-bottom">Online consulting</div>
-                                <h3 class="font-size20 sm-font-size16 xs-font-size15 font-weight-600 no-margin"><a href="project-detail.html">Communication technology with consulting</a></h3>
-                            </div>
+                    <div class="testmonial-single center-col width-65 sm-width-90 xs-width-80">
+                        <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa.</p>
+                        <img src="img/testmonials/t-2.jpg" class="rounded-circle" alt="" />
+                        <div class="d-inline-block vertical-align-middle padding-20px-left">
+                            <h4>Stepha Kruse</h4>
+                            <h6>Design Lead</h6>
                         </div>
                     </div>
-
-                    <div class="project-grid-style3">
-                        <div class="inner-box">
-                            <div class="project-image">
-                                <img src="img/crizal/projects/pro-9.jpg" alt="" />
-                                <div class="overlay">
-                                    <div class="overlay-inner">
-                                        <div class="description">
-                                            <div class="text">Lorem ipsum dolor sit amet adipisicing elit sed eiusmod tempor incididunt ut labore et dolore magna aliqua. Utna enim ad minim veniam quis nostrud exercitation ulamco laboris nisi aliquip exea comm ayodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</div>
-                                            <a href="project-detail.html" class="read-more"><span class="fa fa-angle-right"></span> Read More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="project-desc padding-40px-all md-padding-30px-all sm-padding-20px-all">
-                                <div class="category sm-margin-15px-bottom xs-margin-10px-bottom">Investment bank</div>
-                                <h3 class="font-size20 sm-font-size16 xs-font-size15 font-weight-600 no-margin"><a href="project-detail.html">Instead of cash investment banking money</a></h3>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-grid-style3">
-                        <div class="inner-box">
-                            <div class="project-image">
-                                <img src="img/crizal/projects/pro-12.jpg" alt="" />
-                                <div class="overlay">
-                                    <div class="overlay-inner">
-                                        <div class="description">
-                                            <div class="text">Lorem ipsum dolor sit amet adipisicing elit sed eiusmod tempor incididunt ut labore et dolore magna aliqua. Utna enim ad minim veniam quis nostrud exercitation ulamco laboris nisi aliquip exea comm ayodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</div>
-                                            <a href="project-detail.html" class="read-more"><span class="fa fa-angle-right"></span> Read More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="project-desc padding-40px-all md-padding-30px-all sm-padding-20px-all">
-                                <div class="category sm-margin-15px-bottom xs-margin-10px-bottom">Finance analysis</div>
-                                <h3 class="font-size20 sm-font-size16 xs-font-size15 font-weight-600 no-margin"><a href="project-detail.html">Making presentation for finance research analysis</a></h3>
-                            </div>
+                    <div class="testmonial-single center-col width-65 sm-width-90 xs-width-80">
+                        <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa.</p>
+                        <img src="img/testmonials/t-3.jpg" class="rounded-circle" alt="" />
+                        <div class="d-inline-block vertical-align-middle padding-20px-left">
+                            <h4>Dunican keithly</h4>
+                            <h6>Networking Lead</h6>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- end project section -->
-
+        <!-- end testmonials section -->
+        
         <!-- start about section -->
         <section>
             <div class="container">
