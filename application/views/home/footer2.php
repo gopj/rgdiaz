@@ -6,7 +6,7 @@
                     <div class="col-lg-4 col-md-6 sm-margin-30px-bottom">
 
                         <img alt="footer-logo" src="img/logos/logo-footer.png">
-                        <p class="margin-20px-top">Nemo enim enim voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequ magni dolores eos qui ratione voluptatem.</p>
+
                         <div class="margin-25px-top footer-social-icons">
                             <ul>
                                 <li><a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a></li>
@@ -20,27 +20,8 @@
                     </div>
 
                     <div class="col-lg-4 col-md-6 sm-margin-30px-bottom">
-                        <h3 class="footer-title-style2 text-theme-color">Quick Links</h3>
-                        <div class="row">
-                            <div class="col-md-6 no-padding-right xs-padding-15px-right">
-                                <ul class="footer-list xs-margin-5px-bottom">
-                                    <li><a href="javascript:void(0)">News</a></li>
-                                    <li><a href="javascript:void(0)">History</a></li>
-                                    <li><a href="javascript:void(0)">Community</a></li>
-                                    <li><a href="javascript:void(0)">Portfolio</a></li>
-                                    <li><a href="javascript:void(0)">Safety</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6 no-padding-right xs-padding-15px-right">
-                                <ul class="footer-list">
-                                    <li><a href="javascript:void(0)">Construction</a></li>
-                                    <li><a href="javascript:void(0)">Case studies</a></li>
-                                    <li><a href="javascript:void(0)">Blog detail</a></li>
-                                    <li><a href="javascript:void(0)">Sales Services</a></li>
-                                    <li><a href="javascript:void(0)">Services detail</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                        
+                        
                     </div>
 
                     <div class="col-lg-3 col-md-6 offset-lg-1">
@@ -76,7 +57,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 text-left xs-text-center xs-margin-5px-bottom">
-                            <p>&copy; Copyright RDíaz 2020. Todos los derechos reservados.</p>
+                            Derechos reservados &copy; <?php echo date("Y"); ?> RDíaz
                         </div>
                         <!-- <div class="col-md-6 text-right xs-text-center">
                             Design and Developed by: Chitrakoot Web

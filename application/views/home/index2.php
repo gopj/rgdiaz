@@ -221,13 +221,13 @@
         <!-- end about section -->
 
         <!-- our services section -->
-        <section class="bg-light-gray">
+        <section id="section_servicios" class="bg-light-gray">
             <div class="container">
                 <div class="section-heading title-style4 border-bottom sm-padding-5px-bottom">
                     <h3><span>Nuestros</span> Servicios</h3>
                 </div>
 
-                <div class="owl-carousel owl-theme">
+                <div class="owl-carousel owl-theme owl-nav">
                     <div class="width-90 sm-width-90 xs-width-80">
                         <div class="container">
                             <div class="row">
@@ -364,7 +364,7 @@
         <!-- end testmonials section -->
 
         <!-- start request form -->
-        <section class="parallax" data-overlay-dark="8" data-background="img/crizal/bg/bg1.jpg">
+        <section class="parallax" id="section_contacto" data-overlay-dark="8" data-background="img/crizal/bg/bg1.jpg">
             <div class="container">
 
                 <div class="section-heading title-style4 white border-bottom border-color-light-white padding-25px-bottom sm-padding-15px-bottom">
@@ -376,7 +376,7 @@
 
                     <div class="col-lg-10 center-col">
                         <div class="contact-form-box">
-                            <form method="post" action="bat/rd-mailform.php" class="mailform off2">
+                            <form method="post" name="form_contacto" id="form_contacto" action="<?php echo site_url('home/contacto_mensaje')?>" class="mailform off2">
                                 <input type="hidden" name="form-type" value="contact">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -401,8 +401,113 @@
                             </form>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
         <!-- end request form -->
+
+         <!-- section sitios de interes -->
+        <section id="section_sitios">
+            <div class="container">
+                <div class="section-heading title-style4 border-bottom padding-25px-bottom sm-padding-15px-bottom">
+                    <h3><span>Sitios</span> de Interés</h3>
+                </div>
+                <div class="resp-tabs-container hor_1 no-padding">
+                    <div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div id="accordion" class="accordion-style">
+                                    <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                            <h5 class="mb-0">
+                                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                        Secretaría de Medio Ambiente y Recursos Naturales (SEMARNAT)</button></h5>
+                                        </div>
+                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                            <div class="card-body">
+                                               Dependencia de Gobierno Federal encargada de impulsar la protección, restauración, conservación de los ecosistemas, bienes y servicios ambientales de México, con el fin de propiciar su aprovechamiento y desarrollo sustentable. (Secretaría de Medio Ambiente y Recursos Naturales).
+
+                                                <a href="http://www.semarnat.gob.mx/" target="_blank">Ver sitio</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="headingTwo">
+                                            <h5 class="mb-0">
+                                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Comisión Nacional del Agua (CONAGUA)</button></h5>
+                                        </div>
+                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                            <div class="card-body">
+                                                Organismo administrativo encargado de administrar, regular, controlar y proteger las aguas nacionales, es el Órgano superior en materia de calidad de agua y gestión en México. Entre sus principales funciones esta fomentar y apoyar los servicios públicos urbanos y rurales de agua potable, alcantarillado, saneamiento, recirculación y reúso de aguas; así como del desarrollo de sus sistemas. (Comisión Nacional de Agua).
+
+                                                <a href="http://www.cna.gob.mx/" target="_blank">Ver sitio</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="headingThree">
+                                            <h5 class="mb-0">
+                                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Procuraduría Federal de Protección al Ambiente (PROFEPA)</button></h5>
+                                        </div>
+                                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                            <div class="card-body">
+                                                La Procuraduría Federal de Protección al Ambiente, nace por la necesidad de atender y controlar el creciente deterioro ambiental en México tanto en sus ciudades, como en sus bosques, selvas, costas y desiertos. Entre sus atribuciones se encuentra vigilar el cumplimiento de las disposiciones legales, salvaguardar los intereses de la población en materia ambiental procurando el cumplimiento de la legislación ambiental y sancionar a las personas físicas y morales que violen dichos preceptos legales.
+
+                                                 <a href="http://www.profepa.gob.mx/" target="_blank">Ver sitio</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-header" id="headingFour">
+                                            <h5 class="mb-0">
+                                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Instituto Nacional de Estadística Geografía e Informática (INEGI)</button></h5>
+                                        </div>
+                                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                                            <div class="card-body">
+                                                Institución responsable, confiable y sólida que se encarga de generar, integrar y difundir conocimiento e información a través de investigación científica aplicada y el fortalecimiento de capacidades, para apoyar la formulación de política ambiental y la toma de decisiones que promuevan el desarrollo sustentable. (Instituto Nacional de Estadística, Geografía e Informática).
+
+                                                 <a href="http://www.inegi.org.mx/" target="_blank">Ver sitio</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                     <div class="card">
+                                        <div class="card-header" id="headingFive">
+                                            <h5 class="mb-0">
+                                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">Comisión Nacional Forestal (CONAFOR)</button></h5>
+                                        </div>
+                                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                                            <div class="card-body">
+                                                Institución pública reconocida a nivel nacional e internacional por su contribución eficaz, eficiente y transparente en la protección, conservación, restauración y aprovechamiento de los ecosistemas forestales de México, su objetivo es desarrollar, favorecer e impulsar las actividades productivas, de conservación y restauración en materia forestal, así como participar en la formulación de los planes, programas y en la aplicación de la política de desarrollo forestal sustentable.(Comisión Nacional Forestal).
+
+                                                <br>
+
+                                                <a href="http://www.conafor.gob.mx/" target="_blank">Ver sitio</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-header" id="headingSix">
+                                            <h5 class="mb-0">
+                                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">Comisión Nacional de Áreas Naturales Protegidas (CONANP)</button></h5>
+                                        </div>
+                                        <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+                                            <div class="card-body">
+                                                Órgano encargado de conservar el patrimonio natural de México mediante las Áreas Naturales Protegidas y otras modalidades de conservación, fomentando una cultura de la conservación y el desarrollo sustentable de las comunidades asentadas en su entorno. Su principal objetivo es Conservar el patrimonio natural de México y los procesos ecológicos. (Comisión Nacional de Áreas Naturales Protegidas).
+
+                                                 <a href="http://www.conanp.gob.mx/" target="_blank">Ver sitio</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end about section -->

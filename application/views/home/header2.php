@@ -87,9 +87,9 @@
                                     <!-- menu area -->
                                     <ul class="navbar-nav ml-auto" id="nav" style="display: none;">
                                         <li><a href="javascript:void(0)">Inicio</a></li>
-                                        <li><a href="javascript:void(0)">Servicios</a></li>
-                                        <li><a href="javascript:void(0)">Contacto</a></li>
-                                        <li><a href="javascript:void(0)">Sitios de Interes</a>
+                                        <li><a href="index.php/home/index2/#section_servicios">Servicios</a></li>
+                                        <li><a href="index.php/home/index2/#section_contacto">Contacto</a></li>
+                                        <li><a href="index.php/home/index2/#section_sitios">Sitios de Interes</a>
                                     </ul>
                                     <!-- end menu area -->
 
