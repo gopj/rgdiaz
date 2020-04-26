@@ -24,7 +24,7 @@
                                     "speed":1000,
                                     "frame":"999",
                                     "to":"opacity:0;","ease":"Power3.easeOut"
-                                }]' data-splitout="none">We Plan Business
+                                }]' data-splitout="none">Planeamos negocios
                         </div>
 
                         <!-- hero subtitle -->
@@ -41,23 +41,7 @@
                                     "frame":"999",
                                     "to":"opacity:0;","ease":"Power3.easeOut"
                                 }]'>
-                            <p class="white-space">Trusted and professional business consultant to fulfill your dreams with latest technology putting on project.</p>
-                        </div>
-
-                        <!-- button -->
-                        <div class="tp-caption" data-x="30" data-y="center" data-voffset="[102,145,150,204]" data-lineheight="55" data-hoffset="0" data-frames='[{
-                                        "delay":1200,
-                                        "speed":900,
-                                        "frame":"0",
-                                        "from":"y:150px;opacity:0;",
-                                        "ease":"Power3.easeOut",
-                                        "to":"o:1;"
-                                        },{
-                                        "delay":"wait",
-                                        "speed":1000,
-                                        "frame":"999",
-                                        "to":"opacity:0;","ease":"Power3.easeOut"
-                                    }]'><a href='#' class='butn theme white-hover'><span>View Project</span></a>
+                            <p class="white-space">Negocios confiables y profesionales para alcanzar tus metas.</p>
                         </div>
 
                     </li>
@@ -85,7 +69,7 @@
                                     "speed":1000,
                                     "frame":"999",
                                     "to":"opacity:0;","ease":"Power3.easeOut"
-                                }]' data-splitout="none">We Are The Best
+                                }]' data-splitout="none">Somos los mejores.
                         </div>
 
                         <!-- HERO SUBTITLE -->
@@ -102,23 +86,7 @@
                                     "frame":"999",
                                     "to":"opacity:0;","ease":"Power3.easeOut"
                                 }]'>
-                            <p class="white-space">Trusted and professional business consultant to fulfill your dreams with latest technology putting on project.</p>
-                        </div>
-
-                        <!-- BUTTON -->
-                        <div class="tp-caption text-center" data-x="['center','center','center','center']" data-y="center" data-voffset="[102,145,150,204]" data-lineheight="55" data-hoffset="0" data-frames='[{
-                                        "delay":1200,
-                                        "speed":900,
-                                        "frame":"0",
-                                        "from":"y:150px;opacity:0;",
-                                        "ease":"Power3.easeOut",
-                                        "to":"o:1;"
-                                        },{
-                                        "delay":"wait",
-                                        "speed":1000,
-                                        "frame":"999",
-                                        "to":"opacity:0;","ease":"Power3.easeOut"
-                                    }]'><a href='#' class='butn theme white-hover'><span>View Project</span></a>
+                            <p class="white-space">Trabajo de calidad para hacer crecer tu negocio.</p>
                         </div>
 
                     </li>
@@ -146,7 +114,7 @@
                                     "speed":1000,
                                     "frame":"999",
                                     "to":"opacity:0;","ease":"Power3.easeOut"
-                                }]' data-splitout="none">We Build Everything
+                                }]' data-splitout="none">Texto
                         </div>
 
                         <!-- HERO SUBTITLE -->
@@ -163,23 +131,7 @@
                                     "frame":"999",
                                     "to":"opacity:0;","ease":"Power3.easeOut"
                                 }]'>
-                            <p class="white-space text-right">Trusted and professional business consultant to fulfill your dreams with latest technology putting on project.</p>
-                        </div>
-
-                        <!-- BUTTON -->
-                        <div class="tp-caption text-right" data-x="['right','right','right','right']" data-y="center" data-hoffset="['30','30',30','30']" data-voffset="[102,145,150,204]" data-lineheight="55" data-frames='[{
-                                        "delay":1200,
-                                        "speed":900,
-                                        "frame":"0",
-                                        "from":"y:150px;opacity:0;",
-                                        "ease":"Power3.easeOut",
-                                        "to":"o:1;"
-                                        },{
-                                        "delay":"wait",
-                                        "speed":1000,
-                                        "frame":"999",
-                                        "to":"opacity:0;","ease":"Power3.easeOut"
-                                    }]'><a href='#' class='butn theme white-hover'><span>View Project</span></a>
+                            <p class="white-space text-right">Texto texto texto texto texto texto texto texto texto.</p>
                         </div>
 
                     </li>
