@@ -13,7 +13,7 @@
                         <ul class="footer-list">
                             <li>
                                 <span class="d-inline-block vertical-align-top font-size18"><i class="fas fa-map-marker-alt text-theme-color"></i></span>
-                                <span class="d-inline-block width-85 vertical-align-top padding-10px-left">Monthatlán #281, Villa Izcalli CP 28979, Villa de Álvarez, Colima.</span>
+                                <span class="d-inline-block width-85 vertical-align-top padding-10px-left">Laguna de Las Garzas 67, Bugambilias.Villa de Alvarez, Colima. CP 28979</span>
                             </li>
                             <li>
                                 <span class="d-inline-block vertical-align-top font-size18"><i class="fas fa-mobile-alt text-theme-color"></i></span>
