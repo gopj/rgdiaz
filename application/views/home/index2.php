@@ -86,7 +86,7 @@
                                     "frame":"999",
                                     "to":"opacity:0;","ease":"Power3.easeOut"
                                 }]'>
-                            <p class="white-space">Trabajo de calidad para hacer crecer tu negocio.</p>
+                            <p class="white-space">Expertos en el trato de material peligroso.</p>
                         </div>
 
                     </li>
