@@ -86,10 +86,11 @@
 
                                     <!-- menu area -->
                                     <ul class="navbar-nav ml-auto" id="nav" style="display: none;">
-                                        <li><a href="javascript:void(0)">Inicio</a></li>
+                                        <li><a href="index.php/home/index2/#top">Inicio</a></li>
                                         <li><a href="index.php/home/index2/#section_servicios">Servicios</a></li>
                                         <li><a href="index.php/home/index2/#section_contacto">Contacto</a></li>
-                                        <li><a href="index.php/home/index2/#section_sitios">Sitios de Interes</a>
+                                        <li><a href="index.php/home/index2/#section_sitios">Sitios de Interes</a></li>
+                                        <li><a href="index.php/home/login2" type="button" style="color: #86bc42;">Acceder</a></li>
                                     </ul>
                                     <!-- end menu area -->
 

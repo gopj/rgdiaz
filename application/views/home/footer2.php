@@ -3,28 +3,12 @@
             <div class="container">
                 <div class="row">
 
-                    <div class="col-lg-4 col-md-6 sm-margin-30px-bottom">
-
-                        <img alt="footer-logo" src="img/logos/logo-footer.png">
-
-                        <div class="margin-25px-top footer-social-icons">
-                            <ul>
-                                <li><a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="javascript:void(0)"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="javascript:void(0)"><i class="fab fa-google-plus-g"></i></a></li>
-                                <li><a href="javascript:void(0)"><i class="fab fa-youtube"></i></a></li>
-                                <li><a href="javascript:void(0)"><i class="fab fa-linkedin-in"></i></a></li>
-                            </ul>
-                        </div>
-
+                    <div class="col-lg-4 col-md-6">
+                      <br><br>
+                      <img alt="footer-logo" src="img/logos/logo-footer.png">
                     </div>
-
-                    <div class="col-lg-4 col-md-6 sm-margin-30px-bottom">
-                        
-                        
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 offset-lg-1">
+                      
+                    <div class="col-lg-6 col-md-6 offset-lg-1">
                         <h3 class="footer-title-style2 text-theme-color">Ponte en contacto</h3>
                         <ul class="footer-list">
                             <li>
@@ -53,15 +37,19 @@
                 </div>
 
             </div>
-            <div class="footer-bar xs-font-size13">
+            <div class="footer-bar">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 text-left xs-text-center xs-margin-5px-bottom">
-                            Derechos reservados &copy; <?php echo date("Y"); ?> RDíaz
+                            <div class="footer-social-icons small">
+                                <ul>
+                                    <li><a href="https://www.facebook.com/RD%C3%ADaz-304155623326307/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                </ul>
+                            </div>
                         </div>
-                        <!-- <div class="col-md-6 text-right xs-text-center">
-                            Design and Developed by: Chitrakoot Web
-                        </div> -->
+                        <div class="col-md-6 text-right xs-text-center">
+                            <p class="xs-margin-5px-top xs-font-size13">Derechos reservados &copy; <?php echo date("Y"); ?> RDíaz</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -133,6 +121,11 @@
 
    <!--  prism js -->
    <script src="js/crizal/prism.js"></script>
+
+   <script src="js/valida_form_contacto.js"></script>
+
+   <script src="js/valida_form_session.js"></script>
+   
 
    <!-- revolution slider js files start -->
    <script src="js/crizal/rev_slider/jquery.themepunch.tools.min.js"></script>

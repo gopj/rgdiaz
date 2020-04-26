@@ -6,6 +6,7 @@
 		<div class="row">
 				<div class="span5">				
 						<form name="form_contacto" id="form_contacto" method="post" action="<?php echo site_url('home/contacto_mensaje')?>">
+							
 							<div class="well">
 							<center>
 							<br>
