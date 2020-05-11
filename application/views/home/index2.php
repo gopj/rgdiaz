@@ -1,15 +1,15 @@
         <!-- start revolution slideshow-->
         <div class="rev_slider_wrapper" id="top">
-            <div class="rev_slider" id="rev_slider_3" data-version="5.4.5">
+            <div class="rev_slider fullscreenbanner" id="rev_slider_3" data-version="5.4.5">
                 <ul>
                     <!-- slide 1 -->
-                    <li data-fstransition="fade" data-transition="fade" data-easein="default" data-easeout="default" data-slotamount="1" data-masterspeed="1200" data-delay="8000" data-title="We Plan Business">
+                    <li data-fstransition="fade" data-transition="fade" data-easein="default" data-easeout="default" data-slotamount="1" data-masterspeed="1200" data-delay="8000" data-title="Planeamos negocios">
 
                         <!-- overlay -->
-                        <div class="opacity-medium bg-black z-index-1"></div>
+                        <div class="opacity-light bg-black z-index-1"></div>
 
                         <!-- main image -->
-                        <img src="img/crizal/slider/slide10.jpg" alt="" data-bgrepeat="no-repeat" data-bgfit="cover" data-bgparallax="7" class="rev-slidebg">
+                        <img src="img/portada/portada_1.jpeg" alt="" data-bgrepeat="no-repeat" data-bgfit="cover" data-bgparallax="3" class="rev-slidebg">
 
                         <!-- hero title -->
                         <div class="tp-caption hero-text alt-font font-weight-600 text-white" data-x="30" data-y="center" data-voffset="[-84,-63,-68,-108]" data-fontsize="[72,62,52,46]" data-lineheight="[72,62,52,46]" data-width="[none, none, none, 300]" data-whitespace="[nowrap, nowrap, nowrap, normal]" data-frames='[{
@@ -48,13 +48,13 @@
                     <!-- end slide 1 -->
 
                     <!-- SLIDE 2 -->
-                    <li data-fstransition="fade" data-transition="fade" data-easein="default" data-easeout="default" data-slotamount="1" data-masterspeed="1200" data-delay="8000" data-title="We Are The Best">
+                    <li data-fstransition="fade" data-transition="fade" data-easein="default" data-easeout="default" data-slotamount="1" data-masterspeed="1200" data-delay="8000" data-title="Somos los mejores">
 
                         <!-- Overlay -->
-                        <div class="opacity-medium bg-black z-index-1"></div>
+                        <div class="opacity-light bg-black z-index-1"></div>
 
                         <!-- main image -->
-                        <img src="img/crizal/slider/slide12.jpg" alt="" data-bgrepeat="no-repeat" data-bgfit="cover" data-bgparallax="7" class="rev-slidebg">
+                        <img src="img/portada/portada_2.jpeg" alt="" data-bgrepeat="no-repeat" data-bgfit="cover" data-bgparallax="3" class="rev-slidebg">
 
                         <!-- HERO TITLE -->
                         <div class="tp-caption hero-text alt-font font-weight-600 text-white text-center" data-x="['center','center','center','center']" data-y="center" data-voffset="[-84,-63,-68,-108]" data-fontsize="[72,62,52,46]" data-lineheight="[72,62,52,46]" data-width="[none, none, none, 300]" data-whitespace="[nowrap, nowrap, nowrap, normal]" data-frames='[{
@@ -93,13 +93,13 @@
                     <!-- end slide 1 -->
 
                     <!-- SLIDE 3 -->
-                    <li data-fstransition="fade" data-transition="fade" data-easein="default" data-easeout="default" data-slotamount="1" data-masterspeed="1200" data-delay="8000" data-title="We Build Everything">
+                    <li data-fstransition="fade" data-transition="fade" data-easein="default" data-easeout="default" data-slotamount="1" data-masterspeed="1200" data-delay="8000" data-title="Reduce, reusa y recicla.">
 
                         <!-- Overlay -->
-                        <div class="opacity-medium bg-black z-index-1"></div>
+                        <div class="opacity-light bg-black z-index-1"></div>
 
                         <!-- main image -->
-                        <img src="img/crizal/slider/slide11.jpg" alt="" data-bgrepeat="no-repeat" data-bgfit="cover" data-bgparallax="7" class="rev-slidebg">
+                        <img src="img/portada/portada_3.jpeg" alt="" data-bgrepeat="no-repeat" data-bgfit="cover" data-bgparallax="7" class="rev-slidebg">
 
                         <!-- HERO TITLE -->
                         <div class="tp-caption hero-text alt-font font-weight-600 text-white text-right" data-x="['right','right','right','right']" data-y="center" data-hoffset="['30','30',30','30']" data-voffset="[-84,-63,-68,-108]" data-fontsize="[72,62,52,46]" data-lineheight="[72,62,52,46]" data-width="[none, none, none, 300]" data-whitespace="[nowrap, nowrap, nowrap, normal]" data-frames='[{
@@ -114,7 +114,7 @@
                                     "speed":1000,
                                     "frame":"999",
                                     "to":"opacity:0;","ease":"Power3.easeOut"
-                                }]' data-splitout="none">Texto
+                                }]' data-splitout="none">Reduce, reusa y recicla.
                         </div>
 
                         <!-- HERO SUBTITLE -->
@@ -131,7 +131,7 @@
                                     "frame":"999",
                                     "to":"opacity:0;","ease":"Power3.easeOut"
                                 }]'>
-                            <p class="white-space text-right">Texto texto texto texto texto texto texto texto texto.</p>
+                            <p class="white-space text-right"> Nunca te niegues a reutilizar.</p>
                         </div>
 
                     </li>
@@ -365,7 +365,7 @@
         <!-- end tab section -->
 
         <!-- start request form -->
-        <section class="parallax" id="section_contacto" data-overlay-dark="8" data-background="img/crizal/bg/bg1.jpg">
+        <section class="parallax" id="section_contacto" data-overlay-dark="3" data-background="img/portada/portada_4_logo.jpeg">
             <div class="container">
 
                 <div class="section-heading title-style4 white border-bottom border-color-light-white padding-25px-bottom sm-padding-15px-bottom">

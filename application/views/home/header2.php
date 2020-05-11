@@ -62,8 +62,6 @@
                                 <span class="input-group-addon cursor-pointer">
                                     <button class="search-form_submit fas fa-search font-size18 text-white" type="submit"></button>
                                 </span>
-                                <input type="text" class="search-form_input form-control" name="s" autocomplete="off" placeholder="Type & hit enter...">
-                                <span class="input-group-addon close-search"><i class="fas fa-times font-size18 line-height-28 margin-5px-top"></i></span>
                             </div>
                         </form>
                     </div>

@@ -1,5 +1,5 @@
  <!-- start page title section -->
-<section class="page-title-section2 bg-img cover-background" data-overlay-dark="7" data-background="img/bg/bg9.jpg">
+<section class="page-title-section2 bg-img cover-background" data-overlay-dark="3" data-background="img/portada/login_e.jpg">
     <div class="container">
 
         <div class="row">
@@ -38,7 +38,8 @@
                                 <input type="password" name="password" id="password_session" required="required" placeholder="Password *" maxlength="70" class="medium-input">
                             </div>
                             <div class="col-12">
-                                <button class="butn theme medium" type="button" class='btn btn-primary pull-right' onclick="validarFormSesion()">Iniciar</button>
+
+                                 <input type="button" value="Iniciar" id="iniciar" onclick="validarFormSesion()" class="butn white-hover theme">
                                 
                                 <p class="no-margin float-right">
                                     <a href="<?php echo site_url('home/recupera_password');?>">¿Olvidaste tu contraseña?</a>

@@ -12,16 +12,16 @@
                         <h3 class="footer-title-style2 text-theme-color">Ponte en contacto</h3>
                         <ul class="footer-list">
                             <li>
-                                <span class="d-inline-block vertical-align-top font-size18"><i class="fas fa-map-marker-alt text-theme-color"></i></span>
-                                <span class="d-inline-block width-85 vertical-align-top padding-10px-left">Laguna de Las Garzas 67, Bugambilias.Villa de Alvarez, Colima. CP 28979</span>
+                                <span class="d-inline-block vertical-align-top font-size18"><i class="fas fa-map-marker-alt text-theme-color" style="margin-left: 4px;"></i></span>
+                                <span class="d-inline-block width-110 vertical-align-top padding-10px-left">Calle C, núm 427, Parque Industrial Lo de Villa; Colima, Col. C.P. 28075</span>
                             </li>
                             <li>
-                                <span class="d-inline-block vertical-align-top font-size18"><i class="fas fa-mobile-alt text-theme-color"></i></span>
-                                <span class="d-inline-block width-85 vertical-align-top padding-10px-left">312 120 9233</span>
+                                <span class="d-inline-block vertical-align-top font-size18"><i class="fas fa-mobile-alt text-theme-color" style="margin-left: 4px;"></i></span>
+                                <span class="d-inline-block width-85 vertical-align-top padding-10px-left" style="margin-left: 2px;">312 157 8255 (WhatsApp Directo)</span>
                             </li>
                             <li>
                                 <span class="d-inline-block vertical-align-top font-size18"><i class="fas fa-phone text-theme-color"></i></span>
-                                <span class="d-inline-block width-85 vertical-align-top padding-10px-left">312 120 9233</span>
+                                <span class="d-inline-block width-85 vertical-align-top padding-10px-left">312 207 8828 (Oficina)</span>
                             </li>
                             <li>
                                 <span class="d-inline-block vertical-align-top font-size18"><i class="far fa-envelope text-theme-color"></i></span>
