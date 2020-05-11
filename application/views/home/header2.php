@@ -8,7 +8,6 @@
     <meta name="author" content="Chitrakoot Web" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="keywords" content="HTML5 Template Crizal" />
     <meta name="description" content="RDíaz - Servicios Integrales en Materia Ambiental" />
 
     <!-- title  -->

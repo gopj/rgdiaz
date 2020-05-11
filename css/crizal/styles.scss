@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------------
 
-    Theme Name: Crizal - Multipurpose Responsive + Admin
+    Theme Name: RDíaz - Servicios Integrales en Materia Ambiental
     Description: Multipurpose Responsive + Admin
     Author: Chitrakoot Web
     Version: 2.0
