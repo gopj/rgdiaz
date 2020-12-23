@@ -25,7 +25,7 @@
                       <form method='post' action="<?php echo site_url('administrador/versubcarpeta');?>">
                         <input type="hidden" value="<?php echo $carpe->id_persona; ?>" name="id_persona"/>
                         <input type="hidden" value="<?php echo $carpe->ruta_carpeta; ?>" name="ruta_carpeta" >
-                        <input class="nombre-carpeta"  type="submit" value="<?php echo $carpe->nombre?>">
+                        <button type="submit" class="nombre-carpeta" ><?php echo $carpe->nombre?></button>
                       </form>
                     </td>
                     <td><?php echo $carpe->fecha_creada; ?></td>
@@ -35,7 +35,7 @@
                         <form method='post' action="<?php echo site_url('administrador/versubcarpeta'); ?>">
                           <input type="hidden" value="<?php echo $carpe->id_persona; ?>" name="id_persona">
                           <input type="hidden" value="<?php echo $carpe->ruta_carpeta; ?>" name="ruta_carpeta">
-                          <input class="btn btn-mini btn-primary"  type="submit" value="Ver Carpeta">
+                          <button type="submit" class="btn btn-mini btn-primary" >Ver Carpeta</button>
                         </form>
                         </div>
                         

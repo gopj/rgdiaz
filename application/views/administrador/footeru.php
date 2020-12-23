@@ -126,8 +126,8 @@
 				$(document).ready(function(){
 	                $('#tabla').dataTable({
 	                	"bJQueryUI":true,
-	                	"iDisplayLength": 50,
-	                	"aaSorting": [[ 0, "desc" ]],
+	                	"iDisplayLength": 200,
+	                	"aaSorting": [[0,'asc'], [1,'asc']]
 	                });
 	                
 	                $('.dropdown-toggle').dropdown();
