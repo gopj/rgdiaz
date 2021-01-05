@@ -39,6 +39,12 @@ public function __construct()
                         ->result();
     }
 
+    public function get_archivos_ids($ruta_carpeta) {
+        return $this->db->like('ruta_carpeta_pertenece',$ruta_carpeta)
+                        ->get('archivo')
+                        ->result();
+    }
+
     public function update_rutas($id_archivo,$ruta_archivo_nueva,$ruta_carpeta_pertenece_nueva) {
         return $this->db->where('id_archivo',$id_archivo)
                         ->set('ruta_archivo',$ruta_archivo_nueva)

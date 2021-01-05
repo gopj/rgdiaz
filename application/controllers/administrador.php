@@ -481,7 +481,7 @@ class Administrador extends CI_Controller {
 	{
 		if($this->input->post()){
 		$status = 0;
-		$id_persona=$this->input->post('id_persona_expediente');
+		$id_persona=$this->input->post('id_persona');
 		$direccion=$this->input->post('ruta_carpeta'); // Direccion de carpeta
 		$nombre_empresa = $this->persona_model->get_nombre($id_persona);
 		$nombre = @$nombre_empresa->nombre_empresa;	//Nombre de la empresa
@@ -492,6 +492,7 @@ class Administrador extends CI_Controller {
 		foreach ($ruta as $r) {
 			$direccion_real .= $r."/";
 		}
+
 		$anterior=$this->carpeta_model->obtieneunacarpeta($this->input->post('ruta_carpeta'));
 		$raiz='clientes/';
 		$subcarpetas=$this->carpeta_model->obtienesubcarpeta($this->input->post('ruta_carpeta'));
@@ -562,7 +563,7 @@ class Administrador extends CI_Controller {
 				$ruta_carpeta=$ruta_carpeta_pertenece;
 				$direccion = $ruta_carpeta_pertenece;
 				$nombre_empresa = $this->persona_model->get_nombre($id_persona);
-				$nombre = $nombre_empresa->nombre_empresa;	//Nombre de la empresa
+				$nombre = @$nombre_empresa->nombre_empresa;	//Nombre de la empresa
 				$ruta = explode("/", $direccion);
 				$ruta[1] = $nombre;
 				$direccion_real="";
@@ -607,7 +608,7 @@ class Administrador extends CI_Controller {
 		header('Expires: 0');
 		header('Cache-Control: must-revalidate');
 		header('Pragma: public');
-		header('Content-Length: ' . filesize($ruta));
+		header('Content-Length:' . filesize($ruta));
 		ob_clean();
 		flush();
 		readfile($ruta);
@@ -1490,6 +1491,20 @@ class Administrador extends CI_Controller {
 			$nombre_nuevo = $this->input->post('nombre_nuevo');
 			$ruta_carpeta = $this->input->post('ruta_carpeta');
 			$ruta_anterior = $this->input->post('ruta_anterior');
+
+			$data_form = array(
+				'id_persona' => $id_persona, 
+				'nombre_carpeta' => $nombre_carpeta, 
+				'nombre_nuevo' =>  $nombre_nuevo, 
+				'ruta_carpeta' => $ruta_carpeta, 
+				'ruta_anterior' => $ruta_anterior
+			);
+
+			/*echo "<pre>";
+			print_r($data_form);
+			echo "</pre>";
+			die();*/
+
 			$nombre_nuevo = trim($nombre_nuevo);
 			rename($ruta_carpeta, $ruta_anterior."/".$nombre_nuevo);
 			$renombrar_carpeta_padre = $this->carpeta_model->update_carpeta($nombre_carpeta, $ruta_carpeta, $nombre_nuevo);
@@ -1519,43 +1534,26 @@ class Administrador extends CI_Controller {
 				}
 				$ruta_carpeta_nueva = substr($ruta_carpeta_nueva, 0, -1);
 				$ruta_anterior_nueva = substr($ruta_anterior_nueva, 0, -1);
-				#echo $id_carpeta."<br>";
-				#echo $ruta_carpeta_nueva."<br>";
-				#echo $ruta_anterior_nueva."<br>";
+
 				$actualizacion_ruta_carpetas = $this->carpeta_model->update_rutas($id_carpeta,$ruta_carpeta_nueva,$ruta_anterior_nueva);
 			}
-			$archivos_en_carpetas = $this->archivo_model->get_archivos($ruta_carpeta);
-			
-			foreach ($archivos_en_carpetas as $reg) {
-				$id_archivo = $reg->id_archivo;
-				$array_ruta_archivo = explode("/", $reg->ruta_archivo);
-				$ruta_archivo_nueva = "";
-				$cont1 = 0;
-				foreach ($array_ruta_archivo as $row) {
-					if ($row == $nombre_carpeta) {
-						$array_ruta_archivo[$cont1] = $nombre_nuevo;
-					}
-					$ruta_archivo_nueva .= $array_ruta_archivo[$cont1]."/";
-					$cont1++;
-				}
-				$array_ruta_carpeta_pertenece = explode("/", $reg->ruta_carpeta_pertenece);
-				$ruta_carpeta_pertenece_nueva = "";
-				$cont2 = 0;
-				foreach ($array_ruta_carpeta_pertenece as $row) {
-					if ($row == $nombre_carpeta) {
-						$array_ruta_carpeta_pertenece[$cont2] = $nombre_nuevo;
-					}
-					$ruta_carpeta_pertenece_nueva .= $array_ruta_carpeta_pertenece[$cont2]."/";
-					$cont2++;
-				}
-				$ruta_archivo_nueva = substr($ruta_archivo_nueva, 0, -1);
-				$ruta_carpeta_pertenece_nueva = substr($ruta_carpeta_pertenece_nueva, 0, -1);
-				#echo $id_archivo."<br>";
-				#echo $ruta_archivo_nueva."<br>";
-				#echo $ruta_carpeta_pertenece_nueva."<br>";
-				$actualizar_ruta_archivos = $this->archivo_model->update_rutas($id_archivo,$ruta_archivo_nueva,$ruta_carpeta_pertenece_nueva);
+						
+			//// new function to update rutas de archivo in table 'archivo'
 
+			$contruct_old_path = $ruta_anterior . '/' . $nombre_carpeta;
+			$contruct_new_path = $ruta_anterior . '/' . $nombre_nuevo;
+
+			$ids_archivos = $this->archivo_model->get_archivos_ids($contruct_old_path);
+
+			foreach ($ids_archivos as $arch) {
+				$id = $arch->id_archivo;
+				$ruta_archivo = $contruct_new_path . '/' . $arch->nombre;
+				$this->archivo_model->update_rutas($id,$ruta_archivo,$contruct_new_path);
 			}
+
+			$ids_archivos = $this->archivo_model->get_archivos_ids($contruct_new_path);
+
+
 			#echo print_r($archivos_en_carpetas);
 			$status = 0;
 			#$id_persona=$this->input->post('id_persona');
