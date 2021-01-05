@@ -1553,7 +1553,6 @@ class Administrador extends CI_Controller {
 
 			$ids_archivos = $this->archivo_model->get_archivos_ids($contruct_new_path);
 
-
 			#echo print_r($archivos_en_carpetas);
 			$status = 0;
 			#$id_persona=$this->input->post('id_persona');
