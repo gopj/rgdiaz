@@ -23,6 +23,7 @@ class Administrador extends CI_Controller {
 		$this->load->library('Excel');
 		$this->load->library('MY_PDF');
 		$this->load->library('MY_Output');
+		$this->load->library('MY_Input');
 		$this->load->helper('file');
 		$this->load->helper('url');
 	}
@@ -1808,14 +1809,16 @@ class Administrador extends CI_Controller {
 				$data["nombre"] = $this->input->post("nombre_recolector");
 				$data["correo"] = $this->input->post("correo");
 				$data["clave"] = $this->input->post("clave2");
+				$data["id_persona"] = $this->input->post("id_persona");
 
-
-				$this->persona_model->alta_recolector($data);
-
-									
-				redirect('administrador');
-
+				if($data["id_persona"]) {
+					$this->persona_model->update_recolector($data);
+				} else {
+					$this->persona_model->alta_recolector($data);
+				}
 				
+				redirect('administrador/recolector_consulta');
+
 			} else {
 
 				$data["mensajes"] = $this->contacto_model->contador_mensajes(0);
@@ -1853,9 +1856,15 @@ class Administrador extends CI_Controller {
 				$data["marca"] 	= $this->input->post("marca");
 				$data["tipo"] 	= $this->input->post("tipo");
 				$data["placa"] 	= $this->input->post("placa");
+				$data["id_vehiculo"] = $this->input->post("id_vehiculo");
 
-				$this->persona_model->alta_vehiculo($data);
+				if($data["id_vehiculo"]) {
+					$this->tran_vehiculo_model->update_vehiculo($data);
+				} else {
+					$this->tran_vehiculo_model->alta_vehiculo($data);
+				}
 
+				redirect('administrador/recolector_consulta');
 			}
 
 			$this->load->view('administrador/recolector/header', $data);
@@ -1893,9 +1902,15 @@ class Administrador extends CI_Controller {
 				$data["municipio"] 			= $this->input->post("municipio");
 				$data["estado"] 			= $this->input->post("estado");
 				$data["telefono"] 			= $this->input->post("telefono");
+				$data["id_emp_dest"] 		= $this->input->post("id_emp_dest");
 
-				$this->persona_model->alta_destino($data);
+				if($data["id_emp_dest"]) {
+					$this->emp_destino_model->update_destino($data);
+				} else {
+					$this->emp_destino_model->alta_destino($data);
+				}
 
+				redirect('administrador/recolector_consulta');
 			}
 
 			$this->load->view('administrador/recolector/header', $data);

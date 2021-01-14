@@ -101,25 +101,12 @@ class Persona_model extends CI_Model {
 						->insert('persona');
 	}
 
-	public function alta_vehiculo($data){
-		return $this->db->set('modelo',			$data['modelo'])
-						->set('marca',			$data['marca'])
-						->set('tipo_vehiculo',	$data['tipo'])
-						->set('numero_placa',	$data['placa'])
-						->insert('tran_vehiculos');
-	}
-
-	public function alta_destino($data) {
-		return $this->db->set('nombre_destino', 	$data['nombre_destino'])
-						->set('numero?autorizacion',$data['numero?autorizacion'])
-						->set('calle', 				$data['calle'])
-						->set('num_ext', 			$data['num_ext'])
-						->set('num_int', 			$data['num_int'])
-						->set('cp', 				$data['cp'])
-						->set('colonia', 			$data['colonia'])
-						->set('estado', 			$data['estado'])
-						->set('telefono', 			$data['telefono'])
-						->insert('tipo_emp_destino');
+	public function update_recolector($data){
+		return $this->db->set('nombre',				$data['nombre'])
+						->set('correo',				$data['correo'])
+						->set('password',			$data['clave'])
+						->where('id_persona',		$data['id_persona'])
+						->update('persona');
 	}
 
 	public function get_nombre_cliente($id){

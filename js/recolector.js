@@ -61,6 +61,7 @@ function get_recolector(id){
 		$("#nombre_recolector").removeAttr('disabled');
 		$("#correo").removeAttr('disabled');
 		$("#clave").removeAttr('disabled');
+		$("#edita_recolector").removeAttr('disabled');
 		$("#guarda_recolector").removeAttr('disabled');
 	}
     console.log(id_per);
@@ -89,6 +90,16 @@ function get_recolector(id){
 		);
 
 	//echo site_url('administrador/obtiene_cliente'); ?>"  <--	Ruta de la peticion
+}
+
+function update_recolector(){
+	
+	$("#nombre_recolector").removeAttr('disabled');
+	$("#correo").removeAttr('disabled');
+	$("#clave").removeAttr('disabled');
+	$("#edita_recolector").removeAttr('disabled');
+	$("#guarda_recolector").removeAttr('disabled');
+
 }
 
 function get_vehiculo(id){
@@ -138,11 +149,21 @@ function get_vehiculo(id){
 	//echo site_url('administrador/obtiene_cliente'); ?>"  <--	Ruta de la peticion
 }
 
+function update_vehiculo(){
+	
+		$("#modelo").removeAttr('disabled');
+		$("#marca").removeAttr('disabled');
+		$("#tipo").removeAttr('disabled');
+		$("#placa").removeAttr('disabled');
+		$("#guarda_vehiculo").removeAttr('disabled');
+
+}
+
 function get_destino(id){
 
 	var id_destino = id;
 	
-	if (id_vehiculo != 0) {
+	if (id_destino != 0) {
 		$("#nombre_destino").attr('disabled','disabled');
 		$("#numero_autorizacion").attr('disabled','disabled');
 		$("#calle").attr('disabled','disabled');
@@ -207,6 +228,22 @@ function get_destino(id){
 		);
 
 	//echo site_url('administrador/obtiene_cliente'); ?>"  <--	Ruta de la peticion
+}
+
+function update_destino(){
+	
+	$("#nombre_destino").removeAttr('disabled');
+	$("#numero_autorizacion").removeAttr('disabled');
+	$("#calle").removeAttr('disabled');
+	$("#num_ext").removeAttr('disabled');
+	$("#num_int").removeAttr('disabled');
+	$("#cp").removeAttr('disabled');
+	$("#colonia").removeAttr('disabled');
+	$("#municipio").removeAttr('disabled');
+	$("#estado").removeAttr('disabled');
+	$("#telefono").removeAttr('disabled');
+	$("#guarda_destino").removeAttr('disabled');
+
 }
 
 //jQuery extension method:

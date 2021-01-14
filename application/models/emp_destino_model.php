@@ -53,8 +53,7 @@ public function __construct() {
 	}
 
 	public function actualiza_emp_destino($data) {
-
-		$this->db
+		return $this->db
 				->set('nombre_destino'			,$data['nombre_emp_dest'])
 				->set('no_autorizacion_destino'	,$data['no_aut_dest'])
 				->set('domicilio'				,$data['domicilio_emp_dest'])
@@ -62,9 +61,36 @@ public function __construct() {
 				->set('estado'					,$data['estado_emp_dest'])
 				->where('id_tipo_emp_destino'	,$data['id_emp_destino'])
 				->update('tipo_emp_destino');
-
-		return "OK";
 		
+	}
+
+	public function alta_destino($data) {
+		return $this->db
+				->set('nombre_destino',		 	$data['nombre_destino'])
+				->set('no_autorizacion_destino',$data['numero_autorizacion'])
+				->set('calle', 					$data['calle'])
+				->set('num_ext', 				$data['num_ext'])
+				->set('num_int', 				$data['num_int'])
+				->set('cp',		 				$data['cp'])
+				->set('colonia', 				$data['colonia'])
+				->set('estado', 				$data['estado'])
+				->set('telefono', 				$data['telefono'])
+				->insert('tipo_emp_destino');
+	}
+
+	public function update_destino($data) {
+		return $this->db
+				->set('nombre_destino',		 	$data['nombre_destino'])
+				->set('no_autorizacion_destino',$data['numero_autorizacion'])
+				->set('calle', 					$data['calle'])
+				->set('num_ext', 				$data['num_ext'])
+				->set('num_int', 				$data['num_int'])
+				->set('cp',		 				$data['cp'])
+				->set('colonia', 				$data['colonia'])
+				->set('estado', 				$data['estado'])
+				->set('telefono', 				$data['telefono'])
+				->where('id_tipo_emp_destino',	$data['id_emp_dest'])
+				->update('tipo_emp_destino');
 	}
 
 }

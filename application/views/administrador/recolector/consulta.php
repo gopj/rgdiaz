@@ -20,7 +20,6 @@
 									<div class="col-lg-9">
 										<select class="form-control" style="width:81%;" onclick="get_recolector(this.value)" id="id_persona" name="id_persona">
 											<option value=""> Nuevo </option>
-												
 											<?php foreach($recolectores->result() as $row){ ?>
 												<option value="<?php echo $row->id_persona;?>"><?php echo $row->correo; ?></option>
 											<?php } ?>
@@ -31,7 +30,7 @@
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label" for="nombre_recolector">Nombre</label>
 									<div class="col-lg-9">
-										<input class="form-control" type="text" class="txt " style="width:81%; text-align: center;" name="nombre_recolector" id="nombre_recolector"  oninvalid="this.setCustomValidity('Ingresa nombre del recolector')" oninput="setCustomValidity('')"  required>
+										<input class="form-control" type="text" class="txt " style="width:81%; text-align: center;" name="nombre_recolector" id="nombre_recolector" oninvalid="this.setCustomValidity('Ingresa nombre del recolector')" oninput="setCustomValidity('')"  required>
 									</div>
 								</div>
 
@@ -55,13 +54,12 @@
 										</div>
 									</div>
 								</div>
-
 								<br>
-
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label"></label>
 									<div class="col-lg-9">
 										<input type="submit" class="btn btn-primary" value="Guardar" name="guarda_recolector" id="guarda_recolector">
+										<input type="button" class="btn btn-primary" value="Editar" name="edita_recolector" id="edita_recolector" onclick="update_recolector()">
 									</div>
 								</div>
 							</form>
@@ -126,6 +124,7 @@
 									<label class="col-lg-3 col-form-label form-control-label"></label>
 									<div class="col-lg-9">
 										<input type="submit" class="btn btn-primary" value="Guardar" name="guarda_vehiculo" id="guarda_vehiculo">
+										<input type="button" class="btn btn-primary" value="Editar" name="edita_vehiculo" id="edita_vehiculo" onclick="update_vehiculo()">
 									</div>
 								</div>
 							</form>
@@ -174,7 +173,7 @@
 									<div class="form-group col-lg-6">
 										<label class="col-lg-6 col-form-label form-control-label" for="numero_autorizacion">Numero de autorización</label>
 										<div class="col-lg-12">
-											<input class="form-control" type="text" class="txt" style="text-align: center;" name="Número de Autorización" id="numero_autorizacion" name="numero_autorizacion" oninvalid="this.setCustomValidity('Ingresa No de autorización. ej: 06-09-ll-01-2011')" oninput="setCustomValidity('')" required>
+											<input class="form-control" type="text" class="txt" style="text-align: center;" name="numero_autorizacion" id="numero_autorizacion" name="numero_autorizacion" oninvalid="this.setCustomValidity('Ingresa No de autorización. ej: 06-09-ll-01-2011')" oninput="setCustomValidity('')" required>
 										</div>
 									</div>
 
@@ -199,14 +198,14 @@
 									<div class="form-group col-lg-1">
 										<label class="col-lg-12 col-form-label form-control-label" for="num_int"># Int.</label>
 										<div class="col-lg-12">
-											<input class="form-control" type="text" class="txt" style="text-align: center;" name="num_int" id="num_int" oninvalid="this.setCustomValidity('Ingresa el número exteriror')" oninput="setCustomValidity('')" required>
+											<input class="form-control" type="text" class="txt" style="text-align: center;" name="num_int" id="num_int" oninvalid="this.setCustomValidity('Ingresa el número interior')" oninput="setCustomValidity('')" required>
 										</div>
 									</div>
 
 									<div class="form-group col-lg-2">
 										<label class="col-lg-12 col-form-label form-control-label" for="cp">Código Postal</label>
 										<div class="col-lg-12">
-											<input class="form-control" type="text" class="txt" style="text-align: center;" name="cp" id="cp" oninvalid="this.setCustomValidity('Ingresa el número exteriror')" oninput="setCustomValidity('')" required>
+											<input class="form-control" type="text" class="txt" style="text-align: center;" name="cp" id="cp" oninvalid="this.setCustomValidity('Ingresa el código postal')" oninput="setCustomValidity('')" required>
 										</div>
 									</div>
 								
@@ -217,28 +216,28 @@
 									<div class="form-group col-lg-4">
 										<label class="col-lg-3 col-form-label form-control-label" for="colonia">Colonia</label>
 										<div class="col-lg-12">
-											<input class="form-control" type="text" class="txt" style="text-align: center;" name="colonia" id="colonia" oninvalid="this.setCustomValidity('Ingresa el número exteriror')" oninput="setCustomValidity('')" required>
+											<input class="form-control" type="text" class="txt" style="text-align: center;" name="colonia" id="colonia" oninvalid="this.setCustomValidity('Ingresa colonia')" oninput="setCustomValidity('')" required>
 										</div>
 									</div>
 
 									<div class="form-group col-lg-3">
 										<label class="col-lg-12 col-form-label form-control-label" for="municipio">Municipio</label>
 										<div class="col-lg-12">
-											<input class="form-control" type="text" class="txt" style="text-align: center;" name="municipio" id="municipio" oninvalid="this.setCustomValidity('Ingresa el número exteriror')" oninput="setCustomValidity('')" required>
+											<input class="form-control" type="text" class="txt" style="text-align: center;" name="municipio" id="municipio" oninvalid="this.setCustomValidity('Ingresa el municipio')" oninput="setCustomValidity('')" required>
 										</div>
 									</div>
 
 									<div class="form-group col-lg-3">
 										<label class="col-lg-4 col-form-label form-control-label" for="estado">Estado</label>
 										<div class="col-lg-12">
-											<input class="form-control" type="text" class="txt" style="text-align: center;" name="estado" id="estado" oninvalid="this.setCustomValidity('Ingresa el número exteriror')" oninput="setCustomValidity('')" required>
+											<input class="form-control" type="text" class="txt" style="text-align: center;" name="estado" id="estado" oninvalid="this.setCustomValidity('Ingresa el estado')" oninput="setCustomValidity('')" required>
 										</div>
 									</div>
 
 									<div class="form-group col-lg-2">
 										<label class="col-lg-12 col-form-label form-control-label" for="telefono">Télefono</label>
 										<div class="col-lg-12">
-											<input class="form-control" type="text" class="txt" style="text-align: center;" name="telefono" id="telefono" oninvalid="this.setCustomValidity('Ingresa el número exteriror')" oninput="setCustomValidity('')" required>
+											<input class="form-control" type="text" class="txt" style="text-align: center;" name="telefono" id="telefono" oninvalid="this.setCustomValidity('Ingresa el télefono')" oninput="setCustomValidity('')" required>
 										</div>
 									</div>
 
@@ -250,6 +249,7 @@
 									<label class="col-lg-3 col-form-label form-control-label"></label>
 									<div class="col-lg-9">
 										<input type="submit" class="btn btn-primary" value="Guardar" name="guarda_destino" id="guarda_destino">
+										<input type="button" class="btn btn-primary" value="Editar" name="edita_destino" id="edita_destino" onclick="update_destino()">
 									</div>
 								</div>
 							</form>

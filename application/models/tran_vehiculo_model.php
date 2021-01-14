@@ -17,4 +17,21 @@ class Tran_vehiculo_model extends CI_Model {
 						->row();
 	}
 
+	public function alta_vehiculo($data){
+		return $this->db->set('modelo',			$data['modelo'])
+						->set('marca',			$data['marca'])
+						->set('tipo_vehiculo',	$data['tipo'])
+						->set('numero_placa',	$data['placa'])
+						->insert('tran_vehiculos');
+	}
+
+	public function update_vehiculo($data){
+		return $this->db->set('modelo',			$data['modelo'])
+						->set('marca',			$data['marca'])
+						->set('tipo_vehiculo',	$data['tipo'])
+						->set('numero_placa',	$data['placa'])
+						->where('id_vehiculo',	$data['id_vehiculo'])
+						->update('tran_vehiculos');
+	}
+
 }
