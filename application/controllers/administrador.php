@@ -1493,19 +1493,6 @@ class Administrador extends CI_Controller {
 			$ruta_carpeta = $this->input->post('ruta_carpeta');
 			$ruta_anterior = $this->input->post('ruta_anterior');
 
-			$data_form = array(
-				'id_persona' => $id_persona, 
-				'nombre_carpeta' => $nombre_carpeta, 
-				'nombre_nuevo' =>  $nombre_nuevo, 
-				'ruta_carpeta' => $ruta_carpeta, 
-				'ruta_anterior' => $ruta_anterior
-			);
-
-			/*echo "<pre>";
-			print_r($data_form);
-			echo "</pre>";
-			die();*/
-
 			$nombre_nuevo = trim($nombre_nuevo);
 			rename($ruta_carpeta, $ruta_anterior."/".$nombre_nuevo);
 			$renombrar_carpeta_padre = $this->carpeta_model->update_carpeta($nombre_carpeta, $ruta_carpeta, $nombre_nuevo);
@@ -1917,7 +1904,6 @@ class Administrador extends CI_Controller {
 			$this->load->view("administrador/recolector/consulta", $data);
 			$this->load->view('administrador/recolector/footer', $data);	
 
-
 		}
 		
 	}
@@ -1928,39 +1914,6 @@ class Administrador extends CI_Controller {
 		
 		echo json_encode($destino);
 	}
-
-/*	public function recolector_alta() {
-		if ($this->session->userdata('tipo')==1){
-
-			if ($this->input->post()) {
-
-				$data["nombre"] = $this->input->post("nombre_recolector");
-				$data["correo"] = $this->input->post("correo");
-				$data["clave"] = $this->input->post("clave2");
-
-
-				$this->persona_model->alta_recolector($data);
-
-									
-				redirect('administrador');
-
-				
-			} else {
-
-				$data["mensajes"] = $this->contacto_model->contador_mensajes(0);
-				$data["clientes"] = $this->persona_model->obtiene_clientes_baja(3,1,1);
-				$data["correo"] = $this->persona_model->getCorreos(3);
-
-			
-				$this->load->view('administrador/header_admin', $data);
-				$this->load->view("administrador/recolector_alta.php", $data);
-				$this->load->view('administrador/footeru', $data);	
-			}
-		} else {
-			redirect('home');
-		}
-		
-	}*/
 
 	public function recolector_index() {
 	

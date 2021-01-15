@@ -51,18 +51,21 @@ function get_cliente(id){
 function get_recolector(id){
 
 	var id_per = id;
-	
-	if (id_per != 0) {
+
+	if (id_per) {
 		$("#nombre_recolector").attr('disabled','disabled');
 		$("#correo").attr('disabled','disabled');
 		$("#clave").attr('disabled','disabled');
 		$("#guarda_recolector").attr('disabled','disabled');
+		$("#clave_automatica").attr('checked', 'true');
+		
 	} else {
 		$("#nombre_recolector").removeAttr('disabled');
 		$("#correo").removeAttr('disabled');
 		$("#clave").removeAttr('disabled');
 		$("#edita_recolector").removeAttr('disabled');
 		$("#guarda_recolector").removeAttr('disabled');
+		$("#clave_automatica").removeAttr('checked');
 	}
     console.log(id_per);
 	//AJAX
@@ -93,20 +96,22 @@ function get_recolector(id){
 }
 
 function update_recolector(){
-	
 	$("#nombre_recolector").removeAttr('disabled');
 	$("#correo").removeAttr('disabled');
 	$("#clave").removeAttr('disabled');
 	$("#edita_recolector").removeAttr('disabled');
-	$("#guarda_recolector").removeAttr('disabled');
+	$("#guarda_recolector").attr('disabled','disabled');
+}
 
+function onchange_recolector(){
+	$("#guarda_recolector").removeAttr('disabled');
 }
 
 function get_vehiculo(id){
 
 	var id_vehiculo = id;
 	
-	if (id_vehiculo != 0) {
+	if (id_vehiculo) {
 		$("#modelo").attr('disabled','disabled');
 		$("#marca").attr('disabled','disabled');
 		$("#tipo").attr('disabled','disabled');
@@ -163,7 +168,7 @@ function get_destino(id){
 
 	var id_destino = id;
 	
-	if (id_destino != 0) {
+	if (id_destino) {
 		$("#nombre_destino").attr('disabled','disabled');
 		$("#numero_autorizacion").attr('disabled','disabled');
 		$("#calle").attr('disabled','disabled');
