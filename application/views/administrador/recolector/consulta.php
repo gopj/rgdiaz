@@ -256,8 +256,81 @@
 						</div>
 					</div>
 				</div>
+
+				<div class="modal" id="myModal">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+
+							<!-- Modal Header -->
+							<div class="modal-header">
+								<h4 class="modal-title">Ingresa Residuo</h4>
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+							</div>
+
+							<!-- Modal body -->
+							<div class="modal-body">
+								<div class="form-row">
+									<div class="form-group col-md-8">
+										<label class="col-form-label" for="nombre_residuo"> Residuo Peligroso </label>
+										<select class="form-control" onchange="update_clave(this.value);" name="residuo_peligroso" required>
+											<option value="">Selecciona Residuo</option>
+											<?php foreach ($residuos as $key) { ?>
+												<option value="<?= $key->id_tipo_residuo; ?>"> <?= mb_strimwidth($key->residuo, 0, 55, '...', 'UTF-8'); ?></option>
+											<?php } ?>
+										</select>
+										<div class="invalid-feedback">
+											Selecciona residuo peligroso.
+										</div>
+									</div>	
+
+									<div class="form-group col-md-3">
+										<label class="col-form-label" for="clave"> Clave </label>
+										<input type="text" class="form-control" id="clave" name="clave" value="Clave" disabled> 
+									</div>	
+									<div class="form-group col-md-1">
+										<label class="col-form-label" for="otro_resdiuo"> Otro </label>
+										<br>
+										<label class="switch">
+											<input type="checkbox">
+											<span class="slider round"></span>
+										</label>
+									</div>	
+								</div>
+
+								<div class="form-row">
+									<div class="form-group col-md-4">
+										<label class="col-form-label" for="nombre_residuo"> Cantidad Residuo </label>
+										<input readonly type="number" class="form-control" id="cantidad" name="cantidad" min="1" style="text-align:center" value="1" required>
+									</div>	
+
+									<div class="form-group col-md-8">
+										<label class="col-form-label"> Unidad </label>
+										<br>
+										<div class="custom-control custom-radio custom-control-inline">
+											<input type="radio" class="custom-control-input" id="unidad_radio1" value="Kg" name="unidadRadio" required>
+											<label class="custom-control-label" for="unidad_radio1">Kg</label>
+										</div>
+										<div class="custom-control custom-radio custom-control-inline">
+											<input type="radio" class="custom-control-input" id="unidad_radio2" value="Ton" name="unidadRadio" required>
+											<label class="custom-control-label" for="unidad_radio2">Ton</label>
+											<div class="invalid-feedback"> &nbsp; Selecciona unidad de medida.</div>
+										</div>
+									</div>	
+								</div>
+			
+								<!-- Modal footer -->
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+									<button type="submit" class="btn btn-primary">Guardar</button>
+								</div>
+							</div>
+						</div>	
+					</div>	
+				</div>
+
+				</div>
 			</div>
-       	</div>	
+
 
 
 <br><br>

@@ -73,6 +73,7 @@ public function __construct() {
 				->set('num_int', 				$data['num_int'])
 				->set('cp',		 				$data['cp'])
 				->set('colonia', 				$data['colonia'])
+				->set('municipio', 				$data['municipio'])
 				->set('estado', 				$data['estado'])
 				->set('telefono', 				$data['telefono'])
 				->insert('tipo_emp_destino');
@@ -87,6 +88,7 @@ public function __construct() {
 				->set('num_int', 				$data['num_int'])
 				->set('cp',		 				$data['cp'])
 				->set('colonia', 				$data['colonia'])
+				->set('municipio', 				$data['municipio'])
 				->set('estado', 				$data['estado'])
 				->set('telefono', 				$data['telefono'])
 				->where('id_tipo_emp_destino',	$data['id_emp_dest'])
