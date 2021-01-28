@@ -44,7 +44,7 @@
 								<div class="form-inline row">
 									<label class="col-lg-3 col-form-label form-control-label" for="clave" style="justify-content: left;">Contraseña</label>
 									<div class="col-lg-9">
-										<input class="form-control" type="text" class="txt" style="width:54%; text-align: center;" name="clave" id="clave" oninvalid="this.setCustomValidity('Ingresa una clave')" oninput="setCustomValidity(''); onchange_recolector()" onchange="input_pass()" disabled required> &nbsp; &nbsp; &nbsp;
+										<input class="form-control" type="text" class="txt" style="width:54%; text-align: center;" name="clave" id="clave" oninvalid="this.setCustomValidity('Ingresa una clave')" oninput="setCustomValidity(''); onchange_recolector()" onchange="input_pass()" required> &nbsp; &nbsp; &nbsp;
 
 										<input type="hidden" class="txt" name="clave2" id="clave2">
 

@@ -1,3 +1,4 @@
+
 // Gloval variable for host
 var host="localhost/rgdiaz";
 //var host="rdiaz.mx";
@@ -57,15 +58,14 @@ function get_recolector(id){
 		$("#correo").attr('disabled','disabled');
 		$("#clave").attr('disabled','disabled');
 		$("#guarda_recolector").attr('disabled','disabled');
-		$("#clave_automatica").attr('checked', 'true');
-		
+		$("#clave_automatica").attr('disabled','disabled');
 	} else {
 		$("#nombre_recolector").removeAttr('disabled');
 		$("#correo").removeAttr('disabled');
 		$("#clave").removeAttr('disabled');
 		$("#edita_recolector").removeAttr('disabled');
 		$("#guarda_recolector").removeAttr('disabled');
-		$("#clave_automatica").removeAttr('checked');
+		$("#clave_automatica").removeAttr('disabled');
 	}
     console.log(id_per);
 	//AJAX
@@ -101,10 +101,12 @@ function update_recolector(){
 	$("#clave").removeAttr('disabled');
 	$("#edita_recolector").removeAttr('disabled');
 	$("#guarda_recolector").attr('disabled','disabled');
+	$("#clave_automatica").removeAttr('disabled');
 }
 
 function onchange_recolector(){
 	$("#guarda_recolector").removeAttr('disabled');
+	$("#edita_recolector").attr('disabled','disabled');
 }
 
 function get_vehiculo(id){

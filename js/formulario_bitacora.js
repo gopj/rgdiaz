@@ -132,12 +132,9 @@ function automatic_pass() {
 	var numberOfChecked = $('input:checkbox:checked').length;
 	var randomstring = gen_pass();
 
-	//console.log(randomstring);
-
 	if (numberOfChecked > 0){
 		document.getElementById('clave').value = randomstring;
 		document.getElementById('clave2').value = randomstring;
-		$("#clave").attr('disabled','disabled');
 	} else {
 		$("#clave").removeAttr('disabled');
 	}
