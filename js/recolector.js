@@ -118,6 +118,7 @@ function get_vehiculo(id){
 		$("#marca").attr('disabled','disabled');
 		$("#tipo").attr('disabled','disabled');
 		$("#placa").attr('disabled','disabled');
+		$("#edita_vehiculo").removeAttr('disabled');
 		$("#guarda_vehiculo").attr('disabled','disabled');
 	} else {
 		$("#modelo").removeAttr('disabled');
@@ -157,13 +158,17 @@ function get_vehiculo(id){
 }
 
 function update_vehiculo(){
-	
 		$("#modelo").removeAttr('disabled');
 		$("#marca").removeAttr('disabled');
 		$("#tipo").removeAttr('disabled');
 		$("#placa").removeAttr('disabled');
-		$("#guarda_vehiculo").removeAttr('disabled');
+		$("#guarda_vehiculo").attr('disabled','disabled');
+		$("#edita_vehiculo").removeAttr('disabled');
+}
 
+function onchange_vehiculo(){
+	$("#guarda_vehiculo").removeAttr('disabled');
+	$("#edita_vehiculo").attr('disabled','disabled');
 }
 
 function get_destino(id){

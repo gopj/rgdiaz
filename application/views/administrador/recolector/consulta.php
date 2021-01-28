@@ -93,28 +93,28 @@
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label" for="modelo">Modelo</label>
 									<div class="col-lg-9">
-										<input class="form-control" type="text" class="txt " style="width:81%; text-align: center;" name="modelo" id="modelo"  oninvalid="this.setCustomValidity('Ingresa modelo del vehiculo')" oninput="setCustomValidity('')"  required>
+										<input class="form-control" type="text" class="txt " style="width:81%; text-align: center;" name="modelo" id="modelo"  oninvalid="this.setCustomValidity('Ingresa modelo del vehiculo')" oninput="setCustomValidity(''); onchange_vehiculo()"  required>
 									</div>
 								</div>
 
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label" for="marca">Marca</label>
 									<div class="col-lg-9">
-										<input class="form-control" type="text" class="txt" style="width:81%; text-align: center;" name="marca" id="marca"  oninvalid="this.setCustomValidity('Ingresa marca')" oninput="setCustomValidity('')" required>
+										<input class="form-control" type="text" class="txt" style="width:81%; text-align: center;" name="marca" id="marca"  oninvalid="this.setCustomValidity('Ingresa marca')" oninput="setCustomValidity(''); onchange_vehiculo()" required>
 									</div>
 								</div>
 
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label" for="tipo">Tipo</label>
 									<div class="col-lg-9">
-										<input class="form-control" type="text" class="txt" style="width:81%; text-align: center;" name="tipo" id="tipo"  oninvalid="this.setCustomValidity('Ingresa tipo de vehículo. Ej: Caja seca')" oninput="setCustomValidity('')" required>
+										<input class="form-control" type="text" class="txt" style="width:81%; text-align: center;" name="tipo" id="tipo"  oninvalid="this.setCustomValidity('Ingresa tipo de vehículo. Ej: Caja seca')" oninput="setCustomValidity(''); onchange_vehiculo()" required>
 									</div>
 								</div>
 
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label" for="placa">No. Placa</label>
 									<div class="col-lg-9">
-										<input class="form-control" type="text" class="txt" style="width:81%; text-align: center;" name="placa" id="placa"  oninvalid="this.setCustomValidity('Ingresa número de placa')" oninput="setCustomValidity('')" required>
+										<input class="form-control" type="text" class="txt" style="width:81%; text-align: center;" name="placa" id="placa"  oninvalid="this.setCustomValidity('Ingresa número de placa')" oninput="setCustomValidity(''); onchange_vehiculo()" required>
 									</div>
 								</div>
 
