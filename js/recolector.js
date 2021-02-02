@@ -243,7 +243,6 @@ function get_destino(id){
 }
 
 function update_destino(){
-	
 	$("#nombre_destino").removeAttr('disabled');
 	$("#numero_autorizacion").removeAttr('disabled');
 	$("#calle").removeAttr('disabled');
@@ -254,8 +253,13 @@ function update_destino(){
 	$("#municipio").removeAttr('disabled');
 	$("#estado").removeAttr('disabled');
 	$("#telefono").removeAttr('disabled');
-	$("#guarda_destino").removeAttr('disabled');
+	$("#guarda_destino").attr('disabled','disabled');
+	$("#edita_destino").removeAttr('disabled');
+}
 
+function onchange_destino(){
+	$("#guarda_destino").removeAttr('disabled');
+	$("#edita_destino").attr('disabled','disabled');
 }
 
 //jQuery extension method:

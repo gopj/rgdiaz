@@ -58,10 +58,38 @@
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label"></label>
 									<div class="col-lg-9">
-										<input type="submit" class="btn btn-primary" value="Guardar" name="guarda_recolector" id="guarda_recolector">
+										<input type="button" class="btn btn-primary" value="Guardar" name="guarda_recolector" id="guarda_recolector" data-toggle="modal" data-target="#modal_guarda_recolector">
 										<input type="button" class="btn btn-primary" value="Editar" name="edita_recolector" id="edita_recolector" onclick="update_recolector()">
 									</div>
 								</div>
+
+								<!-- Modal Begin -->
+								<div class="modal" id="modal_guarda_recolector">
+									<div class="modal-dialog modal-sm">
+										<div class="modal-content">
+											<!-- Modal Header -->
+											<div class="modal-header">
+												<h4 class="modal-title">Guarda Recolector</h4>
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+											</div>
+											<!-- Modal body -->
+											<div class="modal-body">
+												<div class="form-row">
+													<div class="form-group col-md-12">
+														<label>Deseas guardar recolector?</label>
+													</div>	
+												</div>
+												<!-- Modal footer -->
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+													<button type="submit" class="btn btn-primary">Sí</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Modal End -->
+
 							</form>
 						</div>
 					</div>
@@ -123,10 +151,39 @@
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label"></label>
 									<div class="col-lg-9">
-										<input type="submit" class="btn btn-primary" value="Guardar" name="guarda_vehiculo" id="guarda_vehiculo">
+										<input type="button" class="btn btn-primary" value="Guardar" name="guarda_vehiculo" id="guarda_vehiculo" data-toggle="modal" data-target="#modal_guarda_vehiculo">
 										<input type="button" class="btn btn-primary" value="Editar" name="edita_vehiculo" id="edita_vehiculo" onclick="update_vehiculo()">
 									</div>
 								</div>
+
+								<!-- Modal Begin -->
+								<div class="modal" id="modal_guarda_vehiculo">
+									<div class="modal-dialog modal-sm">
+										<div class="modal-content">
+											<!-- Modal Header -->
+											<div class="modal-header">
+												<h4 class="modal-title">Guarda Vehículo</h4>
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+											</div>
+											<!-- Modal body -->
+											<div class="modal-body">
+												<div class="form-row">
+													<div class="form-group col-md-12">
+														<label>Deseas guardar vehículo?</label>
+													</div>	
+												</div>
+												<!-- Modal footer -->
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+													<button type="submit" class="btn btn-primary">Sí</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Modal End -->
+
+
 							</form>
 						</div>
 					</div>
@@ -166,14 +223,14 @@
 									<div class="form-group col-lg-6">
 										<label class="col-lg-6 col-form-label form-control-label" for="nombre_destino">Nombre Empresa Destino</label>
 										<div class="col-lg-12">
-											<input class="form-control" type="text" class="txt " name="nombre_destino" id="nombre_destino"  oninvalid="this.setCustomValidity('Ingresa Nombre de Empresa Destino')" oninput="setCustomValidity('')"  required>
+											<input class="form-control" type="text" class="txt " name="nombre_destino" id="nombre_destino"  oninvalid="this.setCustomValidity('Ingresa Nombre de Empresa Destino')" oninput="setCustomValidity(''); onchange_destino()"  required>
 										</div>
 									</div>
 
 									<div class="form-group col-lg-6">
 										<label class="col-lg-6 col-form-label form-control-label" for="numero_autorizacion">Numero de autorización</label>
 										<div class="col-lg-12">
-											<input class="form-control" type="text" class="txt" style="text-align: center;" name="numero_autorizacion" id="numero_autorizacion" name="numero_autorizacion" oninvalid="this.setCustomValidity('Ingresa No de autorización. ej: 06-09-ll-01-2011')" oninput="setCustomValidity('')" required>
+											<input class="form-control" type="text" class="txt" style="text-align: center;" name="numero_autorizacion" id="numero_autorizacion" name="numero_autorizacion" oninvalid="this.setCustomValidity('Ingresa No de autorización. ej: 06-09-ll-01-2011')" oninput="setCustomValidity(''); onchange_destino()" required>
 										</div>
 									</div>
 
@@ -184,28 +241,28 @@
 									<div class="form-group col-lg-8">
 										<label class="col-lg-6 col-form-label form-control-label" for="calle">Calle</label>
 										<div class="col-lg-12">
-											<input class="form-control" type="text" class="txt" style="text-align: center;" name="calle" id="calle" oninvalid="this.setCustomValidity('Ingresa calle')" oninput="setCustomValidity('')" required>
+											<input class="form-control" type="text" class="txt" style="text-align: center;" name="calle" id="calle" oninvalid="this.setCustomValidity('Ingresa calle')" oninput="setCustomValidity(''); onchange_destino()" required>
 										</div>
 									</div>
 									
 									<div class="form-group col-lg-1">
 										<label class="col-lg-12 col-form-label form-control-label" for="num_ext"># Ext.</label>
 										<div class="col-lg-12">
-											<input class="form-control" type="text" class="txt" style="text-align: center;" name="num_ext" id="num_ext" oninvalid="this.setCustomValidity('Ingresa el número exteriror')" oninput="setCustomValidity('')" required>
+											<input class="form-control" type="text" class="txt" style="text-align: center;" name="num_ext" id="num_ext" oninvalid="this.setCustomValidity('Ingresa el número exteriror')" oninput="setCustomValidity(''); onchange_destino()" required>
 										</div>
 									</div>
 
 									<div class="form-group col-lg-1">
 										<label class="col-lg-12 col-form-label form-control-label" for="num_int"># Int.</label>
 										<div class="col-lg-12">
-											<input class="form-control" type="text" class="txt" style="text-align: center;" name="num_int" id="num_int" oninvalid="this.setCustomValidity('Ingresa el número interior')" oninput="setCustomValidity('')" required>
+											<input class="form-control" type="text" class="txt" style="text-align: center;" name="num_int" id="num_int" oninvalid="this.setCustomValidity('Ingresa el número interior')" oninput="setCustomValidity(''); onchange_destino()" required>
 										</div>
 									</div>
 
 									<div class="form-group col-lg-2">
 										<label class="col-lg-12 col-form-label form-control-label" for="cp">Código Postal</label>
 										<div class="col-lg-12">
-											<input class="form-control" type="text" class="txt" style="text-align: center;" name="cp" id="cp" oninvalid="this.setCustomValidity('Ingresa el código postal')" oninput="setCustomValidity('')" required>
+											<input class="form-control" type="text" class="txt" style="text-align: center;" name="cp" id="cp" oninvalid="this.setCustomValidity('Ingresa el código postal')" oninput="setCustomValidity(''); onchange_destino()" required>
 										</div>
 									</div>
 								
@@ -216,28 +273,28 @@
 									<div class="form-group col-lg-4">
 										<label class="col-lg-3 col-form-label form-control-label" for="colonia">Colonia</label>
 										<div class="col-lg-12">
-											<input class="form-control" type="text" class="txt" style="text-align: center;" name="colonia" id="colonia" oninvalid="this.setCustomValidity('Ingresa colonia')" oninput="setCustomValidity('')" required>
+											<input class="form-control" type="text" class="txt" style="text-align: center;" name="colonia" id="colonia" oninvalid="this.setCustomValidity('Ingresa colonia')" oninput="setCustomValidity(''); onchange_destino()" required>
 										</div>
 									</div>
 
 									<div class="form-group col-lg-3">
 										<label class="col-lg-12 col-form-label form-control-label" for="municipio">Municipio</label>
 										<div class="col-lg-12">
-											<input class="form-control" type="text" class="txt" style="text-align: center;" name="municipio" id="municipio" oninvalid="this.setCustomValidity('Ingresa el municipio')" oninput="setCustomValidity('')" required>
+											<input class="form-control" type="text" class="txt" style="text-align: center;" name="municipio" id="municipio" oninvalid="this.setCustomValidity('Ingresa el municipio')" oninput="setCustomValidity(''); onchange_destino()" required>
 										</div>
 									</div>
 
 									<div class="form-group col-lg-3">
 										<label class="col-lg-4 col-form-label form-control-label" for="estado">Estado</label>
 										<div class="col-lg-12">
-											<input class="form-control" type="text" class="txt" style="text-align: center;" name="estado" id="estado" oninvalid="this.setCustomValidity('Ingresa el estado')" oninput="setCustomValidity('')" required>
+											<input class="form-control" type="text" class="txt" style="text-align: center;" name="estado" id="estado" oninvalid="this.setCustomValidity('Ingresa el estado')" oninput="setCustomValidity(''); onchange_destino()" required>
 										</div>
 									</div>
 
 									<div class="form-group col-lg-2">
 										<label class="col-lg-12 col-form-label form-control-label" for="telefono">Télefono</label>
 										<div class="col-lg-12">
-											<input class="form-control" type="text" class="txt" style="text-align: center;" name="telefono" id="telefono" oninvalid="this.setCustomValidity('Ingresa el télefono')" oninput="setCustomValidity('')" required>
+											<input class="form-control" type="text" class="txt" style="text-align: center;" name="telefono" id="telefono" oninvalid="this.setCustomValidity('Ingresa el télefono')" oninput="setCustomValidity(''); onchange_destino()" required>
 										</div>
 									</div>
 
@@ -248,88 +305,47 @@
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label"></label>
 									<div class="col-lg-9">
-										<input type="submit" class="btn btn-primary" value="Guardar" name="guarda_destino" id="guarda_destino">
+										<input type="button" class="btn btn-primary" value="Guardar" name="guarda_destino" id="guarda_destino" data-toggle="modal" data-target="#modal_guarda_destino">
 										<input type="button" class="btn btn-primary" value="Editar" name="edita_destino" id="edita_destino" onclick="update_destino()">
 									</div>
 								</div>
+
+
+								<!-- Modal Begin -->
+								<div class="modal" id="modal_guarda_destino">
+									<div class="modal-dialog modal-sm">
+										<div class="modal-content">
+											<!-- Modal Header -->
+											<div class="modal-header">
+												<h4 class="modal-title">Guarda Destino</h4>
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+											</div>
+											<!-- Modal body -->
+											<div class="modal-body">
+												<div class="form-row">
+													<div class="form-group col-md-12">
+														<label>Deseas guardar destino?</label>
+													</div>	
+												</div>
+												<!-- Modal footer -->
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+													<button type="submit" class="btn btn-primary">Sí</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Modal End -->
+
+
 							</form>
 						</div>
 					</div>
 				</div>
 
-				<div class="modal" id="myModal">
-					<div class="modal-dialog modal-lg">
-						<div class="modal-content">
-
-							<!-- Modal Header -->
-							<div class="modal-header">
-								<h4 class="modal-title">Ingresa Residuo</h4>
-								<button type="button" class="close" data-dismiss="modal">&times;</button>
-							</div>
-
-							<!-- Modal body -->
-							<div class="modal-body">
-								<div class="form-row">
-									<div class="form-group col-md-8">
-										<label class="col-form-label" for="nombre_residuo"> Residuo Peligroso </label>
-										<select class="form-control" onchange="update_clave(this.value);" name="residuo_peligroso" required>
-											<option value="">Selecciona Residuo</option>
-											<?php foreach ($residuos as $key) { ?>
-												<option value="<?= $key->id_tipo_residuo; ?>"> <?= mb_strimwidth($key->residuo, 0, 55, '...', 'UTF-8'); ?></option>
-											<?php } ?>
-										</select>
-										<div class="invalid-feedback">
-											Selecciona residuo peligroso.
-										</div>
-									</div>	
-
-									<div class="form-group col-md-3">
-										<label class="col-form-label" for="clave"> Clave </label>
-										<input type="text" class="form-control" id="clave" name="clave" value="Clave" disabled> 
-									</div>	
-									<div class="form-group col-md-1">
-										<label class="col-form-label" for="otro_resdiuo"> Otro </label>
-										<br>
-										<label class="switch">
-											<input type="checkbox">
-											<span class="slider round"></span>
-										</label>
-									</div>	
-								</div>
-
-								<div class="form-row">
-									<div class="form-group col-md-4">
-										<label class="col-form-label" for="nombre_residuo"> Cantidad Residuo </label>
-										<input readonly type="number" class="form-control" id="cantidad" name="cantidad" min="1" style="text-align:center" value="1" required>
-									</div>	
-
-									<div class="form-group col-md-8">
-										<label class="col-form-label"> Unidad </label>
-										<br>
-										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" class="custom-control-input" id="unidad_radio1" value="Kg" name="unidadRadio" required>
-											<label class="custom-control-label" for="unidad_radio1">Kg</label>
-										</div>
-										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" class="custom-control-input" id="unidad_radio2" value="Ton" name="unidadRadio" required>
-											<label class="custom-control-label" for="unidad_radio2">Ton</label>
-											<div class="invalid-feedback"> &nbsp; Selecciona unidad de medida.</div>
-										</div>
-									</div>	
-								</div>
-			
-								<!-- Modal footer -->
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-									<button type="submit" class="btn btn-primary">Guardar</button>
-								</div>
-							</div>
-						</div>	
-					</div>	
-				</div>
-
-				</div>
 			</div>
+		</div>
 
 
 
