@@ -109,6 +109,11 @@ class Persona_model extends CI_Model {
 						->update('persona');
 	}
 
+	public function delete_recolector($data){
+		 return $this->db->where('id_persona', $data['id_persona'])
+		 		->delete('persona');
+	}
+
 	public function get_nombre_cliente($id){
 		$result = $this->db->query("SELECT nombre FROM persona WHERE  id_persona = {$id} LIMIT 1;")->result();  
 

@@ -1823,6 +1823,20 @@ class Administrador extends CI_Controller {
 		
 	}
 
+	public function recolector_delete() {
+		if ($this->session->userdata('tipo')==1){
+			if ($this->input->post()) {
+				$data["id_persona"] = $this->input->post("id_persona");
+
+				$this->persona_model->delete_recolector($data);
+			}
+			redirect('administrador/recolector_consulta');
+		} else {
+			redirect('home');
+		}
+	}
+
+
 	public function get_recolector() {
 		
 		$recolector = $this->persona_model->get_recolector($this->input->post('id_persona'));
