@@ -109,8 +109,8 @@ class Persona_model extends CI_Model {
 						->update('persona');
 	}
 
-	public function delete_recolector($data){
-		 return $this->db->where('id_persona', $data['id_persona'])
+	public function delete_recolector($id){
+		 return $this->db->where('id_persona', $id)
 		 		->delete('persona');
 	}
 

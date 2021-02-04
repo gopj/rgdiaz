@@ -60,7 +60,8 @@
 									<div class="col-lg-9">
 										<input type="button" class="btn btn-primary" value="Guardar" name="guarda_recolector" id="guarda_recolector" data-toggle="modal" data-target="#modal_guarda_recolector">
 										<input type="button" class="btn btn-primary" value="Editar" name="edita_recolector" id="edita_recolector" onclick="update_recolector()">
-										<input type="button" class="btn btn-danger" value="Eliminar" name="elimina_recolector" id="elimina_recolector" data-toggle="modal" data-target="#modal_elimina_recolector">
+										<?php $url = site_url("administrador/recolector_delete") . "/"; ?>
+										<input type="button" class="btn btn-danger" value="Eliminar" name="elimina_recolector" id="elimina_recolector" onclick="delete_recolector(<?=@$row->id_persona?>, '<?=$url?>')" data-toggle="modal" data-target="#modal_elimina_recolector">
 									</div>
 								</div>
 
@@ -104,13 +105,13 @@
 											<div class="modal-body">
 												<div class="form-row">
 													<div class="form-group col-md-12">
-														<label>Deseas Eliminar recolector?</label>
+														<label>Deseas <strong>Eliminar</strong> recolector?</label>
 													</div>	
 												</div>
 												<!-- Modal footer -->
 												<div class="modal-footer">
 													<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-													<a href="<?=site_url('administrador/recolector_delete/' . $id_persona);?>" class="btn btn-primary" role="button"> Sí </a> 
+													<a href=""  id='btn_delete_recolector' class="btn btn-primary" role="button"> Sí </a> 
 												</div>
 											</div>
 										</div>

@@ -1,6 +1,7 @@
 
 // Gloval variable for host
 var host="localhost/rgdiaz";
+
 //var host="rdiaz.mx";
 
 function get_cliente(id){
@@ -49,23 +50,33 @@ function get_cliente(id){
 	//echo site_url('administrador/obtiene_cliente'); ?>"  <--	Ruta de la peticion
 }
 
+/// RECOLECTOR
+$("#guarda_recolector").attr('disabled','disabled');
+$("#edita_recolector").attr('disabled','disabled');
+$("#elimina_recolector").attr('disabled','disabled');
+
 function get_recolector(id){
 
 	var id_per = id;
+
+	console.log(id)
 
 	if (id_per) {
 		$("#nombre_recolector").attr('disabled','disabled');
 		$("#correo").attr('disabled','disabled');
 		$("#clave").attr('disabled','disabled');
-		$("#guarda_recolector").attr('disabled','disabled');
 		$("#clave_automatica").attr('disabled','disabled');
+		$("#guarda_recolector").attr('disabled','disabled');
+		$("#edita_recolector").removeAttr('disabled');
+		$("#elimina_recolector").removeAttr('disabled');
 	} else {
 		$("#nombre_recolector").removeAttr('disabled');
 		$("#correo").removeAttr('disabled');
 		$("#clave").removeAttr('disabled');
-		$("#edita_recolector").removeAttr('disabled');
-		$("#guarda_recolector").removeAttr('disabled');
 		$("#clave_automatica").removeAttr('disabled');
+		$("#guarda_recolector").removeAttr('disabled');
+		$("#edita_recolector").attr('disabled','disabled');
+		$("#elimina_recolector").attr('disabled','disabled');
 	}
     console.log(id_per);
 	//AJAX
@@ -99,15 +110,26 @@ function update_recolector(){
 	$("#nombre_recolector").removeAttr('disabled');
 	$("#correo").removeAttr('disabled');
 	$("#clave").removeAttr('disabled');
-	$("#edita_recolector").removeAttr('disabled');
-	$("#guarda_recolector").attr('disabled','disabled');
 	$("#clave_automatica").removeAttr('disabled');
+	$("#guarda_recolector").attr('disabled','disabled');
+	$("#edita_recolector").removeAttr('disabled');
+	$("#elimina_recolector").attr('disabled','disabled');
 }
 
 function onchange_recolector(){
 	$("#guarda_recolector").removeAttr('disabled');
 	$("#edita_recolector").attr('disabled','disabled');
 }
+
+function delete_recolector(id, url){
+	url_delete =  url + id;
+	document.getElementById("btn_delete_recolector").setAttribute("href", url_delete);
+}
+
+/// VEHICULO
+$("#guarda_vehiculo").attr('disabled','disabled');
+$("#edita_vehiculo").attr('disabled','disabled');
+$("#elimina_vehiculo").attr('disabled','disabled');
 
 function get_vehiculo(id){
 
@@ -170,6 +192,12 @@ function onchange_vehiculo(){
 	$("#guarda_vehiculo").removeAttr('disabled');
 	$("#edita_vehiculo").attr('disabled','disabled');
 }
+
+
+/// DESTINO
+$("#guarda_destino").attr('disabled','disabled');
+$("#edita_destino").attr('disabled','disabled');
+$("#elimina_destino").attr('disabled','disabled');
 
 function get_destino(id){
 
