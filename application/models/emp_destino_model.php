@@ -95,4 +95,9 @@ public function __construct() {
 				->update('tipo_emp_destino');
 	}
 
+	public function delete_destino($id){
+		 return $this->db->where('id_tipo_emp_destino', $id)
+		 		->delete('tipo_emp_destino');
+	}
+
 }

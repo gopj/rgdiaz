@@ -34,4 +34,9 @@ class Tran_vehiculo_model extends CI_Model {
 						->update('tran_vehiculos');
 	}
 
+	public function delete_vehiculo($id){
+		 return $this->db->where('id_vehiculo', $id)
+		 		->delete('tran_vehiculos');
+	}
+
 }

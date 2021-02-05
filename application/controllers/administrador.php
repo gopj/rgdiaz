@@ -1829,10 +1829,6 @@ class Administrador extends CI_Controller {
 			if (@$id != null) {
 				$this->persona_model->delete_recolector($id);
 			}
-	
-			echo '<pre>';
-			echo $id;
-			echo '</pre>';
 
 			redirect('administrador/recolector_consulta');
 		}
@@ -1882,6 +1878,17 @@ class Administrador extends CI_Controller {
 		$vehiculo = $this->tran_vehiculo_model->get_vehiculo($this->input->post('id_vehiculo'));
 		
 		echo json_encode($vehiculo);
+	}
+
+	public function recolector_vehiculo_delete($id) {
+		if ($this->session->userdata('tipo')==1){
+
+			if (@$id != null) {
+				$this->tran_vehiculo_model->delete_vehiculo($id);
+			}
+
+			redirect('administrador/recolector_consulta');
+		}
 	}
 
 	public function recolector_destino() {
@@ -1951,6 +1958,17 @@ class Administrador extends CI_Controller {
 		
 	}
 
+	public function recolector_destino_delete($id) {
+		if ($this->session->userdata('tipo')==1){
+
+			if (@$id != null) {
+				$this->emp_destino_model->delete_destino($id);
+			}
+
+			redirect('administrador/recolector_consulta');
+		}
+	}
+
 	public function recolector_ver_manifiestos($id_persona=null) {
 
 		//PDF
@@ -1993,7 +2011,7 @@ class Administrador extends CI_Controller {
 		if ($this->session->userdata('tipo') == 1){
 
 			$data["empresa_destino"] 	= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->empresa_destino;
-			$data["fecha_embarque"] 	= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->fecha_ingreso;
+			$data["fecha_embarque"] 	= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->fecha_embarque;
 			$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
 			$data["responsable_tecnico"]= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->responsable_tecnico;
 			$data["id_cliente"]			= $id_cliente;

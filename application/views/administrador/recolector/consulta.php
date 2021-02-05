@@ -182,6 +182,8 @@
 									<div class="col-lg-9">
 										<input type="button" class="btn btn-primary" value="Guardar" name="guarda_vehiculo" id="guarda_vehiculo" data-toggle="modal" data-target="#modal_guarda_vehiculo">
 										<input type="button" class="btn btn-primary" value="Editar" name="edita_vehiculo" id="edita_vehiculo" onclick="update_vehiculo()">
+										<?php $url = site_url("administrador/recolector_vehiculo_delete") . "/"; ?>
+										<input type="button" class="btn btn-danger" value="Eliminar" name="elimina_vehiculo" id="elimina_vehiculo" onclick="delete_vehiculo(<?=@$row->id_vehiculo?>, '<?=$url?>')" data-toggle="modal" data-target="#modal_elimina_vehiculo">
 									</div>
 								</div>
 
@@ -212,6 +214,32 @@
 								</div>
 								<!-- Modal End -->
 
+								<!-- Modal Elimina Recolector Begin -->
+								<div class="modal" id="modal_elimina_vehiculo">
+									<div class="modal-dialog modal-sm">
+										<div class="modal-content">
+											<!-- Modal Header -->
+											<div class="modal-header">
+												<h4 class="modal-title">Elimina Vehículo</h4>
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+											</div>
+											<!-- Modal body -->
+											<div class="modal-body">
+												<div class="form-row">
+													<div class="form-group col-md-12">
+														<label>Deseas <strong>Eliminar</strong> vehículo?</label>
+													</div>	
+												</div>
+												<!-- Modal footer -->
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+													<a href=""  id='btn_delete_vehiculo' class="btn btn-primary" role="button"> Sí </a> 
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Modal End -->
 
 							</form>
 						</div>
@@ -284,7 +312,7 @@
 									<div class="form-group col-lg-1">
 										<label class="col-lg-12 col-form-label form-control-label" for="num_int"># Int.</label>
 										<div class="col-lg-12">
-											<input class="form-control" type="text" class="txt" style="text-align: center;" name="num_int" id="num_int" oninvalid="this.setCustomValidity('Ingresa el número interior')" oninput="setCustomValidity(''); onchange_destino()" required>
+											<input class="form-control" type="text" class="txt" style="text-align: center;" name="num_int" id="num_int" oninput="setCustomValidity(''); onchange_destino()">
 										</div>
 									</div>
 
@@ -298,7 +326,6 @@
 								</div>
 
 								<div class="form-row">
-
 									<div class="form-group col-lg-4">
 										<label class="col-lg-3 col-form-label form-control-label" for="colonia">Colonia</label>
 										<div class="col-lg-12">
@@ -336,9 +363,10 @@
 									<div class="col-lg-9">
 										<input type="button" class="btn btn-primary" value="Guardar" name="guarda_destino" id="guarda_destino" data-toggle="modal" data-target="#modal_guarda_destino">
 										<input type="button" class="btn btn-primary" value="Editar" name="edita_destino" id="edita_destino" onclick="update_destino()">
+										<?php $url = site_url("administrador/recolector_destino_delete") . "/"; ?>
+										<input type="button" class="btn btn-danger" value="Eliminar" name="elimina_destino" id="elimina_destino" onclick="delete_destino(<?=@$row->id_tipo_emp_destino;?>, '<?=$url?>')" data-toggle="modal" data-target="#modal_elimina_destino">
 									</div>
 								</div>
-
 
 								<!-- Modal Begin -->
 								<div class="modal" id="modal_guarda_destino">
@@ -360,6 +388,33 @@
 												<div class="modal-footer">
 													<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
 													<button type="submit" class="btn btn-primary">Sí</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Modal End -->
+
+								<!-- Modal Elimina Recolector Begin -->
+								<div class="modal" id="modal_elimina_destino">
+									<div class="modal-dialog modal-sm">
+										<div class="modal-content">
+											<!-- Modal Header -->
+											<div class="modal-header">
+												<h4 class="modal-title">Elimina destino</h4>
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+											</div>
+											<!-- Modal body -->
+											<div class="modal-body">
+												<div class="form-row">
+													<div class="form-group col-md-12">
+														<label>Deseas <strong>Eliminar</strong> destino?</label>
+													</div>	
+												</div>
+												<!-- Modal footer -->
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+													<a href=""  id='btn_delete_destino' class="btn btn-primary" role="button"> Sí </a> 
 												</div>
 											</div>
 										</div>

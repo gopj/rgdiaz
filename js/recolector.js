@@ -74,7 +74,6 @@ function get_recolector(id){
 		$("#correo").removeAttr('disabled');
 		$("#clave").removeAttr('disabled');
 		$("#clave_automatica").removeAttr('disabled');
-		$("#guarda_recolector").removeAttr('disabled');
 		$("#edita_recolector").attr('disabled','disabled');
 		$("#elimina_recolector").attr('disabled','disabled');
 	}
@@ -140,15 +139,18 @@ function get_vehiculo(id){
 		$("#marca").attr('disabled','disabled');
 		$("#tipo").attr('disabled','disabled');
 		$("#placa").attr('disabled','disabled');
-		$("#edita_vehiculo").removeAttr('disabled');
 		$("#guarda_vehiculo").attr('disabled','disabled');
+		$("#edita_vehiculo").removeAttr('disabled');
+		$("#elimina_vehiculo").removeAttr('disabled');
 	} else {
 		$("#modelo").removeAttr('disabled');
 		$("#marca").removeAttr('disabled');
 		$("#tipo").removeAttr('disabled');
 		$("#placa").removeAttr('disabled');
-		$("#guarda_vehiculo").removeAttr('disabled');
+		$("#edita_vehiculo").attr('disabled','disabled');
+		$("#elimina_vehiculo").attr('disabled','disabled');
 	}
+
     console.log(id_vehiculo);
 	//AJAX
 	jQuery.ajax({
@@ -180,12 +182,13 @@ function get_vehiculo(id){
 }
 
 function update_vehiculo(){
-		$("#modelo").removeAttr('disabled');
-		$("#marca").removeAttr('disabled');
-		$("#tipo").removeAttr('disabled');
-		$("#placa").removeAttr('disabled');
-		$("#guarda_vehiculo").attr('disabled','disabled');
-		$("#edita_vehiculo").removeAttr('disabled');
+	$("#modelo").removeAttr('disabled');
+	$("#marca").removeAttr('disabled');
+	$("#tipo").removeAttr('disabled');
+	$("#placa").removeAttr('disabled');
+	$("#guarda_vehiculo").attr('disabled','disabled');
+	$("#edita_vehiculo").removeAttr('disabled');
+	$("#elimina_vehiculo").attr('disabled','disabled');
 }
 
 function onchange_vehiculo(){
@@ -193,6 +196,10 @@ function onchange_vehiculo(){
 	$("#edita_vehiculo").attr('disabled','disabled');
 }
 
+function delete_vehiculo(id, url){
+	url_delete =  url + id;
+	document.getElementById("btn_delete_vehiculo").setAttribute("href", url_delete);
+}
 
 /// DESTINO
 $("#guarda_destino").attr('disabled','disabled');
@@ -215,6 +222,8 @@ function get_destino(id){
 		$("#estado").attr('disabled','disabled');
 		$("#telefono").attr('disabled','disabled');
 		$("#guarda_destino").attr('disabled','disabled');
+		$("#edita_destino").removeAttr('disabled');
+		$("#elimina_destino").removeAttr('disabled');
 	} else {
 		$("#nombre_destino").removeAttr('disabled');
 		$("#numero_autorizacion").removeAttr('disabled');
@@ -226,7 +235,8 @@ function get_destino(id){
 		$("#municipio").removeAttr('disabled');
 		$("#estado").removeAttr('disabled');
 		$("#telefono").removeAttr('disabled');
-		$("#guarda_destino").removeAttr('disabled');
+		$("#edita_destino").attr('disabled','disabled');
+		$("#elimina_destino").attr('disabled','disabled');
 	}
     console.log(id_destino);
 	//AJAX
@@ -283,11 +293,17 @@ function update_destino(){
 	$("#telefono").removeAttr('disabled');
 	$("#guarda_destino").attr('disabled','disabled');
 	$("#edita_destino").removeAttr('disabled');
+	$("#elimina_destino").attr('disabled','disabled');
 }
 
 function onchange_destino(){
 	$("#guarda_destino").removeAttr('disabled');
 	$("#edita_destino").attr('disabled','disabled');
+}
+
+function delete_destino(id, url){
+	url_delete =  url + id;
+	document.getElementById("btn_delete_destino").setAttribute("href", url_delete);
 }
 
 //jQuery extension method:
