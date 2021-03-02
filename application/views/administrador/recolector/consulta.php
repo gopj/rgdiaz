@@ -164,7 +164,14 @@
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label" for="tipo">Tipo</label>
 									<div class="col-lg-9">
-										<input class="form-control" type="text" class="txt" style="width:81%; text-align: center;" name="tipo" id="tipo"  oninvalid="this.setCustomValidity('Ingresa tipo de vehículo. Ej: Caja seca')" oninput="setCustomValidity(''); onchange_vehiculo()" required>
+										<select class="form-control" style="width:81%;" onclick="get_vehiculo(this.value)" id="id_vehiculo" name="id_vehiculo">
+											<option value=""> Otro </option>
+											<?php foreach($vehiculos->result() as $row){ ?>
+												<option value="<?php echo $row->id__tipo_vehiculo;?>"><?php echo $row->nombre_tipo; ?></option>
+											<?php } ?>
+										</select>
+
+										<!-- <input class="form-control" type="text" class="txt" style="width:81%; text-align: center;" name="tipo" id="tipo"  oninvalid="this.setCustomValidity('Ingresa tipo de vehículo. Ej: Caja seca')" oninput="setCustomValidity(''); onchange_vehiculo()" required> -->
 									</div>
 								</div>
 
