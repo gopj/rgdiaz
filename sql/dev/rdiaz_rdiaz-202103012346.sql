@@ -624,7 +624,7 @@ DROP TABLE IF EXISTS `tran_vehiculos`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tran_vehiculos` (
   `id_vehiculo` int(11) NOT NULL AUTO_INCREMENT,
-  `tipo_vehiculo` varchar(45) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
+  `id_tipo_vehiculo` int(4) NOT NULL,
   `numero_placa` varchar(12) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
   `marca` varchar(18) NOT NULL,
   `modelo` varchar(18) NOT NULL,

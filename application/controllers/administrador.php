@@ -1852,20 +1852,25 @@ class Administrador extends CI_Controller {
 			$data["destinos"] = $this->emp_destino_model->get_destinos();
 
 			if ($this->input->post()) {
-				
 				$data["modelo"] = $this->input->post("modelo");
 				$data["marca"] 	= $this->input->post("marca");
-				$data["tipo"] 	= $this->input->post("tipo");
 				$data["placa"] 	= $this->input->post("placa");
 				$data["alias"] 	= $this->input->post("alias");
 				$data["id_vehiculo"] = $this->input->post("id_vehiculo");
 				$data["tipo_vehiculo"] = $this->input->post("tipo_vehiculo");
 
+/*				echo "<pre>";
+				print_r($data);
+				echo "</pre>";
+
+				die();*/
+
 				if($data["id_vehiculo"] =! "otro_vehiculo") {
 					$this->tran_vehiculo_model->update_vehiculo($data);
 				} else {
+					$data["new_id_tipo"] = $this->tran_vehiculo_model->alta_tipo_vehiculo($data);
+
 					$this->tran_vehiculo_model->alta_vehiculo($data);
-					$this->tran_vehiculo_model->alta_tipo_vehiculo($data);
 				}
 				
 				redirect('administrador/recolector_consulta');

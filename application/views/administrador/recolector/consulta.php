@@ -181,7 +181,7 @@
 
 								<div class="form-row">
 									<div class="form-group col-lg-6">
-										<label class="col-lg-6 col-form-label form-control-label" for="tipo">Tipo de Vehículo</label>
+										<label class="col-lg-6 col-form-label form-control-label" for="id_vehiculo">Tipo de Vehículo</label>
 										<div class="col-lg-12">
 											<select class="form-control" id="id_vehiculo" name="id_vehiculo" onclick="update_tipo_vehiculo(this.value);" onchange="update_tipo_vehiculo(this.value);">
 												<option value="selecciona_vehiculo"> Selecciona Vehículo </option>
