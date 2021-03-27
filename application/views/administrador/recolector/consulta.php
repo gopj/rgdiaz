@@ -135,50 +135,69 @@
 						<div class="card-body">
 							<form class="form" role="form" autocomplete="off" method='post' action="<?php echo site_url('administrador/recolector_vehiculo');?>">
 
-								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label" for="id_vehiculo"> Selecciona Vehículo</label>
-									<div class="col-lg-9">
-										<select class="form-control" style="width:81%;" onclick="get_vehiculo(this.value)" id="id_vehiculo" name="id_vehiculo">
-											<option value=""> Nuevo </option>
-											<?php foreach($vehiculos->result() as $row){ ?>
-												<option value="<?php echo $row->id_vehiculo;?>"><?php echo $row->numero_placa; ?></option>
-											<?php } ?>
-										</select>
+								<div class="form-row">
+									<div class="form-group col-lg-6">
+										<label class="col-lg-6 col-form-label form-control-label" for="id_vehiculo"> Selecciona Vehículo</label>
+										<div class="col-lg-12">
+											<select class="form-control" onclick="get_vehiculo(this.value)" id="id_vehiculo" name="id_vehiculo">
+												<option value=""> Nuevo </option>
+												<?php foreach($vehiculos->result() as $row){ ?>
+													<option value="<?php echo $row->id_vehiculo;?>"><?php echo $row->alias; ?></option>
+												<?php } ?>
+											</select>
+										</div>
+									</div>
+
+									<div class="form-group col-lg-6">
+										<label class="col-lg-6 col-form-label form-control-label" for="alias">Alias</label>
+										<div class="col-lg-12">
+											<input class="form-control" type="text" class="txt" style="text-align: center;" name="alias" id="alias"  oninvalid="this.setCustomValidity('Ingresa alias')" oninput="setCustomValidity(''); onchange_vehiculo()" required>
+										</div>
 									</div>
 								</div>
 
-								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label" for="modelo">Modelo</label>
-									<div class="col-lg-9">
-										<input class="form-control" type="text" class="txt " style="width:81%; text-align: center;" name="modelo" id="modelo"  oninvalid="this.setCustomValidity('Ingresa modelo del vehiculo')" oninput="setCustomValidity(''); onchange_vehiculo()"  required>
+								<div class="form-row">
+									<div class="form-group col-lg-4">
+										<label class="col-lg-4 col-form-label form-control-label" for="placa">No. Placa</label>
+										<div class="col-lg-12">
+											<input class="form-control" type="text" class="txt" style="text-align: center;" name="placa" id="placa"  oninvalid="this.setCustomValidity('Ingresa número de placa')" oninput="setCustomValidity(''); onchange_vehiculo()" required>
+										</div>
 									</div>
-								</div>
 
-								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label" for="marca">Marca</label>
-									<div class="col-lg-9">
-										<input class="form-control" type="text" class="txt" style="width:81%; text-align: center;" name="marca" id="marca"  oninvalid="this.setCustomValidity('Ingresa marca')" oninput="setCustomValidity(''); onchange_vehiculo()" required>
+									<div class="form-group col-lg-4">
+										<label class="col-lg-4 col-form-label form-control-label" for="modelo">Modelo</label>
+										<div class="col-lg-12">
+											<input class="form-control" type="text" class="txt " style="text-align: center;" name="modelo" id="modelo"  oninvalid="this.setCustomValidity('Ingresa modelo del vehiculo')" oninput="setCustomValidity(''); onchange_vehiculo()"  required>
+										</div>
 									</div>
-								</div>
 
-								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label" for="tipo">Tipo</label>
-									<div class="col-lg-9">
-										<select class="form-control" style="width:81%;" onclick="get_vehiculo(this.value)" id="id_vehiculo" name="id_vehiculo">
-											<option value=""> Otro </option>
-											<?php foreach($vehiculos->result() as $row){ ?>
-												<option value="<?php echo $row->id__tipo_vehiculo;?>"><?php echo $row->nombre_tipo; ?></option>
-											<?php } ?>
-										</select>
-
-										<!-- <input class="form-control" type="text" class="txt" style="width:81%; text-align: center;" name="tipo" id="tipo"  oninvalid="this.setCustomValidity('Ingresa tipo de vehículo. Ej: Caja seca')" oninput="setCustomValidity(''); onchange_vehiculo()" required> -->
+									<div class="form-group col-lg-4">
+										<label class="col-lg-4 col-form-label form-control-label" for="marca">Marca</label>
+										<div class="col-lg-12">
+											<input class="form-control" type="text" class="txt" style="text-align: center;" name="marca" id="marca"  oninvalid="this.setCustomValidity('Ingresa marca')" oninput="setCustomValidity(''); onchange_vehiculo()" required>
+										</div>
 									</div>
-								</div>
+								</div>			
 
-								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label" for="placa">No. Placa</label>
-									<div class="col-lg-9">
-										<input class="form-control" type="text" class="txt" style="width:81%; text-align: center;" name="placa" id="placa"  oninvalid="this.setCustomValidity('Ingresa número de placa')" oninput="setCustomValidity(''); onchange_vehiculo()" required>
+								<div class="form-row">
+									<div class="form-group col-lg-6">
+										<label class="col-lg-6 col-form-label form-control-label" for="tipo">Tipo de Vehículo</label>
+										<div class="col-lg-12">
+											<select class="form-control" id="id_vehiculo" name="id_vehiculo" onclick="update_tipo_vehiculo(this.value);" onchange="update_tipo_vehiculo(this.value);">
+												<option value="selecciona_vehiculo"> Selecciona Vehículo </option>
+												<option value="otro_vehiculo"> Otro </option>
+												<?php foreach($tipo_vehiculos->result() as $row){ ?>
+													<option value="<?php echo $row->id_tipo_vehiculo;?>"><?php echo $row->nombre_tipo; ?></option>
+												<?php } ?>
+											</select>
+										</div>
+									</div>
+
+									<div class="form-group col-lg-6">
+										<label class="col-lg-6 col-form-label form-control-label" for="tipo_vehiculo">Nuevo tipo</label>
+										<div class="col-lg-12">
+											<input class="form-control" type="text" class="txt" style="text-align: center;" id="tipo_vehiculo" name="tipo_vehiculo" oninvalid="this.setCustomValidity('Ingresa Tipo de Vehículo')" oninput="setCustomValidity('');" disabled>
+										</div>
 									</div>
 								</div>
 

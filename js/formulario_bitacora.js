@@ -40,7 +40,6 @@ function otra_empresa_transportista(dato) {
 		$("#otro_empresa").attr('disabled','disabled');
 		$("#no_auto").attr('disabled','disabled');
 
-
 		document.getElementById('lb_autorizacion').innerHTML=arrcl[1];
 	}
 }

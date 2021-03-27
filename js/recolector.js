@@ -139,19 +139,22 @@ function get_vehiculo(id){
 		$("#marca").attr('disabled','disabled');
 		$("#tipo").attr('disabled','disabled');
 		$("#placa").attr('disabled','disabled');
+		$("#alias").attr('disabled','disabled');
 		$("#guarda_vehiculo").attr('disabled','disabled');
 		$("#edita_vehiculo").removeAttr('disabled');
 		$("#elimina_vehiculo").removeAttr('disabled');
+		$("#tipo_vehiculo").attr('disabled','disabled');
 	} else {
 		$("#modelo").removeAttr('disabled');
 		$("#marca").removeAttr('disabled');
 		$("#tipo").removeAttr('disabled');
 		$("#placa").removeAttr('disabled');
+		$("#alias").removeAttr('disabled');
 		$("#edita_vehiculo").attr('disabled','disabled');
 		$("#elimina_vehiculo").attr('disabled','disabled');
+		$("#tipo_vehiculo").attr('disabled','disabled');
 	}
 
-    console.log(id_vehiculo);
 	//AJAX
 	jQuery.ajax({
 			url:'http://' + host + '/index.php/administrador/get_vehiculo',	//<-- Url que va procesar la peticion
@@ -169,11 +172,13 @@ function get_vehiculo(id){
 				var marca = json_data.marca;
 				var tipo = json_data.tipo_vehiculo;
 				var placa = json_data.numero_placa;
+				var alias = json_data.alias;
 	
 				$("#modelo").val(modelo);
 				$("#marca").val(marca);
 				$("#tipo").val(tipo);
 				$("#placa").val(placa);
+				$("#alias").val(alias);
 
 			}
 		);
@@ -186,9 +191,34 @@ function update_vehiculo(){
 	$("#marca").removeAttr('disabled');
 	$("#tipo").removeAttr('disabled');
 	$("#placa").removeAttr('disabled');
+	$("#alias").removeAttr('disabled');
 	$("#guarda_vehiculo").attr('disabled','disabled');
 	$("#edita_vehiculo").removeAttr('disabled');
 	$("#elimina_vehiculo").attr('disabled','disabled');
+}
+
+function update_tipo_vehiculo(id){
+	var id_vehiculo = id;
+
+	if (id_vehiculo == "otro_vehiculo") {
+		$("#modelo").removeAttr('disabled');
+		$("#marca").removeAttr('disabled');
+		$("#tipo").removeAttr('disabled');
+		$("#placa").removeAttr('disabled');
+		$("#alias").removeAttr('disabled');
+		$("#edita_vehiculo").attr('disabled','disabled');
+		$("#elimina_vehiculo").attr('disabled','disabled');
+		$("#tipo_vehiculo").removeAttr('disabled');
+	} else {
+		$("#modelo").removeAttr('disabled');
+		$("#marca").removeAttr('disabled');
+		$("#tipo").removeAttr('disabled');
+		$("#placa").removeAttr('disabled');
+		$("#alias").removeAttr('disabled');
+		$("#edita_vehiculo").attr('disabled','disabled');
+		$("#elimina_vehiculo").attr('disabled','disabled');
+		$("#tipo_vehiculo").attr('disabled','disabled');
+	}
 }
 
 function onchange_vehiculo(){

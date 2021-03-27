@@ -1789,6 +1789,7 @@ class Administrador extends CI_Controller {
 
 			$data["recolectores"] = $this->persona_model->get_recolectores();
 			$data["vehiculos"] = $this->tran_vehiculo_model->get_vehiculos();
+			$data["tipo_vehiculos"] = $this->tran_vehiculo_model->get_tipo_vehiculos();
 			$data["destinos"] = $this->emp_destino_model->get_destinos();
 
 			if ($this->input->post()) {
@@ -1847,6 +1848,7 @@ class Administrador extends CI_Controller {
 
 			$data["recolectores"] = $this->persona_model->get_recolectores();
 			$data["vehiculos"] = $this->tran_vehiculo_model->get_vehiculos();
+			$data["tipo_vehiculos"] = $this->tran_vehiculo_model->get_tipo_vehiculos();
 			$data["destinos"] = $this->emp_destino_model->get_destinos();
 
 			if ($this->input->post()) {
@@ -1855,14 +1857,17 @@ class Administrador extends CI_Controller {
 				$data["marca"] 	= $this->input->post("marca");
 				$data["tipo"] 	= $this->input->post("tipo");
 				$data["placa"] 	= $this->input->post("placa");
+				$data["alias"] 	= $this->input->post("alias");
 				$data["id_vehiculo"] = $this->input->post("id_vehiculo");
+				$data["tipo_vehiculo"] = $this->input->post("tipo_vehiculo");
 
-				if($data["id_vehiculo"]) {
+				if($data["id_vehiculo"] =! "otro_vehiculo") {
 					$this->tran_vehiculo_model->update_vehiculo($data);
 				} else {
 					$this->tran_vehiculo_model->alta_vehiculo($data);
+					$this->tran_vehiculo_model->alta_tipo_vehiculo($data);
 				}
-
+				
 				redirect('administrador/recolector_consulta');
 			}
 
@@ -1897,6 +1902,7 @@ class Administrador extends CI_Controller {
 
 			$data["recolectores"] = $this->persona_model->get_recolectores();
 			$data["vehiculos"] = $this->tran_vehiculo_model->get_vehiculos();
+			$data["tipo_vehiculos"] = $this->tran_vehiculo_model->get_tipo_vehiculos();
 			$data["destinos"] = $this->emp_destino_model->get_destinos();
 
 
