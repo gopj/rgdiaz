@@ -134,7 +134,7 @@ function get_vehiculo(id){
 
 	var id_vehiculo = id;
 	
-	if (id_vehiculo) {
+	if (id_vehiculo != "nuevo") {
 		$("#modelo").attr('disabled','disabled');
 		$("#marca").attr('disabled','disabled');
 		$("#tipo").attr('disabled','disabled');
@@ -144,6 +144,7 @@ function get_vehiculo(id){
 		$("#edita_vehiculo").removeAttr('disabled');
 		$("#elimina_vehiculo").removeAttr('disabled');
 		$("#tipo_vehiculo").attr('disabled','disabled');
+		$("#id_tipo_vehiculo").attr('disabled','disabled');
 	} else {
 		$("#modelo").removeAttr('disabled');
 		$("#marca").removeAttr('disabled');
@@ -153,6 +154,7 @@ function get_vehiculo(id){
 		$("#edita_vehiculo").attr('disabled','disabled');
 		$("#elimina_vehiculo").attr('disabled','disabled');
 		$("#tipo_vehiculo").attr('disabled','disabled');
+		$("#id_tipo_vehiculo").removeAttr('disabled');
 	}
 
 	//AJAX
@@ -173,13 +175,14 @@ function get_vehiculo(id){
 				var tipo = json_data.tipo_vehiculo;
 				var placa = json_data.numero_placa;
 				var alias = json_data.alias;
+				var id_tipo_vehiculo = json_data.id_tipo_vehiculo;
 	
 				$("#modelo").val(modelo);
 				$("#marca").val(marca);
 				$("#tipo").val(tipo);
 				$("#placa").val(placa);
 				$("#alias").val(alias);
-
+				$("#id_tipo_vehiculo").val(id_tipo_vehiculo);
 			}
 		);
 
@@ -192,6 +195,7 @@ function update_vehiculo(){
 	$("#tipo").removeAttr('disabled');
 	$("#placa").removeAttr('disabled');
 	$("#alias").removeAttr('disabled');
+	$("#id_tipo_vehiculo").removeAttr('disabled');
 	$("#guarda_vehiculo").attr('disabled','disabled');
 	$("#edita_vehiculo").removeAttr('disabled');
 	$("#elimina_vehiculo").attr('disabled','disabled');
@@ -226,8 +230,13 @@ function onchange_vehiculo(){
 	$("#edita_vehiculo").attr('disabled','disabled');
 }
 
-function delete_vehiculo(id, url){
+function delete_vehiculo(url){
+
+	id = document.getElementById('id_vehiculo').value;
+
 	url_delete =  url + id;
+
+	console.log(url_delete);
 	document.getElementById("btn_delete_vehiculo").setAttribute("href", url_delete);
 }
 

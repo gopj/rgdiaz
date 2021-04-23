@@ -140,7 +140,7 @@
 										<label class="col-lg-6 col-form-label form-control-label" for="id_vehiculo"> Selecciona Vehículo</label>
 										<div class="col-lg-12">
 											<select class="form-control" onclick="get_vehiculo(this.value)" id="id_vehiculo" name="id_vehiculo">
-												<option value=""> Nuevo </option>
+												<option value="nuevo"> Nuevo </option>
 												<?php foreach($vehiculos->result() as $row){ ?>
 													<option value="<?php echo $row->id_vehiculo;?>"><?php echo $row->alias; ?></option>
 												<?php } ?>
@@ -181,10 +181,10 @@
 
 								<div class="form-row">
 									<div class="form-group col-lg-6">
-										<label class="col-lg-6 col-form-label form-control-label" for="id_vehiculo">Tipo de Vehículo</label>
+										<label class="col-lg-6 col-form-label form-control-label" for="id_tipo_vehiculo">Tipo de Vehículo</label>
 										<div class="col-lg-12">
-											<select class="form-control" id="id_vehiculo" name="id_vehiculo" onclick="update_tipo_vehiculo(this.value);" onchange="update_tipo_vehiculo(this.value);">
-												<option value="selecciona_vehiculo"> Selecciona Vehículo </option>
+											<select class="form-control" id="id_tipo_vehiculo" name="id_tipo_vehiculo" onclick="update_tipo_vehiculo(this.value);" onchange="update_tipo_vehiculo(this.value); onchange_vehiculo()" required>
+												<option value="" selected disabled> Selecciona Vehículo </option>
 												<option value="otro_vehiculo"> Otro </option>
 												<?php foreach($tipo_vehiculos->result() as $row){ ?>
 													<option value="<?php echo $row->id_tipo_vehiculo;?>"><?php echo $row->nombre_tipo; ?></option>
@@ -196,7 +196,7 @@
 									<div class="form-group col-lg-6">
 										<label class="col-lg-6 col-form-label form-control-label" for="tipo_vehiculo">Nuevo tipo</label>
 										<div class="col-lg-12">
-											<input class="form-control" type="text" class="txt" style="text-align: center;" id="tipo_vehiculo" name="tipo_vehiculo" oninvalid="this.setCustomValidity('Ingresa Tipo de Vehículo')" oninput="setCustomValidity('');" disabled>
+											<input class="form-control" type="text" class="txt" style="text-align: center;" id="tipo_vehiculo" name="tipo_vehiculo" oninvalid="this.setCustomValidity('Ingresa Tipo de Vehículo')" oninput="setCustomValidity('');" disabled required> 
 										</div>
 									</div>
 								</div>
@@ -209,7 +209,7 @@
 										<input type="button" class="btn btn-primary" value="Guardar" name="guarda_vehiculo" id="guarda_vehiculo" data-toggle="modal" data-target="#modal_guarda_vehiculo">
 										<input type="button" class="btn btn-primary" value="Editar" name="edita_vehiculo" id="edita_vehiculo" onclick="update_vehiculo()">
 										<?php $url = site_url("administrador/recolector_vehiculo_delete") . "/"; ?>
-										<input type="button" class="btn btn-danger" value="Eliminar" name="elimina_vehiculo" id="elimina_vehiculo" onclick="delete_vehiculo(<?=@$row->id_vehiculo?>, '<?=$url?>')" data-toggle="modal" data-target="#modal_elimina_vehiculo">
+										<input type="button" class="btn btn-danger" value="Eliminar" name="elimina_vehiculo" id="elimina_vehiculo" onclick="delete_vehiculo('<?=$url?>')" data-toggle="modal" data-target="#modal_elimina_vehiculo">
 									</div>
 								</div>
 

@@ -1846,39 +1846,47 @@ class Administrador extends CI_Controller {
 	public function recolector_vehiculo() {
 		if ($this->session->userdata('tipo')==1){
 
-			$data["recolectores"] = $this->persona_model->get_recolectores();
-			$data["vehiculos"] = $this->tran_vehiculo_model->get_vehiculos();
-			$data["tipo_vehiculos"] = $this->tran_vehiculo_model->get_tipo_vehiculos();
-			$data["destinos"] = $this->emp_destino_model->get_destinos();
+			$data_view["recolectores"] = $this->persona_model->get_recolectores();
+			$data_view["vehiculos"] = $this->tran_vehiculo_model->get_vehiculos();
+			$data_view["tipo_vehiculos"] = $this->tran_vehiculo_model->get_tipo_vehiculos();
+			$data_view["destinos"] = $this->emp_destino_model->get_destinos();
 
-			if ($this->input->post()) {
-				$data["modelo"] = $this->input->post("modelo");
-				$data["marca"] 	= $this->input->post("marca");
-				$data["placa"] 	= $this->input->post("placa");
-				$data["alias"] 	= $this->input->post("alias");
-				$data["id_vehiculo"] = $this->input->post("id_vehiculo");
-				$data["tipo_vehiculo"] = $this->input->post("tipo_vehiculo");
+			if ($this->input->post()){
+				$modelo = $this->input->post("modelo");
+				$marca 	= $this->input->post("marca");
+				$placa 	= $this->input->post("placa");
+				$alias 	= $this->input->post("alias");
+				$id_vehiculo = $this->input->post("id_vehiculo");
+				$id_tipo_vehiculo = $this->input->post("id_tipo_vehiculo");
+				$tipo_vehiculo = $this->input->post("tipo_vehiculo");
 
-/*				echo "<pre>";
-				print_r($data);
-				echo "</pre>";
+				$data["modelo"] = $modelo;
+				$data["marca"] 	= $marca;
+				$data["placa"] 	= $placa;
+				$data["alias"] 	= $alias;
+				$data["id_vehiculo"] = $id_vehiculo;
+				$data["id_tipo_vehiculo"] = $id_tipo_vehiculo;
+				$data["tipo_vehiculo"] = $tipo_vehiculo;
 
-				die();*/
-
-				if($data["id_vehiculo"] =! "otro_vehiculo") {
-					$this->tran_vehiculo_model->update_vehiculo($data);
-				} else {
-					$data["new_id_tipo"] = $this->tran_vehiculo_model->alta_tipo_vehiculo($data);
-
+				if ($id_vehiculo == "nuevo") {
+					if ($id_tipo_vehiculo == "otro_vehiculo") {
+						$data["new_id_tipo"] = $this->tran_vehiculo_model->alta_tipo_vehiculo($data);
+					}
 					$this->tran_vehiculo_model->alta_vehiculo($data);
+				} else {
+					if ($id_tipo_vehiculo == "otro_vehiculo") {
+						$data["new_id_tipo"] = $this->tran_vehiculo_model->alta_tipo_vehiculo($data);
+					}
+					$this->tran_vehiculo_model->update_vehiculo($data);
 				}
 				
 				redirect('administrador/recolector_consulta');
+			} else {
+				$this->load->view('administrador/recolector/header', $data_view);
+				$this->load->view('administrador/recolector/consulta', $data_view);
+				$this->load->view('administrador/recolector/footer', $data_view);
 			}
 
-			$this->load->view('administrador/recolector/header', $data);
-			$this->load->view("administrador/recolector/consulta", $data);
-			$this->load->view('administrador/recolector/footer', $data);	
 
 		}
 	}
@@ -1891,6 +1899,7 @@ class Administrador extends CI_Controller {
 	}
 
 	public function recolector_vehiculo_delete($id) {
+
 		if ($this->session->userdata('tipo')==1){
 
 			if (@$id != null) {
@@ -1905,10 +1914,10 @@ class Administrador extends CI_Controller {
 
 		if ($this->session->userdata('tipo')==1){
 
-			$data["recolectores"] = $this->persona_model->get_recolectores();
-			$data["vehiculos"] = $this->tran_vehiculo_model->get_vehiculos();
-			$data["tipo_vehiculos"] = $this->tran_vehiculo_model->get_tipo_vehiculos();
-			$data["destinos"] = $this->emp_destino_model->get_destinos();
+			$data_view["recolectores"] = $this->persona_model->get_recolectores();
+			$data_view["vehiculos"] = $this->tran_vehiculo_model->get_vehiculos();
+			$data_view["tipo_vehiculos"] = $this->tran_vehiculo_model->get_tipo_vehiculos();
+			$data_view["destinos"] = $this->emp_destino_model->get_destinos();
 
 
 			if ($this->input->post()) {
@@ -1934,9 +1943,9 @@ class Administrador extends CI_Controller {
 				redirect('administrador/recolector_consulta');
 			}
 
-			$this->load->view('administrador/recolector/header', $data);
-			$this->load->view("administrador/recolector/consulta", $data);
-			$this->load->view('administrador/recolector/footer', $data);	
+			$this->load->view('administrador/recolector/header', $data_view);
+			$this->load->view("administrador/recolector/consulta", $data_view);
+			$this->load->view('administrador/recolector/footer', $data_view);	
 
 		}
 		
