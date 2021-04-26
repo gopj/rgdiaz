@@ -158,21 +158,21 @@
 
 								<div class="form-row">
 									<div class="form-group col-lg-4">
-										<label class="col-lg-4 col-form-label form-control-label" for="placa">No. Placa</label>
+										<label class="col-lg-6 col-form-label form-control-label" for="placa">No. Placa</label>
 										<div class="col-lg-12">
 											<input class="form-control" type="text" class="txt" style="text-align: center;" name="placa" id="placa"  oninvalid="this.setCustomValidity('Ingresa número de placa')" oninput="setCustomValidity(''); onchange_vehiculo()" required>
 										</div>
 									</div>
 
 									<div class="form-group col-lg-4">
-										<label class="col-lg-4 col-form-label form-control-label" for="modelo">Modelo</label>
+										<label class="col-lg-6 col-form-label form-control-label" for="modelo">Modelo</label>
 										<div class="col-lg-12">
 											<input class="form-control" type="text" class="txt " style="text-align: center;" name="modelo" id="modelo"  oninvalid="this.setCustomValidity('Ingresa modelo del vehiculo')" oninput="setCustomValidity(''); onchange_vehiculo()"  required>
 										</div>
 									</div>
 
 									<div class="form-group col-lg-4">
-										<label class="col-lg-4 col-form-label form-control-label" for="marca">Marca</label>
+										<label class="col-lg-6 col-form-label form-control-label" for="marca">Marca</label>
 										<div class="col-lg-12">
 											<input class="form-control" type="text" class="txt" style="text-align: center;" name="marca" id="marca"  oninvalid="this.setCustomValidity('Ingresa marca')" oninput="setCustomValidity(''); onchange_vehiculo()" required>
 										</div>
@@ -321,21 +321,21 @@
 
 								<div class="form-row">
 
-									<div class="form-group col-lg-8">
+									<div class="form-group col-lg-6">
 										<label class="col-lg-6 col-form-label form-control-label" for="calle">Calle</label>
 										<div class="col-lg-12">
 											<input class="form-control" type="text" class="txt" style="text-align: center;" name="calle" id="calle" oninvalid="this.setCustomValidity('Ingresa calle')" oninput="setCustomValidity(''); onchange_destino()" required>
 										</div>
 									</div>
 									
-									<div class="form-group col-lg-1">
+									<div class="form-group col-lg-2">
 										<label class="col-lg-12 col-form-label form-control-label" for="num_ext"># Ext.</label>
 										<div class="col-lg-12">
 											<input class="form-control" type="text" class="txt" style="text-align: center;" name="num_ext" id="num_ext" oninvalid="this.setCustomValidity('Ingresa el número exteriror')" oninput="setCustomValidity(''); onchange_destino()" required>
 										</div>
 									</div>
 
-									<div class="form-group col-lg-1">
+									<div class="form-group col-lg-2">
 										<label class="col-lg-12 col-form-label form-control-label" for="num_int"># Int.</label>
 										<div class="col-lg-12">
 											<input class="form-control" type="text" class="txt" style="text-align: center;" name="num_int" id="num_int" oninput="setCustomValidity(''); onchange_destino()">
@@ -353,7 +353,7 @@
 
 								<div class="form-row">
 									<div class="form-group col-lg-4">
-										<label class="col-lg-3 col-form-label form-control-label" for="colonia">Colonia</label>
+										<label class="col-lg-6 col-form-label form-control-label" for="colonia">Colonia</label>
 										<div class="col-lg-12">
 											<input class="form-control" type="text" class="txt" style="text-align: center;" name="colonia" id="colonia" oninvalid="this.setCustomValidity('Ingresa colonia')" oninput="setCustomValidity(''); onchange_destino()" required>
 										</div>
@@ -367,7 +367,7 @@
 									</div>
 
 									<div class="form-group col-lg-3">
-										<label class="col-lg-4 col-form-label form-control-label" for="estado">Estado</label>
+										<label class="col-lg-6 col-form-label form-control-label" for="estado">Estado</label>
 										<div class="col-lg-12">
 											<input class="form-control" type="text" class="txt" style="text-align: center;" name="estado" id="estado" oninvalid="this.setCustomValidity('Ingresa el estado')" oninput="setCustomValidity(''); onchange_destino()" required>
 										</div>

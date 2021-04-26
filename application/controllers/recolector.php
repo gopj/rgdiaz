@@ -331,12 +331,43 @@ class Recolector extends CI_Controller {
 		$data["datos_empresa_tran"] = $this->emp_transportista_model->get_datos_emp_trans(1);
 		$data["datos_recolector"] 	= $this->persona_model->get_nombre_cliente($this->session->userdata("id"));
 
-		/*$data["empresa_destino"] 	= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->empresa_destino;
-		$data["fecha_embarque"] 	= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->fecha_ingreso;
-		$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);*/
+
+		$data["nombre_empresas"] 	= $this->persona_model->get_datos_empresas();
+
+		foreach ($data["nombre_empresas"] as $key => $value) {
+			$data['nombre_algoritmo'][] = $value->nombre_empresa;
+		}
+
+		echo $this->generar_nombre_folio($data['nombre_algoritmo'][17]);
+
+		foreach ($data['nombre_algoritmo'] as $key => $value) {
+			$data['new_string'][] = $this->generar_nombre_folio($data['nombre_algoritmo'][$key]) . ', ' . strlen($this->generar_nombre_folio($data['nombre_algoritmo'][$key]));
+		}
 
 		$this->load->view("recolector/generar_manifiesto.php", $data);
 
+	}
+
+	public function generar_nombre_folio($nombre_string) {
+		$array_string = str_split($nombre_string);
+
+		$new_folio_name = '';
+		foreach ($array_string as $value) {
+			if (preg_match('/[A-Z]/', $value)) {
+				$new_folio_name .= $value;
+			}
+		}
+
+/*		if (strlen($new_folio_name) > 1) {
+			$new_folio_name = str_replace('SACV', '', $new_folio_name);
+			$new_folio_name = str_replace('SRLCV', '', $new_folio_name);
+			$new_folio_name = str_replace('SAPICV', '', $new_folio_name);
+			$new_folio_name = str_replace('SAPIDECV', '', $new_folio_name);
+			$new_folio_name = str_replace('SADECV', '', $new_folio_name);
+			$new_folio_name = str_replace('SADCV', '', $new_folio_name);
+		} */
+
+		return $new_folio_name;
 	}
 
 	public function get_cliente() {

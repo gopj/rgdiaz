@@ -132,6 +132,12 @@ class Persona_model extends CI_Model {
 		return $result[0];
 	}
 
+		public function get_datos_empresas(){
+		$result = $this->db->query("SELECT nombre_empresa FROM persona;")->result();  
+
+		return $result;
+	}
+
 	public function regisdatos_persona($nombre,
 										$telefono_personal,
 										$telefono_personal_alt,

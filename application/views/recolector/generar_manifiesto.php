@@ -47,6 +47,14 @@ function date_manifiesto($s_date){
 	return $date;
 }
 
+echo "<pre>";
+print_r($new_string);
+echo "</pre>";
+
+echo "<pre>";
+print_r($nombre_algoritmo);
+echo "</pre>";
+
 // create new PDF document
 $pdf = new MY_PDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
@@ -92,8 +100,10 @@ for ($i=0; $i < $num_table_res; $i++) {
 			$arr_residuos_manifiesto[$i][$j][] = creti($residuos_manifiesto[$r]->caracteristica);
 			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->contenedor_cantidad;
 			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->contenedor_tipo;
+			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->contenedor_capacidad;
 			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->residuo_cantidad;
-			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->unidad;
+			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->etiqueta;
+			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->fecha_insercion;
 
 			$r++;
 		} 
@@ -344,11 +354,11 @@ for ($h=0; $h < $num_table_res; $h++) {
 
 				<tr>
 					<td width="215" align="left" class="defined" rowspan="2"> &nbsp;<br/> 12 - NOMBRE DE LA EMPRESA </td>
-					<td width="260" align="center" rowspan="2"> ' . $residuos_manifiesto[0]->dest_final . ' </td>
+					<td width="260" align="center" rowspan="2"> ' . $datos_empresa->nombre_empresa . ' </td>
 					<td class="defined" width="134" align="center"> AUTORIZACION SEMARNAT </td>
 				</tr>
 				<tr> 
-					<td width="134" class="data"> ' . $residuos_manifiesto[0]->no_aut_dest_final . ' </td>
+					<td width="134" class="data"> ' . $datos_empresa->numero_registro_ambiental . ' </td>
 				</tr>
 				<tr>
 					<td width="215" align="left" class="defined"> 4.- DOMICILIO </td>
