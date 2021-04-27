@@ -338,10 +338,13 @@ class Recolector extends CI_Controller {
 			$data['nombre_algoritmo'][] = $value->nombre_empresa;
 		}
 
-		echo $this->generar_nombre_folio($data['nombre_algoritmo'][17]);
-
 		foreach ($data['nombre_algoritmo'] as $key => $value) {
 			$data['new_string'][] = $this->generar_nombre_folio($data['nombre_algoritmo'][$key]) . ', ' . strlen($this->generar_nombre_folio($data['nombre_algoritmo'][$key]));
+		}
+
+		$data["dups"] = array();
+		foreach(array_count_values($data['new_string']) as $val => $c){
+			if($c > 1) $data["dups"][] = $val;
 		}
 
 		$this->load->view("recolector/generar_manifiesto.php", $data);
@@ -358,14 +361,15 @@ class Recolector extends CI_Controller {
 			}
 		}
 
-/*		if (strlen($new_folio_name) > 1) {
+		if (strlen($new_folio_name) > 6) {
 			$new_folio_name = str_replace('SACV', '', $new_folio_name);
 			$new_folio_name = str_replace('SRLCV', '', $new_folio_name);
 			$new_folio_name = str_replace('SAPICV', '', $new_folio_name);
 			$new_folio_name = str_replace('SAPIDECV', '', $new_folio_name);
 			$new_folio_name = str_replace('SADECV', '', $new_folio_name);
 			$new_folio_name = str_replace('SADCV', '', $new_folio_name);
-		} */
+			$new_folio_name = str_replace('SDERLDECV', '', $new_folio_name);
+		}
 
 		return $new_folio_name;
 	}

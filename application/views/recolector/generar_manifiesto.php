@@ -48,6 +48,10 @@ function date_manifiesto($s_date){
 }
 
 echo "<pre>";
+print_r($dups);
+echo "</pre>";
+
+echo "<pre>";
 print_r($new_string);
 echo "</pre>";
 
