@@ -25,6 +25,41 @@
 		});
 	</script>
 
+	<!-- Modal Guarda Recolector Begin -->
+	<div class="modal" id="modal_selecciona_vehiculo">
+		<div class="modal-dialog modal-md">
+			<div class="modal-content">
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Selecciona vehículo</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<!-- Modal body -->
+				<div class="modal-body">
+					<div class="form-group col-lg-6">
+						<form class="form" role="form" autocomplete="off" method='post' action="<?php echo site_url('recolector/register_vehicle');?>">
+							<label class="col-lg-6 col-form-label form-control-label" for="id_vehiculo"> Selecciona Vehículo</label>
+							<div class="col-lg-12">
+								<select class="form-control" onclick="get_vehiculo(this.value)" id="id_vehiculo" name="id_vehiculo">
+									<?php foreach($vehiculos->result() as $row){ ?>
+										<option value="<?php echo $row->id_vehiculo;?>"><?php echo $row->alias; ?></option>
+									<?php } ?>
+								</select>
+							</div>
+
+							<!-- Modal footer -->
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+								<button type="submit" class="btn btn-primary">Sí</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal End -->
+
 	</body>
 	
 </html>

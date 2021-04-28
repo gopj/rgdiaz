@@ -281,6 +281,12 @@ class Persona_model extends CI_Model {
 						->update('persona');
 	}
 
+	public function update_vehiculo_recolector($data){
+		return $this->db->set('cp_empresa',$data['id_vehiculo'])
+						->where('id_persona',$data['id_user'])
+						->update('persona');
+	}
+
 	public function get_recolectores(){
 		return $this->db->where('id_tipo_persona', 2)
 						 ->get('persona');
