@@ -125,6 +125,29 @@ function delete_recolector(id, url){
 	document.getElementById("btn_delete_recolector").setAttribute("href", url_delete);
 }
 
+function selected_vehicle(id){
+
+	//AJAX
+	jQuery.ajax({
+			url:'http://' + host + '/index.php/recolector/get_selected_vehicle',	//<-- Url que va procesar la peticion
+			//url:'http://rdiaz.mx/index.php/recolector/get_cliente',
+			timeout: 3000, //sets timeout to 3 seconds
+			type:'post',
+			data:{
+				id_vehiculo_recolector: id,
+			}
+		}).done(
+			function(resp) {
+				var json_data = jQuery.parseJSON(resp);
+				var id_vehiculo_string =json_data.cp_empresa;
+				var id_vehiculo = Number(id_vehiculo_string);
+				console.log(id_vehiculo);
+				console.log(json_data);
+				$("#id_vehiculo_recolector").val(id_vehiculo);
+			}
+		);
+}
+
 /// VEHICULO
 $("#guarda_vehiculo").attr('disabled','disabled');
 $("#edita_vehiculo").attr('disabled','disabled');

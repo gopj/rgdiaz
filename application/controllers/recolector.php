@@ -35,7 +35,7 @@ class Recolector extends CI_Controller {
 			$data["id"]					= $this->session->userdata('id');
 			$data["tclientes"]			= $this->persona_model->obtienetodoclientes($id_tipo_persona,$lleno_datos);
 			$data["recolector"]			= $this->persona_model->get_datos_empresa($this->session->userdata('id'));
-			$data["vehiculos"] = $this->tran_vehiculo_model->get_vehiculos();
+			$data["vehiculos"] 			= $this->tran_vehiculo_model->get_vehiculos();
 			
 			$this->load->view('recolector/header', $data);
 			$this->load->view("recolector/index", $data);
@@ -393,11 +393,17 @@ class Recolector extends CI_Controller {
 		echo json_encode($clave);	
 	}
 
+	public function get_selected_vehicle(){
+		$id_vehiculo = $this->persona_model->get_recolector_vehicle($this->session->userdata('id'));
+
+		echo json_encode($id_vehiculo);
+	}
+
 	public function register_vehicle(){
 		if ($this->session->userdata('tipo') == 2){
 			
 			if ($this->input->post()) {
-				$data['id_vehiculo'] = $this->input->post('id_vehiculo');
+				$fdata['id_vehiculo'] = $this->input->post('id_vehiculo_recolector');
 				$data['id_user']	 = $this->session->userdata('id');
 
 				$this->persona_model->update_vehiculo_recolector($data);
