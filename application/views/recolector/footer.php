@@ -41,6 +41,7 @@
 							<label class="col-lg-12 col-form-label form-control-label" for="id_vehiculo_recolector"> Selecciona Vehículo</label>
 							<div class="col-lg-12">
 								<select class="form-control" onclick="get_vehiculo(this.value)" id="id_vehiculo_recolector" name="id_vehiculo_recolector">
+									<option value="0"> Vacío </option>
 									<?php foreach($vehiculos->result() as $row){ ?>
 										<option value="<?php echo $row->id_vehiculo;?>"><?php echo $row->alias; ?></option>
 									<?php } ?>
