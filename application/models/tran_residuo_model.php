@@ -110,6 +110,7 @@ class Tran_residuo_model extends CI_Model {
 			->set('status' 				, 'W')
 			->set('ruta'				, $data['ruta'])
 			->set('observaciones'		, $data['observaciones'])
+			->set('id_vehiculo'			, $data['id_vehiculo'])
 			->insert('tran_folios');
 
 		return $this->db->insert_id();

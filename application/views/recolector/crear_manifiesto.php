@@ -23,6 +23,8 @@
 					<div class="invalid-feedback">
 						Selecciona la fecha de embarque
 					</div>
+
+					<input type="text" name="id_vehiculo" value="<?= $recolector->cp_empresa ?>" hidden>
 				</div>		
 			</div>
 

@@ -34,40 +34,77 @@
 				border-color: black;
 			}*/
 
-			table.dataTable thead th{
+			/* PROD*/
+/*			table.dataTable thead th{
 				background: white;
 			}
 
 			table.dataTable.table-striped.DTFC_Cloned tbody tr:nth-of-type(odd) {
 				background: #F3F3F3;
+				color: black;
 			}
 
 			table.dataTable.table-striped.DTFC_Cloned tbody tr:nth-of-type(even) {
-				background: white;
+					background: white;
+			}*/
+
+			/* DARK THEME this is under develepment */
+			body {
+				background: #606067;
+				color: white;
 			}
+
+			table.dataTable thead th{
+				background: white;
+				color: black;
+			}
+
+			table.dataTable tbody td {
+				color: black;
+			}
+
+			table.dataTable.table-striped.DTFC_Cloned tbody tr:nth-of-type(odd) {
+				background: #F3F3F3;
+				color: black;
+			}
+
+			table.dataTable.table-striped.DTFC_Cloned tbody td:nth-of-type(odd) {
+				background: #F3F3F3;
+				color: black;
+			}
+
+			table.dataTable.table-striped.DTFC_Cloned tbody tr:nth-of-type(even) {
+				background: gray;
+				color: black;
+			}
+
+			table.dataTable.table-striped.DTFC_Cloned tbody td:nth-of-type(even) {
+				background: gray;
+				color: black;
+			}
+
     	</style>
 		<title>Recolector</title>
 	</head>
 	<body>
 	
-		<nav class="navbar navbar-expand-lg navbar-dark bg-success">
-			<a class="navbar-brand" href="<?= site_url('recolector'); ?>"> > RDíaz </a>
+		<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-success">
+			<a class="navbar-brand" href="<?= site_url('recolector'); ?>"> Recolector </a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav justify-content-end">
-					
-					<li class="nav-item dropdown">
+					<li class="nav-item">
 						<a class="nav-link" >
-							<strong> Recolector </strong>
+							<strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>
 						</a>
-						<!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item"  data-toggle="modal" data-target="#modal_selecciona_vehiculo" >Selecciona vehículo</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Cerrar sesión</a>
-						</div> -->
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" >
+							<strong> <?= @$cliente->nombre_empresa ?> </strong>
+						</a>
 					</li>
 				</ul>
 			</div>
@@ -84,7 +121,7 @@
 			</div>
 		</nav>
 
-		<div class="container" style="padding-top:10px;">
+		<div class="container" style="padding-top: 63px;">
 			<div class="row">
 				<div class="span14">
 					<img src="img/logo.png" style="width:300px;">

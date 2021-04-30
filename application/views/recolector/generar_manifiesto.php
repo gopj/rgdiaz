@@ -46,8 +46,9 @@ function date_manifiesto($s_date){
 
 	return $date;
 }
+///// Testing all parameters
 
-echo "<pre>";
+/*echo "<pre>";
 print_r($dups);
 echo "</pre>";
 
@@ -57,7 +58,7 @@ echo "</pre>";
 
 echo "<pre>";
 print_r($nombre_algoritmo);
-echo "</pre>";
+echo "</pre>";*/
 
 // create new PDF document
 $pdf = new MY_PDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
