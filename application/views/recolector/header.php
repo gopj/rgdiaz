@@ -35,7 +35,7 @@
 			}*/
 
 			/* PROD*/
-/*			table.dataTable thead th{
+			table.dataTable thead th{
 				background: white;
 			}
 
@@ -46,10 +46,10 @@
 
 			table.dataTable.table-striped.DTFC_Cloned tbody tr:nth-of-type(even) {
 					background: white;
-			}*/
+			}
 
-			/* DARK THEME this is under develepment */
-			body {
+			/* DARK THEME --- note: this is under develepment */
+			/*body {
 				background: #606067;
 				color: white;
 			}
@@ -81,7 +81,7 @@
 			table.dataTable.table-striped.DTFC_Cloned tbody td:nth-of-type(even) {
 				background: gray;
 				color: black;
-			}
+			}*/
 
     	</style>
 		<title>Recolector</title>

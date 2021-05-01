@@ -50,7 +50,7 @@ class Recolector extends CI_Controller {
 	public function ver_manifiestos($id_persona=null) {
 		$data["recolector"]	= $this->persona_model->get_datos_empresa($this->session->userdata('id'));
 		$data["vehiculos"] 	= $this->tran_vehiculo_model->get_vehiculos();
-		
+
 		//PDF
 		$pdfpath = $_SERVER['DOCUMENT_ROOT'] . "rgdiaz/img/pdf/rdiaztmp{@$id_persona}.pdf";
 		if (file_exists($pdfpath)) {
@@ -352,8 +352,15 @@ class Recolector extends CI_Controller {
 		$data["datos_empresa_tran"] = $this->emp_transportista_model->get_datos_emp_trans(1);
 		$data["datos_recolector"] 	= $this->persona_model->get_nombre_cliente($this->session->userdata("id"));
 		$data["vehiculos"] 			= $this->tran_vehiculo_model->get_vehiculos();
+		$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
 
 		$data["nombre_empresas"] 	= $this->persona_model->get_datos_empresas();
+
+		// echo "<pre>";
+		// print_r($data["datos_empresa"]);
+		// echo "</pre>";
+
+		// die();
 
 		foreach ($data["nombre_empresas"] as $key => $value) {
 			$data['nombre_algoritmo'][] = $value->nombre_empresa;

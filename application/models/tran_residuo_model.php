@@ -200,28 +200,31 @@ class Tran_residuo_model extends CI_Model {
 	public function get_residuos_manifiesto($id_cliente, $folio){
 		return $this->db->query("
 			SELECT 
-				tf.id_persona as id_cliente,
 				r.id_tran_residuo,
-				r.id_folio as folio,
+				tf.id_persona as id_cliente,
+				tf.id_tran_folio as folio, 
 				tf.responsable_tecnico,
-				tr.residuo,
-				r.caracteristica,
+				tf.observaciones, 
+				tr.residuo as residuo,
+				r.caracteristica as caracteristica,
 				r.contenedor_cantidad,
 				r.contenedor_tipo,
 				r.contenedor_capacidad,
 				r.residuo_cantidad,
-				r.etiqueta,
-				r.fecha_insercion
+				r.fecha_insercion,
+				r.etiqueta
 			FROM 
-				tran_residuos as r,
 				tipo_residuos as tr,
-				tran_folios as tf
+			 	tran_residuos as r,
+			 	tran_folios as tf
 					LEFT JOIN tipo_emp_destino ed ON (tf.id_tipo_emp_destino = ed.id_tipo_emp_destino)
 			WHERE
-				r.id_tipo_residuo = tr.id_tipo_residuo and
-							id_persona 	= {$id_cliente} and 
-				folio 		= {$folio};")->result();
-	}
+				r.id_tipo_residuo 	= tr.id_tipo_residuo and
+				r.id_folio 			= tf.id_tran_folio and
+				tf.id_persona 		= {$id_cliente} and 
+				tf.id_tran_folio	= {$folio};")->result();
+
+			}
 
 /*
 ,

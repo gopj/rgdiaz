@@ -94,6 +94,10 @@ $table_data_html = '';
 $residuo_final="";
 
 
+/// Datos Empresa
+$domicilio_empresa = $datos_empresa->calle_empresa . ' #' . $datos_empresa->numero_empresa . ', ' . $datos_empresa->colonia_empresa ;
+
+
 //Llenar array de arr_residuos_manifiesto
 for ($i=0; $i < $num_table_res; $i++) { 
 	
@@ -367,13 +371,13 @@ for ($h=0; $h < $num_table_res; $h++) {
 				</tr>
 				<tr>
 					<td width="215" align="left" class="defined"> 4.- DOMICILIO </td>
-					<td width="394" align="center">' . 'no hay informacion' . ' </td>
+					<td width="394" align="center">' . $domicilio_empresa . ' </td>
 				</tr>
 				<tr>
 					<td width="215" align="left" class="defined"> MUNICIPIO </td>
-					<td width="170" align="center"> ' . 'no hay informacion' . ' </td>
+					<td width="170" align="center"> ' . $datos_empresa->municipio. ' </td>
 					<td width="90" align="center" class="defined"> ESTADO </td>
-					<td width="134" align="center"> ' . 'no hay informacion' . ' </td>
+					<td width="134" align="center"> ' . $datos_empresa->estado   . ' </td>
 				</tr>
 
 				<tr>
@@ -383,7 +387,7 @@ for ($h=0; $h < $num_table_res; $h++) {
 					<td width="609" height="15" align="left" class="defined"> OBSERVACIONES </td>
 				</tr>
 				<tr>
-					<td width="609" height="15" align="left" class="defined"> </td>
+					<td width="609" height="15" align="left" class="defined"> ' . $residuos_manifiesto[0]->observaciones . ' </td>
 				</tr>
 				<tr>
 					<td width="113" align="center" class="defined" height="20"> NOMBRE </td>
