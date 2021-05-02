@@ -60,6 +60,10 @@ echo "<pre>";
 print_r($nombre_algoritmo);
 echo "</pre>";*/
 
+/*echo "<pre>";
+print_r($datos_empresa);
+echo "</pre>"; */
+
 // create new PDF document
 $pdf = new MY_PDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
@@ -97,6 +101,63 @@ $residuo_final="";
 /// Datos Empresa
 $domicilio_empresa = $datos_empresa->calle_empresa . ' #' . $datos_empresa->numero_empresa . ', ' . $datos_empresa->colonia_empresa ;
 
+// Funcion Eitqueta
+
+function funcion_etiqueta($data){
+	$html_string = '';
+	if($data=='S'){
+		$html_string = '
+			<td width="23" align="center" class="data">X</td>
+			<td width="23" align="center" class="data"></td>
+		';
+	}else{
+		$html_string = '
+			<td width="23" align="center" class="data"></td>
+			<td width="23" align="center" class="data">X</td>
+		';
+	}
+
+	return $html_string;
+}
+
+// Funcion de clasificación
+
+function funcion_clasificacion($data){
+	$html_string = '';
+	$data_split = explode(' ', $data);
+
+	$data_array = array(
+		'C' => '0',
+		'R' => '0',
+		'E' => '0',
+		'T' => '0',
+		'I' => '0',
+		'B' => '0',
+		'M' => '0'
+	);
+
+	foreach ($data_array as $key1 => $value1) {
+		foreach ($data_split as $key2 => $value2) {
+			if ($value1 == '0'){
+				if ($key1==$value2){
+					$data_array[$key1] = '1';
+				}
+			}
+		}
+	}
+
+	foreach ($data_array as $key => $value) {
+		if ($data_array[$key]=='1'){
+			$html_string .= '<td width="15" align="center" class="data">X</td>';
+		} else {
+			$html_string .= '<td width="15" align="center" class="data"></td>';
+		}
+	}
+
+	return $html_string;
+}
+
+//funcion_clasificacion('B M');
 
 //Llenar array de arr_residuos_manifiesto
 for ($i=0; $i < $num_table_res; $i++) { 
@@ -120,23 +181,32 @@ for ($i=0; $i < $num_table_res; $i++) {
 
 }
 
-
+$row_num = 0;
 for ($h=0; $h < $num_table_res; $h++) { 
 	// add a page
 	$pdf->AddPage();
 
 	for ($i=0; $i < $nrs; $i++) {
+		$row_num = $i + 1;
 
 		if (@$arr_residuos_manifiesto[$h][$i][0] == null) {
 			
 			$table_data_html = $table_data_html . '
 				<tr>
-					<td width="342" align="left" class="defined_s"> ' . $i . '</td>
+					<td width="280" align="left" class="defined_s"> ' . $row_num  . '</td>
+					<td width="15" align="center" class="defined"></td>
+					<td width="15" align="center" class="defined"></td>
+					<td width="15" align="center" class="defined"></td>
+					<td width="15" align="center" class="defined"></td>
+					<td width="15" align="center" class="defined"></td>
+					<td width="15" align="center" class="defined"></td>
+					<td width="15" align="center" class="defined"></td>
+					<td width="45" align="center" class="data"> </td>
+					<td width="44" align="center" class="data"> </td>
 					<td width="43" align="center" class="data"> </td>
-					<td width="45" align="center" class="data"> </td>
-					<td width="45" align="center" class="data"> </td>
-					<td width="67" align="center" class="data"> </td>
-					<td width="67" align="center" class="data"> </td>
+					<td width="46" align="center" class="data"> </td>
+					<td width="23" align="center" class="data"> </td>
+					<td width="23" align="center" class="data"> </td>
 				</tr>
 			';
 
@@ -144,36 +214,39 @@ for ($h=0; $h < $num_table_res; $h++) {
 			if (strlen(@$arr_residuos_manifiesto[$h][$i][0]) > 162) {
 				$table_data_html = $table_data_html . '
 					<tr>
-						<td width="342" align="left" class="defined_s"> ' . $i . ' ' . $arr_residuos_manifiesto[$h][$i][0] . '</td>
-						<td width="43" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][1] . ' </td>
+						<td width="280" align="left" class="defined_s"> ' . $row_num  . ' ' . $arr_residuos_manifiesto[$h][$i][0] . '</td> 
+						' . funcion_clasificacion($arr_residuos_manifiesto[$h][$i][1]) . ' 
 						<td width="45" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][2] . ' </td>
-						<td width="45" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][3] . ' </td>
-						<td width="67" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][4] . ' </td>
-						<td width="67" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][5] . ' </td>
+						<td width="44" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][3] . ' </td>
+						<td width="43" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][4] . ' </td>
+						<td width="46" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][5] . ' </td>
+						' . funcion_etiqueta($arr_residuos_manifiesto[$h][$i][6]) . ' 
 					</tr>
 				';
 				$nrs=$nrs-2;
 			} elseif (strlen(@$arr_residuos_manifiesto[$h][$i][0]) > 72) { 
 				$table_data_html = $table_data_html . '
 					<tr>
-						<td width="342" align="left" class="defined_s"> ' . $i . ' ' . $arr_residuos_manifiesto[$h][$i][0] . '</td>
-						<td width="43" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][1] . ' </td>
+						<td width="280" align="left" class="defined_s"> ' . $row_num  . ' ' . $arr_residuos_manifiesto[$h][$i][0] . '</td>
+						' . funcion_clasificacion($arr_residuos_manifiesto[$h][$i][1]) . ' 
 						<td width="45" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][2] . ' </td>
-						<td width="45" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][3] . ' </td>
-						<td width="67" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][4] . ' </td>
-						<td width="67" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][5] . ' </td>
+						<td width="44" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][3] . ' </td>
+						<td width="43" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][4] . ' </td>
+						<td width="46" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][5] . ' </td>
+						' . funcion_etiqueta($arr_residuos_manifiesto[$h][$i][6]) . ' 
 					</tr>
 				';
 				$nrs--;
 			} else {
 				$table_data_html = $table_data_html . '
 					<tr>
-						<td width="342" align="left" class="defined_s"> ' . $i . ' ' . $arr_residuos_manifiesto[$h][$i][0] . '</td>
-						<td width="43" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][1] . ' </td>
+						<td width="280" align="left" class="defined_s"> ' . $row_num  . ' ' . $arr_residuos_manifiesto[$h][$i][0] . '</td>
+						' . funcion_clasificacion($arr_residuos_manifiesto[$h][$i][1]) . ' 
 						<td width="45" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][2] . ' </td>
-						<td width="45" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][3] . ' </td>
-						<td width="67" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][4] . ' </td>
-						<td width="67" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][5] . ' </td>
+						<td width="44" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][3] . ' </td>
+						<td width="43" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][4] . ' </td>
+						<td width="46" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][5] . ' </td>
+						' . funcion_etiqueta($arr_residuos_manifiesto[$h][$i][6]) . ' 
 					</tr>
 				';
 			} 
@@ -254,42 +327,61 @@ for ($h=0; $h < $num_table_res; $h++) {
 		<td>
 			<table class="manifiesto" border="1">
 				<tr>
-					<td width="215" align="left" class="defined"> 1.- No. DE REGISTRO AMBIENTAL </td>
-					<td width="170">  '. $datos_empresa->numero_registro_ambiental .' </td>
+					<td width="200" align="left" class="defined"> 1.- No. DE REGISTRO AMBIENTAL </td>
+					<td width="195">  '. $datos_empresa->numero_registro_ambiental .' </td>
 					<td width="90"  class="defined"> 2.- NO. MANIFIESTO </td>
 					<td width="67" style="color: red;"> '. $residuos_manifiesto[0]->id_cliente . "-" . $residuos_manifiesto[0]->folio .' </td>
-					<td width="67"  class="defined">  PÁGINA ' . ($h+1) . '/' . $num_table_res . ' </td>
+					<td width="57"  class="defined">  PÁGINA ' . ($h+1) . '/' . $num_table_res . ' </td>
 				</tr>
 				<tr>
-					<td width="215" align="left" class="defined"> 3.- RAZÓN SOCIAL DE LA EMPRESA GENERADORA </td>
-					<td width="394" align="center"> '. $datos_empresa->nombre_empresa .' </td>
+					<td width="200" align="left" class="defined"> 3.- RAZÓN SOCIAL DE LA EMPRESA GENERADORA </td>
+					<td width="409" align="center"> '. $datos_empresa->nombre_empresa .' </td>
 				</tr>
 				<tr>
-					<td width="215" align="left" class="defined"> 4.- DOMICILIO </td>
-					<td width="260" align="center"> '. $datos_empresa->calle_empresa .', ' . $datos_empresa->colonia_empresa . ' </td>
-					<td width="67" align="center" class="defined"> C.P. </td>
-					<td width="67" align="center"> '. $datos_empresa->cp_empresa .' </td>
+					<td width="47" align="left" class="defined">DOMICILIO</td>
+					<td width="75" align="center" class="defined">CÓDIGO POSTAL</td>
+					<td width="39" align="center">'. $datos_empresa->cp_empresa .'</td>
+					<td width="39" align="center" class="defined">CALLE</td>
+					<td width="257" align="center">'. $datos_empresa->calle_empresa . '</td>
+					<td width="42" align="center" class="defined">NÚM EXT</td>
+					<td width="34" align="center">'. $datos_empresa->numero_empresa . '</td>
+					<td width="42" align="center" class="defined">NÚM INT</td>
+					<td width="34" align="center"> </td>
 				</tr>
 				<tr>
-					<td width="215" align="left" class="defined"> MUNICIPIO </td>
-					<td width="170" align="center"> '. $datos_empresa->municipio .' </td>
-					<td width="90" align="center" class="defined"> ESTADO </td>
-					<td width="134" align="center"> '. $datos_empresa->estado .' </td>
+					<td width="47" align="left" class="defined"> COLONIA </td>
+					<td width="117" align="center">'. $datos_empresa->colonia_empresa .'</td>
+					<td width="110" align="left" class="defined"> MUNICIPIO O DELEGACIÓN </td>
+					<td width="183" align="center">'. $datos_empresa->municipio .'</td>
+					<td width="42" align="center" class="defined"> ESTADO </td>
+					<td width="110" align="center">'. $datos_empresa->estado .'</td>
 				</tr>
 				<tr>
-					<td width="215" align="left" class="defined"> TELEFONO </td>
-					<td width="394" align="center"> '. $datos_empresa->telefono_empresa .' </td>
+					<td width="47" align="left" class="defined">TELEFONO</td>
+					<td width="190" align="center">'. $datos_empresa->telefono_empresa .'</td>
+					<td width="100" align="left" class="defined">CORREO ELECTRONICO</td>
+					<td width="272" align="center">'. $datos_empresa->correo_empresa .'</td>
 				</tr>
 				<tr>
-					<td width="342" align="left" class="defined" rowspan="2" > &nbsp;<br/> 5.- DESCRIPCIÓN (Nombre del residuo y característica CRETI)  </td>
-					<td width="43" align="center" class="defined" rowspan="2"> &nbsp;<br/> CRETI </td>
-					<td class="defined" width="90" align="center"> CONTENEDOR </td>
-					<td width="67" class="defined" rowspan="2" style="line-height:10px;"> CANTIDAD TOTAL DE RESIDUO </td>
-					<td width="67" align="center" class="defined" rowspan="2"> UNIDAD VOL/PESO </td>
+					<td width="280" align="left" class="defined" rowspan="2"> &nbsp;<br/> 5.- DESCRIPCIÓN (Nombre del residuo y característica CRETI)  </td>
+					<td width="105" align="center" class="defined"> CLASIFICACIÓN </td>
+					<td width="132" align="center" class="defined"> ENVASE </td>
+					<td width="46" align="center" class="defined" rowspan="2">CANTIDAD<br/>(KG) </td>
+					<td width="46" align="center" class="defined"> ETIQUETA</td>
 				</tr>
 				<tr> 
-					<td width="45" class="defined" style="font-size: 5pt;"> CANTIDAD </td>
-					<td width="45" class="defined" style="font-size: 5pt;"> TIPO </td>
+					<td width="15" align="center" class="defined">C</td>
+					<td width="15" align="center" class="defined">R</td>
+					<td width="15" align="center" class="defined">E</td>
+					<td width="15" align="center" class="defined">T</td>
+					<td width="15" align="center" class="defined">I</td>
+					<td width="15" align="center" class="defined">B</td>
+					<td width="15" align="center" class="defined">M</td>
+					<td width="45" class="defined" style="font-size: 5pt;">CANTIDAD</td>
+					<td width="44" class="defined" style="font-size: 5pt;">TIPO</td>
+					<td width="43" class="defined" style="font-size: 5pt;">CAPACIDAD</td>
+					<td width="23" class="defined" style="font-size: 5pt;">SI</td>
+					<td width="23" class="defined" style="font-size: 5pt;">NO</td>
 				</tr>
 
 				  	' . $table_data_html . ' 
