@@ -22,6 +22,26 @@ class Tran_vehiculo_model extends CI_Model {
 						->row();
 	}
 
+	public function get_folio_vehiculo($id){
+		return $this->db->query("
+			SELECT 
+				trv.id_vehiculo,
+				trv.id_tipo_vehiculo,
+				tv.nombre_tipo,
+				trv.alias,
+				trv.numero_placa,
+				trv.marca,
+				trv.modelo,
+				trv.status
+			from 
+				tran_vehiculos trv,
+				tipo_vehiculos tv 
+			where 
+				tv.id_tipo_vehiculo = trv.id_tipo_vehiculo and
+				trv.id_vehiculo={$id};
+			")->row();
+	}
+
 	public function alta_vehiculo($data){
 
 		if ($data["new_id_tipo"]) {

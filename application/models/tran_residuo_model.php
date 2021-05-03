@@ -51,6 +51,7 @@ class Tran_residuo_model extends CI_Model {
 				r.id_tran_residuo,
 				tf.id_tran_folio, 
 				tf.folio, 
+				tf.id_tipo_emp_destino,
 				tr.residuo as residuo,
 				r.caracteristica as caracteristica,
 				r.contenedor_cantidad,
@@ -95,8 +96,6 @@ class Tran_residuo_model extends CI_Model {
 
 		return $result;
 	}
-
-
 
 	public function inserta_tran_folio($data) {	
 

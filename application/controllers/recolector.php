@@ -343,24 +343,29 @@ class Recolector extends CI_Controller {
 	public function generar_manifiesto($id_cliente, $folio) {
 
 		$data["id_cliente"] 		= $id_cliente;
-		$data["manifiesto"] 		= $folio;
+		$data["folio"] 				= $folio;
+		$data["manifiesto"]			= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio);
 		$data["nombre_cliente"] 	= $this->persona_model->get_nombre_cliente($id_cliente);
 		$data["cliente"] 			= $this->persona_model->get_datos_empresa($id_cliente);
 		$data["nombre_empresa"] 	= $this->persona_model->get_nombre_empresa($id_cliente);
 		$data["residuos_manifiesto"]= $this->tran_residuo_model->get_residuos_manifiesto($id_cliente, $folio);
+		$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
 		$data["datos_empresa"] 		= $this->persona_model->get_datos_empresa($id_cliente);
-		$data["datos_empresa_tran"] = $this->emp_transportista_model->get_datos_emp_trans(1);
+		$data["datos_empresa_tran"] = $this->emp_transportista_model->get_datos_emp_trans(1);// default rdiaz
+		$data["datos_empresa_destino"] = $this->emp_destino_model->get_destino($data["bitacora_manifiesto"][0]->id_tipo_emp_destino);
 		$data["datos_recolector"] 	= $this->persona_model->get_nombre_cliente($this->session->userdata("id"));
 		$data["vehiculos"] 			= $this->tran_vehiculo_model->get_vehiculos();
-		$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
-
+		$data["id_vehiculo"] 		= $this->persona_model->get_recolector_vehicle($this->session->userdata('id'));
+		$data["recolector_vehiculo"]= $this->tran_vehiculo_model->get_folio_vehiculo($data["bitacora_manifiesto"][0]->folio); // en recolectores (usuario tipo 2) cp_empresa es el id del vehiculo
+		$tran_resiudos 				= $this->tran_residuo_model->get_reg_tran_residuos($id_cliente, $folio);
+		$data["ruta"]				= $tran_resiudos->ruta;
 		$data["nombre_empresas"] 	= $this->persona_model->get_datos_empresas();
 
-		// echo "<pre>";
-		// print_r($data["datos_empresa"]);
-		// echo "</pre>";
+/*		echo "<pre>";
+		print_r($data["datos_empresa_destino"]);
+		echo "</pre>";
 
-		// die();
+		die();*/
 
 		foreach ($data["nombre_empresas"] as $key => $value) {
 			$data['nombre_algoritmo'][] = $value->nombre_empresa;
