@@ -356,7 +356,7 @@ class Recolector extends CI_Controller {
 		$data["datos_recolector"] 	= $this->persona_model->get_nombre_cliente($this->session->userdata("id"));
 		$data["vehiculos"] 			= $this->tran_vehiculo_model->get_vehiculos();
 		$data["id_vehiculo"] 		= $this->persona_model->get_recolector_vehicle($this->session->userdata('id'));
-		$data["recolector_vehiculo"]= $this->tran_vehiculo_model->get_folio_vehiculo($data["bitacora_manifiesto"][0]->folio); // en recolectores (usuario tipo 2) cp_empresa es el id del vehiculo
+		$data["recolector_vehiculo"]= $this->tran_vehiculo_model->get_folio_vehiculo($data["bitacora_manifiesto"][0]->id_vehiculo); // en recolectores (usuario tipo 2) cp_empresa es el id del vehiculo
 		$tran_resiudos 				= $this->tran_residuo_model->get_reg_tran_residuos($id_cliente, $folio);
 		$data["ruta"]				= $tran_resiudos->ruta;
 		$data["nombre_empresas"] 	= $this->persona_model->get_datos_empresas();

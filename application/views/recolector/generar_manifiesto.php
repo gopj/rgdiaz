@@ -49,6 +49,14 @@ function date_manifiesto($s_date){
 ///// Testing all parameters
 
 /*echo "<pre>";
+print_r($bitacora_manifiesto);
+echo "</pre>";
+
+echo "<pre>";
+print_r($recolector_vehiculo);
+echo "</pre>";
+
+echo "<pre>";
 print_r($dups);
 echo "</pre>";
 
@@ -58,9 +66,9 @@ echo "</pre>";
 
 echo "<pre>";
 print_r($nombre_algoritmo);
-echo "</pre>";*/
+echo "</pre>";
 
-/*echo "<pre>";
+echo "<pre>";
 print_r($datos_empresa);
 echo "</pre>"; */
 

@@ -52,6 +52,7 @@ class Tran_residuo_model extends CI_Model {
 				tf.id_tran_folio, 
 				tf.folio, 
 				tf.id_tipo_emp_destino,
+				tf.id_vehiculo,
 				tr.residuo as residuo,
 				r.caracteristica as caracteristica,
 				r.contenedor_cantidad,
