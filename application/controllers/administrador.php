@@ -394,24 +394,25 @@ class Administrador extends CI_Controller {
 		$ruta_anterior = "clientes/";
 		$ruta = $this->carpeta_model->obtiene_ruta($this->input->post('id_persona'),$ruta_anterior);
 		$data = array (
-						   'id_persona' =>$persona->id_persona,
-        				   'nombre' => $persona->nombre,
-        				   'correo' => $persona->correo,
-        				   'telefono_personal' => $persona->telefono_personal,
-        				   'telefono_personal_alt' => $persona->telefono_personal_alt, 
-        				   'nombre_empresa' => $persona->nombre_empresa,
-        				   'calle_empresa' => $persona->calle_empresa,
-        				   'correo_empresa' => $persona->correo_empresa,
-        				   'cp_empresa' => $persona->cp_empresa,
-        				   'colonia_empresa' => $persona->colonia_empresa,
-        				   'numero_empresa' => $persona->numero_empresa,
-        				   'id_status_persona' => $persona->id_status_persona,
-        				   'municipio' => $persona->municipio,
-        				   'estado' => $persona->estado,
-        				   'telefono_empresa' => $persona->telefono_empresa,
-        				   'numero_registro_ambiental' => $persona->numero_registro_ambiental,
-        				   'password_contacto' =>$persona->password,
-        				   'ruta' => $ruta->ruta_carpeta
+							'id_persona' =>$persona->id_persona,
+							'nombre' => $persona->nombre,
+							'correo' => $persona->correo,
+							'telefono_personal' => $persona->telefono_personal,
+							'telefono_personal_alt' => $persona->telefono_personal_alt, 
+							'nombre_empresa' => $persona->nombre_empresa,
+							'calle_empresa' => $persona->calle_empresa,
+							'correo_empresa' => $persona->correo_empresa,
+							'cp_empresa' => $persona->cp_empresa,
+							'colonia_empresa' => $persona->colonia_empresa,
+							'numero_empresa' => $persona->numero_empresa,
+							'id_status_persona' => $persona->id_status_persona,
+							'municipio' => $persona->municipio,
+							'estado' => $persona->estado,
+							'telefono_empresa' => $persona->telefono_empresa,
+							'numero_registro_ambiental' => $persona->numero_registro_ambiental,
+							'identificador_folio' => $persona->identificador_folio,
+							'password_contacto' =>$persona->password,
+							'ruta' => $ruta->ruta_carpeta
 						);
 		echo json_encode($data);
 	}

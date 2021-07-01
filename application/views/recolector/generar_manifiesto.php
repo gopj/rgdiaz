@@ -105,10 +105,6 @@ $r = 0;
 $table_data_html = '';
 $residuo_final="";
 
-
-/// Datos Empresa
-$domicilio_empresa = $datos_empresa->calle_empresa . ' #' . $datos_empresa->numero_empresa . ', ' . $datos_empresa->colonia_empresa ;
-
 // Funcion Eitqueta
 
 function funcion_etiqueta($data){
@@ -167,7 +163,7 @@ function funcion_clasificacion($data){
 
 //funcion_clasificacion('B M');
 
-//Llenar array de arr_residuos_manifiesto
+//Llenado de array de arr_residuos_manifiesto
 for ($i=0; $i < $num_table_res; $i++) { 
 	
 	for ($j=0; $j < $nrs; $j++) {

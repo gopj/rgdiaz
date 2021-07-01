@@ -97,6 +97,13 @@
 					</span>
 					<input class="txt-well" id="numero_registro_ambiental" name="numero_registro_ambiental" type='text'>
 				</div>
+				Identificador Fólio
+				<div class='input-prepend'>
+					<span class='add-on'>
+						<img src="img/glyphicons_029_notes_2.png" class="icon-form">
+					</span>
+					<input class="txt-well" id="identificador_folio" name="identificador_folio" type='text'>
+				</div>
 				Colonia
 				<div class='input-prepend'>
 					<span class='add-on'>

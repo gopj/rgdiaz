@@ -493,7 +493,7 @@ function envia_correo_admin(){
 				asunto: asun,
 				mensaje:mens
 			}
-		}).done(
+		}).done(:
 			function(resp) {
 				var miJson = jQuery.parseJSON(resp);
 
@@ -521,6 +521,7 @@ function confir_act_admin(){
 	var calle_empresa = document.getElementById('calle_empresa');
 	var numero_empresa = document.getElementById('numero_empresa');
 	var email_empresa = document.getElementById('email_empresa');
+	var identificador_folio = document.getElementById('identificador_folio');
 
 	var nombre_contacto = document.getElementById('nombre_contacto');
 	var telefono_contacto = document.getElementById('telefono_contacto');
@@ -551,6 +552,10 @@ function confir_act_admin(){
 		valida = false;
 	}else if(!telefono_contacto.value){
 		alert("EL TELEFONO ES REQUERIDO");
+		telefono_contacto.focus();
+		valida = false;
+	}else if(!identificador_folio.value){
+		alert("EL IDENTIFICADOR FOLIO ES REQUERIDO PARA LA GENERACION DE MANIFIESTOS");
 		telefono_contacto.focus();
 		valida = false;
 	}
