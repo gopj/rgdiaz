@@ -103,7 +103,7 @@
 						<img src="img/glyphicons_029_notes_2.png" class="icon-form">
 					</span>
 					<input class="txt-well" id="identificador_folio" name="identificador_folio" type='text' style="width: 60%;"> 
-					<button class="btn btn-primary btn-mini">Gen</button>
+					<button type="button" onclick="gen_identificador_folio();" class="btn btn-primary btn-mini">Gen</button>
 				</div>
 				Colonia
 				<div class='input-prepend'>

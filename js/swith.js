@@ -593,30 +593,35 @@ function enable_fields(){
 	$("#activar_campos").prop('disabled', true);
 }
 
-function generar_identificador_folio(nombre_string) {
-	//var array_string = str_split(nombre_string);
+function gen_identificador_folio() {
+	var nombre_empresa = document.getElementById('nombre_empresa');
+	var nombre_empresa_val = nombre_empresa.value;
+	var nombre = nombre_empresa_val.toUpperCase();
+	
+	var nombre_split = nombre.replace(' Y ', ' ');
+	var nombre_abr = '';
 
-	var new_folio_name = '';
+	nombre_split = nombre_split.replace(' DE ', ' ');
+	nombre_split = nombre_split.split(' ');
 
-
-	/*for (var i = Things.length - 1; i >= 0; i--) {
-		Things[i]
+	for ( var i = 0 ; i < nombre_split.length ; i++ ) {
+		nombre_abr += nombre_split[i].charAt(0);
 	}
-	foreach ($array_string as $value) {
-		if (preg_match('/[A-Z]/', $value)) {
-			$new_folio_name .= $value;
-		}
+
+	nombre_abr = nombre_abr.replace(/[^a-zA-Z0-9]/g,'');
+
+	if (nombre_abr.length > 6) {
+		nombre_abr = nombre_abr.replace('SACV', '');
+		nombre_abr = nombre_abr.replace('SRLCV', '');
+		nombre_abr = nombre_abr.replace('SAPICV', '');
+		nombre_abr = nombre_abr.replace('SAPIDECV', '');
+		nombre_abr = nombre_abr.replace('SADECV', '');
+		nombre_abr = nombre_abr.replace('SADCV', '');
+		nombre_abr = nombre_abr.replace('SDERLDECV', '');
+
+		nombre_abr = nombre_abr.substr(0, 4); // 4 Es el numero maximo para el folio 
 	}
 
-	if (strlen($new_folio_name) > 6) {
-		$new_folio_name = str_replace('SACV', '', $new_folio_name);
-		$new_folio_name = str_replace('SRLCV', '', $new_folio_name);
-		$new_folio_name = str_replace('SAPICV', '', $new_folio_name);
-		$new_folio_name = str_replace('SAPIDECV', '', $new_folio_name);
-		$new_folio_name = str_replace('SADECV', '', $new_folio_name);
-		$new_folio_name = str_replace('SADCV', '', $new_folio_name);
-		$new_folio_name = str_replace('SDERLDECV', '', $new_folio_name);
-	} 
+	$("#identificador_folio").val(nombre_abr);
 
-	return $new_folio_name;*/
 }
