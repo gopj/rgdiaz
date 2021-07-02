@@ -1071,6 +1071,7 @@ class Administrador extends CI_Controller {
 				$estado = $this->input->post('estado');
 				$telefono_empresa = $this->input->post('telefono_empresa'); 
 				$numero_registro_ambiental = $this->input->post('numero_registro_ambiental'); 
+				$identificador_folio = $this->input->post('identificador_folio'); 
 				
 				$id_persona = $this->input->post('id_persona');
 				
@@ -1090,7 +1091,8 @@ class Administrador extends CI_Controller {
 															$municipio,
 															$estado,
 															$telefono_empresa,
-															$numero_registro_ambiental);
+															$numero_registro_ambiental,
+															$identificador_folio);
 				redirect('administrador/admin_clientes');
 			}
 		} else {

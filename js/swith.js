@@ -592,3 +592,31 @@ function enable_fields(){
 	$("#password_contacto").prop('readonly', false);
 	$("#activar_campos").prop('disabled', true);
 }
+
+function generar_identificador_folio(nombre_string) {
+	//var array_string = str_split(nombre_string);
+
+	var new_folio_name = '';
+
+
+	/*for (var i = Things.length - 1; i >= 0; i--) {
+		Things[i]
+	}
+	foreach ($array_string as $value) {
+		if (preg_match('/[A-Z]/', $value)) {
+			$new_folio_name .= $value;
+		}
+	}
+
+	if (strlen($new_folio_name) > 6) {
+		$new_folio_name = str_replace('SACV', '', $new_folio_name);
+		$new_folio_name = str_replace('SRLCV', '', $new_folio_name);
+		$new_folio_name = str_replace('SAPICV', '', $new_folio_name);
+		$new_folio_name = str_replace('SAPIDECV', '', $new_folio_name);
+		$new_folio_name = str_replace('SADECV', '', $new_folio_name);
+		$new_folio_name = str_replace('SADCV', '', $new_folio_name);
+		$new_folio_name = str_replace('SDERLDECV', '', $new_folio_name);
+	} 
+
+	return $new_folio_name;*/
+}
