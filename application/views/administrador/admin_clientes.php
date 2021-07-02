@@ -36,7 +36,7 @@
 				<span class='add-on'>
 					<img src="img/glyphicons_003_user.png" class="icon-form">
 				</span>
-				<select onchange="compruebausuario(this.value)"  id="id_persona" name="id_persona" style="width: 400px;">
+				<select onchange="compruebausuario(this.value);"  id="id_persona" name="id_persona" style="width: 400px;">
 						<option value="">Selecciona Cliente</option>
 					<?php foreach($todosclientes->result() as $row){ ?>
 						<option value="<?php echo $row->id_persona;?>"><?php echo $row->nombre_empresa; ?></option>

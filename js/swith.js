@@ -184,7 +184,7 @@ function compruebausuario(id){
 	$("#persona_bitacora").val("");
 	$("#ruta").val("");
 
-	alert("HI");
+	alert(id);
 
 	$("#nombre_contacto").val("");
 	$("#telefono_contacto").val("");

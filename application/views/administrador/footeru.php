@@ -132,7 +132,7 @@
 	                
 	                $('.dropdown-toggle').dropdown();
 
-	                	document.getElementById("file").onchange = function () {
+	                	document.getElementById("file").onchange = this.value;
     					document.getElementById("name").value = this.value;
 					};
 	            });
