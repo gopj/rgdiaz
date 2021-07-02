@@ -10,6 +10,7 @@ function activarSalidas() {
 }
 
 try {
+    //var inputs = document.getElementsByType('my-input-class');
     var inputs = document.getElementsByTagName('my-input-class');
     
     for(var i = 0; i < inputs.length; i++) {
