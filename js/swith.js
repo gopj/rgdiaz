@@ -1,7 +1,6 @@
 // Global variable for host
 var host="localhost/rgdiaz";
 
-
 function swith(){
 	// Preguntamos confirmar dar de alta cliente
 	var formulario = document.getElementById('form_alta_cliente');
@@ -170,6 +169,8 @@ function eliminar_carpeta(){
 	}
 }
 function compruebausuario(id){
+	var id_per = id;
+
 	$("#nombre_empresa").val("");
 	$("#cp_empresa").val("");
 	$("#colonia_empresa").val("");
@@ -183,9 +184,6 @@ function compruebausuario(id){
 	$("#persona_expediente").val("");
 	$("#persona_bitacora").val("");
 	$("#ruta").val("");
-
-	alert(id);
-
 	$("#nombre_contacto").val("");
 	$("#telefono_contacto").val("");
 	$("#telefono_contacto_alt").val("");
@@ -194,7 +192,6 @@ function compruebausuario(id){
 	$("#estado_cuenta").val("");
 
 
-	var id_per = id;
 	if(id_per == 0){
 		$("#btn_expediente").attr('disabled','disabled');
 		$("#btn_bitacora").attr('disabled','disabled');
@@ -369,7 +366,6 @@ function alta_cliente_admin(){
 	var telefono_empresa = document.getElementById('telEmp');
 	var numero_registro_ambiental = document.getElementById('numRegAmb');
 
-
 	var nombreContacto = document.getElementById('nomCont');
 	var telefonoContacto = document.getElementById('telCont');
 	var emailContacto = document.getElementById('emailCont');
@@ -495,7 +491,7 @@ function envia_correo_admin(){
 				asunto: asun,
 				mensaje:mens
 			}
-		}).done(:
+		}).done(
 			function(resp) {
 				var miJson = jQuery.parseJSON(resp);
 

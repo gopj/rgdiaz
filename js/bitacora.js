@@ -9,8 +9,14 @@ function activarSalidas() {
 
 }
 
-
-var inputs = document.getElementsByType('my-input-class');
-for(var i = 0; i < inputs.length; i++) {
-    inputs[i].disabled = false;
+try {
+    var inputs = document.getElementsByTagName('my-input-class');
+    
+    for(var i = 0; i < inputs.length; i++) {
+        inputs[i].disabled = false;
+    }
+} catch (error) {
+  console.error(error);
+  // expected output: ReferenceError: nonExistentFunction is not defined
+  // Note - error messages will vary depending on browser
 }

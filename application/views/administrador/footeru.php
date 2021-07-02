@@ -130,11 +130,11 @@
 	                	"aaSorting": [[0,'asc'], [1,'asc']]
 	                });
 	                
-	                $('.dropdown-toggle').dropdown();
+	                /*$('.dropdown-toggle').dropdown();
 
 	                	document.getElementById("file").onchange = this.value;
     					document.getElementById("name").value = this.value;
-					};
+					};*/
 	            });
 	            $('body').on('click', function (e) {
 	    			$('[data-toggle="popover"]').each(function () {
