@@ -241,7 +241,7 @@ class Persona_model extends CI_Model {
 										   $telefono_personal,$telefono_personal_alt,$password_contacto,$nombre_empresa,
 										   $id_status_persona,$calle_empresa,
 										   $correo_empresa,$cp_empresa,$colonia_empresa,
-										   $numero_empresa,$municipio,$estado,$telefono_empresa, $numero_registro_ambiental){
+										   $numero_empresa,$municipio,$estado,$telefono_empresa, $numero_registro_ambiental, $identificador_folio){
 		return $this->db->set('nombre',$nombre)
 						->set('correo',$correo)
 						->set('telefono_personal',$telefono_personal)
@@ -258,6 +258,7 @@ class Persona_model extends CI_Model {
 						->set('estado',$estado)
 						->set('telefono_empresa',$telefono_empresa)
 						->set('numero_registro_ambiental',$numero_registro_ambiental)
+						->set('identificador_folio',$identificador_folio)
 						->where('id_persona',$id_persona)
 						->update('persona');
 	}
