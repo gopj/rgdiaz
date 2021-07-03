@@ -132,7 +132,7 @@ class Recolector extends CI_Controller {
 
 			if ($this->input->post()) {
 
-				$folio = $this->tran_residuo_model->get_bitacora_count($id_cliente);
+				$data["folio"]				= $this->tran_residuo_model->get_bitacora_count($id_cliente);
 				$fecha_embarque 			= date_create_from_format("d/m/Y", $this->input->post("fecha_embarque"));
 
 				$data["id_cliente"] 		= $id_cliente;
@@ -152,7 +152,7 @@ class Recolector extends CI_Controller {
 				$data["id_vehiculo"]		= $this->input->post("id_vehiculo");
 
 				$data["caracteristicas"] 	= "";
-				$data["folio"]				= $this->persona_model->get_datos_empresa($id_cliente)->identificador_folio . '-' . $folio;
+				$data["folio_identificador"]= $this->persona_model->get_datos_empresa($id_cliente)->identificador_folio . '-' . $data["folio"];
 
 				foreach ($data["caracteristica_r"] as $key => $value) {
 					$data["caracteristicas"] .= $value . " ";
@@ -164,7 +164,7 @@ class Recolector extends CI_Controller {
 				$this->tran_residuo_model->inserta_tran_residuo($data);
 
 				$data["datos_persona"]		= '';
-				$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
+				$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $data["folio"]);
 				$data["fecha_embarque"]		= date_format($fecha_embarque, "d/m/Y");
 
 				$this->load->view("recolector/header", $data);
@@ -276,6 +276,10 @@ class Recolector extends CI_Controller {
 				$data["fecha_embarque"]		= date_format($fecha_embarque, "Y-m-d");
 				$data["responsable_tecnico"]= $this->input->post("terminar_responsable");
 
+				echo "<pre>";
+				print_r($data);
+				echo "</pre>";
+
 				$this->tran_residuo_model->terminar_manifiesto($id_cliente, $folio);
 
 				$data["id_cliente"] = $id_cliente;
@@ -361,12 +365,6 @@ class Recolector extends CI_Controller {
 		$tran_resiudos 				= $this->tran_residuo_model->get_reg_tran_residuos($id_cliente, $folio);
 		$data["ruta"]				= $tran_resiudos->ruta;
 		$data["nombre_empresas"] 	= $this->persona_model->get_datos_empresas();
-
-		// echo "<pre>";
-		// print_r($data["recolector_vehiculo"]);
-		// echo "</pre>";
-
-		// die();
 
 		$this->load->view("recolector/generar_manifiesto.php", $data);
 

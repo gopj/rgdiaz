@@ -104,7 +104,7 @@ class Tran_residuo_model extends CI_Model {
 			->set('id_persona'			, $data['id_cliente'])
 			->set('id_tipo_emp_destino'	, $data['id_emp_destino'])
 			->set('id_recolector' 		, $data["id_recolector"])
-			->set('folio' 				, $data["folio"])
+			->set('folio' 				, $data["folio_identificador"])
 			->set('fecha_embarque' 		, $data['fecha_embarque'])
 			->set('responsable_tecnico'	, $data['responsable_tecnico'])
 			->set('status' 				, 'W')
@@ -168,33 +168,19 @@ class Tran_residuo_model extends CI_Model {
 		return $this->db->query(" DELETE FROM tran_folios where id_tran_folio={$id};");	
 	}
 
-/*	public function update_regs($id_cliente, $folio, $data){
-		$sql_text = "
-			UPDATE 
-				tran_residuos 
-			SET 
-				id_tipo_emp_destino = {$data["id_emp_destino"]}, 
-				responsable_tecnico = '{$data["responsable_tecnico"]}',
-				fecha_ingreso = '{$data["fecha_embarque"]}'
-			WHERE 
-				id_persona={$id_cliente} and folio={$folio};
-		";
+	public function update_recolector($data){
+		return $this->db->set('nombre',				$data['nombre'])
+						->set('correo',				$data['correo'])
+						->set('password',			$data['clave'])
+						->where('id_persona',		$data['id_persona'])
+						->update('persona');
+	}
 
-		$this->db->query($sql_text);
-	}*/
-
-	public function terminar_manifiesto($id_cliente, $folio) {	
-
-		$sql_text = "
-				UPDATE 
-					tran_folios 
-				SET 
-					status='R'
-				WHERE 
-					id_persona={$id_cliente} and folio={$folio};
-		";
-
-		return $this->db->query($sql_text);
+	public function terminar_manifiesto($id_cliente, $folio) {
+		return $this->db->set('status',			'R')
+						->where('id_persona',	$id_cliente)
+						->where('folio',		$folio)
+						->update('tran_folios');
 	}
 
 	public function get_residuos_manifiesto($id_cliente, $folio){

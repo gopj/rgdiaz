@@ -1,4 +1,14 @@
-<?php $total_reg = count($bitacora_manifiesto); ?>
+<?php $total_reg = count($bitacora_manifiesto); 
+
+echo "<pre>";
+print_r($id_cliente);
+echo "</pre>";
+
+echo "<pre>";
+print_r($folio);
+echo "</pre>";
+
+?>
 
 <main role="main" class="container" style="padding-top:-10px;">
 	<center><h2 class="bd-title" id="content"><h2>Crear Manifiesto | <?= $id_cliente . "-" . $folio; ?></h2></center>
