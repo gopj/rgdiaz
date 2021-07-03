@@ -152,7 +152,7 @@ class Recolector extends CI_Controller {
 				$data["id_vehiculo"]		= $this->input->post("id_vehiculo");
 
 				$data["caracteristicas"] 	= "";
-				$data["folio"]				= $folio;
+				$data["folio"]				= $this->persona_model->get_datos_empresa($id_cliente)->identificador_folio . '-' . $folio;
 
 				foreach ($data["caracteristica_r"] as $key => $value) {
 					$data["caracteristicas"] .= $value . " ";
@@ -163,6 +163,7 @@ class Recolector extends CI_Controller {
 				// Inserta Manifiesto
 				$this->tran_residuo_model->inserta_tran_residuo($data);
 
+				$data["datos_persona"]		= '';
 				$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
 				$data["fecha_embarque"]		= date_format($fecha_embarque, "d/m/Y");
 
@@ -356,57 +357,21 @@ class Recolector extends CI_Controller {
 		$data["datos_recolector"] 	= $this->persona_model->get_nombre_cliente($this->session->userdata("id"));
 		$data["vehiculos"] 			= $this->tran_vehiculo_model->get_vehiculos();
 		$data["id_vehiculo"] 		= $this->persona_model->get_recolector_vehicle($this->session->userdata('id'));
-		$data["recolector_vehiculo"]= $this->tran_vehiculo_model->get_folio_vehiculo($data["bitacora_manifiesto"][0]->id_vehiculo); // en recolectores (usuario tipo 2) cp_empresa es el id del vehiculo
+		$data["recolector_vehiculo"]= $this->tran_vehiculo_model->get_folio_vehiculo((int) $data["id_vehiculo"]->cp_empresa); // en recolectores (usuario tipo 2) cp_empresa es el id del vehiculo
 		$tran_resiudos 				= $this->tran_residuo_model->get_reg_tran_residuos($id_cliente, $folio);
 		$data["ruta"]				= $tran_resiudos->ruta;
 		$data["nombre_empresas"] 	= $this->persona_model->get_datos_empresas();
 
-/*		echo "<pre>";
-		print_r($data["datos_empresa_destino"]);
-		echo "</pre>";
+		// echo "<pre>";
+		// print_r($data["recolector_vehiculo"]);
+		// echo "</pre>";
 
-		die();*/
-
-		foreach ($data["nombre_empresas"] as $key => $value) {
-			$data['nombre_algoritmo'][] = $value->nombre_empresa;
-		}
-
-		foreach ($data['nombre_algoritmo'] as $key => $value) {
-			$data['new_string'][] = $this->generar_nombre_folio($data['nombre_algoritmo'][$key]) . ', ' . strlen($this->generar_nombre_folio($data['nombre_algoritmo'][$key]));
-		}
-
-		$data["dups"] = array();
-		foreach(array_count_values($data['new_string']) as $val => $c){
-			if($c > 1) $data["dups"][] = $val;
-		}
+		// die();
 
 		$this->load->view("recolector/generar_manifiesto.php", $data);
 
 	}
-
-	public function generar_nombre_folio($nombre_string) {
-		$array_string = str_split($nombre_string);
-
-		$new_folio_name = '';
-		foreach ($array_string as $value) {
-			if (preg_match('/[A-Z]/', $value)) {
-				$new_folio_name .= $value;
-			}
-		}
-
-		if (strlen($new_folio_name) > 6) {
-			$new_folio_name = str_replace('SACV', '', $new_folio_name);
-			$new_folio_name = str_replace('SRLCV', '', $new_folio_name);
-			$new_folio_name = str_replace('SAPICV', '', $new_folio_name);
-			$new_folio_name = str_replace('SAPIDECV', '', $new_folio_name);
-			$new_folio_name = str_replace('SADECV', '', $new_folio_name);
-			$new_folio_name = str_replace('SADCV', '', $new_folio_name);
-			$new_folio_name = str_replace('SDERLDECV', '', $new_folio_name);
-		} 
-
-		return $new_folio_name;
-	}
-
+	
 	public function get_cliente() {
 		
 		$cliente = $this->persona_model->obtiene_cliente($this->input->post('id_persona'));

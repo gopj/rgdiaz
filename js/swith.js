@@ -190,7 +190,7 @@ function compruebausuario(id){
 	$("#email_contacto").val("");
 	$("#password_contacto").val("");
 	$("#estado_cuenta").val("");
-
+	$("#identificador_folio").val("");
 
 	if(id_per == 0){
 		$("#btn_expediente").attr('disabled','disabled');
@@ -234,6 +234,7 @@ function compruebausuario(id){
 				var estado = miJson.estado;
 				var telefono_empresa = miJson.telefono_empresa;
 				var numero_registro_ambiental = miJson.numero_registro_ambiental;
+				var identificador_folio = miJson.identificador_folio;
 				var ruta_carpeta = "clientes/"+id_persona;
 				if(status_persona == 1){
 					var status_persona = "Activo";
@@ -257,6 +258,7 @@ function compruebausuario(id){
 				$("#persona_expediente").val(id_persona);
 				$("#persona_bitacora").val(id_persona);
 				$("#ruta").val(ruta);
+				$("#identificador_folio").val(identificador_folio);
 
 				$("#nombre_contacto").val(nombre);
 				$("#telefono_contacto").val(telefono_personal);

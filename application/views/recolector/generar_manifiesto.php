@@ -46,31 +46,12 @@ function date_manifiesto($s_date){
 
 	return $date;
 }
-///// Testing all parameters
 
-/*echo "<pre>";
-print_r($bitacora_manifiesto);
-echo "</pre>";
+///// Testing parameters
 
-echo "<pre>";
-print_r($recolector_vehiculo);
-echo "</pre>";
-
-echo "<pre>";
-print_r($dups);
-echo "</pre>";
-
-echo "<pre>";
-print_r($new_string);
-echo "</pre>";
-
-echo "<pre>";
-print_r($nombre_algoritmo);
-echo "</pre>";
-
-echo "<pre>";
-print_r($datos_empresa);
-echo "</pre>"; */
+// echo "<pre>";
+// print_r($datos_empresa);
+// echo "</pre>"; 
 
 // create new PDF document
 $pdf = new MY_PDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);

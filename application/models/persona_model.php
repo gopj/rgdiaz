@@ -242,25 +242,37 @@ class Persona_model extends CI_Model {
 										   $id_status_persona,$calle_empresa,
 										   $correo_empresa,$cp_empresa,$colonia_empresa,
 										   $numero_empresa,$municipio,$estado,$telefono_empresa, $numero_registro_ambiental, $identificador_folio){
-		return $this->db->set('nombre',$nombre)
-						->set('correo',$correo)
-						->set('telefono_personal',$telefono_personal)
-						->set('telefono_personal_alt',$telefono_personal_alt)
-						->set('password',$password_contacto)
-						->set('nombre_empresa',$nombre_empresa)
-						->set('id_status_persona',$id_status_persona)
-						->set('calle_empresa',$calle_empresa)
-						->set('correo_empresa',$correo_empresa)
-						->set('cp_empresa',$cp_empresa)
-						->set('colonia_empresa',$colonia_empresa)
-						->set('numero_empresa',$numero_empresa)
-						->set('municipio',$municipio)
-						->set('estado',$estado)
-						->set('telefono_empresa',$telefono_empresa)
-						->set('numero_registro_ambiental',$numero_registro_ambiental)
-						->set('identificador_folio',$identificador_folio)
+
+		$status_ident_folio = $this->db->query('select count(*) as count from rdiaz.persona where identificador_folio=\'' . $identificador_folio . '\';')->row();
+
+		$this->db->set('nombre',$nombre)
+					->set('correo',$correo)
+					->set('telefono_personal',$telefono_personal)
+					->set('telefono_personal_alt',$telefono_personal_alt)
+					->set('password',$password_contacto)
+					->set('nombre_empresa',$nombre_empresa)
+					->set('id_status_persona',$id_status_persona)
+					->set('calle_empresa',$calle_empresa)
+					->set('correo_empresa',$correo_empresa)
+					->set('cp_empresa',$cp_empresa)
+					->set('colonia_empresa',$colonia_empresa)
+					->set('numero_empresa',$numero_empresa)
+					->set('municipio',$municipio)
+					->set('estado',$estado)
+					->set('telefono_empresa',$telefono_empresa)
+					->set('numero_registro_ambiental',$numero_registro_ambiental)
+					->where('id_persona',$id_persona)
+					->update('persona');
+		
+		if ($status_ident_folio->count == 0) {
+			return $this->db->set('identificador_folio',$identificador_folio)
 						->where('id_persona',$id_persona)
 						->update('persona');
+			
+		} else {
+			return 'Folio duplicado, favor de elejir otro nombre';
+		}
+		
 	}
 
 	public function update_password($id_persona,$password){
