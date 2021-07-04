@@ -315,7 +315,7 @@ for ($h=0; $h < $num_table_res; $h++) {
 					<td width="200" align="left" class="defined"> 1.- No. DE REGISTRO AMBIENTAL </td>
 					<td width="195">  '. $datos_empresa->numero_registro_ambiental .' </td>
 					<td width="90"  class="defined"> 2.- NO. MANIFIESTO </td>
-					<td width="67" style="color: red;"> '. $residuos_manifiesto[0]->id_cliente . "-" . $residuos_manifiesto[0]->folio .' </td>
+					<td width="67" style="color: red;"> '. $folio_identificador .' </td>
 					<td width="57"  class="defined">  PÁGINA ' . ($h+1) . '/' . $num_table_res . ' </td>
 				</tr>
 				<tr>

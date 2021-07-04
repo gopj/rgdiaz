@@ -90,8 +90,8 @@ class Tran_residuo_model extends CI_Model {
 					LEFT JOIN tipo_emp_destino ed ON (tf.id_tipo_emp_destino = ed.id_tipo_emp_destino)
 			WHERE
 				r.id_tipo_residuo = tr.id_tipo_residuo and
-				id_persona 	= {$id_cliente} and 
-				folio 		= {$folio}
+				id_persona 	 = {$id_cliente} and 
+				id_tran_folio= {$folio}
 			LIMIT 1;
 		")->row();
 
