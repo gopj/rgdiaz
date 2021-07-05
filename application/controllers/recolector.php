@@ -33,7 +33,7 @@ class Recolector extends CI_Controller {
 			$id_tipo_persona 			= 3;
 			$lleno_datos 				= 1;	// <-- Mandamos 1 para que nos cargue solo a los clientes que ya cargaron sus datos
 			$data["id"]					= $this->session->userdata('id');
-			$data["tclientes"]			= $this->persona_model->obtienetodoclientes($id_tipo_persona,$lleno_datos);
+			$data["tclientes"]			= $this->persona_model->obtienetodoclientes($id_tipo_persona, $lleno_datos);
 			$data["recolector"]			= $this->persona_model->get_datos_empresa($this->session->userdata('id'));
 			$data["vehiculos"] 			= $this->tran_vehiculo_model->get_vehiculos();
 			
