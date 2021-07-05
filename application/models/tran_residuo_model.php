@@ -11,14 +11,15 @@ class Tran_residuo_model extends CI_Model {
 		
 		$result = $this->db->query("
 			SELECT 
-				tf.id_tran_folio as folio,
+				tf.id_tran_folio,
 				ed.nombre_destino as empresa_destino,
 				tf.id_recolector,
 				tf.fecha_embarque,
 				tf.responsable_tecnico,
 				tf.status,
 				tf.ruta,
-				tf.observaciones
+				tf.observaciones,
+				tf.folio
 			FROM
 				tran_folios as tf
 					LEFT JOIN tipo_emp_destino ed ON (tf.id_tipo_emp_destino = ed.id_tipo_emp_destino)
@@ -29,16 +30,33 @@ class Tran_residuo_model extends CI_Model {
 		return $result;
 	}
 
-	public function get_bitacora_count($id_cliente){
+	public function get_folios_count($id_cliente){
 		
-		$result = @$this->db->query("
+		$result = $this->db->query("
 			SELECT AUTO_INCREMENT FROM information_schema.tables WHERE table_schema='rdiaz' AND table_name='tran_folios';
 		")->row();
 
-		$result = @$result->AUTO_INCREMENT;
+		$result = $result->AUTO_INCREMENT;
 
 		if ($result == 0) {
 			$result = 1;
+		}
+
+		return $result;
+	}
+
+	public function get_bitacora_count($id_cliente){
+
+		$result = $this->db->query("
+			select count(*) as total from tran_folios where id_persona = {$id_cliente};
+		")->row();
+
+		$result = $result->total;
+
+		if ($result == 0) {
+			$result = 1;
+		} else {
+			$result = $result + 1;
 		}
 
 		return $result;
@@ -123,7 +141,7 @@ class Tran_residuo_model extends CI_Model {
 		}
 
 		$this->db
-				->set('id_folio'			, $data['folio'])
+				->set('id_folio'			, $data['id_folio'])
 				->set('id_tipo_residuo'		, $data['residuo'])
 				->set('caracteristica'		, $data['caracteristicas'])
 				->set('contenedor_cantidad'	, $data['cont_cantidad'])
@@ -179,7 +197,7 @@ class Tran_residuo_model extends CI_Model {
 	public function terminar_manifiesto($id_cliente, $folio) {
 		return $this->db->set('status',			'R')
 						->where('id_persona',	$id_cliente)
-						->where('folio',		$folio)
+						->where('id_tran_folio',$folio)
 						->update('tran_folios');
 	}
 

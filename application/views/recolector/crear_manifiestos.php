@@ -1,17 +1,21 @@
 <?php $total_reg = count($bitacora_manifiesto); 
 
-echo "<pre>";
-print_r($id_cliente);
-echo "</pre>";
+// echo "<pre>";
+// print_r($bitacora_manifiesto);
+// echo "</pre>";
 
-echo "<pre>";
-print_r($folio);
-echo "</pre>";
+// echo "<pre>";
+// print_r($id_cliente);
+// echo "</pre>";
+
+// echo "<pre>";
+// print_r($folio);
+// echo "</pre>";
 
 ?>
 
 <main role="main" class="container" style="padding-top:-10px;">
-	<center><h2 class="bd-title" id="content"><h2>Crear Manifiesto | <?= $id_cliente . "-" . $folio; ?></h2></center>
+	<center><h2 class="bd-title" id="content"><h2>Crear Manifiesto | <?= $folio_identificador ?></h2></center>
 	<hr>
 	<form id="form_manifiesto_recolector" action="<?= site_url('recolector/crear_manifiestos/' . $id_cliente . '/' . $folio); ?>" method="post" novalidate>
 		<div class="col-md-12">
@@ -251,7 +255,7 @@ echo "</pre>";
 								</td>
 							<?php } else { ?>
 								<td style="text-align: center;"> 
-								<a href="<?=site_url('recolector/eliminar_tran_residuo/' . $id_cliente . '/' . $key->folio . '/' . $key->id_tran_residuo);?>" class="btn btn-danger btn-sm btn-block" role="button"> Eliminar </a> 
+								<a href="<?=site_url('recolector/eliminar_tran_residuo/' . $id_cliente . '/' . $key->folio . '/' . $key->id_tran_residuo);?>" class="btn btn-danger btn-sm" role="button"> Eliminar </a> 
 							</td>
 							<?php } ?>
 						</tr>
