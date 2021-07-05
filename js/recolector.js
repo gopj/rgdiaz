@@ -35,6 +35,7 @@ function get_cliente(id){
 				var estado = json_data.estado;
 				var telefono = json_data.telefono_empresa;
 				var email = json_data.correo_empresa;
+				var identificador_folio = json_data.identificador_folio;
 
 				$("#nombre_empresa").val(nombre_empresa);
 				$("#calle").val(calle);
@@ -44,6 +45,16 @@ function get_cliente(id){
 				$("#estado").val(estado);
 				$("#telefono").val(telefono);
 				$("#email").val(email);
+				$("#identificador_folio").val(identificador_folio);
+
+				var ident_folio_check = $("#identificador_folio").val();
+
+				if (ident_folio_check) {
+					$("#ver_manifiestos").removeAttr('disabled');
+				} else {
+					$("#ver_manifiestos").attr('disabled','disabled');
+				}
+
 			}
 		);
 

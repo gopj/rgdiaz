@@ -58,8 +58,14 @@ class Recolector extends CI_Controller {
 		}
 
 		if ($this->session->userdata('tipo') == 2){
-
+			
 			if ($this->input->post()){
+
+				if ($this->input->post("identificador_folio") == ''){ // redirecciona cuando no se encuentra el identificador del folio
+					echo $this->input->post("identificador_folio");
+
+					redirect("recolector/index");
+				}
 				$data["id_cliente"] = $this->input->post("id_persona");
 				$data["cliente"] = $this->persona_model->get_datos_empresa($this->input->post("id_persona"));
 
@@ -254,11 +260,6 @@ class Recolector extends CI_Controller {
 				$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
 				$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
 				$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
-
-				// echo "<pre>";
-				// print_r($data["bitacora_manifiesto"]);
-				// echo "</pre>";
-				// die();
 				
 				$this->load->view("recolector/header", $data);
 				$this->load->view("recolector/crear_manifiestos", $data);

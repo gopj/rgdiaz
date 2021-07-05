@@ -2,7 +2,7 @@
 	<center><h2 class="bd-title" id="content">Clientes</h1></center>
 	<hr>
 
-	<form method="post" action="<?php echo site_url('recolector/ver_manifiestos')?>">
+	<form method="post" id="form_ver_manifiestos" action="<?php echo site_url('recolector/ver_manifiestos')?>">
 		<div class="row">
 			<div class="col-md-4 order-md-1">
 
@@ -10,7 +10,7 @@
 				
 				<input type="text" class="form-control form-control-lg" id="search_cliente"> <br>
 
-				<select class="form-control" onclick="get_cliente(this.value)" id="id_persona" name="id_persona" size="20" style="width: 100%;">
+				<select class="form-control" onclick="get_cliente(this.value);" id="id_persona" name="id_persona" size="20" style="width: 100%;">
 					<option value="">-</option>
 
 					<?php foreach($tclientes->result() as $row){ ?>
@@ -62,6 +62,7 @@
 					<div class="form-group col-md-6">
 						<label class="col-form-label" for="email"> <center> Dirección de Email </center> </label>
 						<input type="text" class="form-control form-control-lg" id="email" disabled>
+						<input type="text" id="identificador_folio" name="identificador_folio" value="" hidden >
 					</div>
 				</div>
 
@@ -80,7 +81,7 @@
 
 					</div>
 					<div class="form-group col-md-4">
-						<button type="submit" class="btn btn-primary btn-lg btn-block" id="ver_manifiestos" disabled>Ver Manifiestos</button>
+						<button type="submit" class="btn btn-primary btn-lg btn-block" id="ver_manifiestos" name="ver_manifiestos" disabled>Ver Manifiestos</button>
 					</div>
 					<div class="form-group col-md-4">
 
