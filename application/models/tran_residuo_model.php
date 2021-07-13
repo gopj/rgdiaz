@@ -24,7 +24,8 @@ class Tran_residuo_model extends CI_Model {
 				tran_folios as tf
 					LEFT JOIN tipo_emp_destino ed ON (tf.id_tipo_emp_destino = ed.id_tipo_emp_destino)
 			WHERE
-				tf.id_persona = {$id_cliente};
+				tf.id_persona = {$id_cliente} and 
+				tf.status in ('R', 'W');
 		")->result();
 
 		return $result;
@@ -52,12 +53,7 @@ class Tran_residuo_model extends CI_Model {
 		")->row();
 
 		$result = $result->total;
-
-		if ($result == 0) {
-			$result = 1;
-		} else {
-			$result = $result + 1;
-		}
+		$result = $result + 1;
 
 		return $result;
 	}
@@ -85,7 +81,7 @@ class Tran_residuo_model extends CI_Model {
 					LEFT JOIN tipo_emp_destino ed ON (tf.id_tipo_emp_destino = ed.id_tipo_emp_destino)
 			WHERE
 				r.id_tipo_residuo 	= tr.id_tipo_residuo and
-				r.id_tran_folio 			= tf.id_tran_folio and
+				r.id_tran_folio 	= tf.id_tran_folio and
 				tf.id_persona 		= {$id_cliente} and 
 				tf.id_tran_folio	= {$folio};
 		")->result();  
@@ -141,7 +137,7 @@ class Tran_residuo_model extends CI_Model {
 		}
 
 		$this->db
-				->set('id_tran_folio'		, $data['id_folio'])
+				->set('id_tran_folio'		, $data['id_folio']) // id_folio, proviene de la inserción hecha en la funcion de inserta_tran_folio (no mover)
 				->set('id_tipo_residuo'		, $data['residuo'])
 				->set('caracteristica'		, $data['caracteristicas'])
 				->set('contenedor_cantidad'	, $data['cont_cantidad'])
@@ -183,7 +179,11 @@ class Tran_residuo_model extends CI_Model {
 	}
 
 	public function delete_tran_folio($id) {	
-		return $this->db->query(" DELETE FROM tran_folios where id_tran_folio={$id};");	
+		//return $this->db->query(" DELETE FROM tran_folios where id_tran_folio={$id};");	
+		
+		return $this->db->set('status', 'D')
+						->where('id_tran_folio', $id)
+						->update('tran_folios');
 	}
 
 	public function update_recolector($data){

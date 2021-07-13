@@ -53,6 +53,7 @@ function get_cliente(id){
 					$("#ver_manifiestos").removeAttr('disabled');
 				} else {
 					$("#ver_manifiestos").attr('disabled','disabled');
+					$('#id_folio_message').modal('show');
 				}
 
 			}
@@ -586,4 +587,8 @@ function delete_last_residuo(id, nombre, url_delete, id_persona, folio){
 	document.getElementById('folio_span').textContent = folio;
 	document.getElementById("residuo_delete").setAttribute("href", url_delete);
 	
+}
+
+function modal_id_folio(){
+	alert("test");
 }
