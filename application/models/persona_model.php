@@ -275,6 +275,13 @@ class Persona_model extends CI_Model {
 		
 	}
 
+	public function folio_duplicado_cliente($data){
+		$folio_identeificador = $data['identificador_folio'];
+		$query  = $this->db->query("SELECT * FROM PERSONA WHERE identificador_folio = '{$folio_identeificador}';")->row();
+
+		return $query;
+	}
+
 	public function update_password($id_persona,$password){
 		return $this->db->where('id_persona',$id_persona)
 						->set('password',$password)

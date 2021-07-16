@@ -558,6 +558,9 @@ function confir_act_admin(){
 	if(valida){
 		var ok = confirm("¡ESTA POR ACTUALIZAR LOS DATOS DE SU CLIENTE, VERIFIQUE QUE LOS DATOS SEAN CORRECTOS!");
 		if(ok == true){
+
+			gen_identificador_duiplicado(); // Verificación de duplicados en la DB
+
 			alert("¡LOS DATOS HAN SIDO MODIFICADOS!");
 			formulario.submit();
 		}
@@ -612,14 +615,15 @@ function gen_identificador_folio() {
 
 	nombre_abr = nombre_abr.replace(/[^a-zA-Z0-9]/g,'');
 
+	// Still to provide more inputs
 	if (nombre_abr.length > 6) {
 		nombre_abr = nombre_abr.replace('SACV', '');
 		nombre_abr = nombre_abr.replace('SRLCV', '');
 		nombre_abr = nombre_abr.replace('SAPICV', '');
-		nombre_abr = nombre_abr.replace('SAPIDECV', '');
-		nombre_abr = nombre_abr.replace('SADECV', '');
+		nombre_abr = nombre_abr.replace('SAPICV', '');
+		nombre_abr = nombre_abr.replace('SACV', '');
 		nombre_abr = nombre_abr.replace('SADCV', '');
-		nombre_abr = nombre_abr.replace('SDERLDECV', '');
+		nombre_abr = nombre_abr.replace('SRLCV', '');
 
 		nombre_abr = nombre_abr.substr(0, 4); // 4 Es el numero maximo para el folio 
 	}
@@ -627,3 +631,38 @@ function gen_identificador_folio() {
 	$("#identificador_folio").val(nombre_abr);
 
 }
+
+function gen_identificador_duiplicado() {
+	var identificador_folio_val = document.getElementById('identificador_folio');
+	var identificador_folio = identificador_folio_val.value;
+
+	//AJAX
+	jQuery.ajax({
+		url:'http://' + host + '/index.php/administrador/identificador_duplicado',	//<-- Url que va procesar la peticion
+		//url:'http://rdiaz.mx/index.php/administrador/identificador_duplicado',
+		timeout: 3000, //sets timeout to 3 seconds
+		type:'post',
+		data:{
+			identificador_folio: identificador_folio
+		}
+	}).done(
+		function(resp)
+		{
+			var json_data = jQuery.parseJSON(resp);
+			var identificador_folio_r = json_data.identificador_folio;
+
+			if (identificador_folio_r){
+				alert("FOLIO " + identificador_folio_r + " ESTÁ DUPLICADO, FAVOR DE ELEJIR UNO DIFERENTE.");
+				//$('#modal_folio_identificador').modal('show');
+			}
+		}
+	);
+
+}
+
+/*function breakout_of_frame() {
+  if (top.location != location) {
+    top.location.href = document.location.href ;
+  }
+}
+*/

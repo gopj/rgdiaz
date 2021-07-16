@@ -142,8 +142,19 @@ function funcion_clasificacion($data){
 	return $html_string;
 }
 
-//funcion_clasificacion('B M');
+//Funcion de capacidad
+function capacidad_zero($val){
+	$value = $val;
 
+	if ($value == 0){
+		return "ND";
+	}
+
+	return $value;
+
+}
+
+//funcion_clasificacion('B M');
 //Llenado de array de arr_residuos_manifiesto
 for ($i=0; $i < $num_table_res; $i++) { 
 	
@@ -155,7 +166,7 @@ for ($i=0; $i < $num_table_res; $i++) {
 			$arr_residuos_manifiesto[$i][$j][] = creti($residuos_manifiesto[$r]->caracteristica);
 			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->contenedor_cantidad;
 			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->contenedor_tipo;
-			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->contenedor_capacidad;
+			$arr_residuos_manifiesto[$i][$j][] = capacidad_zero($residuos_manifiesto[$r]->contenedor_capacidad);
 			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->residuo_cantidad;
 			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->etiqueta;
 			$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->fecha_insercion;

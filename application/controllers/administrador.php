@@ -2252,6 +2252,18 @@ class Administrador extends CI_Controller {
 
 	}
 
+	public function identificador_duplicado(){ /// AJAX FUNCTION
+		if ($this->session->userdata('tipo') == 1){
+			if ($this->input->post()) {
+				$data['identificador_folio'] = $this->input->post('identificador_folio');
+
+				$query = $this->persona_model->folio_duplicado_cliente($data);
+				
+				echo json_encode($query);
+			}
+		}
+	}
+
 	public function mail_test() { 
 
 		$data["mensajes"] = $this->contacto_model->contador_mensajes(0);

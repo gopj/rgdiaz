@@ -201,10 +201,10 @@
 							<div class="form-row">
 								<div class="form-group col-md-4">
 									<label class="col-form-label" for="cantidad_envase"> Envase Cantidad </label>
-									<input readonly type="number" class="form-control" id="cantidad_envase" name="cantidad_envase" min="1" style="text-align:center" value="1" required>
+									<input readonly type="number" class="form-control" id="cantidad_envase" name="cantidad_envase" min="0" style="text-align:center" value="0" required>
 
 									<label class="col-form-label" for="capacidad_envase"> Capacidad de Envase</label>
-									<input readonly type="number" class="form-control" id="capacidad_envase" name="capacidad_envase" min="1" style="text-align:center" value="1" required>
+									<input readonly type="number" class="form-control" id="capacidad_envase" name="capacidad_envase" min="0" style="text-align:center" value="0" required>
 								</div>	
 
 								<div class="form-group col-md-1">
@@ -233,7 +233,7 @@
 
 								<div class="form-group col-md-4">
 									<label class="col-form-label" for="cantidad"> Cantidad Residuo (KG)</label>
-									<input readonly type="number" class="form-control" id="cantidad" name="cantidad" min="1" style="text-align:center" value="1" required>
+									<input readonly type="number" class="form-control" id="cantidad" name="cantidad" min="0" style="text-align:center" value="0" required>
 
 									<label class="col-form-label " for="etiqueta_check"> Etiqueta </label> <br>
 									<label class="switch">

@@ -103,7 +103,7 @@
 						<img src="img/glyphicons_029_notes_2.png" class="icon-form">
 					</span>
 					<input class="txt-well" id="identificador_folio" name="identificador_folio" type='text' style="width: 60%;"> 
-					<button type="button" onclick="gen_identificador_folio();" class="btn btn-primary btn-mini">Gen</button>
+					<button type="button" onclick="gen_identificador_folio(); " class="btn btn-primary btn-mini">Gen</button>
 				</div>
 				Colonia
 				<div class='input-prepend'>
@@ -230,6 +230,25 @@
 			<div class=modal-footer>
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
         		<button type="button" id='activar_campos_modal' class='btn btn-primary' onclick="enable_fields();" role='button' data-dismiss="modal"> Habilitar</button>
+			</div>
+		</div> 
+	</div>
+</div><!-- Modal -->
+
+<div class="modal fade" id="modal_folio_identificador" tabindex="-1" role="dialog" aria-labelledby="label_folio_identificador" aria-hidden="true"> <!-- modal Identificador folio -->
+	<div class="modal-dialog modal-sm" role="document"> 
+		<div class="modal-content"> 
+			<div class="modal-header">
+				<h5 class="modal-title" id="label_folio_identificador">Identificador de Folio Duplicado </h5> 
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button> 
+			</div> 
+			<div class=modal-body>
+				Favor de elejir un identificador de folio diferente a <span id="folio_identificador_modal_span"></span> .
+			</div>
+			<div class=modal-footer>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 			</div>
 		</div> 
 	</div>
