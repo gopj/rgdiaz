@@ -353,11 +353,10 @@ class Recolector extends CI_Controller {
 	}
  
 	public function generar_manifiesto($id_cliente, $folio) {
-
 		$data["id_cliente"] 			= $id_cliente;
 		$data["folio"] 					= $folio;
-		$folio_temp = $this->tran_residuo_model->get_bitacora_count($id_cliente) - 1;
-		$data["folio_identificador"]= $this->persona_model->get_datos_empresa($id_cliente)->identificador_folio . '-' . $folio_temp;
+		$folio_temp 					= $this->tran_residuo_model->get_bitacora_count($id_cliente) - 1;
+		$data["folio_identificador"]	= $this->persona_model->get_datos_empresa($id_cliente)->identificador_folio . '-' . $folio_temp;
 		$data["manifiesto"]				= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio);
 		$data["nombre_cliente"] 		= $this->persona_model->get_nombre_cliente($id_cliente);
 		$data["cliente"] 				= $this->persona_model->get_datos_empresa($id_cliente);
