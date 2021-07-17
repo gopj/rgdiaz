@@ -455,8 +455,8 @@ for ($h=0; $h < $num_table_res; $h++) {
 					<td width="60" align="center" height="30"> </td>
 				</tr>
 				<tr>
-					<td width="215" align="left" class="defined"> 14 - NOMBRE O RAZÓN SOCIAL DEL TRANSPORTISTA </td>
-					<td width="394" align="center"> ' . $datos_empresa_tran[0]->nombre_empresa . ' </td>
+					<td width="215" align="left" class="defined"> 14 - NOMBRE O RAZÓN SOCIAL DEL DESTINATARIO </td>
+					<td width="394" align="center"> ' . $datos_empresa_destino->nombre_destino . ' </td>
 				</tr>
 				<tr>
 					<td width="47" align="left" class="defined">DOMICILIO</td>

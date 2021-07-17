@@ -59,7 +59,7 @@
 			<div class="form-row">
 				<div class="form-group col-md-12">
 					<label class="col-form-label" for="observaciones"> <center> Observaciones </center> </label>
-					<input type="text" class="form-control" id="observaciones" name="observaciones" value="<?= $observaciones ?>" oninput="terminar_manifiesto();check_resposanble();" placeholder="La ruta no está especificada">  
+					<input type="text" class="form-control" id="observaciones" name="observaciones" value="<?= $observaciones ?>" oninput="terminar_manifiesto();check_resposanble();" placeholder="Observaciones...">  
 				</div>		
 			</div>
 
@@ -161,7 +161,7 @@
 							<div class="form-row">
 								<div class="form-group col-md-4">
 									<label class="col-form-label" for="cantidad_envase"> Envase Cantidad </label>
-									<input readonly type="number" class="form-control" id="cantidad_envase" name="cantidad_envase" min="0" style="text-align:center" value="0" required>
+									<input readonly type="number" class="form-control" id="cantidad_envase" name="cantidad_envase" min="1" style="text-align:center" value="" required>
 
 									<label class="col-form-label" for="capacidad_envase"> Capacidad de Envase</label>
 									<input readonly type="number" class="form-control" id="capacidad_envase" name="capacidad_envase" min="0" style="text-align:center" value="0" required>
@@ -184,6 +184,14 @@
 									<div class="custom-control custom-radio">
 										<input type="radio" class="custom-control-input" id="tipo_radio3" value="Tambo" name="tipoRadio" required>
 										<label class="custom-control-label" for="tipo_radio3">Tote</label>
+									</div>
+									<div class="custom-control custom-radio">
+										<input type="radio" class="custom-control-input" id="tipo_radio4" value="Porron" name="tipoRadio" required>
+										<label class="custom-control-label" for="tipo_radio4">Porrón</label>
+									</div>
+									<div class="custom-control custom-radio">
+										<input type="radio" class="custom-control-input" id="tipo_radio5" value="OLtro" name="tipoRadio" required>
+										<label class="custom-control-label" for="tipo_radio5">Otro</label>
 										<div class="invalid-feedback"> &nbsp; Selecciona tipo de contendor</div>
 									</div>
 								</div>
@@ -193,7 +201,7 @@
 
 								<div class="form-group col-md-4">
 									<label class="col-form-label" for="cantidad"> Cantidad Residuo (KG)</label>
-									<input readonly type="number" class="form-control" id="cantidad" name="cantidad" min="0" style="text-align:center" value="0" required>
+									<input readonly type="number" class="form-control" id="cantidad" name="cantidad" min="1" style="text-align:center" value="" required>
 
 									<label class="col-form-label " for="etiqueta_check"> Etiqueta </label> <br>
 									<label class="switch">
