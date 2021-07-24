@@ -331,21 +331,21 @@
 									<div class="form-group col-lg-2">
 										<label class="col-lg-12 col-form-label form-control-label" for="num_ext"># Ext.</label>
 										<div class="col-lg-12">
-											<input class="form-control" type="text" class="txt" style="text-align: center;" name="num_ext" id="num_ext" oninvalid="this.setCustomValidity('Ingresa el número exteriror')" oninput="setCustomValidity(''); onchange_destino()" required>
+											<input class="form-control" type="text" class="txt" style="text-align: center;" name="num_ext" id="num_ext" oninvalid="this.setCustomValidity('Ingresa el número exteriror')" oninput="setCustomValidity(''); onchange_destino()" maxlength="5" required>
 										</div>
 									</div>
 
 									<div class="form-group col-lg-2">
 										<label class="col-lg-12 col-form-label form-control-label" for="num_int"># Int.</label>
 										<div class="col-lg-12">
-											<input class="form-control" type="text" class="txt" style="text-align: center;" name="num_int" id="num_int" oninput="setCustomValidity(''); onchange_destino()">
+											<input class="form-control" type="text" class="txt" style="text-align: center;" name="num_int" id="num_int" oninput="setCustomValidity(''); onchange_destino()" maxlength="5">
 										</div>
 									</div>
 
 									<div class="form-group col-lg-2">
 										<label class="col-lg-12 col-form-label form-control-label" for="cp">Código Postal</label>
 										<div class="col-lg-12">
-											<input class="form-control" type="text" class="txt" style="text-align: center;" name="cp" id="cp" oninvalid="this.setCustomValidity('Ingresa el código postal')" oninput="setCustomValidity(''); onchange_destino()" required>
+											<input class="form-control" type="text" class="txt" style="text-align: center;" name="cp" id="cp" oninvalid="this.setCustomValidity('Ingresa el código postal')" oninput="setCustomValidity(''); onchange_destino()" maxlength="5" required>
 										</div>
 									</div>
 								
@@ -376,7 +376,7 @@
 									<div class="form-group col-lg-2">
 										<label class="col-lg-12 col-form-label form-control-label" for="telefono">Télefono</label>
 										<div class="col-lg-12">
-											<input class="form-control" type="text" class="txt" style="text-align: center;" name="telefono" id="telefono" oninvalid="this.setCustomValidity('Ingresa el télefono')" oninput="setCustomValidity(''); onchange_destino()" required>
+											<input class="form-control" type="text" class="txt" style="text-align: center;" name="telefono" id="telefono" oninvalid="this.setCustomValidity('Ingresa el télefono')" oninput="setCustomValidity(''); onchange_destino()" maxlength="12" required>
 										</div>
 									</div>
 

@@ -537,10 +537,9 @@ for ($h=0; $h < $num_table_res; $h++) {
 }
 
 
-$filename= "{$nombre_empresa}_{$folio}.pdf";
-$filename= "rdiaztmp{$id_cliente}.pdf"; 
-$filelocation = $_SERVER['DOCUMENT_ROOT'] ."rgdiaz/img/pdf/";
-$fileNL = $filename; //Linux
+$filename 		= "{$nombre_empresa}_{$folio_identificador}_{$manifiesto->fecha_embarque}.pdf";
+$filelocation 	= $_SERVER['DOCUMENT_ROOT'] ."rgdiaz/img/pdf/";
+$fileNL 		= $filename; //Linux
 
 //Close and output PDF document
 $pdf->Output($fileNL, 'D');

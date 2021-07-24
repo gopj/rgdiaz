@@ -5,20 +5,30 @@
 			<div class="form-row">
 				<div class="form-group col-md-9">
 					<label class="col-form-label" for="nombre_empresa"> <center> Empresa Destino </center> </label>
-					<select class="form-control" style="width: 100%;" name="empresa_destino" id="empresa_destino" readonly>
-						<option> <?= $empresa_destino; ?> </option>
-					</select>
+					<input type="text" class="form-control" id="nombre_empresa" name="fecha_embarque" value="<?= $empresa_destino; ?> " disabled>
 				</div>
 				<div class="form-group col-md-3">
-					<label class="col-form-label" for="fecha_salida"> <center> Fecha de Embarque </center> </label>
-					<input type="date" class="form-control" id="fecha_embarque" name="fecha_embarque" value="<?= $fecha_embarque ?>" readonly>
+					<label class="col-form-label" for="fecha_embarque_terminada"> <center> Fecha de Embarque </center> </label>
+					<input type="text" class="form-control" id="fecha_embarque_terminada" name="fecha_embarque_terminada" style="text-align:center;" value="<?= $fecha_embarque ?>" disabled>
 				</div>		
 			</div>
 
 			<div class="form-row">
-				<div class="form-group col-md-9">
+				<div class="form-group col-md-6">
 					<label class="col-form-label" for="responsable_tecnico"> <center> Nombre del Responable Técnico</center> </label>
 					<input type="text" class="form-control" id="responsable_tecnico" name="responsable_tecnico" value="<?= $responsable_tecnico ?>" readonly>
+				</div>
+
+				<div class="form-group col-md-6">
+					<label class="col-form-label" for="ruta"> <center> Ruta de la empresa generadora</center> </label>
+					<input type="text" class="form-control" id="ruta" name="ruta" value="<?= $ruta ?>" readonly>
+				</div>	
+			</div>
+
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label class="col-form-label" for="observaciones"> <center> Observaciones </center> </label>
+					<input type="text" class="form-control" id="observaciones" name="observaciones" value="<?= $observaciones ?>" readonly>  
 				</div>		
 			</div>
 
@@ -35,8 +45,9 @@
 								<th>CRETI</th>
 								<th>Contenedor Cantidad</th>
 								<th>Contenedor Tipo</th>
-								<th>Cantidad Total</th>
-								<th>Unidad Vol/Peso</th>
+								<th>Contenedor Capacidad</th>
+								<th>Cantidad (KG)</th>
+								<th>Etiqueta</th>
 								<th>Opciones</th>
 							</tr>
 						</thead>
@@ -51,8 +62,9 @@
 									<td> <?= $key->caracteristica ?> </td>
 									<td> <?= $key->contenedor_cantidad ?> </td>
 									<td> <?= $key->contenedor_tipo ?> </td>
+									<td> <?= $key->contenedor_capacidad ?> </td>
 									<td> <?= $key->residuo_cantidad ?> </td>
-									<td> <?= $key->unidad ?> </td>
+									<td> <?= $key->etiqueta ?> </td>
 									<td> <button class="btn btn-danger btn-sm btn-block" disabled> Eliminar </button> </td>
 								</tr>
 							<?php } ?>
