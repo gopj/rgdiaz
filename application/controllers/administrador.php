@@ -2309,6 +2309,8 @@ class Administrador extends CI_Controller {
 	}
 
 	public function recolector_generar_manifiesto($id_cliente, $folio) {
+		$recolector 					= $this->tran_residuo_model->get_vehiculo($folio)->id_persona;
+		$vehiculo 						= $this->tran_residuo_model->get_vehiculo($folio)->id_vehiculo;
 
 		$data["id_cliente"] 			= $id_cliente;
 		$data["folio"] 					= $folio;
@@ -2323,10 +2325,14 @@ class Administrador extends CI_Controller {
 		$data["datos_empresa"] 			= $this->persona_model->get_datos_empresa($id_cliente);
 		$data["datos_empresa_tran"] 	= $this->emp_transportista_model->get_datos_emp_trans(1);// default rdiaz
 		$data["datos_empresa_destino"] 	= $this->emp_destino_model->get_destino($data["bitacora_manifiesto"][0]->id_tipo_emp_destino);
-		$data["datos_recolector"] 		= $this->persona_model->get_nombre_cliente($this->session->userdata("id"));
+		$data["datos_recolector"] 		= $this->persona_model->get_nombre_cliente($recolector);
 		$data["vehiculos"] 				= $this->tran_vehiculo_model->get_vehiculos();
-		$data["id_vehiculo"] 			= $this->persona_model->get_recolector_vehicle($this->session->userdata('id'));
-		$data["recolector_vehiculo"]	= $this->tran_vehiculo_model->get_folio_vehiculo((int) $data["id_vehiculo"]->cp_empresa); // en recolectores (usuario tipo 2) cp_empresa es el id del vehiculo
+		$data["id_vehiculo"] 			= $this->persona_model->get_recolector_vehicle($recolector);
+		// echo "<pre>";
+		// print_r($data['id_vehiculo']);
+		// echo "</pre>";
+		// die();
+		$data["recolector_vehiculo"]	= $this->tran_vehiculo_model->get_folio_vehiculo($vehiculo); // en recolectores (usuario tipo 2) cp_empresa es el id del vehiculo
 		$tran_resiudos 					= $this->tran_residuo_model->get_reg_tran_residuos($id_cliente, $folio);
 		$data["ruta"]					= $tran_resiudos->ruta;
 		$data["nombre_empresas"] 		= $this->persona_model->get_datos_empresas();

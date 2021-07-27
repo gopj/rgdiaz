@@ -228,7 +228,13 @@ class Tran_residuo_model extends CI_Model {
 				tf.id_persona 		= {$id_cliente} and 
 				tf.id_tran_folio	= {$folio};")->result();
 
-			}
+	}
+
+	public function get_vehiculo($folio){
+		return $this->db->query("select * from tran_folios where id_tran_folio=" . $folio . ";")->row();
+	}
+
+
 
 /*
 ,

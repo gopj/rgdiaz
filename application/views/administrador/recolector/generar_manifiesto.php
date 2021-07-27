@@ -435,9 +435,9 @@ for ($h=0; $h < $num_table_res; $h++) {
 				</tr>
 				<tr>
 					<td width="215" align="left" class="defined"> 11 - TIPO VEHICULO </td>
-					<td width="90" align="left" class="data">  ' . $recolector_vehiculo->nombre_tipo . ' </td>
+					<td width="90" align="left" class="data">  ' . @$recolector_vehiculo->nombre_tipo . ' </td>
 					<td width="214" align="left" class="defined"> 12 - NÚM. DE PLACA </td>
-					<td width="90" align="left" class="data">  ' . $recolector_vehiculo->numero_placa . ' </td>
+					<td width="90" align="left" class="data">  ' . @$recolector_vehiculo->numero_placa . ' </td>
 				</tr>
 				<tr>
 					<td width="245" align="left" class="defined"> 13 - RUTA DE LA EMPRESA GENERADORA HASTA SU ENTREGA</td>
