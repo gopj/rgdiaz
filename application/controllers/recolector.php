@@ -351,7 +351,7 @@ class Recolector extends CI_Controller {
 		}	
 	
 	}
- 
+
 	public function generar_manifiesto($id_cliente, $folio) {
 		$data["id_cliente"] 			= $id_cliente;
 		$data["folio"] 					= $folio;

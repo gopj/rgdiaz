@@ -296,9 +296,38 @@
 				<input type="text" name="terminar_ruta" id="terminar_ruta" hidden>
 				<input type="text" name="terminar_observaciones" id="terminar_observaciones" hidden>
 
-				<button type="submit" form="form_terminar_manifiesto" class="btn btn-success btn-lg btn-block" id="b_terminar_manifiesto" disabled> Terminar Manifiesto </button>
+				<button type="button" class="btn btn-success btn-lg btn-block" id="b_terminar_manifiesto" onclick="" disabled> Terminar Manifiesto </button>
 
 			</form>
+		</div>
+	</div>
+
+	<!-- The Modal -->
+	<div class="modal" id="terminar_manifiesto_modal">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h4 class="modal-title">Terminar manifiesto </h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body">
+				<div class="form-row">
+					<div class="form-group col-md-8">
+						<label class="col-form-label" for="nombre_residuo"> Eliminando último residuo y folio creado ¿Deseas continuar? </label>
+					</div>	
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+					<a href="<?=site_url('recolector/eliminar_ultimo_residuo/' . $id_cliente . '/' . $key->id_tran_residuo);?>" class="btn btn-danger" role="button"> Eliminar </a>
+				</div>
+
+			</div>
 		</div>
 	</div>
 

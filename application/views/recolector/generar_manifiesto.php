@@ -50,8 +50,9 @@ function date_manifiesto($s_date){
 ///// Testing parameters
 
 // echo "<pre>";
-// print_r($datos_empresa);
+// print_r($datos_recolector);
 // echo "</pre>"; 
+// die();
 
 // create new PDF document
 $pdf = new MY_PDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -189,7 +190,7 @@ for ($h=0; $h < $num_table_res; $h++) {
 			
 			$table_data_html = $table_data_html . '
 				<tr>
-					<td width="280" align="left" class="defined_s"> ' . $row_num  . '</td>
+					<td width="280" align="left" class="defined_s"></td>
 					<td width="15" align="center" class="defined"></td>
 					<td width="15" align="center" class="defined"></td>
 					<td width="15" align="center" class="defined"></td>
@@ -210,7 +211,7 @@ for ($h=0; $h < $num_table_res; $h++) {
 			if (strlen(@$arr_residuos_manifiesto[$h][$i][0]) > 162) {
 				$table_data_html = $table_data_html . '
 					<tr>
-						<td width="280" align="left" class="defined_s"> ' . $row_num  . ' ' . $arr_residuos_manifiesto[$h][$i][0] . '</td> 
+						<td width="280" align="left" class="defined_s"> ' . $arr_residuos_manifiesto[$h][$i][0] . '</td> 
 						' . funcion_clasificacion($arr_residuos_manifiesto[$h][$i][1]) . ' 
 						<td width="45" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][2] . ' </td>
 						<td width="44" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][3] . ' </td>
@@ -223,7 +224,7 @@ for ($h=0; $h < $num_table_res; $h++) {
 			} elseif (strlen(@$arr_residuos_manifiesto[$h][$i][0]) > 72) { 
 				$table_data_html = $table_data_html . '
 					<tr>
-						<td width="280" align="left" class="defined_s"> ' . $row_num  . ' ' . $arr_residuos_manifiesto[$h][$i][0] . '</td>
+						<td width="280" align="left" class="defined_s"> ' . $arr_residuos_manifiesto[$h][$i][0] . '</td>
 						' . funcion_clasificacion($arr_residuos_manifiesto[$h][$i][1]) . ' 
 						<td width="45" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][2] . ' </td>
 						<td width="44" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][3] . ' </td>
@@ -236,7 +237,7 @@ for ($h=0; $h < $num_table_res; $h++) {
 			} else {
 				$table_data_html = $table_data_html . '
 					<tr>
-						<td width="280" align="left" class="defined_s"> ' . $row_num  . ' ' . $arr_residuos_manifiesto[$h][$i][0] . '</td>
+						<td width="280" align="left" class="defined_s"> ' . $arr_residuos_manifiesto[$h][$i][0] . '</td>
 						' . funcion_clasificacion($arr_residuos_manifiesto[$h][$i][1]) . ' 
 						<td width="45" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][2] . ' </td>
 						<td width="44" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][3] . ' </td>
@@ -448,7 +449,7 @@ for ($h=0; $h < $num_table_res; $h++) {
 				</tr>
 				<tr>
 					<td width="150" align="left" class="defined" height="30"> NOMBRE Y FIRMA DEL RESPONSABLE </td>
-					<td width="180" align="center" height="30"> ' . $manifiesto->responsable_tecnico . ' </td>
+					<td width="180" align="center" height="30"> ' . $datos_recolector . ' </td>
 					<td width="36" align="left" class="defined" height="30"> FECHA </td>
 					<td width="150" align="center" height="30"> ' . @date_manifiesto($manifiesto->fecha_embarque) . ' </td>
 					<td width="33" align="left" class="defined" height="30"> SELLO </td>

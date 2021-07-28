@@ -551,11 +551,11 @@ function clear_required(){
 
 function check_resposanble() {
 
-	$tecnico = document.getElementById('terminar_responsable').value;
-	$ruta = document.getElementById('terminar_ruta').value;
-	$observaciones = document.getElementById('terminar_observaciones').value;
+	tecnico = document.getElementById('terminar_responsable').value;
+	ruta = document.getElementById('terminar_ruta').value;
+	observaciones = document.getElementById('terminar_observaciones').value;
 
-	if ( ($tecnico == "") || ($ruta == "") || ($observaciones == "") ){
+	if ( (tecnico == "") || (ruta == "") || (observaciones == "") ){
 		$("#b_terminar_manifiesto").attr('disabled','disabled');
 	} else {
 		$("#b_terminar_manifiesto").removeAttr('disabled');

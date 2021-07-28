@@ -137,7 +137,7 @@ class Tran_residuo_model extends CI_Model {
 		}
 
 		$this->db
-				->set('id_tran_folio'		, $data['id_folio']) // id_folio, proviene de la inserción hecha en la funcion de inserta_tran_folio (no mover)
+				->set('id_tran_folio'		, $data['folio']) // id_folio, proviene de la inserción hecha en la funcion de inserta_tran_folio (no mover)
 				->set('id_tipo_residuo'		, $data['residuo'])
 				->set('caracteristica'		, $data['caracteristicas'])
 				->set('contenedor_cantidad'	, $data['cont_cantidad'])
@@ -233,25 +233,6 @@ class Tran_residuo_model extends CI_Model {
 	public function get_vehiculo($folio){
 		return $this->db->query("select * from tran_folios where id_tran_folio=" . $folio . ";")->row();
 	}
-
-
-
-/*
-,
-	ed.nombre_destino as dest_final,
-	ed.no_autorizacion_destino as no_aut_dest_final,
-	ed.calle,
-	ed.num_ext,
-	ed.num_int,
-	ed.cp,
-	ed.colonia,
-	ed.municipio,
-	ed.telefono ,
-	ed.estado 
-
-}}
-*/
-
 
 
 }
