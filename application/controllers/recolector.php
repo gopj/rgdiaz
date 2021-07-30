@@ -99,12 +99,12 @@ class Recolector extends CI_Controller {
 		if ($this->session->userdata('tipo') == 2){
 
 			$tran_resiudos 				= $this->tran_residuo_model->get_reg_tran_residuos($id_cliente, $folio);
-			$data["cliente"] = $this->persona_model->get_datos_empresa($id_cliente);
-
+			$data["cliente"] 			= $this->persona_model->get_datos_empresa($id_cliente);
+			$manifiesto 				= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio);
 			$data["empresa_destino"] 	= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->empresa_destino;
 			$data["fecha_embarque"] 	= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->fecha_embarque;
+			$data["responsable_destino"]= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->responsable_destino;
 			$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
-			$data["responsable_tecnico"]= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->responsable_tecnico;
 			$data["recolector"]			= $this->persona_model->get_datos_empresa($this->session->userdata('id'));
 			$data["vehiculos"] 			= $this->tran_vehiculo_model->get_vehiculos();
 
@@ -146,7 +146,7 @@ class Recolector extends CI_Controller {
 				$data["id_emp_destino"]		= $this->input->post("empresa_destino");
 				$data["residuo"]			= $this->input->post("residuo_peligroso");
 				$data["fecha_embarque"]		= date_format($fecha_embarque, "Y-m-d");
-				$data["responsable_tecnico"]= $this->input->post("responsable_tecnico");
+				$data["responsable_destino"]= $this->input->post("responsable_destino");
 				$data["ruta"]				= $this->input->post("ruta");
 				$data["observaciones"]		= $this->input->post("observaciones");
 				$data["residuo_cantidad"]	= $this->input->post("cantidad");
@@ -219,7 +219,7 @@ class Recolector extends CI_Controller {
 				$data["id_emp_destino"]		= $this->input->post("empresa_destino");
 				$data["residuo"]			= $this->input->post("residuo_peligroso");
 				$data["fecha_embarque"]		= date_format($fecha_embarque, "Y-m-d");
-				$data["responsable_tecnico"]= $this->input->post("responsable_tecnico");
+				$data["responsable_destino"]= $this->input->post("responsable_destino");
 				$data["ruta"]				= $this->input->post("ruta");
 				$data["observaciones"]		= $this->input->post("observaciones");
 				$data["residuo_cantidad"]	= $this->input->post("cantidad");
@@ -228,12 +228,17 @@ class Recolector extends CI_Controller {
 				$data["contenedor_tipo"]	= $this->input->post("tipoRadio");
 				$data["etiqueta"]			= $this->input->post("etiqueta_check");
 				$data["caracteristica_r"]	= $this->input->post("caracteristica_check");
+				$data["responsable_tecnico"]= $this->input->post("responsable_tecnico");
 				$data["caracteristicas"] 	= "";
 
 				foreach (@$data["caracteristica_r"] as $key => $value) {
 					$data["caracteristicas"] .= $value . " ";
 				}
 				
+				// // Actualza Folio
+				// $this->tran_residuo_model->inserta_tran_folio($data); // id_folio es el necesario para generacion automatica (no mover)
+
+
 				$this->tran_residuo_model->inserta_tran_residuo($data);
 
 				$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
@@ -250,7 +255,7 @@ class Recolector extends CI_Controller {
 				$fecha_embarque				= date_create_from_format("Y-m-d", $tran_resiudos->fecha_embarque);
 
 				$data["fecha_embarque"]		= date_format($fecha_embarque, "d/m/Y");
-				$data["responsable_tecnico"]= $tran_resiudos->responsable_tecnico;
+				$data["responsable_destino"]= $tran_resiudos->responsable_destino;
 				$data["id_emp_destino"]		= $tran_resiudos->id_tipo_emp_destino;
 				$data["ruta"]				= $tran_resiudos->ruta;
 				$data["observaciones"]		= $tran_resiudos->observaciones;
@@ -285,9 +290,15 @@ class Recolector extends CI_Controller {
 				$fecha_embarque 			= date_create_from_format("d/m/Y", $this->input->post("terminar_fecha"));
 				$data["id_emp_destino"]		= $this->input->post("terminar_empresa_destino");
 				$data["fecha_embarque"]		= date_format($fecha_embarque, "Y-m-d");
-				$data["responsable_tecnico"]= $this->input->post("terminar_responsable");
+				$data["responsable_destino"]= $this->input->post("terminar_responsable");
+				$data["responsable_tecnico"]= $this->input->post("terminar_responsable_tecnico");
 
-				$this->tran_residuo_model->terminar_manifiesto($id_cliente, $folio);
+				// echo "<pre>";
+				// print_r($data);
+				// echo "<pre>";
+				// die();
+
+				$this->tran_residuo_model->terminar_manifiesto($id_cliente, $folio, $data);
 
 				$data["id_cliente"] = $id_cliente;
 				$data["bitacora"] = $this->tran_residuo_model->get_bitacora($id_cliente);
@@ -314,7 +325,7 @@ class Recolector extends CI_Controller {
 			$data["cliente"] 			= $this->persona_model->get_datos_empresa($id_cliente);
 			$data["recolector"]			= $this->persona_model->get_datos_empresa($this->session->userdata('id'));
 			$data["fecha_embarque"]		= $tran_resiudos->fecha_embarque;
-			$data["responsable_tecnico"]= $tran_resiudos->responsable_tecnico;
+			$data["responsable_destino"]= $tran_resiudos->responsable_destino;
 			$data["id_cliente"] 		= $id_cliente;
 			$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
 			$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();

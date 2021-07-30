@@ -168,7 +168,76 @@
                         </div>
                     </div>
                 </div>
-            </div>
+
+                <div class="row">
+                    <div class="col-lg-4 sm-margin-30px-bottom">
+                        <div class="blog-grid-simples md-padding-20px-all">
+                            <h4><a href="#!">Misión</a></h4>
+                            <p>Brindar a nuestros clientes servicios de calidad y confianza para el manejo de los residuos generados en sus procesos, ofreciendo a la par soluciones integrales diseñadas a la medida de acuerdo con sus necesidades y la normatividad ambiental aplicable.</p>
+                            <div class="blog-grid-simples-content">
+
+                                <div class="blog-grid-simples-date">
+                                    <div class="row">
+
+                                        <div class="col-6">
+                                      
+                                           
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 sm-margin-30px-bottom">
+                        <div class="blog-grid-simples md-padding-20px-all">
+                            <h4><a href="#!">Vision</a></h4>
+                            <p>Posicionar nuestra empresa como una de las mejores alternativas para la prestación de servicios relacionados con el manejo integral de los residuos generados por el sector industrial y de servicios de la región Occidente del país.</p>
+                            <div class="blog-grid-simples-content">
+
+                                <div class="blog-grid-simples-date">
+                                    <div class="row">
+                                        <div class="col-6">
+                                          
+                                            
+                                        </div>
+
+                                      
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="blog-grid-simples md-padding-20px-all">
+                            <h4><a href="#!">Valores Organizacionales</a></h4>
+                            <ul class="list-style-16">
+                                <li>Responsabilidad </li>
+                                <li>Compromiso</li>
+                                <li>Honestidad </li>
+                                <li>Profesionalismo </li>
+                                <li>Trabajo en equipo</li>
+                                <li>Actitud de servicio</li>
+                            </ul>
+                            <div class="blog-grid-simples-content">
+
+                                <div class="blog-grid-simples-date">
+                                    <div class="row">
+                                        <div class="col-6">
+                        
+                            
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>              
         </section>
         <!-- end about section -->
 

@@ -1,19 +1,4 @@
-<?php $total_reg = count($bitacora_manifiesto); 
-
-// echo "<pre>";
-// print_r($bitacora_manifiesto);
-// echo "</pre>";
-
-// echo "<pre>";
-// print_r($id_cliente);
-// echo "</pre>";
-
-// echo "<pre>";
-// print_r($folio);
-// echo "</pre>";
-
-?>
-
+<?php $total_reg = count($bitacora_manifiesto); ?>
 <main role="main" class="container" style="padding-top:-10px;">
 	<center><h2 class="bd-title" id="content"><h2>Crear Manifiesto | <?= $folio_identificador ?></h2></center>
 	<hr>
@@ -46,8 +31,8 @@
 
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<label class="col-form-label" for="responsable_tecnico"> <center> Nombre del Responable Técnico</center> </label>
-					<input type="text" class="form-control" id="responsable_tecnico" name="responsable_tecnico" value="<?= $responsable_tecnico ?>" oninput="terminar_manifiesto();check_resposanble();" placeholder="El nombre del responsable técnico está vacío.">
+					<label class="col-form-label" for="responsable_destino"> <center> Nombre del Responable Técnico</center> </label>
+					<input type="text" class="form-control" id="responsable_destino" name="responsable_destino" value="<?= $responsable_destino ?>" oninput="terminar_manifiesto();check_resposanble();" placeholder="El nombre del responsable técnico está vacío.">
 				</div>
 
 				<div class="form-group col-md-6">
@@ -291,20 +276,21 @@
 			<form id="form_terminar_manifiesto" action="<?= site_url('recolector/terminar_manifiesto/' . $id_cliente . '/' . $folio); ?>" method="post">
 
 				<input type="text" name="terminar_responsable" id="terminar_responsable" hidden>
+				<input type="text" name="terminar_responsable_tecnico" id="terminar_responsable_tecnico" hidden>
 				<input type="text" name="terminar_fecha" id="terminar_fecha" hidden>
 				<input type="text" name="terminar_empresa_destino" id="terminar_empresa_destino" hidden>
 				<input type="text" name="terminar_ruta" id="terminar_ruta" hidden>
 				<input type="text" name="terminar_observaciones" id="terminar_observaciones" hidden>
 
-				<button type="button" class="btn btn-success btn-lg btn-block" id="b_terminar_manifiesto" onclick="" disabled> Terminar Manifiesto </button>
+				<button type="button" class="btn btn-success btn-lg btn-block" id="b_terminar_manifiesto" data-toggle="modal" data-target="#terminar_manifiesto_modal" disabled> Terminar Manifiesto </button>
 
 			</form>
 		</div>
 	</div>
 
-	<!-- The Modal -->
+	<!-- Modal Terminar Manifiesto -->
 	<div class="modal" id="terminar_manifiesto_modal">
-		<div class="modal-dialog modal-lg">
+		<div class="modal-dialog modal-md">
 			<div class="modal-content">
 
 			<!-- Modal Header -->
@@ -316,15 +302,17 @@
 			<!-- Modal body -->
 			<div class="modal-body">
 				<div class="form-row">
-					<div class="form-group col-md-8">
-						<label class="col-form-label" for="nombre_residuo"> Eliminando último residuo y folio creado ¿Deseas continuar? </label>
+					<div class="form-group col-md-10">
+						<label class="col-form-label"> Agrega Responsable Técnico del Generador  </label> <br>
+						<label class="col-form-label" for="responsable_tecnico"> Responsable Técnico </label>
+						<input type="text" class="form-control" id="responsable_tecnico" name="responsable_tecnico" onchange="update_responsable_tec()"> 
 					</div>	
 				</div>
 
 				<!-- Modal footer -->
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-					<a href="<?=site_url('recolector/eliminar_ultimo_residuo/' . $id_cliente . '/' . $key->id_tran_residuo);?>" class="btn btn-danger" role="button"> Eliminar </a>
+					<button type="submit" form="form_terminar_manifiesto" class="btn btn-primary" role="button"> Terminar </button>
 				</div>
 
 			</div>

@@ -30,8 +30,8 @@
 
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<label class="col-form-label" for="responsable_tecnico"> <center> Nombre del Responable Técnico</center> </label>
-					<input type="text" class="form-control" id="responsable_tecnico" name="responsable_tecnico">
+					<label class="col-form-label" for="responsable_destino"> <center> Nombre del Responable Técnico</center> </label>
+					<input type="text" class="form-control" id="responsable_destino" name="responsable_destino">
 				</div>		
 
 				<div class="form-group col-md-6">

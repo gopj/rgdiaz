@@ -93,21 +93,33 @@ class Tran_residuo_model extends CI_Model {
 		
 		$result = $this->db->query("
 			SELECT 
-				tf.folio,
-				tf.fecha_embarque,
-				tf.responsable_tecnico,
-				ed.nombre_destino as empresa_destino
+				*
 			FROM 
-				tran_residuos as r,
-				tipo_residuos as tr,
-				tran_folios as tf
-					LEFT JOIN tipo_emp_destino ed ON (tf.id_tipo_emp_destino = ed.id_tipo_emp_destino)
+				tran_folios
+					
 			WHERE
-				r.id_tipo_residuo = tr.id_tipo_residuo and
 				id_persona 	 = {$id_cliente} and 
-				r.id_tran_folio= {$folio}
-			LIMIT 1;
+				id_tran_folio= {$folio};
 		")->row();
+
+		// $result = $this->db->query("
+		// 	SELECT 
+		// 		tf.folio,
+		// 		tf.fecha_embarque,
+		// 		tf.responsable_tecnico,
+		// 		tf.responsable_destino,
+		// 		ed.nombre_destino as empresa_destino
+		// 	FROM 
+		// 		tran_residuos as r,
+		// 		tipo_residuos as tr,
+		// 		tran_folios as tf
+		// 			LEFT JOIN tipo_emp_destino ed ON (tf.id_tipo_emp_destino = ed.id_tipo_emp_destino)
+		// 	WHERE
+		// 		r.id_tipo_residuo = tr.id_tipo_residuo and
+		// 		id_persona 	 = {$id_cliente} and 
+		// 		r.id_tran_folio= {$folio}
+		// 	LIMIT 1;
+		// ")->row();
 
 		return $result;
 	}
@@ -120,7 +132,7 @@ class Tran_residuo_model extends CI_Model {
 			->set('id_recolector' 		, $data["id_recolector"])
 			->set('folio' 				, $data["folio_identificador"])
 			->set('fecha_embarque' 		, $data['fecha_embarque'])
-			->set('responsable_tecnico'	, $data['responsable_tecnico'])
+			->set('responsable_destino'	, $data['responsable_destino'])
 			->set('status' 				, 'W')
 			->set('ruta'				, $data['ruta'])
 			->set('observaciones'		, $data['observaciones'])
@@ -156,11 +168,7 @@ class Tran_residuo_model extends CI_Model {
 
 		$sql_text = "
 			SELECT 
-				fecha_embarque,
-				responsable_tecnico,
-				id_tipo_emp_destino,
-				ruta,
-				observaciones
+				*
 			FROM 
 				tran_folios
 			WHERE
@@ -194,12 +202,17 @@ class Tran_residuo_model extends CI_Model {
 						->update('persona');
 	}
 
-	public function terminar_manifiesto($id_cliente, $folio) {
-		return $this->db->set('status',			'R')
-						->where('id_persona',	$id_cliente)
-						->where('id_tran_folio',$folio)
+	public function terminar_manifiesto($id_cliente, $folio, $data) {
+		return $this->db->set('status',				'R')
+						->set('responsable_tecnico',$data["responsable_tecnico"])
+						->where('id_persona',		$id_cliente)
+						->where('id_tran_folio',	$folio)
 						->update('tran_folios');
 	}
+
+	// public function update_folio($data){
+	// 	return $this->db->
+	// }
 
 	public function get_residuos_manifiesto($id_cliente, $folio){
 		return $this->db->query("

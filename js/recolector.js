@@ -485,7 +485,7 @@ $("input[type='number']").InputSpinner();
 $(document).ready(function() {
 	var empresa_destino 	= document.getElementById('empresa_destino');
 	var fecha_embarque 		= document.getElementById('fecha_embarque').value;
-	var responsable_tecnico = document.getElementById('responsable_tecnico').value;
+	var responsable_destino = document.getElementById('responsable_destino').value;
 	var ruta 				= document.getElementById('ruta').value;
 	var observaciones		= document.getElementById('observaciones').value;
 
@@ -493,11 +493,11 @@ $(document).ready(function() {
 
 	console.log(s_empresa_destino);
 	console.log(fecha_embarque);
-	console.log(responsable_tecnico);
+	console.log(responsable_destino);
 	console.log(ruta);
 	console.log(observaciones);
 
-	$("#terminar_responsable").val(responsable_tecnico);
+	$("#terminar_responsable").val(responsable_destino);
 	$("#terminar_fecha").val(fecha_embarque);
 	$("#terminar_empresa_destino").val(s_empresa_destino);
 	$("#terminar_ruta").val(s_empresa_destino);
@@ -508,6 +508,7 @@ function terminar_manifiesto() {
 	
 	var empresa_destino 	= document.getElementById('empresa_destino');
 	var fecha_embarque 		= document.getElementById('fecha_embarque').value;
+	var responsable_destino = document.getElementById('responsable_destino').value;
 	var responsable_tecnico = document.getElementById('responsable_tecnico').value;
 	var ruta 				= document.getElementById('ruta').value;
 	var observaciones		= document.getElementById('observaciones').value;
@@ -516,15 +517,23 @@ function terminar_manifiesto() {
 
 	console.log(s_empresa_destino);
 	console.log(fecha_embarque);
+	console.log(responsable_destino);
 	console.log(responsable_tecnico);
 	console.log(ruta);
 	console.log(observaciones);
 
-	$("#terminar_responsable").val(responsable_tecnico);
+	$("#terminar_responsable").val(responsable_destino);
+	$("#terminar_responsable_tecnico").val(responsable_tecnico);
 	$("#terminar_fecha").val(fecha_embarque);
 	$("#terminar_empresa_destino").val(s_empresa_destino);
 	$("#terminar_ruta").val(ruta);
 	$("#terminar_observaciones").val(observaciones);
+}
+
+function update_responsable_tec(){
+	var responsable_tecnico = document.getElementById('responsable_tecnico').value;
+
+	$("#terminar_responsable_tecnico").val(responsable_tecnico);
 }
 
 function clear_required(){

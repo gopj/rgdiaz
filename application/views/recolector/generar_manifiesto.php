@@ -50,7 +50,7 @@ function date_manifiesto($s_date){
 ///// Testing parameters
 
 // echo "<pre>";
-// print_r($datos_recolector);
+// print_r($residuos_manifiesto);
 // echo "</pre>"; 
 // die();
 
@@ -68,7 +68,7 @@ $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 // set margins
 $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
 $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+// $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
 // set auto page breaks
 $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
@@ -76,11 +76,16 @@ $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 // set image scale factor
 $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
+// QR
+$pdf->setQR($id_cliente, $folio);
+
+// $pdf->SetY(-15);
+// $pdf->Cell(0, 8, '1', 0, false, 'C', 0, '', 0, false, 'T', 'M');
 
 // Image method signature:
 // Image($file, $x='', $y='', $w=0, $h=0, $type='', $link='', $align='', $resize=false, $dpi=300, $palign='', $ismask=false, $imgmask=false, $border=0, $fitbox=false, $hidden=false, $fitonpage=false)
  
-$nrs = 18; //nombre_residuo_size
+$nrs = 15; //nombre_residuo_size
 $res_man_cant = count($residuos_manifiesto);
 $num_table_res = (ceil($res_man_cant/$nrs));
 $r = 0;
@@ -316,26 +321,26 @@ for ($h=0; $h < $num_table_res; $h++) {
 
 	</style>
 
-	<br /><br /><br /><br /><br /><br />
+	<a href="http://www.rdiaz.mx" style="font-size: 7pt;" target="_blank"> RDíaz </a>
 
+	<br /><br /><br /><br /><br />
 	<table>
 	<tr>
 		<td width="18" ></td>
 		<td>
 			<table class="manifiesto" border="1">
 				<tr>
-					<td width="200" align="left" class="defined"> 1.- No. DE REGISTRO AMBIENTAL </td>
-					<td width="195">  '. $datos_empresa->numero_registro_ambiental .' </td>
+					<td width="130" align="left" class="defined"> 1.- No. DE REGISTRO AMBIENTAL </td>
+					<td width="275">  '. $datos_empresa->numero_registro_ambiental .' </td>
 					<td width="90"  class="defined"> 2.- NO. MANIFIESTO </td>
-					<td width="67" style="color: red;"> '. $folio_identificador .' </td>
-					<td width="57"  class="defined">  PÁGINA ' . ($h+1) . '/' . $num_table_res . ' </td>
+					<td width="114" style="color: red;"> '. $folio_identificador .' </td>
 				</tr>
 				<tr>
 					<td width="200" align="left" class="defined"> 3.- RAZÓN SOCIAL DE LA EMPRESA GENERADORA </td>
 					<td width="409" align="center"> '. $datos_empresa->nombre_empresa .' </td>
 				</tr>
 				<tr>
-					<td width="47" align="left" class="defined">DOMICILIO</td>
+					<td width="47" align="left" class="defined" bgcolor="#cccccc">DOMICILIO</td>
 					<td width="75" align="center" class="defined">CÓDIGO POSTAL</td>
 					<td width="39" align="center">'. $datos_empresa->cp_empresa .'</td>
 					<td width="39" align="center" class="defined">CALLE</td>
@@ -358,6 +363,9 @@ for ($h=0; $h < $num_table_res; $h++) {
 					<td width="190" align="center">'. $datos_empresa->telefono_empresa .'</td>
 					<td width="100" align="left" class="defined">CORREO ELECTRONICO</td>
 					<td width="272" align="center">'. $datos_empresa->correo_empresa .'</td>
+				</tr>
+				<tr>
+					<td width="609" align="center" class="defined" bgcolor="#cccccc"> 4. IDENTIFICACIÓN DE LOS RESIDUOS</td>
 				</tr>
 				<tr>
 					<td width="280" align="left" class="defined" rowspan="2"> &nbsp;<br/> 5.- DESCRIPCIÓN (Nombre del residuo y característica CRETI)  </td>
@@ -387,24 +395,25 @@ for ($h=0; $h < $num_table_res; $h++) {
 					<td width="304" align="left" class="defined"> 6 - INSTRUCCIONES ESPECIALES E INFORMACION ADICIONAL PARA EL MANEJO SEGURO </td>
 					<td width="305" align="center" class="data"> &nbsp;<br/> Usar guantes, gogles y cubreboca  </td>
 				</tr>
-				<tr>
-					<td width="304" align="left" class="defined"> 7 - CERTIFICACIÓN DEL GENERADOR</td>
-					<td width="305" align="center" class="data"> </td>
-				</tr>
+				
 				<tr>
 					<td width="609" align="left" class="defined"> <strong> Declaro que el contenido de este lote está correctamente descrito mediante el nombre del residuo,  características CRETIB, bien empacado, marcado y rotulado; y que se han previsto las condiciones de seguridad para su transporte por vía terrestre de acuerdo a la Legislación Nacional vigente </strong> </td>
 				</tr>
 				<tr>
-					<td width="215" align="left" class="defined"> NOMBRE Y FIRMA DEL RESPONSABLE </td>
-					<td width="394" align="left" class="data"> ' . $residuos_manifiesto[0]->responsable_tecnico . ' </td>
+					<td width="150" align="center" class="defined" height="42"> &nbsp;<br/> NOMBRE Y FIRMA DEL RESPONSABLE </td>
+					<td width="150" align="left" class="data"> &nbsp;<br/>' . $residuos_manifiesto[0]->responsable_tecnico . ' </td>
+					<td width="40" align="left" class="defined" >  &nbsp;<br/> FECHA </td>
+					<td width="150" align="left" class="data"> &nbsp;<br/>' . @date_manifiesto($manifiesto->fecha_embarque) . '</td>
+					<td width="40" align="left" class="defined" >  &nbsp;<br/> SELLO </td>
+					<td width="79" align="left" class="defined" > </td>
 				</tr>
 
 				<tr>
-					<td width="215" align="left" class="defined"> 8 - NOMBRE O RAZÓN SOCIAL DEL TRANSPORTISTA </td>
+					<td width="215" align="left" class="defined"> 7 - NOMBRE O RAZÓN SOCIAL DEL TRANSPORTISTA </td>
 					<td width="394" align="center"> ' . $datos_empresa_tran[0]->nombre_empresa . ' </td>
 				</tr>
 				<tr>
-					<td width="47" align="left" class="defined">DOMICILIO</td>
+					<td width="47" align="left" class="defined" bgcolor="#cccccc">DOMICILIO</td>
 					<td width="75" align="center" class="defined">CÓDIGO POSTAL</td>
 					<td width="39" align="center">'. $datos_empresa_tran[0]->cp_empresa .'</td>
 					<td width="39" align="center" class="defined">CALLE</td>
@@ -429,38 +438,38 @@ for ($h=0; $h < $num_table_res; $h++) {
 					<td width="272" align="center">'. $datos_empresa_tran[0]->correo_empresa .'</td>
 				</tr>
 				<tr>
-					<td width="150" align="left" class="defined"> 9 - No. DE AUTORIZACION  SEMARNAT </td>
+					<td width="150" align="left" class="defined"> 8 - No. DE AUTORIZACION  SEMARNAT </td>
 					<td width="154" align="center"> ' . @$datos_empresa_tran[0]->no_autorizacion_transportista . ' </td>
-					<td width="133" align="left" class="defined"> 10 - NO. DE AUTORIZACIÓN SCT </td>
+					<td width="133" align="left" class="defined"> 9 - NO. DE AUTORIZACIÓN SCT </td>
 					<td width="172" align="center"> ' . @$datos_empresa_tran[0]->numero_registro_ambiental . ' </td>
 				</tr>
 				<tr>
-					<td width="215" align="left" class="defined"> 11 - TIPO VEHICULO </td>
+					<td width="215" align="left" class="defined"> 10 - TIPO VEHICULO </td>
 					<td width="90" align="left" class="data">  ' . @$recolector_vehiculo->nombre_tipo . ' </td>
-					<td width="214" align="left" class="defined"> 12 - NÚM. DE PLACA </td>
+					<td width="214" align="left" class="defined"> 11 - NÚM. DE PLACA </td>
 					<td width="90" align="left" class="data">  ' . @$recolector_vehiculo->numero_placa . ' </td>
 				</tr>
 				<tr>
-					<td width="245" align="left" class="defined"> 13 - RUTA DE LA EMPRESA GENERADORA HASTA SU ENTREGA</td>
+					<td width="245" align="left" class="defined"> 12 - RUTA DE LA EMPRESA GENERADORA HASTA SU ENTREGA</td>
 					<td width="364" align="left" class="data"> ' . $ruta . ' </td>
 				</tr>
 				<tr>
 					<td width="609" align="left" class="data"  style="font-size: 5pt;"> Declaro bajo protesta de decir verdad que recibí los residuos peligrosos descritos en el manifiesto para su transporte a la empresa destinataria señalada por el generador </td>
 				</tr>
 				<tr>
-					<td width="150" align="left" class="defined" height="30"> NOMBRE Y FIRMA DEL RESPONSABLE </td>
-					<td width="180" align="center" height="30"> ' . $datos_recolector . ' </td>
-					<td width="36" align="left" class="defined" height="30"> FECHA </td>
-					<td width="150" align="center" height="30"> ' . @date_manifiesto($manifiesto->fecha_embarque) . ' </td>
-					<td width="33" align="left" class="defined" height="30"> SELLO </td>
-					<td width="60" align="center" height="30"> </td>
+					<td width="150" align="left" class="defined" height="42"> &nbsp;<br/> NOMBRE Y FIRMA DEL RESPONSABLE </td>
+					<td width="150" align="center" height="30"> &nbsp;<br/>' . $datos_recolector . ' </td>
+					<td width="40" align="left" class="defined" height="30"> &nbsp;<br/> FECHA </td>
+					<td width="150" align="center" height="30"> &nbsp;<br/>' . @date_manifiesto($manifiesto->fecha_embarque) . ' </td>
+					<td width="40" align="left" class="defined" height="30"> &nbsp;<br/> SELLO </td>
+					<td width="79" align="center" height="30"> &nbsp;<br/> </td>
 				</tr>
 				<tr>
-					<td width="215" align="left" class="defined"> 14 - NOMBRE O RAZÓN SOCIAL DEL DESTINATARIO </td>
+					<td width="215" align="left" class="defined"> 13 - NOMBRE O RAZÓN SOCIAL DEL DESTINATARIO </td>
 					<td width="394" align="center"> ' . $datos_empresa_destino->nombre_destino . ' </td>
 				</tr>
 				<tr>
-					<td width="47" align="left" class="defined">DOMICILIO</td>
+					<td width="47" align="left" class="defined" bgcolor="#cccccc">DOMICILIO</td>
 					<td width="75" align="center" class="defined">CÓDIGO POSTAL</td>
 					<td width="39" align="center">'. $datos_empresa_destino->cp .'</td>
 					<td width="39" align="center" class="defined">CALLE</td>
@@ -485,65 +494,51 @@ for ($h=0; $h < $num_table_res; $h++) {
 					<td width="272" align="center"></td>
 				</tr>
 				<tr>
-					<td width="215" align="left" class="defined">15 - NO DE AUTORIZACIÓN DE LA SEMARNAT  </td>
+					<td width="215" align="left" class="defined">14 - NO DE AUTORIZACIÓN DE LA SEMARNAT  </td>
 					<td width="394" align="center">'. $datos_empresa_destino->no_autorizacion_destino .'</td>
 				</tr>
 				<tr>
-					<td width="235" align="left" class="defined">16 - NOMBRE DE LA PERSONA QUE RECIBE LOS RECIDUOS </td>
+					<td width="235" align="left" class="defined">15 - NOMBRE DE LA PERSONA QUE RECIBE LOS RESIDUOS </td>
 					<td width="215" align="center"></td>
 					<td width="40" align="left" class="defined">CARGO</td>
 					<td width="119" align="center"></td>
 				</tr>
 				<tr>
-					<td width="95" align="left" class="defined">17 - OBSERVACIONES </td>
-					<td width="514" align="center"></td>
+					<td width="95" align="left" class="defined">16 - OBSERVACIONES </td>
+					<td width="514" align="center" style="font-size: 5.7pt"> ' . $residuos_manifiesto[0]->observaciones . '</td>
 				</tr>
 				<tr>
 					<td width="609" align="left" class="data"  style="font-size: 5pt;"> Declaro bajo protesta de decir verdad que recibí los residuos peligrosos descritos en el manifiesto </td>
 				</tr>
 				<tr>
-					<td width="150" align="left" class="defined" height="25"> NOMBRE Y FIRMA DEL RESPONSABLE </td>
-					<td width="200" align="center"> ' . $manifiesto->responsable_tecnico . ' </td>
-					<td width="100" align="left" class="defined"> SELLO Y FECHA </td>
-					<td width="159" align="center"> ' . @date_manifiesto($manifiesto->fecha_embarque) . ' </td>
+					<td width="150" align="left" class="defined" height="42"> &nbsp;<br/> &nbsp;<br/> NOMBRE Y FIRMA DEL RESPONSABLE </td>
+					<td width="200" align="center"> &nbsp;<br/> ' . $manifiesto->responsable_destino . ' </td>
+					<td width="50" align="left" class="defined"> &nbsp;<br/> SELLO Y FECHA </td>
+					<td width="209" align="center"> &nbsp;<br/> &nbsp;<br/>' . @date_manifiesto($manifiesto->fecha_embarque) . ' </td>
 				</tr>
 			</table>
 		</td>
 	</tr>
 	</table>
-
-	
 	';
 
-	// notes
-/*
-		<tr> 
-			<td width="134" class="data"> ' . $datos_empresa_destino->no_autorizacion_destino . ' </td>
-		</tr>
-			
-		<tr>
-			<td width="215" align="left" class="defined"> 4.- DOMICILIO </td>
-			<td width="394" align="center">' . $domicilio_empresa . ' </td>
-		</tr>
 
+	// output the HTML content + QR Codes
 
-				*/
-
-	// output the HTML content
 	$pdf->writeHTML($html, true, false, true, false, '');
-	$table_data_html = '';
+	$pdf->writeHTML($html, true, false, true, false, '');
+	$pdf->writeHTML($html, true, false, true, false, '');
+	$pdf->writeHTML($html, true, false, true, false, '');
 
-	/*echo $html;
-	die();*/
+	$table_data_html = '';
 }
 
 
 $filename 		= "{$nombre_empresa}_{$folio_identificador}_{$manifiesto->fecha_embarque}.pdf";
 $filelocation 	= $_SERVER['DOCUMENT_ROOT'] ."rgdiaz/img/pdf/";
-$fileNL 		= $filename; //Linux
 
 //Close and output PDF document
-$pdf->Output($fileNL, 'D');
+$pdf->Output($filename, 'D');
 
 //$pdf->Output($fileNL, 'F');
 

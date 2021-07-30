@@ -25,7 +25,7 @@
                             </li>
                             <li>
                                 <span class="d-inline-block vertical-align-top font-size18"><i class="far fa-envelope text-theme-color"></i></span>
-                                <span class="d-inline-block width-85 vertical-align-top padding-10px-left">diaz281@yahoo.com.mx</span>
+                                <span class="d-inline-block width-85 vertical-align-top padding-10px-left"> <a href="mailto: diaz281@yahoo.com.mx">diaz281@yahoo.com.mx </a> | <a href="mailto: rigediaz@hotmail.com"> rigediaz@hotmail.com </a> </span>
                             </li>
                             <li>
                                 <span class="d-inline-block vertical-align-top font-size18"><i class="fas fa-globe text-theme-color"></i></span>
