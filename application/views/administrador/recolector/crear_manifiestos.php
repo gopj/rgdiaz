@@ -1,19 +1,4 @@
-<?php $total_reg = count($bitacora_manifiesto); 
-
-// echo "<pre>";
-// print_r($bitacora_manifiesto);
-// echo "</pre>";
-
-// echo "<pre>";
-// print_r($id_cliente);
-// echo "</pre>";
-
-// echo "<pre>";
-// print_r($folio);
-// echo "</pre>";
-
-?>
-
+<?php $total_reg = count($bitacora_manifiesto); ?>
 <main role="main" class="container" style="padding-top:-10px;">
 	<center><h2 class="bd-title" id="content"><h2>Crear Manifiesto | <?= $folio_identificador ?></h2></center>
 	<hr>
@@ -46,8 +31,8 @@
 
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<label class="col-form-label" for="responsable_tecnico"> <center> Nombre del Responable Técnico</center> </label>
-					<input type="text" class="form-control" id="responsable_tecnico" name="responsable_tecnico" value="<?= $responsable_tecnico ?>" oninput="terminar_manifiesto();check_resposanble();" placeholder="El nombre del responsable técnico está vacío.">
+					<label class="col-form-label" for="responsable_destino"> <center> Nombre del Responable Técnico</center> </label>
+					<input type="text" class="form-control" id="responsable_destino" name="responsable_destino" value="<?= $responsable_destino ?>" oninput="terminar_manifiesto();check_resposanble();" placeholder="El nombre del responsable técnico está vacío.">
 				</div>
 
 				<div class="form-group col-md-6">
@@ -259,11 +244,11 @@
 							<td> <?= $key->etiqueta ?> </td>
 							<?php if ($total_reg == 1) { ?>
 								<td style="text-align: center;">
-									<button type="button" class="btn btn-danger btn-sm btn-block" data-toggle="modal" data-target="#deleteLastResiduo"> Eliminar </button>
+									<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteLastResiduo"> Borrar </button>
 								</td>
 							<?php } else { ?>
 								<td style="text-align: center;"> 
-								<a href="<?=site_url('administrador/recolector_eliminar_tran_residuo/' . $id_cliente . '/' . $key->id_tran_residuo);?>" class="btn btn-danger btn-sm" role="button"> Eliminar </a> 
+								<a href="<?=site_url('administrador/recolector_eliminar_tran_residuo/' . $id_cliente . '/' . $key->id_tran_residuo);?>" class="btn btn-danger btn-sm" role="button"> Borrar </a> 
 							</td>
 							<?php } ?>
 						</tr>
@@ -282,7 +267,7 @@
 
 	<div class="form-row">
 		<div class="form-group col-md-4">
-			<a href="<?= site_url('recolector/ver_manifiestos/' . $id_cliente); ?>"  class="btn btn-warning btn-lg btn-block" id="regresar"> Regresar </a>
+			<a href="<?= site_url('administrador/recolector_ver_manifiestos/' . $id_cliente); ?>"  class="btn btn-warning btn-lg btn-block" id="regresar"> Regresar </a>
 		</div>
 		<div class="form-group col-md-4">
 			<button type="button" class="btn btn-primary btn-lg btn-block" id="agregar_residuos" data-toggle="modal" data-target="#myModal">Agregar Residuo</button>
@@ -291,14 +276,52 @@
 			<form id="form_terminar_manifiesto" action="<?= site_url('administrador/recolector_terminar_manifiesto/' . $id_cliente . '/' . $folio); ?>" method="post">
 
 				<input type="text" name="terminar_responsable" id="terminar_responsable" hidden>
+				<input type="text" name="terminar_responsable_tecnico" id="terminar_responsable_tecnico" hidden>
 				<input type="text" name="terminar_fecha" id="terminar_fecha" hidden>
 				<input type="text" name="terminar_empresa_destino" id="terminar_empresa_destino" hidden>
 				<input type="text" name="terminar_ruta" id="terminar_ruta" hidden>
 				<input type="text" name="terminar_observaciones" id="terminar_observaciones" hidden>
+				<input type="text" name="terminar_persona_residuos" id="terminar_persona_residuos" hidden>
+				<input type="text" name="terminar_cargo_persona" id="terminar_cargo_persona" hidden>
 
-				<button type="submit" form="form_terminar_manifiesto" class="btn btn-success btn-lg btn-block" id="b_terminar_manifiesto" disabled> Terminar Manifiesto </button>
+
+				<button type="button" class="btn btn-success btn-lg btn-block" id="b_terminar_manifiesto" data-toggle="modal" data-target="#terminar_manifiesto_modal" disabled> Terminar Manifiesto </button>
 
 			</form>
+		</div>
+	</div>
+
+	<!-- Modal Terminar Manifiesto -->
+	<div class="modal" id="terminar_manifiesto_modal">
+		<div class="modal-dialog modal-md">
+			<div class="modal-content">
+
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h4 class="modal-title">Terminar manifiesto </h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body">
+				<div class="form-row">
+					<div class="form-group col-md-10">
+						<label class="col-form-label" for="responsable_tecnico">  Responsable Técnico del Generador </label>
+						<input type="text" class="form-control" id="responsable_tecnico" name="responsable_tecnico" onchange="update_terminar_manifiiesto()"> 
+						<label class="col-form-label" for="persona_residuos">  Persona que recibe los residuos </label>
+						<input type="text" class="form-control" id="persona_residuos" name="persona_residuos" onchange="update_terminar_manifiiesto()"> 
+						<label class="col-form-label" for="cargo_persona">  Cargo </label>
+						<input type="text" class="form-control" id="cargo_persona" name="cargo_persona" onchange="update_terminar_manifiiesto()"> 
+					</div>	
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+					<button type="submit" form="form_terminar_manifiesto" class="btn btn-primary" role="button"> Terminar </button>
+				</div>
+
+			</div>
 		</div>
 	</div>
 

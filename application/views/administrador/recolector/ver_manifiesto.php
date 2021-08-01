@@ -1,5 +1,5 @@
 <main role="main" class="container" style="padding-top:-10px;">
-	<center><h2 class="bd-title" id="content"><h2>Ver Manifiesto | <?= $id_cliente . "-" . $folio; ?></h2></center>
+	<center><h2 class="bd-title" id="content"><h2>Ver Manifiesto | <?= $folio_identificador ?></h2></center>
 	<hr>
 		<div class="col-md-12">
 			<div class="form-row">
@@ -37,7 +37,7 @@
 				<div class="form-group col-md-12">
 					<center><h3 class="bd-title" id="content">Recolección de Residuos</h3></center>
 					<hr>
-					<table id="tabla_residuos" class="table table-striped table-bordered" style="width:100%">
+					<table id="tabla_residuos" class="table table-striped table-bordered table-sm" >
 						<thead>
 							<tr>
 								<th>#</th>
@@ -48,7 +48,7 @@
 								<th>Contenedor Capacidad</th>
 								<th>Cantidad (KG)</th>
 								<th>Etiqueta</th>
-								<th>Opciones</th>
+								<th>Opcion</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -57,7 +57,7 @@
 								foreach ($bitacora_manifiesto as $key) { 
 							?>
 								<tr>
-									<th> <?= $x++ ?> </th>
+									<td> <?= $x++ ?></td>
 									<td> <?= $key->residuo ?> </td>
 									<td> <?= $key->caracteristica ?> </td>
 									<td> <?= $key->contenedor_cantidad ?> </td>
@@ -65,14 +65,14 @@
 									<td> <?= $key->contenedor_capacidad ?> </td>
 									<td> <?= $key->residuo_cantidad ?> </td>
 									<td> <?= $key->etiqueta ?> </td>
-									<td> <button class="btn btn-danger btn-sm btn-block" disabled> Eliminar </button> </td>
+									<td> <center><button class="btn btn-danger btn-sm" disabled> Borrar </button> </center> </td>
 								</tr>
 							<?php } ?>
 						</tbody>
 					</table>
 				</div>
 			</div>
-
+		
 			<div class="form-row">
 				<div class="form-group col-md-12">
 				</div>

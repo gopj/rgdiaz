@@ -9,7 +9,11 @@
 					<select class="form-control" style="width: 100%;" name="empresa_destino" id="empresa_destino" required>
 						<option value="">Selecciona empresa destino</option>
 						<?php foreach ($empresa_destino as $key) { ?>
-							<option value="<?= $key->id_tipo_emp_destino; ?>"> <?= $key->nombre_destino; ?> </option>
+							<?php if ($key->id_tipo_emp_destino == 24) {  ?> // Empresa por default RDIAZ
+								<option value="<?= $key->id_tipo_emp_destino; ?>" selected> <?= $key->nombre_destino; ?> </option>
+							<?php } else { ?>
+								<option value="<?= $key->id_tipo_emp_destino; ?>"> <?= $key->nombre_destino; ?> </option>
+							<?php } ?>
 						<?php } ?>
 					</select>
 					<div class="invalid-feedback">
@@ -30,8 +34,8 @@
 
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<label class="col-form-label" for="responsable_tecnico"> <center> Nombre del Responable Técnico</center> </label>
-					<input type="text" class="form-control" id="responsable_tecnico" name="responsable_tecnico">
+					<label class="col-form-label" for="responsable_desttino"> <center> Nombre del Responable Técnico</center> </label>
+					<input type="text" class="form-control" id="responsable_desttino" name="responsable_desttino">
 				</div>		
 
 				<div class="form-group col-md-6">

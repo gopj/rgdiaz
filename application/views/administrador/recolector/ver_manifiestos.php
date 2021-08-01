@@ -1,8 +1,8 @@
 <main role="main" class="container" style="padding-top:-10px;">
 	<center><h2 class="bd-title" id="content">Manifiestos</h1></center>
 	<hr>
-	<table id="tabla_manifiestos" class="table table-striped table-bordered" style="width:100%">
-		<thead>
+	<table id="tabla_manifiestos" class="table table-striped table-bordered table-hover" style="width:100%">
+		<thead class="thead-dark">
 			<tr>
 				<th>Folio</th>
 				<th>Empresa Destino</th>
@@ -28,7 +28,7 @@
 						<td style="text-align: center;"> 
 							<a href="<?=site_url('administrador/recolector_crear_manifiestos/' . $id_cliente . '/' . $bit->id_tran_folio);?>" class="btn btn-success btn-sm" role="button"> Terminar </a> 
 								
-							<a href="index.php/administradir/recolector_ver_manifiestos/<?=$id_cliente;?>" class="btn btn-danger btn-sm" role="button" disabled> PDF </a>
+							<a href="index.php/administrador/recolector_ver_manifiestos/<?=$id_cliente;?>" class="btn btn-danger btn-sm" role="button" disabled> PDF </a>
 						</td>
 					<?php } ?>
 				</tr>

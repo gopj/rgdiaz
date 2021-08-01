@@ -430,8 +430,8 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 	var table = $('#tabla_residuos').DataTable( {
-		"scrollY": 			true,
-		"scrollX": 			true,
+		// "scrollY": 			true,
+		// "scrollX": 			true,
 		"scrollCollapse": 	true,
 		"pageLength": 		10,
 		"language": {
@@ -530,10 +530,14 @@ function terminar_manifiesto() {
 	$("#terminar_observaciones").val(observaciones);
 }
 
-function update_responsable_tec(){
+function update_terminar_manifiiesto(){
 	var responsable_tecnico = document.getElementById('responsable_tecnico').value;
+	var persona_residuos = document.getElementById('persona_residuos').value;
+	var cargo_persona = document.getElementById('cargo_persona').value;
 
 	$("#terminar_responsable_tecnico").val(responsable_tecnico);
+	$("#terminar_persona_residuos").val(persona_residuos);
+	$("#terminar_cargo_persona").val(cargo_persona);
 }
 
 function clear_required(){

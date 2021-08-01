@@ -1,13 +1,8 @@
-<?php 
- // echo "<pre>";
- // print_r($bitacora);
- // echo "</pre>";
-?>
 <main role="main" class="container" style="padding-top:-10px;">
 	<center><h2 class="bd-title" id="content">Manifiestos</h1></center>
 	<hr>
-	<table id="tabla_manifiestos" class="table table-striped table-bordered">
-		<thead>
+	<table id="tabla_manifiestos" class="table table-striped table-bordered table-hover" style="width:100%">
+		<thead class="thead-dark">
 			<tr>
 				<th>Folio</th>
 				<th>Empresa Destino</th>

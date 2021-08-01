@@ -281,6 +281,9 @@
 				<input type="text" name="terminar_empresa_destino" id="terminar_empresa_destino" hidden>
 				<input type="text" name="terminar_ruta" id="terminar_ruta" hidden>
 				<input type="text" name="terminar_observaciones" id="terminar_observaciones" hidden>
+				<input type="text" name="terminar_persona_residuos" id="terminar_persona_residuos" hidden>
+				<input type="text" name="terminar_cargo_persona" id="terminar_cargo_persona" hidden>
+
 
 				<button type="button" class="btn btn-success btn-lg btn-block" id="b_terminar_manifiesto" data-toggle="modal" data-target="#terminar_manifiesto_modal" disabled> Terminar Manifiesto </button>
 
@@ -303,9 +306,12 @@
 			<div class="modal-body">
 				<div class="form-row">
 					<div class="form-group col-md-10">
-						<label class="col-form-label"> Agrega Responsable Técnico del Generador  </label> <br>
-						<label class="col-form-label" for="responsable_tecnico"> Responsable Técnico </label>
-						<input type="text" class="form-control" id="responsable_tecnico" name="responsable_tecnico" onchange="update_responsable_tec()"> 
+						<label class="col-form-label" for="responsable_tecnico">  Responsable Técnico del Generador </label>
+						<input type="text" class="form-control" id="responsable_tecnico" name="responsable_tecnico" onchange="update_terminar_manifiiesto()"> 
+						<label class="col-form-label" for="persona_residuos">  Persona que recibe los residuos </label>
+						<input type="text" class="form-control" id="persona_residuos" name="persona_residuos" onchange="update_terminar_manifiiesto()"> 
+						<label class="col-form-label" for="cargo_persona">  Cargo </label>
+						<input type="text" class="form-control" id="cargo_persona" name="cargo_persona" onchange="update_terminar_manifiiesto()"> 
 					</div>	
 				</div>
 

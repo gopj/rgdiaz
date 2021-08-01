@@ -25,32 +25,6 @@
 		<script type="text/javascript" src="js/jquery.validate.messages.js"></script>
 		<script type="text/javascript" src="js/bitacora.js"></script>
 
-		<style type="text/css">
-			/*table.dataTable thead tr {
-				background-color: #28A745;
-				color: white;
-			}
-			table.dataTable tfoot tr { 
-				background-color: #28A745;
-				color: white;	
-			}
-			.page-item.active .page-link {
-				background-color: #28A745;
-				border-color: black;
-			}*/
-
-			table.dataTable thead th{
-				background: white;
-			}
-
-			table.dataTable.table-striped.DTFC_Cloned tbody tr:nth-of-type(odd) {
-				background: #F3F3F3;
-			}
-
-			table.dataTable.table-striped.DTFC_Cloned tbody tr:nth-of-type(even) {
-				background: white;
-			}
-    	</style>
 		<title>Recolector</title>
 	</head>
 	<body>

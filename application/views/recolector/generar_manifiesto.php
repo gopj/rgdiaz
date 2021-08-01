@@ -321,9 +321,12 @@ for ($h=0; $h < $num_table_res; $h++) {
 
 	</style>
 
+	<br /><br /><br /><br />
+		
 	<a href="http://www.rdiaz.mx" style="font-size: 7pt;" target="_blank"> RDíaz </a>
-
-	<br /><br /><br /><br /><br />
+	
+	<br />	<br />
+	
 	<table>
 	<tr>
 		<td width="18" ></td>
@@ -499,13 +502,13 @@ for ($h=0; $h < $num_table_res; $h++) {
 				</tr>
 				<tr>
 					<td width="235" align="left" class="defined">15 - NOMBRE DE LA PERSONA QUE RECIBE LOS RESIDUOS </td>
-					<td width="215" align="center"></td>
+					<td width="215" align="center"> '. $manifiesto->persona_residuos .' </td>
 					<td width="40" align="left" class="defined">CARGO</td>
-					<td width="119" align="center"></td>
+					<td width="119" align="center">'. $manifiesto->cargo_persona  .' </td>
 				</tr>
 				<tr>
 					<td width="95" align="left" class="defined">16 - OBSERVACIONES </td>
-					<td width="514" align="center" style="font-size: 5.7pt"> ' . $residuos_manifiesto[0]->observaciones . '</td>
+					<td width="514" align="center" style="font-size: 5.7pt"> ' . $manifiesto->observaciones . '</td>
 				</tr>
 				<tr>
 					<td width="609" align="left" class="data"  style="font-size: 5pt;"> Declaro bajo protesta de decir verdad que recibí los residuos peligrosos descritos en el manifiesto </td>

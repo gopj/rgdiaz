@@ -101,12 +101,13 @@ class Recolector extends CI_Controller {
 			$tran_resiudos 				= $this->tran_residuo_model->get_reg_tran_residuos($id_cliente, $folio);
 			$data["cliente"] 			= $this->persona_model->get_datos_empresa($id_cliente);
 			$manifiesto 				= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio);
-			$data["empresa_destino"] 	= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->empresa_destino;
-			$data["fecha_embarque"] 	= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->fecha_embarque;
-			$data["responsable_destino"]= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->responsable_destino;
+			$data["empresa_destino"] 	= $manifiesto->nombre_destino;
+			$data["fecha_embarque"] 	= $manifiesto->fecha_embarque;
+			$data["responsable_destino"]= $manifiesto->responsable_destino;
 			$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
 			$data["recolector"]			= $this->persona_model->get_datos_empresa($this->session->userdata('id'));
 			$data["vehiculos"] 			= $this->tran_vehiculo_model->get_vehiculos();
+			$data["folio_identificador"]= $this->persona_model->get_datos_empresa($id_cliente)->identificador_folio . '-' . $folio; 
 
 			$data["ruta"]				= $tran_resiudos->ruta;
 			$data["observaciones"]		= $tran_resiudos->observaciones;
@@ -228,7 +229,7 @@ class Recolector extends CI_Controller {
 				$data["contenedor_tipo"]	= $this->input->post("tipoRadio");
 				$data["etiqueta"]			= $this->input->post("etiqueta_check");
 				$data["caracteristica_r"]	= $this->input->post("caracteristica_check");
-				$data["responsable_tecnico"]= $this->input->post("responsable_tecnico");
+				
 				$data["caracteristicas"] 	= "";
 
 				foreach (@$data["caracteristica_r"] as $key => $value) {
@@ -236,8 +237,7 @@ class Recolector extends CI_Controller {
 				}
 				
 				// // Actualza Folio
-				// $this->tran_residuo_model->inserta_tran_folio($data); // id_folio es el necesario para generacion automatica (no mover)
-
+				$this->tran_residuo_model->update_folio($data); 
 
 				$this->tran_residuo_model->inserta_tran_residuo($data);
 
@@ -279,10 +279,10 @@ class Recolector extends CI_Controller {
 	public function terminar_manifiesto($id_cliente, $folio) {
 
 		if ($this->session->userdata('tipo') == 2){
-			$data["recolector"]	= $this->persona_model->get_datos_empresa($this->session->userdata('id'));
-			$data["vehiculos"] 	= $this->tran_vehiculo_model->get_vehiculos();
-			$data["cliente"] 	= $this->persona_model->get_datos_empresa($id_cliente);
-			$folio_temp = $this->tran_residuo_model->get_bitacora_count($id_cliente) - 1;
+			$data["recolector"]			= $this->persona_model->get_datos_empresa($this->session->userdata('id'));
+			$data["vehiculos"] 			= $this->tran_vehiculo_model->get_vehiculos();
+			$data["cliente"] 			= $this->persona_model->get_datos_empresa($id_cliente);
+			$folio_temp 				= $this->tran_residuo_model->get_bitacora_count($id_cliente) - 1;
 			$data["folio_identificador"]= $this->persona_model->get_datos_empresa($id_cliente)->identificador_folio . '-' . $folio_temp;
 
 			if ($this->input->post()) {
@@ -292,16 +292,13 @@ class Recolector extends CI_Controller {
 				$data["fecha_embarque"]		= date_format($fecha_embarque, "Y-m-d");
 				$data["responsable_destino"]= $this->input->post("terminar_responsable");
 				$data["responsable_tecnico"]= $this->input->post("terminar_responsable_tecnico");
-
-				// echo "<pre>";
-				// print_r($data);
-				// echo "<pre>";
-				// die();
+				$data["persona_residuos"] 	= $this->input->post("terminar_persona_residuos");
+				$data["cargo_persona"]		= $this->input->post("terminar_cargo_persona");
 
 				$this->tran_residuo_model->terminar_manifiesto($id_cliente, $folio, $data);
 
 				$data["id_cliente"] = $id_cliente;
-				$data["bitacora"] = $this->tran_residuo_model->get_bitacora($id_cliente);
+				$data["bitacora"] 	= $this->tran_residuo_model->get_bitacora($id_cliente);
 				
 				$this->load->view("recolector/header", $data);
 				$this->load->view("recolector/ver_manifiestos", $data);

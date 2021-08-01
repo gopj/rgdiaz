@@ -93,33 +93,18 @@ class Tran_residuo_model extends CI_Model {
 		
 		$result = $this->db->query("
 			SELECT 
-				*
+				tf.*,
+				ted.*
 			FROM 
-				tran_folios
-					
+				tran_folios as tf,
+				tipo_emp_destino as ted 
 			WHERE
-				id_persona 	 = {$id_cliente} and 
-				id_tran_folio= {$folio};
+				tf.id_persona 	 = {$id_cliente} and
+				tf.id_tipo_emp_destino = ted.id_tipo_emp_destino and
+				tf.id_tran_folio= {$folio};
 		")->row();
 
-		// $result = $this->db->query("
-		// 	SELECT 
-		// 		tf.folio,
-		// 		tf.fecha_embarque,
-		// 		tf.responsable_tecnico,
-		// 		tf.responsable_destino,
-		// 		ed.nombre_destino as empresa_destino
-		// 	FROM 
-		// 		tran_residuos as r,
-		// 		tipo_residuos as tr,
-		// 		tran_folios as tf
-		// 			LEFT JOIN tipo_emp_destino ed ON (tf.id_tipo_emp_destino = ed.id_tipo_emp_destino)
-		// 	WHERE
-		// 		r.id_tipo_residuo = tr.id_tipo_residuo and
-		// 		id_persona 	 = {$id_cliente} and 
-		// 		r.id_tran_folio= {$folio}
-		// 	LIMIT 1;
-		// ")->row();
+
 
 		return $result;
 	}
@@ -140,6 +125,16 @@ class Tran_residuo_model extends CI_Model {
 			->insert('tran_folios');
 
 		return $this->db->insert_id();
+	}
+
+	public function update_folio($data){
+		$this->db
+				->set('fecha_embarque', $data['fecha_embarque'])
+				->set('responsable_destino', $data['responsable_destino'])
+				->set('ruta', $data['ruta'])
+				->set('observaciones', $data['observaciones'])
+				->where('id_tran_folio', $data['folio'])
+				->update('tran_folios');
 	}
 
 	public function inserta_tran_residuo($data) {	
@@ -205,6 +200,9 @@ class Tran_residuo_model extends CI_Model {
 	public function terminar_manifiesto($id_cliente, $folio, $data) {
 		return $this->db->set('status',				'R')
 						->set('responsable_tecnico',$data["responsable_tecnico"])
+						->set('responsable_destino',$data["responsable_destino"])
+						->set('persona_residuos',	$data["persona_residuos"])
+						->set('cargo_persona',		$data["cargo_persona"])
 						->where('id_persona',		$id_cliente)
 						->where('id_tran_folio',	$folio)
 						->update('tran_folios');

@@ -1,5 +1,5 @@
 <main role="main" class="container" style="padding-top:-10px;">
-	<center><h2 class="bd-title" id="content"><h2>Ver Manifiesto | <?= $id_cliente . "-" . $folio; ?></h2></center>
+	<center><h2 class="bd-title" id="content"><h2>Ver Manifiesto | <?= $folio_identificador ?> </h2></center>
 	<hr>
 		<div class="col-md-12">
 			<div class="form-row">
@@ -65,7 +65,7 @@
 									<td> <?= $key->contenedor_capacidad ?> </td>
 									<td> <?= $key->residuo_cantidad ?> </td>
 									<td> <?= $key->etiqueta ?> </td>
-									<td> <button class="btn btn-danger btn-sm btn-block" disabled> Eliminar </button> </td>
+									<td> <center><button class="btn btn-danger btn-sm" disabled> Borrar </button> </center> </td>
 								</tr>
 							<?php } ?>
 						</tbody>
