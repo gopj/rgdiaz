@@ -144,7 +144,7 @@ class Tran_residuo_model extends CI_Model {
 		}
 
 		$this->db
-				->set('id_tran_folio'		, $data['folio']) // id_folio, proviene de la inserción hecha en la funcion de inserta_tran_folio (no mover)
+				->set('id_tran_folio'		, $data['id_folio']) // id_folio, proviene de la inserción hecha en la funcion de inserta_tran_folio (no mover)
 				->set('id_tipo_residuo'		, $data['residuo'])
 				->set('caracteristica'		, $data['caracteristicas'])
 				->set('contenedor_cantidad'	, $data['cont_cantidad'])
@@ -208,9 +208,20 @@ class Tran_residuo_model extends CI_Model {
 						->update('tran_folios');
 	}
 
-	// public function update_folio($data){
-	// 	return $this->db->
-	// }
+	public function get_folio_identificador($folio){
+		$sql_text = "
+			SELECT 
+				*
+			FROM 
+				tran_folios
+			WHERE
+				id_tran_folio	= {$folio};
+		";
+
+		$result = $this->db->query($sql_text)->row();
+
+		return $result;
+	}
 
 	public function get_residuos_manifiesto($id_cliente, $folio){
 		return $this->db->query("
@@ -245,5 +256,29 @@ class Tran_residuo_model extends CI_Model {
 		return $this->db->query("select * from tran_folios where id_tran_folio=" . $folio . ";")->row();
 	}
 
+	public function recolector_bitacora(){
+		$sql_text = '
+			SELECT 
+				tf.*,
+				p.nombre,
+				p2.nombre_empresa as nombre_generador,
+				tv.*,
+				ted.*
+			FROM 
+				tran_folios tf,
+				persona p,
+				tran_vehiculos tv,
+				tipo_emp_destino ted,
+				persona p2 
+			WHERE 
+				tf.id_recolector = p.id_persona AND
+				tf.id_vehiculo = tv.id_vehiculo AND 
+				tf.id_tipo_emp_destino = ted.id_tipo_emp_destino AND
+				tf.id_persona = p2.id_persona ;';
+
+		$result = $this->db->query($sql_text)->result();
+
+		return $result;
+	}
 
 }

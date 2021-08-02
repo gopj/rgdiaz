@@ -1,5 +1,5 @@
-<main role="main" class="container" style="padding-top:-10px;">
-	<center><h2 class="bd-title" id="content">Clientes</h1></center>
+<main role="main" class="container col-md-10" style="padding-top:-10px;">
+	<center><h2 class="bd-title" id="content">Clientes</h2></center>
 	<hr>
 
 	<form method="post" id="form_ver_manifiestos" action="<?php echo site_url('administrador/recolector_ver_manifiestos')?>">

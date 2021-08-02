@@ -58,7 +58,8 @@
 										<a href="" class="dropdown-toggle" data-toggle="dropdown">Recolectores<b class="caret"></b></a>
 										<ul class="dropdown-menu"> 
 												<li><a href="<?php echo site_url('administrador/recolector_consulta')?>">Consultas</a></li>
-												<li><a href="<?php echo site_url('administrador/recolector_index') ?>">Bitacora</a></li>
+												<li><a href="<?php echo site_url('administrador/recolector_index') ?>">Manifiestos</a></li>
+												<li><a href="<?php echo site_url('administrador/recolector_bitacora') ?>">Bitacora</a></li>
 										</ul>
 									</li>
 									

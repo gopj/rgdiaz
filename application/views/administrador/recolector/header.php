@@ -52,7 +52,8 @@
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 							<a class="dropdown-item" href="<?php echo site_url('administrador/recolector_consulta')?>">Consultas</a>
-							<a class="dropdown-item" href="<?php echo site_url('administrador/recolector_index')?>">Bitacora</a>
+							<a class="dropdown-item" href="<?php echo site_url('administrador/recolector_index')?>">Manifiesto</a>
+							<a class="dropdown-item" href="<?php echo site_url('administrador/recolector_bitacora')?>">Bitacora</a>
 						</div>
 					</li>
 					<li class="nav-item">

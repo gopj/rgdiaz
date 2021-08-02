@@ -2155,6 +2155,7 @@ class Administrador extends CI_Controller {
 			$folio_temp = $this->tran_residuo_model->get_bitacora_count($id_cliente) - 1;
 			$data["folio_identificador"]= $this->persona_model->get_datos_empresa($id_cliente)->identificador_folio . '-' . $folio_temp;
 			$data["folio"]				= $folio;
+			$data["id_folio"]			= $folio; // Se necesita para inserción
 
 			if ($this->input->post()) {
 				
@@ -2229,12 +2230,6 @@ class Administrador extends CI_Controller {
 			$folio_temp = $this->tran_residuo_model->get_bitacora_count($id_cliente) - 1;
 			$data["folio_identificador"]= $this->persona_model->get_datos_empresa($id_cliente)->identificador_folio . '-' . $folio_temp;
 
-			// echo "<pre>";
-			// print_r($this->input->post());
-			// echo "</pre>";
-			// die();
-
-
 			if ($this->input->post()) {
 
 				$fecha_embarque 			= date_create_from_format("d/m/Y", $this->input->post("terminar_fecha"));
@@ -2299,8 +2294,8 @@ class Administrador extends CI_Controller {
 
 		$data["id_cliente"] 			= $id_cliente;
 		$data["folio"] 					= $folio;
-		$folio_temp 					= $this->tran_residuo_model->get_bitacora_count($id_cliente) - 1;
-		$data["folio_identificador"]	= $this->persona_model->get_datos_empresa($id_cliente)->identificador_folio . '-' . $folio;
+		$data["folio_identificador"]	= $this->tran_residuo_model->get_folio_identificador($folio)->folio;
+
 		$data["manifiesto"]				= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio);
 		$data["nombre_cliente"] 		= $this->persona_model->get_nombre_cliente($id_cliente);
 		$data["cliente"] 				= $this->persona_model->get_datos_empresa($id_cliente);
@@ -2313,10 +2308,7 @@ class Administrador extends CI_Controller {
 		$data["datos_recolector"] 		= $this->persona_model->get_nombre_cliente($recolector);
 		$data["vehiculos"] 				= $this->tran_vehiculo_model->get_vehiculos();
 		$data["id_vehiculo"] 			= $this->persona_model->get_recolector_vehicle($recolector);
-		// echo "<pre>";
-		// print_r($data['id_vehiculo']);
-		// echo "</pre>";
-		// die();
+
 		$data["recolector_vehiculo"]	= $this->tran_vehiculo_model->get_folio_vehiculo($vehiculo); // en recolectores (usuario tipo 2) cp_empresa es el id del vehiculo
 		$tran_resiudos 					= $this->tran_residuo_model->get_reg_tran_residuos($id_cliente, $folio);
 		$data["ruta"]					= $tran_resiudos->ruta;
@@ -2337,6 +2329,23 @@ class Administrador extends CI_Controller {
 			}
 		}
 	}
+
+	public function recolector_bitacora() {
+		if ($this->session->userdata('tipo') == 1){
+				
+			$data["bitacora"] = $this->tran_residuo_model->recolector_bitacora();
+			
+			$this->load->view("administrador/recolector/header", $data);
+			$this->load->view("administrador/recolector/bitacora", $data);
+			$this->load->view("administrador/recolector/footer", $data);
+			
+		
+		}else{
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/index');
+		}
+	
+	}	
 
 	public function mail_test() { 
 

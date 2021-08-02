@@ -1,4 +1,4 @@
-<main role="main" class="container" style="padding-top:-10px;">
+<main role="main" class="container col-md-10" style="padding-top:-10px;">
 	<center><h2 class="bd-title" id="content"><h2>Ver Manifiesto | <?= $folio_identificador ?></h2></center>
 	<hr>
 		<div class="col-md-12">
@@ -15,8 +15,8 @@
 
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<label class="col-form-label" for="responsable_tecnico"> <center> Nombre del Responable Técnico</center> </label>
-					<input type="text" class="form-control" id="responsable_tecnico" name="responsable_tecnico" value="<?= $responsable_tecnico ?>" readonly>
+					<label class="col-form-label" for="responsable_destino"> <center> Nombre del Responable Técnico</center> </label>
+					<input type="text" class="form-control" id="responsable_destino" name="responsable_destino" value="<?= $responsable_destino ?>" readonly>
 				</div>
 
 				<div class="form-group col-md-6">

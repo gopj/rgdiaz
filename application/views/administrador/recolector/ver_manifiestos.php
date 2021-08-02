@@ -1,4 +1,4 @@
-<main role="main" class="container" style="padding-top:-10px;">
+<main role="main" class="container col-md-10" style="padding-top:-10px;">
 	<center><h2 class="bd-title" id="content">Manifiestos</h1></center>
 	<hr>
 	<table id="tabla_manifiestos" class="table table-striped table-bordered table-hover" style="width:100%">
@@ -14,8 +14,7 @@
 			<?php 
 				foreach ($bitacora as $bit) { 
 					$fecha =  date_create_from_format("Y-m-d", $bit->fecha_embarque);
-			?>			
-				<tr>
+			?>	<tr>
 					<td style="text-align: center;"> <?= $bit->folio; ?> </td>
 					<td> <?= $bit->empresa_destino; ?> </td>
 					<td style="text-align: center;"> <?= date_format($fecha, "d/m/Y"); ?> </td>

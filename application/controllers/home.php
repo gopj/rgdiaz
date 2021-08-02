@@ -12,8 +12,16 @@ class Home extends CI_Controller {
 
 	public function index()
 	{	
+		$this->load->view('home/header2');
+		$this->load->view('home/index2');
+		$this->load->view('home/footer2');
+
+	}
+
+	public function old_index()
+	{	
 		$this->load->view('home/header');
-		$this->load->view('home/inicio');
+		$this->load->view('home/index');
 		$this->load->view('home/footer');
 	}
 
@@ -44,9 +52,9 @@ class Home extends CI_Controller {
 	}
 
 	public function sesion(){
-		$this->load->view('home/header');
-		$this->load->view('home/inicio_session');
-		$this->load->view('home/footer');
+		$this->load->view('home/header2');
+		$this->load->view('home/login2');
+		$this->load->view('home/footer2');
 	}
 
 	public function index2(){
