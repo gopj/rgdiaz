@@ -2332,13 +2332,25 @@ class Administrador extends CI_Controller {
 
 	public function recolector_bitacora() {
 		if ($this->session->userdata('tipo') == 1){
+			
+			if ($this->input->post()){
+
+				$fecha = date_create_from_format('d/m/Y', $this->input->post("fecha_embarque"));
+				$data["fecha"] = date_format($fecha, 'Y/m/d');
+				$data["bitacora"] = $this->tran_residuo_model->recolector_bitacora_custom($data);
 				
-			$data["bitacora"] = $this->tran_residuo_model->recolector_bitacora();
-			
-			$this->load->view("administrador/recolector/header", $data);
-			$this->load->view("administrador/recolector/bitacora", $data);
-			$this->load->view("administrador/recolector/footer", $data);
-			
+				$this->load->view("administrador/recolector/header", $data);
+				$this->load->view("administrador/recolector/bitacora", $data);
+				$this->load->view("administrador/recolector/footer", $data);
+
+			} else {
+
+				$data["bitacora"] = $this->tran_residuo_model->recolector_bitacora();
+								
+				$this->load->view("administrador/recolector/header", $data);
+				$this->load->view("administrador/recolector/bitacora", $data);
+				$this->load->view("administrador/recolector/footer", $data);				
+			}
 		
 		}else{
 			$this->session->sess_destroy(); #destruye session

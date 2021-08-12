@@ -1,8 +1,24 @@
 <main role="main" class="container col-md-10">
-	<form class="form-inline">
+	<form class="form-inline" role="form" autocomplete="off" method='post' id='form_bitacora' action="<?php echo site_url('administrador/recolector_bitacora');?>">
 		<div class="form-row">
-			<h2 class="bd-title" id="content">Bitacora</h2>
-			<input class="form-control col-md-6" id="fecha_embarque" name="fecha_embarque">
+
+			<div class="form-group col-md-4">
+				<h2 class="bd-title">Bitacora</h2>
+			</div>
+
+
+			<div class="form-group col-md-3">
+
+				<label for="fecha_embarque">Fecha</label>
+				<input class="form-control form-control-sm" id="fecha_embarque" name="fecha_embarque" style="text-align: center;">
+			</div>
+
+			<div class="form-group col-md-4">
+
+				<label for="fecha">Otro</label>
+				<input class="form-control form-control-sm">
+			</div>
+			
 		</div>
 		
 	</form>

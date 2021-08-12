@@ -593,6 +593,13 @@ $( document ).ready(function() {
 	}, false);
 })();
 
+$('.fecha_embarque').keypress((e) => {
+  
+	// Enter key corresponds to number 13
+	if (e.which === 13) {
+		$('#form_bitacora').submit();
+	}
+})
 
 function delete_last_residuo(id, nombre, url_delete, id_persona, folio){
 
@@ -604,4 +611,12 @@ function delete_last_residuo(id, nombre, url_delete, id_persona, folio){
 
 function modal_id_folio(){
 	alert("test");
+}
+
+function form_bitacora_submit(){
+	
+	$('#form_bitacora').submit();
+
+	 
+	
 }

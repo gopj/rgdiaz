@@ -281,4 +281,38 @@ class Tran_residuo_model extends CI_Model {
 		return $result;
 	}
 
+	public function recolector_bitacora_custom($data){
+		
+		echo "<pre>";
+		print_r($data);
+		echo "</pre>";
+
+		$sql_text = '
+			SELECT 
+				tf.*,
+				p.nombre,
+				p2.nombre_empresa as nombre_generador,
+				tv.*,
+				ted.*
+			FROM 
+				tran_folios tf,
+				persona p,
+				tran_vehiculos tv,
+				tipo_emp_destino ted,
+				persona p2 
+			WHERE 
+				tf.id_recolector = p.id_persona AND
+				tf.id_vehiculo = tv.id_vehiculo AND 
+				tf.id_tipo_emp_destino = ted.id_tipo_emp_destino AND
+				tf.id_persona = p2.id_persona AND 
+				tf.fecha_embarque = \'' . $data["fecha"] . '\'
+				;';
+
+		echo $sql_text;		
+
+		$result = $this->db->query($sql_text)->result();
+
+		return $result;
+	}
+
 }
