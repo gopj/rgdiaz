@@ -2336,7 +2336,10 @@ class Administrador extends CI_Controller {
 			if ($this->input->post()){
 
 				$fecha = date_create_from_format('d/m/Y', $this->input->post("fecha_embarque"));
-				$data["fecha"] = date_format($fecha, 'Y/m/d');
+				@$data["fecha"] = date_format($fecha, 'Y/m/d');
+				$data["fecha_embarque"] = $this->input->post("fecha_embarque");
+				$data["tipo"] = $this->input->post("tipo");
+
 				$data["bitacora"] = $this->tran_residuo_model->recolector_bitacora_custom($data);
 				
 				$this->load->view("administrador/recolector/header", $data);

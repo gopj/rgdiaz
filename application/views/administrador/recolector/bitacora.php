@@ -1,24 +1,28 @@
 <main role="main" class="container col-md-10">
-	<form class="form-inline" role="form" autocomplete="off" method='post' id='form_bitacora' action="<?php echo site_url('administrador/recolector_bitacora');?>">
-		<div class="form-row">
 
-			<div class="form-group col-md-4">
-				<h2 class="bd-title">Bitacora</h2>
-			</div>
+	<div class="form-group col-md-4">
+		<h2 class="bd-title">Bitacora</h2>
+	</div>
 
+	<form class="form-inline col-md-12" role="form" autocomplete="off" method='post' id='form_bitacora' action="<?= site_url('administrador/recolector_bitacora');?>">
+		
+		<div class="form-group col-md-3">
+			<label for="fecha_embarque">Fecha</label>
+			<input class="form-control " id="fecha_embarque" name="fecha_embarque" style="text-align: center;" value="<?= @$fecha_embarque ?>">
+		</div>
 
-			<div class="form-group col-md-3">
+		<div class="form-group col-md-2">
+			<label for="fecha">Tipo</label>
+			<select class="form-control" name="tipo" id="tipo">
+				<option value=""> Todos </option>
+				<option value="R"> Pendientes </option>
+				<option value="W"> Completados </option>
+			</select>
 
-				<label for="fecha_embarque">Fecha</label>
-				<input class="form-control form-control-sm" id="fecha_embarque" name="fecha_embarque" style="text-align: center;">
-			</div>
+		</div>
 
-			<div class="form-group col-md-4">
-
-				<label for="fecha">Otro</label>
-				<input class="form-control form-control-sm">
-			</div>
-			
+		<div class="form-group col-md-1">	
+			<input class="btn-sm btn-primary" type="submit" name="submit_form_bitacora" value="Buscar">
 		</div>
 		
 	</form>
