@@ -81,7 +81,11 @@
 
 			<div class="form-row">
 				<div class="form-group col-md-4">
+					<?php if ($url_back == 'recolector_bitacora'){ ?>
+					<a href="<?= site_url('administrador/' . $url_back); ?>"  class="btn btn-warning btn-lg btn-block" id="regresar"> Regresar </a>
+				<?php } else { ?>
 					<a href="<?= site_url('administrador/recolector_ver_manifiestos/' . $id_cliente); ?>"  class="btn btn-warning btn-lg btn-block" id="regresar"> Regresar </a>
+				<?php } ?>
 				</div>
 				<div class="form-group col-md-4">
 					<button type="button" class="btn btn-primary btn-lg btn-block" id="agregar_residuos" data-toggle="modal" data-target="#myModal" disabled>Agregar Residuo</button>

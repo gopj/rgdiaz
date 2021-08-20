@@ -42,7 +42,7 @@
 		</thead>
 		<tbody>
 			<?php 
-				foreach ($bitacora as $bit) { 				
+				foreach ($bitacora as $bit) { 	
 					$fecha =  date_create_from_format("Y-m-d", $bit->fecha_embarque);
 			?>	<tr>
 					<td style="text-align: center;"> <?= $bit->folio; ?> </td>
@@ -51,7 +51,11 @@
 					<td style="text-align: center;"> <?= $bit->nombre ?> </td>
 					<td style="text-align: center;"> <?= $bit->numero_placa ?> </td>
 					<td style="text-align: center;"> <?= date_format($fecha, "d/m/Y"); ?> </td>
-					<td style="text-align: center;">  <a href="<?=site_url('administrador/recolector_ver_manifiesto/' . $bit->id_persona . '/' . $bit->id_tran_folio);?>" class="btn btn-primary btn-sm" role="button"> Ver </a> </td>
+					<?php if ($bit->status == 'W'){ ?>
+						<td style="text-align: center;">  <a href="<?=site_url('administrador/recolector_terminar_manifiesto/' . $bit->id_persona . '/' . $bit->id_tran_folio);?>" class="btn btn-success btn-sm" role="button"> Terminar </a> </td>
+					<?php } else { ?>
+						<td style="text-align: center;">  <a href="<?=site_url('administrador/recolector_ver_manifiesto/' . $bit->id_persona . '/' . $bit->id_tran_folio);?>" class="btn btn-primary btn-sm" role="button"> Ver </a> </td>
+					<?php }?>
 				</tr>
 			<?php } ?>
 		</tbody>

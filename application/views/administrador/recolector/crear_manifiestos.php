@@ -1,5 +1,5 @@
 <?php $total_reg = count($bitacora_manifiesto); ?>
-<main role="main" class="container" style="padding-top:-10px;">
+<main role="main" class="container col-md-10">
 	<center><h2 class="bd-title" id="content"><h2>Crear Manifiesto | <?= $folio_identificador ?></h2></center>
 	<hr>
 	<form id="form_manifiesto_recolector" action="<?= site_url('administrador/recolector_crear_manifiestos/' . $id_cliente . '/' . $folio); ?>" method="post" novalidate>

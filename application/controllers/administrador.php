@@ -1993,6 +1993,7 @@ class Administrador extends CI_Controller {
 	}
 
 	public function recolector_ver_manifiestos($id_persona=null) {
+		$data["url_back"] = $this->session->set_userdata('url_back', 'manifiestos'); // URL hacia atrás 
 		$data["recolector"]	= $this->persona_model->get_datos_empresa($this->session->userdata('id'));
 		$data["vehiculos"] 	= $this->tran_vehiculo_model->get_vehiculos();
 
@@ -2040,6 +2041,7 @@ class Administrador extends CI_Controller {
 	}
 
 	public function recolector_ver_manifiesto($id_cliente, $folio){
+		$data["url_back"] = $this->session->userdata('url_back'); // URL hacia atrás 
  
 		if ($this->session->userdata('tipo') == 1){
 
@@ -2191,9 +2193,9 @@ class Administrador extends CI_Controller {
 				
 				$data["fecha_embarque"]		= date_format($fecha_embarque, "d/m/Y");
 
-				$this->load->view("recolector/header", $data);
-				$this->load->view("recolector/crear_manifiestos", $data);
-				$this->load->view("recolector/footer", $data);
+				$this->load->view("administrador/recolector/header", $data);
+				$this->load->view("administrador/recolector/crear_manifiestos", $data);
+				$this->load->view("administrador/recolector/footer", $data);
 			} else {
 
 				$tran_resiudos 				= $this->tran_residuo_model->get_reg_tran_residuos($id_cliente, $folio);
@@ -2332,7 +2334,8 @@ class Administrador extends CI_Controller {
 
 	public function recolector_bitacora() {
 		if ($this->session->userdata('tipo') == 1){
-			
+			$data["url_back"] = $this->session->set_userdata('url_back', 'recolector_bitacora'); // URL Hacía atras
+
 			if ($this->input->post()){
 
 				$fecha = date_create_from_format('d/m/Y', $this->input->post("fecha_embarque"));

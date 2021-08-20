@@ -160,7 +160,7 @@
 									<div class="form-group col-lg-4">
 										<label class="col-lg-6 col-form-label form-control-label" for="placa">No. Placa</label>
 										<div class="col-lg-12">
-											<input class="form-control" type="text" class="txt" style="text-align: center;" name="placa" id="placa"  oninvalid="this.setCustomValidity('Ingresa número de placa')" oninput="setCustomValidity(''); onchange_vehiculo()" required>
+											<input class="form-control" type="text" class="txt" style="text-align: center; text-transform: uppercase;" name="placa" id="placa"  oninvalid="this.setCustomValidity('Ingresa número de placa')" oninput="setCustomValidity(''); onchange_vehiculo()" required>
 										</div>
 									</div>
 
