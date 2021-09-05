@@ -12,7 +12,7 @@ class MY_PDF extends TCPDF {
 
     // URL FOR QRCODE
 	public function setQR($id_cliente, $folio){
-		$this->url = 'http://localhost/rgdiaz/index.php/recolector/generar_manifiesto/' . $id_cliente . "/" . $folio;
+		$this->url = 'https://localhost/rgdiaz/recolector/generar_manifiesto/' . $id_cliente . "/" . $folio;
 	}
 
 	//Page header

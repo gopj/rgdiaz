@@ -1,8 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Home extends CI_Controller {
+class Home extends My_Controller {
 
 	public function __construct(){ 
 		parent::__construct();
+		$this->setLayout('index');
 		$this->load->model('persona_model');
 		$this->load->model('contacto_model');
 		$this->load->helper('download');
@@ -12,61 +13,42 @@ class Home extends CI_Controller {
 
 	public function index()
 	{	
-		$this->load->view('home/header2');
 		$this->load->view('home/index2');
-		$this->load->view('home/footer2');
-
 	}
 
 	public function old_index()
 	{	
-		$this->load->view('home/header');
 		$this->load->view('home/index');
-		$this->load->view('home/footer');
 	}
 
 	public function nosotros()
 	{
-		$this->load->view('home/header');
 		$this->load->view('home/nosotros');
-		$this->load->view('home/footer');
 	}
 
 	public function contacto()
-	{
-		$this->load->view('home/header');
+	{;
 		$this->load->view('home/contacto');
-		$this->load->view('home/footer');
 	}
 
 	public function recupera_password(){
-		$this->load->view('home/header');
 		$this->load->view('home/recupera_password');
-		$this->load->view('home/footer');
 	}
 
 	public function sitios_interes(){
-		$this->load->view('home/header');
 		$this->load->view('home/sitios_interes');
-		$this->load->view('home/footer');
 	}
 
 	public function sesion(){
-		$this->load->view('home/header2');
 		$this->load->view('home/login2');
-		$this->load->view('home/footer2');
 	}
 
 	public function index2(){
-		$this->load->view('home/header2');
 		$this->load->view('home/index2');
-		$this->load->view('home/footer2');
 	}
 
 	public function login2(){
-		$this->load->view('home/header2');
 		$this->load->view('home/login2');
-		$this->load->view('home/footer2');
 	}
 
 	public function login()
@@ -135,14 +117,12 @@ class Home extends CI_Controller {
 		if($this->input->post()){
 			$id_status_persona = 1; // mandamos person con status igual a uno
 			$login=$this->persona_model->login($this->input->post('correo'),
-			 								   $this->input->post('password'),
-			 								   $id_status_persona);
+												$this->input->post('password'),
+												$id_status_persona);
 			 if(is_object($login)){
-			 	$acceso = true;
-			 	echo json_encode($acceso);
+			 	echo 'true';
 			 }else{
-			 	$acceso = false;
-			 	echo json_encode($acceso);
+			 	echo 'false';
 			 }
 		}
 	}

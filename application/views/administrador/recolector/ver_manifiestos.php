@@ -27,7 +27,7 @@
 						<td style="text-align: center;"> 
 							<a href="<?=site_url('administrador/recolector_crear_manifiestos/' . $id_cliente . '/' . $bit->id_tran_folio);?>" class="btn btn-success btn-sm" role="button"> Terminar </a> 
 								
-							<a href="index.php/administrador/recolector_ver_manifiestos/<?=$id_cliente;?>" class="btn btn-danger btn-sm" role="button" disabled> PDF </a>
+							<a href="<?=base_url('/administrador/recolector_ver_manifiestos/'.$id_cliente)?>" class="btn btn-danger btn-sm" role="button" disabled> PDF </a>
 						</td>
 					<?php } ?>
 				</tr>

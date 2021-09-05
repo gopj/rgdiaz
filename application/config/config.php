@@ -15,7 +15,7 @@
 |
 */
 #$config['base_url']	='http://rdiaz.mx/';
-$config['base_url']='http://localhost/rgdiaz/';
+$config['base_url']='https://localhost/rgdiaz/';
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +27,7 @@ $config['base_url']='http://localhost/rgdiaz/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------

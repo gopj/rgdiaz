@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+      xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="https://www.sitemaps.org/schemas/sitemap/0.9
+            https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 <url>
-  <loc>http://rgdiaz.com.mx/</loc>
+  <loc>https://rdiaz.mx/</loc>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>http://rgdiaz.com.mx/index.php/home/index</loc>
+  <loc>https://rdiaz.mx/index.php/home/index</loc>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://rgdiaz.com.mx/index.php/home/contacto</loc>
+  <loc>https://rdiaz.mx/index.php/home/contacto</loc>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://rgdiaz.com.mx/index.php/home/sitios_interes</loc>
+  <loc>https://rdiaz.mx/index.php/home/sitios_interes</loc>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://rgdiaz.com.mx/index.php/home/recupera_password</loc>
+  <loc>https://rdiaz.mx/index.php/home/recupera_password</loc>
   <priority>0.80</priority>
 </url>
 </urlset>
