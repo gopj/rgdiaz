@@ -387,13 +387,15 @@ class Recolector extends CI_Controller {
 	}
 	
 	public function get_cliente() {
-		
+		$this->setLayout('empty');
+
 		$cliente = $this->persona_model->obtiene_cliente($this->input->post('id_persona'));
 		
 		echo json_encode($cliente);
 	}
 	
 	public function get_clave_residuo() {
+		$this->setLayout('empty');
 
 		$clave = $this->residuo_peligroso_model->get_tipo_residuo($this->input->post('id'));
 		
@@ -401,6 +403,8 @@ class Recolector extends CI_Controller {
 	}
 
 	public function get_selected_vehicle(){
+		$this->setLayout('empty');
+
 		$id_vehiculo = $this->persona_model->get_recolector_vehicle($this->session->userdata('id'));
 
 		echo json_encode($id_vehiculo);

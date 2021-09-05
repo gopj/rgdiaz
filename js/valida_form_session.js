@@ -34,7 +34,6 @@ function validarFormSesion(){
 		//$('#loading').html('<img style="width:35px;" src="img/load.gif"/>'); 
 		jQuery.ajax({
 			url:'https://' + host + '/home/valida_usuario',	//<-- Url que va procesar la peticion
-			//url:'https://rgdiaz.com.mx/home/valida_usuario',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -44,7 +43,9 @@ function validarFormSesion(){
 		}).done(
 			function(resp)
 			{
-				var miJson = JSON.parse(resp);
+				console.log('Printing resp ' + resp);
+				var miJson = jQuery.parseJSON(resp);
+				console.log('Printing MiJson ' + miJson);
 				if(miJson == true){
 					formulario.submit();
 				}else{

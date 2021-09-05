@@ -96,6 +96,7 @@ class Cliente extends CI_Controller {
 
 	#	Metodo para validar el correo valido de un usuario
 	public function valida_usuario_correo(){
+		$this->setLayout('empty');
 		if($this->input->post()){
 			$recupera = $this->persona_model->recupera_corr($this->input->post('correo'));
 			if(is_object($recupera)){
@@ -110,6 +111,7 @@ class Cliente extends CI_Controller {
 
 	#	Metodo para restablecer contraseña de cliente y mandar correo de conformacion
 	public function rest_contra(){
+		$this->setLayout('empty');
 		if($this->input->post()){
 			$correo = $this->input->post('correo');
 
@@ -194,6 +196,8 @@ class Cliente extends CI_Controller {
 	}
 
 	public function update_password(){
+		$this->setLayout('empty');
+		
 		$id_persona = $this->input->post('id_persona');
 		$password = $this->input->post('password');
 		// actualizamos en la base de datos

@@ -109,7 +109,7 @@
 
 		<?php echo $output; ?>
 
-		        <!-- start footer section -->
+        <!-- start footer section -->
         <footer>
             <div class="container">
                 <div class="row">

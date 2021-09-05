@@ -114,15 +114,16 @@ class Home extends My_Controller {
 
 //	--	Metodo que valida un usuario dado de alta
 	public function valida_usuario(){
+		$this->setLayout('empty');
 		if($this->input->post()){
 			$id_status_persona = 1; // mandamos person con status igual a uno
 			$login=$this->persona_model->login($this->input->post('correo'),
 												$this->input->post('password'),
 												$id_status_persona);
 			 if(is_object($login)){
-			 	echo 'true';
+			 	echo json_encode(true);
 			 }else{
-			 	echo 'false';
+			 	echo json_encode(false);
 			 }
 		}
 	}
