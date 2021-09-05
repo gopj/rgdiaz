@@ -12,7 +12,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach ($mensajitos->result() as $men) {
+			<?php foreach ($todosmensajes as $men) {
 					$fecha_completa = $men->fecha;
 					$fecha = explode(" ", $fecha_completa);
 

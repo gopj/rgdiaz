@@ -1,6 +1,3 @@
-<?php
-	session_start();
-?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -21,19 +18,6 @@
 		<link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />	
 
 		<style type="text/css">
-			/*table.dataTable thead tr {
-				background-color: #28A745;
-				color: white;
-			}
-			table.dataTable tfoot tr { 
-				background-color: #28A745;
-				color: white;	
-			}
-			.page-item.active .page-link {
-				background-color: #28A745;
-				border-color: black;
-			}*/
-
 			/* PROD*/
 			table.dataTable thead th{
 				background: white;
@@ -47,42 +31,6 @@
 			table.dataTable.table-striped.DTFC_Cloned tbody tr:nth-of-type(even) {
 					background: white;
 			}
-
-			/* DARK THEME --- note: this is under develepment */
-			/*body {
-				background: #606067;
-				color: white;
-			}
-
-			table.dataTable thead th{
-				background: white;
-				color: black;
-			}
-
-			table.dataTable tbody td {
-				color: black;
-			}
-
-			table.dataTable.table-striped.DTFC_Cloned tbody tr:nth-of-type(odd) {
-				background: #F3F3F3;
-				color: black;
-			}
-
-			table.dataTable.table-striped.DTFC_Cloned tbody td:nth-of-type(odd) {
-				background: #F3F3F3;
-				color: black;
-			}
-
-			table.dataTable.table-striped.DTFC_Cloned tbody tr:nth-of-type(even) {
-				background: gray;
-				color: black;
-			}
-
-			table.dataTable.table-striped.DTFC_Cloned tbody td:nth-of-type(even) {
-				background: gray;
-				color: black;
-			}*/
-
     	</style>
 		<title>Recolector</title>
 	</head>

@@ -36,7 +36,7 @@
 				<span class='add-on'>
 					<img src="img/glyphicons_003_user.png" class="icon-form">
 				</span>
-				<select onchange="compruebausuario(this.value);"  id="id_persona" name="id_persona" style="width: 400px;">
+				<select onchange="compruebausuario(this.value);" id="id_persona" name="id_persona" style="width: 400px;">
 						<option value="">Selecciona Cliente</option>
 					<?php foreach($todosclientes->result() as $row){ ?>
 						<option value="<?php echo $row->id_persona;?>"><?php echo $row->nombre_empresa; ?></option>
@@ -45,7 +45,7 @@
 			</div>
 		</div><br/>
 		<div style="float:right;" class="span2">
-			<form method='post' action="<?php echo site_url('administrador/versubcarpeta');?>">
+			<form method='post' action="<?=base_url('administrador/versubcarpeta');?>">
                 <input type="hidden" id="persona" name="ruta_carpeta">
                 <input type="hidden" id="ruta" name="ruta_carpeta" >
                 <input type="hidden" id="persona_expediente" name="id_persona_expediente" >
@@ -54,7 +54,7 @@
             </form>
 		</div>
 		<div style="float:right;" class="span2">
-			<form id="ver_bitacora" method='post' action="<?php echo site_url('administrador/bitacora/');?>">
+			<form id="ver_bitacora" method='post' action="<?=base_url('administrador/bitacora/');?>">
                 <input type="hidden" id="persona_bitacora" name="id_persona">
                 <input class="btn btn-primary" id="btn_bitacora" disabled type="submit" value="Ver Bitacora">
             </form>
@@ -62,7 +62,7 @@
 	</div>
 	
 	<br/>
-	<form id="act_datos_admin" action="<?php echo site_url('administrador/actualiza_datos_admin')?>" method="POST">
+	<form id="act_datos_admin" action="<?=base_url('administrador/actualiza_datos_admin')?>" method="POST">
 	<div class="row">
 		<div class="span4">
 			<legend>Datos de la empresa</legend>

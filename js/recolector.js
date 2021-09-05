@@ -16,8 +16,8 @@ function get_cliente(id){
 
 	//AJAX
 	jQuery.ajax({
-			url:'http://' + host + '/index.php/recolector/get_cliente',	//<-- Url que va procesar la peticion
-			//url:'http://rdiaz.mx/index.php/recolector/get_cliente',
+			url:'https://' + host + '/index.php/recolector/get_cliente',	//<-- Url que va procesar la peticion
+			//url:'https://rdiaz.mx/index.php/recolector/get_cliente',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -92,8 +92,8 @@ function get_recolector(id){
     console.log(id_per);
 	//AJAX
 	jQuery.ajax({
-			url:'http://' + host + '/index.php/administrador/get_recolector',	//<-- Url que va procesar la peticion
-			//url:'http://rdiaz.mx/index.php/recolector/get_cliente',
+			url:'https://' + host + '/index.php/administrador/get_recolector',	//<-- Url que va procesar la peticion
+			//url:'https://rdiaz.mx/index.php/recolector/get_cliente',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -141,7 +141,7 @@ function selected_vehicle(id){
 
 	//AJAX
 	jQuery.ajax({
-			url:'http://' + host + '/index.php/recolector/get_selected_vehicle',	//<-- Url que va procesar la peticion
+			url:'https://' + host + '/index.php/recolector/get_selected_vehicle',	//<-- Url que va procesar la peticion
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -191,8 +191,8 @@ function get_vehiculo(id){
 
 	//AJAX
 	jQuery.ajax({
-			url:'http://' + host + '/index.php/administrador/get_vehiculo',	//<-- Url que va procesar la peticion
-			//url:'http://rdiaz.mx/index.php/recolector/get_cliente',
+			url:'https://' + host + '/index.php/administrador/get_vehiculo',	//<-- Url que va procesar la peticion
+			//url:'https://rdiaz.mx/index.php/recolector/get_cliente',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -312,8 +312,8 @@ function get_destino(id){
     console.log(id_destino);
 	//AJAX
 	jQuery.ajax({
-			url:'http://' + host + '/index.php/administrador/get_destino',	//<-- Url que va procesar la peticion
-			//url:'http://rdiaz.mx/index.php/recolector/get_cliente',
+			url:'https://' + host + '/index.php/administrador/get_destino',	//<-- Url que va procesar la peticion
+			//url:'https://rdiaz.mx/index.php/recolector/get_cliente',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -460,8 +460,8 @@ function update_clave(id_clave) {
 
 	//AJAX
 	jQuery.ajax({
-		url:'http://' + host + '/index.php/recolector/get_clave_residuo',	//<-- Url que va procesar la peticion
-		//url:'http://rdiaz.mx/index.php/recolector/get_clave_residuo',
+		url:'https://' + host + '/index.php/recolector/get_clave_residuo',	//<-- Url que va procesar la peticion
+		//url:'https://rdiaz.mx/index.php/recolector/get_clave_residuo',
 		timeout: 3000, //sets timeout to 3 seconds
 		type:'post',
 		data:{

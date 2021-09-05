@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Administrador extends My_Controller {
+class Administrador extends MY_Controller {
 
 	public function __construct(){
 		parent::__construct();
@@ -37,7 +37,7 @@ class Administrador extends My_Controller {
 			$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
 			#$todosmensajes = $this->contacto_model->mensajescontacto();
 			$data = array(
-				'mensajes'=> $mensajesnuevos,
+				'mensajes'=> $mensajesnuevos
 				#'mensajitos' => $todosmensajes
 			);
 			$id_tipo_persona=3;
@@ -62,8 +62,8 @@ class Administrador extends My_Controller {
 				'correo' => $correo_clientes
 			);
 		#	---------------------------------------------------------------
-
-			$this->load->view('administrador/carpeta_personal',$data);
+			
+			$this->load->view('administrador/admin_clientes',$data);
 		}else{
 			$this->session->sess_destroy(); #destruye session
 			redirect('home/index');
@@ -74,20 +74,16 @@ class Administrador extends My_Controller {
 	public function mensajes_contacto()
 	{
 		$this->setLayout('old_admin');
-	#	Validamos el usuario sea el administrador------------------------------
+		#	Validamos el usuario sea el administrador------------------------------
 		if ($this->session->userdata('tipo')==1){
-		#	Hacemos una consulta para obtener el numero de mensajes no leidos y 
-		#	todos los mensajes y sus datos para la data table------------------
-			$status = 0;
-			$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
-			$todosmensajes = $this->contacto_model->mensajescontacto();
+			#	Hacemos una consulta para obtener el numero de mensajes no leidos y 
+			#	todos los mensajes y sus datos para la data table------------------
+			
+			$data['mensajes'] = $this->contacto_model->contador_mensajes($status = 0);
+			$data['todosmensajes'] = $this->contacto_model->mensajescontacto();
 
-			$data = array(
-				'mensajes'=> $mensajesnuevos,
-				'mensajitos' => $todosmensajes
-			);
-		#-------------------------------------------------------------------------
-		#	Obtengo a todos mis clientes para seleccionar uno en opcion dar de baja y los mando al modal
+			#-------------------------------------------------------------------------
+			#	Obtengo a todos mis clientes para seleccionar uno en opcion dar de baja y los mando al modal
 			$id_tipo_persona=3;
 			$id_status_persona=1;
 			// Mandar una variable para selecciar solo a los clientes que ya llenaron su info
@@ -100,9 +96,7 @@ class Administrador extends My_Controller {
 				'clientes' => $cliente_baja,
 				'correo' => $correo_clientes
 			);
-
-			
-		#-------------------------------------------------------------------------
+			#-------------------------------------------------------------------------
 			$this->load->view('administrador/mensajes_contacto',$data);
 		}else{
 			redirect('home');
@@ -351,8 +345,7 @@ class Administrador extends My_Controller {
 		if ($this->session->userdata('tipo')==1){
 			#	Cargamos los mensajes nuevos y los mandamos a la vista --------
 				$status = 0;
-				$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
-				$data['mensajes'] = $mensajesnuevos;
+				$data['mensajes'] = $this->contacto_model->contador_mensajes($status);
 				
 			#	---------------------------------------------------------------
 
@@ -732,10 +725,11 @@ class Administrador extends My_Controller {
 		
 	}
 
-	public function bitacora($id = null){
-		$this->setLayout('old_admin');	
+	public function bitacora(){
+		
+		$this->setLayout('old_admin');
 
-		if(($this->input->post()) || ($id != null) ){			
+		if($this->input->post()){			
 
 			//redirect
 			if ($this->input->post()) {
@@ -751,32 +745,29 @@ class Administrador extends My_Controller {
 			}
 			
 			$status = 0;
-				$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
-				$data = array(
-					'mensajes'=> $mensajesnuevos,
-				);
+			$data['mensajes'] = $this->contacto_model->contador_mensajes($status);
 
 			#	Obtengo a todos mis clientes para seleccionar uno en opcion dar de baja y los mando al modal
-				$id_tipo_persona=3;
-				$id_status_persona=1;
-				// Mandar una variable para selecciar solo a los clientes que ya llenaron su info
-				$lleno_datos = 1;
-				$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona,$id_tipo_persona,$lleno_datos);
-				$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
-				$nombre_cliente = $this->persona_model->get_nombre_cliente($id_persona);
-				$nombre_empresa = $this->persona_model->get_nombre_empresa($id_persona);
+			$id_tipo_persona=3;
+			$id_status_persona=1;
+			// Mandar una variable para selecciar solo a los clientes que ya llenaron su info
+			$lleno_datos = 1;
+			$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona,$id_tipo_persona,$lleno_datos);
+			$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
+			$nombre_cliente = $this->persona_model->get_nombre_cliente($id_persona);
+			$nombre_empresa = $this->persona_model->get_nombre_empresa($id_persona);
 			#	Obtengo todos los registros de residuos peligrosos
-				$residuos_peligrosos = $this->residuo_peligroso_model->get_residuos($id_persona);
-				$data = array(
-					'clientes' => $cliente_baja,
-					'correo' => $correo_clientes,
-					'residuos' => $residuos_peligrosos,
-					'id_persona' => $id_persona,
-					'nombre_cliente' => $nombre_cliente,
-					'nombre_empresa' => $nombre_empresa
-				);
-			#	---------------------------------------------------------------
-				$this->load->view('administrador/bitacora_residuo',$data3);
+			$residuos_peligrosos = $this->residuo_peligroso_model->get_residuos($id_persona);
+			$data = array(
+				'clientes' => $cliente_baja,
+				'correo' => $correo_clientes,
+				'residuos' => $residuos_peligrosos,
+				'id_persona' => $id_persona,
+				'nombre_cliente' => $nombre_cliente,
+				'nombre_empresa' => $nombre_empresa
+			);
+		#	---------------------------------------------------------------
+			$this->load->view('administrador/bitacora_residuo',$data);
 		}
 		else
 		{

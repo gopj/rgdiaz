@@ -1,9 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Recolector extends CI_Controller {
+class Recolector extends MY_Controller {
 
 	public function __construct(){
 		parent::__construct();
+		$this->setLayout('recolector');
 		$this->load->model('persona_model');
 		$this->load->model('contacto_model');
 		$this->load->model('carpeta_model');
@@ -37,9 +38,7 @@ class Recolector extends CI_Controller {
 			$data["recolector"]			= $this->persona_model->get_datos_empresa($this->session->userdata('id'));
 			$data["vehiculos"] 			= $this->tran_vehiculo_model->get_vehiculos();
 			
-			$this->load->view('recolector/header', $data);
 			$this->load->view("recolector/index", $data);
-			$this->load->view('recolector/footer', $data);
 		}else{
 			$this->session->sess_destroy(); #destruye session
 			redirect('home/index');
@@ -70,9 +69,9 @@ class Recolector extends CI_Controller {
 
 				$data["bitacora"] = $this->tran_residuo_model->get_bitacora($data["id_cliente"]);
 				
-				$this->load->view("recolector/header", $data);
+
 				$this->load->view("recolector/ver_manifiestos", $data);
-				$this->load->view("recolector/footer", $data);
+
 
 			} elseif ($id_persona) {
 				$data["id_cliente"] = $id_persona;
@@ -80,9 +79,9 @@ class Recolector extends CI_Controller {
 
 				$data["bitacora"] = $this->tran_residuo_model->get_bitacora($data["id_cliente"]);
 				
-				$this->load->view("recolector/header", $data);
+
 				$this->load->view("recolector/ver_manifiestos", $data);
-				$this->load->view("recolector/footer", $data);
+
 			} else {
 				redirect("recolector/index");
 			}
@@ -114,9 +113,7 @@ class Recolector extends CI_Controller {
 			$data["id_cliente"]			= $id_cliente;
 			$data["folio"]				= $folio;
 
-			$this->load->view("recolector/header", $data);
 			$this->load->view("recolector/ver_manifiesto", $data);
-			$this->load->view("recolector/footer", $data);
 		
 		} else {
 			$this->session->sess_destroy(); #destruye session
@@ -183,9 +180,9 @@ class Recolector extends CI_Controller {
 				$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
 				$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
 
-				$this->load->view("recolector/header", $data);
+
 				$this->load->view("recolector/crear_manifiesto", $data);
-				$this->load->view("recolector/footer", $data);
+
 
 			}
 
@@ -247,9 +244,9 @@ class Recolector extends CI_Controller {
 				
 				$data["fecha_embarque"]		= date_format($fecha_embarque, "d/m/Y");
 
-				$this->load->view("recolector/header", $data);
+
 				$this->load->view("recolector/crear_manifiestos", $data);
-				$this->load->view("recolector/footer", $data);
+
 			} else {
 
 				$tran_resiudos 				= $this->tran_residuo_model->get_reg_tran_residuos($id_cliente, $folio);
@@ -264,9 +261,9 @@ class Recolector extends CI_Controller {
 				$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
 				$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
 				
-				$this->load->view("recolector/header", $data);
+
 				$this->load->view("recolector/crear_manifiestos", $data);
-				$this->load->view("recolector/footer", $data);
+
 
 			}
 
@@ -301,9 +298,8 @@ class Recolector extends CI_Controller {
 				$data["id_cliente"] = $id_cliente;
 				$data["bitacora"] 	= $this->tran_residuo_model->get_bitacora($id_cliente);
 				
-				$this->load->view("recolector/header", $data);
 				$this->load->view("recolector/ver_manifiestos", $data);
-				$this->load->view("recolector/footer", $data);
+
 			}
 
 		} else { 
@@ -333,9 +329,7 @@ class Recolector extends CI_Controller {
 			$data["folio"]				= $folio;
 			$data["vehiculos"] 	= $this->tran_vehiculo_model->get_vehiculos();
 			
-			$this->load->view("recolector/header", $data);
 			$this->load->view("recolector/crear_manifiestos", $data);
-			$this->load->view("recolector/footer", $data);
 
 		} else {
 			$this->session->sess_destroy(); #destruye session

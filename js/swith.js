@@ -31,8 +31,8 @@ function alta_cliente(){
 		var email = document.getElementById('alta_correo').value;
 		//alert(email);
 		jQuery.ajax({
-			url:'http://' + host + '/index.php/administrador/verifica_correo',	//<-- Url que va procesar la peticion
-			//url:'http://rdiaz.mx/index.php/administrador/verifica_correo',
+			url:'https://' + host + '/index.php/administrador/verifica_correo',	//<-- Url que va procesar la peticion
+			//url:'https://rdiaz.mx/index.php/administrador/verifica_correo',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -144,8 +144,8 @@ function eliminar_carpeta(){
 			var r =  ruta.value;
 		//	---------------------	
 			jQuery.ajax({
-			url:'http://' + host + '/index.php/administrador/eliminar_carpeta',	//<-- Url que va procesar la peticion
-			//url:'http://rdiaz.mx/index.php/administrador/eliminar_carpeta',
+			url:'https://' + host + '/index.php/administrador/eliminar_carpeta',	//<-- Url que va procesar la peticion
+			//url:'https://rdiaz.mx/index.php/administrador/eliminar_carpeta',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -206,8 +206,8 @@ function compruebausuario(id){
 
 	//AJAX
 	jQuery.ajax({
-			url:'http://' + host + '/index.php/administrador/obtiene_cliente',	//<-- Url que va procesar la peticion
-			//url:'http://rdiaz.mx/index.php/administrador/obtiene_cliente',
+			url:'https://' + host + '/index.php/administrador/obtiene_cliente',	//<-- Url que va procesar la peticion
+			//url:'https://rdiaz.mx/index.php/administrador/obtiene_cliente',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -289,8 +289,8 @@ function comprueba_emp_trans(id){
 
 	//AJAX
 	jQuery.ajax({
-			url:'http://' + host + '/index.php/administrador/obtiene_emp_trans',	//<-- Url que va procesar la peticion
-			//url:'http://rdiaz.mx/index.php/administrador/obtiene_cliente',
+			url:'https://' + host + '/index.php/administrador/obtiene_emp_trans',	//<-- Url que va procesar la peticion
+			//url:'https://rdiaz.mx/index.php/administrador/obtiene_cliente',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -326,8 +326,8 @@ function comprueba_emp_dest(id){
 
 	//AJAX
 	jQuery.ajax({
-			url:'http://' + host + '/index.php/administrador/obtiene_emp_dest',	//<-- Url que va procesar la peticion
-			//url:'http://rdiaz.mx/index.php/administrador/obtiene_emp_dest',
+			url:'https://' + host + '/index.php/administrador/obtiene_emp_dest',	//<-- Url que va procesar la peticion
+			//url:'https://rdiaz.mx/index.php/administrador/obtiene_emp_dest',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -432,8 +432,8 @@ function alta_cliente_admin(){
 		var email = emailContacto.value;
 		var empresa = nombreEmpresa.value;
 	jQuery.ajax({
-			url:'http://' + host + '/index.php/administrador/verifica_correo',	//<-- Url que va procesar la peticion
-			//url:'http://rdiaz.mx/index.php/administrador/verifica_correo',
+			url:'https://' + host + '/index.php/administrador/verifica_correo',	//<-- Url que va procesar la peticion
+			//url:'https://rdiaz.mx/index.php/administrador/verifica_correo',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -484,8 +484,8 @@ function envia_correo_admin(){
 		var mens = mensaje.value;
 		//AJAX
 		jQuery.ajax({
-			url:'http://' + host + '/index.php/administrador/envia_correo_admin',	//<-- Url que va procesar la peticion
-			//url:'http://rdiaz.mx/index.php/administrador/envia_correo_admin',
+			url:'https://' + host + '/index.php/administrador/envia_correo_admin',	//<-- Url que va procesar la peticion
+			//url:'https://rdiaz.mx/index.php/administrador/envia_correo_admin',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -571,8 +571,8 @@ function update(){
 	var cliente = $("#persona3").val();
 	// AJAX
 	jQuery.ajax({
-			url:'http://' + host + '/index.php/administrador/update_status_cliente',	//<-- Url que va procesar la peticion
-			//url:'http://rdiaz.mx/index.php/administrador/update_status_cliente',
+			url:'https://' + host + '/index.php/administrador/update_status_cliente',	//<-- Url que va procesar la peticion
+			//url:'https://rdiaz.mx/index.php/administrador/update_status_cliente',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -638,8 +638,8 @@ function gen_identificador_duiplicado() {
 
 	//AJAX
 	jQuery.ajax({
-		url:'http://' + host + '/index.php/administrador/identificador_duplicado',	//<-- Url que va procesar la peticion
-		//url:'http://rdiaz.mx/index.php/administrador/identificador_duplicado',
+		url:'https://' + host + '/index.php/administrador/identificador_duplicado',	//<-- Url que va procesar la peticion
+		//url:'https://rdiaz.mx/index.php/administrador/identificador_duplicado',
 		timeout: 3000, //sets timeout to 3 seconds
 		type:'post',
 		data:{

@@ -34,7 +34,8 @@ public function __construct()
                          ->from('contacto')
                          ->order_by('numero', 'desc')
                          ->join('status_contacto as estado ','contacto.status_contacto = estado.id_status_contacto')
-                         ->get();
+                         ->get()
+                         ->result();
      }
 
       public function modifica_status($status_contacto,$id_contacto){
