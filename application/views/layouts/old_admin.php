@@ -83,29 +83,31 @@
 			</div>
 
 			<div class="row">
-					<div class="span3">								
-						<form  method="post" action="<?=base_url('administrador/mensajes_contacto')?>">
-  							<button class="well-notificacion" type="submit">
-  								<div style="inline:block;">
-  									<img src="img/glyphicons_245_chat.png" style="float:left; margin-top:2px; height:18; width:18;"> 
-  									<span style="float:left; margin-left:10px;">Mensajes de Contacto</span>
-  									<span class="badge barrabackground" style="float:right; margin-top:2px;"><?php echo $mensajes; ?></span>
-  								</div>
-  							</button>
-  						</form>
-  						<br>
-						<form>
-							<button class="well-notificacion" href="#correo" data-toggle="modal">
+				<div class="span3">								
+					<form  method="post" action="<?=base_url('administrador/mensajes_contacto')?>">
+							<button class="well-notificacion" type="submit">
 								<div style="inline:block;">
-									<img src="img/glyphicons_010_envelope.png" style="float:left; margin-top:2px; height:18; width:18;"> 
-									<span style="float:left; margin-left:10px;">Enviar Correo</span>
+									<img src="img/glyphicons_245_chat.png" style="float:left; margin-top:2px; height:18; width:18;"> 
+									<span style="float:left; margin-left:10px;">Mensajes de Contacto</span>
+									<span class="badge barrabackground" style="float:right; margin-top:2px;"><?php echo $mensajes; ?></span>
 								</div>
 							</button>
 						</form>
-					</div>
-			</div>
+						<br>
+					<form>
+						<button class="well-notificacion" href="#correo" data-toggle="modal">
+							<div style="inline:block;">
+								<img src="img/glyphicons_010_envelope.png" style="float:left; margin-top:2px; height:18; width:18;"> 
+								<span style="float:left; margin-left:10px;">Enviar Correo</span>
+							</div>
+						</button>
+					</form>
+				</div>
+			
 
 			<?php echo $output; ?>
+			
+			</div>
 
 			<!-- MODAL DE ENVIAR CORREO ELECTRONICO -->
 			<div id="correo" class="modal hide fade">
@@ -193,13 +195,9 @@
 							</span>
 							<select name="id_persona" id="id_persona_baja"><!--Mandamos una bandera para ver si ingreso un cliente-->
 								<option value="0">Seleccione cliente</option>
-								<?php
-                                    foreach($clientes->result() as $row){ 
-                                ?>
-										<option value="<?php echo $row->id_persona;?>"><?php echo $row->nombre_empresa;?></option>
-								<?php 
-									}
-								?>
+								<?php foreach($clientes->result() as $row){ ?>
+									<option value="<?php echo $row->id_persona;?>"><?php echo $row->nombre_empresa;?></option>
+								<?php } ?>
 							</select>
 						</div>
 						Razón:
@@ -220,14 +218,11 @@
 			<!-- ********************************************************************************** -->
 		<footer>
 			<div class="footer" style="color:#fff; font-weight:bold; ">
-					<div class="container">
-						<div style="">
-							Derechos reservados &copy; <?php echo date("Y"); ?> RDíaz
-						</div>
-						<!-- <div class="pull-right" style="font-weight:normal; font-size:14px;">
-							Desarrollado por: Shark Soft
-						</div> -->
+				<div class="container">
+					<div style="">
+						Derechos reservados &copy; <?php echo date("Y"); ?> RDíaz
 					</div>
+				</div>
 			</div>
 		</footer>
 	</body>
