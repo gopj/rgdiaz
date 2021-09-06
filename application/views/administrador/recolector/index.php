@@ -2,7 +2,7 @@
 	<center><h2 class="bd-title" id="content">Clientes</h2></center>
 	<hr>
 
-	<form method="post" id="form_ver_manifiestos" action="<?php echo site_url('administrador/recolector_ver_manifiestos')?>">
+	<form method="post" id="form_ver_manifiestos" action="<?php echo site_url('admin/recolector_ver_manifiestos')?>">
 		<div class="row">
 			<div class="col-md-4 order-md-1">
 

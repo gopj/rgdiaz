@@ -1,7 +1,7 @@
 <main role="main" class="container col-md-10">
 	<center><h2 class="bd-title" id="content"><h2>Crear Manifiesto</h2></center>
 	<hr>
-	<form id="form_manifiesto_recolector" action="<?= site_url('administrador/recolector_crear_manifiesto/' . $id_cliente); ?>" method="post" novalidate>
+	<form id="form_manifiesto_recolector" action="<?= site_url('admin/recolector_crear_manifiesto/' . $id_cliente); ?>" method="post" novalidate>
 		<div class="col-md-12">
 			<div class="form-row">
 				<div class="form-group col-md-9">
@@ -96,7 +96,7 @@
 
 			<div class="form-row">
 				<div class="form-group col-md-4">
-					<a href="<?= site_url('administrador/recolector_ver_manifiestos/' . $id_cliente); ?>"  class="btn btn-warning btn-lg btn-block" id="regresar"> Regresar </a>
+					<a href="<?= site_url('admin/recolector_ver_manifiestos/' . $id_cliente); ?>"  class="btn btn-warning btn-lg btn-block" id="regresar"> Regresar </a>
 				</div>
 				<div class="form-group col-md-4">
 					<button type="button" class="btn btn-primary btn-lg btn-block" id="agregar_residuos" data-toggle="modal" data-target="#myModal">Agregar Residuo</button>

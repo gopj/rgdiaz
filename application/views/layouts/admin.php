@@ -29,7 +29,7 @@
 	<body>
 	
 		<nav class="navbar navbar-expand-lg navbar-dark bg-success">
-			<a class="navbar-brand" href="<?=site_url('administrador');?>"> 
+			<a class="navbar-brand" href="<?=site_url('admin');?>"> 
 				<?php echo $this->session->userdata('nombre');?>
 			</a>
 
@@ -40,23 +40,23 @@
 			<div class="collapse navbar-collapse" id="navbarNavDropdown">
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a class="nav-link" href="<?=base_url('administrador');?>"> Mi Carpeta </a>
+						<a class="nav-link" href="<?=base_url('admin');?>"> Mi Carpeta </a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="<?=base_url('administrador/admin_clientes')?>">Clientes</a>
+						<a class="nav-link" href="<?=base_url('admin/admin_clientes')?>">Clientes</a>
 					</li>
 					<li class="nav-item dropdown active">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							Recolectores
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="<?=base_url('administrador/recolector_consulta')?>">Consultas</a>
-							<a class="dropdown-item" href="<?=base_url('administrador/recolector_index')?>">Manifiesto</a>
-							<a class="dropdown-item" href="<?=base_url('administrador/recolector_bitacora')?>">Bitacora</a>
+							<a class="dropdown-item" href="<?=base_url('admin/recolector_consulta')?>">Consultas</a>
+							<a class="dropdown-item" href="<?=base_url('admin/recolector_index')?>">Manifiesto</a>
+							<a class="dropdown-item" href="<?=base_url('admin/recolector_bitacora')?>">Bitacora</a>
 						</div>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="<?=base_url('administrador/subir_archivo');?>">Administrar Carpetas</a>
+						<a class="nav-link" href="<?=base_url('admin/subir_archivo');?>">Administrar Carpetas</a>
 					</li>
 				</ul>
 			</div>

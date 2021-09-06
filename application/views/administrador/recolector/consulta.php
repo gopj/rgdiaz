@@ -13,7 +13,7 @@
 
 					<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionAltaRecolector">
 						<div class="card-body">
-							<form class="form" role="form" autocomplete="off" method='post' action="<?php echo site_url('administrador/recolector_consulta');?>">
+							<form class="form" role="form" autocomplete="off" method='post' action="<?php echo site_url('admin/recolector_consulta');?>">
 
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label" for="id_persona"> Selecciona Correo </label>
@@ -60,7 +60,7 @@
 									<div class="col-lg-9">
 										<input type="button" class="btn btn-primary" value="Guardar" name="guarda_recolector" id="guarda_recolector" data-toggle="modal" data-target="#modal_guarda_recolector">
 										<input type="button" class="btn btn-primary" value="Editar" name="edita_recolector" id="edita_recolector" onclick="update_recolector()">
-										<?php $url = site_url("administrador/recolector_delete") . "/"; ?>
+										<?php $url = site_url("admin/recolector_delete") . "/"; ?>
 										<input type="button" class="btn btn-danger" value="Eliminar" name="elimina_recolector" id="elimina_recolector" onclick="delete_recolector(<?=@$row->id_persona?>, '<?=$url?>')" data-toggle="modal" data-target="#modal_elimina_recolector">
 									</div>
 								</div>
@@ -133,7 +133,7 @@
 					</div>
 					<div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionAltaVehiculo">
 						<div class="card-body">
-							<form class="form" role="form" autocomplete="off" method='post' action="<?php echo site_url('administrador/recolector_vehiculo');?>">
+							<form class="form" role="form" autocomplete="off" method='post' action="<?php echo site_url('admin/recolector_vehiculo');?>">
 
 								<div class="form-row">
 									<div class="form-group col-lg-6">
@@ -208,7 +208,7 @@
 									<div class="col-lg-9">
 										<input type="button" class="btn btn-primary" value="Guardar" name="guarda_vehiculo" id="guarda_vehiculo" data-toggle="modal" data-target="#modal_guarda_vehiculo">
 										<input type="button" class="btn btn-primary" value="Editar" name="edita_vehiculo" id="edita_vehiculo" onclick="update_vehiculo()">
-										<?php $url = site_url("administrador/recolector_vehiculo_delete") . "/"; ?>
+										<?php $url = site_url("admin/recolector_vehiculo_delete") . "/"; ?>
 										<input type="button" class="btn btn-danger" value="Eliminar" name="elimina_vehiculo" id="elimina_vehiculo" onclick="delete_vehiculo('<?=$url?>')" data-toggle="modal" data-target="#modal_elimina_vehiculo">
 									</div>
 								</div>
@@ -281,7 +281,7 @@
 					</div>
 					<div id="collapseThree" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionAltaDestino">
 						<div class="card-body">
-							<form class="form" role="form" autocomplete="off" method='post' action="<?php echo site_url('administrador/recolector_destino');?>">
+							<form class="form" role="form" autocomplete="off" method='post' action="<?php echo site_url('admin/recolector_destino');?>">
 
 
 								<div class="form-row">
@@ -389,7 +389,7 @@
 									<div class="col-lg-9">
 										<input type="button" class="btn btn-primary" value="Guardar" name="guarda_destino" id="guarda_destino" data-toggle="modal" data-target="#modal_guarda_destino">
 										<input type="button" class="btn btn-primary" value="Editar" name="edita_destino" id="edita_destino" onclick="update_destino()">
-										<?php $url = site_url("administrador/recolector_destino_delete") . "/"; ?>
+										<?php $url = site_url("admin/recolector_destino_delete") . "/"; ?>
 										<input type="button" class="btn btn-danger" value="Eliminar" name="elimina_destino" id="elimina_destino" onclick="delete_destino(<?=@$row->id_tipo_emp_destino;?>, '<?=$url?>')" data-toggle="modal" data-target="#modal_elimina_destino">
 									</div>
 								</div>

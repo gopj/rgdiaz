@@ -4,7 +4,7 @@
 		<h2 class="bd-title">Bitacora</h2>
 	</div>
 
-	<form class="form-inline col-md-12" role="form" autocomplete="off" method='post' id='form_bitacora' action="<?= site_url('administrador/recolector_bitacora');?>">
+	<form class="form-inline col-md-12" role="form" autocomplete="off" method='post' id='form_bitacora' action="<?= site_url('admin/recolector_bitacora');?>">
 		
 		<div class="form-group col-md-3">
 			<label for="fecha_embarque">Fecha</label>
@@ -52,9 +52,9 @@
 					<td style="text-align: center;"> <?= $bit->numero_placa ?> </td>
 					<td style="text-align: center;"> <?= date_format($fecha, "d/m/Y"); ?> </td>
 					<?php if ($bit->status == 'W'){ ?>
-						<td style="text-align: center;">  <a href="<?=site_url('administrador/recolector_terminar_manifiesto/' . $bit->id_persona . '/' . $bit->id_tran_folio);?>" class="btn btn-success btn-sm" role="button"> Terminar </a> </td>
+						<td style="text-align: center;">  <a href="<?=site_url('admin/recolector_terminar_manifiesto/' . $bit->id_persona . '/' . $bit->id_tran_folio);?>" class="btn btn-success btn-sm" role="button"> Terminar </a> </td>
 					<?php } else { ?>
-						<td style="text-align: center;">  <a href="<?=site_url('administrador/recolector_ver_manifiesto/' . $bit->id_persona . '/' . $bit->id_tran_folio);?>" class="btn btn-primary btn-sm" role="button"> Ver </a> </td>
+						<td style="text-align: center;">  <a href="<?=site_url('admin/recolector_ver_manifiesto/' . $bit->id_persona . '/' . $bit->id_tran_folio);?>" class="btn btn-primary btn-sm" role="button"> Ver </a> </td>
 					<?php }?>
 				</tr>
 			<?php } ?>

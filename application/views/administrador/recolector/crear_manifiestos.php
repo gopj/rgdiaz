@@ -2,7 +2,7 @@
 <main role="main" class="container col-md-10">
 	<center><h2 class="bd-title" id="content"><h2>Crear Manifiesto | <?= $folio_identificador ?></h2></center>
 	<hr>
-	<form id="form_manifiesto_recolector" action="<?= site_url('administrador/recolector_crear_manifiestos/' . $id_cliente . '/' . $folio); ?>" method="post" novalidate>
+	<form id="form_manifiesto_recolector" action="<?= site_url('admin/recolector_crear_manifiestos/' . $id_cliente . '/' . $folio); ?>" method="post" novalidate>
 		<div class="col-md-12">
 			<div class="form-row">
 				<div class="form-group col-md-9">
@@ -248,7 +248,7 @@
 								</td>
 							<?php } else { ?>
 								<td style="text-align: center;"> 
-								<a href="<?=site_url('administrador/recolector_eliminar_tran_residuo/' . $id_cliente . '/' . $key->id_tran_residuo);?>" class="btn btn-danger btn-sm" role="button"> Borrar </a> 
+								<a href="<?=site_url('admin/recolector_eliminar_tran_residuo/' . $id_cliente . '/' . $key->id_tran_residuo);?>" class="btn btn-danger btn-sm" role="button"> Borrar </a> 
 							</td>
 							<?php } ?>
 						</tr>
@@ -267,13 +267,13 @@
 
 	<div class="form-row">
 		<div class="form-group col-md-4">
-			<a href="<?= site_url('administrador/recolector_ver_manifiestos/' . $id_cliente); ?>"  class="btn btn-warning btn-lg btn-block" id="regresar"> Regresar </a>
+			<a href="<?= site_url('admin/recolector_ver_manifiestos/' . $id_cliente); ?>"  class="btn btn-warning btn-lg btn-block" id="regresar"> Regresar </a>
 		</div>
 		<div class="form-group col-md-4">
 			<button type="button" class="btn btn-primary btn-lg btn-block" id="agregar_residuos" data-toggle="modal" data-target="#myModal">Agregar Residuo</button>
 		</div>
 		<div class="form-group col-md-4">
-			<form id="form_terminar_manifiesto" action="<?= site_url('administrador/recolector_terminar_manifiesto/' . $id_cliente . '/' . $folio); ?>" method="post">
+			<form id="form_terminar_manifiesto" action="<?= site_url('admin/recolector_terminar_manifiesto/' . $id_cliente . '/' . $folio); ?>" method="post">
 
 				<input type="text" name="terminar_responsable" id="terminar_responsable" hidden>
 				<input type="text" name="terminar_responsable_tecnico" id="terminar_responsable_tecnico" hidden>
@@ -347,7 +347,7 @@
 				<!-- Modal footer -->
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-					<a href="<?=site_url('administrador/recolector_eliminar_ultimo_residuo/' . $id_cliente . '/' . $key->id_tran_residuo);?>" class="btn btn-danger" role="button"> Eliminar </a>
+					<a href="<?=site_url('admin/recolector_eliminar_ultimo_residuo/' . $id_cliente . '/' . $key->id_tran_residuo);?>" class="btn btn-danger" role="button"> Eliminar </a>
 				</div>
 
 			</div>
