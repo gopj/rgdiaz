@@ -1,10 +1,10 @@
-<?php ob_start();?>
+<?php ob_start(); ?>
 <!DOCTYPE html>
 	<html>
 		<head>
-			<base href="<?php echo base_url(); ?>"/>
+			<base href="<?=base_url()?>"/>
 			<title>RDíaz</title>
-			<link href="img/minilogo.png" type="image/x-icon" rel="shortcut icon" />
+			<link href="<?=base_url('img/minilogo.png')?>" type="image/x-icon" rel="shortcut icon" />
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<link rel="stylesheet" type="text/css" href="<?=base_url('css/bootstrap.css')?>">
 			<link rel="stylesheet" type="text/css" href="<?=base_url('css/bootstrap-responsive.css')?>">
@@ -79,6 +79,7 @@
 					<div class="span12">
 						<img src="img/logo.png" height="300" width="300">
 					</div>
+				</div>
 			</div>
 
 			<div class="row">

@@ -33,37 +33,15 @@ class Administrador extends MY_Controller {
 	public function index(){
 		$this->setLayout('old_admin');
 		if ($this->session->userdata('tipo')==1){
-			$status = 0;
-			$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
-			#$todosmensajes = $this->contacto_model->mensajescontacto();
-			$data = array(
-				'mensajes'=> $mensajesnuevos
-				#'mensajitos' => $todosmensajes
-			);
-			$id_tipo_persona=3;
-			$id_status_persona=1;
-			$cliente=$this->persona_model->obtiene_clientes($id_status_persona,$id_tipo_persona);
-			$ruta='administrador/';
-			$carpetas=$this->carpeta_model->obtiene_carpetasraiz_administrador($ruta);
-			
-			$data['carpetas'] = $carpetas;
-			
+			$data['mensajes'] = $this->contacto_model->contador_mensajes($status = 0);			
+			$cliente = $this->persona_model->obtiene_clientes($id_status_persona=1,$id_tipo_persona=3);	
+			$data['carpetas'] = $this->carpeta_model->obtiene_carpetasraiz_administrador($ruta='administrador/');
 			#	---------------------------------------------------------------
 			#	Obtengo a todos mis clientes para seleccionar uno en opcion dar de baja y los mando al modal
-			$id_tipo_persona=3;
-			$id_status_persona=1;
-			// Mandar una variable para selecciar solo a los clientes que ya llenaron su info
-			$lleno_datos = 1;
-			$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona,$id_tipo_persona,$lleno_datos);
-			$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
-			#exit(var_dump($correo_clientes));
-			$data = array(
-				'clientes' => $cliente_baja,
-				'correo' => $correo_clientes
-			);
-		#	---------------------------------------------------------------
-			
-			$this->load->view('administrador/admin_clientes',$data);
+			$data['clientes']=$this->persona_model->obtiene_clientes_baja($id_status_persona=1,$id_tipo_persona=3,$lleno_datos = 1);
+			$data['correo'] = $this->persona_model->getCorreos($id_tipo_persona);
+			#	---------------------------------------------------------------
+			$this->load->view('administrador/carpeta_personal',$data);
 		}else{
 			$this->session->sess_destroy(); #destruye session
 			redirect('home/index');
@@ -78,24 +56,14 @@ class Administrador extends MY_Controller {
 		if ($this->session->userdata('tipo')==1){
 			#	Hacemos una consulta para obtener el numero de mensajes no leidos y 
 			#	todos los mensajes y sus datos para la data table------------------
-			
 			$data['mensajes'] = $this->contacto_model->contador_mensajes($status = 0);
 			$data['todosmensajes'] = $this->contacto_model->mensajescontacto();
-
 			#-------------------------------------------------------------------------
-			#	Obtengo a todos mis clientes para seleccionar uno en opcion dar de baja y los mando al modal
-			$id_tipo_persona=3;
-			$id_status_persona=1;
 			// Mandar una variable para selecciar solo a los clientes que ya llenaron su info
-			$lleno_datos = 1;
-			$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona,$id_tipo_persona,$lleno_datos);
-			$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
-			#exit(var_dump($correo_clientes));
-			#exit(var_dump($cliente_baja));
-			$data = array(
-				'clientes' => $cliente_baja,
-				'correo' => $correo_clientes
-			);
+			$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona=1,$id_tipo_persona=3,$lleno_datos=1);
+			$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona=3);			
+			$data['clientes'] = $cliente_baja;
+			$data['correo'] = $correo_clientes;
 			#-------------------------------------------------------------------------
 			$this->load->view('administrador/mensajes_contacto',$data);
 		}else{
@@ -2370,4 +2338,5 @@ class Administrador extends MY_Controller {
 	}
 
 }
+
 ?>
