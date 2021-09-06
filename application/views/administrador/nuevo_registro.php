@@ -1,6 +1,6 @@
 <div class="span9">
 	<legend><center>Nuevo Registro</center></legend>
-	<form id="form_bitacora_residuo_peligroso" action="<?php echo site_url('administrador/guardar_registro_nueva'); ?>" method="post">
+	<form id="form_bitacora_residuo_peligroso" action="<?=base_url('administrador/guardar_registro_nueva')?>" method="post">
 	<div class="well">
 		<br>
 		<div class="form-horizontal">
@@ -42,11 +42,11 @@
 						oninput="setCustomValidity('')" required>
 						&nbsp;
 						<label for="unidad" class="radio">
-							<input type="radio" id="unidad" name="unidad" value="Kg"  oninvalid="this.setCustomValidity('Selecciona Kilogramos o Toneladas')" onclick="clearValidity();" required checked>Kg
+							<input id="unidad" type="radio" id="unidad" name="unidad" value="Kg"  oninvalid="this.setCustomValidity('Selecciona Kilogramos o Toneladas')" onclick="clearValidity();" required checked>Kg
 						</label>
 						&nbsp;
 						<label for="unidad2" class="radio">
-							<input type="radio" name="unidad" value="Ton" onclick="clearValidity();"> Ton
+							<input id="unidad2" type="radio" name="unidad" value="Ton" onclick="clearValidity();"> Ton
 						</label>
 					</div>
 				</div>
@@ -60,15 +60,15 @@
 						</label>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<label for="check2" class="checkbox">
-							<input type="checkbox" name="caracteristica[]" value="Inflamable" onclick="clearRequired();">Inflamable
+							<input id="check2" type="checkbox" name="caracteristica[]" value="Inflamable" onclick="clearRequired();">Inflamable
 						</label>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<label for="check3" class="checkbox">
-							<input type="checkbox" name="caracteristica[]" value="Corrosivo" onclick="clearRequired();">Corrosivo
+							<input id="check3" type="checkbox" name="caracteristica[]" value="Corrosivo" onclick="clearRequired();">Corrosivo
 						</label>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<label for="check4" class="checkbox">
-							<input type="checkbox" name="caracteristica[]" value="Reactivo" onclick="clearRequired();">Reactivo
+						<label for="check4"  class="checkbox">
+							<input id="check4" type="checkbox" name="caracteristica[]" value="Reactivo" onclick="clearRequired();">Reactivo
 						</label>
 					</div>
 				</div>
@@ -102,8 +102,8 @@
 	<input type="submit" class="btn btn-primary pull-right" value="Guardar">
 	</form>
 
-	<form id="regresar_bitacora" method='post' action="<?php echo site_url('administrador/bitacora');?>">
-		<input type="hidden" name="id_persona" value="<?php echo $id_persona; ?>" onclick="">
+	<form id="regresar_bitacora" method='post' action="<?=base_url('administrador/bitacora')?>">
+		<input type="hidden" name="id_persona" value="<?=$id_persona?>" onclick="">
 		<input class="btn btn-warning pull-left" id="regresar_bitacora"  type="submit" value="Cancelar">
 	</form>
 </div>

@@ -40,10 +40,10 @@
 			<div class="collapse navbar-collapse" id="navbarNavDropdown">
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a class="nav-link" href="<?=base_url('admin');?>"> Mi Carpeta </a>
+						<a class="nav-link" href="<?=base_url('administrador/index');?>"> Mi Carpeta </a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="<?=base_url('admin/admin_clientes')?>">Clientes</a>
+						<a class="nav-link" href="<?=base_url('administrador/admin_clientes')?>">Clientes</a>
 					</li>
 					<li class="nav-item dropdown active">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

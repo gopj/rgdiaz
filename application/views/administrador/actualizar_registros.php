@@ -13,7 +13,7 @@
 
 <div class="span9">
 	<legend><center>Actualizar Registros - <?php echo $str_act_reg; ?> </center></legend>
-	<form id="form_actualizar_registros" action="<?php echo site_url('administrador/actualizar_registros'); ?>" method="post">
+	<form id="form_actualizar_registros" action="<?=base_url('administrador/actualizar_registros')?>" method="post">
 	<div class="well">
 		<br>
 		<div class="form-horizontal">
@@ -113,8 +113,8 @@
 	<!-- <input type="button" onclick="reg_bit_update();" class="btn btn-primary pull-right" value="Guardar"> -->
 	</form>
 
-	<form id="regresar_bitacora" method='post' action="<?php echo site_url('administrador/bitacora/');?>">
-		<input type="hidden" name="id_persona" value="<?php echo $id_persona; ?>">
+	<form id="regresar_bitacora" method='post' action="<?=base_url('administrador/bitacora/')?>">
+		<input type="hidden" name="id_persona" value="<?=$id_persona?>">
 		<input class="btn btn-warning pull-left" id="regresar_bitacora"  type="submit" value="Cancelar">
 	</form>
 </div>

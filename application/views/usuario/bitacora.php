@@ -17,7 +17,7 @@ function date_bitacora($s_date){
 <?php if ($this->session->userdata('completo') == 1) { ?>
 
 <div class="span12">
-	<form id="form_bitacora_actualizar_registros" action="<?php echo site_url('cliente/bitacora_actualiza_reg'); ?>" method="post">
+	<form id="form_bitacora_actualizar_registros" action="<?=base_url('cliente/bitacora_actualiza_reg'); ?>" method="post">
 	<center><legend>Bitácora Residuos Peligrosos</legend></center>
 	<div class="row">
 		<div class="span12">
@@ -98,7 +98,7 @@ function date_bitacora($s_date){
 	<div style="margin-top:10px;">
 		<!-- <div class="span3"></div> -->
 		<div class="span2">
-			<form action="<?php echo site_url('cliente/nuevo_registro'); ?>" method="POST">
+			<form action="<?=base_url('cliente/nuevo_registro'); ?>" method="POST">
 				<input type="hidden" value="<?php echo $id; ?>" name="id_persona">
 				<button type="submit" class="btn btn-primary pull-left" ><i class="icon-plus"></i> Nuevo Registro </button>
 			</form>
@@ -111,7 +111,7 @@ function date_bitacora($s_date){
 		<div class="span3"></div>
 
 		<div class="span2">
-			<form action="<?php echo site_url('cliente/generar_excel'); ?>" method="POST">
+			<form action="<?=base_url('cliente/generar_excel'); ?>" method="POST">
 				<input type="hidden" value="<?php echo $id; ?>" name="id_persona">
 				<button type="submit" class="btn btn-primary pull-right" name="excel" ><i class="icon-list-alt"></i> Generar Excel </button>
 			</form>
@@ -148,7 +148,7 @@ function date_bitacora($s_date){
 
 <?php } else { ?>
 				<div class="span9">
-					<form method="post" action="<?php echo site_url('cliente/regisdatos_persona'); ?>">
+					<form method="post" action="<?=base_url('cliente/regisdatos_persona'); ?>">
 					<div class="row-fluid">
 						<div class="span5">
 							<legend>Datos de la Empresa</legend>

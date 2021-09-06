@@ -11,10 +11,10 @@ function date_bitacora($s_date){
 	return $date;
 }
 ?>
-<link rel="stylesheet" type="text/css" href="css/table_bitacora.css">
+<link rel="stylesheet" type="text/css" href="<?=base_url('css/table_bitacora.css')?>">
 
 <div class="span12">
-	<form id="form_bitacora_actualizar_registros" action="<?php echo site_url('administrador/bitacora_actualiza_reg'); ?>" method="post">
+	<form id="form_bitacora_actualizar_registros" action="<?=base_url('administrador/bitacora_actualiza_reg')?>" method="post">
 	<center><legend> Bitácora Residuos Peligrosos - <?= $nombre_empresa; ?> </legend></center>
 	<div class="row">
 		<div class="span12">
@@ -91,13 +91,13 @@ function date_bitacora($s_date){
 
 	<div style="margin-top:10px;">
 		<div class="span2">
-			<form action="<?php echo site_url('administrador/admin_clientes/' . $id_persona); ?>" method="POST">
+			<form action="<?=base_url('administrador/admin_clientes/' . $id_persona); ?>" method="POST">
 				<button type="submit" class="btn btn pull-left" ><i class="icon-arrow-left"></i> Regresar </button>
 			</form>
 		</div>
 
 		<div class="span2">
-			<form action="<?php echo site_url('administrador/nuevo_registro'); ?>" method="POST">
+			<form action="<?=base_url('administrador/nuevo_registro'); ?>" method="POST">
 				<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
 				<button type="submit" class="btn btn-primary pull-left" ><i class="icon-plus"></i> Nuevo Registro </button>
 			</form>
@@ -110,7 +110,7 @@ function date_bitacora($s_date){
 		<div class="span2"></div>
 
 		<div class="span5">
-			<form action="<?php echo site_url('administrador/generar_excel'); ?>" method="POST">
+			<form action="<?=base_url('administrador/generar_excel'); ?>" method="POST">
 				<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
 				<button type="submit" class="btn btn-primary pull-right" name="excel" ><i class="icon-list-alt"></i> Generar Excel </button>
 			</form>
