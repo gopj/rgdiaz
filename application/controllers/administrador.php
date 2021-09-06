@@ -4,7 +4,7 @@ class Administrador extends MY_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->setLayout('old_admin');
+		$this->setLayout('admin');
 		$this->load->model('persona_model');
 		$this->load->model('contacto_model');
 		$this->load->model('carpeta_model');
@@ -31,6 +31,7 @@ class Administrador extends MY_Controller {
 	
 	#	Metodo index carga la vista principal del administrador
 	public function index(){
+		$this->setLayout('old_admin');
 		if ($this->session->userdata('tipo')==1){
 			$data['mensajes'] = $this->contacto_model->contador_mensajes($status = 0);			
 			$cliente = $this->persona_model->obtiene_clientes($id_status_persona=1,$id_tipo_persona=3);	
@@ -50,6 +51,7 @@ class Administrador extends MY_Controller {
 	//	Metodo que obtiene todos los mensajes de contacto
 	public function mensajes_contacto()
 	{
+		$this->setLayout('old_admin');
 		#	Validamos el usuario sea el administrador------------------------------
 		if ($this->session->userdata('tipo')==1){
 			#	Hacemos una consulta para obtener el numero de mensajes no leidos y 
@@ -72,47 +74,47 @@ class Administrador extends MY_Controller {
 	//	Metodo que Obtiene todos los datos del mensaje seleccionado
 	public function mensaje_completo()
 	{
-	#	Validamos usuario tipo administrador 1
-	if ($this->session->userdata('tipo')==1) {
-		if($this->input->get()){
-		#	Recibimos id_contacto y cambiamos el status como visto------------
-			$id_contacto = base64_decode($this->input->get('id_contacto'));
-			$status_contacto= 1;# <-- Ponemos el status de contacto como 1
-			$this->contacto_model->modifica_status($status_contacto,$id_contacto);
-		#	------------------------------------------------------------------
-		#	Hacemos una consulta para obtener el numero de mensajes no leidos
-		#	Obtenemos todos los datos del mensaje del contacto seleccionado-------
-			$status=0;
-			$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
-			$completos = $this->contacto_model->obtienemensaje($id_contacto); 
-			$data = array(
-				'mensajes'=> $mensajesnuevos,
-				'completo' =>$completos 
-			);
-		#	----------------------------------------------------------------------
-		#	Obtengo a todos mis clientes para seleccionar uno en opcion dar de baja y los mando al modal
-			$id_tipo_persona=3;
-			$id_status_persona=1;
-			// Mandar una variable para selecciar solo a los clientes que ya llenaron su info
-			$lleno_datos = 1;
-			$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona,$id_tipo_persona,$lleno_datos);
-			$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
-			#exit(var_dump($cliente_baja));
-			$data = array(
-				'clientes' => $cliente_baja,
-				'correo' => $correo_clientes
-			);
-		#	---------------------------------------------------------------------
-			
+		$this->setLayout('old_admin');
+		#	Validamos usuario tipo administrador 1
+		if ($this->session->userdata('tipo')==1) {
+			if($this->input->get()){
+			#	Recibimos id_contacto y cambiamos el status como visto------------
+				$id_contacto = base64_decode($this->input->get('id_contacto'));
+				$status_contacto= 1;# <-- Ponemos el status de contacto como 1
+				$this->contacto_model->modifica_status($status_contacto,$id_contacto);
+			#	------------------------------------------------------------------
+			#	Hacemos una consulta para obtener el numero de mensajes no leidos
+			#	Obtenemos todos los datos del mensaje del contacto seleccionado-------
+				$status=0;
+				$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
+				$completos = $this->contacto_model->obtienemensaje($id_contacto); 
+				$data = array(
+					'mensajes'=> $mensajesnuevos,
+					'completo' =>$completos 
+				);
+			#	----------------------------------------------------------------------
+			#	Obtengo a todos mis clientes para seleccionar uno en opcion dar de baja y los mando al modal
+				$id_tipo_persona=3;
+				$id_status_persona=1;
+				// Mandar una variable para selecciar solo a los clientes que ya llenaron su info
+				$lleno_datos = 1;
+				$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona,$id_tipo_persona,$lleno_datos);
+				$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
+				#exit(var_dump($cliente_baja));
+				$data = array(
+					'clientes' => $cliente_baja,
+					'correo' => $correo_clientes
+				);
+			#	---------------------------------------------------------------------
+				
 			$this->load->view('administrador/mensaje',$data);
 
+			}else{
+				redirect('home');
+			}
 		}else{
 			redirect('home');
 		}
-
-	}else{
-		redirect('home');
-	}
 	}
 
 	public function eliminar_mensaje($id) {
@@ -128,6 +130,7 @@ class Administrador extends MY_Controller {
 	}
 
 	public function subir_archivo(){
+		$this->setLayout('old_admin');
 		if ($this->session->userdata('tipo')==1){
 			$status = 0;
 			$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
@@ -169,6 +172,7 @@ class Administrador extends MY_Controller {
 
 	public function alta_cliente()
 	{
+		$this->setLayout('old_admin');
 		# Revisamos si el usuario es administrador---------------
 		if ($this->session->userdata('tipo')==1){
 
@@ -249,6 +253,7 @@ class Administrador extends MY_Controller {
 	}
 
 	public function baja_cliente() {
+		$this->setLayout('old_admin');
 		if ($this->session->userdata('tipo')==1){
 			if($this->input->post())
 			{	
@@ -303,6 +308,7 @@ class Administrador extends MY_Controller {
 	}
 
 	public function admin_clientes($id = null) {
+		$this->setLayout('old_admin');
 		if ($this->session->userdata('tipo')==1){
 			#	Cargamos los mensajes nuevos y los mandamos a la vista --------
 				$status = 0;
@@ -373,6 +379,7 @@ class Administrador extends MY_Controller {
 
 	public function crearsubcarpeta()
 	{
+		$this->setLayout('old_admin');
 		$ruta_anterior= $this->input->post('direccion');
 		$nombrecarpeta=$this->input->post('nombrecarpeta');
 		$id_persona=$this->input->post('id_persona');
@@ -435,70 +442,72 @@ class Administrador extends MY_Controller {
 
 	public function versubcarpeta($id = null)
 	{
-			if($this->input->post()){
-				$status = 0;
-				$id_persona=$this->input->post('id_persona');
-				$direccion=$this->input->post('ruta_carpeta'); // Direccion de carpeta
-				$nombre_empresa = $this->persona_model->get_nombre($id_persona);
-				$nombre = @$nombre_empresa->nombre_empresa;	//Nombre de la empresa
-				$ruta = explode("/", $direccion);
+		$this->setLayout('old_admin');
+		if($this->input->post()){
+			$status = 0;
+			$id_persona=$this->input->post('id_persona');
+			$direccion=$this->input->post('ruta_carpeta'); // Direccion de carpeta
+			$nombre_empresa = $this->persona_model->get_nombre($id_persona);
+			$nombre = @$nombre_empresa->nombre_empresa;	//Nombre de la empresa
+			$ruta = explode("/", $direccion);
 
-				$ruta[1] = $nombre;
-				$direccion_real="";
-				foreach ($ruta as $r) {
-					$direccion_real .= $r."/";
-				}
-
-				$anterior=$this->carpeta_model->obtieneunacarpeta($this->input->post('ruta_carpeta'));
-				$raiz='clientes/';
-				$subcarpetas=$this->carpeta_model->obtienesubcarpeta($this->input->post('ruta_carpeta'));
-				$archivos=$this->archivo_model->obtienearchivos($this->input->post('ruta_carpeta'));
-				$id_tipo_persona=3;
-				$id_status_persona=1;
-				$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
-				$cliente=$this->persona_model->obtiene_clientes($id_tipo_persona,$id_status_persona);
-				#$todosmensajes = $this->contacto_model->mensajescontacto();
-				$data = array(
-					'mensajes'=> $mensajesnuevos,
-					#'mensajitos' => $todosmensajes
-				);
-				$id_tipo_persona=3;
-				$id_status_persona=1;
-				$data2 = array( 
-								'clientes' => $cliente,
-								'carpetas'=> $subcarpetas,
-								'direccion'=> $direccion,
-								'id_persona'=> $id_persona,
-								'archivo'=>$archivos,
-								'anterior'=>$anterior,
-								'raiz'=>$raiz,
-								'direccion_real' => $direccion_real
-								//'direccion' => $dir_carp,
-								//'nombre_empresa' => $nombre
-				);
-
-				$this->load->view('administrador/subcarpeta',$data2);
-
-				#	Obtengo a todos mis clientes para seleccionar uno en opcion dar de baja y los mando al modal
-				$id_tipo_persona=3;
-				$id_status_persona=1;
-				// Mandar una variable para selecciar solo a los clientes que ya llenaron su info
-				$lleno_datos = 1;
-				$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona,$id_tipo_persona,$lleno_datos);
-				$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
-				#exit(var_dump($cliente_baja));
-				$data3 = array(
-					'clientes' => $cliente_baja,
-					'correo' => $correo_clientes
-				);	
-			}else{
-				redirect('administrador');
+			$ruta[1] = $nombre;
+			$direccion_real="";
+			foreach ($ruta as $r) {
+				$direccion_real .= $r."/";
 			}
+
+			$anterior=$this->carpeta_model->obtieneunacarpeta($this->input->post('ruta_carpeta'));
+			$raiz='clientes/';
+			$subcarpetas=$this->carpeta_model->obtienesubcarpeta($this->input->post('ruta_carpeta'));
+			$archivos=$this->archivo_model->obtienearchivos($this->input->post('ruta_carpeta'));
+			$id_tipo_persona=3;
+			$id_status_persona=1;
+			$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
+			$cliente=$this->persona_model->obtiene_clientes($id_tipo_persona,$id_status_persona);
+			#$todosmensajes = $this->contacto_model->mensajescontacto();
+			$data = array(
+				'mensajes'=> $mensajesnuevos,
+				#'mensajitos' => $todosmensajes
+			);
+			$id_tipo_persona=3;
+			$id_status_persona=1;
+			$data2 = array( 
+							'clientes' => $cliente,
+							'carpetas'=> $subcarpetas,
+							'direccion'=> $direccion,
+							'id_persona'=> $id_persona,
+							'archivo'=>$archivos,
+							'anterior'=>$anterior,
+							'raiz'=>$raiz,
+							'direccion_real' => $direccion_real
+							//'direccion' => $dir_carp,
+							//'nombre_empresa' => $nombre
+			);
+
+			$this->load->view('administrador/subcarpeta',$data2);
+
+			#	Obtengo a todos mis clientes para seleccionar uno en opcion dar de baja y los mando al modal
+			$id_tipo_persona=3;
+			$id_status_persona=1;
+			// Mandar una variable para selecciar solo a los clientes que ya llenaron su info
+			$lleno_datos = 1;
+			$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona,$id_tipo_persona,$lleno_datos);
+			$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
+			#exit(var_dump($cliente_baja));
+			$data3 = array(
+				'clientes' => $cliente_baja,
+				'correo' => $correo_clientes
+			);	
+		}else{
+			redirect('administrador');
+		}
 		
 	}
 
 	public function subirarchivo()
 	{
+		$this->setLayout('old_admin');
 		if($this->input->post()){
 			$ruta_carpeta_pertenece = $this->input->post('direccion');
 			$id_persona = $this->input->post('id_persona');
@@ -572,6 +581,7 @@ class Administrador extends MY_Controller {
 
 	public function eliminar_archivo()
 	{	
+		$this->setLayout('old_admin');
 		$this->archivo_model->eliminar_archivo($this->input->post('id_archivo'));
 		$ruta= $this->input->post('ruta_archivo');
 		unlink($ruta);
@@ -626,6 +636,7 @@ class Administrador extends MY_Controller {
 
 	public function eliminar_carpeta()
 	{	
+		$this->setLayout('old_admin');
 		$ruta=$this->input->post('ruta_carpeta');
 		$this->carpeta_model->eliminar_carpeta($this->input->post('id_carpeta'));
 		delete_files($ruta, TRUE);
@@ -682,8 +693,7 @@ class Administrador extends MY_Controller {
 	}
 
 	public function bitacora(){
-		
-
+		$this->setLayout('old_admin');
 		if($this->input->post()){			
 
 			//redirect
@@ -731,7 +741,7 @@ class Administrador extends MY_Controller {
 	}
 
 	public function alta_cliente_admin(){	
-
+		$this->setLayout('old_admin');
 		$status = 0;
 		$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
 		#$todosmensajes = $this->contacto_model->mensajescontacto();
@@ -760,6 +770,7 @@ class Administrador extends MY_Controller {
 	}
 
 	public function registra_cliente_admin(){	
+		$this->setLayout('old_admin');
 		if ($this->session->userdata('tipo')==1){
 			if($this->input->post()){
 				#	Asignamos una contraseña al usuario y lo insertamos como cliente -----------	
@@ -903,7 +914,8 @@ class Administrador extends MY_Controller {
 		}
 	}
 
-	public function contestar_mensaje_contacto($id_contacto){	
+	public function contestar_mensaje_contacto($id_contacto){
+		$this->setLayout('old_admin');
 		if ($this->session->userdata('tipo')==1){
 
 			$data["mensajes"] 	= $this->contacto_model->contador_mensajes(0);
@@ -1048,7 +1060,8 @@ class Administrador extends MY_Controller {
 		}
 	}
 
-	public function nuevo_registro() {	
+	public function nuevo_registro() {
+		$this->setLayout('old_admin');
 		if ($this->session->userdata('tipo')==1){
 			if($this->input->post()){
 				$id_persona = $this->input->post('id_persona');
@@ -1148,6 +1161,7 @@ class Administrador extends MY_Controller {
 	}
 
 	public function actualizar_registros() {
+		$this->setLayout('old_admin');
 		if ($this->session->userdata('tipo')==1) {
 			if ( $this->input->post() ) {
 
@@ -1303,7 +1317,7 @@ class Administrador extends MY_Controller {
 	}
 
 	public function bitacora_actualiza_reg(){	
-
+		$this->setLayout('old_admin');
 		if ($this->session->userdata('tipo')==1) {
 
 			if ($this->input->post()) {
@@ -1370,7 +1384,8 @@ class Administrador extends MY_Controller {
 		}
 	}
 
-	public function update_bit($id_persona = null, $id_bit = null){	
+	public function update_bit($id_persona = null, $id_bit = null){
+		$this->setLayout('old_admin');
 		if ($this->session->userdata('tipo')==1) {
 		
 			if(($this->input->post()) || ($id_bit != null) ){
@@ -1437,7 +1452,8 @@ class Administrador extends MY_Controller {
 	}
 
 
-	public function renombrar_carpeta(){	
+	public function renombrar_carpeta(){
+		$this->setLayout('old_admin');
 		if($this->input->post()) {
 			$id_persona = $this->input->post('id_persona');
 			$nombre_carpeta = $this->input->post('nombre_carpeta');
@@ -1585,7 +1601,7 @@ class Administrador extends MY_Controller {
 	}
 
 	public function manifiesto($id_persona){	
-
+		$this->setLayout('old_admin');
 		$status = 0;
 		$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
 		$data = array(
@@ -1624,7 +1640,8 @@ class Administrador extends MY_Controller {
 	}
 
 
-	public function generar_manifiesto($id_persona) {	
+	public function generar_manifiesto($id_persona) {
+		$this->setLayout('old_admin');
 		if ($this->input->post()) {
 
 			$data["id_persona"] = $id_persona;
@@ -1640,7 +1657,7 @@ class Administrador extends MY_Controller {
 	}
 
 	public function transportistas_destinos() {	
-
+		$this->setLayout('old_admin');
 		$status = 0;
 		$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
 
@@ -1910,7 +1927,6 @@ class Administrador extends MY_Controller {
 	}
 
 	public function recolector_index() {
-		$this->setLayout('admin');
 		if ($this->session->userdata('tipo') == 1){
 
 			$id_tipo_persona 			= 3;
@@ -1939,7 +1955,6 @@ class Administrador extends MY_Controller {
 	}
 
 	public function recolector_ver_manifiestos($id_persona=null) {
-		$this->setLayout('admin');
 		$data["url_back"] = $this->session->set_userdata('url_back', 'manifiestos'); // URL hacia atrás 
 		$data["recolector"]	= $this->persona_model->get_datos_empresa($this->session->userdata('id'));
 		$data["vehiculos"] 	= $this->tran_vehiculo_model->get_vehiculos();
@@ -1981,7 +1996,6 @@ class Administrador extends MY_Controller {
 	}
 
 	public function recolector_ver_manifiesto($id_cliente, $folio){
-		$this->setLayout('admin');
 		$data["url_back"] = $this->session->userdata('url_back'); // URL hacia atrás 
  
 		if ($this->session->userdata('tipo') == 1){
@@ -2012,7 +2026,6 @@ class Administrador extends MY_Controller {
 	}
 
 	public function recolector_crear_manifiesto($id_cliente) {
-		$this->setLayout('admin');
 		if ($this->session->userdata('tipo') == 1){
 
 			$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
@@ -2078,7 +2091,6 @@ class Administrador extends MY_Controller {
 	}
 
 	public function recolector_crear_manifiestos($id_cliente, $folio) {
-		$this->setLayout('admin');
 		if ($this->session->userdata('tipo') == 1){
 
 			$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
@@ -2153,7 +2165,6 @@ class Administrador extends MY_Controller {
 	}
 
 	public function recolector_terminar_manifiesto($id_cliente, $folio) {
-		$this->setLayout('admin');
 		if ($this->session->userdata('tipo') == 1){
 			$data["recolector"]	= $this->persona_model->get_datos_empresa($this->session->userdata('id'));
 			$data["vehiculos"] 	= $this->tran_vehiculo_model->get_vehiculos();
@@ -2187,7 +2198,6 @@ class Administrador extends MY_Controller {
 	}
 
 	public function recolector_eliminar_tran_residuo($id_cliente, $folio) {
-		$this->setLayout('admin');
 		if ($this->session->userdata('tipo') == 1){
 			
 			$this->tran_residuo_model->delete_tran_residuos($folio);
@@ -2259,7 +2269,6 @@ class Administrador extends MY_Controller {
 	}
 
 	public function recolector_bitacora() {
-		$this->setLayout('admin');
 		if ($this->session->userdata('tipo') == 1){
 			$data["url_back"] = $this->session->set_userdata('url_back', 'recolector_bitacora'); // URL Hacía atras
 
