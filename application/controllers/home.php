@@ -76,7 +76,7 @@ class Home extends My_Controller {
 								//	Sesion del Administrador
 								if($this->session->userdata('status') == 1 && $this->session->userdata('tipo')==1){
 									#	Cargar la vista de usuario
-									redirect('administrador/index');
+									redirect('admin/recolector_index');
 								}
 								// Sesion del Auxiliar
 								else if($this->session->userdata('status') == 1 && $this->session->userdata('tipo')==2){
