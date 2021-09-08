@@ -306,8 +306,8 @@ class Administrador extends MY_Controller {
 		if($this->input->post()){
 			$data['id_persona'] = $this->input->post('id_persona');
 			$data['direccion'] = $this->input->post('ruta_carpeta'); // Direccion de carpeta
-			$nombre_empresa = $this->persona_model->get_nombre($id_persona)->nombre_empresa;
-			$ruta = explode("/", $direccion);
+			
+			$ruta = explode("/", $data['direccion']);
 			$data['direccion_real'] ="";
 			foreach ($ruta as $r) {
 				$data['direccion_real']  .= $r . "/";

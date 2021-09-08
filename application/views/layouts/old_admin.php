@@ -37,11 +37,11 @@
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							</a>
-							<a href="<?=base_url('administrador')?>" class="brand"><?php echo $this->session->userdata('nombre');?></a>
+							<a href="<?=base_url('administrador/index')?>" class="brand"><?php echo $this->session->userdata('nombre');?></a>
 							<div class="collapse nav-collapse">
 								<ul class="nav pull-right">
 									<li class="divider-vertical"></li>
-									<li><a href="<?=base_url('administrador')?>">Mi carpeta</a></li>
+									<li><a href="<?=base_url('administrador/index')?>">Mi carpeta</a></li>
 									<li class="divider-vertical"></li>
 									<li class="dropdown">
 										<a href="" class="dropdown-toggle" data-toggle="dropdown">Clientes<b class="caret"></b></a>

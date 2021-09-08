@@ -10,13 +10,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<!-- Bootstrap CSS --> 	
-    	<!-- <link href="css/bootstrap4/dataTables.bootstrap4.min.css" rel="stylesheet"> -->
+		<!-- <link href="css/bootstrap4/dataTables.bootstrap4.min.css" rel="stylesheet"> -->
 		<link href="<?=base_url('css/bootstrap4/bootstrap.min.css');?>" rel="stylesheet">
 		<link href="<?=base_url('css/bootstrap4/open-iconic-bootstrap.css');?>" rel="stylesheet">
-    	<link href="<?=base_url('css/bootstrap4/sticky-footer.css');?>" rel="stylesheet">
-    	<link href="<?=base_url('css/bootstrap4/magic-check.css');?>" rel="stylesheet">    	
-    	<link href="<?=base_url('css/bootstrap4/jquery.dataTables.min.css');?>" rel="stylesheet">
-    	<link href="<?=base_url('css/recolector.css');?>" rel="stylesheet">
+		<link href="<?=base_url('css/bootstrap4/sticky-footer.css');?>" rel="stylesheet">
+		<link href="<?=base_url('css/bootstrap4/magic-check.css');?>" rel="stylesheet">    	
+		<link href="<?=base_url('css/bootstrap4/jquery.dataTables.min.css');?>" rel="stylesheet">
+		<link href="<?=base_url('css/recolector.css');?>" rel="stylesheet">
 		<link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />	
 		<script type="text/javascript" src="<?=base_url('js/bootstrap-datepicker.js');?>"></script>
 		<script type="text/javascript" src="<?=base_url('js/formulario_bitacora.js');?>"></script>
