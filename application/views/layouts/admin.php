@@ -56,7 +56,7 @@
 						</div>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="<?=base_url('admin/subir_archivo');?>">Administrar Carpetas</a>
+						<a class="nav-link" href="<?=base_url('administrador/subir_archivo');?>">Administrar Carpetas</a>
 					</li>
 				</ul>
 			</div>
