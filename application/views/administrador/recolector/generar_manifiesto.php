@@ -537,13 +537,13 @@ for ($h=0; $h < $num_table_res; $h++) {
 }
 
 
+$file_location 	= $_SERVER['DOCUMENT_ROOT'] .'rgdiaz/img/pdf/';
 $filename 		= "{$nombre_empresa}_{$folio_identificador}_{$manifiesto->fecha_embarque}.pdf";
-$filelocation 	= $_SERVER['DOCUMENT_ROOT'] ."rgdiaz/img/pdf/";
-
+$full_name 		= $file_location . $filename;
 //Close and output PDF document
-$pdf->Output($filename, 'D');
+$pdf->Output($full_name, 'D');
 
-//$pdf->Output($fileNL, 'F');
+//$pdf->Output($file_location . $filename, 'F');
 
 //redirect('recolector/ver_manifiestos/' . $id_cliente, 'refresh');
 ?>

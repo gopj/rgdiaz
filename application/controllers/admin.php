@@ -236,7 +236,7 @@ class Admin extends MY_Controller {
 		$data["vehiculos"] 	= $this->tran_vehiculo_model->get_vehiculos();
 
 		//PDF
-		$pdfpath = $_SERVER['DOCUMENT_ROOT'] . "rgdiaz/img/pdf/rdiaztmp{@$id_persona}.pdf";
+		$pdfpath = $_SERVER['DOCUMENT_ROOT'] . 'rgdiaz/img/pdf/rdiaztmp' . @$id_persona . '.pdf';
 		if (file_exists($pdfpath)) {
 			unlink($pdfpath);
 		}
