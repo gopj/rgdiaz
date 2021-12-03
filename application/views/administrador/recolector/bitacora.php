@@ -15,8 +15,8 @@
 			<label for="fecha">Tipo</label>
 			<select class="form-control" name="tipo" id="tipo">
 				<option value=""> Todos </option>
-				<option value="W" <?php if($tipo=='W'){echo "selected";}?>> Pendientes </option>
-				<option value="R" <?php if($tipo=='R'){echo "selected";}?>> Completados </option>
+				<option value="W" <?php if(@$tipo=='W'){echo "selected";}?>> Pendientes </option>
+				<option value="R" <?php if(@$tipo=='R'){echo "selected";}?>> Completados </option>
 			</select>
 
 		</div>
@@ -52,7 +52,7 @@
 					<td style="text-align: center;"> <?= $bit->numero_placa ?> </td>
 					<td style="text-align: center;"> <?= date_format($fecha, "d/m/Y"); ?> </td>
 					<?php if ($bit->status == 'W'){ ?>
-						<td style="text-align: center;">  <a href="<?=site_url('admin/recolector_terminar_manifiesto/' . $bit->id_persona . '/' . $bit->id_tran_folio);?>" class="btn btn-success btn-sm" role="button"> Terminar </a> </td>
+						<td style="text-align: center;">  <a href="<?=site_url('admin/recolector_crear_manifiestos/' . $bit->id_persona . '/' . $bit->id_tran_folio);?>" class="btn btn-success btn-sm" role="button"> Terminar </a> </td>
 					<?php } else { ?>
 						<td style="text-align: center;">  <a href="<?=site_url('admin/recolector_ver_manifiesto/' . $bit->id_persona . '/' . $bit->id_tran_folio);?>" class="btn btn-primary btn-sm" role="button"> Ver </a> </td>
 					<?php }?>
