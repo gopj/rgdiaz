@@ -258,23 +258,25 @@ class Tran_residuo_model extends CI_Model {
 
 	public function recolector_bitacora(){
 		$sql_text = '
-			SELECT 
-				tf.*,
+			SELECT
+				tf.id_tran_folio,
+				c.id_persona,
+				tf.fecha_embarque,
 				p.nombre,
-				p2.nombre_empresa as nombre_generador,
-				tv.*,
-				ted.*
-			FROM 
-				tran_folios tf,
-				persona p,
-				tran_vehiculos tv,
-				tipo_emp_destino ted,
-				persona p2 
-			WHERE 
-				tf.id_recolector = p.id_persona AND
-				tf.id_vehiculo = tv.id_vehiculo AND 
-				tf.id_tipo_emp_destino = ted.id_tipo_emp_destino AND
-				tf.id_persona = p2.id_persona ;';
+				c.nombre as "nombre_generador",
+				tf.responsable_tecnico,
+				tf.status,
+				tf.ruta,
+				tf.observaciones,
+				tf.folio,
+				tv.numero_placa
+			FROM
+				tran_folios as tf
+					LEFT JOIN persona p ON (tf.id_recolector = p.id_persona)
+					LEFT JOIN tran_vehiculos tv ON (tf.id_vehiculo = tv.id_vehiculo)
+					LEFT JOIN persona c ON (tf.id_persona = c.id_persona)
+			WHERE
+				tf.status in ("R", "W");';
 
 		$result = $this->db->query($sql_text)->result();
 
@@ -282,34 +284,37 @@ class Tran_residuo_model extends CI_Model {
 	}
 
 	public function recolector_bitacora_custom($data){
-		
+
 		$sql_text = '
-			SELECT 
-				tf.*,
+			SELECT
+				tf.id_tran_folio,
+				c.id_persona,
+				tf.fecha_embarque,
 				p.nombre,
-				p2.nombre_empresa as nombre_generador,
-				tv.*,
-				ted.*
-			FROM 
-				tran_folios tf,
-				persona p,
-				tran_vehiculos tv,
-				tipo_emp_destino ted,
-				persona p2 
-			WHERE 
-				tf.id_recolector = p.id_persona 
-				AND tf.id_vehiculo = tv.id_vehiculo  
-				AND tf.id_tipo_emp_destino = ted.id_tipo_emp_destino 
-				AND tf.id_persona = p2.id_persona  
-				
-				';
+				c.nombre as "nombre_generador",
+				tf.responsable_tecnico,
+				tf.status,
+				tf.ruta,
+				tf.observaciones,
+				tf.folio,
+				tv.numero_placa
+			FROM
+				tran_folios as tf
+					LEFT JOIN persona p ON (tf.id_recolector = p.id_persona)
+					LEFT JOIN tran_vehiculos tv ON (tf.id_vehiculo = tv.id_vehiculo)
+					LEFT JOIN persona c ON (tf.id_persona = c.id_persona)
+		';
+
+		if ($data["tipo"] == "R") {
+			$sql_text .= ' WHERE tf.status in ("R")';
+		} elseif ($data["tipo"] == "W") {
+			$sql_text .= ' WHERE tf.status in ("W")';
+		} else {
+			$sql_text .= ' WHERE tf.status in ("R", "W")';
+		}
 
 		if ($data["fecha"]) {
 			$sql_text .= 'AND tf.fecha_embarque = \'' . $data["fecha"] . '\'';
-		}
-
-		if ($data["tipo"] != "") {
-			$sql_text .= ' AND tf.status =\'' .  $data["tipo"] . '\'';
 		}
 
 		$result = $this->db->query($sql_text)->result();

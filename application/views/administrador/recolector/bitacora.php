@@ -15,8 +15,8 @@
 			<label for="fecha">Tipo</label>
 			<select class="form-control" name="tipo" id="tipo">
 				<option value=""> Todos </option>
-				<option value="R"> Pendientes </option>
-				<option value="W"> Completados </option>
+				<option value="W" <?php if($tipo=='W'){echo "selected";}?>> Pendientes </option>
+				<option value="R" <?php if($tipo=='R'){echo "selected";}?>> Completados </option>
 			</select>
 
 		</div>

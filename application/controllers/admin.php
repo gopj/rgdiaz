@@ -246,7 +246,7 @@ class Admin extends MY_Controller {
 			if ($this->input->post()){
 
 				if ($this->input->post("identificador_folio") == ''){ // redirecciona cuando no se encuentra el identificador del folio
-					redirect("administrador/recolector/index");
+					redirect("admin/recolector/index");
 				}
 
 				$data["id_cliente"] = $this->input->post("id_persona");
@@ -261,7 +261,7 @@ class Admin extends MY_Controller {
 				
 				$this->load->view("administrador/recolector/ver_manifiestos", $data);
 			} else {
-				redirect("administrador/recolector/index");
+				redirect("admin/recolector/index");
 			}
 		
 		}else{
@@ -349,7 +349,7 @@ class Admin extends MY_Controller {
 				$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $data["folio"]);
 				$data["fecha_embarque"]		= date_format($fecha_embarque, "d/m/Y");
 
-				redirect("administrador/recolector_crear_manifiestos" . "/" .  $id_cliente . "/" . $data["id_folio"]);
+				redirect("admin/recolector_crear_manifiestos" . "/" .  $id_cliente . "/" . $data["id_folio"]);
 
 			} else {
 
