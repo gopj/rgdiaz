@@ -528,6 +528,10 @@ class Admin extends MY_Controller {
 		$data["ruta"]					= $tran_resiudos->ruta;
 		$data["nombre_empresas"] 		= $this->persona_model->get_datos_empresas();
 
+		echo "<pre>";
+		print_r($data);
+		echo "</pre>";
+
 		$this->load->view("administrador/recolector/generar_manifiesto", $data);
 
 	}

@@ -541,7 +541,7 @@ $filename 		= "{$nombre_empresa}_{$folio_identificador}_{$manifiesto->fecha_emba
 $filelocation 	= $_SERVER['DOCUMENT_ROOT'] ."rgdiaz/img/pdf/";
 
 //Close and output PDF document
-$pdf->Output($filename, 'D');
+$pdf->Output($filelocation . $filename, 'D');
 
 //$pdf->Output($fileNL, 'F');
 

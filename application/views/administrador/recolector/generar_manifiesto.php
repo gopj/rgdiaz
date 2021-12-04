@@ -531,14 +531,13 @@ for ($h=0; $h < $num_table_res; $h++) {
 	$table_data_html = '';
 }
 
-
-$file_location 	= $_SERVER['DOCUMENT_ROOT'] .'rgdiaz/img/pdf/';
-$filename 		= $nombre_empresa . '_' . $folio_identificador . '_' . $manifiesto->fecha_embarque . '.pdf';
-$full_name 		= $file_location . $filename;
+$file_location 	= $_SERVER['DOCUMENT_ROOT'] ."rgdiaz/img/pdf/";
+$file_name 		= "{$nombre_empresa}_{$folio_identificador}_{$manifiesto->fecha_embarque}.pdf";
+$file_output	= $file_location . $file_name;
 //Close and output PDF document
-$pdf->Output($full_name, 'D');
+$pdf->Output($file_output, 'F');
 
-//$pdf->Output($full_name, 'F');
+/// $pdf->Output($filename, 'F'); TEST F | DOWNLOAD D 
 
 //redirect('recolector/ver_manifiestos/' . $id_cliente, 'refresh');
 ?>
