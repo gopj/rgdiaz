@@ -49,11 +49,6 @@ function date_manifiesto($s_date){
 
 ///// Testing parameters
 
-// echo "<pre>";
-// print_r($residuos_manifiesto);
-// echo "</pre>"; 
-// die();
-
 // create new PDF document
 $pdf = new MY_PDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
@@ -538,12 +533,12 @@ for ($h=0; $h < $num_table_res; $h++) {
 
 
 $file_location 	= $_SERVER['DOCUMENT_ROOT'] .'rgdiaz/img/pdf/';
-$filename 		= "{$nombre_empresa}_{$folio_identificador}_{$manifiesto->fecha_embarque}.pdf";
+$filename 		= $nombre_empresa . '_' . $folio_identificador . '_' . $manifiesto->fecha_embarque . '.pdf';
 $full_name 		= $file_location . $filename;
 //Close and output PDF document
 $pdf->Output($full_name, 'D');
 
-//$pdf->Output($file_location . $filename, 'F');
+//$pdf->Output($full_name, 'F');
 
 //redirect('recolector/ver_manifiestos/' . $id_cliente, 'refresh');
 ?>
