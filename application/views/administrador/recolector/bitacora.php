@@ -1,3 +1,4 @@
+<?php $this->session->set_userdata('url', 'from_bitacora'); ?>
 <main role="main" class="container col-md-10">
 
 	<div class="form-group col-md-4">

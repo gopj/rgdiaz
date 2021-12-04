@@ -420,7 +420,7 @@ class Admin extends MY_Controller {
 
 				$tran_resiudos 				= $this->tran_residuo_model->get_reg_tran_residuos($id_cliente, $folio);
 				$fecha_embarque				= date_create_from_format("Y-m-d", $tran_resiudos->fecha_embarque);
-
+		
 				$data["fecha_embarque"]		= date_format($fecha_embarque, "d/m/Y");
 				$data["responsable_destino"]= $tran_resiudos->responsable_destino;
 				$data["id_emp_destino"]		= $tran_resiudos->id_tipo_emp_destino;
@@ -429,7 +429,8 @@ class Admin extends MY_Controller {
 				$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
 				$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
 				$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
-				
+				$data["url"]				= $this->session->userdata('url');	
+
 				$this->load->view("administrador/recolector/crear_manifiestos", $data);
 			}
 

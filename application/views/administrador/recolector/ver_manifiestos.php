@@ -1,3 +1,5 @@
+<?php $this->session->set_userdata('url', 'from_user'); ?>
+
 <main role="main" class="container col-md-10" style="padding-top:-10px;">
 	<center><h2 class="bd-title" id="content">Manifiestos</h1></center>
 	<hr>
