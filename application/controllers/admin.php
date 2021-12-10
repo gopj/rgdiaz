@@ -502,7 +502,7 @@ class Admin extends MY_Controller {
 	}
 
 	public function recolector_generar_manifiesto($id_cliente, $folio) {
-		$this->setLayout('empty');
+		$this->setLayout('recolector');
 		$recolector 					= $this->tran_residuo_model->get_vehiculo($folio)->id_persona;
 		$vehiculo 						= $this->tran_residuo_model->get_vehiculo($folio)->id_vehiculo;
 
@@ -528,9 +528,9 @@ class Admin extends MY_Controller {
 		$data["ruta"]					= $tran_resiudos->ruta;
 		$data["nombre_empresas"] 		= $this->persona_model->get_datos_empresas();
 
-		echo "<pre>";
+/*		echo "<pre>";
 		print_r($data);
-		echo "</pre>";
+		echo "</pre>";*/
 
 		$this->load->view("administrador/recolector/generar_manifiesto", $data);
 

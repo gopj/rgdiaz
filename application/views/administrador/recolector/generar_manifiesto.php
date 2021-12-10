@@ -535,7 +535,7 @@ $file_location 	= $_SERVER['DOCUMENT_ROOT'] ."rgdiaz/img/pdf/";
 $file_name 		= "{$nombre_empresa}_{$folio_identificador}_{$manifiesto->fecha_embarque}.pdf";
 $file_output	= $file_location . $file_name;
 //Close and output PDF document
-$pdf->Output($file_output, 'F');
+$pdf->Output($file_output, 'D');
 
 /// $pdf->Output($filename, 'F'); TEST F | DOWNLOAD D 
 
