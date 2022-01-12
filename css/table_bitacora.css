@@ -20,7 +20,8 @@ table {
     display: block;
 }
 thead {
-    background-color: #88B22F;
+    background-color: #88B22F .8;
+   
 }
 thead, tbody {
     display: block;
@@ -34,6 +35,7 @@ th {
     min-width: 198px;
     height: 40px;
     border: dashed 1px green;
+    
 }
 td {
     min-width: 200px;

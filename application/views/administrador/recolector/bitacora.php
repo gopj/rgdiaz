@@ -1,5 +1,5 @@
 <?php $this->session->set_userdata('url', 'from_bitacora'); ?>
-<main role="main" class="container col-md-10">
+<main role="main" class="container col-10">
 
 	<div class="form-group col-md-4">
 		<h2 class="bd-title">Bitacora</h2>

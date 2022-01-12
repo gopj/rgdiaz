@@ -17,60 +17,55 @@
 		<link href="<?=base_url('css/bootstrap4/magic-check.css');?>" rel="stylesheet">    	
 		<link href="<?=base_url('css/bootstrap4/jquery.dataTables.min.css');?>" rel="stylesheet">
 		<link href="<?=base_url('css/recolector.css');?>" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="<?=base_url('css/estilos.css')?>">
+
 		<link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />	
 		<script type="text/javascript" src="<?=base_url('js/bootstrap-datepicker.js');?>"></script>
 		<script type="text/javascript" src="<?=base_url('js/formulario_bitacora.js');?>"></script>
 		<script type="text/javascript" src="<?=base_url('js/jquery.validate.js');?>"></script>
 		<script type="text/javascript" src="<?=base_url('js/jquery.validate.messages.js');?>"></script>
 		<script type="text/javascript" src="<?=base_url('js/bitacora.js');?>"></script>
+		<script src="https://kit.fontawesome.com/1e1a8bc4b5.js" crossorigin="anonymous"></script>
 
-		<title>Recolector</title>
+		<title>RDiaz </title>
 	</head>
 	<body>
-	
-		<nav class="navbar navbar-expand-lg navbar-dark bg-success">
-			<a class="navbar-brand" href="<?=site_url('admin');?>"> 
-				<?php echo $this->session->userdata('nombre');?>
-			</a>
-
+		<nav class="navbar-expand-lg fmenu"  >
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
+			<div class="container" id="navbarNavDropdown">
+			<ul class="nav justify-content-end">
+				
+				<li class="nav-item ">
+					<a class="nav-link gnav active" aria-current="page" href="<?=base_url('administrador/index');?>"><i class="fas fa-home"></i> Inicio</a>
+				</li>
+				<li class="nav-item ">
+					<a class="nav-link gnav"  href="<?=base_url('administrador/admin_clientes')?>"><i class="fas fa-user"></i>Clientes</a>
+				</li>
+				<li class="nav-item ">
+					<a class="nav-link gnav" href="<?=base_url('admin/recolector_index')?>"><i class="fas fa-truck"></i>Recolectores</a>
+				</li>
+				<li class="nav-item ">
+					<a class="nav-link gnav" href="<?=base_url('administrador/subir_archivo');?>"><i class="fas fa-folder"></i>Documentos</a>
+				</li>
+			</ul>
+		</div>
 
-			<div class="collapse navbar-collapse" id="navbarNavDropdown">
-				<ul class="navbar-nav">
-					<li class="nav-item">
-						<a class="nav-link" href="<?=base_url('administrador/index');?>"> Mi Carpeta </a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="<?=base_url('administrador/admin_clientes')?>">Clientes</a>
-					</li>
-					<li class="nav-item dropdown active">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Recolectores
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="<?=base_url('admin/recolector_consulta')?>">Consultas</a>
-							<a class="dropdown-item" href="<?=base_url('admin/recolector_index')?>">Manifiesto</a>
-							<a class="dropdown-item" href="<?=base_url('admin/recolector_bitacora')?>">Bitacora</a>
-						</div>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="<?=base_url('administrador/subir_archivo');?>">Administrar Carpetas</a>
-					</li>
-				</ul>
-			</div>
-
-			<a class="btn btn-primary btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="<?=base_url();?>"> Cerrar Sesión </a>
 		</nav>
 
 		<?php echo $output; ?>
 
 		<!-- FOOTER -->
-		<footer class="footer">
-			<div class="container">
-				<span class="text-muted"> Todos los derechos reservados &copy; <?php echo date("Y"); ?> RDíaz </span>
-			</div>	
+			
+		<footer>
+			<div class="footer" style="color:#fff; font-weight:bold; ">
+				<div class="container">
+					<div style="">
+						Derechos reservados &copy; <?php echo date("Y"); ?> RDíaz
+					</div>
+				</div>
+			</div>
 		</footer>
 
 		<!-- Optional JavaScript -->
@@ -92,6 +87,8 @@
 				format: "dd/mm/yyyy"
 			});
 		</script>
+
+		
 	 
 	</body>
 	

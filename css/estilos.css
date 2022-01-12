@@ -1,30 +1,4 @@
-html {
-  position: relative;
-  min-height: 100%;
-}
-body {
-  margin: 0 0 100px;
-  background-color: #F1F1F1;
-}
-footer {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-}
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
-}
+
 input[type="file"] {
   display: none;
 }
@@ -42,12 +16,7 @@ input[type="file"] {
   transition: border linear .2s, box-shadow linear .2s;
   cursor: default;
 }
-.footer {
-  background-color: #567531;
-  padding: 10px 0;
-  text-align: center;
-  margin-top: 10px;
-}
+
 .restcontr {
   font-size: 12px;
   cursor: pointer;
@@ -213,4 +182,38 @@ input[type="file"] {
     color: white;
     background: #4CAF76;
     background: #4CAF76;
+}
+
+.slider_scale{
+  max-height: 1080px !important;
+}
+
+.fmenu{
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.gnav{
+  color: #99CB36 !important;
+}
+
+.folder{
+  align-items: center;
+  justify-content: center;
+  padding-left: 25%;
+  padding-right: 25%;
+}
+
+.filemg{
+  margin-top: 80px;
+}
+
+.footer {
+  background-color: #4F67A1;
+  padding-top: 20px;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 61px;
 }

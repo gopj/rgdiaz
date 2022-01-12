@@ -11,10 +11,12 @@
 			<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 			<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
 			<link rel="stylesheet" type="text/css" href="css/datepicker.css">
-			<link rel="stylesheet" type="text/css" href="css/estilos.css">
+			<link rel="stylesheet" type="text/css" href="css/admin.css">
+			
 			<link rel="stylesheet" type="text/css" href="css/demo_table_jui.css">
 			<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.8.4.custom.css">
 			<link rel="stylesheet" type="text/css" href="css/glyphicons.css">
+
 			<script type="text/javascript" src="js/jquery.js"></script>
 			<script type="text/javascript" src="js/bootstrap.js"></script>
 			<script type="text/javascript" src="js/jquery.dataTables.js"></script>
@@ -43,7 +45,7 @@
 							<div class="collapse nav-collapse">
 								<ul class="nav pull-right">
 									<li class="divider-vertical"></li>
-									<li><a href="<?php echo site_url('administrador')?>">Mi carpeta</a></li>
+									<li><a href="<?php echo site_url('administrador')?>">This is </a></li>
 									<li class="divider-vertical"></li>
 									<li class="dropdown">
 										<a href="" class="dropdown-toggle" data-toggle="dropdown">Clientes<b class="caret"></b></a>

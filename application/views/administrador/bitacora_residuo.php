@@ -13,7 +13,7 @@ function date_bitacora($s_date){
 ?>
 <link rel="stylesheet" type="text/css" href="<?=base_url('css/table_bitacora.css')?>">
 
-<div class="span12">
+<div class="col-12">
 	<form id="form_bitacora_actualizar_registros" action="<?=base_url('administrador/bitacora_actualiza_reg')?>" method="post">
 	<center><legend> Bitácora Residuos Peligrosos - <?= $nombre_empresa; ?> </legend></center>
 	<div class="row">

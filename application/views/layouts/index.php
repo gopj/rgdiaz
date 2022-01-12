@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="css/crizal/plugins.css" />
 
     <!-- revolution slider css -->
+    <link rel="stylesheet" href="<?=base_url('css/estilos.css')?>">
     <link rel="stylesheet" href="<?=base_url('css/crizal/rev_slider/settings.css')?>">
     <link rel="stylesheet" href="<?=base_url('css/crizal/rev_slider/layers.css')?>">
     <link rel="stylesheet" href="<?=base_url('css/crizal/rev_slider/navigation.css')?>">
@@ -31,6 +32,7 @@
 
     <!-- custom css -->
     <link href="css/crizal/styles.css" rel="stylesheet" id="colors">
+
 
 </head>
 
@@ -176,6 +178,10 @@
 
    <!-- all js include start -->
 
+   
+</body>
+
+
    <!-- jquery -->
    <script src="<?=base_url('js/crizal/jquery.min.js')?>"></script>
 
@@ -262,7 +268,5 @@
    <script src="js/crizal/mailform/jquery.rd-mailform.min.c.js"></script>
 
    <!-- all js include end -->
-   
-</body>
 
 </html>
