@@ -55,13 +55,29 @@
 									</div>
 								</div>
 								<br>
+
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label" for="vehiculo_asignado"> Vehiculo asignado </label>
+									<div class="col-lg-9">
+										<select class="form-control" style="width:81%;" id="vehiculo_asignado" name="vehiculo_asignado" onchange="onchange_recolector()">
+											<?php foreach($vehiculos->result() as $row){ ?>
+												<option value="<?php echo $row->id_vehiculo;?>">
+													<?php 
+														echo 'Alias: ' . $row->alias . ', Placa: ' . $row->numero_placa . ', Marca: ' . $row->marca; 
+													?>
+												</option>
+											<?php } ?> 
+										</select>
+									</div>
+								</div>
+								<br>
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label"></label>
 									<div class="col-lg-9">
 										<input type="button" class="btn btn-primary" value="Guardar" name="guarda_recolector" id="guarda_recolector" data-toggle="modal" data-target="#modal_guarda_recolector">
 										<input type="button" class="btn btn-primary" value="Editar" name="edita_recolector" id="edita_recolector" onclick="update_recolector()">
 										<?php $url = site_url("admin/recolector_delete") . "/"; ?>
-										<input type="button" class="btn btn-danger" value="Eliminar" name="elimina_recolector" id="elimina_recolector" onclick="delete_recolector(<?=@$row->id_persona?>, '<?=$url?>')" data-toggle="modal" data-target="#modal_elimina_recolector">
+										<input type="button" class="btn btn-danger" value="Eiminar" name="elimina_recolector" id="elimina_recolector" onclick="delete_recolector(<?=@$row->id_persona?>, '<?=$url?>')" data-toggle="modal" data-target="#modal_elimina_recolector">
 									</div>
 								</div>
 

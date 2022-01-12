@@ -81,6 +81,7 @@ function get_recolector(id){
 		$("#guarda_recolector").attr('disabled','disabled');
 		$("#edita_recolector").removeAttr('disabled');
 		$("#elimina_recolector").removeAttr('disabled');
+		$("#vehiculo_asignado").attr('disabled','disabled');
 	} else {
 		$("#nombre_recolector").removeAttr('disabled');
 		$("#correo").removeAttr('disabled');
@@ -88,11 +89,12 @@ function get_recolector(id){
 		$("#clave_automatica").removeAttr('disabled');
 		$("#edita_recolector").attr('disabled','disabled');
 		$("#elimina_recolector").attr('disabled','disabled');
+		$("#vehiculo_asignado").removeAttr('disabled');
 	}
     console.log(id_per);
 	//AJAX
 	jQuery.ajax({
-			url:'https://' + host + '/index.php/administrador/get_recolector',	//<-- Url que va procesar la peticion
+			url:'https://' + host + '/index.php/admin/get_recolector',	//<-- Url que va procesar la peticion
 			//url:'https://rdiaz.mx/index.php/recolector/get_cliente',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
@@ -106,10 +108,12 @@ function get_recolector(id){
 				var nombre = json_data.nombre;
 				var correo = json_data.correo;
 				var clave = json_data.password;
+				var vehiculo_asignado = json_data.id_vehiculo;
 	
 				$("#nombre_recolector").val(nombre);
 				$("#correo").val(correo);
 				$("#clave").val(clave);
+				$("#vehiculo_asignado").val(vehiculo_asignado);
 
 			}
 		);
@@ -125,6 +129,7 @@ function update_recolector(){
 	$("#guarda_recolector").attr('disabled','disabled');
 	$("#edita_recolector").removeAttr('disabled');
 	$("#elimina_recolector").attr('disabled','disabled');
+	$("#vehiculo_asignado").removeAttr('disabled');
 }
 
 function onchange_recolector(){
@@ -191,7 +196,7 @@ function get_vehiculo(id){
 
 	//AJAX
 	jQuery.ajax({
-			url:'https://' + host + '/index.php/administrador/get_vehiculo',	//<-- Url que va procesar la peticion
+			url:'https://' + host + '/index.php/admin/get_vehiculo',	//<-- Url que va procesar la peticion
 			//url:'https://rdiaz.mx/index.php/recolector/get_cliente',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
@@ -312,7 +317,7 @@ function get_destino(id){
     console.log(id_destino);
 	//AJAX
 	jQuery.ajax({
-			url:'https://' + host + '/index.php/administrador/get_destino',	//<-- Url que va procesar la peticion
+			url:'https://' + host + '/index.php/admin/get_destino',	//<-- Url que va procesar la peticion
 			//url:'https://rdiaz.mx/index.php/recolector/get_cliente',
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',

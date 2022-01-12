@@ -59,6 +59,11 @@ class Admin extends MY_Controller {
 				$data["correo"] = $this->input->post("correo");
 				$data["clave"] = $this->input->post("clave2");
 				$data["id_persona"] = $this->input->post("id_persona");
+				$data["id_vehiculo"] = $this->input->post("vehiculo_asignado");
+
+/*				echo "<pre>";
+				print_r($data);
+				echo "</pre>";*/
 
 				if($data["id_persona"]) {
 					$this->persona_model->update_recolector($data);
@@ -66,7 +71,7 @@ class Admin extends MY_Controller {
 					$this->persona_model->alta_recolector($data);
 				}
 				
-				redirect('administrador/recolector_consulta');
+				redirect('admin/recolector_consulta');
 
 			} else {
 
@@ -90,7 +95,7 @@ class Admin extends MY_Controller {
 				$this->persona_model->delete_recolector($id);
 			}
 
-			redirect('administrador/recolector_consulta');
+			redirect('admin/recolector_consulta');
 		}
 	}
 
@@ -141,7 +146,7 @@ class Admin extends MY_Controller {
 					$this->tran_vehiculo_model->update_vehiculo($data);
 				}
 				
-				redirect('administrador/recolector_consulta');
+				redirect('admin/recolector_consulta');
 			} else {
 				
 				$this->load->view('administrador/recolector/consulta', $data_view);
@@ -167,7 +172,7 @@ class Admin extends MY_Controller {
 				$this->tran_vehiculo_model->delete_vehiculo($id);
 			}
 
-			redirect('administrador/recolector_consulta');
+			redirect('admin/recolector_consulta');
 		}
 	}
 
@@ -201,7 +206,7 @@ class Admin extends MY_Controller {
 					$this->emp_destino_model->alta_destino($data);
 				}
 
-				redirect('administrador/recolector_consulta');
+				redirect('admin/recolector_consulta');
 			}
 
 			$this->load->view("administrador/recolector/consulta", $data_view);
@@ -226,7 +231,7 @@ class Admin extends MY_Controller {
 				$this->emp_destino_model->delete_destino($id);
 			}
 
-			redirect('administrador/recolector_consulta');
+			redirect('admin/recolector_consulta');
 		}
 	}
 

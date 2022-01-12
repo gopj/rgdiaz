@@ -105,6 +105,7 @@ class Persona_model extends CI_Model {
 		return $this->db->set('nombre',				$data['nombre'])
 						->set('correo',				$data['correo'])
 						->set('password',			$data['clave'])
+						->set('cp_empresa',			$data['id_vehiculo'])
 						->where('id_persona',		$data['id_persona'])
 						->update('persona');
 	}
@@ -318,9 +319,24 @@ class Persona_model extends CI_Model {
 	}
 
 	public function get_recolector($id){
-		return $this->db->where('id_tipo_persona', 2)
+		/*return $this->db->where('id_tipo_persona', 2)
 						->where('id_persona', $id)
-						->get('persona')->row();
+						->get('persona')->row();*/
+
+		$query  = $this->db->query("
+						SELECT 
+							p.*,
+							tv.*,
+							tyv.*
+						FROM
+							persona p
+								LEFT JOIN tran_vehiculos tv ON (p.cp_empresa = tv.id_vehiculo)
+								LEFT JOIN tipo_vehiculos tyv ON (tv.id_tipo_vehiculo = tyv.id_tipo_vehiculo)
+						WHERE 
+							id_persona = '{$id}';
+				  ")->row();
+
+		return $query;
 	}
 
  }

@@ -529,9 +529,9 @@ for ($h=0; $h < $num_table_res; $h++) {
 	// output the HTML content + QR Codes
 
 	$pdf->writeHTML($html, true, false, true, false, '');
+/*	$pdf->writeHTML($html, true, false, true, false, '');
 	$pdf->writeHTML($html, true, false, true, false, '');
-	$pdf->writeHTML($html, true, false, true, false, '');
-	$pdf->writeHTML($html, true, false, true, false, '');
+	$pdf->writeHTML($html, true, false, true, false, '');*/
 
 	$table_data_html = '';
 }
