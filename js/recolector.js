@@ -539,10 +539,12 @@ function update_terminar_manifiiesto(){
 	var responsable_tecnico = document.getElementById('responsable_tecnico').value;
 	var persona_residuos = document.getElementById('persona_residuos').value;
 	var cargo_persona = document.getElementById('cargo_persona').value;
+	var asignar_recolector = document.getElementById('asignar_recolector').value;
 
 	$("#terminar_responsable_tecnico").val(responsable_tecnico);
 	$("#terminar_persona_residuos").val(persona_residuos);
 	$("#terminar_cargo_persona").val(cargo_persona);
+	$("#terminar_asignar_recolector").val(asignar_recolector);
 }
 
 function clear_required(){

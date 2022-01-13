@@ -379,6 +379,7 @@ class Admin extends MY_Controller {
 			$data["recolector"]			= $this->persona_model->get_datos_empresa($this->session->userdata('id'));
 			$data["vehiculos"] 			= $this->tran_vehiculo_model->get_vehiculos();
 			$data["cliente"] 			= $this->persona_model->get_datos_empresa($id_cliente);
+			$data["recolectores"] 		= $this->persona_model->get_recolectores();
 			$data["id_cliente"] 		= $id_cliente;
 
 			$folio_temp = $this->tran_residuo_model->get_bitacora_count($id_cliente) - 1;
@@ -463,6 +464,7 @@ class Admin extends MY_Controller {
 				$data["responsable_tecnico"]= $this->input->post("terminar_responsable_tecnico");
 				$data["persona_residuos"] 	= $this->input->post("terminar_persona_residuos");
 				$data["cargo_persona"]		= $this->input->post("terminar_cargo_persona");
+				$data["recolector_asignado"]= $this->input->post("terminar_asignar_recolector");
 
 				$this->tran_residuo_model->terminar_manifiesto($id_cliente, $folio, $data);
 

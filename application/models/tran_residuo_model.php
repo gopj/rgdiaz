@@ -203,6 +203,7 @@ class Tran_residuo_model extends CI_Model {
 						->set('responsable_destino',$data["responsable_destino"])
 						->set('persona_residuos',	$data["persona_residuos"])
 						->set('cargo_persona',		$data["cargo_persona"])
+						->set('id_recolector',		$data["recolector_asignado"])
 						->where('id_persona',		$id_cliente)
 						->where('id_tran_folio',	$folio)
 						->update('tran_folios');

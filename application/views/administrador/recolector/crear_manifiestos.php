@@ -175,7 +175,7 @@
 										<label class="custom-control-label" for="tipo_radio4">Porrón</label>
 									</div>
 									<div class="custom-control custom-radio">
-										<input type="radio" class="custom-control-input" id="tipo_radio5" value="OLtro" name="tipoRadio" required>
+										<input type="radio" class="custom-control-input" id="tipo_radio5" value="Otro" name="tipoRadio" required>
 										<label class="custom-control-label" for="tipo_radio5">Otro</label>
 										<div class="invalid-feedback"> &nbsp; Selecciona tipo de contendor</div>
 									</div>
@@ -285,8 +285,9 @@
 				<input type="text" name="terminar_empresa_destino" id="terminar_empresa_destino" hidden>
 				<input type="text" name="terminar_ruta" id="terminar_ruta" hidden>
 				<input type="text" name="terminar_observaciones" id="terminar_observaciones" hidden>
-				<input type="text" name="terminar_persona_residuos" id="terminar_persona_residuos" hidden>
-				<input type="text" name="terminar_cargo_persona" id="terminar_cargo_persona" hidden>
+				<input type="text" name="terminar_persona_residuos" id="terminar_persona_residuos" required hidden>
+				<input type="text" name="terminar_cargo_persona" id="terminar_cargo_persona" required hidden>
+				<input type="text" name="terminar_asignar_recolector" id="terminar_asignar_recolector" required hidden>
 
 
 				<button type="button" class="btn btn-success btn-lg btn-block" id="b_terminar_manifiesto" data-toggle="modal" data-target="#terminar_manifiesto_modal" disabled> Terminar Manifiesto </button>
@@ -312,10 +313,20 @@
 					<div class="form-group col-md-10">
 						<label class="col-form-label" for="responsable_tecnico">  Responsable Técnico del Generador </label>
 						<input type="text" class="form-control" id="responsable_tecnico" name="responsable_tecnico" onchange="update_terminar_manifiiesto()"> 
+						
 						<label class="col-form-label" for="persona_residuos">  Persona que recibe los residuos </label>
 						<input type="text" class="form-control" id="persona_residuos" name="persona_residuos" onchange="update_terminar_manifiiesto()"> 
+						
 						<label class="col-form-label" for="cargo_persona">  Cargo </label>
 						<input type="text" class="form-control" id="cargo_persona" name="cargo_persona" onchange="update_terminar_manifiiesto()"> 
+					
+						<label class="col-form-label" for="asignar_recolector"> Selecciona recolector </label>
+						<select class="form-control" id="asignar_recolector" name="asignar_recolector" required>
+							<?php foreach($recolectores->result() as $row){ ?>
+								<option value="<?php echo $row->id_persona;?>"><?php echo $row->correo; ?></option>
+							<?php } ?>
+						</select>
+
 					</div>	
 				</div>
 
@@ -357,6 +368,5 @@
 			</div>
 		</div>
 	</div>
-
 
 </main>
