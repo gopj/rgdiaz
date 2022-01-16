@@ -346,7 +346,7 @@ class Recolector extends MY_Controller {
 			$this->tran_residuo_model->delete_tran_residuos($folio);
 			$this->tran_residuo_model->delete_tran_folio($folio);
 
-			redirect("recolector/ver_manifiestos/" . $id_cliente);
+			redirect("admin/recolector_ver_manifiestos/" . $id_cliente);
 
 		} else {
 			$this->session->sess_destroy(); #destruye session

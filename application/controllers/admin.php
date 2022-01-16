@@ -481,32 +481,36 @@ class Admin extends MY_Controller {
 	
 	}
 
-	public function recolector_eliminar_tran_residuo($id_cliente, $folio) {
+	public function recolector_eliminar_tran_residuo($id_cliente, $folio, $id_tran_residuo) {
 		if ($this->session->userdata('tipo') == 1){
 			
-			$this->tran_residuo_model->delete_tran_residuos($folio);
+			$this->tran_residuo_model->delete_tran_residuos($id_tran_residuo);
 
-			$tran_resiudos 				= $this->tran_residuo_model->get_reg_tran_residuos($id_cliente, $folio);
-			$data["cliente"] 			= $this->persona_model->get_datos_empresa($id_cliente);
-			$data["recolector"]			= $this->persona_model->get_datos_empresa($this->session->userdata('id'));
-			$data["fecha_embarque"]		= $tran_resiudos->fecha_embarque;
-			$data["responsable_tecnico"]= $tran_resiudos->responsable_tecnico;
-			$data["id_cliente"] 		= $id_cliente;
-			$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
-			$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
-			$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
-			$data["ruta"]				= $tran_resiudos->ruta;
-			$data["observaciones"]		= $tran_resiudos->observaciones;
-			$data["folio"]				= $folio;
-			$data["vehiculos"] 	= $this->tran_vehiculo_model->get_vehiculos();
-			
-			$this->load->view("administrador/recolector/crear_manifiestos", $data);
+			redirect("admin/recolector_crear_manifiestos/" . $id_cliente . "/" . $folio);
 		} else {
 			$this->session->sess_destroy(); #destruye session
 			redirect('home/index');
 		}	
 	
 	}
+
+	public function recolector_eliminar_ultimo_residuo($id_cliente, $folio, $id_tran_residuo) {
+
+		if ($this->session->userdata('tipo') == 1){
+			
+						
+			$this->tran_residuo_model->delete_tran_residuos($id_tran_residuo);
+			$this->tran_residuo_model->delete_tran_folio($folio);
+
+			redirect("admin/recolector_ver_manifiestos/" . $id_cliente);
+
+		} else {
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/index');
+		}	
+	
+	}
+
 
 	public function recolector_generar_manifiesto($id_cliente, $folio) {
 		$this->setLayout('recolector');

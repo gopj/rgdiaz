@@ -244,11 +244,11 @@
 							<td> <?= $key->etiqueta ?> </td>
 							<?php if ($total_reg == 1) { ?>
 								<td style="text-align: center;">
-									<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteLastResiduo"> Borrar </button>
+									<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal_delete_last_residuo"> Borrar </button>
 								</td>
 							<?php } else { ?>
 								<td style="text-align: center;"> 
-								<a href="<?=site_url('admin/recolector_eliminar_tran_residuo/' . $id_cliente . '/' . $key->id_tran_residuo);?>" class="btn btn-danger btn-sm" role="button"> Borrar </a> 
+								<a href="<?=site_url('admin/recolector_eliminar_tran_residuo/' . $id_cliente . '/' . $folio . '/' . $key->id_tran_residuo);?>" class="btn btn-danger btn-sm" role="button"> Borrar </a> 
 							</td>
 							<?php } ?>
 						</tr>
@@ -301,71 +301,73 @@
 		<div class="modal-dialog modal-md">
 			<div class="modal-content">
 
-			<!-- Modal Header -->
-			<div class="modal-header">
-				<h4 class="modal-title">Terminar manifiesto </h4>
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-			</div>
-
-			<!-- Modal body -->
-			<div class="modal-body">
-				<div class="form-row">
-					<div class="form-group col-md-10">
-						<label class="col-form-label" for="responsable_tecnico">  Responsable Técnico del Generador </label>
-						<input type="text" class="form-control" id="responsable_tecnico" name="responsable_tecnico" onchange="update_terminar_manifiiesto()"> 
-						
-						<label class="col-form-label" for="persona_residuos">  Persona que recibe los residuos </label>
-						<input type="text" class="form-control" id="persona_residuos" name="persona_residuos" onchange="update_terminar_manifiiesto()"> 
-						
-						<label class="col-form-label" for="cargo_persona">  Cargo </label>
-						<input type="text" class="form-control" id="cargo_persona" name="cargo_persona" onchange="update_terminar_manifiiesto()"> 
-					
-						<label class="col-form-label" for="asignar_recolector"> Selecciona recolector </label>
-						<select class="form-control" id="asignar_recolector" name="asignar_recolector" required>
-							<option value=""> Selecciona recolector </option>
-							<?php foreach($recolectores->result() as $row){ ?>
-								<option value="<?php echo $row->id_persona;?>"><?php echo $row->correo; ?></option>
-							<?php } ?>
-						</select>
-
-					</div>	
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Terminar manifiesto </h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 
-				<!-- Modal footer -->
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-					<button type="submit" form="form_terminar_manifiesto" class="btn btn-primary" role="button"> Terminar </button>
-				</div>
+				<!-- Modal body -->
+				<div class="modal-body">
+					<div class="form-row">
+						<div class="form-group col-md-10">
+							<label class="col-form-label" for="responsable_tecnico">  Responsable Técnico del Generador </label>
+							<input type="text" class="form-control" id="responsable_tecnico" name="responsable_tecnico" onchange="update_terminar_manifiiesto()"> 
+							
+							<label class="col-form-label" for="persona_residuos">  Persona que recibe los residuos </label>
+							<input type="text" class="form-control" id="persona_residuos" name="persona_residuos" onchange="update_terminar_manifiiesto()"> 
+							
+							<label class="col-form-label" for="cargo_persona">  Cargo </label>
+							<input type="text" class="form-control" id="cargo_persona" name="cargo_persona" onchange="update_terminar_manifiiesto()"> 
+						
+							<label class="col-form-label" for="asignar_recolector"> Selecciona recolector </label>
+							<select class="form-control" id="asignar_recolector" name="asignar_recolector" required>
+								<option value=""> Selecciona recolector </option>
+								<?php foreach($recolectores->result() as $row){ ?>
+									<option value="<?php echo $row->id_persona;?>"><?php echo $row->correo; ?></option>
+								<?php } ?>
+							</select>
 
+						</div>	
+					</div>
+
+					<!-- Modal footer -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+						<button type="submit" form="form_terminar_manifiesto" class="btn btn-primary" role="button"> Terminar </button>
+					</div>
+
+				</div>
 			</div>
 		</div>
 	</div>
 
 	<!-- The Modal -->
-	<div class="modal" id="deleteLastResiduo">
-		<div class="modal-dialog modal-lg">
+	<div class="modal" id="modal_delete_last_residuo">
+		<div class="modal-dialog modal-md">
 			<div class="modal-content">
 
-			<!-- Modal Header -->
-			<div class="modal-header">
-				<h4 class="modal-title">Eliminar último residuo del folio - </h4>
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-			</div>
-
-			<!-- Modal body -->
-			<div class="modal-body">
-				<div class="form-row">
-					<div class="form-group col-md-8">
-						<label class="col-form-label" for="nombre_residuo"> Eliminando último residuo y folio creado ¿Deseas continuar? </label>
-					</div>	
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Eliminar último residuo del folio - </h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 
-				<!-- Modal footer -->
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-					<a href="<?=site_url('admin/recolector_eliminar_ultimo_residuo/' . $id_cliente . '/' . $key->id_tran_residuo);?>" class="btn btn-danger" role="button"> Eliminar </a>
-				</div>
+				<!-- Modal body -->
+				<div class="modal-body">
+					<div class="form-row">
+						<div class="form-group col-md-8">
+							<label class="col-form-label" for="nombre_residuo"> Eliminando último residuo y folio creado ¿Deseas continuar? </label>
+						</div>	
+					</div>
 
+					<!-- Modal footer -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+						<a href="<?=site_url('admin/recolector_eliminar_ultimo_residuo/' . $id_cliente . '/' . $folio . '/' . $key->id_tran_residuo);?>" class="btn btn-danger" role="button"> Eliminar </a>
+					</div>
+
+				</div>
 			</div>
 		</div>
 	</div>
