@@ -267,7 +267,7 @@
 
 	<div class="form-row">
 		<div class="form-group col-md-4">
-			<?php if ($url == 'from_bitacora') { ?>
+			<?php if (@$url == 'from_bitacora') { ?>
 				<a href="<?= site_url('admin/recolector_bitacora'); ?>"  class="btn btn-warning btn-lg btn-block" id="regresar"> Regresar </a>
 			<?php } else { ?>
 				<a href="<?= site_url('admin/recolector_ver_manifiestos/' . $id_cliente); ?>"  class="btn btn-warning btn-lg btn-block" id="regresar"> Regresar </a>
@@ -322,6 +322,7 @@
 					
 						<label class="col-form-label" for="asignar_recolector"> Selecciona recolector </label>
 						<select class="form-control" id="asignar_recolector" name="asignar_recolector" required>
+							<option value=""> Selecciona recolector </option>
 							<?php foreach($recolectores->result() as $row){ ?>
 								<option value="<?php echo $row->id_persona;?>"><?php echo $row->correo; ?></option>
 							<?php } ?>
