@@ -199,8 +199,8 @@ class Tran_residuo_model extends CI_Model {
 
 	public function terminar_manifiesto($id_cliente, $folio, $data) {
 
-		if ($data['user_type'] == 2){
-			return $this->db->set('status',				'R')
+		if ($data["user_type"] == 2){
+			return $this->db->set('status',			'R')
 						->set('responsable_tecnico',$data["responsable_tecnico"])
 						->set('responsable_destino',$data["responsable_destino"])
 						->set('persona_residuos',	$data["persona_residuos"])
@@ -210,7 +210,7 @@ class Tran_residuo_model extends CI_Model {
 						->where('id_tran_folio',	$folio)
 						->update('tran_folios');
 		} else {
-			return $this->db->set('status',				'R')
+			return $this->db->set('status',			'R')
 						->set('responsable_tecnico',$data["responsable_tecnico"])
 						->set('responsable_destino',$data["responsable_destino"])
 						->set('persona_residuos',	$data["persona_residuos"])
