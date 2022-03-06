@@ -49,6 +49,11 @@ function date_manifiesto($s_date){
 
 ///// Testing parameters
 
+// echo "<pre>";
+// print_r($residuos_manifiesto);
+// echo "</pre>"; 
+// die();
+
 // create new PDF document
 $pdf = new MY_PDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
@@ -524,20 +529,22 @@ for ($h=0; $h < $num_table_res; $h++) {
 	// output the HTML content + QR Codes
 
 	$pdf->writeHTML($html, true, false, true, false, '');
+/*	$pdf->writeHTML($html, true, false, true, false, '');
 	$pdf->writeHTML($html, true, false, true, false, '');
-	$pdf->writeHTML($html, true, false, true, false, '');
-	$pdf->writeHTML($html, true, false, true, false, '');
+	$pdf->writeHTML($html, true, false, true, false, '');*/
 
 	$table_data_html = '';
 }
 
-$file_location 	= $_SERVER['DOCUMENT_ROOT'] ."rgdiaz/img/pdf/";
-$file_name 		= "{$nombre_empresa}_{$folio_identificador}_{$manifiesto->fecha_embarque}.pdf";
-$file_output	= $file_location . $file_name;
-//Close and output PDF document
-$pdf->Output($file_output, 'D');
+$nombre_empresa = str_replace(" ", "_", $nombre_empresa); // Fix for spaces
+$filename 		= "{$nombre_empresa}_{$folio_identificador}_{$manifiesto->fecha_embarque}.pdf";
+$location 		= $_SERVER['DOCUMENT_ROOT'] ."rgdiaz/img/pdf/";
+$pdf_location	= $location . $filename;
 
-/// $pdf->Output($filename, 'F'); TEST F | DOWNLOAD D 
+//Close and output PDF document
+$pdf->Output($pdf_location, 'D');
+
+//$pdf->Output($fileNL, 'F'); /// F for debugging 
 
 //redirect('recolector/ver_manifiestos/' . $id_cliente, 'refresh');
 ?>
