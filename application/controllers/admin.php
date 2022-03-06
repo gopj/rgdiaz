@@ -235,10 +235,19 @@ class Admin extends MY_Controller {
 		}
 	}
 
-	public function recolector_ver_manifiestos($id_persona=null) {
+	public function recolector_ver_manifiestos($id_persona=null, $folio=null) {
 		$data["url_back"] = $this->session->set_userdata('url_back', 'manifiestos'); // URL hacia atrás 
 		$data["recolector"]	= $this->persona_model->get_datos_empresa($this->session->userdata('id'));
 		$data["vehiculos"] 	= $this->tran_vehiculo_model->get_vehiculos();
+		$data["nombre_empresa"] = $this->persona_model->get_nombre_empresa($this->input->post("id_persona"));
+
+		if ($folio){
+
+			$data["folio_identificador"] = $this->persona_model->get_datos_empresa($id_persona)->identificador_folio . '-' . @$folio; 
+			$manifiesto	= $this->tran_residuo_model->get_manifiesto($id_persona, @$folio);
+		}
+
+		
 
 		//PDF
 		$pdfpath = $_SERVER['DOCUMENT_ROOT'] . 'rgdiaz/img/pdf/rdiaztmp' . @$id_persona . '.pdf';

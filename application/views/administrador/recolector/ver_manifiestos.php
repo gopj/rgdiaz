@@ -32,7 +32,7 @@
 								
 							<a href="<?=base_url('admin/recolector_ver_manifiestos/'. $id_cliente . '/' . $bit->id_tran_folio)?>" class="btn btn-danger btn-sm" role="button" disabled> PDF </a>
 
-							<a href="<?=base_url('admin/recolector_generar_manifiesto_dummy/' . $id_cliente . '/' . $bit->id_tran_folio)?>" class="btn btn-secondary btn-sm" role="button" disabled> PDF Test </a>
+							<a href="<?=base_url('admin/recolector_generar_manifiesto_dummy/' . $id_cliente . '/' . $bit->id_tran_folio . '/' . $nombre_empresa . '_' . $bit->folio . '_' . $bit->fecha_embarque . '.pdf')?>" class="btn btn-secondary btn-sm" target="_blank" role="button" disabled> PDF Test </a>
 						</td>
 					<?php } ?>
 				</tr>
