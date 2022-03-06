@@ -549,7 +549,7 @@ class Admin extends MY_Controller {
 	}
 
 	public function recolector_generar_manifiesto_dummy($id_cliente, $folio) {
-		$this->setLayout('recolector');
+		$this->setLayout('empty');
 		$recolector 					= $this->tran_residuo_model->get_vehiculo($folio)->id_persona;
 		$vehiculo 						= $this->tran_residuo_model->get_vehiculo($folio)->id_vehiculo;
 
@@ -579,7 +579,7 @@ class Admin extends MY_Controller {
 		print_r($data);
 		echo "</pre>";*/
 
-		$this->load->view("administrador/recolector/generar_manifiesto", $data);
+		$this->load->view("administrador/recolector/generar_manifiesto_dummy", $data);
 
 	}
 

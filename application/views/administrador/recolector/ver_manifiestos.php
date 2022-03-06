@@ -47,6 +47,11 @@
 			</tr>
 		</tfoot>
 	</table>
-
-	<a href="<?=site_url('admin/recolector_crear_manifiesto/' . $id_cliente);?>" class="btn btn-primary" role="button"> Crear Manifiesto</a>
+	<br />
+	<div class="form-row float-right">
+		<div class="form-group col-md-12">
+			<a href="<?=site_url('admin/recolector_crear_manifiesto/' . $id_cliente);?>" class="btn btn-primary" role="button"> Crear</a>
+		</div>
+	</div>
+		
 </main>
