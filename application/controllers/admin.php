@@ -581,8 +581,9 @@ class Admin extends MY_Controller {
 		$data["nombre_empresas"] 		= $this->persona_model->get_datos_empresas();
 
 /*		echo "<pre>";
-		print_r($data);
-		echo "</pre>";*/
+		print_r($data['manifiesto']);
+		echo "</pre>";
+		die();*/
 
 		$this->load->view("administrador/recolector/generar_manifiesto_dummy", $data);
 
