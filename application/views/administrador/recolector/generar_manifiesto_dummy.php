@@ -177,25 +177,14 @@ $nrs = 15; 	// Temporal fix for num of data rows
 				$residuos_divided = $residuos_count/$divider;
 				$count_per_page = floor($residuos_divided);
 				$fraction  = ($residuos_divided - $count_per_page) * $divider;
+				$fraction_count = $fraction;
 				
 				echo $residuos_count . " " ;
 				echo $fraction . " " ;
 				echo $count_per_page . " " ;
 				echo $residuos_divided . " <br />" ;
 
-				if ($fraction > 1){
-					$final_count = ($count_per_page );
-					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->residuo;
-					$arr_residuos_manifiesto[$i][$j][] = creti($residuos_manifiesto[$r]->caracteristica);
-					$arr_residuos_manifiesto[$i][$j][] = $final_count;
-					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->contenedor_tipo;
-					$arr_residuos_manifiesto[$i][$j][] = capacidad_zero($residuos_manifiesto[$r]->contenedor_capacidad);
-					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->residuo_cantidad;
-					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->etiqueta;
-					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->fecha_insercion;
-
-					$fraction--;
-				} else {
+				if ($fraction == 0) {
 					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->residuo;
 					$arr_residuos_manifiesto[$i][$j][] = creti($residuos_manifiesto[$r]->caracteristica);
 					$arr_residuos_manifiesto[$i][$j][] = $count_per_page;
@@ -204,7 +193,43 @@ $nrs = 15; 	// Temporal fix for num of data rows
 					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->residuo_cantidad;
 					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->etiqueta;
 					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->fecha_insercion;
-				}		
+
+				} elseif ($fraction_count > 1) {
+					$final_count = ($count_per_page + 1);
+					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->residuo;
+					$arr_residuos_manifiesto[$i][$j][] = creti($residuos_manifiesto[$r]->caracteristica);
+					$arr_residuos_manifiesto[$i][$j][] = $final_count;
+					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->contenedor_tipo;
+					$arr_residuos_manifiesto[$i][$j][] = capacidad_zero($residuos_manifiesto[$r]->contenedor_capacidad);
+					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->residuo_cantidad;
+					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->etiqueta;
+					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->fecha_insercion;
+					echo $fraction_count;
+
+					$fraction_count--;
+				} elseif ($fraction_count == 1) {
+					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->residuo;
+					$arr_residuos_manifiesto[$i][$j][] = creti($residuos_manifiesto[$r]->caracteristica);
+					$arr_residuos_manifiesto[$i][$j][] = $count_per_page;
+					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->contenedor_tipo;
+					$arr_residuos_manifiesto[$i][$j][] = capacidad_zero($residuos_manifiesto[$r]->contenedor_capacidad);
+					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->residuo_cantidad;
+					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->etiqueta;
+					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->fecha_insercion;
+					echo $fraction_count;
+
+					$fraction_count--;
+				} elseif ($fraction_count == 0) {
+					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->residuo;
+					$arr_residuos_manifiesto[$i][$j][] = creti($residuos_manifiesto[$r]->caracteristica);
+					$arr_residuos_manifiesto[$i][$j][] = $fraction_count;
+					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->contenedor_tipo;
+					$arr_residuos_manifiesto[$i][$j][] = capacidad_zero($residuos_manifiesto[$r]->contenedor_capacidad);
+					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->residuo_cantidad;
+					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->etiqueta;
+					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->fecha_insercion;
+					echo $fraction_count;
+				}
 
 				$r++;
 			} 
