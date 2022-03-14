@@ -246,7 +246,7 @@ class Admin extends MY_Controller {
 		}
 
 		//PDF
-		$pdfpath = $_SERVER['DOCUMENT_ROOT'] . 'rgdiaz/img/pdf/rdiaztmp' . @$id_persona . '.pdf';
+		$pdfpath = $_SERVER['DOCUMENT_ROOT'] . 'rgdiaz/img/pdf/*.pdf';
 		if (file_exists($pdfpath)) {
 			unlink($pdfpath);
 		}
@@ -519,7 +519,7 @@ class Admin extends MY_Controller {
 
 
 	public function recolector_generar_manifiesto($id_cliente, $folio) {
-		$this->setLayout('recolector');
+		$this->setLayout('empty');
 		$recolector 					= $this->tran_residuo_model->get_vehiculo($folio)->id_persona;
 		$vehiculo 						= $this->tran_residuo_model->get_vehiculo($folio)->id_vehiculo;
 
