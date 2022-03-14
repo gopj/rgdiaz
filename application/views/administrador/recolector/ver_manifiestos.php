@@ -23,8 +23,8 @@
 					<?php if ($bit->status == 'R'){ ?>
 						<td style="text-align: center;"> 
 							<a href="<?=site_url('admin/recolector_ver_manifiesto/' . $id_cliente . '/' . $bit->id_tran_folio);?>" class="btn btn-primary btn-sm" role="button"> Ver </a>
-							<a href="<?=site_url('admin/recolector_generar_manifiesto/' . $id_cliente . '/' . $bit->id_tran_folio);?>" class="btn btn-danger btn-sm" role="button"> PDF </a>
-							<a href="<?=base_url('admin/recolector_generar_manifiesto_dummy/' . $id_cliente . '/' . $bit->id_tran_folio)?>" class="btn btn-secondary btn-sm" role="button"> PDF Test </a>
+							<a href="<?=site_url('admin/recolector_generar_manifiesto/' . $id_cliente . '/' . $bit->id_tran_folio);?>" class="btn btn-danger btn-sm" target="_blank" role="button"> PDF </a>
+							<a href="<?=base_url('admin/recolector_generar_manifiesto_dummy/' . $id_cliente . '/' . $bit->id_tran_folio . '/' . $nombre_empresa . '_' . $bit->folio . '_' . $bit->fecha_embarque . '.pdf')?>" class="btn btn-secondary btn-sm" target="_blank" role="button" disabled> PDF Mes </a>
 						</td>
 					<?php } elseif ($bit->status == 'W') {?>
 						<td style="text-align: center;"> 
@@ -32,7 +32,7 @@
 								
 							<a href="<?=base_url('admin/recolector_ver_manifiestos/'. $id_cliente . '/' . $bit->id_tran_folio)?>" class="btn btn-danger btn-sm" role="button" disabled> PDF </a>
 
-							<a href="<?=base_url('admin/recolector_generar_manifiesto_dummy/' . $id_cliente . '/' . $bit->id_tran_folio . '/' . $nombre_empresa . '_' . $bit->folio . '_' . $bit->fecha_embarque . '.pdf')?>" class="btn btn-secondary btn-sm" target="_blank" role="button" disabled> PDF Test </a>
+							<a href="<?=base_url('admin/recolector_generar_manifiesto_dummy/' . $id_cliente . '/' . $bit->id_tran_folio . '/' . $nombre_empresa . '_' . $bit->folio . '_' . $bit->fecha_embarque . '.pdf')?>" class="btn btn-secondary btn-sm" target="_blank" role="button" disabled> PDF Mes </a>
 						</td>
 					<?php } ?>
 				</tr>

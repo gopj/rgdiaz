@@ -16,7 +16,11 @@ function creti($string){
 	return $creti_r;
 }
 
-function date_manifiesto($s_date){
+function date_manifiesto($s_date, $page){
+	$page += 0; 
+	$week_mul = 7 * $page;
+
+	$s_date = date('Y-m-d', strtotime($s_date . ' + ' . $week_mul . ' days'));
 
 	if ($s_date == ""){
 		$date = "";
@@ -166,7 +170,9 @@ function capacidad_zero($val){
 $divider = 4;
 
 for ($d=0; $d < $divider; $d++) { 
+
 $nrs = 15; 	// Temporal fix for num of data rows
+
 	for ($i=0; $i < $num_table_res; $i++) { 
 		
 		for ($j=0; $j < $nrs; $j++) {
@@ -178,57 +184,49 @@ $nrs = 15; 	// Temporal fix for num of data rows
 				$count_per_page = floor($residuos_divided);
 				$fraction  = ($residuos_divided - $count_per_page) * $divider;
 				$fraction_count = $fraction;
+
+				/*if ($d == 0) { /// Print debugging
+					echo "#: " . $j . ", ";
+					echo "fraction_count: " . $residuos_count . ", " ;
+					echo "fraction: " . $fraction . ", " ;
+					echo "count_per_page: " . $count_per_page . ", " ;
+					echo "residuos_divided: " . $residuos_divided . " <br />" ;
+				}*/
 				
-				echo $residuos_count . " " ;
-				echo $fraction . " " ;
-				echo $count_per_page . " " ;
-				echo $residuos_divided . " <br />" ;
-
 				if ($fraction == 0) {
-					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->residuo;
-					$arr_residuos_manifiesto[$i][$j][] = creti($residuos_manifiesto[$r]->caracteristica);
-					$arr_residuos_manifiesto[$i][$j][] = $count_per_page;
-					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->contenedor_tipo;
-					$arr_residuos_manifiesto[$i][$j][] = capacidad_zero($residuos_manifiesto[$r]->contenedor_capacidad);
-					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->residuo_cantidad;
-					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->etiqueta;
-					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->fecha_insercion;
+					$arr_residuos_manifiesto[$d][$i][$j][] = $residuos_manifiesto[$r]->residuo;
+					$arr_residuos_manifiesto[$d][$i][$j][] = creti($residuos_manifiesto[$r]->caracteristica);
+					$arr_residuos_manifiesto[$d][$i][$j][] = $count_per_page;
+					$arr_residuos_manifiesto[$d][$i][$j][] = $residuos_manifiesto[$r]->contenedor_tipo;
+					$arr_residuos_manifiesto[$d][$i][$j][] = capacidad_zero($residuos_manifiesto[$r]->contenedor_capacidad);
+					$arr_residuos_manifiesto[$d][$i][$j][] = $residuos_manifiesto[$r]->residuo_cantidad;
+					$arr_residuos_manifiesto[$d][$i][$j][] = $residuos_manifiesto[$r]->etiqueta;
+					$arr_residuos_manifiesto[$d][$i][$j][] = $residuos_manifiesto[$r]->fecha_insercion;
+				} elseif ($fraction > $d) {
+					$arr_residuos_manifiesto[$d][$i][$j][] = $residuos_manifiesto[$r]->residuo;
+					$arr_residuos_manifiesto[$d][$i][$j][] = creti($residuos_manifiesto[$r]->caracteristica);
+					$arr_residuos_manifiesto[$d][$i][$j][] = $count_per_page + 1;
+					$arr_residuos_manifiesto[$d][$i][$j][] = $residuos_manifiesto[$r]->contenedor_tipo;
+					$arr_residuos_manifiesto[$d][$i][$j][] = capacidad_zero($residuos_manifiesto[$r]->contenedor_capacidad);
+					$arr_residuos_manifiesto[$d][$i][$j][] = $residuos_manifiesto[$r]->residuo_cantidad;
+					$arr_residuos_manifiesto[$d][$i][$j][] = $residuos_manifiesto[$r]->etiqueta;
+					$arr_residuos_manifiesto[$d][$i][$j][] = $residuos_manifiesto[$r]->fecha_insercion;
+				} else {
 
-				} elseif ($fraction_count > 1) {
-					$final_count = ($count_per_page + 1);
-					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->residuo;
-					$arr_residuos_manifiesto[$i][$j][] = creti($residuos_manifiesto[$r]->caracteristica);
-					$arr_residuos_manifiesto[$i][$j][] = $final_count;
-					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->contenedor_tipo;
-					$arr_residuos_manifiesto[$i][$j][] = capacidad_zero($residuos_manifiesto[$r]->contenedor_capacidad);
-					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->residuo_cantidad;
-					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->etiqueta;
-					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->fecha_insercion;
-					echo $fraction_count;
+					if ($count_per_page != 0) {
 
-					$fraction_count--;
-				} elseif ($fraction_count == 1) {
-					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->residuo;
-					$arr_residuos_manifiesto[$i][$j][] = creti($residuos_manifiesto[$r]->caracteristica);
-					$arr_residuos_manifiesto[$i][$j][] = $count_per_page;
-					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->contenedor_tipo;
-					$arr_residuos_manifiesto[$i][$j][] = capacidad_zero($residuos_manifiesto[$r]->contenedor_capacidad);
-					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->residuo_cantidad;
-					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->etiqueta;
-					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->fecha_insercion;
-					echo $fraction_count;
-
-					$fraction_count--;
-				} elseif ($fraction_count == 0) {
-					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->residuo;
-					$arr_residuos_manifiesto[$i][$j][] = creti($residuos_manifiesto[$r]->caracteristica);
-					$arr_residuos_manifiesto[$i][$j][] = $fraction_count;
-					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->contenedor_tipo;
-					$arr_residuos_manifiesto[$i][$j][] = capacidad_zero($residuos_manifiesto[$r]->contenedor_capacidad);
-					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->residuo_cantidad;
-					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->etiqueta;
-					$arr_residuos_manifiesto[$i][$j][] = $residuos_manifiesto[$r]->fecha_insercion;
-					echo $fraction_count;
+						$arr_residuos_manifiesto[$d][$i][$j][] = $residuos_manifiesto[$r]->residuo;
+						$arr_residuos_manifiesto[$d][$i][$j][] = creti($residuos_manifiesto[$r]->caracteristica);
+						$arr_residuos_manifiesto[$d][$i][$j][] = $count_per_page;
+						$arr_residuos_manifiesto[$d][$i][$j][] = $residuos_manifiesto[$r]->contenedor_tipo;
+						$arr_residuos_manifiesto[$d][$i][$j][] = capacidad_zero($residuos_manifiesto[$r]->contenedor_capacidad);
+						$arr_residuos_manifiesto[$d][$i][$j][] = $residuos_manifiesto[$r]->residuo_cantidad;
+						$arr_residuos_manifiesto[$d][$i][$j][] = $residuos_manifiesto[$r]->etiqueta;
+						$arr_residuos_manifiesto[$d][$i][$j][] = $residuos_manifiesto[$r]->fecha_insercion;	
+					} else {
+						$j--;
+					}
+					
 				}
 
 				$r++;
@@ -236,6 +234,8 @@ $nrs = 15; 	// Temporal fix for num of data rows
 		}
 
 	}
+
+	$r = 0;
 
 	$row_num = 0;
 	for ($h=0; $h < $num_table_res; $h++) { 
@@ -245,7 +245,7 @@ $nrs = 15; 	// Temporal fix for num of data rows
 		for ($i=0; $i < $nrs; $i++) {
 			$row_num = $i + 1;
 
-			if (@$arr_residuos_manifiesto[$h][$i][0] == null) {
+			if (@$arr_residuos_manifiesto[$d][$h][$i][0] == null) {
 				
 				$table_data_html = $table_data_html . '
 					<tr>
@@ -267,42 +267,42 @@ $nrs = 15; 	// Temporal fix for num of data rows
 				';
 
 			} else {
-				if (strlen(@$arr_residuos_manifiesto[$h][$i][0]) > 162) {
+				if (strlen(@$arr_residuos_manifiesto[$d][$h][$i][0]) > 162) {
 					$table_data_html = $table_data_html . '
 						<tr>
-							<td width="280" align="left" class="defined_s"> ' . $arr_residuos_manifiesto[$h][$i][0] . '</td> 
-							' . funcion_clasificacion($arr_residuos_manifiesto[$h][$i][1]) . ' 
-							<td width="45" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][2] . ' </td>
-							<td width="44" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][3] . ' </td>
-							<td width="43" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][4] . ' </td>
-							<td width="46" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][5] . ' </td>
-							' . funcion_etiqueta($arr_residuos_manifiesto[$h][$i][6]) . ' 
+							<td width="280" align="left" class="defined_s"> ' . $arr_residuos_manifiesto[$d][$h][$i][0] . '</td> 
+							' . funcion_clasificacion($arr_residuos_manifiesto[$d][$h][$i][1]) . ' 
+							<td width="45" align="center" class="data"> ' . $arr_residuos_manifiesto[$d][$h][$i][2] . ' </td>
+							<td width="44" align="center" class="data"> ' . $arr_residuos_manifiesto[$d][$h][$i][3] . ' </td>
+							<td width="43" align="center" class="data"> ' . $arr_residuos_manifiesto[$d][$h][$i][4] . ' </td>
+							<td width="46" align="center" class="data"> ' . $arr_residuos_manifiesto[$d][$h][$i][5] . ' </td>
+							' . funcion_etiqueta($arr_residuos_manifiesto[$d][$h][$i][6]) . ' 
 						</tr>
 					';
 					$nrs=$nrs-2;
-				} elseif (strlen(@$arr_residuos_manifiesto[$h][$i][0]) > 72) { 
+				} elseif (strlen(@$arr_residuos_manifiesto[$d][$h][$i][0]) > 72) { 
 					$table_data_html = $table_data_html . '
 						<tr>
-							<td width="280" align="left" class="defined_s"> ' . $arr_residuos_manifiesto[$h][$i][0] . '</td>
-							' . funcion_clasificacion($arr_residuos_manifiesto[$h][$i][1]) . ' 
-							<td width="45" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][2] . ' </td>
-							<td width="44" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][3] . ' </td>
-							<td width="43" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][4] . ' </td>
-							<td width="46" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][5] . ' </td>
-							' . funcion_etiqueta($arr_residuos_manifiesto[$h][$i][6]) . ' 
+							<td width="280" align="left" class="defined_s"> ' . $arr_residuos_manifiesto[$d][$h][$i][0] . '</td>
+							' . funcion_clasificacion($arr_residuos_manifiesto[$d][$h][$i][1]) . ' 
+							<td width="45" align="center" class="data"> ' . $arr_residuos_manifiesto[$d][$h][$i][2] . ' </td>
+							<td width="44" align="center" class="data"> ' . $arr_residuos_manifiesto[$d][$h][$i][3] . ' </td>
+							<td width="43" align="center" class="data"> ' . $arr_residuos_manifiesto[$d][$h][$i][4] . ' </td>
+							<td width="46" align="center" class="data"> ' . $arr_residuos_manifiesto[$d][$h][$i][5] . ' </td>
+							' . funcion_etiqueta($arr_residuos_manifiesto[$d][$h][$i][6]) . ' 
 						</tr>
 					';
 					$nrs--;
 				} else {
 					$table_data_html = $table_data_html . '
 						<tr>
-							<td width="280" align="left" class="defined_s"> ' . $arr_residuos_manifiesto[$h][$i][0] . '</td>
-							' . funcion_clasificacion($arr_residuos_manifiesto[$h][$i][1]) . ' 
-							<td width="45" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][2] . ' </td>
-							<td width="44" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][3] . ' </td>
-							<td width="43" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][4] . ' </td>
-							<td width="46" align="center" class="data"> ' . $arr_residuos_manifiesto[$h][$i][5] . ' </td>
-							' . funcion_etiqueta($arr_residuos_manifiesto[$h][$i][6]) . ' 
+							<td width="280" align="left" class="defined_s"> ' . $arr_residuos_manifiesto[$d][$h][$i][0] . '</td>
+							' . funcion_clasificacion($arr_residuos_manifiesto[$d][$h][$i][1]) . ' 
+							<td width="45" align="center" class="data"> ' . $arr_residuos_manifiesto[$d][$h][$i][2] . ' </td>
+							<td width="44" align="center" class="data"> ' . $arr_residuos_manifiesto[$d][$h][$i][3] . ' </td>
+							<td width="43" align="center" class="data"> ' . $arr_residuos_manifiesto[$d][$h][$i][4] . ' </td>
+							<td width="46" align="center" class="data"> ' . $arr_residuos_manifiesto[$d][$h][$i][5] . ' </td>
+							' . funcion_etiqueta($arr_residuos_manifiesto[$d][$h][$i][6]) . ' 
 						</tr>
 					';
 				} 
@@ -460,7 +460,7 @@ $nrs = 15; 	// Temporal fix for num of data rows
 						<td width="150" align="center" class="defined" height="42"> &nbsp;<br/> NOMBRE Y FIRMA DEL RESPONSABLE </td>
 						<td width="150" align="left" class="data"> &nbsp;<br/>' . $residuos_manifiesto[0]->responsable_tecnico . ' </td>
 						<td width="40" align="left" class="defined" >  &nbsp;<br/> FECHA </td>
-						<td width="150" align="left" class="data"> &nbsp;<br/>' . @date_manifiesto($manifiesto->fecha_embarque) . '</td>
+						<td width="150" align="left" class="data"> &nbsp;<br/>' . @date_manifiesto($manifiesto->fecha_embarque, $d) . '</td>
 						<td width="40" align="left" class="defined" >  &nbsp;<br/> SELLO </td>
 						<td width="79" align="left" class="defined" > </td>
 					</tr>
@@ -517,7 +517,7 @@ $nrs = 15; 	// Temporal fix for num of data rows
 						<td width="150" align="left" class="defined" height="42"> &nbsp;<br/> NOMBRE Y FIRMA DEL RESPONSABLE </td>
 						<td width="150" align="center" height="30"> &nbsp;<br/>' . $datos_recolector . ' </td>
 						<td width="40" align="left" class="defined" height="30"> &nbsp;<br/> FECHA </td>
-						<td width="150" align="center" height="30"> &nbsp;<br/>' . @date_manifiesto($manifiesto->fecha_embarque) . ' </td>
+						<td width="150" align="center" height="30"> &nbsp;<br/>' . @date_manifiesto($manifiesto->fecha_embarque, $d) . ' </td>
 						<td width="40" align="left" class="defined" height="30"> &nbsp;<br/> SELLO </td>
 						<td width="79" align="center" height="30"> &nbsp;<br/> </td>
 					</tr>
@@ -571,7 +571,7 @@ $nrs = 15; 	// Temporal fix for num of data rows
 						<td width="150" align="left" class="defined" height="42"> &nbsp;<br/> &nbsp;<br/> NOMBRE Y FIRMA DEL RESPONSABLE </td>
 						<td width="200" align="center"> &nbsp;<br/> ' . $manifiesto->responsable_destino . ' </td>
 						<td width="50" align="left" class="defined"> &nbsp;<br/> SELLO Y FECHA </td>
-						<td width="209" align="center"> &nbsp;<br/> &nbsp;<br/>' . @date_manifiesto($manifiesto->fecha_embarque) . ' </td>
+						<td width="209" align="center"> &nbsp;<br/> &nbsp;<br/>' . @date_manifiesto($manifiesto->fecha_embarque, $d) . ' </td>
 					</tr>
 				</table>
 			</td>
@@ -580,29 +580,32 @@ $nrs = 15; 	// Temporal fix for num of data rows
 		';
 
 
-		// output the HTML content + QR Codes
-
-		echo $html;
-
-		$pdf->writeHTML($html, true, false, true, false, '');
-	/*	$pdf->writeHTML($html, true, false, true, false, '');
-		$pdf->writeHTML($html, true, false, true, false, '');
-		$pdf->writeHTML($html, true, false, true, false, '');*/
-
-		$table_data_html = '';
+		// output the HTML content + QR Codes	
 	}
 
+	$pdf->writeHTML($html, true, false, true, false, '');
+	$pdf->writeHTML($html, true, false, true, false, '');
+	$pdf->writeHTML($html, true, false, true, false, '');
+	$pdf->writeHTML($html, true, false, true, false, '');
+
+/*print $html;*/
+
+	$table_data_html = '';
 }
+
+////////// Debugging PDF Divider
+
+/*echo "<pre>";
+print_r($arr_residuos_manifiesto);
+echo "</pre>";*/
 
 $nombre_empresa = str_replace(" ", "_", $nombre_empresa); // Fix for spaces
 $filename 		= "{$nombre_empresa}_{$folio_identificador}_{$manifiesto->fecha_embarque}.pdf";
 $location 		= $_SERVER['DOCUMENT_ROOT'] ."rgdiaz/img/pdf/";
 $pdf_location	= $location . $filename;
 
-//echo $html;
-
 //Close and output PDF document
-$pdf->Output($pdf_location, 'F');
+$pdf->Output($pdf_location, 'FI');
 
 //$pdf->Output($fileNL, 'F'); /// F for debugging 
 //$pdf->Output($fileNL, 'FI'); /// FI for printing pdf 

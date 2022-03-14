@@ -529,19 +529,21 @@ for ($h=0; $h < $num_table_res; $h++) {
 	// output the HTML content + QR Codes
 
 	$pdf->writeHTML($html, true, false, true, false, '');
-/*	$pdf->writeHTML($html, true, false, true, false, '');
 	$pdf->writeHTML($html, true, false, true, false, '');
-	$pdf->writeHTML($html, true, false, true, false, '');*/
+	$pdf->writeHTML($html, true, false, true, false, '');
+	$pdf->writeHTML($html, true, false, true, false, '');
 
 	$table_data_html = '';
 }
 
 
+$nombre_empresa = str_replace(" ", "_", $nombre_empresa); // Fix for spaces
 $filename 		= "{$nombre_empresa}_{$folio_identificador}_{$manifiesto->fecha_embarque}.pdf";
-$filelocation 	= $_SERVER['DOCUMENT_ROOT'] ."rgdiaz/img/pdf/";
+$location 		= $_SERVER['DOCUMENT_ROOT'] ."rgdiaz/img/pdf/";
+$pdf_location	= $location . $filename;
 
 //Close and output PDF document
-$pdf->Output($filelocation . $filename, 'D');
+$pdf->Output($pdf_location, 'FI');
 
 //$pdf->Output($fileNL, 'F');
 
