@@ -117,3 +117,16 @@ function recupera_psw(){
 		);
 	};
 }
+
+$('#correo_session').keypress(function(event) {
+	if (event.keyCode == 13 || event.which == 13) {
+		$('#password_session').focus();
+		event.preventDefault();
+	}
+});
+
+$('#password_session').keypress(function(event) {
+	if (event.keyCode == 13 || event.which == 13) {
+		$('#formSesion').submit();
+	}
+});
