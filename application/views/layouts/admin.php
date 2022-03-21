@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 	<head>
-
 		<!-- base_url -->
 		<base href="<?php echo base_url(); ?>"/>
 
@@ -9,81 +8,112 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-		<!-- Bootstrap CSS --> 	
-		<!-- <link href="css/bootstrap4/dataTables.bootstrap4.min.css" rel="stylesheet"> -->
-		<link href="<?=base_url('css/bootstrap4/bootstrap.min.css');?>" rel="stylesheet">
-		<link href="<?=base_url('css/bootstrap4/open-iconic-bootstrap.css');?>" rel="stylesheet">
-		<link href="<?=base_url('css/bootstrap4/sticky-footer.css');?>" rel="stylesheet">
-		<link href="<?=base_url('css/bootstrap4/magic-check.css');?>" rel="stylesheet">    	
-		<link href="<?=base_url('css/bootstrap4/jquery.dataTables.min.css');?>" rel="stylesheet">
-		<link href="<?=base_url('css/recolector.css');?>" rel="stylesheet">
-		<link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />	
-		<script type="text/javascript" src="<?=base_url('js/bootstrap-datepicker.js');?>"></script>
-		<script type="text/javascript" src="<?=base_url('js/formulario_bitacora.js');?>"></script>
-		<script type="text/javascript" src="<?=base_url('js/jquery.validate.js');?>"></script>
-		<script type="text/javascript" src="<?=base_url('js/jquery.validate.messages.js');?>"></script>
-		<script type="text/javascript" src="<?=base_url('js/bitacora.js');?>"></script>
+		<link href="<?=base_url('/css/bootstrap4/bootstrap.min.css');?>" rel="stylesheet">
+		<link href="<?=base_url('/css/bootstrap4/open-iconic-bootstrap.css');?>" rel="stylesheet">
+		<link href="<?=base_url('/css/bootstrap4/sticky-footer.css');?>" rel="stylesheet">
+		<link href="<?=base_url('/css/bootstrap4/magic-check.css');?>" rel="stylesheet">    	
+		
+		<link href="<?=base_url('/css/bootstrap4/jquery.dataTables.min.css');?>" rel="stylesheet">
+		
+		<link href="<?=base_url('/css/custom.css');?>" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="<?=base_url('/css/estilos.css')?>">
+
+		<script type="text/javascript" src="<?=base_url('js/jquery.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/bootstrap.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/jquery.dataTables.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/tooltip.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/popover.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/transition.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/dropdown.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/swith.js')?>"></script>
+
+    	<link rel="stylesheet" href="<?=base_url('plugins/font-awesome/css/font-awesome.min.css')?>" />
+    	<link rel="stylesheet" href="<?=base_url('plugins/icomoon/style.css')?>" />
+    	<link rel="stylesheet" href="<?=base_url('plugins/uniform/css/default.css')?>" />
+    	<link rel="stylesheet" href="<?=base_url('plugins/switchery.min.css')?>" />
 
 		<title>Recolector</title>
 	</head>
 	<body>
-	
-		<nav class="navbar navbar-expand-lg navbar-dark bg-success">
-			<a class="navbar-brand" href="<?=site_url('admin');?>"> 
-				<?php echo $this->session->userdata('nombre');?>
-			</a>
-
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-
-			<div class="collapse navbar-collapse" id="navbarNavDropdown">
-				<ul class="navbar-nav">
-					<li class="nav-item">
-						<a class="nav-link" href="<?=base_url('administrador/index');?>"> Mi Carpeta </a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="<?=base_url('administrador/admin_clientes')?>">Clientes</a>
-					</li>
-					<li class="nav-item dropdown active">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Recolectores
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="<?=base_url('admin/recolector_consulta')?>">Consultas</a>
-							<a class="dropdown-item" href="<?=base_url('admin/recolector_index')?>">Manifiesto</a>
-							<a class="dropdown-item" href="<?=base_url('admin/recolector_bitacora')?>">Bitacora</a>
-						</div>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="<?=base_url('administrador/subir_archivo');?>">Administrar Carpetas</a>
-					</li>
-				</ul>
+	<div class="page-container">
+		<div class="page-sidebar">
+            <a class="logo-box" href="<?=base_url('administrador/index')?>">
+                <span>RDiaz</span>
+                <i class="fas fa-unlock-alt" id="fixed-sidebar-toggle-button"></i>
+                <i class="icon-close" id="sidebar-toggle-button-close"></i>
+            </a>
+            <div class="page-sidebar-inner">
+                <div class="page-sidebar-menu">
+                    <ul class="accordion-menu">
+                        <li>
+                            <a href="<?=base_url('administrador/index')?>">
+                                <i class="menu-icon icon-home4"></i><span>Mi Carpeta</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?=base_url('administrador/mensajes_contacto')?>">
+                                <i class="menu-icon icon-inbox"></i><span>Correo</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#!">
+                                <i class="menu-icon icon-truck"></i><span>Recolectores</span><i class="accordion-icon fa fa-angle-left"></i>
+                            </a>
+                            <ul>
+                                <li><a href="<?=base_url('admin/recolector_consulta')?>">Consultas</a></li>
+                                <li><a href="<?=base_url('admin/recolector_index')?>">Manifiestos</a></li>
+                                <li><a href="<?=base_url('admin/recolector_bitacora')?>">Bítacora</a></li>
+                                
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#!">
+                                <i class="menu-icon icon-user"></i><span>Clientes</span><i class="accordion-icon fa fa-angle-left"></i>
+                            </a>
+                            <ul>
+                                <li><a href="#">+ Nuevo Cliente</a></li>
+                                <li><a href="<?=base_url('administrador/admin_clientes')?>">Directorio de Clientes</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#!">
+                                <i class="menu-icon icon-folder"></i><span>Carpetas</span><i class="accordion-icon fa fa-angle-left"></i>
+                            </a>
+                            <ul>
+                                <li><a href="<?=base_url('administrador/subir_archivo');?>">Mis Documentos</a></li>
+                                <li><a href="<?=base_url('administrador/subir_archivo');?>">Subir Archivos</a></li>
+                                
+                            </ul>
+                        </li>
+                        
+                        <li class="menu-divider"></li>
+                        <li>
+                            <a href="#!">
+                                <i class="menu-icon icon-settings"></i><span>Configuración</span><i class="accordion-icon fa fa-angle-left"></i>
+                            </a>
+                            <ul>
+                                <li><a href="#">Ajustes</a></li>
+                                <li><a href="<?=base_url();?>">Cerrar Sesión</a></li>
+                                
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+		<div class="page-content">
+			<div class="page-inner">
+				<?php echo $output; ?>
 			</div>
-
-			<a class="btn btn-primary btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="<?=base_url();?>"> Cerrar Sesión </a>
-		</nav>
-
-		<?php echo $output; ?>
+		</div>	
 
 		<!-- FOOTER -->
 		<footer class="footer">
 			<div class="container">
-				<span class="text-muted"> Todos los derechos reservados &copy; <?php echo date("Y"); ?> RDíaz </span>
+				<span class="footext"> Todos los derechos reservados &copy; <?php echo date("Y"); ?> RDíaz </span>
 			</div>	
 		</footer>
 
-		<!-- Optional JavaScript -->
-		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-		<!-- <script type="text/javascript" src="js/bootstrap4/jquery-3.3.1.min.js"></script> -->
-		<script type="text/javascript" src="<?=base_url('js/bootstrap4/jquery-3.3.1.min.js')?>"></script>
-		<script type="text/javascript" src="<?=base_url('js/bootstrap4/popper.min.js')?>"></script>
-		<script type="text/javascript" src="<?=base_url('js/bootstrap4/InputSpinner.js')?>"></script>
-		<script type="text/javascript" src="<?=base_url('js/bootstrap4/bootstrap.min.js')?>"></script>
-		<script type="text/javascript" src="<?=base_url('js/bootstrap4/jquery.dataTables.min.js')?>"></script>
-		<script type="text/javascript" src="<?=base_url('js/bootstrap4/dataTables.fixedColumns.min.js')?>"></script>
-		<script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/js/gijgo.min.js" type="text/javascript"></script>
-		<!-- <script type="text/javascript" src="js/bootstrap4/dataTables.bootstrap4.min.js"></script> -->
 		<script type="text/javascript" src="<?=base_url('js/recolector.js')?>"></script>
 
 		<script>
@@ -91,8 +121,55 @@
 				uiLibrary: 'bootstrap4',
 				format: "dd/mm/yyyy"
 			});
-		</script>
-	 
+		</script>	
+
+	</div>		
 	</body>
-	
+			
+		<script type="text/javascript" src="<?=base_url('plugins/bootstrap/js/bootstrap.min.js')?>"></script>
+
+		<script type="text/javascript" src="<?=base_url('plugins/jquery/jquery-3.1.0.min.js')?>"></script>
+
+
+		<script type="text/javascript" src="<?=base_url('plugins/jquery-slimscroll/jquery.slimscroll.min.js')?>"></script>
+
+		<!-- uniform -->
+		<script type="text/javascript" src="<?=base_url('plugins/uniform/js/jquery.uniform.standalone.js')?>"></script>
+
+		<!-- switchery -->
+		<script type="text/javascript" src="<?=base_url('plugins/switchery/switchery.min.js')?>"></script>
+
+		<!-- chartjs -->
+		<script type="text/javascript" src='<?=base_url('plugins/chartjs/chart.min.js')?>'></script>
+
+		<!-- d3.min -->
+		<script type="text/javascript" src="<?=base_url('plugins/d3/d3.min.js')?>"></script>
+
+		<!-- nv.d3.min -->
+		<script type="text/javascript" src="<?=base_url('plugins/nvd3/nv.d3.min.js')?>"></script>
+
+		<!-- float chart -->
+		<script type="text/javascript" src="<?=base_url('plugins/flot/jquery.flot.min.js')?>"></script>
+
+		<!-- float time -->
+		<script type="text/javascript" src="<?=base_url('plugins/flot/jquery.flot.time.min.js')?>"></script>
+
+		<!-- float symbol -->
+		<script type="text/javascript" src="<?=base_url('plugins/flot/jquery.flot.symbol.min.js')?>"></script>
+
+		<!-- float resize -->
+		<script type="text/javascript" src="<?=base_url('plugins/flot/jquery.flot.resize.min.js')?>"></script>
+
+		<!-- float tooltip -->
+		<script type="text/javascript" src="<?=base_url('plugins/flot/jquery.flot.tooltip.min.js')?>"></script>
+
+		<!-- float pie -->
+		<script type="text/javascript" src="<?=base_url('plugins/flot/jquery.flot.pie.min.js')?>"></script>
+
+		<!-- float pie -->
+		<script type="text/javascript" src="<?=base_url('js/pages/dashboard.js')?>"></script>
+
+		<!-- custom scripts -->
+		<script type="text/javascript" src="<?=base_url('js/main.js')?>"></script>
+
 </html>

@@ -1,4 +1,6 @@
-<main role="main" class="container col-md-10">
+<div class="container">
+	<div class="card card-white">
+	<main role="main" class="container col-md-10">
 	<center><h2 class="bd-title" id="content"><h2>Crear Manifiesto</h2></center>
 	<hr>
 	<form id="form_manifiesto_recolector" action="<?= site_url('admin/recolector_crear_manifiesto/' . $id_cliente); ?>" method="post" novalidate>
@@ -268,3 +270,7 @@
 		</div>
 	</form>
 </main>
+
+	</div>
+
+</div>

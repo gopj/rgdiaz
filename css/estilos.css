@@ -42,11 +42,19 @@ input[type="file"] {
   transition: border linear .2s, box-shadow linear .2s;
   cursor: default;
 }
+.footext{
+  font-style: normal;
+  font-weight: 600;
+  color: #ffffff;
+}
 .footer {
-  background-color: #567531;
+  background-color: #7D84D8;
   padding: 10px 0;
+  align-items: center;
   text-align: center;
   margin-top: 10px;
+  position: fixed;
+  bottom: 0;
 }
 .restcontr {
   font-size: 12px;

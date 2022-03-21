@@ -1,232 +1,130 @@
-<?php ob_start(); ?>
 <!DOCTYPE html>
-	<html>
-		<head>
-			<base href="<?=base_url()?>"/>
-			<title>RDíaz</title>
-			<link href="<?=base_url('img/minilogo.png')?>" type="image/x-icon" rel="shortcut icon" />
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<link rel="stylesheet" type="text/css" href="<?=base_url('css/bootstrap.css')?>">
-			<link rel="stylesheet" type="text/css" href="<?=base_url('css/bootstrap-responsive.css')?>">
-			<link rel="stylesheet" type="text/css" href="<?=base_url('css/datepicker.css')?>">
-			<link rel="stylesheet" type="text/css" href="<?=base_url('css/estilos.css')?>">
-			<link rel="stylesheet" type="text/css" href="<?=base_url('css/demo_table_jui.css')?>">
-			<link rel="stylesheet" type="text/css" href="<?=base_url('css/jquery-ui-1.8.4.custom.css')?>">
-			<link rel="stylesheet" type="text/css" href="<?=base_url('css/glyphicons.css')?>">
-			<script type="text/javascript" src="<?=base_url('js/jquery.js')?>"></script>
-			<script type="text/javascript" src="<?=base_url('js/bootstrap.js')?>"></script>
-			<script type="text/javascript" src="<?=base_url('js/jquery.dataTables.js')?>"></script>
-			<script type="text/javascript" src="<?=base_url('js/tooltip.js')?>"></script>
-			<script type="text/javascript" src="<?=base_url('js/popover.js')?>"></script>
-			<script type="text/javascript" src="<?=base_url('js/transition.js')?>"></script>
-			<script type="text/javascript" src="<?=base_url('js/dropdown.js')?>"></script>
-			<script type="text/javascript" src="<?=base_url('js/swith.js')?>"></script>
-			<script type="text/javascript" src="<?=base_url('js/bootstrap-datepicker.js')?>"></script>
-			<script type="text/javascript" src="<?=base_url('js/formulario_bitacora.js')?>"></script>
-			<script type="text/javascript" src="<?=base_url('js/jquery.validate.js')?>"></script>
-			<script type="text/javascript" src="<?=base_url('js/jquery.validate.messages.js')?>"></script>
-			<script type="text/javascript" src="<?=base_url('js/bitacora.js')?>"></script>
-		</head>
+<html>
+	<head>
+
+		<!-- base_url -->
+		<base href="<?php echo base_url(); ?>"/>
+
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Bootstrap CSS --> 	
+		<!-- <link href="css/bootstrap4/dataTables.bootstrap4.min.css" rel="stylesheet"> -->
+		<link href="<?=base_url('/css/bootstrap4/bootstrap.min.css');?>" rel="stylesheet">
+		<link href="<?=base_url('/css/bootstrap4/open-iconic-bootstrap.css');?>" rel="stylesheet">
+		<link href="<?=base_url('/css/bootstrap4/sticky-footer.css');?>" rel="stylesheet">
+		<link href="<?=base_url('/css/bootstrap4/magic-check.css');?>" rel="stylesheet">    	
+		
+		
+		<link href="<?=base_url('/css/bootstrap4/jquery.dataTables.min.css');?>" rel="stylesheet">
+		
+		<link href="<?=base_url('/css/custom.css');?>" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="<?=base_url('/css/estilos.css')?>">
+
+    	<link rel="stylesheet" href="<?=base_url('plugins/font-awesome/css/font-awesome.min.css')?>" />
+    	<link rel="stylesheet" href="<?=base_url('plugins/icomoon/style.css')?>" />
+    	<link rel="stylesheet" href="<?=base_url('plugins/uniform/css/default.css')?>" />
+    	<link rel="stylesheet" href="<?=base_url('plugins/switchery.min.css')?>" />
+
+		<script type="text/javascript" src="<?=base_url('js/jquery.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/bootstrap.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/jquery.dataTables.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/tooltip.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/popover.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/transition.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/dropdown.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/swith.js')?>"></script>
+
+		<script type="text/javascript" src="<?=base_url('js/formulario_bitacora.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/jquery.validate.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/jquery.validate.messages.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/bitacora.js')?>"></script>
+
+		<title>Administrador</title>
+	</head>
 		<body>
-			<nav>
-				<div class="navbar navbar-fixed-top">
-					<div class="navbar-inner">
-						<div class="container">
-							<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</a>
-							<a href="<?=base_url('administrador/index')?>" class="brand"><?php echo $this->session->userdata('nombre');?></a>
-							<div class="collapse nav-collapse">
-								<ul class="nav pull-right">
-									<li class="divider-vertical"></li>
-									<li><a href="<?=base_url('administrador/index')?>">Mi carpeta</a></li>
-									<li class="divider-vertical"></li>
-									<li class="dropdown">
-										<a href="" class="dropdown-toggle" data-toggle="dropdown">Clientes<b class="caret"></b></a>
-										<ul class="dropdown-menu">
-											<li><a href="#alta" data-toggle="modal">Dar de alta</a></li>
-											<li><a href="#baja" data-toggle="modal">Dar de baja</a></li>
-											<li><a href="<?=base_url('administrador/admin_clientes') ?>">Consulta</a></li>
-										</ul>
-									</li>
-									<li class="divider-vertical"></li>
-									<li class="dropdown">
-										<a href="" class="dropdown-toggle" data-toggle="dropdown">Recolectores<b class="caret"></b></a>
-										<ul class="dropdown-menu"> 
-												<li><a href="<?=base_url('admin/recolector_consulta')?>">Consultas</a></li>
-												<li><a href="<?=base_url('admin/recolector_index') ?>">Manifiestos</a></li>
-												<li><a href="<?=base_url('admin/recolector_bitacora') ?>">Bitacora</a></li>
-										</ul>
-									</li>
+		  <div class="page-container">
+			<div class="page-sidebar">
+				<a class="logo-box" href="<?=base_url('administrador/index')?>">
+					<span>RDiaz</span>
+					<i class="fas fa-unlock-alt" id="fixed-sidebar-toggle-button"></i>
+					<i class="icon-close" id="sidebar-toggle-button-close"></i>
+				</a>
+				<div class="page-sidebar-inner">
+					<div class="page-sidebar-menu">
+						<ul class="accordion-menu">
+							<li>
+								<a href="<?=base_url('administrador/index')?>">
+									<i class="menu-icon icon-home4"></i><span>Mi Carpeta</span>
+								</a>
+							</li>
+							<li>
+								<a href="<?=base_url('administrador/mensajes_contacto')?>">
+									<i class="menu-icon icon-inbox"></i><span>Correo</span>
+								</a>
+							</li>
+							<li>
+								<a href="#!">
+									<i class="menu-icon icon-truck"></i><span>Recolectores</span><i class="accordion-icon fa fa-angle-left"></i>
+								</a>
+								<ul>
+									<li><a href="<?=base_url('admin/recolector_consulta')?>">Consultas</a></li>
+									<li><a href="<?=base_url('admin/recolector_index')?>">Manifiestos</a></li>
+									<li><a href="<?=base_url('admin/recolector_bitacora')?>">Bítacora</a></li>
 									
-									<li class="divider-vertical"></li>
-									<li><a href="<?=base_url('administrador/subir_archivo');?>">Administrar Carpetas</a></li>
-									<li class="divider-vertical"></li>
-									<li>
-									<li><a href="<?=base_url('home/logout');?>" style="margin-top:-10px;"><button type="button" class="btn btn-primary">Cerrar Sesión</button></a></li>
-									<li class="divider-vertical"></li>
 								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</nav>
-
-			<div class="container" style="padding-top:50px;">
-				<div class="row">
-					<div class="span12">
-						<img src="img/logo.png" height="300" width="300">
+							</li>
+							<li>
+								<a href="#!">
+									<i class="menu-icon icon-user"></i><span>Clientes</span><i class="accordion-icon fa fa-angle-left"></i>
+								</a>
+								<ul>
+									<li><a href="#">+ Nuevo Cliente</a></li>
+									<li><a href="<?=base_url('administrador/admin_clientes')?>">Directorio de Clientes</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#!">
+									<i class="menu-icon icon-folder"></i><span>Carpetas</span><i class="accordion-icon fa fa-angle-left"></i>
+								</a>
+								<ul>
+									<li><a href="<?=base_url('administrador/subir_archivo');?>">Mis Documentos</a></li>
+									<li><a href="<?=base_url('administrador/subir_archivo');?>">Subir Archivos</a></li>
+									
+								</ul>
+							</li>
+							
+							<li class="menu-divider"></li>
+							<li>
+								<a href="#!">
+									<i class="menu-icon icon-settings"></i><span>Configuración</span><i class="accordion-icon fa fa-angle-left"></i>
+								</a>
+								<ul>
+									<li><a href="#">Ajustes</a></li>
+									<li><a href="<?=base_url();?>">Cerrar Sesión</a></li>
+									
+								</ul>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
-
-			<div class="row">
-				<div class="span3">								
-					<form  method="post" action="<?=base_url('administrador/mensajes_contacto')?>">
-							<button class="well-notificacion" type="submit">
-								<div style="inline:block;">
-									<img src="img/glyphicons_245_chat.png" style="float:left; margin-top:2px; height:18; width:18;"> 
-									<span style="float:left; margin-left:10px;">Mensajes de Contacto</span>
-									<span class="badge barrabackground" style="float:right; margin-top:2px;"><?php echo $mensajes; ?></span>
-								</div>
-							</button>
-						</form>
-						<br>
-					<form>
-						<button class="well-notificacion" href="#correo" data-toggle="modal">
-							<div style="inline:block;">
-								<img src="img/glyphicons_010_envelope.png" style="float:left; margin-top:2px; height:18; width:18;"> 
-								<span style="float:left; margin-left:10px;">Enviar Correo</span>
-							</div>
-						</button>
-					</form>
-				</div>
-			
-
-			<?php echo $output; ?>
-			
-			</div>
-
-			<!-- MODAL DE ENVIAR CORREO ELECTRONICO -->
-			<div id="correo" class="modal hide fade">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<big style="font-weight:bold;">Enviar Correo</big>
+			<div class="page-content">
+				<div class="page-inner">
+					<?php echo $output; ?>
 				</div>
 				
-				<form id="form_correo_admin">
-					<div class="modal-body">
-						LISTA DE CLIENTES: <br/>
-						<div class='input-prepend'>
-							<span class='add-on'>
-								<img src="img/glyphicons_003_user.png" class="icon-form">
-							</span>
-							<select name="id_persona" id="id_persona">
-								<option value="">Seleccione Cliente </option>
-								<?php
-                                    foreach($clientes->result() as $row){ 
-                                ?>
-										<option value="<?php echo $row->id_persona;?>"><?php echo $row->nombre;?></option>
-								<?php 
-									}
-								?>
-							</select>
-						</div>
-						Asunto:
-						<div class='input-prepend'>
-							<span class='add-on'>
-								<img src="img/glyphicons_065_tag.png" class="icon-form">
-							</span>
-							<input class="txt-well" id="asunto_correo" type='text'>
-						</div>
-						Mensaje:
-						<div class='input-prepend'>
-							<span class='add-on'>
-								<img src="img/glyphicons_245_chat.png" class="icon-form">
-							</span>
-							<textarea class="txt-well" id="mensaje_correo" rows='4' cols="20"></textarea>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-primary" onclick="envia_correo_admin()" value="Enviar">
-					</div>
-				</form>
 			</div>
-			<!-- ********************************************************************************** -->
-			<!-- MODAL DE ALTA DE CLIENTE -->
-			<div id="alta" class="modal hide fade">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<big style="font-weight:bold;">Alta de Cliente</big>
-				</div>
-				<form id="form_alta_cliente2" method="post" action="<?php echo site_url('administrador/alta_cliente'); ?>">
-					<div class="modal-body">
-						Correo Electrónico:
-						<div class='input-prepend'>
-							<span class='add-on'>
-								<img src="img/glyphicons_003_user.png" class="icon-form">
-							</span>
-							<input class="txt-modal" type="text" id="alta_correo" name="correo"/>
-						</div>
-						<br/>
-						Nota: se le enviara automáticamente al cliente un correo con su usuario y contraseña.
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-primary"  onclick="alta_cliente();" value="Dar de Alta">
-						<a href="<?php echo site_url('administrador/alta_cliente_admin'); ?>" class="btn btn-primary">Dar de alta y registrar datos</a>
-					</div>
-				</form>
-			</div>
-			<!-- ********************************************************************************** -->
-			<!-- MODAL DE BAJA CLIENTE -->
-			<div id="baja" class="modal hide fade">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<big style="font-weight:bold;">Baja de Cliente</big>
-				</div>
-				<form id="baja_cliente" method="post" action="<?php echo site_url('administrador/baja_cliente'); ?>">
-					<div class="modal-body">
-						Usuario:
-						<div class='input-prepend'>
-							<span class='add-on'>
-								<img src="img/glyphicons_003_user.png" class="icon-form">
-							</span>
-							<select name="id_persona" id="id_persona_baja"><!--Mandamos una bandera para ver si ingreso un cliente-->
-								<option value="0">Seleccione cliente</option>
-								<?php foreach($clientes->result() as $row){ ?>
-									<option value="<?php echo $row->id_persona;?>"><?php echo $row->nombre_empresa;?></option>
-								<?php } ?>
-							</select>
-						</div>
-						Razón:
-						<div class='input-prepend'>
-							<span class='add-on'>
-								<img src="img/glyphicons_030_pencil.png" class="icon-form">
-							</span>
-							<input id="razon" class="txt-modal" name="razon" type='text'>
-						</div>
-						<br/>
-						Nota: se le enviara automáticamente al cliente un correo notificandole que a sido dado de baja.
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-primary" onclick="cliente_baja();" value="Dar de Baja">
-					</div>
-				</form>
-			</div>
-			<!-- ********************************************************************************** -->
-		<footer>
-			<div class="footer" style="color:#fff; font-weight:bold; ">
-				<div class="container">
-					<div style="">
-						Derechos reservados &copy; <?php echo date("Y"); ?> RDíaz
-					</div>
-				</div>
-			</div>
+		</div>
+		<footer class="footer">
+			<div class="container">
+				<span class="footext"> Todos los derechos reservados &copy; <?php echo date("Y"); ?> RDíaz </span>
+			</div>	
 		</footer>
-	</body>
-	<script type="text/javascript">
+			
+		</body>
+		<script type="text/javascript">
 				$(document).ready(function(){
 	                $('#tabla').dataTable({
 	                	"bJQueryUI":true,
@@ -247,5 +145,51 @@
 	        			}
 	    			});
 				});
-	</script>
-</html>
+		</script>
+		<script type="text/javascript" src="<?=base_url('plugins/bootstrap/js/bootstrap.min.js')?>"></script>
+
+		<script type="text/javascript" src="<?=base_url('plugins/jquery/jquery-3.1.0.min.js')?>"></script>
+
+
+		<script type="text/javascript" src="<?=base_url('plugins/jquery-slimscroll/jquery.slimscroll.min.js')?>"></script>
+
+		<!-- uniform -->
+		<script type="text/javascript" src="<?=base_url('plugins/uniform/js/jquery.uniform.standalone.js')?>"></script>
+
+		<!-- switchery -->
+		<script type="text/javascript" src="<?=base_url('plugins/switchery/switchery.min.js')?>"></script>
+
+		<!-- chartjs -->
+		<script type="text/javascript" src='<?=base_url('plugins/chartjs/chart.min.js')?>'></script>
+
+		<!-- d3.min -->
+		<script type="text/javascript" src="<?=base_url('plugins/d3/d3.min.js')?>"></script>
+
+		<!-- nv.d3.min -->
+		<script type="text/javascript" src="<?=base_url('plugins/nvd3/nv.d3.min.js')?>"></script>
+
+		<!-- float chart -->
+		<script type="text/javascript" src="<?=base_url('plugins/flot/jquery.flot.min.js')?>"></script>
+
+		<!-- float time -->
+		<script type="text/javascript" src="<?=base_url('plugins/flot/jquery.flot.time.min.js')?>"></script>
+
+		<!-- float symbol -->
+		<script type="text/javascript" src="<?=base_url('plugins/flot/jquery.flot.symbol.min.js')?>"></script>
+
+		<!-- float resize -->
+		<script type="text/javascript" src="<?=base_url('plugins/flot/jquery.flot.resize.min.js')?>"></script>
+
+		<!-- float tooltip -->
+		<script type="text/javascript" src="<?=base_url('plugins/flot/jquery.flot.tooltip.min.js')?>"></script>
+
+		<!-- float pie -->
+		<script type="text/javascript" src="<?=base_url('plugins/flot/jquery.flot.pie.min.js')?>"></script>
+
+		<!-- float pie -->
+		<script type="text/javascript" src="<?=base_url('js/pages/dashboard.js')?>"></script>
+
+		<!-- custom scripts -->
+		<script type="text/javascript" src="<?=base_url('js/main.js')?>"></script>
+
+	</html>
