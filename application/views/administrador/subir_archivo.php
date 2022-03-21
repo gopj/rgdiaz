@@ -1,4 +1,6 @@
-<div class="span9">
+<div class="container">
+	<div class="card card-white">
+	<div class="span9">
 	<center><legend>Administrar Carpetas</legend>
 		Ubicación: <strong style="font-family:Californian FB; color:#4249D6;font-size:20px;"><?php echo $ruta;?></strong><br/>
 	</center>
@@ -55,4 +57,7 @@
 		?>  						
 		</tbody>
 	</table>
+</div>
+
+	</div>
 </div>
