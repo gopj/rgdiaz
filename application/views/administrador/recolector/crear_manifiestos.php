@@ -48,15 +48,18 @@
 				</div>		
 			</div>
 
-			<!-- The Modal -->
-			<div class="modal" id="myModal">
-				<div class="modal-dialog modal-lg">
+
+			<!-- Modal agrega residuo -->
+			<div class="modal fade" id="agregar_residuo_modal" tabindex="-1" role="dialog" aria-labelledby="residuo_label" aria-hidden="true">
+				<div class="modal-dialog modal-lg" role="document">
 					<div class="modal-content">
 
 						<!-- Modal Header -->
 						<div class="modal-header">
-							<h4 class="modal-title">Ingresa Residuo</h4>
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h5 class="modal-title" id="residuo_label">Ingresa Residuo</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
 						</div>
 
 						<!-- Modal body -->
@@ -274,7 +277,7 @@
 			<?php } ?>
 		</div>
 		<div class="form-group col-md-4">
-			<button type="button" class="btn btn-primary btn-lg btn-block" id="agregar_residuos" data-toggle="modal" data-target="#myModal">Agregar Residuo</button>
+			<button type="button" class="btn btn-primary btn-lg btn-block" id="agregar_residuos" data-toggle="modal" data-target="#agregar_residuo_modal">Agregar Residuo</button>
 		</div>
 		<div class="form-group col-md-4">
 			<form id="form_terminar_manifiesto" action="<?= site_url('admin/recolector_terminar_manifiesto/' . $id_cliente . '/' . $folio); ?>" method="post">
