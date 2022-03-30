@@ -61,10 +61,6 @@ class Admin extends MY_Controller {
 				$data["id_persona"] = $this->input->post("id_persona");
 				$data["id_vehiculo"] = $this->input->post("vehiculo_asignado");
 
-/*				echo "<pre>";
-				print_r($data);
-				echo "</pre>";*/
-
 				if($data["id_persona"]) {
 					$this->persona_model->update_recolector($data);
 				} else {

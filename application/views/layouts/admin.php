@@ -30,7 +30,7 @@
     	<link rel="stylesheet" href="<?=base_url('plugins/font-awesome/css/font-awesome.min.css')?>" />
     	<link rel="stylesheet" href="<?=base_url('plugins/icomoon/style.css')?>" />
     	<link rel="stylesheet" href="<?=base_url('plugins/uniform/css/default.css')?>" />
-    	<link rel="stylesheet" href="<?=base_url('plugins/switchery.min.css')?>" />
+    	<link rel="stylesheet" href="<?=base_url('plugins/switchery/switchery.min.css')?>" />
 
 		<title>Recolector</title>
 	</head>
@@ -128,7 +128,7 @@
 			
 		<script type="text/javascript" src="<?=base_url('plugins/bootstrap/js/bootstrap.min.js')?>"></script>
 
-		<script type="text/javascript" src="<?=base_url('plugins/jquery/jquery-3.1.0.min.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/crizal/jquery.min.js')?>"></script>
 
 
 		<script type="text/javascript" src="<?=base_url('plugins/jquery-slimscroll/jquery.slimscroll.min.js')?>"></script>
@@ -167,7 +167,7 @@
 		<script type="text/javascript" src="<?=base_url('plugins/flot/jquery.flot.pie.min.js')?>"></script>
 
 		<!-- float pie -->
-		<script type="text/javascript" src="<?=base_url('js/pages/dashboard.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/crizal/admin-template/pages/dashboard.js')?>"></script>
 
 		<!-- custom scripts -->
 		<script type="text/javascript" src="<?=base_url('js/main.js')?>"></script>

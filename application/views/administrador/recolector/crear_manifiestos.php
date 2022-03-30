@@ -95,8 +95,9 @@
 
 									<div class="row">
 										<div class="form-check col-sm">
+
 											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="caracteristica_check1" value="Corrosivo" name="caracteristica_check[]" onclick="clear_required();" required>
+												<input class="custom-control-input" type="checkbox" id="caracteristica_check1" value="Corrosivo" name="caracteristica_check[]" onclick="clear_required();" required>
 												<label class="custom-control-label" for="caracteristica_check1">Corrosivo</label>
 											</div>
 											<div class="custom-control custom-checkbox">
