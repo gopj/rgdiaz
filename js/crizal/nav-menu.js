@@ -1,3 +1,12 @@
+/*-----------------------------------------------------------------------------------
+
+    Theme Name: Crizal - Multipurpose Responsive + Admin
+    Description: Multipurpose Responsive + Admin
+    Author: Chitrakoot Web
+    Version: 3.0
+
+    ---------------------------------- */
+    
 (function ($) {
     "use strict";
     $.fn.menumaker = function (options) {

@@ -8,7 +8,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-		<link href="<?=base_url('/css/bootstrap4/bootstrap.min.css');?>" rel="stylesheet">
+		<link href="<?=base_url('/css/crizal/plugins/bootstrap.min.css');?>" rel="stylesheet">
 		<link href="<?=base_url('/css/bootstrap4/open-iconic-bootstrap.css');?>" rel="stylesheet">
 		<link href="<?=base_url('/css/bootstrap4/sticky-footer.css');?>" rel="stylesheet">
 		<link href="<?=base_url('/css/bootstrap4/magic-check.css');?>" rel="stylesheet">    	
@@ -126,7 +126,7 @@
 	</div>		
 	</body>
 			
-		<script type="text/javascript" src="<?=base_url('plugins/bootstrap/js/bootstrap.min.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/crizal//bootstrap.min.js')?>"></script>
 
 		<script type="text/javascript" src="<?=base_url('js/crizal/jquery.min.js')?>"></script>
 
@@ -140,7 +140,7 @@
 		<script type="text/javascript" src="<?=base_url('plugins/switchery/switchery.min.js')?>"></script>
 
 		<!-- chartjs -->
-		<script type="text/javascript" src='<?=base_url('plugins/chartjs/chart.min.js')?>'></script>
+		<script type="text/javascript" src='<?=base_url('js/crizal/chart.min.js')?>'></script>
 
 		<!-- d3.min -->
 		<script type="text/javascript" src="<?=base_url('plugins/d3/d3.min.js')?>"></script>
