@@ -10,10 +10,10 @@
                 fit: true,
                 closed: false,
                 tabidentify: '',
-                activetab_bg: 'white',
-                inactive_bg: '#F5F5F5',
-                active_border_color: '#c1c1c1',
-                active_content_border_color: '#c1c1c1',
+                //activetab_bg: 'white',
+                //inactive_bg: '#F5F5F5',
+                //active_border_color: '#c1c1c1',
+                //active_content_border_color: '#c1c1c1',
                 activate: function () {
                 }
             }
@@ -24,7 +24,7 @@
             var historyApi = !!(window.history && history.replaceState);
 
             //Events
-            $(this).bind('tabactivate', function (e, currentTab) {
+            $(this).on("bind", 'tabactivate', function (e, currentTab) {
                 if (typeof options.activate === 'function') {
                     options.activate.call(currentTab, e)
                 }
@@ -42,7 +42,7 @@
                 });
 
                 if (options.type == 'vertical')
-                    $respTabsList.css('margin-top', '3px');
+                    //$respTabsList.css('margin-top', '3px');
 
                 $respTabs.find('.resp-tabs-container.' + options.tabidentify).css('border-color', options.active_content_border_color);
                 $respTabs.find('.resp-tabs-container.' + options.tabidentify + ' > div').addClass('resp-tab-content').addClass(options.tabidentify);
@@ -142,7 +142,7 @@
                 $respTabs.find("[role=tab]").each(function () {
 
                     var $currentTab = $(this);
-                    $currentTab.click(function () {
+                    $currentTab.on("click", function() {
 
                         var $currentTab = $(this);
                         var $tabAria = $currentTab.attr('aria-controls');
@@ -152,34 +152,34 @@
                                 $(this).addClass('resp-accordion-closed');
                             });
                             $currentTab.removeClass('resp-tab-active').css({
-                                'background-color': options.inactive_bg,
-                                'border-color': 'none'
+                                //'background-color': options.inactive_bg,
+                                //'border-color': 'none'
                             });
                             return false;
                         }
                         if (!$currentTab.hasClass('resp-tab-active') && $currentTab.hasClass('resp-accordion')) {
                             $respTabs.find('.resp-tab-active.' + options.tabidentify).removeClass('resp-tab-active').css({
-                                'background-color': options.inactive_bg,
-                                'border-color': 'none'
+                                //'background-color': options.inactive_bg,
+                                //'border-color': 'none'
                             });
                             $respTabs.find('.resp-tab-content-active.' + options.tabidentify).slideUp().removeClass('resp-tab-content-active resp-accordion-closed');
                             $respTabs.find("[aria-controls=" + $tabAria + "]").addClass('resp-tab-active').css({
-                                'background-color': options.activetab_bg,
-                                'border-color': options.active_border_color
+                                //'background-color': options.activetab_bg,
+                                //'border-color': options.active_border_color
                             });
 
                             $respTabs.find('.resp-tab-content[aria-labelledby = ' + $tabAria + '].' + options.tabidentify).slideDown().addClass('resp-tab-content-active');
                         } else {
                             $respTabs.find('.resp-tab-active.' + options.tabidentify).removeClass('resp-tab-active').css({
-                                'background-color': options.inactive_bg,
-                                'border-color': 'none'
+                                //'background-color': options.inactive_bg,
+                                //'border-color': 'none'
                             });
 
                             $respTabs.find('.resp-tab-content-active.' + options.tabidentify).removeAttr('style').removeClass('resp-tab-content-active').removeClass('resp-accordion-closed');
 
                             $respTabs.find("[aria-controls=" + $tabAria + "]").addClass('resp-tab-active').css({
-                                'background-color': options.activetab_bg,
-                                'border-color': options.active_border_color
+                                //'background-color': options.activetab_bg,
+                                //'border-color': options.active_border_color
                             });
 
                             $respTabs.find('.resp-tab-content[aria-labelledby = ' + $tabAria + '].' + options.tabidentify).addClass('resp-tab-content-active').attr('style', 'display:block');
