@@ -117,17 +117,16 @@
 
 	</div>		
 	</body>
-		<script type="text/javascript" src="<?=base_url('js/crizal/datatables/jquery.dataTables.js')?>"></script>
-		<script type="text/javascript" src="<?=base_url('js/tooltip.js')?>"></script>
-		<script type="text/javascript" src="<?=base_url('js/popover.js')?>"></script>
-		<script type="text/javascript" src="<?=base_url('js/transition.js')?>"></script>
-		<script type="text/javascript" src="<?=base_url('js/dropdown.js')?>"></script>
-		<script type="text/javascript" src="<?=base_url('js/swith.js')?>"></script>
-			
+
+		<script type="text/javascript" src="<?=base_url('js/crizal/jquery.min.js')?>"></script>	
+
 		<script type="text/javascript" src="<?=base_url('js/crizal/bootstrap.min.js')?>"></script>
 
-		<script type="text/javascript" src="<?=base_url('js/crizal/jquery.min.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/crizal/datatables/jquery.dataTables.js')?>"></script>
 
+		<script type="text/javascript" src="<?=base_url('js/swith.js')?>"></script>
+
+		<script type="text/javascript" src="<?=base_url('js/formulario_bitacora.js')?>"></script>
 
 		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/jquery-slimscroll/jquery.slimscroll.min.js')?>"></script>
 
