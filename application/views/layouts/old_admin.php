@@ -16,7 +16,6 @@
 		<link href="<?=base_url('css/bootstrap4/sticky-footer.css');?>" rel="stylesheet">
 		<link href="<?=base_url('css/bootstrap4/magic-check.css');?>" rel="stylesheet">    	
 		
-		
 		<link href="<?=base_url('css/crizal/datatables/jquery.dataTables.min.css');?>" rel="stylesheet">
 		
 		<link href="<?=base_url('css/custom.css');?>" rel="stylesheet">
@@ -27,18 +26,6 @@
     	<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/uniform/css/default.css')?>" />
     	<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/switchery.min.css')?>" />
 
-
-		<script type="text/javascript" src="<?=base_url('js/jquery.dataTables.js')?>"></script>
-		<script type="text/javascript" src="<?=base_url('js/tooltip.js')?>"></script>
-		<script type="text/javascript" src="<?=base_url('js/popover.js')?>"></script>
-		<script type="text/javascript" src="<?=base_url('js/transition.js')?>"></script>
-		<script type="text/javascript" src="<?=base_url('js/dropdown.js')?>"></script>
-		<script type="text/javascript" src="<?=base_url('js/swith.js')?>"></script>
-
-		<script type="text/javascript" src="<?=base_url('js/formulario_bitacora.js')?>"></script>
-		<script type="text/javascript" src="<?=base_url('js/jquery.validate.js')?>"></script>
-		<script type="text/javascript" src="<?=base_url('js/jquery.validate.messages.js')?>"></script>
-		<script type="text/javascript" src="<?=base_url('js/bitacora.js')?>"></script>
 
 		<title>Administrador</title>
 	</head>
@@ -145,12 +132,20 @@
 	    			});
 				});
 		</script>
-		<script type="text/javascript" src="<?=base_url('js/crizal/bootstrap.min.js')?>"></script>
 
 		<script type="text/javascript" src="<?=base_url('js/crizal/jquery.min.js')?>"></script>
 
+		<script type="text/javascript" src="<?=base_url('js/crizal/bootstrap.min.js')?>"></script>
 
 		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/jquery-slimscroll/jquery.slimscroll.min.js')?>"></script>
+
+		<script type="text/javascript" src="<?=base_url('js/crizal/datatables/jquery.dataTables.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/formulario_bitacora.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/swith.js')?>"></script>
+
+		<script type="text/javascript" src="<?=base_url('js/formulario_bitacora.js')?>"></script>
+
+		<script type="text/javascript" src="<?=base_url('js/bitacora.js')?>"></script>
 
 		<!-- uniform -->
 		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/uniform/js/jquery.uniform.standalone.js')?>"></script>

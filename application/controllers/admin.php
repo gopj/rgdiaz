@@ -342,8 +342,8 @@ class Admin extends MY_Controller {
 				$folio_temp = $this->tran_residuo_model->get_bitacora_count($id_cliente) - 1;
 				$data["folio_identificador"]= $this->persona_model->get_datos_empresa($id_cliente)->identificador_folio . '-' . $data["folio"]; // Primera inserción de identificador de folio (no mover)
 
-				foreach ($data["caracteristica_r"] as $key => $value) {
-					$data["caracteristicas"] .= $value . " ";
+				foreach (@$data["caracteristica_r"] as $key => $value) {
+					@$data["caracteristicas"] .= $value . " ";
 				}
 
 				// Inserta Folio
@@ -409,7 +409,7 @@ class Admin extends MY_Controller {
 				$data["caracteristicas"] 	= "";
 
 				foreach (@$data["caracteristica_r"] as $key => $value) {
-					$data["caracteristicas"] .= $value . " ";
+					@$data["caracteristicas"] .= $value . " ";
 				}
 				
 				// // Actualza Folio
