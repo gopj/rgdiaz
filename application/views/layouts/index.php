@@ -19,7 +19,8 @@
     <link rel="apple-touch-icon" sizes="114x114" href="<?=base_url('img/crizal/logos/apple-touch-icon-114x114.png')?>">
 
     <!-- plugins -->
-    <link rel="stylesheet" href="css/crizal/plugins.css" />
+    <link href="<?=base_url('css/crizal/bootstrap.min.css');?>" rel="stylesheet">
+    <link rel="stylesheet" href="<?=base_url('css/crizal/plugins.css');?>" />
 
     <!-- revolution slider css -->
     <link rel="stylesheet" href="<?=base_url('css/crizal/rev_slider/settings.css')?>">
@@ -27,10 +28,12 @@
     <link rel="stylesheet" href="<?=base_url('css/crizal/rev_slider/navigation.css')?>">
 
     <!-- search css -->
-    <link rel="stylesheet" href="<?=base_url('search/search.css')?>" />
+    <link rel="stylesheet" href="<?=base_url('css/crizal/search.css')?>" />
 
     <!-- custom css -->
     <link href="css/crizal/styles.css" rel="stylesheet" id="colors">
+
+
 
 </head>
 
@@ -255,7 +258,7 @@
    <script src="<?=base_url('js/crizal/map.js')?>"></script>
 
    <!-- custom scripts -->
-   <script src="<?=base_url('js/crizal/main.js')?>"></script>
+   <script src="<?=base_url('js/main.js')?>"></script>
 
    <!-- contact form scripts -->
    <script src="js/crizal/mailform/jquery.form.min.js"></script>
