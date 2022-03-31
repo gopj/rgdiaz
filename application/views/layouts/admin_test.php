@@ -21,6 +21,8 @@
     <link rel="apple-touch-icon" sizes="114x114" href="<?=base_url('img/crizal/logos/apple-touch-icon-114x114.png')?>">
 
     <!-- plugins -->
+    <link href="<?=base_url('css/crizal/bootstrap.min.css');?>" rel="stylesheet">
+    
     <link rel="stylesheet" href="<?=base_url('css/crizal/plugins.css')?>" />
 
     <!-- search css -->
