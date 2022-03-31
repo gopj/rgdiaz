@@ -12,25 +12,25 @@
     <meta name="description" content="Crizal - Multipurpose Responsive + Admin" />
 
     <!-- title  -->
-    <title>Crizal - Multipurpose Responsive + Admin</title>
+    <title>Crizal - Testing</title>
 
     <!-- favicon -->
-    <link rel="shortcut icon" href="img/logos/favicon.png">
-    <link rel="apple-touch-icon" href="img/logos/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="img/logos/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="img/logos/apple-touch-icon-114x114.png">
+    <link rel="shortcut icon" href="<?=base_url('img/crizal/logos/favicon.png')?>">
+    <link rel="apple-touch-icon" href="<?=base_url('img/crizal/logos/apple-touch-icon-57x57.png')?>">
+    <link rel="apple-touch-icon" sizes="72x72" href="<?=base_url('img/crizal/logos/apple-touch-icon-72x72.png')?>">
+    <link rel="apple-touch-icon" sizes="114x114" href="<?=base_url('img/crizal/logos/apple-touch-icon-114x114.png')?>">
 
     <!-- plugins -->
-    <link rel="stylesheet" href="css/crizal/plugins.css" />
+    <link rel="stylesheet" href="<?=base_url('css/crizal/plugins.css')?>" />
 
     <!-- search css -->
-    <link rel="stylesheet" href="css/crizal/search/search.css" />
+    <link rel="stylesheet" href="<?=base_url('css/crizal/search.css')?>" />
 
     <!-- quform css -->
-    <link rel="stylesheet" href="quform/css/base.css">
+    <link rel="stylesheet" href="<?=base_url('css/crizal/quform/base.css')?>">
 
     <!-- custom css -->
-    <link href="css/styles.css" rel="stylesheet" id="colors">
+    <link href="<?=base_url('css/crizal/styles.css')?>" rel="stylesheet" id="colors">
 
 </head>
 
@@ -80,7 +80,7 @@
                 <div class="row">
 
                     <div class="col-sm-12 col-lg-3 sm-margin-35px-bottom">
-                        <img src="img/logos/logo-footer-dark.png" alt="..." />
+                        <img src="<?=base_url('img/crizal/logos/logo-footer-dark.png')?>" alt="..." />
                     </div>
                     <div class="col-sm-6 col-lg-2 sm-margin-35px-bottom">
                         <h3>Links</h3>
@@ -181,67 +181,67 @@
     <!-- all js include start -->
 
     <!-- jquery -->
-    <script src="js/jquery.min.js"></script>
+    <script src="<?=base_url('js/crizal/jquery.min.js')?>"></script>
 
     <!-- popper js -->
-    <script src="js/popper.min.js"></script>
+    <script src="<?=base_url('js/crizal/popper.min.js')?>"></script>
 
     <!-- bootstrap -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="<?=base_url('js/crizal/bootstrap.min.js')?>"></script>
 
     <!-- navigation -->
-    <script src="js/nav-menu.js"></script>
+    <script src="<?=base_url('js/crizal/nav-menu.js')?>"></script>
 
     <!-- serch -->
-    <script src="search/search.js"></script>
+    <script src="<?=base_url('js/crizal/search.js')?>"></script>
 
     <!-- tab -->
-    <script src="js/easy.responsive.tabs.js"></script>
+    <script src="<?=base_url('js/crizal/easy.responsive.tabs.js')?>"></script>
 
     <!-- owl carousel -->
-    <script src="js/owl.carousel.js"></script>
+    <script src="<?=base_url('js/crizal/owl.carousel.js')?>"></script>
 
     <!-- jquery.counterup.min -->
-    <script src="js/jquery.counterup.min.js"></script>
+    <script src="<?=base_url('js/crizal/jquery.counterup.min.js')?>"></script>
 
     <!-- stellar js -->
-    <script src="js/jquery.stellar.min.js"></script>
+    <script src="<?=base_url('js/crizal/jquery.stellar.min.js')?>"></script>
 
     <!-- waypoints js -->
-    <script src="js/waypoints.min.js"></script>
+    <script src="<?=base_url('js/crizal/waypoints.min.js')?>"></script>
 
     <!-- countdown js -->
-    <script src="js/countdown.js"></script>
+    <script src="<?=base_url('js/crizal/countdown.js')?>"></script>
 
     <!-- jquery.magnific-popup js -->
-    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="<?=base_url('js/crizal/jquery.magnific-popup.min.js')?>"></script>
 
     <!-- isotope.pkgd.min js -->
-    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="<?=base_url('js/crizal/isotope.pkgd.min.js')?>"></script>
 
     <!--  chart js -->
-    <script src="js/chart.min.js"></script>
+    <script src="<?=base_url('js/crizal/chart.min.js')?>"></script>
 
     <!-- thumbs js -->
-    <script src="js/owl.carousel.thumbs.js"></script>
+    <script src="<?=base_url('js/crizal/owl.carousel.thumbs.js')?>"></script>
 
     <!-- animated js -->
-    <script src="js/animated-headline.js"></script>
+    <script src="<?=base_url('js/crizal/animated-headline.js')?>"></script>
 
     <!--  clipboard js -->
-    <script src="js/clipboard.min.js"></script>
+    <script src="<?=base_url('js/crizal/clipboard.min.js')?>"></script>
 
     <!--  prism js -->
-    <script src="js/prism.js"></script>
+    <script src="<?=base_url('js/crizal/prism.js')?>"></script>
 
     <!-- custom scripts -->
-    <script src="js/main.js"></script>
+    <script src="<?=base_url('js/crizal/main.js')?>"></script>
 
     <!-- quform plugins js -->
-    <script src="quform/js/plugins.js"></script>
+    <script src="<?=base_url('js/crizal/quform/plugins.js')?>"></script>
 
     <!-- quform scripts js -->
-    <script src="quform/js/scripts.js"></script>
+    <script src="<?=base_url('js/crizal/quform/scripts.js')?>"></script>
 
     <!-- all js include end -->
 

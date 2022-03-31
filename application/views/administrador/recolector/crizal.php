@@ -37,7 +37,7 @@
 
                                     <div class="navbar-header navbar-header-custom">
                                         <!-- start logo -->
-                                        <a href="index.html" class="navbar-brand"><img id="logo" src="img/logos/logo-inner.png" alt="logo"></a>
+                                        <a href="index.html" class="navbar-brand"><img id="logo" src="<?=base_url('img/crizal/logos/logo-inner.png')?>" alt="logo"></a>
                                         <!-- end logo -->
                                     </div>
 
@@ -374,17 +374,17 @@
                                                 </a>
                                                 <ul class="dropdown-menu cart-list">
                                                     <li>
-                                                        <a href="#!" class="photo"><img src="img/shop/cart-thumb01.jpg" class="cart-thumb" alt="" /></a>
+                                                        <a href="#!" class="photo"><img src="<?=base_url('img/crizal/shop/cart-thumb01.jpg" class="cart-thu')?>mb" alt="" /></a>
                                                         <h6><a href="#!">Sneakers Shoe </a></h6>
                                                         <p>2x - <span class="price">$99.99</span></p>
                                                     </li>
                                                     <li>
-                                                        <a href="#!" class="photo"><img src="img/shop/cart-thumb02.jpg" class="cart-thumb" alt="" /></a>
+                                                        <a href="#!" class="photo"><img src="<?=base_url('img/crizal/shop/cart-thumb02.jpg" class="cart-thu')?>mb" alt="" /></a>
                                                         <h6><a href="#!">Digital Watch</a></h6>
                                                         <p>1x - <span class="price">$33.33</span></p>
                                                     </li>
                                                     <li>
-                                                        <a href="#!" class="photo"><img src="img/shop/cart-thumb03.jpg" class="cart-thumb" alt="" /></a>
+                                                        <a href="#!" class="photo"><img src="<?=base_url('img/crizal/shop/cart-thumb03.jpg" class="cart-thu')?>mb" alt="" /></a>
                                                         <h6><a href="#!">Headphones</a></h6>
                                                         <p>2x - <span class="price">$99.99</span></p>
                                                     </li>
@@ -410,7 +410,7 @@
         <!-- end header section -->
 
         <!-- start page title section -->
-        <section class="page-title-section2 bg-img cover-background" data-overlay-dark="7" data-background="img/bg/bg9.jpg">
+        <section class="page-title-section2 bg-img cover-background" data-overlay-dark="7" data-background="<?=base_url('img/crizal/bg/bg9.jpg')?>">
             <div class="container">
 
                 <div class="row">

@@ -127,7 +127,7 @@
 	</div>		
 	</body>
 			
-		<script type="text/javascript" src="<?=base_url('js/crizal//bootstrap.min.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/crizal/bootstrap.min.js')?>"></script>
 
 		<script type="text/javascript" src="<?=base_url('js/crizal/jquery.min.js')?>"></script>
 

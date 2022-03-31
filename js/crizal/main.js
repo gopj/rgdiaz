@@ -57,21 +57,21 @@
             var logo3 = $(".navbar-brand.logo3 img");
             if (scroll <= 50) {
                 $("header").removeClass("scrollHeader").addClass("fixedHeader");
-                logoinner.attr('src', 'img/logos/logo-inner.png');
-                logodefault.attr('src', 'img/logos/logo.png');
-                logowhite.attr('src', 'img/logos/logo-white.png');
-                logowhitedark.attr('src', 'img/logos/logo-white.png');
-                logo2.attr('src', 'img/logos/logo-2-light.png');
-                logo3.attr('src', 'img/logos/logo-2-dark.png');
+                logoinner.attr('src', '../img/crizal/logos/logo-inner.png');
+                logodefault.attr('src', '../img/crizal/logos/logo.png');
+                logowhite.attr('src', '../img/crizal/logos/logo-white.png');
+                logowhitedark.attr('src', '../img/crizal/logos/logo-white.png');
+                logo2.attr('src', '../img/crizal/logos/logo-2-light.png');
+                logo3.attr('src', '../img/crizal/logos/logo-2-dark.png');
             } 
             else {
                 $("header").removeClass("fixedHeader").addClass("scrollHeader");
-                logoinner.attr('src', 'img/logos/logo.png');
-                logodefault.attr('src', 'img/logos/logo.png');
-                logowhite.attr('src', 'img/logos/logo-white.png');
-                logowhitedark.attr('src', 'img/logos/logo-dark.png');
-                logo2.attr('src', 'img/logos/logo-2-dark.png');
-                logo3.attr('src', 'img/logos/logo-2-dark.png');
+                logoinner.attr('src', '../img/crizal/logos/logo.png');
+                logodefault.attr('src', '../img/crizal/logos/logo.png');
+                logowhite.attr('src', '../img/crizal/logos/logo-white.png');
+                logowhitedark.attr('src', '../img/crizal/logos/logo-dark.png');
+                logo2.attr('src', '../img/crizal/logos/logo-2-dark.png');
+                logo3.attr('src', '../img/crizal/logos/logo-2-dark.png');
             }
         });
 
