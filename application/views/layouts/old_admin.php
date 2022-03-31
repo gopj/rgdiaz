@@ -140,6 +140,7 @@
 		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/jquery-slimscroll/jquery.slimscroll.min.js')?>"></script>
 
 		<script type="text/javascript" src="<?=base_url('js/crizal/datatables/jquery.dataTables.js')?>"></script>
+		
 		<script type="text/javascript" src="<?=base_url('js/formulario_bitacora.js')?>"></script>
 		<script type="text/javascript" src="<?=base_url('js/swith.js')?>"></script>
 
@@ -178,6 +179,6 @@
 		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/flot/jquery.flot.pie.min.js')?>"></script>
 
 		<!-- custom scripts -->
-		<script type="text/javascript" src="<?=base_url('js/main.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/crizal/main.js')?>"></script>
 
 	</html>

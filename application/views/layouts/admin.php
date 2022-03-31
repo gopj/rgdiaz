@@ -55,7 +55,6 @@
                                 <li><a href="<?=base_url('admin/recolector_consulta')?>">Consultas</a></li>
                                 <li><a href="<?=base_url('admin/recolector_index')?>">Manifiestos</a></li>
                                 <li><a href="<?=base_url('admin/recolector_bitacora')?>">Bítacora</a></li>
-                                
                             </ul>
                         </li>
                         <li>
@@ -161,6 +160,6 @@
 		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/flot/jquery.flot.pie.min.js')?>"></script>
 
 		<!-- custom scripts -->
-		<script type="text/javascript" src="<?=base_url('js/main.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/crizal/main.js')?>"></script>
 
 </html>
