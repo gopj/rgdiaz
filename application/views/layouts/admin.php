@@ -27,10 +27,11 @@
 		<script type="text/javascript" src="<?=base_url('js/dropdown.js')?>"></script>
 		<script type="text/javascript" src="<?=base_url('js/swith.js')?>"></script>
 
-    	<link rel="stylesheet" href="<?=base_url('plugins/font-awesome/css/font-awesome.min.css')?>" />
-    	<link rel="stylesheet" href="<?=base_url('plugins/icomoon/style.css')?>" />
-    	<link rel="stylesheet" href="<?=base_url('plugins/uniform/css/default.css')?>" />
-    	<link rel="stylesheet" href="<?=base_url('plugins/switchery/switchery.min.css')?>" />
+		<link rel="stylesheet" href="<?=base_url('plugins/font-awesome/css/font-awesome.min.css')?>" />
+		<link rel="stylesheet" href="<?=base_url('plugins/icomoon/style.css')?>" />
+		<link rel="stylesheet" href="<?=base_url('plugins/uniform/css/default.css')?>" />
+		<link rel="stylesheet" href="<?=base_url('plugins/switchery/switchery.min.css')?>" />
+		<link rel="stylesheet" href="<?=base_url('css/crizal/styles.css')?>" />
 
 		<title>Recolector</title>
 	</head>
