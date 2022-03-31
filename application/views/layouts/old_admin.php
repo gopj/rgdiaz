@@ -11,24 +11,23 @@
 
 		<!-- Bootstrap CSS --> 	
 		<!-- <link href="css/bootstrap4/dataTables.bootstrap4.min.css" rel="stylesheet"> -->
-		<link href="<?=base_url('/css/bootstrap4/bootstrap.min.css');?>" rel="stylesheet">
-		<link href="<?=base_url('/css/bootstrap4/open-iconic-bootstrap.css');?>" rel="stylesheet">
-		<link href="<?=base_url('/css/bootstrap4/sticky-footer.css');?>" rel="stylesheet">
-		<link href="<?=base_url('/css/bootstrap4/magic-check.css');?>" rel="stylesheet">    	
+		<link href="<?=base_url('css/crizal/bootstrap.min.css');?>" rel="stylesheet">
+		<link href="<?=base_url('css/bootstrap4/open-iconic-bootstrap.css');?>" rel="stylesheet">
+		<link href="<?=base_url('css/bootstrap4/sticky-footer.css');?>" rel="stylesheet">
+		<link href="<?=base_url('css/bootstrap4/magic-check.css');?>" rel="stylesheet">    	
 		
 		
-		<link href="<?=base_url('/css/bootstrap4/jquery.dataTables.min.css');?>" rel="stylesheet">
+		<link href="<?=base_url('css/crizal/datatables/jquery.dataTables.min.css');?>" rel="stylesheet">
 		
-		<link href="<?=base_url('/css/custom.css');?>" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="<?=base_url('/css/estilos.css')?>">
+		<link href="<?=base_url('css/custom.css');?>" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="<?=base_url('css/estilos.css')?>">
 
-    	<link rel="stylesheet" href="<?=base_url('plugins/font-awesome/css/font-awesome.min.css')?>" />
-    	<link rel="stylesheet" href="<?=base_url('plugins/icomoon/style.css')?>" />
-    	<link rel="stylesheet" href="<?=base_url('plugins/uniform/css/default.css')?>" />
-    	<link rel="stylesheet" href="<?=base_url('plugins/switchery.min.css')?>" />
+    	<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/font-awesome/css/font-awesome.min.css')?>" />
+    	<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/icomoon/style.css')?>" />
+    	<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/uniform/css/default.css')?>" />
+    	<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/switchery.min.css')?>" />
 
-		<script type="text/javascript" src="<?=base_url('js/jquery.js')?>"></script>
-		<script type="text/javascript" src="<?=base_url('js/bootstrap.js')?>"></script>
+
 		<script type="text/javascript" src="<?=base_url('js/jquery.dataTables.js')?>"></script>
 		<script type="text/javascript" src="<?=base_url('js/tooltip.js')?>"></script>
 		<script type="text/javascript" src="<?=base_url('js/popover.js')?>"></script>
@@ -146,48 +145,42 @@
 	    			});
 				});
 		</script>
-		<script type="text/javascript" src="<?=base_url('plugins/bootstrap/js/bootstrap.min.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/crizal/bootstrap.min.js')?>"></script>
 
-		<script type="text/javascript" src="<?=base_url('plugins/jquery/jquery-3.1.0.min.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/crizal/jquery.min.js')?>"></script>
 
 
-		<script type="text/javascript" src="<?=base_url('plugins/jquery-slimscroll/jquery.slimscroll.min.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/jquery-slimscroll/jquery.slimscroll.min.js')?>"></script>
 
 		<!-- uniform -->
-		<script type="text/javascript" src="<?=base_url('plugins/uniform/js/jquery.uniform.standalone.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/uniform/js/jquery.uniform.standalone.js')?>"></script>
 
 		<!-- switchery -->
-		<script type="text/javascript" src="<?=base_url('plugins/switchery/switchery.min.js')?>"></script>
-
-		<!-- chartjs -->
-		<script type="text/javascript" src='<?=base_url('plugins/chartjs/chart.min.js')?>'></script>
+		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/switchery/switchery.min.js')?>"></script>
 
 		<!-- d3.min -->
-		<script type="text/javascript" src="<?=base_url('plugins/d3/d3.min.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/d3/d3.min.js')?>"></script>
 
 		<!-- nv.d3.min -->
-		<script type="text/javascript" src="<?=base_url('plugins/nvd3/nv.d3.min.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/nvd3/nv.d3.min.js')?>"></script>
 
 		<!-- float chart -->
-		<script type="text/javascript" src="<?=base_url('plugins/flot/jquery.flot.min.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/flot/jquery.flot.min.js')?>"></script>
 
 		<!-- float time -->
-		<script type="text/javascript" src="<?=base_url('plugins/flot/jquery.flot.time.min.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/flot/jquery.flot.time.min.js')?>"></script>
 
 		<!-- float symbol -->
-		<script type="text/javascript" src="<?=base_url('plugins/flot/jquery.flot.symbol.min.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/flot/jquery.flot.symbol.min.js')?>"></script>
 
 		<!-- float resize -->
-		<script type="text/javascript" src="<?=base_url('plugins/flot/jquery.flot.resize.min.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/flot/jquery.flot.resize.min.js')?>"></script>
 
 		<!-- float tooltip -->
-		<script type="text/javascript" src="<?=base_url('plugins/flot/jquery.flot.tooltip.min.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/flot/jquery.flot.tooltip.min.js')?>"></script>
 
 		<!-- float pie -->
-		<script type="text/javascript" src="<?=base_url('plugins/flot/jquery.flot.pie.min.js')?>"></script>
-
-		<!-- float pie -->
-		<script type="text/javascript" src="<?=base_url('js/pages/dashboard.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/flot/jquery.flot.pie.min.js')?>"></script>
 
 		<!-- custom scripts -->
 		<script type="text/javascript" src="<?=base_url('js/main.js')?>"></script>
