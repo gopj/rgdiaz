@@ -11,12 +11,12 @@
 					</div>
 					<div class="email-menu">
 						<ul class="list-unstyled">
-							<li class="active"><a href="#"><i class="icon-inbox"></i><span>Recibidos</span></a></li>
-							<li><a href="#"><i class="icon-send"></i><span>Enviados</span></a></li>
-							<li><a href="#"><i class="icon-mail_outline"></i><span>Borradores</span></a></li>
-							<li><a href="#"><i class="icon-error"></i><span>No deseados</span></a></li>
+							<li class="active"><a href=""><i class="icon-inbox"></i><span>Recibidos</span></a></li>
+							<li><a href=""><i class="icon-send"></i><span>Enviados</span></a></li>
+							<li><a href=""><i class="icon-mail_outline"></i><span>Borradores</span></a></li>
+							<li><a href=""><i class="icon-error"></i><span>No deseados</span></a></li>
 							<li class="divider"></li>
-							<li><a href="#"><i class="icon-delete"></i><span>Papelera</span></a></li>
+							<li><a href=""><i class="icon-delete"></i><span>Papelera</span></a></li>
 						</ul>
 					</div>
 				</div>
@@ -41,7 +41,7 @@
 												<div class="col-md-2">
 													<form method='get' action="<?php echo site_url('administrador/mensaje_completo');?>">
 														<input type="hidden" value="<?php echo base64_encode($men->numero); ?>" name="id_contacto"/>
-														<button type="submit" class="btn btn-link link-primary" name="detalles" title="Ver Detalles"> <i class="fas fa-envelope-open-text"></i></button>
+														<button type="submit" class="btn btn-link link-primary" name="detalles" title="Ver Detalles" onclick="get_message_info();"> <i class="fas fa-envelope-open-text"></i></button>
 													</form> 
 												</div>
 												<div class="col-md-2">	
@@ -65,13 +65,13 @@
                 </div>
                 <div class="email">
                     <div class="email-header">
-                        <div class="email-title">
-                            <p>Eque porro quisquam est, qui dolorem ipsum quia posuere eget</p>
+                        <div class="enterprise_author_name">
+                            <span class="enterprise_author_name">Eque porro quisquam est, qui dolorem ipsum quia posuere eget</p></span>
                         </div>
                         <span class="divider"></span>
                         <div class="email-author">
                             <img src="img/email/1.jpg" alt="">
-                            <span class="author-name">Jamara.karle@test.com</span>
+                            <span class="email-author">Jamara.karle@test.com</span>
                             <span class="email-date">4:14pm</span>
                         </div>
                         <span class="divider"></span>
