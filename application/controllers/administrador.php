@@ -1493,6 +1493,23 @@ class Administrador extends MY_Controller {
 		redirect('administrador/transportistas_destinos');
 	}
 
+	public function get_message(){
+		$this->setLayout('empty');
+
+		$email_id = $this->input->post('email_id');			
+		$mensaje = $this->contacto_model->obtienemensaje($email_id); 
+
+		$data = array (
+			'email_subject' => $mensaje->asunto,
+			'email' => $mensaje->correo,
+			'email_date' => $mensaje->fecha_mensaje,
+			'email_message' => $mensaje->mensaje,
+			'email_phone' => $mensaje->telefono
+		);
+
+		echo json_encode($data);
+	}
+
 	public function mail_test() { 
 
 		$data["mensajes"] = $this->contacto_model->contador_mensajes(0);
