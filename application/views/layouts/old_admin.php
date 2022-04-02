@@ -144,8 +144,6 @@
 		<script type="text/javascript" src="<?=base_url('js/formulario_bitacora.js')?>"></script>
 		<script type="text/javascript" src="<?=base_url('js/swith.js')?>"></script>
 
-		<script type="text/javascript" src="<?=base_url('js/formulario_bitacora.js')?>"></script>
-
 		<script type="text/javascript" src="<?=base_url('js/bitacora.js')?>"></script>
 
 		<!-- uniform -->

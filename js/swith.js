@@ -168,6 +168,7 @@ function eliminar_carpeta(){
 		alert('CARPETA NO ELIMINADA');
 	}
 }
+
 function compruebausuario(id){
 	var id_per = id;
 
@@ -659,6 +660,43 @@ function gen_identificador_duiplicado() {
 		}
 	);
 
+}
+
+function get_message_info(id){
+	$("#email-subject").val("");
+	$("#no_aut_trans").val("");
+	$("#no_aut_trans_sct").val("");
+	$("#domicilio_emp_trans").val("");
+	$("#tel_emp_trans").val("");
+
+	var id_tipo_emp_trans = id;
+
+	//AJAX
+	jQuery.ajax({
+			url:'https://' + host + '/administrador/obtiene_emp_trans',	//<-- Url que va procesar la peticion
+			//url:'https://rdiaz.mx/administrador/obtiene_cliente',
+			timeout: 3000, //sets timeout to 3 seconds
+			type:'post',
+			data:{
+				id_tipo_emp_trans: id_tipo_emp_trans,
+			}
+		}).done(
+			function(resp)
+			{
+				var json_data = jQuery.parseJSON(resp);
+				var nombre_emp_trans = json_data.nombre_emp_trans;
+				var no_autorizacion_transportista = json_data.no_autorizacion_transportista;
+				var no_autorizacion_sct = json_data.no_autorizacion_sct;
+				var domicilio = json_data.domicilio;
+				var telefono = json_data.telefono;
+
+				$("#nombre_emp_trans").val(nombre_emp_trans);
+				$("#no_aut_trans").val(no_autorizacion_transportista);
+				$("#no_aut_trans_sct").val(no_autorizacion_sct);
+				$("#domicilio_emp_trans").val(domicilio);
+				$("#tel_emp_trans").val(telefono);
+			}
+		);
 }
 
 /*function breakout_of_frame() {
