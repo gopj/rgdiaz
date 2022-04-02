@@ -16,7 +16,7 @@
 		<link href="<?=base_url('css/bootstrap4/sticky-footer.css');?>" rel="stylesheet">
 		<link href="<?=base_url('css/bootstrap4/magic-check.css');?>" rel="stylesheet">    	
 		
-		<link href="<?=base_url('css/crizal/datatables/jquery.dataTables.min.css');?>" rel="stylesheet">
+		<link href="<?=base_url('css/crizal/datatables/datatables.bootstrap.min.css');?>" rel="stylesheet">
 		
 		<link href="<?=base_url('css/custom.css');?>" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="<?=base_url('css/estilos.css')?>">
@@ -110,28 +110,6 @@
 		</footer>
 			
 		</body>
-		<script type="text/javascript">
-				$(document).ready(function(){
-	                $('#tabla').dataTable({
-	                	"bJQueryUI":true,
-	                	"iDisplayLength": 200,
-	                	"aaSorting": [[0,'asc'], [1,'asc']]
-	                });
-	                
-	                $('.dropdown-toggle').dropdown();
-
-	                document.getElementById("file").onchange = function () {
-    					document.getElementById("name").value = this.value;
-					};
-	            });
-	            $('body').on('click', function (e) {
-	    			$('[data-toggle="popover"]').each(function () {
-	        			if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
-	            		$(this).popover('hide');
-	        			}
-	    			});
-				});
-		</script>
 
 		<script type="text/javascript" src="<?=base_url('js/crizal/jquery.min.js')?>"></script>
 
@@ -139,7 +117,7 @@
 
 		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/jquery-slimscroll/jquery.slimscroll.min.js')?>"></script>
 
-		<script type="text/javascript" src="<?=base_url('js/crizal/datatables/jquery.dataTables.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/crizal/datatables/datatables.bootstrap.js')?>"></script>
 		
 		<script type="text/javascript" src="<?=base_url('js/formulario_bitacora.js')?>"></script>
 		<script type="text/javascript" src="<?=base_url('js/swith.js')?>"></script>

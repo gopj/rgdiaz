@@ -23,36 +23,37 @@
 			<div class="col-md-4">
 				<div class="email-list">
 					<ul class=list-unstyle>
-						<li class="active">
-							<?php foreach ($todosmensajes as $men) {
-								$fecha_completa = $men->fecha;
-								$fecha = explode(" ", $fecha_completa);
-								echo "<div class=\"card\">";
-									echo "<div class= \"email-list-item\">";
-											echo "<div class=\"email-author\">";
-												echo "<span class=\"email-date\">".$fecha[0]."</span>";
-												echo "<span class=\"author-name\" >".$men->nombre."</span>";
-												echo "<div class=\"email-info \">";
-													echo "<span class=\"email-subject \">".$men->asunto."</span>";
-												echo "</div>";
-											echo "</div>";
-											?>
-											<div class="row" >
-												<div class="col-md-2">
-													<form method='get' action="<?php echo site_url('administrador/mensaje_completo');?>">
-														<input type="hidden" value="<?php echo base64_encode($men->numero); ?>" name="id_contacto"/>
-														<button type="submit" class="btn btn-link link-primary" name="detalles" title="Ver Detalles" onclick="get_message_info();"> <i class="fas fa-envelope-open-text"></i></button>
-													</form> 
-												</div>
-												<div class="col-md-2">	
-													<?php $url_delete = site_url('administrador/eliminar_mensaje') . "/" . $men->numero ; ?>
-													<button id="del_mensaje" type="button" class="btn btn-link link-danger" name="eliminar" title="Eliminar" data-toggle='modal' data-target='.modal-del-mensaje' onclick='delete_mensaje(<?= $men->numero ?>, <?= "\"$url_delete\"" ?>)'><i class="far fa-trash-alt" ></i> </button>
-												</div>
-											</div>
-										<?php   echo "</div>";
-												 echo "</div>"; } ?>
-									
-						</li>
+						<?php foreach ($todosmensajes as $men) {
+							$fecha_completa = $men->fecha;
+							$fecha = explode(" ", $fecha_completa);
+							echo "<li>";
+							echo "<div class=\"card\" onclick=\"get_message_info(" . $men->numero . ")\">";
+								echo "<div class= \"email-list-item\">";
+									echo "<div class=\"email-author\">";
+										echo "<span class=\"email-date\">".$fecha[0]."</span>";
+										echo "<span class=\"author-name\" >".$men->nombre."</span>";
+										echo "<div class=\"email-info \">";
+											echo "<span class=\"email-subject \">".$men->asunto."</span>";
+										echo "</div>";
+									echo "</div>";
+									?>
+									<div class="row" >
+										<div class="col-md-2">
+											<form method='get' action="<?php echo site_url('administrador/mensaje_completo');?>">
+												<input type="hidden" value="<?=$men->numero?>" name="id_contacto" id="id_contacto"/>
+												<button type="button" class="btn btn-link link-primary" name="detalles" title="Ver Detalles" onclick="get_message_info(<?=$men->numero?>)"> <i class="fas fa-envelope-open-text"></i></button>
+											</form> 
+										</div>
+										<div class="col-md-2">	
+											<?php $url_delete = site_url('administrador/eliminar_mensaje') . "/" . $men->numero ; ?>
+											<button id="del_mensaje" type="button" class="btn btn-link link-danger" name="eliminar" title="Eliminar" data-toggle='modal' data-target='.modal-del-mensaje' onclick='delete_mensaje(<?= $men->numero ?>, <?= "\"$url_delete\"" ?>)'><i class="far fa-trash-alt" ></i> </button>
+										</div>
+									</div>
+								<?php   
+								echo "</div>";
+							echo "</div>"; 
+						echo "</li>";
+						} ?>	
 					</ul>
 				</div>
 			</div>
@@ -65,24 +66,22 @@
                 </div>
                 <div class="email">
                     <div class="email-header">
-                        <div class="enterprise_author_name">
-                            <span class="enterprise_author_name">Eque porro quisquam est, qui dolorem ipsum quia posuere eget</p></span>
+                        <div class="email-title">
+                            <span id="email_subject" name="email_subject"></p></span>
                         </div>
                         <span class="divider"></span>
                         <div class="email-author">
-                            <img src="img/email/1.jpg" alt="">
-                            <span class="email-author">Jamara.karle@test.com</span>
-                            <span class="email-date">4:14pm</span>
+                            <span class="email-author" id="email" name="email"></span>
+                            <span class="email-date" id="email_date" name="email_date"></span>
                         </div>
+                        <span class="divider"></span>
+                        <div class="email-author">
+                        	<span class="email-author" id="email_phone" name="email_phone"></span>
+                        </div>	
                         <span class="divider"></span>
                     </div>
                     <div class="email-body">
-                        <span>
-                                Dear Sir/Madam,<br><br>
-                                Exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.<br><br>
-                                Waiting your reply ASAP,<br>
-                                Thanks in advance.
-                            </span>
+                        <span id="email_message" name="email_message"></span>
                     </div>
                     <div class="email-reply">
                         <div class="summernote"></div>

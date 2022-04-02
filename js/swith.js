@@ -1,5 +1,6 @@
 // Global variable for host
 var host="localhost/rgdiaz";
+//var host="rdiaz.mx";
 
 function swith(){
 	// Preguntamos confirmar dar de alta cliente
@@ -663,40 +664,47 @@ function gen_identificador_duiplicado() {
 }
 
 function get_message_info(id){
-	$("#email-subject").val("");
-	$("#no_aut_trans").val("");
-	$("#no_aut_trans_sct").val("");
-	$("#domicilio_emp_trans").val("");
-	$("#tel_emp_trans").val("");
+	$("#email_subject").text("1");
+	$("#email").text("1");
+	$("#email_date").text("1");
+	$("#email_message").text("1");
+	$("#email_phone").text("1");
 
-	var id_tipo_emp_trans = id;
+	//var email_id = $("#id_contacto").val();
+	var email_id = id;
 
 	//AJAX
 	jQuery.ajax({
-			url:'https://' + host + '/administrador/obtiene_emp_trans',	//<-- Url que va procesar la peticion
-			//url:'https://rdiaz.mx/administrador/obtiene_cliente',
-			timeout: 3000, //sets timeout to 3 seconds
-			type:'post',
-			data:{
-				id_tipo_emp_trans: id_tipo_emp_trans,
-			}
-		}).done(
-			function(resp)
-			{
-				var json_data = jQuery.parseJSON(resp);
-				var nombre_emp_trans = json_data.nombre_emp_trans;
-				var no_autorizacion_transportista = json_data.no_autorizacion_transportista;
-				var no_autorizacion_sct = json_data.no_autorizacion_sct;
-				var domicilio = json_data.domicilio;
-				var telefono = json_data.telefono;
+		url:'https://' + host + '/administrador/get_message',	//<-- Url que va procesar la peticion
+		//url:'https://rdiaz.mx/administrador/get_message',
+		timeout: 3000, //sets timeout to 3 seconds
+		type:'post',
+		data:{
+			email_id: email_id,
+		}
+	}).done(
+		function(resp) 
+		{
+			var json_data = jQuery.parseJSON(resp);
+			var email_subject = json_data.email_subject;
+			var email = json_data.email;
+			var email_date = json_data.email_date;
+			var email_message = json_data.email_message;
+			var email_phone = json_data.email_phone;
 
-				$("#nombre_emp_trans").val(nombre_emp_trans);
-				$("#no_aut_trans").val(no_autorizacion_transportista);
-				$("#no_aut_trans_sct").val(no_autorizacion_sct);
-				$("#domicilio_emp_trans").val(domicilio);
-				$("#tel_emp_trans").val(telefono);
+			if (email_subject == ""){
+				email_subject = "-";
 			}
-		);
+
+			email_phone = "Teléfono: " + email_phone;
+
+			$("#email_subject").text(email_subject);
+			$("#email").text(email);
+			$("#email_date").text(email_date);
+			$("#email_message").text(email_message);
+			$("#email_phone").text(email_phone);
+		}
+	);
 }
 
 /*function breakout_of_frame() {
