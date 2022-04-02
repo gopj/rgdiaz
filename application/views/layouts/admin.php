@@ -14,6 +14,9 @@
 		<link href="<?=base_url('css/bootstrap4/magic-check.css');?>" rel="stylesheet">    	
 		
 		<link href="<?=base_url('css/crizal/datatables/jquery.dataTables.min.css');?>" rel="stylesheet">
+
+		<!-- bootstrap-datepicker plugin -->
+		<link href="<?=base_url('css/crizal/plugins/bootstrap-datepicker/datepicker.css');?>" rel="stylesheet">
 		
 		<link href="<?=base_url('css/custom.css');?>" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="<?=base_url('/css/estilos.css')?>">

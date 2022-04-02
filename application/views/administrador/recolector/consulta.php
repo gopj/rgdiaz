@@ -16,8 +16,8 @@
 		<form class="form" role="form" autocomplete="off" method='post' action="<?php echo site_url('admin/recolector_consulta');?>">
 			<div class="form-group row">
 				<label class="col-md-2 form-control-label" for="id_persona"> Selecciona Correo </label>
-				<div class="col-md-3">
-					<select class="form-control" onclick="get_recolector(this.value)" id="id_persona" name="id_persona">
+				<div class="col-md-6">
+					<select class="form-control" onchange="get_recolector(this.value)" id="id_persona" name="id_persona">
 						<option value=""> Nuevo </option>
 						<?php foreach($recolectores->result() as $row){ ?>
 							<option value="<?php echo $row->id_persona;?>"><?php echo $row->correo; ?></option>
@@ -28,21 +28,21 @@
 
 			<div class="form-group row">
 				<label class="col-md-2 form-control-label" for="nombre_recolector">Nombre</label>
-				<div class="col-md-3">
+				<div class="col-md-6">
 					<input class="form-control" type="text" class="txt " style=" text-align: center;" name="nombre_recolector" id="nombre_recolector" oninvalid="this.setCustomValidity('Ingresa nombre del recolector'); " oninput="setCustomValidity(''); onchange_recolector()"  required>
 				</div>
 			</div>
 
 			<div class="form-group row">
 				<label class="col-md-2 form-control-label" for="correo">Correo Electronico</label>
-				<div class="col-md-3">
+				<div class="col-md-6">
 					<input class="form-control" type="email"  style=" text-align: center;" name="correo" id="correo" oninvalid="this.setCustomValidity('Ingresa correo')" oninput="setCustomValidity(''); onchange_recolector()" required>
 				</div>
 			</div>
 
 			<div class="form-group	 row">
 				<label class="col-md-2 form-control-label" for="clave" style="justify-content: left;">Contraseña</label>
-				<div class="col-md-3">
+				<div class="col-md-6">
 					<input class="form-control" type="text"  name="clave" id="clave" oninvalid="this.setCustomValidity('Ingresa una clave')" oninput="setCustomValidity(''); onchange_recolector()" onchange="input_pass()" required> &nbsp; &nbsp; &nbsp;
 					
 				</div>
@@ -56,7 +56,7 @@
 
 			<div class="form-group row">
 				<label class="col-md-2 form-control-label" for="vehiculo_asignado"> Vehiculo asignado </label>
-				<div class="col-md-3">
+				<div class="col-md-6">
 					<select class="form-control"  id="vehiculo_asignado" name="vehiculo_asignado" onchange="onchange_recolector()">
 						<?php foreach($vehiculos->result() as $row){ ?>
 							<option value="<?php echo $row->id_vehiculo;?>">
@@ -142,7 +142,7 @@
 				<div class="form-group col-lg-6">
 					<label class="col-lg-6 col-form-label form-control-label" for="id_vehiculo"> Selecciona Vehículo</label>
 					<div class="col-lg-12">
-						<select class="form-control" onclick="get_vehiculo(this.value)" id="id_vehiculo" name="id_vehiculo">
+						<select class="form-control" onchange="get_vehiculo(this.value)" id="id_vehiculo" name="id_vehiculo">
 							<option value="nuevo"> Nuevo </option>
 							<?php foreach($vehiculos->result() as $row){ ?>
 								<option value="<?php echo $row->id_vehiculo;?>"><?php echo $row->alias; ?></option>
@@ -281,7 +281,7 @@
 				<div class="form-group col-lg-9">
 					<label class="col-lg-6 col-form-label form-control-label" for="id_emp_dest"> Selecciona Empresa Destino</label>
 					<div class="col-lg-12">
-						<select class="form-control" style="width:81%;" onclick="get_destino(this.value)" id="id_emp_dest" name="id_emp_dest">
+						<select class="form-control" style="width:81%;" onchange="get_destino(this.value)" id="id_emp_dest" name="id_emp_dest">
 							<option value=""> Nuevo </option>
 
 							<?php foreach($destinos->result() as $row){ ?>
