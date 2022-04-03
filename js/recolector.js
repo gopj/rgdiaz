@@ -419,43 +419,6 @@ $(function() {
 });
 
 
-$(document).ready(function() {
-    
-    "use strict";
-    
-    $('.date-picker').datepicker({
-        orientation: "top auto",
-        autoclose: true
-    });
-
-});
-
-$(document).ready(function() {
-	var table = $('#tabla_residuos').DataTable( {
-		// "scrollY": 			true,
-		// "scrollX": 			true,
-		"scrollCollapse": 	true,
-		"pageLength": 		10,
-		"language": {
-			"lengthMenu": "Mostrar _MENU_ registros por página",
-			"search": "Buscar:",
-			"zeroRecords": "No hay resultados para esa búsqueda.",
-			"info": "Mostrando página _PAGE_ de _PAGES_",
-			"infoEmpty": "No hay registros disponibles",
-			"infoFiltered": "(filtered from _MAX_ total records)"
-		},
- 		"fixedColumns": {
-            "leftColumns": 	1,
-            "rightColumns": 1
-        },
-        "columnDefs": [
-    		{ 
-    			"width": "500px", 
-    			"targets": 1 
-    		}
-  		]
-	} );
-} );
 
 function update_clave(id_clave) {
 	var id = id_clave;
@@ -479,32 +442,6 @@ function update_clave(id_clave) {
 		}
 	);
 }
-
-
-$("input[type='number']").InputSpinner();
-
-
-$(document).ready(function() {
-	var empresa_destino 	= document.getElementById('empresa_destino');
-	var fecha_embarque 		= document.getElementById('fecha_embarque').value;
-	var responsable_destino = document.getElementById('responsable_destino').value;
-	var ruta 				= document.getElementById('ruta').value;
-	var observaciones		= document.getElementById('observaciones').value;
-
-	var s_empresa_destino = empresa_destino.options[empresa_destino.selectedIndex].value;
-
-	console.log(s_empresa_destino);
-	console.log(fecha_embarque);
-	console.log(responsable_destino);
-	console.log(ruta);
-	console.log(observaciones);
-
-	$("#terminar_responsable").val(responsable_destino);
-	$("#terminar_fecha").val(fecha_embarque);
-	$("#terminar_empresa_destino").val(s_empresa_destino);
-	$("#terminar_ruta").val(s_empresa_destino);
-	$("#terminar_observaciones").val(s_empresa_destino);
-} );
 
 function terminar_manifiesto() {
 	
@@ -579,10 +516,6 @@ function check_resposanble() {
 	}
 }
 
-$( document ).ready(function() {
-    check_resposanble();
-});
-
 (function() {
 	'use strict';
 	window.addEventListener('load', function() {
@@ -618,7 +551,82 @@ function modal_id_folio(){
 }
 
 function form_bitacora_submit(){
-	
 	$('#form_bitacora').submit();
-	
 }
+
+
+$(document).ready(function() {
+    
+	var empresa_destino 	= document.getElementById('empresa_destino');
+	var fecha_embarque 		= document.getElementById('fecha_embarque').value;
+	var responsable_destino = $('#responsable_destino').val;
+	var ruta 				= $('#ruta').val;
+	var observaciones		= $('#observaciones').val;
+
+	var s_empresa_destino = $('#empresa_destino').val;
+
+	//empresa_destino.options[empresa_destino.selectedIndex].value;
+
+	console.log(s_empresa_destino);
+	console.log(fecha_embarque);
+	console.log(responsable_destino);
+	console.log(ruta);
+	console.log(observaciones);
+
+	$("#terminar_responsable").val(responsable_destino);
+	$("#terminar_fecha").val(fecha_embarque);
+	$("#terminar_empresa_destino").val(s_empresa_destino);
+	$("#terminar_ruta").val(s_empresa_destino);
+	$("#terminar_observaciones").val(s_empresa_destino);
+
+	$('.date-picker').datepicker({
+		language: 'es',
+		orientation: "top auto",
+		autoclose: true
+	});
+
+	$('#tabla_manifiestos').dataTable({
+		"displayLength": 25,
+		"language": {
+			"lengthMenu": "Mostrar _MENU_ registros por página",
+			"search": "Buscar:",
+			"zeroRecords": "No hay resultados para esa búsqueda.",
+			"info": "Mostrando página _PAGE_ de _PAGES_",
+			"infoEmpty": "No hay registros disponibles",
+			"infoFiltered": "(filtered from _MAX_ total records)"
+		},
+	});
+
+	check_resposanble();
+});
+
+
+
+
+
+/*$(document).ready(function() {
+	var table = $('#tabla_residuos').DataTable( {
+		// "scrollY": 			true,
+		// "scrollX": 			true,
+		"scrollCollapse": 	true,
+		"pageLength": 		10,
+		"language": {
+			"lengthMenu": "Mostrar _MENU_ registros por página",
+			"search": "Buscar:",
+			"zeroRecords": "No hay resultados para esa búsqueda.",
+			"info": "Mostrando página _PAGE_ de _PAGES_",
+			"infoEmpty": "No hay registros disponibles",
+			"infoFiltered": "(filtered from _MAX_ total records)"
+		},
+ 		"fixedColumns": {
+            "leftColumns": 	1,
+            "rightColumns": 1
+        },
+        "columnDefs": [
+    		{ 
+    			"width": "500px", 
+    			"targets": 1 
+    		}
+  		]
+	} );
+} );*/

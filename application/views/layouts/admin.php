@@ -4,163 +4,182 @@
 		<!-- base_url -->
 		<base href="<?php echo base_url(); ?>"/>
 
-		<!-- Required meta tags -->
+		<!-- metas -->
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="keywords" content="admin,dashboard" />
 
-		<link href="<?=base_url('css/crizal/bootstrap.min.css');?>" rel="stylesheet">
-		<link href="<?=base_url('css/bootstrap4/open-iconic-bootstrap.css');?>" rel="stylesheet">
-		<link href="<?=base_url('css/bootstrap4/sticky-footer.css');?>" rel="stylesheet">
-		<link href="<?=base_url('css/bootstrap4/magic-check.css');?>" rel="stylesheet">    	
-		
-		<link href="<?=base_url('css/crizal/plugins/datatables/datatables.bootstrap.css');?>" rel="stylesheet">
-
-		<!-- bootstrap-datepicker plugin -->
-		<link href="<?=base_url('css/crizal/plugins/bootstrap-datepicker/datepicker.css');?>" rel="stylesheet">
-		
-		<link href="<?=base_url('css/custom.css');?>" rel="stylesheet">
-
+		<!-- common plugins -->
+		<link rel="stylesheet" href="<?=base_url('css/crizal/bootstrap.min.css')?>" />
 		<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/font-awesome/css/font-awesome.min.css')?>" />
 		<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/icomoon/style.css')?>" />
 		<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/uniform/css/default.css')?>" />
 		<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/switchery/switchery.min.css')?>" />
-		<link rel="stylesheet" href="<?=base_url('css/crizal/styles.css')?>" />
+
+		<!-- summernote-master plugin -->
+		<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/summernote-master/summernote.css')?>" />
+
+		<!-- bootstrap-datepicker plugin -->
+		<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/bootstrap-datepicker/datepicker.css')?>" />
+
+		<!-- datatables plugin -->
+		<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/datatables/jquery.datatables.min.css')?>" />
+		
+		<!-- datatables plugin -->
+		<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/datatables/jquery.datatables_themeroller.css')?>" />
+
+		<!-- bootstrap-colorpicker plugin -->
+		<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/bootstrap-colorpicker/bootstrap-colorpicker.css')?>" />
+
+		<!-- bootstrap-tagsinput plugin -->
+		<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css')?>" />
+
+		<!-- bootstrap-clockpicker plugin -->
+		<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/bootstrap-clockpicker/bootstrap-clockpicker.min.css')?>" />
+
+		<!-- custom css -->
+		<link rel="stylesheet" href="<?=base_url('css/crizal/admin-template/styles.css')?>" />
 
 		<title>Recolector</title>
 	</head>
 	<body>
 	<div class="page-container">
 		<div class="page-sidebar">
-            <a class="logo-box" href="<?=base_url('administrador/index')?>">
-                <span>RDiaz</span>
-                <i class="fas fa-unlock-alt" id="fixed-sidebar-toggle-button"></i>
-                <i class="icon-close" id="sidebar-toggle-button-close"></i>
-            </a>
-            <div class="page-sidebar-inner">
-                <div class="page-sidebar-menu">
-                    <ul class="accordion-menu">
-                        <li>
-                            <a href="<?=base_url('administrador/index')?>">
-                                <i class="menu-icon icon-home4"></i><span>Mi Carpeta</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?=base_url('administrador/mensajes_contacto')?>">
-                                <i class="menu-icon icon-inbox"></i><span>Correo</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#!">
-                                <i class="menu-icon icon-truck"></i><span>Recolectores</span><i class="accordion-icon fa fa-angle-left"></i>
-                            </a>
-                            <ul>
-                                <li><a href="<?=base_url('admin/recolector_consulta')?>">Consultas</a></li>
-                                <li><a href="<?=base_url('admin/recolector_index')?>">Manifiestos</a></li>
-                                <li><a href="<?=base_url('admin/recolector_bitacora')?>">Bítacora</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#!">
-                                <i class="menu-icon icon-user"></i><span>Clientes</span><i class="accordion-icon fa fa-angle-left"></i>
-                            </a>
-                            <ul>
-                                <li><a href="#">+ Nuevo Cliente</a></li>
-                                <li><a href="<?=base_url('administrador/admin_clientes')?>">Directorio de Clientes</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#!">
-                                <i class="menu-icon icon-folder"></i><span>Carpetas</span><i class="accordion-icon fa fa-angle-left"></i>
-                            </a>
-                            <ul>
-                                <li><a href="<?=base_url('administrador/subir_archivo');?>">Mis Documentos</a></li>
-                                <li><a href="<?=base_url('administrador/subir_archivo');?>">Subir Archivos</a></li>
-                                
-                            </ul>
-                        </li>
-                        
-                        <li class="menu-divider"></li>
-                        <li>
-                            <a href="#!">
-                                <i class="menu-icon icon-settings"></i><span>Configuración</span><i class="accordion-icon fa fa-angle-left"></i>
-                            </a>
-                            <ul>
-                                <li><a href="#">Ajustes</a></li>
-                                <li><a href="<?=base_url();?>">Cerrar Sesión</a></li>
-                                
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+			<a class="logo-box" href="<?=base_url('administrador/index')?>">
+				<span>RDiaz</span>
+				<i class="fas fa-unlock-alt" id="fixed-sidebar-toggle-button"></i>
+				<i class="icon-close" id="sidebar-toggle-button-close"></i>
+			</a>
+			<div class="page-sidebar-inner">
+				<div class="page-sidebar-menu">
+					<ul class="accordion-menu">
+						<li>
+							<a href="<?=base_url('administrador/index')?>">
+								<i class="menu-icon icon-home4"></i><span>Mi Carpeta</span>
+							</a>
+						</li>
+						<li>
+							<a href="<?=base_url('administrador/mensajes_contacto')?>">
+								<i class="menu-icon icon-inbox"></i><span>Correo</span>
+							</a>
+						</li>
+						<li>
+							<a href="#!">
+								<i class="menu-icon icon-truck"></i><span>Recolectores</span><i class="accordion-icon fa fa-angle-left"></i>
+							</a>
+							<ul>
+								<li><a href="<?=base_url('admin/recolector_consulta')?>">Consultas</a></li>
+								<li><a href="<?=base_url('admin/recolector_index')?>">Manifiestos</a></li>
+								<li><a href="<?=base_url('admin/recolector_bitacora')?>">Bítacora</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#!">
+								<i class="menu-icon icon-user"></i><span>Clientes</span><i class="accordion-icon fa fa-angle-left"></i>
+							</a>
+							<ul>
+								<li><a href="#">+ Nuevo Cliente</a></li>
+								<li><a href="<?=base_url('administrador/admin_clientes')?>">Directorio de Clientes</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#!">
+								<i class="menu-icon icon-folder"></i><span>Carpetas</span><i class="accordion-icon fa fa-angle-left"></i>
+							</a>
+							<ul>
+								<li><a href="<?=base_url('administrador/subir_archivo');?>">Mis Documentos</a></li>
+								<li><a href="<?=base_url('administrador/subir_archivo');?>">Subir Archivos</a></li>
+								
+							</ul>
+						</li>
+						
+						<li class="menu-divider"></li>
+						<li>
+							<a href="#!">
+								<i class="menu-icon icon-settings"></i><span>Configuración</span><i class="accordion-icon fa fa-angle-left"></i>
+							</a>
+							<ul>
+								<li><a href="#">Ajustes</a></li>
+								<li><a href="<?=base_url();?>">Cerrar Sesión</a></li>
+								
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
 		<div class="page-content">
 			<div class="page-inner">
 				<?php echo $output; ?>
 			</div>
 		</div>	
 
-		<!-- FOOTER -->
-		<footer class="footer">
-			<div class="container">
-				<span class="footext"> Todos los derechos reservados &copy; <?php echo date("Y"); ?> RDíaz </span>
-			</div>	
-		</footer>
+		<!-- end page main wrapper -->
+		<div class="page-footer">
+			<p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Crizal All rights reserved.</p>
+		</div>
 
 		
 
-	</div>		
-	</body>
+	</div>
+	<!-- all js include start -->
 
-		<script type="text/javascript" src="<?=base_url('js/recolector.js')?>"></script>
+	<!-- jQuery -->
+	<script src="<?=base_url('js/crizal/plugins/jquery/jquery-3.1.0.min.js')?>"></script>
 
-		<script type="text/javascript" src="<?=base_url('js/crizal/jquery.min.js')?>"></script>	
+	<!-- popper -->
+	<script src="<?=base_url('js/crizal/plugins/popper/js/popper.min.js')?>"></script>
 
-		<script type="text/javascript" src="<?=base_url('js/crizal/bootstrap.min.js')?>"></script>
+	<!-- bootstrap -->
+	<script src="<?=base_url('js/crizal/plugins/bootstrap/bootstrap.min.js')?>"></script>
 
-		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/datatables/jquery.datatables.js')?>"></script>
+	<!-- slimscroll -->
+	<script src="<?=base_url('js/crizal/plugins/jquery-slimscroll/jquery.slimscroll.min.js')?>"></script>
 
-		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/datatables/datatables.bootstrap.js')?>"></script>
+	<!-- uniform -->
+	<script src="<?=base_url('js/crizal/plugins/uniform/js/jquery.uniform.standalone.js')?>"></script>
 
-		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/bootstrap-datepicker/bootstrap-datepicker.js')?>"></script>
+	<!-- switchery -->
+	<script src="<?=base_url('js/crizal/plugins/switchery/switchery.min.js')?>"></script>
 
-		<script type="text/javascript" src="<?=base_url('js/swith.js')?>"></script>
+	<!-- datatable -->
+	<script src="<?=base_url('js/crizal/plugins/datatables/jquery.datatables.js')?>"></script>
 
-		<script type="text/javascript" src="<?=base_url('js/formulario_bitacora.js')?>"></script>
+	<!-- summernote -->
+	<script src="<?=base_url('js/crizal/plugins/summernote-master/summernote.min.js')?>"></script>
 
-		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/jquery-slimscroll/jquery.slimscroll.min.js')?>"></script>
+	<!-- datepicker -->
+	<script src="<?=base_url('js/crizal/plugins/bootstrap-datepicker/bootstrap-datepicker.js')?>"></script>
+	<script src="<?=base_url('js/crizal/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.es.js')?>"></script>
 
-		<!-- uniform -->
-		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/uniform/js/jquery.uniform.standalone.js')?>"></script>
+	<!-- colorpicker -->
+	<script src="<?=base_url('js/crizal/plugins/bootstrap-colorpicker/bootstrap-colorpicker.js')?>"></script>
 
-		<!-- switchery -->
-		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/switchery/switchery.min.js')?>"></script>
+	<!-- tagsinput -->
+	<script src="<?=base_url('js/crizal/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js')?>"></script>
 
-		<!-- d3.min -->
-		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/d3/d3.min.js')?>"></script>
+	<!-- clockpicker -->
+	<script src="<?=base_url('js/crizal/plugins/bootstrap-clockpicker/bootstrap-clockpicker.min.js')?>"></script>
 
-		<!-- nv.d3.min -->
-		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/nvd3/nv.d3.min.js')?>"></script>
+	<!-- form elements -->
+	<script src="<?=base_url('js/crizal/pages/form-elements.js')?>"></script>
 
-		<!-- float chart -->
-		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/flot/jquery.flot.min.js')?>"></script>
+	<!-- table data-->
+	<script src="<?=base_url('js/crizal/pages/table-data.js')?>"></script>
 
-		<!-- float time -->
-		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/flot/jquery.flot.time.min.js')?>"></script>
+	<!-- custom scripts -->
+	<script src="<?=base_url('js/crizal/main.js')?>"></script>
 
-		<!-- float symbol -->
-		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/flot/jquery.flot.symbol.min.js')?>"></script>
+	<!-- all js include end -->		
 
-		<!-- float resize -->
-		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/flot/jquery.flot.resize.min.js')?>"></script>
+	<!-- Custom -->
+	<script type="text/javascript" src="<?=base_url('js/recolector.js')?>"></script>
 
-		<!-- float tooltip -->
-		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/flot/jquery.flot.tooltip.min.js')?>"></script>
+	<script type="text/javascript" src="<?=base_url('js/formulario_bitacora.js')?>"></script>
 
-		<!-- float pie -->
-		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/flot/jquery.flot.pie.min.js')?>"></script>
+	<script type="text/javascript" src="<?=base_url('js/swith.js')?>"></script>
 
-		<!-- custom scripts -->
-		<script type="text/javascript" src="<?=base_url('js/crizal/main.js')?>"></script>
+</body>	
 
 </html>

@@ -5,7 +5,10 @@ $(document).ready(function() {
     
     // Datatables
     
-    $('#example').dataTable();
+    $('#example').dataTable({
+        "displayLength": 25,
+        
+    });
     
     var table = $('#example2').DataTable({
         "columnDefs": [

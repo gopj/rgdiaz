@@ -32,6 +32,8 @@
 
     <!-- bootstrap-datepicker plugin -->
     <link rel="stylesheet" href="<?=base_url('css/crizal/plugins/bootstrap-datepicker/datepicker.css')?>" />
+    <script src="<?=base_url('js/crizal/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.es.js')?>"></script>
+
 
     <!-- bootstrap-colorpicker plugin -->
     <link rel="stylesheet" href="<?=base_url('css/crizal/plugins/bootstrap-colorpicker/bootstrap-colorpicker.css')?>" />
