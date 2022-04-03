@@ -13,7 +13,7 @@
 		<link href="<?=base_url('css/bootstrap4/sticky-footer.css');?>" rel="stylesheet">
 		<link href="<?=base_url('css/bootstrap4/magic-check.css');?>" rel="stylesheet">    	
 		
-		<link href="<?=base_url('css/crizal/datatables/jquery.dataTables.min.css');?>" rel="stylesheet">
+		<link href="<?=base_url('css/crizal/plugins/datatables/datatables.bootstrap.css');?>" rel="stylesheet">
 
 		<!-- bootstrap-datepicker plugin -->
 		<link href="<?=base_url('css/crizal/plugins/bootstrap-datepicker/datepicker.css');?>" rel="stylesheet">
@@ -108,23 +108,20 @@
 			</div>	
 		</footer>
 
-		<script type="text/javascript" src="<?=base_url('js/recolector.js')?>"></script>
-
-		<script>
-			$('#fecha_embarque').datepicker({
-				uiLibrary: 'bootstrap4',
-				format: "dd/mm/yyyy"
-			});
-		</script>	
+		
 
 	</div>		
 	</body>
+
+		<script type="text/javascript" src="<?=base_url('js/recolector.js')?>"></script>
 
 		<script type="text/javascript" src="<?=base_url('js/crizal/jquery.min.js')?>"></script>	
 
 		<script type="text/javascript" src="<?=base_url('js/crizal/bootstrap.min.js')?>"></script>
 
-		<script type="text/javascript" src="<?=base_url('js/crizal/datatables/jquery.dataTables.js')?>"></script>
+		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/datatables/jquery.datatables.js')?>"></script>
+
+		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/datatables/datatables.bootstrap.js')?>"></script>
 
 		<script type="text/javascript" src="<?=base_url('js/swith.js')?>"></script>
 
