@@ -4,7 +4,7 @@ class Administrador extends MY_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->setLayout('old_admin');
+		$this->setLayout('admin');
 		$this->load->model('persona_model');
 		$this->load->model('contacto_model');
 		$this->load->model('carpeta_model');

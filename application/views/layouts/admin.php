@@ -79,7 +79,8 @@
 								<i class="menu-icon icon-user"></i><span>Clientes</span><i class="accordion-icon fa fa-angle-left"></i>
 							</a>
 							<ul>
-								<li><a href="#">+ Nuevo Cliente</a></li>
+								<li><a href="#"  data-toggle="modal" data-target="#modal_nuevo_cliente">+ Nuevo Cliente</a></li>
+								<li><a href="#"  data-toggle="modal" data-target="#modal__cliente">- Baja Cliente</a></li>
 								<li><a href="<?=base_url('administrador/admin_clientes')?>">Directorio de Clientes</a></li>
 							</ul>
 						</li>
@@ -102,7 +103,6 @@
 							<ul>
 								<li><a href="#">Ajustes</a></li>
 								<li><a href="<?=base_url();?>">Cerrar Sesión</a></li>
-								
 							</ul>
 						</li>
 					</ul>
@@ -117,11 +117,65 @@
 			<div class="page-footer" style="padding-left: 10%;">
 				<p>Todos los derechos reservados &copy; <script>document.write(new Date().getFullYear())</script> RDíaz.</p>
 			</div>
+		</div>		
+	</div>
+
+	<!-- The Modal -->
+	<div class="modal" id="modal_nuevo_cliente">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Nuevo cliente</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<!-- Modal body -->
+				<div class="modal-body">
+					<div class="form-row">
+						<div class="form-group col-md-9">
+							<label class="col-form-label" for="nombre_residuo"> Residuo Peligroso </label>
+							<form id="form_alta_cliente2" method="post" action="<?php echo site_url('administrador/alta_cliente'); ?>">
+								<div class="modal-body">
+									Correo Electrónico:
+									<div class='input-prepend'>
+										<span class='add-on'>
+											<img src="img/glyphicons_003_user.png" class="icon-form">
+										</span>
+										<input class="txt-modal" type="text" id="alta_correo" name="correo"/>
+									</div>
+									<br/>
+									Nota: se le enviara automáticamente al cliente un correo con su usuario y contraseña.
+								</div>
+								<div class="modal-footer">
+									<input type="button" class="btn btn-primary"  onclick="alta_cliente();" value="Dar de Alta">
+									<a href="<?php echo site_url('administrador/alta_cliente_admin'); ?>" class="btn btn-primary">Dar de alta y registrar datos</a>
+								</div>
+							</form>
+							<div class="invalid-feedback">
+								Selecciona residuo peligroso.
+							</div>
+						</div>	
+
+						<div class="form-group col-md-3">
+							<label class="col-form-label" for="clave"> Clave </label>
+							<input type="text" class="form-control" id="clave" name="clave" value="Clave" disabled> 
+						</div>	
+						
+					</div>
+				</div>
+			</div>
+			<!-- Body end -->
+			<!-- Modal footer -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+				<button type="submit" class="btn btn-primary">Guardar</button>
+			</div>
 		</div>
+	</div> <!-- Modal end -->
 
 
-		
-	</div>	
+
+
 
 	<!-- all js include start -->
 
