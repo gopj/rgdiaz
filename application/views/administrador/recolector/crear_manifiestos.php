@@ -26,7 +26,7 @@
 							</div>
 							<div class="form-group col-md-3">
 								<label class="col-form-label" for="fecha_salida"> <center> Fecha de Embarque </center> </label>
-								<input style="text-align: center;" class="form-control" id="fecha_embarque" name="fecha_embarque" value="<?= $fecha_embarque ?>" required>
+								<input style="text-align: center;" class="form-control date-picker" id="fecha_embarque" name="fecha_embarque" value="<?= $fecha_embarque ?>" required>
 							</div>
 							<div class="invalid-feedback">
 								Selecciona la fecha de embarque
@@ -97,7 +97,7 @@
 												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												<br />
 
-												<div class="row">
+												<div class="form-row">
 													<div class="form-check col-sm">
 
 														<div class="custom-control custom-checkbox">

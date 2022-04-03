@@ -153,7 +153,7 @@
 												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												<br />
 
-												<div class="row">
+												<div class="form-row">
 													<div class="form-check col-sm">
 														<div class="custom-control custom-checkbox">
 															<input type="checkbox" class="custom-control-input" id="caracteristica_check1" value="Corrosivo" name="caracteristica_check[]" onclick="clear_required();" required>
