@@ -8,11 +8,11 @@
     <meta name="author" content="Chitrakoot Web" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="keywords" content="HTML5 Template Crizal" />
-    <meta name="description" content="Crizal - Multipurpose Responsive + Admin" />
-
+    <meta name="keywords" content="admin,dashboard" />
+    <meta name="description" content="Crizal - Responsive Admin Dashboard Template" />
+    
     <!-- title  -->
-    <title>Crizal - Testing</title>
+    <title>Crizal - Responsive Admin Dashboard Template</title>
 
     <!-- favicon -->
     <link rel="shortcut icon" href="<?=base_url('img/crizal/logos/favicon.png')?>">
@@ -20,19 +20,30 @@
     <link rel="apple-touch-icon" sizes="72x72" href="<?=base_url('img/crizal/logos/apple-touch-icon-72x72.png')?>">
     <link rel="apple-touch-icon" sizes="114x114" href="<?=base_url('img/crizal/logos/apple-touch-icon-114x114.png')?>">
 
-    <!-- plugins -->
-    <link href="<?=base_url('css/crizal/bootstrap.min.css');?>" rel="stylesheet">
+    <!-- common plugins -->
+    <link rel="stylesheet" href="<?=base_url('css/crizal/plugins/bootstrap/bootstrap.min.css')?>" />
+    <link rel="stylesheet" href="<?=base_url('css/crizal/plugins/font-awesome/css/font-awesome.min.css')?>" />
+    <link rel="stylesheet" href="<?=base_url('css/crizal/plugins/icomoon/style.css')?>" />
+    <link rel="stylesheet" href="<?=base_url('css/crizal/plugins/uniform/css/default.css')?>" />
+    <link rel="stylesheet" href="<?=base_url('css/crizal/plugins/switchery/switchery.min.css')?>" />
+
+    <!-- summernote-master plugin -->
+    <link rel="stylesheet" href="<?=base_url('css/crizal/plugins/summernote-master/summernote.css')?>" />
+
+    <!-- bootstrap-datepicker plugin -->
+    <link rel="stylesheet" href="<?=base_url('css/crizal/plugins/bootstrap-datepicker/datepicker.css')?>" />
+
+    <!-- bootstrap-colorpicker plugin -->
+    <link rel="stylesheet" href="<?=base_url('css/crizal/plugins/bootstrap-colorpicker/bootstrap-colorpicker.css')?>" />
+
+    <!-- bootstrap-tagsinput plugin -->
+    <link rel="stylesheet" href="<?=base_url('css/crizal/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css')?>" />
+
+    <!-- bootstrap-clockpicker plugin -->
+    <link rel="stylesheet" href="<?=base_url('css/crizal/plugins/bootstrap-clockpicker/bootstrap-clockpicker.min.css')?>" />
     
-    <link rel="stylesheet" href="<?=base_url('css/crizal/plugins.css')?>" />
-
-    <!-- search css -->
-    <link rel="stylesheet" href="<?=base_url('css/crizal/search.css')?>" />
-
-    <!-- quform css -->
-    <link rel="stylesheet" href="<?=base_url('css/crizal/quform/base.css')?>">
-
     <!-- custom css -->
-    <link href="<?=base_url('css/crizal/styles.css')?>" rel="stylesheet" id="colors">
+    <link rel="stylesheet" href="<?=base_url('css/crizal/admin-template/styles.css')?>" />
 
 </head>
 
@@ -40,210 +51,229 @@
 
    		<?=$output?>
 
-        <!-- start footer section -->
-        <footer class="footer-style10">
-
-            <div class="footer-top-bar sm-display-none">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-4">
-                            <div class="padding-30px-all sm-padding-25px-tb sm-no-padding-lr border-right border-color-light-black sm-no-border-right sm-border-bottom">
-                                <span class="d-inline-block font-size36 line-height-30 sm-font-size32 sm-line-height-30 text-theme-color vertical-align-top width-40px"><i class="ti-pencil-alt vertical-align-top"></i></span>
-                                <div class="d-inline-block vertical-align-top padding-10px-left width-75">
-                                    <h5 class="no-margin text-uppercase font-size15 font-weight-600">Trend Design</h5>
-                                    <p class="no-margin line-height-normal">Lorem ipsum dolor sit amet</p>
-                                </div>
-                            </div>
+             <!-- start main right sidebar -->
+            <div class="page-right-sidebar" id="main-right-sidebar">
+                <div class="page-right-sidebar-inner">
+                    <div class="right-sidebar-top">
+                        <div class="right-sidebar-tabs">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active" id="chat-tab"><a href="#chat" aria-controls="chat" role="tab" data-toggle="tab">chat</a></li>
+                                <li role="presentation" id="settings-tab"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">settings</a></li>
+                            </ul>
                         </div>
-                        <div class="col-lg-4">
-                            <div class="padding-30px-all sm-padding-25px-tb sm-no-padding-lr border-right border-color-light-black sm-no-border-right sm-border-bottom">
-                                <span class="d-inline-block font-size36 line-height-30 sm-font-size32 sm-line-height-30 text-theme-color vertical-align-top width-40px"><i class="ti-files vertical-align-top"></i></span>
-                                <div class="d-inline-block vertical-align-top padding-10px-left width-75">
-                                    <h5 class="no-margin text-uppercase font-size15 font-weight-600">Documentation</h5>
-                                    <p class="no-margin line-height-normal">Lorem ipsum dolor sit amet</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="padding-30px-all sm-padding-25px-tb sm-no-padding-lr">
-                                <span class="d-inline-block font-size36 line-height-30 sm-font-size32 sm-line-height-30 text-theme-color vertical-align-top width-40px"><i class="ti-headphone-alt vertical-align-top"></i></span>
-                                <div class="d-inline-block vertical-align-top padding-10px-left width-75">
-                                    <h5 class="no-margin text-uppercase font-size15 font-weight-600">Fast Support</h5>
-                                    <p class="no-margin line-height-normal">Lorem ipsum dolor sit amet</p>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="#!" class="right-sidebar-toggle right-sidebar-close" data-sidebar-id="main-right-sidebar"><i class="icon-close"></i></a>
                     </div>
-                </div>
-            </div>
-
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-sm-12 col-lg-3 sm-margin-35px-bottom">
-                        <img src="<?=base_url('img/crizal/logos/logo-footer-dark.png')?>" alt="..." />
-                    </div>
-                    <div class="col-sm-6 col-lg-2 sm-margin-35px-bottom">
-                        <h3>Links</h3>
-                        <ul>
-                            <li><a href="#!">Jobs</a> </li>
-                            <li><a href="#!">Pricing</a> </li>
-                            <li><a href="#!">Portfolio</a> </li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-6 col-lg-2 sm-margin-35px-bottom">
-                        <h3>Services</h3>
-                        <ul>
-                            <li><a href="#!">Report</a> </li>
-                            <li><a href="#!">Analysis</a> </li>
-                            <li><a href="#!">Plan</a> </li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-6 col-lg-2 mobile-padding-35px-bottom">
-                        <h3>About</h3>
-                        <ul>
-                            <li><a href="#!">About</a> </li>
-                            <li><a href="#!">Contact</a> </li>
-                            <li><a href="#!">Features</a> </li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-6 col-md-6 col-lg-3">
-                        <h3>Newsletter</h3>
-                        <form class="quform newsletter-form w-sm-90 mx-auto mx-lg-0" action="quform/newsletter-two.php" method="post" enctype="multipart/form-data" onclick="">
-
-                            <div class="quform-elements">
-
-                                <div class="row">
-
-                                    <!-- Begin Text input element -->
-                                    <div class="col-md-12">
-                                        <div class="quform-element">
-                                            <div class="quform-input">
-                                                <input class="form-control" id="email_address" type="text" name="email_address" placeholder="Subscribe with us" />
-                                            </div>
+                    <div class="right-sidebar-content">
+                        <!-- start tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="chat">
+                                <div class="chat-list">
+                                    <span class="chat-title">Recent</span>
+                                    <a href="#!" class="right-sidebar-toggle chat-item unread" data-sidebar-id="chat-right-sidebar">
+                                        <div class="user-avatar">
+                                            <img src="<?=base_url('img/crizal/avatars/chat01.jpg')?>" alt="" />
                                         </div>
-                                    </div>
-                                    <!-- End Text input element -->
-
-                                    <!-- Begin Submit button -->
-                                    <div class="col-md-12">
-                                        <div class="quform-submit-inner">
-                                            <button class="btn btn-white text-theme-color m-0" type="submit"><i class="fas fa-paper-plane"></i></button>
+                                        <div class="chat-info">
+                                            <span class="chat-author">David</span>
+                                            <span class="chat-text">where u at?</span>
+                                            <span class="chat-time">08:50</span>
                                         </div>
-                                        <div class="quform-loading-wrap"><span class="quform-loading"></span></div>
-                                    </div>
-                                    <!-- End Submit button -->
-
+                                    </a>
+                                    <a href="#!" class="right-sidebar-toggle chat-item unread active-user" data-sidebar-id="chat-right-sidebar">
+                                        <div class="user-avatar">
+                                            <img src="<?=base_url('img/crizal/avatars/chat02.jpg')?>" alt="" />
+                                        </div>
+                                        <div class="chat-info">
+                                            <span class="chat-author">Daisy</span>
+                                            <span class="chat-text">Daisy sent a photo.</span>
+                                            <span class="chat-time">11:34</span>
+                                        </div>
+                                    </a>
                                 </div>
-
+                                <div class="chat-list">
+                                    <span class="chat-title">Older</span>
+                                    <a href="#!" class="right-sidebar-toggle chat-item" data-sidebar-id="chat-right-sidebar">
+                                        <div class="user-avatar">
+                                            <img src="<?=base_url('img/crizal/avatars/chat03.jpg')?>" alt="" />
+                                        </div>
+                                        <div class="chat-info">
+                                            <span class="chat-author">Tom</span>
+                                            <span class="chat-text">You: ok</span>
+                                            <span class="chat-time">2d</span>
+                                        </div>
+                                    </a>
+                                    <a href="#!" class="right-sidebar-toggle chat-item active-user" data-sidebar-id="chat-right-sidebar">
+                                        <div class="user-avatar">
+                                            <img src="<?=base_url('img/crizal/avatars/chat04.jpg')?>" alt="" />
+                                        </div>
+                                        <div class="chat-info">
+                                            <span class="chat-author">Anna</span>
+                                            <span class="chat-text">asdasdasd</span>
+                                            <span class="chat-time">4d</span>
+                                        </div>
+                                    </a>
+                                    <a href="#!" class="right-sidebar-toggle chat-item active-user" data-sidebar-id="chat-right-sidebar">
+                                        <div class="user-avatar">
+                                            <img src="<?=base_url('img/crizal/avatars/chat05.jpg')?>" alt="" />
+                                        </div>
+                                        <div class="chat-info">
+                                            <span class="chat-author">Liza</span>
+                                            <span class="chat-text">asdasdasd</span>
+                                            <span class="chat-time">&nbsp;</span>
+                                        </div>
+                                    </a>
+                                    <a href="#!" class="load-more-messages" data-toggle="tooltip" data-placement="bottom" title="Load More">&bull;&bull;&bull;</a>
+                                </div>
                             </div>
-
-                        </form>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="footer-bar">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 text-left xs-text-center xs-margin-5px-bottom">
-                            <div class="social-icons">
-                                <ul>
-                                    <li><a href="#!"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#!"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#!"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a href="#!"><i class="fab fa-youtube"></i></a></li>
-                                    <li><a href="#!"><i class="fab fa-linkedin-in"></i></a></li>
-                                </ul>
+                            <div class="tab-pane" id="settings">
+                                <div class="right-sidebar-settings">
+                                    <span class="settings-title">General Settings</span>
+                                    <ul class="sidebar-setting-list list-unstyled">
+                                        <li>
+                                            <span class="settings-option">Notifications</span>
+                                            <input type="checkbox" class="js-switch" checked />
+                                        </li>
+                                        <li>
+                                            <span class="settings-option">Activity log</span>
+                                            <input type="checkbox" class="js-switch" checked />
+                                        </li>
+                                        <li>
+                                            <span class="settings-option">Automatic updates</span>
+                                            <input type="checkbox" class="js-switch" />
+                                        </li>
+                                        <li>
+                                            <span class="settings-option">Allow backups</span>
+                                            <input type="checkbox" class="js-switch" />
+                                        </li>
+                                    </ul>
+                                    <span class="settings-title">Account Settings</span>
+                                    <ul class="sidebar-setting-list list-unstyled">
+                                        <li>
+                                            <span class="settings-option">Chat</span>
+                                            <input type="checkbox" class="js-switch" checked />
+                                        </li>
+                                        <li>
+                                            <span class="settings-option">Incognito mode</span>
+                                            <input type="checkbox" class="js-switch" />
+                                        </li>
+                                        <li>
+                                            <span class="settings-option">Public profile</span>
+                                            <input type="checkbox" class="js-switch" />
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6 text-right xs-text-center">
-                            <p class="xs-margin-5px-top xs-font-size13">&copy;
-                                <script>
-                                    document.write(new Date().getFullYear())
-                                </script> Crizal is Powered by Chitrakoot Web</p>
+                    </div>
+                </div>
+            </div>
+            <!-- end main right sidebar -->
+
+            <!-- start chat right sidebar -->
+            <div class="page-right-sidebar" id="chat-right-sidebar">
+                <div class="page-right-sidebar-inner">
+                    <div class="right-sidebar-top">
+                        <div class="chat-top-info">
+                            <span class="chat-name">Noah</span>
+                            <span class="chat-state">2h ago</span>
+                        </div>
+                        <a href="#!" class="right-sidebar-toggle chat-sidebar-close float-right" data-sidebar-id="chat-right-sidebar"><i class="icon-keyboard_arrow_right"></i></a>
+                    </div>
+                    <div class="right-sidebar-content">
+                        <div class="right-sidebar-chat slimscroll">
+                            <div class="chat-bubbles">
+                                <div class="chat-start-date">02/03/2019 5:58PM</div>
+                                <div class="chat-bubble them">
+                                    <div class="chat-bubble-img-container">
+                                        <img src="<?=base_url('img/crizal/avatars/chat06.jpg')?>" alt="" />
+                                    </div>
+                                    <div class="chat-bubble-text-container">
+                                        <span class="chat-bubble-text">Hello</span>
+                                    </div>
+                                </div>
+                                <div class="chat-bubble me">
+                                    <div class="chat-bubble-text-container">
+                                        <span class="chat-bubble-text">Hello!</span>
+                                    </div>
+                                </div>
+                                <div class="chat-start-date">03/02/2019 5:18AM</div>
+                                <div class="chat-bubble me">
+                                    <div class="chat-bubble-text-container">
+                                        <span class="chat-bubble-text">lorem</span>
+                                    </div>
+                                </div>
+                                <div class="chat-bubble them">
+                                    <div class="chat-bubble-img-container">
+                                        <img src="<?=base_url('img/crizal/avatars/chat07.jpg')?>" alt="" />
+                                    </div>
+                                    <div class="chat-bubble-text-container">
+                                        <span class="chat-bubble-text">ipsum dolor sit amet</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat-write">
+                            <form class="form-horizontal" action="javascript:void(0);">
+                                <input type="text" class="form-control" placeholder="Say something">
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- end chat right sidebar -->
 
-        </footer>
-        <!-- end footer section -->
-
+            <!-- end page right sidebar -->
+            
+        </div>
+        <!-- end page content -->
     </div>
-    <!-- end main-wrapper section -->
+    <!-- end page container -->
 
     <!-- start scroll to top -->
     <a href="#!" class="scroll-to-top"><i class="fas fa-angle-up" aria-hidden="true"></i></a>
     <!-- end scroll to top -->
 
     <!-- all js include start -->
+    
+    <!-- jQuery -->
+    <script src="<?=base_url('js/crizal/plugins/jquery/jquery-3.1.0.min.js')?>"></script>
 
-    <!-- jquery -->
-    <script src="<?=base_url('js/crizal/jquery.min.js')?>"></script>
-
-    <!-- popper js -->
-    <script src="<?=base_url('js/crizal/popper.min.js')?>"></script>
+    <!-- popper -->
+    <script src="<?=base_url('js/crizal/plugins/popper/js/popper.min.js')?>"></script>
 
     <!-- bootstrap -->
-    <script src="<?=base_url('js/crizal/bootstrap.min.js')?>"></script>
+    <script src="<?=base_url('js/crizal/plugins/bootstrap/bootstrap.min.js')?>"></script>
 
-    <!-- navigation -->
-    <script src="<?=base_url('js/crizal/nav-menu.js')?>"></script>
+    <!-- slimscroll -->
+    <script src="<?=base_url('js/crizal/plugins/jquery-slimscroll/jquery.slimscroll.min.js')?>"></script>
 
-    <!-- serch -->
-    <script src="<?=base_url('js/crizal/search.js')?>"></script>
+    <!-- uniform -->
+    <script src="<?=base_url('js/crizal/plugins/uniform/js/jquery.uniform.standalone.js')?>"></script>
 
-    <!-- tab -->
-    <script src="<?=base_url('js/crizal/easy.responsive.tabs.js')?>"></script>
+    <!-- switchery -->
+    <script src="<?=base_url('js/crizal/plugins/switchery/switchery.min.js')?>"></script>
 
-    <!-- owl carousel -->
-    <script src="<?=base_url('js/crizal/owl.carousel.js')?>"></script>
+    <!-- summernote -->
+    <script src="<?=base_url('js/crizal/plugins/summernote-master/summernote.min.js')?>"></script>
 
-    <!-- jquery.counterup.min -->
-    <script src="<?=base_url('js/crizal/jquery.counterup.min.js')?>"></script>
+    <!-- datepicker -->
+    <script src="<?=base_url('js/crizal/plugins/bootstrap-datepicker/bootstrap-datepicker.js')?>"></script>
 
-    <!-- stellar js -->
-    <script src="<?=base_url('js/crizal/jquery.stellar.min.js')?>"></script>
+    <!-- colorpicker -->
+    <script src="<?=base_url('js/crizal/plugins/bootstrap-colorpicker/bootstrap-colorpicker.js')?>"></script>
 
-    <!-- waypoints js -->
-    <script src="<?=base_url('js/crizal/waypoints.min.js')?>"></script>
+    <!-- tagsinput -->
+    <script src="<?=base_url('js/crizal/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js')?>"></script>
 
-    <!-- countdown js -->
-    <script src="<?=base_url('js/crizal/countdown.js')?>"></script>
+    <!-- clockpicker -->
+    <script src="<?=base_url('js/crizal/plugins/bootstrap-clockpicker/bootstrap-clockpicker.min.js')?>"></script>
 
-    <!-- jquery.magnific-popup js -->
-    <script src="<?=base_url('js/crizal/jquery.magnific-popup.min.js')?>"></script>
-
-    <!-- isotope.pkgd.min js -->
-    <script src="<?=base_url('js/crizal/isotope.pkgd.min.js')?>"></script>
-
-    <!--  chart js -->
-    <script src="<?=base_url('js/crizal/chart.min.js')?>"></script>
-
-    <!-- thumbs js -->
-    <script src="<?=base_url('js/crizal/owl.carousel.thumbs.js')?>"></script>
-
-    <!-- animated js -->
-    <script src="<?=base_url('js/crizal/animated-headline.js')?>"></script>
-
-    <!--  clipboard js -->
-    <script src="<?=base_url('js/crizal/clipboard.min.js')?>"></script>
-
-    <!--  prism js -->
-    <script src="<?=base_url('js/crizal/prism.js')?>"></script>
+    <!-- form elements -->
+    <script src="<?=base_url('js/crizal/pages/form-elements.js')?>"></script>
 
     <!-- custom scripts -->
     <script src="<?=base_url('js/crizal/main.js')?>"></script>
-
-    <!-- quform plugins js -->
-    <script src="<?=base_url('js/crizal/quform/plugins.js')?>"></script>
-
-    <!-- quform scripts js -->
-    <script src="<?=base_url('js/crizal/quform/scripts.js')?>"></script>
 
     <!-- all js include end -->
 

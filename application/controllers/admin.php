@@ -626,6 +626,11 @@ class Admin extends MY_Controller {
 		$this->load->view('administrador/recolector/crizal');
 	}
 
+	public function crizal_forms(){
+		$this->setLayout('admin_test');
+		$this->load->view('administrador/recolector/crizal_forms');
+	}
+
 }
 
 ?>
