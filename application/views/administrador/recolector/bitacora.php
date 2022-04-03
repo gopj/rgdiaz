@@ -7,14 +7,14 @@
 
 	<form class="form-inline col-md-12" role="form" autocomplete="off" method='post' id='form_bitacora' action="<?= site_url('admin/recolector_bitacora');?>">
 		
-		<div class="form-group col-md-3">
-			<label for="fecha_embarque">Fecha</label>
-			<input class="form-control " id="fecha_embarque" name="fecha_embarque" style="text-align: center;" value="<?= @$fecha_embarque ?>">
+		<div class="form-group col-md-4">
+			<label class="col-md-4" for="fecha_embarque">Fecha</label>
+			<input class="form-control col-md-12" id="fecha_embarque" name="fecha_embarque" style="text-align: center;" value="<?= @$fecha_embarque ?>">
 		</div>
 
-		<div class="form-group col-md-2">
-			<label for="fecha">Tipo</label>
-			<select class="form-control" name="tipo" id="tipo">
+		<div class="form-group col-md-4">
+			<label class="col-md-4" for="fecha">Tipo</label>
+			<select class="form-control col-md-4" name="tipo" id="tipo">
 				<option value=""> Todos </option>
 				<option value="W" <?php if(@$tipo=='W'){echo "selected";}?>> Pendientes </option>
 				<option value="R" <?php if(@$tipo=='R'){echo "selected";}?>> Completados </option>

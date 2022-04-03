@@ -19,7 +19,6 @@
 		<link href="<?=base_url('css/crizal/plugins/bootstrap-datepicker/datepicker.css');?>" rel="stylesheet">
 		
 		<link href="<?=base_url('css/custom.css');?>" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="<?=base_url('/css/estilos.css')?>">
 
 		<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/font-awesome/css/font-awesome.min.css')?>" />
 		<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/icomoon/style.css')?>" />
@@ -122,6 +121,8 @@
 		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/datatables/jquery.datatables.js')?>"></script>
 
 		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/datatables/datatables.bootstrap.js')?>"></script>
+
+		<script type="text/javascript" src="<?=base_url('js/crizal/plugins/bootstrap-datepicker/bootstrap-datepicker.js')?>"></script>
 
 		<script type="text/javascript" src="<?=base_url('js/swith.js')?>"></script>
 
