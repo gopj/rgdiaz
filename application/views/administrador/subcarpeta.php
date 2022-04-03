@@ -2,166 +2,168 @@
             //echo $anterior;
           ?>
 
-          <div class="span9">
-            <center><legend>Administrar Carpetas</legend>
-            Ubicación: <strong style="font-family:Californian FB;color:#4249D6; font-size:20px;"><?php echo $direccion_real; ?></strong><br/>
-            </center>
-            <table id="tabla" class="display">
-              <thead>
-                <tr>
-                  <th style="width:5%;"></th>
-                  <th style="width:45%;">Nombre</th>
-                  <th style="width:20%;">Fecha</th>
-                  <th style="width:30%;">Acciones</th>
-                </tr>
-              </thead>
-              <tbody>
-                    <?php 
-                      foreach ($carpetas->result() as $carpe) {
-                        echo "<tr>";
-                        echo "<td><center><img src='img/iconos/folder.png'></center></td>";
-                    ?>
-                    <td>
-                      <form method='post' action="<?php echo site_url('administrador/versubcarpeta');?>">
-                        <input type="hidden" value="<?php echo $carpe->id_persona; ?>" name="id_persona"/>
-                        <input type="hidden" value="<?php echo $carpe->ruta_carpeta; ?>" name="ruta_carpeta" >
-                        <button type="submit" class="nombre-carpeta" ><?php echo $carpe->nombre?></button>
+          <div class="container-fluid">
+            <div class="card">
+              <div class="row">
+                <?php if($anterior == "administrador/") { ?>
+                  <div class="col-lg-3" >
+                    <form method="post" action="<?php echo site_url('administrador');?>">
+                      <button type="submit" class="btn " disabled><i class="icon-arrow-left"></i></button>
+                    </form>
+                  </div>
+
+                  <?php } else if($anterior == "clientes/") { ?>
+                    <div class="col-lg-3 " >
+                      <form method="post" action="<?php echo site_url('administrador/admin_clientes/' . $id_persona);?>">
+                        <button type="submit" class="btn " ><i class="icon-arrow-left"></i></button>
                       </form>
-                    </td>
-                    <td><?php echo $carpe->fecha_creada; ?></td>
-                    <td align="center">
-                      <div class="row-fluid" style="margin-top:10px;">
-                        <div class="span4">
-                        <form method='post' action="<?php echo site_url('administrador/versubcarpeta'); ?>">
-                          <input type="hidden" value="<?php echo $carpe->id_persona; ?>" name="id_persona">
-                          <input type="hidden" value="<?php echo $carpe->ruta_carpeta; ?>" name="ruta_carpeta">
-                          <button type="submit" class="btn btn-mini btn-primary" >Ver Carpeta</button>
-                        </form>
-                        </div>
-                        
-                        <?php 
-                         if ( $carpe->nombre != "Documentos de RDiaz" ) {
-                        ?> 
+                    </div>
 
-                        <div class="span4">
-                          <input type="hidden" value="<?php echo $carpe->id_carpeta.$carpe->nombre; ?>" id="id_formulario_renombra">                       
-                        <form id="<?php echo $carpe->id_carpeta.$carpe->nombre; ?>" method='post' action="<?php echo site_url('administrador/renombrar_carpeta'); ?>">
-                          <input type="hidden" value="<?php echo $carpe->id_persona; ?>" name="id_persona">
-                          <input type="hidden" value="<?php echo $carpe->nombre; ?>" name="nombre_carpeta">
-                          <input type="hidden" name="nombre_nuevo" id="<?php echo $carpe->nombre.$carpe->id_carpeta; ?>">
-                          <input type="hidden" value="<?php echo $carpe->ruta_carpeta; ?>" name="ruta_carpeta">
-                          <input type="hidden" value="<?php echo $carpe->ruta_anterior; ?>" name="ruta_anterior">
-                          <input type="button" class="btn btn-mini btn-primary" onclick="abrir_modal('<?php echo $carpe->id_carpeta.$carpe->nombre; ?>', '<?php echo $carpe->nombre.$carpe->id_carpeta; ?>');" value="Renombrar">
-                        </form>
-                        </div>
-                        <div class="span4">
-                            <form id="form_eliminar_carpeta" method='post' action="<?php echo site_url('administrador/eliminar_carpeta'); ?>">
-                              <input type="hidden" value="<?php echo $carpe->id_persona; ?>" id="id_persona" name="id_persona">
-                              <input type="hidden" value="<?php echo $carpe->id_carpeta; ?>" id="id_carpeta" name="id_carpeta">
-                              <input type="hidden" value="<?php echo $carpe->ruta_carpeta; ?>" id="ruta_carpeta" name="ruta_carpeta">
-                              <input type="hidden" value="<?php echo $carpe->ruta_anterior; ?>" id="ruta_carpeta" name="ruta_anterior">
-                              <input class="btn btn-mini btn-primary"  type="submit"  value="Eliminar">
-                            </form>
-                        </div>
-                      </div>
-                    </td>        
-                    <?php
+                  <?php } else if($raiz==$anterior) { ?>
+                    <div class="col-lg-3" >
+                      <form method="post" action="<?php echo site_url('administrador/subir_archivo');?>">
+                        <button type="submit" class="btn " ><i class="icon-arrow-left"></i></button>
+                      </form>
+                    </div>
 
-                        }
-                        echo "</tr>";
-                      }
-                    ?> 
-                    <?php 
-                      foreach ($archivo->result() as $arch) {
-                        echo "<tr>";
-                          $ext = explode('.', $arch->nombre);
-                          $extencion = array_pop($ext);
-                          if($extencion=='pdf'){
-                            echo "<td><center><img src='img/iconos/pdf.png'></center></td>";
-                          }elseif($extencion=='xls' || $extencion=='xlsx'){
-                            echo "<td><center><img src='img/iconos/xls.png'></center></td>";
-                          }elseif($extencion=='doc'|| $extencion=='docx'){
-                            echo "<td><center><img src='img/iconos/doc.png'></center></td>";
-                          }elseif($extencion=='jpg' || $extencion=='JPG'){
-                            echo "<td><center><img src='img/iconos/jpg.png'></center></td>";
-                          }elseif($extencion=='jpeg' || $extencion=='JPEG'){
-                            echo "<td><center><img src='img/iconos/jpeg.png'></center></td>";
-                          }elseif($extencion=='png' || $extencion=='PNG'){
-                            echo "<td><center><img src='img/iconos/png.png'></center></td>";
-                          }elseif($extencion=='gif'){
-                            echo "<td><center><img src='img/iconos/gif.png'></center></td>";
-                          }elseif($extencion=='txt'){
-                            echo "<td><center><img src='img/iconos/txt.png'></center></td>";
-                          } else {
-                            echo "<td><center><img src='img/iconos/unk.png'></center></td>";
-                          }
-                        echo "<td>".$arch->nombre."</td>";
-                        echo "<td>".$arch->fecha_subida."</td>";
-                        $array_ruta = explode("/", $arch->ruta_archivo);
-                        $id_per_arc = $array_ruta[1];
-                    ?>
+                  <?php } else { ?>
+                    <div class="col-lg-3" >
+                      <form method="post" action="<?php echo site_url('administrador/versubcarpeta');?>">
+                        <input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
+                        <input type="hidden" value="<?php echo $anterior; ?>" name="ruta_carpeta">
+                        <button type="submit" class="btn btn " ><i class="icon-arrow-left"></i></button>
+                      </form>
+                    </div> 
+
+                  <?php } ?> 
+              </div>
+              <h5>Administrar Carpetas</h5>
+              <i>Ubicación: <?php echo $direccion_real; ?><br/></i>
+
+              <div class="row justify-content-end">
+                  <button class="btn btn-outline-primary mx-2" href="#cate" data-toggle="modal" ><i class="icon-folder px-1"></i> Nueva Carpeta</button>
+                  <button class="btn btn-outline-primary" href="#upload" data-toggle="modal"><i class="icon-plus px-1"></i> Agregar Archivo(s)</button>
+              </div>
+            </div> 
+
+            <div class="card">
+              <table id="tabla" class="display">
+                <thead>
+                  <tr>
+                    <th style="width:5%;"></th>
+                    <th style="width:55%;">Nombre</th>
+                    <th style="width:20%;">Fecha</th>
+                    <th style="width:30%;">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                      <?php 
+                        foreach ($carpetas->result() as $carpe) {
+                          echo "<tr>";
+                          echo "<td><img src='img/iconos/folder.png'></td>";
+                      ?>
+                      <td>
+                        <form method='post' action="<?php echo site_url('administrador/versubcarpeta');?>">
+                          <input type="hidden" value="<?php echo $carpe->id_persona; ?>" name="id_persona"/>
+                          <input type="hidden" value="<?php echo $carpe->ruta_carpeta; ?>" name="ruta_carpeta" >
+                          <button type="submit" class="nombre-carpeta" ><?php echo $carpe->nombre?></button>
+                        </form>
+                      </td>
+                      <td><?php echo $carpe->fecha_creada; ?></td>
                       <td align="center">
                         <div class="row-fluid" style="margin-top:10px;">
-                          <div class="span6">
-                          <form method='post' action="<?php echo site_url('administrador/descargar'); ?>">
-                            <input type="hidden" value="<?php echo $arch->nombre; ?>" name="nombre">
-                            <input type="hidden" value="<?php echo $arch->ruta_archivo; ?>" name="ruta_archivo">
-                            <input class="btn btn-mini btn-primary"  type="submit" value="Descargar">
-                          </form>
-                          </div>
-                          <div class="span6">
-                          <form id="form_eliminar" method='post' action="<?php echo site_url('administrador/eliminar_archivo');?>">
-                            <input type="hidden" value="<?php echo $id_per_arc; ?>" name="id_persona">
-                            <input type="hidden" value="<?php echo $arch->id_archivo; ?>" name="id_archivo">
-                            <input type="hidden" value="<?php echo $arch->ruta_archivo; ?>" name="ruta_archivo" >
-                            <input type="hidden" value="<?php echo $arch->ruta_carpeta_pertenece; ?>" name="ruta_carpeta_pertenece" >
-                            <input class="btn btn-mini btn-primary"  type="submit"  value="Eliminar">
-                          </form>
+                       
+                          <?php 
+                           if ( $carpe->nombre != "Documentos de RDiaz" ) {
+                          ?> 
+  
+                          <div class="row">
+                            <div class="col-lg-6">
+                              <input type="hidden" value="<?php echo $carpe->id_carpeta.$carpe->nombre; ?>" id="id_formulario_renombra">                       
+                                <form id="<?php echo $carpe->id_carpeta.$carpe->nombre; ?>" method='post' action="<?php echo site_url('administrador/renombrar_carpeta'); ?>">
+                                  <input type="hidden" value="<?php echo $carpe->id_persona; ?>" name="id_persona">
+                                  <input type="hidden" value="<?php echo $carpe->nombre; ?>" name="nombre_carpeta">
+                                  <input type="hidden" name="nombre_nuevo" id="<?php echo $carpe->nombre.$carpe->id_carpeta; ?>">
+                                  <input type="hidden" value="<?php echo $carpe->ruta_carpeta; ?>" name="ruta_carpeta">
+                                  <input type="hidden" value="<?php echo $carpe->ruta_anterior; ?>" name="ruta_anterior">
+                                  <input type="button" class="btn btn-outline-secondary" onclick="abrir_modal('<?php echo $carpe->id_carpeta.$carpe->nombre; ?>', '<?php echo $carpe->nombre.$carpe->id_carpeta; ?>');" value="Renombrar">
+                                </form>
+                              </div>
+                              <div class="col-lg-6">
+                                  <form id="form_eliminar_carpeta" method='post' action="<?php echo site_url('administrador/eliminar_carpeta'); ?>">
+                                    <input type="hidden" value="<?php echo $carpe->id_persona; ?>" id="id_persona" name="id_persona">
+                                    <input type="hidden" value="<?php echo $carpe->id_carpeta; ?>" id="id_carpeta" name="id_carpeta">
+                                    <input type="hidden" value="<?php echo $carpe->ruta_carpeta; ?>" id="ruta_carpeta" name="ruta_carpeta">
+                                    <input type="hidden" value="<?php echo $carpe->ruta_anterior; ?>" id="ruta_carpeta" name="ruta_anterior">
+                                    <input class="btn btn-outline-danger" type="submit"  value="Eliminar">
+                                  </form>
+                              </div>
                           </div>
                         </div>
-                      </td>
-                    <?php                                         
-                        echo "</tr>";
-                      }
-                    ?>            
-              </tbody>
-            </table>
-            <div class="row-fluid">
-               <?php if($anterior == "administrador/") { ?>
-                <div class="span2" style="margin-top:20px;">
-                  <form method="post" action="<?php echo site_url('administrador');?>">
-                    <button type="submit" class="btn btn pull-left" ><i class="icon-arrow-left"></i> Regresar </button>
-                  </form>
-                </div>
-               <?php } else if($anterior == "clientes/") { ?>
-                <div class="span2" style="margin-top:20px;">
-                  <form method="post" action="<?php echo site_url('administrador/admin_clientes/' . $id_persona);?>">
-                    <button type="submit" class="btn btn pull-left" ><i class="icon-arrow-left"></i> Regresar </button>
-                  </form>
-                </div>
-                <?php } else if($raiz==$anterior) { ?>
-                <div class="span2" style="margin-top:20px;">
-                  <form method="post" action="<?php echo site_url('administrador/subir_archivo');?>">
-                    <button type="submit" class="btn btn pull-left" ><i class="icon-arrow-left"></i> Regresar </button>
-                  </form>
-
-              </div>
-              <?php } else { ?>
-              <div class="span2" style="margin-top:20px;">
-                <form method="post" action="<?php echo site_url('administrador/versubcarpeta');?>">
-                  <input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
-                  <input type="hidden" value="<?php echo $anterior; ?>" name="ruta_carpeta">
-                  <button type="submit" class="btn btn pull-left" ><i class="icon-arrow-left"></i> Regresar </button>
-                </form>
-              </div>
-              <?php } ?> 
-              <div class="span3" style="margin-top:20px;">
-                <button class="btn btn-primary" href="#cate" data-toggle="modal" >Agregar Nueva Carpeta</button>
-              </div> 
-              <div class="span3" style="margin-top:20px;">
-                <button class="btn btn-primary" href="#upload" data-toggle="modal">Agregar Archivo(s)</button>
-              </div>
-            </div>  
+                      </td>        
+                      <?php
+  
+                          }
+                          echo "</tr>";
+                        }
+                      ?> 
+                      <?php 
+                        foreach ($archivo->result() as $arch) {
+                          echo "<tr>";
+                            $ext = explode('.', $arch->nombre);
+                            $extencion = array_pop($ext);
+                            if($extencion=='pdf'){
+                              echo "<td><img src='img/iconos/pdf.png'></td>";
+                            }elseif($extencion=='xls' || $extencion=='xlsx'){
+                              echo "<td><img src='img/iconos/xls.png'></td>";
+                            }elseif($extencion=='doc'|| $extencion=='docx'){
+                              echo "<td><img src='img/iconos/doc.png'></td>";
+                            }elseif($extencion=='jpg' || $extencion=='JPG'){
+                              echo "<td><img src='img/iconos/jpg.png'></td>";
+                            }elseif($extencion=='jpeg' || $extencion=='JPEG'){
+                              echo "<td><img src='img/iconos/jpeg.png'></td>";
+                            }elseif($extencion=='png' || $extencion=='PNG'){
+                              echo "<td><img src='img/iconos/png.png'></td>";
+                            }elseif($extencion=='gif'){
+                              echo "<td><img src='img/iconos/gif.png'></td>";
+                            }elseif($extencion=='txt'){
+                              echo "<td><img src='img/iconos/txt.png'></td>";
+                            } else {
+                              echo "<td><img src='img/iconos/unk.png'></td>";
+                            }
+                          echo "<td>".$arch->nombre."</td>";
+                          echo "<td>".$arch->fecha_subida."</td>";
+                          $array_ruta = explode("/", $arch->ruta_archivo);
+                          $id_per_arc = $array_ruta[1];
+                      ?>
+                        <td align="center">
+                          <div class="row-fluid" style="margin-top:10px;">
+                            <div class="span6">
+                            <form method='post' action="<?php echo site_url('administrador/descargar'); ?>">
+                              <input type="hidden" value="<?php echo $arch->nombre; ?>" name="nombre">
+                              <input type="hidden" value="<?php echo $arch->ruta_archivo; ?>" name="ruta_archivo">
+                              <input class="btn btn-mini btn-primary"  type="submit" value="Descargar">
+                            </form>
+                            </div>
+                            <div class="span6">
+                            <form id="form_eliminar" method='post' action="<?php echo site_url('administrador/eliminar_archivo');?>">
+                              <input type="hidden" value="<?php echo $id_per_arc; ?>" name="id_persona">
+                              <input type="hidden" value="<?php echo $arch->id_archivo; ?>" name="id_archivo">
+                              <input type="hidden" value="<?php echo $arch->ruta_archivo; ?>" name="ruta_archivo" >
+                              <input type="hidden" value="<?php echo $arch->ruta_carpeta_pertenece; ?>" name="ruta_carpeta_pertenece" >
+                              <input class="btn btn-mini btn-primary"  type="submit"  value="Eliminar">
+                            </form>
+                            </div>
+                          </div>
+                        </td>
+                      <?php                                         
+                          echo "</tr>";
+                        }
+                      ?>            
+                </tbody>
+              </table>
+            </div>
+            
           </div>
         </div>
       </div>

@@ -12,6 +12,7 @@
 
 		<!-- common plugins -->
 		<link rel="stylesheet" href="<?=base_url('css/crizal/bootstrap.min.css')?>" />
+		<link rel="stylesheet" href="<?=base_url('css/estilos.css')?>" />
 		<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/font-awesome/css/font-awesome.min.css')?>" />
 		<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/icomoon/style.css')?>" />
 		<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/uniform/css/default.css')?>" />
@@ -114,7 +115,7 @@
 				<?php echo $output; ?>
 
 			</div>
-			<div class="page-footer" style="padding-left: 10%;">
+			<div class="footer" style="padding-left: 10%;">
 				<p>Todos los derechos reservados &copy; <script>document.write(new Date().getFullYear())</script> RDíaz.</p>
 			</div>
 		</div>		

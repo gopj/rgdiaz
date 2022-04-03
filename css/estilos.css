@@ -6,12 +6,24 @@ body {
   margin: 0 0 100px;
   background-color: #F1F1F1;
 }
-footer {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+
+
+.filecard{
+  padding: 2rem;
+  width: 380px;
+  height: 280px;
+  margin: 1rem;
+  text-align: center;
+  align-content: center ;
+  justify-content: center;
 }
+
+.thumb{
+  font-size: 3em;
+  padding: 1rem;
+  color: #86BC42;
+}
+
 article,
 aside,
 details,
@@ -48,6 +60,9 @@ input[type="file"] {
   color: #ffffff;
 }
 .footer {
+  color: #F1F1F1;
+  font-weight: 600;
+  width: 100%;
   background-color: #7D84D8;
   padding: 10px 0;
   align-items: center;
@@ -221,4 +236,16 @@ input[type="file"] {
     color: white;
     background: #4CAF76;
     background: #4CAF76;
+}
+.folderthumb{
+  width: 80px;
+  height: 80px;
+}
+
+
+@media (max-width:600px) {
+  .contact{
+    display: none;
+  }
+  
 }

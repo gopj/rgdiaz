@@ -126,7 +126,7 @@
 				$(document).ready(function(){
 	                $('#tabla').dataTable({
 	                	"bJQueryUI":true,
-	                	"iDisplayLength": 200,
+	                	"iDisplayLength": 50,
 	                	"aaSorting": [[0,'asc'], [1,'asc']]
 	                });
 	                
