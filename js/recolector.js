@@ -558,7 +558,7 @@ function form_bitacora_submit(){
 $(document).ready(function() {
     
 	var empresa_destino 	= document.getElementById('empresa_destino');
-	var fecha_embarque 		= document.getElementById('fecha_embarque').value;
+	var fecha_embarque 		= $('#fecha_embarque').val;
 	var responsable_destino = $('#responsable_destino').val;
 	var ruta 				= $('#ruta').val;
 	var observaciones		= $('#observaciones').val;
@@ -596,6 +596,7 @@ $(document).ready(function() {
 			"infoFiltered": "(filtered from _MAX_ total records)"
 		},
 	});
+
 
 	check_resposanble();
 });

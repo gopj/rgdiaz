@@ -112,17 +112,17 @@
 		<div class="page-content">
 			<div class="page-inner">
 				<?php echo $output; ?>
-			</div>
-		</div>	
 
-		<!-- end page main wrapper -->
-		<div class="page-footer">
-			<p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Crizal All rights reserved.</p>
+			</div>
+			<div class="page-footer" style="padding-left: 10%;">
+				<p>Todos los derechos reservados &copy; <script>document.write(new Date().getFullYear())</script> RDíaz.</p>
+			</div>
 		</div>
 
-		
 
-	</div>
+		
+	</div>	
+
 	<!-- all js include start -->
 
 	<!-- jQuery -->
