@@ -71,7 +71,7 @@ function get_recolector(id){
 
 	var id_per = id;
 
-	console.log(id)
+	/*//console.log(id)*/
 
 	if (id_per) {
 		$("#nombre_recolector").attr('disabled','disabled');
@@ -91,7 +91,7 @@ function get_recolector(id){
 		$("#elimina_recolector").attr('disabled','disabled');
 		$("#vehiculo_asignado").removeAttr('disabled');
 	}
-    console.log(id_per);
+    //console.log(id_per);
 	//AJAX
 	jQuery.ajax({
 			url:'https://' + host + '/index.php/admin/get_recolector',	//<-- Url que va procesar la peticion
@@ -273,7 +273,7 @@ function delete_vehiculo(url){
 
 	url_delete =  url + id;
 
-	console.log(url_delete);
+	//console.log(url_delete);
 	document.getElementById("btn_delete_vehiculo").setAttribute("href", url_delete);
 }
 
@@ -314,7 +314,7 @@ function get_destino(id){
 		$("#edita_destino").attr('disabled','disabled');
 		$("#elimina_destino").attr('disabled','disabled');
 	}
-    console.log(id_destino);
+    //console.log(id_destino);
 	//AJAX
 	jQuery.ajax({
 			url:'https://' + host + '/index.php/admin/get_destino',	//<-- Url que va procesar la peticion
@@ -437,7 +437,7 @@ function update_clave(id_clave) {
 			var json_data = jQuery.parseJSON(resp);
 			var clave = json_data.clave;
 			
-			console.log(clave);
+			//console.log(clave);
 			$("#clave").val(clave);
 		}
 	);
@@ -454,12 +454,12 @@ function terminar_manifiesto() {
 
 	var s_empresa_destino = empresa_destino.options[empresa_destino.selectedIndex].value;
 
-	console.log(s_empresa_destino);
-	console.log(fecha_embarque);
-	console.log(responsable_destino);
-	console.log(responsable_tecnico);
-	console.log(ruta);
-	console.log(observaciones);
+	//console.log(s_empresa_destino);
+	//console.log(fecha_embarque);
+	//console.log(responsable_destino);
+	//console.log(responsable_tecnico);
+	//console.log(ruta);
+	//console.log(observaciones);
 
 	$("#terminar_responsable").val(responsable_destino);
 	$("#terminar_responsable_tecnico").val(responsable_tecnico);
@@ -567,11 +567,11 @@ $(document).ready(function() {
 
 	//empresa_destino.options[empresa_destino.selectedIndex].value;
 
-	console.log(s_empresa_destino);
-	console.log(fecha_embarque);
-	console.log(responsable_destino);
-	console.log(ruta);
-	console.log(observaciones);
+	//console.log(s_empresa_destino);
+	//console.log(fecha_embarque);
+	//console.log(responsable_destino);
+	//console.log(ruta);
+	//console.log(observaciones);
 
 	$("#terminar_responsable").val(responsable_destino);
 	$("#terminar_fecha").val(fecha_embarque);

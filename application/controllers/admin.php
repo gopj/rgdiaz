@@ -36,6 +36,7 @@ class Admin extends MY_Controller {
 			$data["id"]					= $this->session->userdata('id');
 			$data["tclientes"]			= $this->persona_model->obtienetodoclientes($id_tipo_persona,$lleno_datos);
 			
+			
 			$this->load->view('administrador/recolector/index', $data);
 		} else {
 			$this->session->sess_destroy(); #destruye session
@@ -620,6 +621,13 @@ class Admin extends MY_Controller {
 			redirect('home/index');
 		}
 	
+	}
+
+	public function get_clientes(){
+		$this->setLayout('empty');
+		$data['clientes'] = $this->persona_model->obtiene_clientes_baja_ajax($id_status_persona=1,$id_tipo_persona=3,$lleno_datos=1);
+
+		echo json_encode($data['clientes']);
 	}
 
 	public function crizal(){

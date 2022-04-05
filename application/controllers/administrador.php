@@ -34,7 +34,7 @@ class Administrador extends MY_Controller {
 		if ($this->session->userdata('tipo') == 1){
 			$data['mensajes'] = $this->contacto_model->contador_mensajes($status = 0);			
 			$data['carpetas'] = $this->carpeta_model->obtiene_carpetasraiz_administrador($ruta='administrador/');
-			$data['clientes']=$this->persona_model->obtiene_clientes_baja($id_status_persona=1,$id_tipo_persona=3,$lleno_datos = 1);
+			$data['clientes'] = $this->persona_model->obtiene_clientes_baja($id_status_persona=1,$id_tipo_persona=3,$lleno_datos=1);
 			$data['correo'] = $this->persona_model->getCorreos($id_tipo_persona);
 			
 			$this->load->view('administrador/carpeta_personal',$data);
@@ -172,7 +172,7 @@ class Administrador extends MY_Controller {
 					echo "Ya existe una carpeta con ese nombre"."<br>";
 				}
 
-				redirect('administrador');
+				redirect('administrador/index');
 			}
 
 		} else {
@@ -219,7 +219,7 @@ class Administrador extends MY_Controller {
 
 				$this->email->send();
 
-				redirect('administrador');
+				redirect('administrador/index');
 			}
 		}else{
 			redirect('home/logout');
@@ -322,7 +322,7 @@ class Administrador extends MY_Controller {
 
 			$this->load->view('administrador/subcarpeta',$data);
 		}else{
-			redirect('administrador');
+			redirect('administrador/index');
 		}
 		
 	}
@@ -635,7 +635,7 @@ class Administrador extends MY_Controller {
 					echo "Ya existe una carpeta con ese nombre"."<br>";
 				}
 
-				redirect('administrador');
+				redirect('administrador/index');
 			}
 		}
 	}
@@ -1309,7 +1309,7 @@ class Administrador extends MY_Controller {
 			
 			$this->load->view('administrador/subcarpeta', $data);
 		} else {
-			redirect('administrador');
+			redirect('administrador/index');
 		} 
 	}
 

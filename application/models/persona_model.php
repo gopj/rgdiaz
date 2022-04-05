@@ -68,6 +68,17 @@ class Persona_model extends CI_Model {
 		return $query;
 	}
 
+	public function obtiene_clientes_baja_ajax($id_status_persona,$id_tipo_persona,$lleno_datos){
+		$query = $this->db->select('id_persona')
+						  ->select('nombre_empresa')
+						  ->where('id_status_persona',$id_status_persona)
+						  ->where('id_tipo_persona',$id_tipo_persona)
+						  ->where('lleno_datos',$lleno_datos)
+						  ->get('persona')
+						  ->result();
+		return $query;
+	}
+
 	public function obtienetodoclientes($id_tipo_persona,$lleno_datos)
 	{
 		return $this->db->where('id_tipo_persona',$id_tipo_persona)

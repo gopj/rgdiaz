@@ -113,6 +113,50 @@
       </div>
    </form>
 </div>
+
+<!-- Modal Baja Cliente Start-->
+<div class="modal" id="modal_baja_cliente">
+   <div class="modal-dialog modal-md"> 
+      <div class="modal-content"> 
+         <div class="modal-header"> 
+            <h5 class="modal-title">Baja cliente </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+            </button>
+         </div> 
+         <div class=modal-body>
+            <div class="form-group col-md-12">
+               <form id="baja_cliente" method="post" action="<?=site_url('administrador/baja_cliente')?>">
+                  Usuario:
+                  <div class="input-prepend">
+                     <span class="add-on">
+                        <img src="img/glyphicons_003_user.png" class="icon-form">
+                     </span>
+                     <select class="form-control" name="id_persona" id="id_persona_baja"><!--Mandamos una bandera para ver si ingreso un cliente-->
+                        <option value="0">Seleccione cliente</option>
+                        <?php foreach($clientes->result() as $row){ ?>
+                          <option value="<?php echo $row->id_persona;?>"><?php echo $row->nombre_empresa;?></option>
+                        <?php } ?>
+                     </select>
+                  </div>
+                  Razón:
+                  <div class="input-prepend">
+                     <span class="add-on">
+                        <img src="img/glyphicons_030_pencil.png" class="icon-form">
+                     </span>
+                     <input type="text" class="form-control" id="razon" name="razon" >
+                  </div>
+                  Nota: se le enviara automáticamente al cliente un correo notificandole que a sido dado de baja.
+               </form>
+            </div>
+         </div>
+         <div class="modal-footer">
+            <input type="button" class="btn btn-primary" onclick="cliente_baja()" value="Dar de Baja">
+         </div>
+      </div> 
+   </div>
+</div>
+   
 <!-- ********************************************************************************** -->
 
 

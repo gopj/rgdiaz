@@ -664,11 +664,11 @@ function gen_identificador_duiplicado() {
 }
 
 function get_message_info(id){
-	$("#email_subject").text("1");
-	$("#email").text("1");
-	$("#email_date").text("1");
-	$("#email_message").text("1");
-	$("#email_phone").text("1");
+	$("#email_subject").text("");
+	$("#email").text("");
+	$("#email_date").text("");
+	$("#email_message").text("");
+	$("#email_phone").text("");
 
 	//var email_id = $("#id_contacto").val();
 	var email_id = id;
@@ -707,9 +707,17 @@ function get_message_info(id){
 	);
 }
 
-/*function breakout_of_frame() {
-  if (top.location != location) {
-    top.location.href = document.location.href ;
-  }
-}
-*/
+$(document).ready(function() {
+	$.ajax({
+		url: 'https://' + host + '/admin/get_clientes',
+		success:function(data){
+			var opts = $.parseJSON(data);
+			// Use jQuery's each to iterate over the opts value
+			$('#id_persona_baja').append('<option value="-1">Selecciona empresa</option>');
+			$.each(opts, function(i, d) {
+			// You will need to alter the below to get the right values from your json object.  Guessing that d.id / d.modelName are columns in your carModels data
+				$('#id_persona_baja').append('<option value="' + d.id_persona + '">' + d.nombre_empresa + '</option>');
+			});		
+		},
+	});
+});
