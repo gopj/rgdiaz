@@ -487,7 +487,7 @@ class Administrador extends MY_Controller {
 	}
 
 	public function bitacora($id_persona=null){
-		if($this->input->post()){
+		if ($this->session->userdata('tipo')==1){
 			
 			if ($id_persona) {
 				$data['id_persona'] = $id_persona;
@@ -1376,10 +1376,6 @@ class Administrador extends MY_Controller {
 		);
 		
 		$this->load->view("administrador/manifiesto", $data);
-	
-		
-
-
 	}
 
 
