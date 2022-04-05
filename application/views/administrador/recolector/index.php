@@ -1,6 +1,6 @@
 <main role="main" class="container col-md-10">
 <div class="page-title">
-		<h3 class="breadcrumb-header"> Consulta de Clientes </h3>
+		<h3 class="breadcrumb-header"> Manifiestos </h3>
 	</div>
 	<div class="col-md-12">
 		<div class="card card-white">

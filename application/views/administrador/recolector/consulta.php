@@ -1,4 +1,4 @@
-<main role="main" class="container-fluid justify-content-center">
+<main role="main" class="container-fluid justify-content-center col-md-10">
 	<div class="page-title">
 		<h3 class="breadcrumb-header"> Consultas </h3>
 	</div>
