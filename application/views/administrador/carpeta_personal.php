@@ -1,4 +1,4 @@
-<main role="main" class="container col-md-10">
+<div id="main-wrapper">
 	<div class="page-title">
 		<h3 class="breadcrumb-header"> Carpeta Personal </h3>
 	</div>
@@ -38,8 +38,7 @@
 						</tbody>
 					</table>
 				</div>
-
 			</div>
 		</div>
 	</div>
-</main>
+</div>

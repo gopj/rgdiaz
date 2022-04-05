@@ -110,16 +110,33 @@
 				</div>
 			</div>
 		</div>
-		<div class="page-content">
+		<!-- start page content -->
+        <div class="page-content">
+            <!-- start page header -->
+            <div class="page-header">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <div class="logo-sm">
+                                <a href="#!" id="sidebar-toggle-button"><i class="fa fa-bars"></i></a>
+                                <a class="logo-box" href="index.html"><span>RDIAZ</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.container-fluid -->
+                </nav>
+            </div>
+            <!-- end page header -->
 			<div class="page-inner">
 				<?php echo $output; ?>
-
-			</div>
-			<div class="footer" style="padding-right: 18%;">
-				<p>Todos los derechos reservados &copy; <script>document.write(new Date().getFullYear())</script> RDíaz.</p>
+				<div class="page-footer" style="padding-right: 18%;">
+					<p>Todos los derechos reservados &copy; <script>document.write(new Date().getFullYear())</script> RDíaz.</p>
+				</div>
 			</div>
 		</div>		
 	</div>
+
 
 	<!-- Modal Agrega Cliente Start-->
 	<div class="modal" id="modal_nuevo_cliente">
