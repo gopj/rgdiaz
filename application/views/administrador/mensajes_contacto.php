@@ -60,38 +60,145 @@
 						</div>
 					</div>
 					<div class="col-md-6">
-		                <div class="email-actions">
-		                    <a href="#" class="btn btn-primary"><i class="fas fa-reply"></i> Responder</a>
-		                    <a href="#" class="btn btn-secondary"><i class="fas fa-forward"></i> Reenviar</a>
-		                    <a href="#" class="btn btn-success"><i class="fas fa-check-double"></i> Archivar</a>
-		                    <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Eliminar</a>
-		                </div>
-		                <div class="email">
-		                    <div class="email-header">
-		                        <div class="email-title">
-		                            <span id="email_subject" name="email_subject"></p></span>
-		                        </div>
-		                        <span class="divider"></span>
-		                        <div class="email-author">
-		                            <span class="email-author" id="email" name="email"></span>
-		                            <span class="email-date" id="email_date" name="email_date"></span>
-		                        </div>
-		                        <span class="divider"></span>
-		                        <div class="email-author">
-		                        	<span class="email-author" id="email_phone" name="email_phone"></span>
-		                        </div>	
-		                        <span class="divider"></span>
-		                    </div>
-		                    <div class="email-body">
-		                        <span id="email_message" name="email_message"></span>
-		                    </div>
-		                </div>
-		            </div>
-		        </div>
-		    </div>
+						<div class="email-actions">
+							<a href="#" class="btn btn-primary"><i class="fas fa-reply"></i> Responder</a>
+							<a href="#" class="btn btn-secondary"><i class="fas fa-forward"></i> Reenviar</a>
+							<a href="#" class="btn btn-success"><i class="fas fa-check-double"></i> Archivar</a>
+							<a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Eliminar</a>
+						</div>
+						<div class="email">
+							<div class="email-header">
+								<div class="email-title">
+									<span id="email_subject" name="email_subject"></p></span>
+								</div>
+								<span class="divider"></span>
+								<div class="email-author">
+									<span class="email-author" id="email" name="email"></span>
+									<span class="email-date" id="email_date" name="email_date"></span>
+								</div>
+								<span class="divider"></span>
+								<div class="email-author">
+									<span class="email-author" id="email_phone" name="email_phone"></span>
+								</div>	
+								<span class="divider"></span>
+							</div>
+							<div class="email-body">
+								<span id="email_message" name="email_message"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-</main>    
+</main>
+
+<!-- start page inner -->
+<div class="page-inner">
+	<div class="page-title">
+		<h3 class="breadcrumb-header">Mensajes de Contacto</h3>
+	</div>
+	<!-- start page main wrapper -->
+	<div id="main-wrapper">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="input-group email-search">
+					<input type="text" class="form-control" placeholder="Busca mensaje">
+					<span class="input-group-prepend last">
+							<button class="btn btn-primary" type="button">Buscar</button>
+						</span>
+				</div>
+			</div>
+		</div>
+		<!-- Row -->
+		<div class="cross-page-line"></div>
+		<div class="row">
+			<div class="col-md-5">
+				<div class="email-list">
+					<ul class="list-unstyled">
+						<li class="active">
+							<a href="#">
+								<div class="email-list-item">
+									<div class="email-author">
+										<img src="img/email/1.jpg" alt="">
+										<span class="author-name">Jamara Karle</span>
+										<span class="email-date">8m ago</span>
+									</div>
+									<div class="email-info">
+										<span class="email-subject">
+												Eque porro quisquam est, qui dolorem ipsum quia posuere eget
+											</span>
+										<span class="email-text">
+												Tempora incidunt ut labore et dolore magnam aliquam quaerat
+											</span>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="email-list-item">
+									<div class="email-author">
+										<img src="img/email/2.jpg" alt="">
+										<span class="author-name">Keir Prestonly</span>
+										<span class="email-date">5:55pm</span>
+									</div>
+									<div class="email-info">
+										<span class="email-subject">
+												Mollit anim id est laborum perspiciatis unde
+											</span>
+										<span class="email-text">
+											   Voluptate velit esse cillum dolore eu fugiat nulla
+											</span>
+									</div>
+								</div>
+							</a>
+						</li>                                    
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-7">
+				<div class="email-actions">
+					<a href="#" class="btn btn-primary"><i class="fas fa-reply"></i> Reply</a>
+					<a href="#" class="btn btn-secondary"><i class="fas fa-forward"></i> Forward</a>
+					<a href="#" class="btn btn-success"><i class="fas fa-check-double"></i> Mark as read</a>
+					<a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+				</div>
+				<div class="email">
+					<div class="email-header">
+						<div class="email-title">
+							<p>Eque porro quisquam est, qui dolorem ipsum quia posuere eget</p>
+						</div>
+						<span class="divider"></span>
+						<div class="email-author">
+							<img src="img/email/1.jpg" alt="">
+							<span class="author-name">Jamara.karle@test.com</span>
+							<span class="email-date">4:14pm</span>
+						</div>
+						<span class="divider"></span>
+					</div>
+					<div class="email-body">
+						<span>
+								Dear Sir/Madam,<br><br>
+								Exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.<br><br>
+								Waiting your reply ASAP,<br>
+								Thanks in advance.
+							</span>
+					</div>
+					<div class="email-reply">
+						<div class="summernote"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Row -->
+	</div>
+	<!-- end page main wrapper -->
+	<div class="page-footer">
+		<p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Crizal All rights reserved.</p>
+	</div>
+</div>
+<!-- end page inner -->
 	
 <div class="modal fade modal-del-mensaje" tabindex=-1 role=dialog aria-labelledby=delete_mensaje_modal> <!-- modal bs-modal-del-mensaje -->
 	<div class="modal-dialog modal-sm"> 
