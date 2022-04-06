@@ -26,6 +26,7 @@ public function __construct()
 
      public function mensajescontacto(){
         return  $this->db->select('contacto.id_contacto as numero')
+                         ->select('contacto.mensaje')
                          ->select('contacto.nombre as nombre')
                          ->select('contacto.correo as correo')
                          ->select('contacto.asunto as asunto')

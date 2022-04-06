@@ -669,9 +669,10 @@ function get_message_info(id){
 	$("#email_date").text("");
 	$("#email_message").text("");
 	$("#email_phone").text("");
-
-	//var email_id = $("#id_contacto").val();
+	$("li").removeAttr("class");
+	
 	var email_id = id;
+	var url_delete = 'https://' + host + '/administrador/eliminar_mensaje/' + email_id;
 
 	//AJAX
 	jQuery.ajax({
@@ -703,6 +704,8 @@ function get_message_info(id){
 			$("#email_date").text(email_date);
 			$("#email_message").text(email_message);
 			$("#email_phone").text(email_phone);
+			$("#"+email_id).attr('class', 'active');
+			$("#delete_message").attr('onclick', 'delete_mensaje(' + email_id + ',' + url_delete + ')'); 
 		}
 	);
 }
@@ -720,4 +723,12 @@ $(document).ready(function() {
 			});		
 		},
 	});
+
+	$("#input_busca_mensaje").on("keyup", function() {
+		var value = $(this).val().toLowerCase();
+		$("#message_list *").filter(function() {
+			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+		});
+	});
 });
+
