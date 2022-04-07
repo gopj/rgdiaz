@@ -531,13 +531,22 @@ for ($h=0; $h < $num_table_res; $h++) {
 	$table_data_html = '';
 }
 
-$file_location 	= $_SERVER['DOCUMENT_ROOT'] ."rgdiaz/img/pdf/";
-$file_name 		= "{$nombre_empresa}_{$folio_identificador}_{$manifiesto->fecha_embarque}.pdf";
-$file_output	= $file_location . $file_name;
-//Close and output PDF document
-$pdf->Output($file_output, 'D');
+////////// Debugging PDF Divider
 
-/// $pdf->Output($filename, 'F'); TEST F | DOWNLOAD D 
+/*echo "<pre>";
+print_r($arr_residuos_manifiesto);
+echo "</pre>";*/
+
+$nombre_empresa = str_replace(" ", "_", $nombre_empresa); // Fix for spaces
+$filename 		= "{$nombre_empresa}_{$folio_identificador}_{$manifiesto->fecha_embarque}.pdf";
+$location 		= $_SERVER['DOCUMENT_ROOT'] ."rgdiaz/img/pdf/";
+$pdf_location	= $location . $filename;
+
+//Close and output PDF document
+$pdf->Output($pdf_location, 'FI');
+
+//$pdf->Output($fileNL, 'F'); /// F for debugging 
+//$pdf->Output($fileNL, 'FI'); /// FI for printing pdf 
 
 //redirect('recolector/ver_manifiestos/' . $id_cliente, 'refresh');
 ?>

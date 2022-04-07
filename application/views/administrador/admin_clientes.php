@@ -90,7 +90,7 @@
 									</div>
 									<div class="col-md-2 mb-2">
 										<label >Registro ambiental</label>
-										<input class="form-control" id="numero_registro_ambiental" name="numero_registro_ambiental" type='text'>
+										<input class="form-control" id="numero_empresa" name="numero_empresa" type='text'>
 									
 									</div>
 									<div class="col-md-3 mb-3">
@@ -124,7 +124,7 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-phone"></i></span>
 											</div>
-											<input class="form-control" id="telefono_empresa" name="telefono_empresa" type='text'>
+											<input class="form-control" id="telefono_contacto" name="telefono_contacto" type='text'>
 										</div>
 									</div>
 									<div class="col-md-2 mb-3">

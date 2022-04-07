@@ -79,7 +79,8 @@ class Admin extends MY_Controller {
 				$this->load->view("administrador/recolector/consulta", $data);
 			}
 		} else {
-			redirect('home');
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/index');
 		}
 		
 	}
@@ -148,9 +149,12 @@ class Admin extends MY_Controller {
 				
 				$this->load->view('administrador/recolector/consulta', $data_view);
 				
-			}
-
+			} 
+		} else {
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/index');
 		}
+
 	}
 
 	public function get_vehiculo() {
@@ -170,6 +174,9 @@ class Admin extends MY_Controller {
 			}
 
 			redirect('admin/recolector_consulta');
+		} else {
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/index');
 		}
 	}
 
@@ -208,6 +215,9 @@ class Admin extends MY_Controller {
 
 			$this->load->view("administrador/recolector/consulta", $data_view);
 
+		} else {
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/index');
 		}
 		
 	}
@@ -293,7 +303,7 @@ class Admin extends MY_Controller {
 			$data["responsable_tecnico"]= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio)->responsable_tecnico;
 			$data["recolector"]			= $this->persona_model->get_datos_empresa($this->session->userdata('id'));
 			$data["vehiculos"] 			= $this->tran_vehiculo_model->get_vehiculos();
-			$data["folio_identificador"]= $this->persona_model->get_datos_empresa($id_cliente)->identificador_folio . '-' . $folio; 
+			$data["folio_identificador"]= $this->tran_residuo_model->get_folio_identificador($folio)->folio;
 
 			$data["ruta"]				= $tran_resiudos->ruta;
 			$data["observaciones"]		= $tran_resiudos->observaciones;
@@ -542,10 +552,6 @@ class Admin extends MY_Controller {
 		$tran_resiudos 					= $this->tran_residuo_model->get_reg_tran_residuos($id_cliente, $folio);
 		$data["ruta"]					= $tran_resiudos->ruta;
 		$data["nombre_empresas"] 		= $this->persona_model->get_datos_empresas();
-
-/*		echo "<pre>";
-		print_r($data);
-		echo "</pre>";*/
 
 		$this->load->view("administrador/recolector/generar_manifiesto", $data);
 

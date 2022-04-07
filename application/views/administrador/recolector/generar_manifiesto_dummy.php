@@ -588,8 +588,6 @@ $nrs = 15; 	// Temporal fix for num of data rows
 	$pdf->writeHTML($html, true, false, true, false, '');
 	$pdf->writeHTML($html, true, false, true, false, '');
 
-/*print $html;*/
-
 	$table_data_html = '';
 }
 

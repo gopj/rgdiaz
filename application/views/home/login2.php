@@ -35,12 +35,7 @@
 						</div>
 
 						<div class="row">
-							<div class="col-sm-6 margin-10px-bottom">
-								<div class="custom-control custom-checkbox">
-									<input type="checkbox" class="custom-control-input" id="login-remember">
-									<label class="custom-control-label" for="login-remember">Mantenerme Logeado</label>
-								</div>
-							</div>
+							
 							<div class="col-sm-6 text-left text-sm-right">
 								<a href="<?=base_url('home/session/#')?>" class="m-link-muted">¿Olvidaste tu contraseña?</a>
 							</div>
