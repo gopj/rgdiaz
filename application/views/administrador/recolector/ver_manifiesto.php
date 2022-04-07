@@ -1,9 +1,9 @@
-<main role="main" class="container col-md-10">
+<main role="main" class="container col-md-12">
 	<div class="page-title">
 		<h3 class="breadcrumb-header"> Ver Manifiesto | <?= $folio_identificador ?> </h3>
 	</div>
-	<div class="col-md-12">
-		<div class="card card-white">
+	<div class="card card-white">
+		<div id="main-wrapper">
 			<div class="card-body">
 				<div class="form-row">
 					<div class="form-group col-md-9">

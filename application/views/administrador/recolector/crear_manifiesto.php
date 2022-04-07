@@ -1,9 +1,9 @@
-<main role="main" class="container col-md-10">
+<main role="main" class="container col-md-12">
 	<div class="page-title">
 		<h3 class="breadcrumb-header"> Crear Manifiesto </h3>
 	</div>
-	<div class="col-md-12">
-		<div class="card card-white">
+	<div class="card card-white">
+		<div id="main-wrapper">
 			<div class="card-body">
 				<form id="form_manifiesto_recolector" action="<?= site_url('admin/recolector_crear_manifiesto/' . $id_cliente); ?>" method="post" novalidate>
 					<div class="col-md-12">

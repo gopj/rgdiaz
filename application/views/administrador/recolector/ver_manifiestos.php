@@ -1,11 +1,11 @@
 <?php $this->session->set_userdata('url', 'from_user'); ?>
 
-<main role="main" class="container col-md-10">
+<main role="main" class="container col-md-12">
 	<div class="page-title">
 		<h3 class="breadcrumb-header"> Manifiestos </h3>
 	</div>
-	<div class="col-md-12">
-		<div class="card card-white">
+	<div class="card card-white">
+		<div id="main-wrapper">
 			<div class="card-body">
 				<table id="tabla_manifiestos" class="display table table-striped table-bordered" style="width:100%">
 					<thead class="thead-dark">

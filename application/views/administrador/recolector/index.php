@@ -1,9 +1,9 @@
-<main role="main" class="container col-md-10">
-<div class="page-title">
+<main role="main" class="container col-md-12">
+	<div class="page-title">
 		<h3 class="breadcrumb-header"> Manifiestos </h3>
 	</div>
-	<div class="col-md-12">
-		<div class="card card-white">
+	<div class="card card-white">
+		<div id="main-wrapper">
 			<div class="card-body">
 
 				<form method="post" id="form_ver_manifiestos" action="<?php echo site_url('admin/recolector_ver_manifiestos')?>">
@@ -42,7 +42,7 @@
 									<input type="text" class="form-control form-control-lg" id="numero" disabled>
 								</div>
 								<div class="form-group col-md-2">
-									<label class="col-form-label" for="cp">  Código Postal  </label>
+									<label class="col-form-label" for="cp">  C.P.  </label>
 									<input type="text" class="form-control form-control-lg" id="cp" disabled>
 								</div>				
 							</div>

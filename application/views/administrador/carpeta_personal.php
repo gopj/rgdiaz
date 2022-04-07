@@ -1,9 +1,9 @@
-<div id="main-wrapper">
+<main role="main" class="container col-md-12">
 	<div class="page-title">
-		<h3 class="breadcrumb-header"> Carpeta Personal </h3>
+		<h3 class="breadcrumb-header"> Bitacora </h3>
 	</div>
-	<div class="col-md-12">
-		<div class="card card-white">
+	<div class="card card-white">
+		<div id="main-wrapper">
 			<div class="card-body">
 
 				<div class="span9">
@@ -41,4 +41,4 @@
 			</div>
 		</div>
 	</div>
-</div>
+</main>

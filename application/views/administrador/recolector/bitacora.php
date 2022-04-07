@@ -1,10 +1,10 @@
 <?php $this->session->set_userdata('url', 'from_bitacora'); ?>
-<main role="main" class="container col-md-10">
+<main role="main" class="container col-md-12">
 	<div class="page-title">
 		<h3 class="breadcrumb-header"> Bitacora </h3>
 	</div>
-	<div class="col-md-12">
-		<div class="card card-white">
+	<div class="card card-white">
+		<div id="main-wrapper">
 			<div class="card-body">
 				<form class="form-inline col-md-12" role="form" autocomplete="off" method='post' id='form_bitacora' action="<?= site_url('admin/recolector_bitacora');?>">
 					

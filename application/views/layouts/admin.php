@@ -80,8 +80,8 @@
 								<i class="menu-icon icon-user"></i><span>Clientes</span><i class="accordion-icon fa fa-angle-left"></i>
 							</a>
 							<ul>
-								<li><a href="#"  data-toggle="modal" data-target="#modal_nuevo_cliente">+ Nuevo Cliente</a></li>
-								<li><a href="#"  data-toggle="modal" data-target="#modal_baja_cliente">- Baja Cliente</a></li>
+								<li><a href="" data-toggle="modal" data-target="#modal_nuevo_cliente">+ Nuevo Cliente</a></li>
+								<li><a href="" data-toggle="modal" data-target="#modal_baja_cliente">- Baja Cliente</a></li>
 								<li><a href="<?=base_url('administrador/admin_clientes')?>">Directorio de Clientes</a></li>
 							</ul>
 						</li>

@@ -669,10 +669,11 @@ function get_message_info(id){
 	$("#email_date").text("");
 	$("#email_message").text("");
 	$("#email_phone").text("");
-	$("li").removeAttr("class");
-	
+	$("#card_list").removeAttr("class");
+	$("#delete_message").removeAttr("disabled");
+
 	var email_id = id;
-	var url_delete = 'https://' + host + '/administrador/eliminar_mensaje/' + email_id;
+	var url_delete = '\'https://' + host + '/administrador/eliminar_mensaje/' + email_id + '\'';
 
 	//AJAX
 	jQuery.ajax({
@@ -711,14 +712,14 @@ function get_message_info(id){
 }
 
 $(document).ready(function() {
+	$("#delete_message").attr("disabled", "true");
+	
 	$.ajax({
 		url: 'https://' + host + '/admin/get_clientes',
 		success:function(data){
 			var opts = $.parseJSON(data);
-			// Use jQuery's each to iterate over the opts value
 			$('#id_persona_baja').append('<option value="-1">Selecciona empresa</option>');
 			$.each(opts, function(i, d) {
-			// You will need to alter the below to get the right values from your json object.  Guessing that d.id / d.modelName are columns in your carModels data
 				$('#id_persona_baja').append('<option value="' + d.id_persona + '">' + d.nombre_empresa + '</option>');
 			});		
 		},
