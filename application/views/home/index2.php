@@ -144,7 +144,7 @@
 
          <!-- start quote -->
         <div class="bg-theme padding-40px-tb">
-     
+
         </div>
         <!-- end quote -->
 
@@ -227,16 +227,13 @@
                                     <div class="row">
                                         <div class="col-6">
                         
-                            
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>              
         </section>
         <!-- end about section -->
@@ -250,7 +247,6 @@
                 </div>  
 
                 <div class="row">
-
                     <div class="col-12">
                         <div class="horizontaltab tab-style4">
                             <ul class="resp-tabs-list hor_1">
@@ -281,154 +277,122 @@
                                 </li>
                             </ul>
                             <div class="resp-tabs-container box-shadow-large bg-white hor_1">
-                                <div>
+                                <div class="bg-white box-shadow-primary padding-30px-all xs-padding-20px-all">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="padding-30px-left md-padding-20px-left sm-no-padding-left">
+                                                <h5>Diagnóstico de desempeño ambiental</h5>
+                                                <p style="text-align: justify">Con base a los requerimientos establecidos tanto por la normatividad en materia ambiental, de Seguridad e Higiene Laboral, la Norma ISO 14001:2004; así como las buenas prácticas de ingeniería, se determina el grado de cumplimiento, por parte de la empresa, de los requerimientos aplicables; de tal manera que permita establecer la pertinencia para la obtención de los siguientes reconocimientos:</p>
 
-                                    <div class="bg-white box-shadow-primary padding-30px-all xs-padding-20px-all">
-                                        <div class="row">
+                                                <p style="text-align: justify"> <strong> Certificación como Industria Limpia: </strong> certificado promovido y otorgado por la Procuraduría Federal de Protección al Ambiente, PROFEPA; fundamentalmente basado en el cumplimiento de la normatividad ambiental aplicable a la empresa. </p>
 
-                                            <div class="col-lg-12">
-                                                <div class="padding-30px-left md-padding-20px-left sm-no-padding-left">
-                                                    <h5>Diagnóstico de desempeño ambiental</h5>
-                                                    <p style="text-align: justify">Con base a los requerimientos establecidos tanto por la normatividad en materia ambiental, de Seguridad e Higiene Laboral, la Norma ISO 14001:2004; así como las buenas prácticas de ingeniería, se determina el grado de cumplimiento, por parte de la empresa, de los requerimientos aplicables; de tal manera que permita establecer la pertinencia para la obtención de los siguientes reconocimientos:</p>
-
-                                                    <p style="text-align: justify"> <strong> Certificación como Industria Limpia: </strong> certificado promovido y otorgado por la Procuraduría Federal de Protección al Ambiente, PROFEPA; fundamentalmente basado en el cumplimiento de la normatividad ambiental aplicable a la empresa. <p>
-
-                                                    <p style="text-align: justify"> <strong> Certificación ISO 14001: </strong> Certificación otorgada por un organismo certificador, acreditado para tal efecto; el cual certifica que la empresa ha implantado un Sistema de Gestión Ambiental en base a la Norma ISO 14001. <p>
-
-                                                </div>
+                                                <p style="text-align: justify"> <strong> Certificación ISO 14001: </strong> Certificación otorgada por un organismo certificador, acreditado para tal efecto; el cual certifica que la empresa ha implantado un Sistema de Gestión Ambiental en base a la Norma ISO 14001. </p>
 
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
-                                <div>
+                                <div class="bg-white box-shadow-primary padding-30px-all xs-padding-20px-all">
+                                    <div class="row">
+                                        <div class="col-lg-12 order-lg-1 order-2">
+                                            <div class="padding-30px-right md-padding-20px-right sm-no-padding-right">
+                                                <h5>Gestión</h5>
+                                                <p style="text-align: justify">Ante Unidades de Verificación Ambiental, para que mediante auditorías ambientales certifiquen el cumplimiento de la normatividad aplicable y con ello obtener los certificados mencionados. </p>
+                                                
+                                                <p style="text-align: justify">Ante autoridades de los tres niveles de gobierno para la obtención permisos, autorizaciones u otros requisitos establecidos por la normatividad, tales como:</p>
 
-                                    <div class="bg-white box-shadow-primary padding-30px-all xs-padding-20px-all">
-                                        <div class="row">
-                                            <div class="col-lg-12 order-lg-1 order-2">
-                                                <div class="padding-30px-right md-padding-20px-right sm-no-padding-right">
-                                                    <h5>Gestión</h5>
-                                                    <p style="text-align: justify">Ante Unidades de Verificación Ambiental, para que mediante auditorías ambientales certifiquen el cumplimiento de la normatividad aplicable y con ello obtener los certificados mencionados. </p>
-                                                    
-                                                    <p style="text-align: justify">Ante autoridades de los tres niveles de gobierno para la obtención permisos, autorizaciones u otros requisitos establecidos por la normatividad, tales como:</p>
-
-                                                    <ul class="list-style-16">
-                                                        <li>Registro como generador de Residuos Peligrosos y/o de Manejo Especial.</li>
-                                                        <li>Obtención de la Licencia Ambiental Única, LAU.</li>
-                                                        <li>Obtención de Licencia Local de Funcionamiento Ambiental.</li>
-                                                        <li>Reporte anual de la Cédula de Operación Anual, COA, tanto federal como estatal.</li>
-                                                        <li>Estudios de ambiente y riesgo laboral establecidos por la normatividad de la STPS, ello mediante laboratorios acreditados ante la EMA.</li>
-                                                    </ul>
-                                                </div>
-
+                                                <ul class="list-style-16">
+                                                    <li>Registro como generador de Residuos Peligrosos y/o de Manejo Especial.</li>
+                                                    <li>Obtención de la Licencia Ambiental Única, LAU.</li>
+                                                    <li>Obtención de Licencia Local de Funcionamiento Ambiental.</li>
+                                                    <li>Reporte anual de la Cédula de Operación Anual, COA, tanto federal como estatal.</li>
+                                                    <li>Estudios de ambiente y riesgo laboral establecidos por la normatividad de la STPS, ello mediante laboratorios acreditados ante la EMA.</li>
+                                                </ul>
                                             </div>
-
                                         </div>
                                     </div>
-
                                 </div>
-                                <div>
+                                <div class="bg-white box-shadow-primary padding-30px-all xs-padding-20px-all">
+                                    <div class="row">   
+                                        <div class="col-lg-12">
+                                            <div class="padding-30px-left md-padding-20px-left sm-no-padding-left">
+                                                <h5>Generación de documentación</h5>
+                                                 <p style="text-align: justify">Requerida tanto por la normatividad en materia ambiental, de Seguridad e Higiene Laboral, y/o la Norma ISO 14001:2004; entre las que destaca:</p>
 
-                                    <div class="bg-white box-shadow-primary padding-30px-all xs-padding-20px-all">
-                                        <div class="row">
-                                            
-                                            <div class="col-lg-12">
-                                                <div class="padding-30px-left md-padding-20px-left sm-no-padding-left">
-                                                    <h5>Generación de documentación</h5>
-                                                     <p style="text-align: justify">Requerida tanto por la normatividad en materia ambiental, de Seguridad e Higiene Laboral, y/o la Norma ISO 14001:2004; entre las que destaca:</p>
-
-                                                    <ul class="list-style-16">
-                                                        <li>Procedimientos para la prevención y atención de incendios</li>
-                                                        <li>Procedimientos para el manejo de sustancias químicas peligrosas</li>
-                                                        <li>Procedimientos para la comunicación de riesgos por sustancias químicas</li>
-                                                        <li>Procedimientos para el manejo de residuos</li>
-                                                        <li>Programas de capacitación</li>
-                                                        <li>Programas de comunicación y difusión</li>
-                                                        <li>Programa Interno de Protección Civil</li>
-                                                        <li>Plan de Manejo de Residuos Peligrosos</li>
-                                                        <li>Plan de Manejo de Residuos de Manejo Especial</li>
-                                                        <li>Estudios de Riesgo Ambiental por Manejo de Sustancias Químicas Altamente Peligrosas</li>
-                                                        <li>Clasificación del Riesgo de Incendio conforme a la NOM-002-STPS-2010</li>
-                                                        <li>Bitácoras</li>
-                                                        <li>Registro de actividades</li>
-                                                    </ul>
-
-                                                </div>
+                                                <ul class="list-style-16">
+                                                    <li>Procedimientos para la prevención y atención de incendios</li>
+                                                    <li>Procedimientos para el manejo de sustancias químicas peligrosas</li>
+                                                    <li>Procedimientos para la comunicación de riesgos por sustancias químicas</li>
+                                                    <li>Procedimientos para el manejo de residuos</li>
+                                                    <li>Programas de capacitación</li>
+                                                    <li>Programas de comunicación y difusión</li>
+                                                    <li>Programa Interno de Protección Civil</li>
+                                                    <li>Plan de Manejo de Residuos Peligrosos</li>
+                                                    <li>Plan de Manejo de Residuos de Manejo Especial</li>
+                                                    <li>Estudios de Riesgo Ambiental por Manejo de Sustancias Químicas Altamente Peligrosas</li>
+                                                    <li>Clasificación del Riesgo de Incendio conforme a la NOM-002-STPS-2010</li>
+                                                    <li>Bitácoras</li>
+                                                    <li>Registro de actividades</li>
+                                                </ul>
 
                                             </div>
+
                                         </div>
                                     </div>
-
                                 </div>
+                                <div class="bg-white box-shadow-primary padding-30px-all xs-padding-20px-all">
+                                    <div class="row">
+                                        
+                                        <div class="col-lg-12">
+                                            <div class="padding-30px-left md-padding-20px-left sm-no-padding-left">
+                                                <h5>Asesoría y capacitación</h5>
+                                                 <p style="text-align: justify">Para la implantación de las medidas establecidas por la legislación aplicable, tales como:</p>
 
-                                <div>
-
-                                    <div class="bg-white box-shadow-primary padding-30px-all xs-padding-20px-all">
-                                        <div class="row">
-                                            
-                                            <div class="col-lg-12">
-                                                <div class="padding-30px-left md-padding-20px-left sm-no-padding-left">
-                                                    <h5>Asesoría y capacitación</h5>
-                                                     <p style="text-align: justify">Para la implantación de las medidas establecidas por la legislación aplicable, tales como:</p>
-
-                                                    <ul class="list-style-16">
-                                                        <li>Señalización para protección civil</li>
-                                                        <li>Instalación de sistemas para prevención y combate a incendios</li>
-                                                        <li>Sistemas de protección y dispositivos de seguridad en maquinaria y equipo</li>
-                                                        <li>Manejo de Residuos Sólidos Urbanos, de Manejo Especial, y Peligrosos</li>
-                                                        <li>Constitución, integración, organización y funcionamiento de las Comisiones de Seguridad e Higiene</li>
-                                                        <li>Manejo de sustancias químicas peligrosas</li>
-                                                    </ul>
-
-                                                </div>
+                                                <ul class="list-style-16">
+                                                    <li>Señalización para protección civil</li>
+                                                    <li>Instalación de sistemas para prevención y combate a incendios</li>
+                                                    <li>Sistemas de protección y dispositivos de seguridad en maquinaria y equipo</li>
+                                                    <li>Manejo de Residuos Sólidos Urbanos, de Manejo Especial, y Peligrosos</li>
+                                                    <li>Constitución, integración, organización y funcionamiento de las Comisiones de Seguridad e Higiene</li>
+                                                    <li>Manejo de sustancias químicas peligrosas</li>
+                                                </ul>
 
                                             </div>
+
                                         </div>
                                     </div>
+                                </div>
+                                <div class="bg-white box-shadow-primary padding-30px-all xs-padding-20px-all">
+                                    <div class="row">
 
+                                        <div class="col-lg-12">
+                                            <div class="padding-30px-left md-padding-20px-left sm-no-padding-left">
+                                                <h5>Manejo de materiales y residuos peligrosos</h5>
+                                                <p style="text-align: justify">Que implica la recolección y transporte en vehículos autorizados tanto por la Secretaría de Comunicaciones y Transporte, como por la Secretaría del Medio Ambiente y Recursos Naturales; SEMARNAT; disposición final por coprocesamiento y/o confinamiento en instalaciones debidamente autorizadas por la SEMARNAT; y, en su defecto la destrucción fiscal de mercancías, materiales peligrosos o no peligrosos, en instalaciones debidamente autorizadas por las autoridades competentes.</p>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div>
+                                <div class="bg-white box-shadow-primary padding-30px-all xs-padding-20px-all">
+                                    <div class="row">
 
-                                    <div class="bg-white box-shadow-primary padding-30px-all xs-padding-20px-all">
-                                        <div class="row">
-
-                                            <div class="col-lg-12">
-                                                <div class="padding-30px-left md-padding-20px-left sm-no-padding-left">
-                                                    <h5>Manejo de materiales y residuos peligrosos</h5>
-                                                    <p style="text-align: justify">Que implica la recolección y transporte en vehículos autorizados tanto por la Secretaría de Comunicaciones y Transporte, como por la Secretaría del Medio Ambiente y Recursos Naturales; SEMARNAT; disposición final por coprocesamiento y/o confinamiento en instalaciones debidamente autorizadas por la SEMARNAT; y, en su defecto la destrucción fiscal de mercancías, materiales peligrosos o no peligrosos, en instalaciones debidamente autorizadas por las autoridades competentes.</p>
-                                                </div>
+                                        <div class="col-lg-12">
+                                            <div class="padding-30px-left md-padding-20px-left sm-no-padding-left">
+                                                <h5>Manejo y control de documentos</h5>
+                                                 <p style="text-align: justify">Toda la documentación generada en materia ambiental es manejada en una plataforma virtual; a la cual se puede acceder en cualquier momento mediante contraseña de usuario.</p>
+                                                <p style="text-align: justify">Adicional a lo mencionado, de así requerirlo, estamos en condiciones de adaptarnos a sus necesidades previo análisis de las mismas.</p>
 
                                             </div>
+
                                         </div>
                                     </div>
-
-                                </div>
-
-                                <div>
-
-                                    <div class="bg-white box-shadow-primary padding-30px-all xs-padding-20px-all">
-                                        <div class="row">
-
-                                            <div class="col-lg-12">
-                                                <div class="padding-30px-left md-padding-20px-left sm-no-padding-left">
-                                                    <h5>Manejo y control de documentos</h5>
-                                                     <p style="text-align: justify">Toda la documentación generada en materia ambiental es manejada en una plataforma virtual; a la cual se puede acceder en cualquier momento mediante contraseña de usuario.</p>
-                                                    <p style="text-align: justify">Adicional a lo mencionado, de así requerirlo, estamos en condiciones de adaptarnos a sus necesidades previo análisis de las mismas.</p>
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
         <!-- end tab section -->
@@ -581,8 +545,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
                         </div>

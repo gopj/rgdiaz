@@ -1,4 +1,4 @@
-<html lang="en">
+<!DOCTYPE html>
 
 <head>
     <base href="<?=base_url()?>"/>
@@ -7,10 +7,10 @@
     <meta name="author" content="Chitrakoot Web" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="RDíaz - Servicios Integrales en Materia Ambiental" />
+    <meta name="description" content="RDi&acute;az - Servicios Integrales en Materia Ambiental" />
 
     <!-- title  -->
-    <title>RDíaz - Servicios Integrales en Materia Ambiental</title>
+    <title>RDi&acute;az - Servicios Integrales en Materia Ambiental</title>
 
     <!-- favicon -->
     <link rel="shortcut icon" href="<?=base_url('img/minilogo.png')?>">
@@ -32,9 +32,6 @@
 
     <!-- custom css -->
     <link href="css/crizal/styles.css" rel="stylesheet" id="colors">
-
-
-
 </head>
 
 <body>
@@ -74,7 +71,6 @@
                         <div class="col-12 col-lg-12">
                             <div class="menu_area alt-font">
                                 <nav class="navbar navbar-expand-lg navbar-light no-padding">
-
                                     <div class="navbar-header navbar-header-custom">
                                         <!-- start logo -->
                                         <a href="" class="navbar-brand"><img id="logo" src="<?=base_url('img/logos/logo.png')?>" alt="logo"></a>
@@ -89,18 +85,17 @@
                                         <li><a href="<?=base_url()?>#section_servicios">Servicios</a></li>
                                         <li><a href="<?=base_url()?>#section_contacto">Contacto</a></li>
                                         <li><a href="<?=base_url()?>#section_sitios">Sitios de Interes</a></li>
-                                        <li><a href="<?=base_url('/home/sesion')?>" type="button" style="color: #86bc42;">Acceder</a></li>
+                                        <li><a href="<?=base_url('/home/sesion')?>" style="color: #86bc42;">Acceder</a></li>
                                     </ul>
                                     <!-- end menu area -->
 
                                     <!-- start attribute navigation -->
                                     <div class="attr-nav sm-no-margin sm-margin-70px-right xs-margin-65px-right">
                                         <ul class="top-social-icon">
-                                            <li><a href="https://www.facebook.com/RD%C3%ADaz-304155623326307/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                            <li><a href="https://www.facebook.com/RD%C3%ADaz-304155623326307/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
                                         </ul>
                                     </div>
                                     <!-- end attribute navigation -->
-
                                 </nav>
                             </div>
                         </div>
@@ -169,7 +164,6 @@
             </div>
         </footer>
         <!-- end footer section -->
-
     </div>
     <!-- end main-wrapper section -->
 
