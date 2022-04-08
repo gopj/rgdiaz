@@ -669,8 +669,9 @@ function get_message_info(id){
 	$("#email_date").text("");
 	$("#email_message").text("");
 	$("#email_phone").text("");
-	$("#card_list").removeAttr("class");
+	$("#"+id).removeAttr("class");
 	$("#delete_message").removeAttr("disabled");
+	$("#mark_read").removeAttr("disabled");
 
 	var email_id = id;
 	var url_delete = '\'https://' + host + '/administrador/eliminar_mensaje/' + email_id + '\'';
@@ -706,13 +707,15 @@ function get_message_info(id){
 			$("#email_message").text(email_message);
 			$("#email_phone").text(email_phone);
 			$("#"+email_id).attr('class', 'active');
-			$("#delete_message").attr('onclick', 'delete_mensaje(' + email_id + ',' + url_delete + ')'); 
+			$("#delete_message").attr('onclick', 'delete_mensaje(' + email_id + ',' + url_delete + ')');
+
 		}
 	);
 }
 
 $(document).ready(function() {
 	$("#delete_message").attr("disabled", "true");
+	$("#mark_read").attr("disabled", "true");
 	
 	$.ajax({
 		url: 'https://' + host + '/admin/get_clientes',

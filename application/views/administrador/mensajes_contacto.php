@@ -27,7 +27,7 @@
 								<?php foreach ($todosmensajes as $men) {
 									$fecha = explode(" ", $men->fecha);
 								?>
-								<li id="card_list">
+								<li id="<?=$men->numero?>">
 									<a onclick="get_message_info(<?=$men->numero?>)">
 										<div class="email-list-item" onclick="get_message_info(<?=$men->numero?>)">
 											<div class="email-author">
@@ -51,9 +51,7 @@
 					</div>
 					<div class="col-md-8">
 						<div class="email-actions">
-							<a href="#" class="btn btn-primary"><i class="fas fa-reply"></i> Responder</a>
-							<a href="#" class="btn btn-secondary"><i class="fas fa-forward"></i>Reenviar</a>
-							<a href="#" class="btn btn-success"><i class="fas fa-check-double"></i> Marcar como leido</a>
+							<button type="button" class="btn btn-success" id="mark_read"><i class="fas fa-check-double"></i> Marcar como leido</button>
 							<button type="button" class="btn btn-danger" id="delete_message" data-toggle="modal" data-target="#modal_elimina_mensaje"><i class="fas fa-trash-alt" ></i> Borrar</button>
 						</div>
 						<div class="email">
@@ -84,9 +82,6 @@
 	</div>
 </main>
 <!-- end page inner -->
-	
-
-
 
 <!-- Modal Baja Cliente Start-->
 <div class="modal" id="modal_elimina_mensaje">
