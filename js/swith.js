@@ -669,9 +669,11 @@ function get_message_info(id){
 	$("#email_date").text("");
 	$("#email_message").text("");
 	$("#email_phone").text("");
-	$("#"+id).removeAttr("class");
+	$("#message_list li").removeAttr("class");
 	$("#delete_message").removeAttr("disabled");
 	$("#mark_read").removeAttr("disabled");
+	$("#mark_read").removeAttr("class");
+	$("#mark_read").attr("class", "btn btn-success");
 
 	var email_id = id;
 	var url_delete = '\'https://' + host + '/administrador/eliminar_mensaje/' + email_id + '\'';
@@ -686,39 +688,55 @@ function get_message_info(id){
 			email_id: email_id,
 		}
 	}).done(
-		function(resp) 
-		{
+		function(resp) {
 			var json_data = jQuery.parseJSON(resp);
 			var email_subject = json_data.email_subject;
 			var email = json_data.email;
 			var email_date = json_data.email_date;
 			var email_message = json_data.email_message;
 			var email_phone = json_data.email_phone;
+			var email_status = json_data.status;
 
 			if (email_subject == ""){
 				email_subject = "-";
 			}
 
+			if (email_status == 1){
+				$("#mark_read").attr("disabled", "true");
+				$("#mark_read").removeAttr("onclick");
+				$("#mark_read").attr("class", "btn btn-secondary");
+			}
+
 			email_phone = "Teléfono: " + email_phone;
+
+			$("#mark_read").attr("onclick", "mark_read(" + id + ")");
 
 			$("#email_subject").text(email_subject);
 			$("#email").text(email);
 			$("#email_date").text(email_date);
 			$("#email_message").text(email_message);
 			$("#email_phone").text(email_phone);
-			$("#"+email_id).attr('class', 'active');
 			$("#delete_message").attr('onclick', 'delete_mensaje(' + email_id + ',' + url_delete + ')');
-
 		}
 	);
 }
 
-$(document).ready(function() {
-	$("#delete_message").attr("disabled", "true");
-	$("#mark_read").attr("disabled", "true");
-	
+function mark_read(id){
 	$.ajax({
-		url: 'https://' + host + '/admin/get_clientes',
+		url: 'https://' + host + '/administrador/mark_read/' + id,
+		success:function(data){
+			var new_unreads = $.parseJSON(data);
+			$("#message_count").text(new_unreads);
+
+			$("#" + id).remove();
+			
+		},
+	});
+}
+
+function get_baja_clientes(){
+	$.ajax({
+		url: 'https://' + host + '/administrador/get_clientes',
 		success:function(data){
 			var opts = $.parseJSON(data);
 			$('#id_persona_baja').append('<option value="-1">Selecciona empresa</option>');
@@ -726,6 +744,23 @@ $(document).ready(function() {
 				$('#id_persona_baja').append('<option value="' + d.id_persona + '">' + d.nombre_empresa + '</option>');
 			});		
 		},
+	});
+}
+
+$(document).ready(function() {
+	$("#delete_message").attr("disabled", "true");
+	$("#mark_read").attr("disabled", "true");
+
+	$.ajax({
+		url: 'https://' + host + '/administrador/get_unread',
+		success:function(data){
+			var unread = $.parseJSON(data);
+			$("#message_count").text(unread);
+		},
+	});
+
+	$("#message_list li").click(function() {
+		$(this).attr('class', 'active');
 	});
 
 	$("#input_busca_mensaje").on("keyup", function() {

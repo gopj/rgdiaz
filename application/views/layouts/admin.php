@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 	<head>
 		<!-- base_url -->
 		<base href="<?php echo base_url(); ?>"/>
@@ -62,7 +61,7 @@
 						</li>
 						<li>
 							<a href="<?=base_url('administrador/mensajes_contacto')?>">
-								<i class="menu-icon icon-inbox"></i><span>Correo</span>
+								<i class="menu-icon icon-inbox"></i><span><span class="badge float-right badge-danger" id="message_count"></span> Correo</span>
 							</a>
 						</li>
 						<li>
@@ -81,7 +80,7 @@
 							</a>
 							<ul>
 								<li><a href="" data-toggle="modal" data-target="#modal_nuevo_cliente">+ Nuevo Cliente</a></li>
-								<li><a href="" data-toggle="modal" data-target="#modal_baja_cliente">- Baja Cliente</a></li>
+								<li><a href="" data-toggle="modal" data-target="#modal_baja_cliente" onclick="get_baja_clientes()">- Baja Cliente</a></li>
 								<li><a href="<?=base_url('administrador/admin_clientes')?>">Directorio de Clientes</a></li>
 							</ul>
 						</li>
@@ -102,7 +101,6 @@
 								<i class="menu-icon icon-settings"></i><span>Configuración</span><i class="accordion-icon fa fa-angle-left"></i>
 							</a>
 							<ul>
-								<li><a href="#">Ajustes</a></li>
 								<li><a href="<?=base_url();?>">Cerrar Sesión</a></li>
 							</ul>
 						</li>

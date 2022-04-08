@@ -629,13 +629,6 @@ class Admin extends MY_Controller {
 	
 	}
 
-	public function get_clientes(){
-		$this->setLayout('empty');
-		$data['clientes'] = $this->persona_model->obtiene_clientes_baja_ajax($id_status_persona=1,$id_tipo_persona=3,$lleno_datos=1);
-
-		echo json_encode($data['clientes']);
-	}
-
 	public function crizal(){
 		$this->setLayout('admin_test');
 		$this->load->view('administrador/recolector/crizal');

@@ -1491,7 +1491,7 @@ class Administrador extends MY_Controller {
 
 	public function get_message(){
 		$this->setLayout('empty');
-
+		
 		$email_id = $this->input->post('email_id');			
 		$mensaje = $this->contacto_model->obtienemensaje($email_id); 
 
@@ -1500,10 +1500,48 @@ class Administrador extends MY_Controller {
 			'email' => $mensaje->correo,
 			'email_date' => $mensaje->fecha_mensaje,
 			'email_message' => $mensaje->mensaje,
-			'email_phone' => $mensaje->telefono
+			'email_phone' => $mensaje->telefono,
+			'status' => $mensaje->status_contacto
 		);
 
 		echo json_encode($data);
+	}
+
+	public function get_clientes(){
+		$this->setLayout('empty');
+		if ($this->session->userdata('tipo') == 1){
+			$data['clientes'] = $this->persona_model->obtiene_clientes_baja_ajax($id_status_persona=1,$id_tipo_persona=3,$lleno_datos=1);
+
+			echo json_encode($data['clientes']);
+		} else {
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/index');
+		}	
+	}
+
+	public function get_unread(){
+		$this->setLayout('empty');
+		if ($this->session->userdata('tipo') == 1){
+			$unread = $this->contacto_model->contador_mensajes($status = 0);
+
+			echo json_encode($unread);
+		} else {
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/index');
+		}	
+	}
+
+	public function mark_read($id){
+		$this->setLayout('empty');
+		if ($this->session->userdata('tipo') == 1){
+			$this->contacto_model->modifica_status('1', $id);
+			$unread = $this->contacto_model->contador_mensajes($status = 0);
+
+			echo json_encode($unread);
+		} else {
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/index');
+		}	
 	}
 
 	public function mail_test() { 

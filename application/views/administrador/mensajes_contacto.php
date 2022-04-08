@@ -27,11 +27,15 @@
 								<?php foreach ($todosmensajes as $men) {
 									$fecha = explode(" ", $men->fecha);
 								?>
-								<li id="<?=$men->numero?>">
+								<li id="card-list">
 									<a onclick="get_message_info(<?=$men->numero?>)">
 										<div class="email-list-item" onclick="get_message_info(<?=$men->numero?>)">
 											<div class="email-author">
-												<span class="author-name"><?=$men->nombre?></span>
+													<span class="author-name"> <?=$men->nombre?> 
+														<?php if ($men->status == 'no leido') {
+															echo "&nbsp; <span id='" . $men->numero . "' class='fas fa-eye-slash' style='color: #86BC42'></span>";
+														}?>
+													</span>
 												<span class="email-date"><?=$fecha[0]?></span>
 											</div>
 											<div class="email-info">
