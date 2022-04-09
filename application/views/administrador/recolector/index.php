@@ -1,4 +1,3 @@
-<main role="main" class="container col-md-12">
 	<div class="page-title">
 		<h3 class="breadcrumb-header"> Manifiestos </h3>
 	</div>
@@ -118,4 +117,3 @@
 			</div>
 		</div>
 	</div>
-</main>

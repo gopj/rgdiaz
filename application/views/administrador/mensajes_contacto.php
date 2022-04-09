@@ -1,4 +1,3 @@
-<main role="main" class="container col-md-12">
 	<div class="page-title">
 		<h3 class="breadcrumb-header"> Mensajes de Contacto </h3>
 	</div>
@@ -61,7 +60,7 @@
 						<div class="email">
 							<div class="email-header">
 								<div class="email-title">
-									<span id="email_subject" name="email_subject"></p></span>
+									<span id="email_subject" name="email_subject"></span>
 								</div>
 								<span class="divider"></span>
 								<div class="email-author">
@@ -77,6 +76,9 @@
 							<div class="email-body">
 								<span id="email_message" name="email_message"></span>
 							</div>
+							<div class="email-reply">
+								<div class="summernote" id="email_reply"></div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -84,32 +86,31 @@
 			</div>	
 		</div>
 	</div>
-</main>
-<!-- end page inner -->
+	<!-- end page inner -->
 
-<!-- Modal Baja Cliente Start-->
-<div class="modal" id="modal_elimina_mensaje">
-	<div class="modal-dialog modal-md"> 
-		<div class="modal-content"> 
-			<div class="modal-header"> 
-				<h5 class="modal-title" >Eliminar Mensaje</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div> 
-			<div class=modal-body>
-				<div class="form-group col-md-12">
-					¿Deseas eliminar el mensaje No. <span id="id_contacto"></span>?
+	<!-- Modal Baja Cliente Start-->
+	<div class="modal" id="modal_elimina_mensaje">
+		<div class="modal-dialog modal-md"> 
+			<div class="modal-content"> 
+				<div class="modal-header"> 
+					<h5 class="modal-title" >Eliminar Mensaje</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div> 
+				<div class=modal-body>
+					<div class="form-group col-md-12">
+						¿Deseas eliminar el mensaje No. <span id="id_contacto"></span>?
+					</div>
 				</div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-				<a href="" id='mensaje_delete' class='btn btn-danger' role='button'> Eliminar</a>
-			</div>
-		</div> 
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+					<a href="" id='mensaje_delete' class='btn btn-danger' role='button'> Eliminar</a>
+				</div>
+			</div> 
+		</div>
 	</div>
-</div>
-<!-- Modal Baja Cliente End-->
+	<!-- Modal Baja Cliente End-->
 
 
 

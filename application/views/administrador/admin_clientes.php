@@ -26,7 +26,6 @@
 	}						
 </script>
 
-<main role="main" class="container col-md-12">
 	<div class="page-title">
 		<h3 class="breadcrumb-header"> Consulta Clientes </h3>
 	</div>
@@ -204,8 +203,6 @@
 			</div>  
 		</div>
 	</div>
-
-</main>
 
 <div class="modal fade bs-modal-enable" tabindex=-1 role=dialog aria-labelledby=mySmallModalLabel> <!-- modal bs-modal-del -->
 	<div class="modal-dialog modal-sm"> 

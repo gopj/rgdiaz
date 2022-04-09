@@ -1,5 +1,4 @@
 
-<main role="main" class="container-fluid justify-content-center col-md-12">
 	<div class="page-title">
 		<h3 class="breadcrumb-header"> Consultas </h3>
 	</div>
@@ -451,4 +450,3 @@
 			</div>
 		</div>	
 	</div>
-</main>

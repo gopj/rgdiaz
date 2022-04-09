@@ -674,6 +674,7 @@ function get_message_info(id){
 	$("#mark_read").removeAttr("disabled");
 	$("#mark_read").removeAttr("class");
 	$("#mark_read").attr("class", "btn btn-success");
+	$( "div.note-editable" ).attr( "style", "height: 195.65px;" );
 
 	var email_id = id;
 	var url_delete = '\'https://' + host + '/administrador/eliminar_mensaje/' + email_id + '\'';
@@ -727,9 +728,7 @@ function mark_read(id){
 		success:function(data){
 			var new_unreads = $.parseJSON(data);
 			$("#message_count").text(new_unreads);
-
 			$("#" + id).remove();
-			
 		},
 	});
 }

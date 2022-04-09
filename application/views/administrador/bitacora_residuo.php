@@ -13,7 +13,6 @@ function date_bitacora($s_date){
 ?>
 <link rel="stylesheet" type="text/css" href="<?=base_url('css/table_bitacora.css')?>">
 
-<main role="main" class="container col-md-12">
 	<div class="page-title">
 		<h3 class="breadcrumb-header"> Bitácora Residuos Peligrosos - <?= $nombre_empresa; ?> </h3>
 	</div>
@@ -122,9 +121,6 @@ function date_bitacora($s_date){
 			</div>
 		</div>
 	</div>	
-</main>	
-
-
 
 <div class="modal fade bs-modal-del" tabindex=-1 role=dialog aria-labelledby=delete_resiudo_modal> <!-- modal bs-modal-del -->
 	<div class="modal-dialog modal-sm"> 

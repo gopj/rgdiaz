@@ -1,4 +1,3 @@
-<main role="main" class="container col-md-12">
 	<div class="page-title">
 		<h3 class="breadcrumb-header"> Ver Manifiesto | <?= $folio_identificador ?> </h3>
 	</div>
@@ -100,4 +99,3 @@
 			</div>
 		</div>
 	</div>
-</main>

@@ -1,5 +1,5 @@
 <?php $this->session->set_userdata('url', 'from_bitacora'); ?>
-<main role="main" class="container col-md-12">
+
 	<div class="page-title">
 		<h3 class="breadcrumb-header"> Bitacora </h3>
 	</div>
@@ -78,4 +78,3 @@
 			</div>
 		</div>
 	</div>
-</main>
