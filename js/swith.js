@@ -674,7 +674,6 @@ function get_message_info(id){
 	$("#mark_read").removeAttr("disabled");
 	$("#mark_read").removeAttr("class");
 	$("#mark_read").attr("class", "btn btn-success");
-	$(".note-editable").attr( "style", "height: 195.65px");
 	$(".note-codable").attr( "name", "text_message");
 	$(".note-codable").attr( "id", "text_message");
 
@@ -761,6 +760,8 @@ $(document).ready(function() {
 	$("#delete_message").attr("disabled", "true");
 	$("#mark_read").attr("disabled", "true");
 	$("#reply_message").attr("disabled", "true");
+	$(".note-editable").attr( "style", "height: 195.65px");
+	$(".email-list").attr("style", "height: auto; max-height: 576px;");
 
 	$.ajax({
 		url: 'https://' + host + '/administrador/get_unread',

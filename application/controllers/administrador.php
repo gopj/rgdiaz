@@ -773,6 +773,12 @@ class Administrador extends MY_Controller {
 		$this->setLayout('empty');	
 		if ($this->session->userdata('tipo')==1){
 			if($this->input->post()){
+
+			/*	echo "<pre>";
+				print_r($this->input->post());
+				echo "</pre>";
+				die();*/
+
 				//insertamos datos en la base de datos
 				$nombre = $this->input->post('nombre_contacto');//1
 				$correo = $this->input->post('email_contacto');//2
