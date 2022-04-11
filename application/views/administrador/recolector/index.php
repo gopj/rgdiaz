@@ -84,36 +84,38 @@
 									<button type="submit" class="btn btn-primary btn-lg btn-block" id="ver_manifiestos" name="ver_manifiestos" disabled>Ver Manifiestos</button>
 								</div>
 							</div>
-
-							<!-- The Modal -->
-							<div class="modal" id="id_folio_message">
-								<div class="modal-dialog modal-md">
-									<div class="modal-content">
-
-									<!-- Modal Header -->
-									<div class="modal-header">
-										<h4 class="modal-title">Identificador de Folio no disponible </h4>
-										<button type="button" class="close" data-dismiss="modal">&times;</button>
-									</div>
-
-									<!-- Modal body -->
-									<div class="modal-body">
-										<div class="form-row">
-											<div class="form-group col-md-8">
-												<label class="col-form-label" for=""> Favor de contactar al administrador </label>
-											</div>	
-										</div>
-
-										<!-- Modal footer -->
-										<div class="modal-footer">
-											<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-										</div>
-									</div>
-								</div>
-							</div>
 						</div>
 					</div>		
-				</form>		
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- The Modal -->
+	<div class="modal" id="id_folio_message">
+		<div class="modal-dialog modal-md">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Identificador de Folio no disponible </h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<div class="form-row">
+						<div class="form-group col-md-8">
+							<label class="col-form-label" for=""> Favor de contactar al administrador </label>
+						</div>	
+					</div>
+
+					<!-- Modal footer -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

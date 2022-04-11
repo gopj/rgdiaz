@@ -2,17 +2,22 @@
 <html lang="en">
 <head>
 	<!-- base_url -->
-	<base href="<?php echo base_url(); ?>"/>
+	<base href="<?=base_url()?>"/>
 
 	<!-- metas -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta name="keywords" content="admin,dashboard" />
+	<meta name="description" content="RDíaz - Servicios Integrales en Materia Ambiental" />
+
+	<!-- title  -->
+	<title>RD&iacute;az - Servicios Integrales en Materia Ambiental</title>
 
 	<!-- common plugins -->
 	<link rel="stylesheet" href="<?=base_url('css/crizal/bootstrap.min.css')?>" />
 	<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/font-awesome/css/font-awesome.min.css')?>" />
+	<link rel="stylesheet" href="<?=base_url('css/style.css')?>" />
 	<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/icomoon/style.css')?>" />
 	<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/uniform/css/default.css')?>" />
 	<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/switchery/switchery.min.css')?>" />
@@ -159,82 +164,82 @@
 		</div>		
 	</div>
 
-		<!-- Modal Agrega Cliente Start-->
-		<div class="modal" id="modal_nuevo_cliente">
-			<div class="modal-dialog modal-md"> 
-				<div class="modal-content"> 
-					<div class="modal-header"> 
-						<h5 class="modal-title" >Nuevo cliente </h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div> 
-					<div class=modal-body>
-						<div class="form-row">
-							<div class="form-group col-md-12">
-								<form id="form_alta_cliente2" method="post" action="<?=base_url('administrador/alta_cliente')?>">
-									<div class="modal-body">
-										Correo Electrónico:
-										<div class="input-prepend">
-											<span class="add-on">
-												<img src="img/glyphicons_003_user.png" class="icon-form">
-											</span>
-											<input class="form-control" type="text" id="alta_correo" name="correo"/>
-										</div>
-										Nota: se le enviara automáticamente al cliente un correo con su usuario y contraseña.
-									</div>
-								</form>
-							</div>	
-						</div>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-primary"  onclick="alta_cliente()" value="Dar de Alta">
-						<a href="<?=site_url('administrador/alta_cliente_admin')?>" class="btn btn-primary"> Dar de alta y registrar datos </a>
-					</div>
+	<!-- Modal Agrega Cliente Start-->
+	<div class="modal" id="modal_nuevo_cliente">
+		<div class="modal-dialog modal-md"> 
+			<div class="modal-content"> 
+				<div class="modal-header"> 
+					<h5 class="modal-title" >Nuevo cliente </h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
 				</div> 
-			</div>
-		</div>
-		<!-- Modal Agrega Cliente End-->
-
-		<!-- Modal Baja Cliente Start-->
-		<div class="modal" id="modal_baja_cliente">
-			<div class="modal-dialog modal-md"> 
-				<div class="modal-content"> 
-					<div class="modal-header"> 
-						<h5 class="modal-title">Baja cliente </h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div> 
-					<div class=modal-body>
+				<div class=modal-body>
+					<div class="form-row">
 						<div class="form-group col-md-12">
-							<form id="baja_cliente" method="post" action="<?=site_url('administrador/baja_cliente')?>">
-								Usuario:
-								<div class="input-prepend">
-									<span class="add-on">
-										<img src="img/glyphicons_003_user.png" class="icon-form">
-									</span>
-									<select class="form-control" name="id_persona" id="id_persona_baja"> <!--Mandamos una bandera para ver si ingreso un cliente-->
-									</select>
-								</div> <br />
-								Razón:
-								<div class="input-prepend">
-									<span class="add-on">
-										<img src="img/glyphicons_030_pencil.png" class="icon-form">
-									</span>
-									<input type="text" class="form-control" id="razon" name="razon" >
-								</div> <br />
-								Nota: se le enviara automáticamente al cliente un correo notificandole que a sido dado de baja.
+							<form id="form_alta_cliente2" method="post" action="<?=base_url('administrador/alta_cliente')?>">
+								<div class="modal-body">
+									Correo Electrónico:
+									<div class="input-prepend">
+										<span class="add-on">
+											<img src="img/glyphicons_003_user.png" class="icon-form">
+										</span>
+										<input class="form-control" type="text" id="alta_correo" name="correo"/>
+									</div>
+									Nota: se le enviara automáticamente al cliente un correo con su usuario y contraseña.
+								</div>
 							</form>
-						</div>
+						</div>	
 					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-primary" onclick="cliente_baja()" value="Dar de Baja">
-					</div>
-				</div> 
-			</div>
+				</div>
+				<div class="modal-footer">
+					<input type="button" class="btn btn-primary"  onclick="alta_cliente()" value="Dar de Alta">
+					<a href="<?=site_url('administrador/alta_cliente_admin')?>" class="btn btn-primary"> Dar de alta y registrar datos </a>
+				</div>
+			</div> 
 		</div>
-		<!-- Modal Baja Cliente End-->
+	</div>
+	<!-- Modal Agrega Cliente End-->
+
+	<!-- Modal Baja Cliente Start-->
+	<div class="modal" id="modal_baja_cliente">
+		<div class="modal-dialog modal-md"> 
+			<div class="modal-content"> 
+				<div class="modal-header"> 
+					<h5 class="modal-title">Baja cliente </h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div> 
+				<div class=modal-body>
+					<div class="form-group col-md-12">
+						<form id="baja_cliente" method="post" action="<?=site_url('administrador/baja_cliente')?>">
+							Usuario:
+							<div class="input-prepend">
+								<span class="add-on">
+									<img src="img/glyphicons_003_user.png" class="icon-form">
+								</span>
+								<select class="form-control" name="id_persona" id="id_persona_baja"> <!--Mandamos una bandera para ver si ingreso un cliente-->
+								</select>
+							</div> <br />
+							Razón:
+							<div class="input-prepend">
+								<span class="add-on">
+									<img src="img/glyphicons_030_pencil.png" class="icon-form">
+								</span>
+								<input type="text" class="form-control" id="razon" name="razon" >
+							</div> <br />
+							Nota: se le enviara automáticamente al cliente un correo notificandole que a sido dado de baja.
+						</form>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<input type="button" class="btn btn-primary" onclick="cliente_baja()" value="Dar de Baja">
+				</div>
+			</div> 
+		</div>
+	</div>
+	<!-- Modal Baja Cliente End-->
 
 	<!-- start scroll to top -->
 	<a href="#!" class="scroll-to-top"><i class="fas fa-angle-up" aria-hidden="true"></i></a>
@@ -299,6 +304,6 @@
 
 	<script type="text/javascript" src="<?=base_url('js/swith.js')?>"></script>
 
-</body>	
+</body>
 
 </html>
