@@ -689,57 +689,50 @@ class Administrador extends MY_Controller {
 	public function contestar_mensaje_contacto($id_contacto){
 		if ($this->session->userdata('tipo')==1){
 
-			$data["mensajes"] 	= $this->contacto_model->contador_mensajes(0);
-			$data["clientes"] 	= $this->persona_model->obtiene_clientes_baja(3,1,1);
-			$data["correo"] 	= $this->persona_model->getCorreos(3);
-			$data["email"] 		= $this->persona_model->getCorreo(2);
-			$data["email"] 		= $data["email"]->correo;
-			$data["completo"] 	= $this->contacto_model->obtienemensaje($id_contacto); 
+			$mensaje_contacto = $this->contacto_model->obtienemensaje($id_contacto); 
 
-			if($this->input->post()){
-				
-				$correo = $this->input->post('correo');
-				$asunto = $this->input->post('asunto');
-				$mensaje_contacto = $this->input->post('mensaje_contacto');
-				$mensaje = $this->input->post('texto_mensaje');
-				$completo = $data["completo"];
+			$correo = $mensaje_contacto->correo;
+			$asunto = $mensaje_contacto->asunto;
+			$mensaje_contacto = $mensaje_contacto->mensaje_contacto;
+			$mensaje = $this->input->post('text_message');
 
-				$para 	= $correo . ", " . "diaz281@yahoo.com.mx, rigediaz@hotmail.com";
-				$this->email->from('admin@rdiaz.mx', 'Admin RDíaz');
-				$this->email->to($para); 
-				$this->email->cc(''); 
-				$this->email->bcc('');
+			$para 	= $correo . ", " . "diaz281@yahoo.com.mx, rigediaz@hotmail.com";
+			$this->email->from('admin@rdiaz.mx', 'Admin RDíaz');
+			$this->email->to($para); 
+			$this->email->cc(''); 
+			$this->email->bcc('');
 
-				$image = "http://rdiaz.mx/img/logo_mini.png"; // image path
+			$image = "http://rdiaz.mx/img/logo_mini.png"; // image path
 
-				$mensaje = "
-				<html>
-					<head> </head>
-					<body>
-						" . $mensaje ." <br>
-						======================================================================= <br>
-						<strong> De: </strong> {$correo} <br>
-						<strong> Asunto: </strong> {$completo->asunto} <br>
-						<strong> Mensaje: </strong> <br> {$mensaje_contacto} <br>
+			$mensaje = "
+			<html>
+				<head> </head>
+				<body>
+					" . $mensaje ." <br>
+					======================================================================= <br>
+					<b> De: </b> {$correo} <br>
+					<b> Asunto: </b> {$asunto} <br>
+					<b> Mensaje: </b> <br> {$mensaje_contacto} <br>
 
-						<br> <br>
-						<img href='http://rdiaz.mx/' src='{$image}' alt='Logo' />
-					</body>
-				</html>
-				";
+					<br> <br>
+					<img href='http://rdiaz.mx/' src='{$image}' alt='Logo' />
+				</body>
+			</html>
+			";
 
-				$this->email->subject($asunto);
-				$this->email->message($mensaje);
-				$this->email->set_mailtype('html');
+			$this->email->subject($asunto);
+			$this->email->message($mensaje);
+			$this->email->set_mailtype('html');
 
-				$this->email->send();
+			$this->email->send();
 
-				/*echo $this->email->print_debugger();
-				die();*/
-				redirect('administrador/mensajes_contacto');
-			}
+			/*echo $this->email->print_debugger();
+			die();*/
+			redirect('administrador/mensajes_contacto');
 
-			$this->load->view("administrador/contestar_mensaje_contacto", $data);
+		} else {
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/index');
 		}
 	}
 

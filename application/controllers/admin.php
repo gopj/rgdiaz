@@ -36,7 +36,6 @@ class Admin extends MY_Controller {
 			$data["id"]					= $this->session->userdata('id');
 			$data["tclientes"]			= $this->persona_model->obtienetodoclientes($id_tipo_persona,$lleno_datos);
 			
-			
 			$this->load->view('administrador/recolector/index', $data);
 		} else {
 			$this->session->sess_destroy(); #destruye session

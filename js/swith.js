@@ -674,10 +674,13 @@ function get_message_info(id){
 	$("#mark_read").removeAttr("disabled");
 	$("#mark_read").removeAttr("class");
 	$("#mark_read").attr("class", "btn btn-success");
-	$( "div.note-editable" ).attr( "style", "height: 195.65px;" );
+	$(".note-editable").attr( "style", "height: 195.65px");
+	$(".note-codable").attr( "name", "text_message");
+	$(".note-codable").attr( "id", "text_message");
 
 	var email_id = id;
 	var url_delete = '\'https://' + host + '/administrador/eliminar_mensaje/' + email_id + '\'';
+	var url_reply = 'administrador/contestar_mensaje_contacto/' + email_id;
 
 	//AJAX
 	jQuery.ajax({
@@ -717,7 +720,9 @@ function get_message_info(id){
 			$("#email_date").text(email_date);
 			$("#email_message").text(email_message);
 			$("#email_phone").text(email_phone);
-			$("#delete_message").attr('onclick', 'delete_mensaje(' + email_id + ',' + url_delete + ')');
+			$("#delete_message").attr('onclick', 'delete_message(' + url_delete + ')');
+			$("#form_reply_message").attr('action', url_reply);
+			$('#email_respond').text($('#email').text());
 		}
 	);
 }
@@ -732,6 +737,12 @@ function mark_read(id){
 		},
 	});
 }
+
+function delete_message(url_delete){
+	$('#email_delete').text($('#email').text());
+	$('#mensaje_delete').attr('href', url_delete)
+} 
+
 
 function get_baja_clientes(){
 	$.ajax({
@@ -749,6 +760,7 @@ function get_baja_clientes(){
 $(document).ready(function() {
 	$("#delete_message").attr("disabled", "true");
 	$("#mark_read").attr("disabled", "true");
+	$("#reply_message").attr("disabled", "true");
 
 	$.ajax({
 		url: 'https://' + host + '/administrador/get_unread',
@@ -768,5 +780,15 @@ $(document).ready(function() {
 			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 		});
 	});
+
+	$(".note-editable").on("keyup", function() {
+		$("#reply_message").removeAttr("disabled");
+		$("#text_message").text($(".note-editable").text());
+	});
+
+	$( "#contestar_mensaje" ).click(function() {
+		$( "#form_reply_message" ).submit();
+	});
+
 });
 

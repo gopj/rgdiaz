@@ -54,6 +54,7 @@
 					</div>
 					<div class="col-md-8">
 						<div class="email-actions">
+							<button type="button" class="btn btn-primary" id="reply_message" data-toggle="modal" data-target="#modal_responde_mensaje"><i class="fas fa-reply"></i>Responder</button>
 							<button type="button" class="btn btn-success" id="mark_read"><i class="fas fa-check-double"></i> Marcar como leido</button>
 							<button type="button" class="btn btn-danger" id="delete_message" data-toggle="modal" data-target="#modal_elimina_mensaje"><i class="fas fa-trash-alt" ></i> Borrar</button>
 						</div>
@@ -76,9 +77,11 @@
 							<div class="email-body">
 								<span id="email_message" name="email_message"></span>
 							</div>
-							<div class="email-reply">
-								<div class="summernote" id="email_reply"></div>
-							</div>
+							<form id="form_reply_message"method="post" action="">
+								<div class="email-reply">
+									<div class="summernote" id="email_reply"></div>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -100,7 +103,7 @@
 				</div> 
 				<div class=modal-body>
 					<div class="form-group col-md-12">
-						¿Deseas eliminar el mensaje No. <span id="id_contacto"></span>?
+						¿Deseas eliminar el mensaje de <b> <span id="email_delete"></span> </b>?
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -111,6 +114,30 @@
 		</div>
 	</div>
 	<!-- Modal Baja Cliente End-->
+
+	<!-- Modal Contesta Mensaje Start-->
+	<div class="modal" id="modal_responde_mensaje">
+		<div class="modal-dialog modal-md"> 
+			<div class="modal-content"> 
+				<div class="modal-header"> 
+					<h5 class="modal-title" >Contestar Mensaje</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div> 
+				<div class=modal-body>
+					<div class="form-group col-md-12">
+						¿Deseas contestar el mensaje de <b><span id="email_respond"></span></b>?
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+					<button type='submit' id='contestar_mensaje' class='btn btn-primary' role='button'> Enviar </button>
+				</div>
+			</div> 
+		</div>
+	</div>
+	<!-- Modal Contesta Mensaje End-->
 
 
 
