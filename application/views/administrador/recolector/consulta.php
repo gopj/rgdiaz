@@ -20,7 +20,7 @@
 					<div class="tab-pane fade show active" id="home4" role="tabpanel" aria-labelledby="home-tab4">		
 						<form class="form" role="form" autocomplete="off" method='post' action="<?php echo site_url('admin/recolector_consulta');?>">
 							<div class="form-group row">
-								<label class="col-md-2 form-control-label" for="id_persona"> Selecciona Correo </label>
+								<label class="col-md-2 form-control-label" for="id_persona"> Selecciona Usuario </label>
 								<div class="col-md-6">
 									<select class="form-control" onchange="get_recolector(this.value)" id="id_persona" name="id_persona">
 										<option value=""> Nuevo </option>
@@ -39,9 +39,9 @@
 							</div>
 
 							<div class="form-group row">
-								<label class="col-md-2 form-control-label" for="correo">Correo Electronico</label>
+								<label class="col-md-2 form-control-label" for="correo">Nombre de Usuario</label>
 								<div class="col-md-6">
-									<input class="form-control" type="email"  style=" text-align: center;" name="correo" id="correo" oninvalid="this.setCustomValidity('Ingresa correo')" oninput="setCustomValidity(''); onchange_recolector()" required>
+									<input class="form-control" type="text"  style=" text-align: center;" name="correo" id="correo" oninvalid="this.setCustomValidity('Ingresa Usuario')" oninput="setCustomValidity(''); onchange_recolector()" required>
 								</div>
 							</div>
 
@@ -193,7 +193,7 @@
 									<div class="col-lg-12">
 										<select class="form-control" id="id_tipo_vehiculo" name="id_tipo_vehiculo" onclick="update_tipo_vehiculo(this.value);" onchange="update_tipo_vehiculo(this.value); onchange_vehiculo()" required>
 											<option value="" selected disabled> Selecciona Vehículo </option>
-											<option value="otro_vehiculo"> Otro </option>
+											<option value="otro_vehiculo"> Nuevo </option>
 											<?php foreach($tipo_vehiculos->result() as $row){ ?>
 												<option value="<?php echo $row->id_tipo_vehiculo;?>"><?php echo $row->nombre_tipo; ?></option>
 											<?php } ?>
