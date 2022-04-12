@@ -32,248 +32,252 @@
 <input type="hidden" id="prev_selected" name="prev_selected" value="<?=$id_persona;?>">
 <div id="main-wrapper">
 	<div class="row">
-			
+		
 		<div class="col-md-12">
 			<div class="card card-white">
 				<div class="card-heading clearfix">
 					<h4 class="card-title">Consulta</h4>
 				</div>
 				<div class="card-body">
-					<form>
-						<div class="form-row align-items-center">
-							<div class="col-sm-6">
-								<label class="sr-only" for="id_persona">Clientes</label>
-								<select class="form-control" onchange="compruebausuario(this.value);" id="id_persona" name="id_persona" style="width: 100%;">
-									<option value="" class="form-control">Selecciona Cliente</option>
-									<?php foreach($todosclientes->result() as $row){ ?>
-										<option value="<?php echo $row->id_persona;?>"><?php echo $row-> nombre_empresa; ?></option>
-									<?php } ?>
-								</select>
-							</div>	
+			
+					<div class="form-row align-items-center">
+						<div class="col-sm-6">
+							<label class="sr-only" for="id_persona">Clientes</label>
+							<select class="form-control" onchange="compruebausuario(this.value);" id="id_persona" name="id_persona" style="width: 100%;">
+								<option value="" class="form-control">Selecciona Cliente</option>
+								<?php foreach($todosclientes->result() as $row){ ?>
+									<option value="<?php echo $row->id_persona;?>"><?php echo $row-> nombre_empresa; ?></option>
+								<?php } ?>
+							</select>
+						</div>	
 
-							<div class="col-sm-2">							
-								<form method='post' action="<?=base_url('administrador/versubcarpeta');?>">
-									<input type="hidden" id="persona" name="ruta_carpeta">
-									<input type="hidden" id="ruta" name="ruta_carpeta" >
-									<input type="hidden" id="persona_expediente" name="id_persona_expediente" >
-									
-									<input class="btn btn-primary mb-2" id="btn_expediente" disabled type="submit" value="Ver Expediente">
-								</form>
-							</div>
-							
-							<div class="col-sm-2">
-								<form id="ver_bitacora" method='post' action="<?=base_url('administrador/bitacora/');?>">
-									<input type="hidden" id="persona_bitacora" name="id_persona">
-									<input class="btn btn-primary mb-2" id="btn_bitacora" disabled type="submit" value="Ver Bitacora">
-								</form>
-							</div>
-
-							<div class="col-sm-2">
-								<input class="btn btn-primary mb-2" id="btn_guardar" disabled type="button" onclick="confir_act_admin();" value="Guardar Cambios">
-							</div>
-
+						<div class="col-sm-2">							
+							<form method='post' action="<?=base_url('administrador/versubcarpeta');?>">
+								<input type="hidden" id="persona" name="ruta_carpeta">
+								<input type="hidden" id="ruta" name="ruta_carpeta" >
+								<input type="hidden" id="persona_expediente" name="id_persona_expediente" >
+								
+								<input class="btn btn-primary mb-2" id="btn_expediente" disabled type="submit" value="Ver Expediente">
+							</form>
 						</div>
-							
-					</form>
+						
+						<div class="col-sm-2">
+							<form id="ver_bitacora" method='post' action="<?=base_url('administrador/bitacora/');?>">
+								<input type="hidden" id="persona_bitacora" name="id_persona">
+								<input class="btn btn-primary mb-2" id="btn_bitacora" disabled type="submit" value="Ver Bitacora">
+							</form>
+						</div>
+
+						<div class="col-sm-2">
+							<input class="btn btn-primary mb-2" id="btn_guardar" disabled type="button" onclick="confir_act_admin();" value="Guardar Cambios">
+						</div>
+					</div>
 				</div>
 			</div>		
 		</div>
+	</div>
 
-		<form class="form-row" id="act_datos_admin" action="<?=base_url('administrador/actualiza_datos_admin');?>" method="POST">
-		 	<div class="col-md-6">
-				<div class="card card-white">
-					<div class="card-heading clearfix">
-						<h4 class="card-title">Datos de Cliente</h4>
-					</div>
-					<div class="card-body">
-					
-						<div class="form-row" id="datosempresa" >
-							<div class="col-md-8 mb-2">
-								<label >Nombre | Razón social</label>
-								<input type="text" class="form-control" id="nombre_empresa" name="nombre_empresa" readonly="true" >
-							</div>
-							<div class="col-md-4 mb-2">
-								<label >Registro ambiental</label>
-								<input class="form-control" id="numero_registro_ambiental" name="numero_registro_ambiental" type="text">
-							</div>
+	<form class="form-row" id="act_datos_admin" action="<?=base_url('administrador/actualiza_datos_admin');?>" method="POST">
+	 	<div class="col-md-6">
+			<div class="card card-white">
+				<div class="card-heading clearfix">
+					<h4 class="card-title">Datos de Cliente</h4>
+				</div>
+				<div class="card-body">
+				
+					<div class="form-row" id="datosempresa" >
+						<div class="col-md-8 mb-2">
+							<label >Nombre | Razón social</label>
+							<input type="text" class="form-control" id="nombre_empresa" name="nombre_empresa" readonly="true" >
+							<input type="text" id="id_cliente" name="id_cliente" hidden>
+						</div>
+						<div class="col-md-4 mb-2">
+							<label >Registro ambiental</label>
+							<input class="form-control" id="numero_registro_ambiental" name="numero_registro_ambiental" type="text">
+						</div>
 
-							<div class="col-md-6 mb-2">
-								<label >Email</label>
+						<div class="col-md-6 mb-2">
+							<label >Email</label>
+							<div class="input-group-prepend">
 								<div class="input-group-prepend">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="inputGroupPrepend"><i class="far fa-envelope"></i></span>
-									</div>
-									<input class="form-control" id="email_empresa" name="email_empresa" type="text">
+									<span class="input-group-text" id="inputGroupPrepend"><i class="far fa-envelope"></i></span>
 								</div>
+								<input class="form-control" id="email_empresa" name="email_empresa" type="text">
 							</div>
+						</div>
 
-							<div class="col-md-3 mb-2">
-								<label >Teléfono</label>
+						<div class="col-md-3 mb-2">
+							<label >Teléfono</label>
+							<div class="input-group-prepend">
 								<div class="input-group-prepend">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="inputGroupPrepend" onclick="gen_identificador_folio();"><i class="fas fa-phone"></i></span>
-									</div>
-									<input class="form-control" id="telefono_contacto" name="telefono_contacto" type="text">
+									<span class="input-group-text" id="inputGroupPrepend" onclick="gen_identificador_folio();"><i class="fas fa-phone"></i></span>
 								</div>
+								<input class="form-control" id="telefono_empresa" name="telefono_empresa" type="text">
 							</div>
+						</div>
 
-							<div class="col-md-3 mb-2">
-								<label >Identificador Fólio</label>
+						<div class="col-md-3 mb-2">
+							<label >Identificador Fólio</label>
+						
+							<div class="input-group mb-2">
 								<div class="input-group-prepend">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-bolt"></i></span>
-									</div>
-									<input class="form-control" id="identificador_folio" name="identificador_folio" type="text">
+									<button class="btn btn-outline-primary" type="button" id="button-addon1" onclick="gen_identificador_folio();"><i class="fas fa-bolt"></i></button>
 								</div>
+								<input class="form-control" id="identificador_folio" name="identificador_folio" type="text">
 							</div>
+						</div>
 
-							<div class="col-md-7 mb-2">
-								<label >Domicilio | Calle</label>
-								<input type="text" class="form-control" id="calle_empresa" name="calle_empresa"  >
-								<div class="invalid-feedback">
-									Please provide a valid state.
-								</div>
+						<div class="col-md-7 mb-2">
+							<label >Domicilio | Calle</label>
+							<input type="text" class="form-control" id="calle_empresa" name="calle_empresa"  >
+							<div class="invalid-feedback">
+								Please provide a valid state.
 							</div>
+						</div>
 
-							<div class="col-md-3 mb-3">
-								<label >Número</label>
-								<input class="form-control" id="numero_empresa" name="numero_empresa" type="text">
-							</div>
+						<div class="col-md-3 mb-3">
+							<label >Número</label>
+							<input class="form-control" id="numero_empresa" name="numero_empresa" type="text">
+						</div>
 
-							<div class="col-md-2 mb-3">
-								<label for="validationCustom05">C. P.</label>
-								<input class="form-control" id="cp_empresa" name="cp_empresa" type="text">
-							</div>
+						<div class="col-md-2 mb-3">
+							<label for="validationCustom05">C. P.</label>
+							<input class="form-control" id="cp_empresa" name="cp_empresa" type="text">
+						</div>
 
-							<div class="col-md-4 mb-2">
-								<label >Colonia</label>
-								<input class="form-control" id="colonia_empresa" name="colonia_empresa" type="text">
-							</div>
-							
-							<div class="col-md-4 mb-3">
-								<label >Estado</label>
-								<input class="form-control" id="estado_empresa" name="estado" type="text">
-							</div>
+						<div class="col-md-4 mb-2">
+							<label >Colonia</label>
+							<input class="form-control" id="colonia_empresa" name="colonia_empresa" type="text">
+						</div>
+						
+						<div class="col-md-4 mb-3">
+							<label >Estado</label>
+							<input class="form-control" id="estado_empresa" name="estado" type="text">
+						</div>
 
-							<div class="col-md-4 mb-1">
-								<label >Municipio</label>
-								<input class="form-control" id="municipio_empresa" name="municipio" type="text">
-							</div>
-
-							
-
-						</div>	
-					</div>
+						<div class="col-md-4 mb-1">
+							<label >Municipio</label>
+							<input class="form-control" id="municipio_empresa" name="municipio" type="text">
+						</div>
+					</div>	
 				</div>
 			</div>
+		</div>
 
-			<div class="col-md-6">
-				<div class="card card-white">
-					<div class="card-heading clearfix">
-						<h4 class="card-title">Datos de Contacto</h4>
-					</div>
-					<div class="card-body">
+		<div class="col-md-6">
+			<div class="card card-white">
+				<div class="card-heading clearfix">
+					<h4 class="card-title">Datos de Contacto</h4>
+				</div>
+				<div class="card-body">
 
-						<div class="row">
-							<div class="col-md-6 mb-2">
-								<label >Nombre del contacto</label>
-								<input class="form-control" id="nombre_contacto" name="nombre_contacto" type="text">
+					<div class="row">
+						<div class="col-md-6 mb-2">
+							<label >Nombre del contacto</label>
+							<input class="form-control" id="nombre_contacto" name="nombre_contacto" type="text">
+						</div>
+
+						<div class="col-md-6 mb-2">
+							<label >Email Alternativo</label>
+							<div class="input-group-prepend">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-envelope"></i></span>
+								</div>
+								<input class="form-control" id="email_contacto" name="email_contacto" type="text">
 							</div>
-							<div class="col-md-6 mb-2">
-								<label > Contraseña</label>
+						</div>
+					</div>
+					
+					<div class="row" id="datoscontacto">
+						<div class="col-md-6 mb-2">
+							<label >Teléfono</label>
+							<div class="input-group-prepend">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-envelope"></i></span>
+								</div>
+								<input class="form-control" type="text" id="telefono_contacto" name="telefono_contacto">
+							</div>
+						</div>
+
+						<div class="col-md-6 mb-2">
+							<label >Teléfono Alternativo</label>
+							<div class="input-group-prepend">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-phone"></i></span>
+								</div>
+								<input class="form-control" id="telefono_contacto_alt" name="telefono_contacto_alt" type="text">
+							</div>
+						</div>
+						
+					</div>
+
+					<div class="row">
+						<div class="col-md-6 mb-2">
+							<label >Contraseña</label>
+							<div class="input-group-prepend">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-key"></i></span>
+								</div>
 								<input class="form-control" id="password_contacto" name="password_contacto" type="text" readonly="true">
 							</div>
 						</div>
-
-						<div class="row" id="datoscontacto">
-							<div class="col-md-6 mb-2">
-								<label >Télefono Alternativo</label>
+						<div class="col-md-6 mb-2">
+							<label >Estado del usuario</label>
+							<div class="input-group-prepend">
 								<div class="input-group-prepend">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-phone"></i></span>
-									</div>
-									<input class="form-control" id="telefono_contacto_alt" name="telefono_contacto_alt" type="text">
+									<span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-signal"></i></span>
 								</div>
-							</div>
-							<div class="col-md-6 mb-2">
-								<label >Email Alternativo</label>
-								<div class="input-group-prepend">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-envelope"></i></span>
-									</div>
-									<input class="form-control" id="email_contacto" name="email_contacto" type="text">
-								</div>
+								<input class="form-control" id="estado_cuenta" name="estado_cuenta" type="text" readonly="true">
 							</div>
 						</div>
+					</div>
 
-						<div class="row">
-							<div class="col-md-6 mb-2">
-								<label >Contraseña</label>
-								<div class="input-group-prepend">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-key"></i></span>
-									</div>
-									<input class="form-control" id="password_contacto" name="password_contacto" type="text">
-								</div>
-							</div>
-							<div class="col-md-6 mb-2">
-								<label >Estado del usuario</label>
-								<div class="input-group-prepend">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-signal"></i></span>
-									</div>
-									<input class="form-control" id="estado_cuenta" name="estado_cuenta" type="text" readonly="true">
-								</div>
-							</div>
+					<div class="row">
+						<div class="col-md-12">
 						</div>
-
-						<div class="row">
-							<div class="col-md-12">
-							</div>
+					</div>
+					
+					<div class="row" style="padding-top: 63px">
+						<div class="col-md-6">
+							<input type="button" id="activar_campos" value="Activar Campos" class="btn btn-primary "  data-toggle='modal' data-target='#modal_activa_campos'>
 						</div>
-
-						<div class="row">
-							<div class="col-md-6">
-
-								<input type="button" id="activar_campos" value="Activar Campos" class="btn btn-primary "  data-toggle='modal' data-target='.bs-modal-enable'>
-							</div>
-							<div class="col-md-6">
-
-								<input type="button" id="update_status" value="Activar Usuario" onclick="update();" class="btn btn-primary" disabled><br>     
-							</div>
+						<div class="col-md-6">
+							<input type="button" id="update_status" value="Activar Usuario" onclick="update();" class="btn btn-primary" disabled><br>     
 						</div>
-
 					</div>
 				</div>
 			</div>
+		</div>
 
-		</form>	
+	</form>	
 
-
-	</div>
-	<!-- / Row -->
 </div>
 <!-- / Main wrapper-->
 
 
-<div class="modal fade bs-modal-enable" tabindex=-1 role=dialog aria-labelledby=mySmallModalLabel> <!-- modal bs-modal-del -->
+<!-- Modal Activar Campos Start-->
+<div class="modal" id="modal_activa_campos">
 	<div class="modal-dialog modal-md"> 
 		<div class="modal-content"> 
 			<div class="modal-header"> 
+				<h5 class="modal-title" >Activar Campos </h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
-				</button> <h5 class="modal-title" id="mySmallModalLabel">Activar Campos </h5>
+				</button>
 			</div> 
 			<div class=modal-body>
-				¿Deseas habilitar los campos <strong> Nombre o Razón Social y Contraseña</strong>?
+				<div class="form-group col-md-12">
+					¿Deseas habilitar los campos <b> Nombre o Razón Social y Contraseña</b>?
+				</div>
 			</div>
-			<div class=modal-footer>
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
 				<button type="button" id='activar_campos_modal' class='btn btn-primary' onclick="enable_fields();" role='button' data-dismiss="modal"> Habilitar</button>
 			</div>
 		</div> 
 	</div>
-</div><!-- Modal -->
+</div>
+<!-- Modal Activar Campos End-->
 
 <div class="modal fade" id="modal_folio_identificador" tabindex="-1" role="dialog" aria-labelledby="label_folio_identificador" aria-hidden="true"> <!-- modal Identificador folio -->
 	<div class="modal-dialog modal-sm" role="document"> 
@@ -293,3 +297,26 @@
 		</div> 
 	</div>
 </div><!-- Modal -->
+
+<!-- Modal Folio Modificar Start-->
+<div class="modal" id="modal_folio_identificador">
+	<div class="modal-dialog modal-md"> 
+		<div class="modal-content"> 
+			<div class="modal-header"> 
+				<h5 class="modal-title" >Identificador de Folio Duplicado</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div> 
+			<div class=modal-body>
+				<div class="form-group col-md-12">
+					Favor de elejir un identificador de folio diferente a <span id="folio_identificador_modal_span"></span> .
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+			</div>
+		</div> 
+	</div>
+</div>
+<!-- Modal Folio Modificar End-->

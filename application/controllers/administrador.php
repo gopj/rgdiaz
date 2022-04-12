@@ -773,12 +773,7 @@ class Administrador extends MY_Controller {
 		$this->setLayout('empty');	
 		if ($this->session->userdata('tipo')==1){
 			if($this->input->post()){
-
-			/*	echo "<pre>";
-				print_r($this->input->post());
-				echo "</pre>";
-				die();*/
-
+	
 				//insertamos datos en la base de datos
 				$nombre = $this->input->post('nombre_contacto');//1
 				$correo = $this->input->post('email_contacto');//2
@@ -803,7 +798,7 @@ class Administrador extends MY_Controller {
 				$numero_registro_ambiental = $this->input->post('numero_registro_ambiental'); 
 				$identificador_folio = $this->input->post('identificador_folio'); 
 				
-				$id_persona = $this->input->post('id_persona');
+				$id_persona = $this->input->post('id_cliente');
 				
 				$this->persona_model->actualiza_datos_admin($id_persona,
 															$nombre,

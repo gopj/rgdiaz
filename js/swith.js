@@ -193,6 +193,7 @@ function compruebausuario(id){
 	$("#password_contacto").val("");
 	$("#estado_cuenta").val("");
 	$("#identificador_folio").val("");
+	$("#id_cliente").val(id);
 
 	if(id_per == 0){
 		$("#btn_expediente").attr('disabled','disabled');

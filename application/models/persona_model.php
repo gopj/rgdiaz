@@ -257,7 +257,7 @@ class Persona_model extends CI_Model {
 
 		$status_ident_folio = $this->db->query('select count(*) as count from rdiaz.persona where identificador_folio=\'' . $identificador_folio . '\';')->row();
 
-		$this->db->set('nombre',$nombre)
+		$update_persona = $this->db->set('nombre',$nombre)
 					->set('correo',$correo)
 					->set('telefono_personal',$telefono_personal)
 					->set('telefono_personal_alt',$telefono_personal_alt)
