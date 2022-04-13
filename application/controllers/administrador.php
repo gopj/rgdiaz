@@ -59,31 +59,6 @@ class Administrador extends MY_Controller {
 		}
 	}
 
-	//	Metodo que Obtiene todos los datos del mensaje seleccionado
-	public function mensaje_completo()
-	{
-		
-		if ($this->session->userdata('tipo')==1) {
-			if ($this->input->get()) {
-				$id_contacto = base64_decode($this->input->get('id_contacto'));			
-				$this->contacto_model->modifica_status($status_contacto=1,$id_contacto);
-
-				$data['mensajes'] = $this->contacto_model->contador_mensajes($status=0);
-				$data['completo'] = $this->contacto_model->obtienemensaje($id_contacto); 
-				$data['clientes'] = $this->persona_model->obtiene_clientes_baja($id_status_persona=1,$id_tipo_persona=3,$lleno_datos = 1);
-				$data['correo'] = $this->persona_model->getCorreos($id_tipo_persona=3);
-				
-								
-				$this->load->view('administrador/mensaje',$data);
-
-			}else{
-				redirect('home');
-			}
-		}else{
-			redirect('home');
-		}
-	}
-
 	public function eliminar_mensaje($id) {		
 		if ($this->session->userdata('tipo')==1) {
 			
@@ -1271,11 +1246,6 @@ class Administrador extends MY_Controller {
 					#$todosmensajes = $this->contacto_model->mensajescontacto();
 			$data = array(
 				'mensajes'=> $mensajesnuevos,
-						#'mensajitos' => $todosmensajes
-			);
-					#$id_tipo_persona=3;
-					#$id_status_persona=1;
-			$data = array( 
 				'clientes' => $cliente,
 				'carpetas'=> $subcarpetas,
 				'direccion'=> $ruta_anterior,
