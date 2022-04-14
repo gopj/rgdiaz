@@ -74,6 +74,7 @@ class Persona_model extends CI_Model {
 						  ->where('id_status_persona',$id_status_persona)
 						  ->where('id_tipo_persona',$id_tipo_persona)
 						  ->where('lleno_datos',$lleno_datos)
+						  ->order_by('nombre_empresa','asc')
 						  ->get('persona')
 						  ->result();
 		return $query;
@@ -106,6 +107,7 @@ class Persona_model extends CI_Model {
 		return $this->db->set('nombre',				$data['nombre'])
 						->set('correo',				$data['correo'])
 						->set('password',			$data['clave'])
+						->set('cp_empresa',			$data['id_vehiculo'])
 						->set('id_tipo_persona',	2)
 						->set('id_status_persona',	1)
 						->set('lleno_datos',		1)
@@ -122,8 +124,10 @@ class Persona_model extends CI_Model {
 	}
 
 	public function delete_recolector($id){
-		 return $this->db->where('id_persona', $id)
-		 		->delete('persona');
+
+		 return $this->db->set('id_status_persona',	0)
+		 				->where('id_persona', $id)
+						->update('persona');
 	}
 
 	public function get_nombre_cliente($id){
@@ -326,7 +330,8 @@ class Persona_model extends CI_Model {
 
 	public function get_recolectores(){
 		return $this->db->where('id_tipo_persona', 2)
-						 ->get('persona');
+						->where('id_status_persona', 1)
+						->get('persona');
 	}
 
 	public function get_recolector($id){

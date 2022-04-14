@@ -1,4 +1,3 @@
-
 	<div class="page-title">
 		<h3 class="breadcrumb-header"> Consultas </h3>
 	</div>
@@ -7,17 +6,17 @@
 			<div class="card-body">
 				<ul class="nav nav-tabs justify-content-left mb-4" id="myTab4" role="tablist">
 					<li class="nav-item">
-						<a class="nav-link active" id="home-tab4" data-toggle="tab" href="#home4" role="tab" aria-controls="home4" aria-selected="true">Recolector</a>
+						<a class="nav-link active" id="recolector_tab" data-toggle="tab" href="#tab_content_recolector" role="tab" aria-controls="recolector_content" aria-selected="true">Recolector</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" id="profile-tab4" data-toggle="tab" href="#profile4" role="tab" aria-controls="profile4" aria-selected="false">Vehículo</a>
+						<a class="nav-link" id="vehiculo_tab" data-toggle="tab" href="#tab_content_vehiculo" role="tab" aria-controls="vehiculo_content" aria-selected="false">Vehículo</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" id="contact-tab4" data-toggle="tab" href="#contact4" role="tab" aria-controls="contact4" aria-selected="false">Destino</a>
+						<a class="nav-link" id="destino_tab" data-toggle="tab" href="#tab_content_destino" role="tab" aria-controls="destino_content" aria-selected="false">Destino</a>
 					</li>
 				</ul>
 				<div class="tab-content" id="myTabContent4">
-					<div class="tab-pane fade show active" id="home4" role="tabpanel" aria-labelledby="home-tab4">		
+					<div class="tab-pane fade show active" id="tab_content_recolector" role="tabpanel" aria-labelledby="recolector_content">		
 						<form class="form" role="form" autocomplete="off" method='post' action="<?php echo site_url('admin/recolector_consulta');?>">
 							<div class="form-group row">
 								<label class="col-md-2 form-control-label" for="id_persona"> Selecciona Usuario </label>
@@ -48,12 +47,10 @@
 							<div class="form-group	 row">
 								<label class="col-md-2 form-control-label" for="clave" style="justify-content: left;">Contraseña</label>
 								<div class="col-md-6">
-									<input class="form-control" type="text"  name="clave" id="clave" oninvalid="this.setCustomValidity('Ingresa una clave')" oninput="setCustomValidity(''); onchange_recolector()" onchange="input_pass()" required> &nbsp; &nbsp; &nbsp;
-									
+									<input class="form-control" type="text" name="clave" id="clave" oninvalid="this.setCustomValidity('Ingresa una clave')" oninput="setCustomValidity(''); onchange_recolector()" onchange="input_pass()" required> &nbsp; &nbsp; &nbsp;
 								</div>
 								<div class="col-md-1 custom-control custom-checkbox custom-control-inline">
-										<input type="hidden"  name="clave2" id="clave2">
-										<input type="checkbox" class="custom-control-input" id="clave_automatica" value="Toxico" name="clave_automatica" onclick="automatic_pass(); onchange_recolector()" checked>
+										<input type="checkbox" class="custom-control-input" id="clave_automatica" name="clave_automatica" onclick="automatic_pass(); onchange_recolector()" checked>
 										<label class="custom-control-label" for="clave_automatica">Aleatoria</label>
 								</div>
 							</div>
@@ -79,8 +76,7 @@
 								<div class="col-lg-9">
 									<input type="button" class="btn btn-primary" value="Guardar" name="guarda_recolector" id="guarda_recolector" data-toggle="modal" data-target="#modal_guarda_recolector">
 									<input type="button" class="btn btn-primary" value="Editar" name="edita_recolector" id="edita_recolector" onclick="update_recolector()">
-									<?php $url = site_url("admin/recolector_delete") . "/"; ?>
-									<input type="button" class="btn btn-danger" value="Eiminar" name="elimina_recolector" id="elimina_recolector" onclick="delete_recolector(<?=@$row->id_persona?>, '<?=$url?>')" data-toggle="modal" data-target="#modal_elimina_recolector">
+									<input type="button" class="btn btn-danger" value="Eiminar" name="elimina_recolector" id="elimina_recolector" data-toggle="modal" data-target="#modal_elimina_recolector">
 								</div>
 							</div>
 
@@ -140,7 +136,7 @@
 
 						</form>
 					</div>
-					<div class="tab-pane fade" id="profile4" role="tabpanel" aria-labelledby="profile-tab4">
+					<div class="tab-pane fade" id="tab_content_vehiculo" role="tabpanel" aria-labelledby="vehiculo_content">
 						<form class="form" role="form" autocomplete="off" method='post' action="<?php echo site_url('admin/recolector_vehiculo');?>">
 
 							<div class="form-row">
@@ -277,7 +273,7 @@
 
 						</form>						
 					</div>
-					<div class="tab-pane fade" id="contact4" role="tabpanel" aria-labelledby="contact-tab4">
+					<div class="tab-pane fade" id="tab_content_destino" role="tabpanel" aria-labelledby="destino_content">
 						<form class="form" role="form" autocomplete="off" method='post' action="<?php echo site_url('admin/recolector_destino');?>">
 
 

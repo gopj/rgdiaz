@@ -194,7 +194,7 @@ class Administrador extends MY_Controller {
 
 				$this->email->send();
 
-				redirect('administrador/index');
+				redirect('administrador/admin_clientes');
 			}
 		}else{
 			redirect('home/logout');

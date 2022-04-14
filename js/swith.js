@@ -572,7 +572,7 @@ function confir_act_admin(){
 }
 
 function update(){
-	var cliente = $("#persona3").val();
+	var cliente = $("#id_cliente").val();
 	// AJAX
 	jQuery.ajax({
 			url:'https://' + host + '/administrador/update_status_cliente',	//<-- Url que va procesar la peticion

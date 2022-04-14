@@ -71,6 +71,9 @@ function get_recolector(id){
 
 	var id_per = id;
 
+	$("#btn_delete_recolector").attr("href", "admin/recolector_delete/" + id);
+
+
 	/*//console.log(id)*/
 
 	if (id_per) {
@@ -135,11 +138,6 @@ function update_recolector(){
 function onchange_recolector(){
 	$("#guarda_recolector").removeAttr('disabled');
 	$("#edita_recolector").attr('disabled','disabled');
-}
-
-function delete_recolector(id, url){
-	url_delete =  url + id;
-	document.getElementById("btn_delete_recolector").setAttribute("href", url_delete);
 }
 
 function selected_vehicle(id){
@@ -565,19 +563,12 @@ $(document).ready(function() {
 
 	var s_empresa_destino = $('#empresa_destino').val;
 
-	//empresa_destino.options[empresa_destino.selectedIndex].value;
-
-	//console.log(s_empresa_destino);
-	//console.log(fecha_embarque);
-	//console.log(responsable_destino);
-	//console.log(ruta);
-	//console.log(observaciones);
-
 	$("#terminar_responsable").val(responsable_destino);
 	$("#terminar_fecha").val(fecha_embarque);
 	$("#terminar_empresa_destino").val(s_empresa_destino);
 	$("#terminar_ruta").val(s_empresa_destino);
 	$("#terminar_observaciones").val(s_empresa_destino);
+	
 
 	$('.date-picker').datepicker({
 		language: 'es',
@@ -597,37 +588,5 @@ $(document).ready(function() {
 		},
 	});
 
-
 	check_resposanble();
 });
-
-
-
-
-
-/*$(document).ready(function() {
-	var table = $('#tabla_residuos').DataTable( {
-		// "scrollY": 			true,
-		// "scrollX": 			true,
-		"scrollCollapse": 	true,
-		"pageLength": 		10,
-		"language": {
-			"lengthMenu": "Mostrar _MENU_ registros por página",
-			"search": "Buscar:",
-			"zeroRecords": "No hay resultados para esa búsqueda.",
-			"info": "Mostrando página _PAGE_ de _PAGES_",
-			"infoEmpty": "No hay registros disponibles",
-			"infoFiltered": "(filtered from _MAX_ total records)"
-		},
- 		"fixedColumns": {
-            "leftColumns": 	1,
-            "rightColumns": 1
-        },
-        "columnDefs": [
-    		{ 
-    			"width": "500px", 
-    			"targets": 1 
-    		}
-  		]
-	} );
-} );*/

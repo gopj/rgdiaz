@@ -57,7 +57,7 @@ class Admin extends MY_Controller {
 
 				$data["nombre"] = $this->input->post("nombre_recolector");
 				$data["correo"] = $this->input->post("correo");
-				$data["clave"] = $this->input->post("clave2");
+				$data["clave"] = $this->input->post("clave");
 				$data["id_persona"] = $this->input->post("id_persona");
 				$data["id_vehiculo"] = $this->input->post("vehiculo_asignado");
 
