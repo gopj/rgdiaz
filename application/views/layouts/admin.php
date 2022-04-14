@@ -117,7 +117,7 @@
 								<i class="menu-icon icon-settings"></i><span>Configuración</span><i class="accordion-icon fa fa-angle-left"></i>
 							</a>
 							<ul>
-								<li><a href="<?=base_url();?>">Cerrar Sesión</a></li>
+								<li><a href="<?=base_url('administrador/end_session');?>">Cerrar Sesión</a></li>
 							</ul>
 						</li>
 					</ul>

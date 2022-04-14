@@ -3,20 +3,20 @@
 		<div class="row">
 			<?php if($anterior == "administrador/") { ?>
 				<div class="col-lg-3" >
-					<form method="post" action="<?php echo site_url('administrador');?>">
-						<button type="submit" class="btn " disabled><i class="icon-arrow-left"></i></button>
+					<form method="post" action="<?php echo site_url('administrador/index');?>">
+						<button type="submit" class="btn"><i class="icon-arrow-left"></i></button>
 					</form>
 				</div>
 			<?php } else if($anterior == "clientes/") { ?>
 				<div class="col-lg-3 " >
 					<form method="post" action="<?php echo site_url('administrador/admin_clientes/' . $id_persona);?>">
-						<button type="submit" class="btn " ><i class="icon-arrow-left"></i></button>
+						<button type="submit" class="btn" ><i class="icon-arrow-left"></i></button>
 					</form>
 				</div>
 			<?php } else if($raiz==$anterior) { ?>
 				<div class="col-lg-3" >
 					<form method="post" action="<?php echo site_url('administrador/subir_archivo');?>">
-						<button type="submit" class="btn " ><i class="icon-arrow-left"></i></button>
+						<button type="submit" class="btn" ><i class="icon-arrow-left"></i></button>
 					</form>
 				</div>
 			<?php } else { ?>
@@ -24,7 +24,7 @@
 					<form method="post" action="<?php echo site_url('administrador/versubcarpeta');?>">
 						<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
 						<input type="hidden" value="<?php echo $anterior; ?>" name="ruta_carpeta">
-						<button type="submit" class="btn btn " ><i class="icon-arrow-left"></i></button>
+						<button type="submit" class="btn btn" ><i class="icon-arrow-left"></i></button>
 					</form>
 				</div> 
 			<?php } ?> 
@@ -65,7 +65,7 @@
 								<?php if ( $carpe->nombre != "Documentos de RDiaz" ) { ?> 
 									<div class="row">
 										<div class="col-lg-6">
-											<input type="hidden" value="<?php echo $carpe->id_carpeta.$carpe->nombre; ?>" id="id_formulario_renombra">                       
+											<input type="hidden" value="<?php echo $carpe->id_carpeta.$carpe->nombre; ?>" id="id_formulario_renombra">
 											<form id="<?php echo $carpe->id_carpeta.$carpe->nombre; ?>" method='post' action="<?php echo site_url('administrador/renombrar_carpeta'); ?>">
 												<input type="hidden" value="<?php echo $carpe->id_persona; ?>" name="id_persona">
 												<input type="hidden" value="<?php echo $carpe->nombre; ?>" name="nombre_carpeta">
@@ -188,15 +188,17 @@
 				</button>
 			</div> 
 			<div class=modal-body>
-				<form id="form_archivo" method="post" action="<?php echo site_url('administrador/subirarchivo');?>" enctype="multipart/form-data">
+				<form id="form_archivo" class="form-inline" method="post" action="<?php echo site_url('administrador/subirarchivo');?>" enctype="multipart/form-data">
 					Haz click en el boton para seleccionar archivo(s)
 					<br>
 					<input type="hidden" value="<?php echo $direccion; ?>" name="direccion"/>
 					<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona"/>
 					<input type="hidden" value="<?php echo $direccion; ?>" name="ruta_carpeta">
-					<input id="name" class="input-file" readonly/>
-					<label for="file" class="btn btn-primary" >Seleccionar</label>
-					<input id="file" type="file" name="archivo[]" multiple="multiple">
+
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" id="file" multiple="multiple" name="archivo[]">
+						<label class="custom-file-label" for="customFile">Selecciona Archivos</label>
+					</div>
 				</form>
 			</div>
 			<div class="modal-footer">

@@ -203,13 +203,13 @@ class Administrador extends MY_Controller {
 
 	public function admin_clientes($id = null) {
 		if ($this->session->userdata('tipo')==1){
-				$data['id_persona'] = $id;
-				$data['mensajes'] = $this->contacto_model->contador_mensajes($status=0);
-				$data['todosclientes'] = $this->persona_model->obtienetodoclientes($id_tipo_persona=3,$lleno_datos=1);
-				$data['clientes'] = $this->persona_model->obtiene_clientes_baja($id_status_persona=1,$id_tipo_persona=3,$lleno_datos=1);
-				$data['correo'] = $this->persona_model->getCorreos($id_tipo_persona=3);
+			$data['id_persona'] = $id;
+			$data['mensajes'] = $this->contacto_model->contador_mensajes($status=0);
+			$data['todosclientes'] = $this->persona_model->obtienetodoclientes($id_tipo_persona=3,$lleno_datos=1);
+			$data['clientes'] = $this->persona_model->obtiene_clientes_baja($id_status_persona=1,$id_tipo_persona=3,$lleno_datos=1);
+			$data['correo'] = $this->persona_model->getCorreos($id_tipo_persona=3);
 
-				$this->load->view('administrador/admin_clientes',$data);
+			$this->load->view('administrador/admin_clientes',$data);
 		}else{
 			redirect('home/logout');
 		}
@@ -248,12 +248,14 @@ class Administrador extends MY_Controller {
 		$nombrecarpeta =$this->input->post('nombrecarpeta');
 		$id_persona = $this->input->post('id_persona');
 		
-		$ruta_carpeta = $ruta_anterior.'/'.$nombrecarpeta;
+		$ruta_carpeta = $ruta_anterior . '/' . $nombrecarpeta;
+		$ruta_carpeta_os = $_SERVER['DOCUMENT_ROOT'] . 'rgdiaz/' . $ruta_anterior . '/' . $nombrecarpeta;
+
 		if($ruta_carpeta =='') {
 			echo "Ingresa un nombre a la carpeta"."<br>";
-		} else if (!is_dir($ruta_carpeta)) {
-			mkdir($ruta_carpeta, 0755);
-			chmod($ruta_carpeta, 0755);
+		} else if (!is_dir($ruta_carpeta_os)) {
+			mkdir($ruta_carpeta_os, 0755);
+			chmod($ruta_carpeta_os, 0755);
 			$this->carpeta_model->registrarcarpeta($nombrecarpeta,$id_persona,$ruta_carpeta,$id_status_carpeta=1,$ruta_anterior);	
 		} else {
 			echo "Ya existe una carpeta con ese nombre"."<br>";
@@ -304,30 +306,34 @@ class Administrador extends MY_Controller {
 
 	public function subirarchivo() {
 		if($this->input->post()){
-			$ruta_carpeta = $this->input->post('direccion');
+			$data['direccion'] = $this->input->post('direccion');
 			$data['id_persona'] = $this->input->post('id_persona');
+			$data['archivo'] = $_FILES['archivo']['tmp_name'];
 			$envia = $this->session->userdata('id');
+			$ruta_carpeta_pertenece = $data['direccion'];
+			
 			foreach($_FILES['archivo']['tmp_name'] as $key => $tmp_name){
 				move_uploaded_file($tmp_name,"$ruta_carpeta_pertenece/{$_FILES['archivo']['name'][$key]}");
 				$nombre = "{$_FILES['archivo']['name'][$key]}";
 				$ruta_archivo = "$ruta_carpeta_pertenece/{$_FILES['archivo']['name'][$key]}";
 				$this->archivo_model->registrar_archivo($nombre,$ruta_archivo,$ruta_carpeta_pertenece);
-				$this->notificacion_model->registrar_notificacion($ruta_archivo,$id_status_notificacion=0,$envia,$id_persona);
+				$this->notificacion_model->registrar_notificacion($ruta_archivo,$id_status_notificacion=0,$envia,$data['id_persona']);
 			}
 			
 			$data['direccion'] = $ruta_carpeta_pertenece;
-			$ruta = explode("/", $direccion);
+			$ruta = explode("/", $data['direccion']);
 			$data['direccion_real'] = "";
 			foreach ($ruta as $r) {
 				$data['direccion_real'] .= $r . "/";
 			}
 			$data['raiz'] = 'clientes/';
 			$data['anterior'] = $this->carpeta_model->obtieneunacarpeta($this->input->post('ruta_carpeta'));
-			$data['carpetas'] = $this->carpeta_model->obtienesubcarpeta($ruta_carpeta);
-			$data['archivo'] = $this->archivo_model->obtienearchivos($ruta_carpeta);			
+			$data['carpetas'] = $this->carpeta_model->obtienesubcarpeta($data['direccion']);
+			$data['archivo'] = $this->archivo_model->obtienearchivos($data['direccion']);			
 			$data['mensajes'] = $this->contacto_model->contador_mensajes($status=0);
 			$data['clientes'] = $this->persona_model->obtiene_clientes_baja($id_status_persona=1,$id_tipo_persona=3,$lleno_datos=1);
 			$data['correo'] = $this->persona_model->getCorreos($id_tipo_persona=3);
+
 
 			$this->load->view('administrador/subcarpeta',$data);				
 		} else {
@@ -355,8 +361,8 @@ class Administrador extends MY_Controller {
 	public function eliminar_archivo()
 	{	
 		$this->archivo_model->eliminar_archivo($this->input->post('id_archivo'));
-		$ruta= $this->input->post('ruta_archivo');
-		unlink($ruta);
+		$ruta = $this->input->post('ruta_archivo');
+		unlink(@$ruta);
 		$id_persona = $this->input->post('id_persona');
 		$ruta_carpeta_pertenece = $this->input->post('ruta_carpeta_pertenece');
 		
@@ -913,7 +919,7 @@ class Administrador extends MY_Controller {
 				$this->residuo_peligroso_model->actualizar_registros($data);
 
 
-				//Enviar Mail de notificación
+				//Enviar Mail de notificación [NO BORRAR]
 				/*$nombre_empresa_transportista 	= $this->emp_transportista_model->get_datos_emp_trans($data['emp_tran'])[0]->nombre_empresa;
 				$nombre_empresa_destino 		= $this->emp_destino_model->get_nombre_dest($data['dest_final']);
 				$correo 						= $this->persona_model->get_datos_empresa($this->input->post('id_persona'))->correo_empresa;
@@ -1175,7 +1181,12 @@ class Administrador extends MY_Controller {
 			$ruta_anterior = $this->input->post('ruta_anterior');
 
 			$nombre_nuevo = trim($nombre_nuevo);
-			rename($ruta_carpeta, $ruta_anterior."/".$nombre_nuevo);
+
+			//Temporal fix for renaming folder(s) at OS Level
+			$ruta_carpeta_rename = "\"" . $_SERVER['DOCUMENT_ROOT'] . 'rgdiaz/' . $ruta_carpeta . "\"";
+			$ruta_nueva_rename = "\"" . $_SERVER['DOCUMENT_ROOT'] . 'rgdiaz/' . $ruta_anterior . '/' . $nombre_nuevo . "\"";
+			rename($ruta_carpeta_rename, $ruta_nueva_rename);
+
 			$renombrar_carpeta_padre = $this->carpeta_model->update_carpeta($nombre_carpeta, $ruta_carpeta, $nombre_nuevo);
 			$carpetas_hijas = $this->carpeta_model->get_carpetas($ruta_carpeta);
 			
@@ -1222,10 +1233,7 @@ class Administrador extends MY_Controller {
 
 			$ids_archivos = $this->archivo_model->get_archivos_ids($contruct_new_path);
 
-			#echo print_r($archivos_en_carpetas);
-			$status = 0;
-			#$id_persona=$this->input->post('id_persona');
-			#$direccion=$this->input->post('ruta_carpeta'); // Direccion de carpeta
+			 // Direccion de carpeta
 			$nombre_empresa = $this->persona_model->get_nombre($id_persona);
 			$nombre = $nombre_empresa->nombre_empresa;	//Nombre de la empresa
 			$ruta = explode("/", $ruta_anterior);
@@ -1237,26 +1245,18 @@ class Administrador extends MY_Controller {
 			}
 			$anterior=$this->carpeta_model->obtieneunacarpeta($ruta_anterior);
 			$raiz='clientes/';
-			$subcarpetas=$this->carpeta_model->obtienesubcarpeta($ruta_anterior);
+			$data['carpetas']=$this->carpeta_model->obtienesubcarpeta($ruta_anterior);
 			$archivos=$this->archivo_model->obtienearchivos($ruta_anterior);
 			$id_tipo_persona=3;
 			$id_status_persona=1;
-			$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
-			$cliente=$this->persona_model->obtiene_clientes($id_tipo_persona,$id_status_persona);
-					#$todosmensajes = $this->contacto_model->mensajescontacto();
-			$data = array(
-				'mensajes'=> $mensajesnuevos,
-				'clientes' => $cliente,
-				'carpetas'=> $subcarpetas,
-				'direccion'=> $ruta_anterior,
-				'id_persona'=> $id_persona,
-				'archivo'=>$archivos,
-				'anterior'=>$anterior,
-				'raiz'=>$raiz,
-				'direccion_real' => $direccion_real
-								//'direccion' => $dir_carp,
-									//'nombre_empresa' => $nombre
-			);
+			
+			$data['clientes'] = $this->persona_model->obtiene_clientes($id_tipo_persona,$id_status_persona);
+			$data['direccion'] = $ruta_anterior;
+			$data['id_persona'] = $id_persona;
+			$data['archivo'] = $archivos;
+			$data['anterior'] = $anterior;
+			$data['raiz'] = $raiz;
+			$data['direccion_real'] = $direccion_real;
 
 			#	Obtengo a todos mis clientes para seleccionar uno en opcion dar de baja y los mando al modal
 			#$id_tipo_persona=3;
@@ -1266,10 +1266,8 @@ class Administrador extends MY_Controller {
 			$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona,$id_tipo_persona,$lleno_datos);
 			$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
 					#exit(var_dump($cliente_baja));
-			$data = array(
-				'clientes' => $cliente_baja,
-				'correo' => $correo_clientes
-			);
+			
+			$data['clientes'] = $cliente_baja;
 			
 			$this->load->view('administrador/subcarpeta', $data);
 		} else {
@@ -1536,6 +1534,11 @@ class Administrador extends MY_Controller {
 
 			echo $this->email->print_debugger();
 		}
+	}
+
+	public function end_session() { 
+		$this->session->sess_destroy(); #destruye session
+		redirect('home/index');
 	}
 
 }

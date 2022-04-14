@@ -108,7 +108,7 @@ function valida_nom_carpeta(){
 // 	Funcion para validar al agregar un archivo a carpeta
 function valida_archivo(){
 	var form_archivo = document.getElementById('form_archivo');
-	var archivo = document.getElementById('name');
+	var archivo = document.getElementById('file');
 	var validar = true;
 
 	if(!archivo.value){
@@ -763,6 +763,10 @@ $(document).ready(function() {
 	$("#reply_message").attr("disabled", "true");
 	$(".note-editable").attr( "style", "height: 195.65px");
 	$(".email-list").attr("style", "height: auto; max-height: 576px;");
+
+	$(':file').change(function () {
+		$('.custom-file-label').text(this.files.length + " Archivo seleccionado(s)");
+	});
 
 	$.ajax({
 		url: 'https://' + host + '/administrador/get_unread',
