@@ -65,32 +65,32 @@ class Home extends My_Controller {
 						redirect('home/index');	
 			}else{
 				//Login correcto
-								$this->session->set_userdata('correo',$login->correo);
-								$this->session->set_userdata('id',$login->id_persona);
-								$this->session->set_userdata('empresa',$login->nombre_empresa);
-								$this->session->set_userdata('nombre',$login->nombre);
-								$this->session->set_userdata('status',$login->id_status_persona);
-								$this->session->set_userdata('tipo',$login->id_tipo_persona);
-								$this->session->set_userdata('completo',$login->lleno_datos);
-								
-								//	Sesion del Administrador
-								if($this->session->userdata('status') == 1 && $this->session->userdata('tipo')==1){
-									#	Cargar la vista de usuario
-									redirect('admin/recolector_index');
-								}
-								// Sesion del Auxiliar
-								else if($this->session->userdata('status') == 1 && $this->session->userdata('tipo')==2){
-									#	Cargar la vista de usuaria
-									redirect('recolector');
-								}
-								// Sesion de Cliente 
-								else if($this->session->userdata('status')== 1 && $this->session->userdata('tipo')==3){
-									#	Cargar la vista de usuario
-									redirect('cliente');
-								}else{
-									$this->session->sess_destroy(); #destruye session
-									redirect('home/index');	
-								}
+				$this->session->set_userdata('correo',$login->correo);
+				$this->session->set_userdata('id',$login->id_persona);
+				$this->session->set_userdata('empresa',$login->nombre_empresa);
+				$this->session->set_userdata('nombre',$login->nombre);
+				$this->session->set_userdata('status',$login->id_status_persona);
+				$this->session->set_userdata('tipo',$login->id_tipo_persona);
+				$this->session->set_userdata('completo',$login->lleno_datos);
+				
+				//	Sesion del Administrador
+				if($this->session->userdata('status') == 1 && $this->session->userdata('tipo')==1){
+					#	Cargar la vista de usuario
+					redirect('admin/recolector_index');
+				}
+				// Sesion del Auxiliar
+				else if($this->session->userdata('status') == 1 && $this->session->userdata('tipo')==2){
+					#	Cargar la vista de usuaria
+					redirect('recolector');
+				}
+				// Sesion de Cliente 
+				else if($this->session->userdata('status')== 1 && $this->session->userdata('tipo')==3){
+					#	Cargar la vista de usuario
+					redirect('cliente');
+				}else{
+					$this->session->sess_destroy(); #destruye session
+					redirect('home/index');	
+				}
 								
 			}
 		}else{

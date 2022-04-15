@@ -32,12 +32,12 @@
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label class="col-form-label" for="responsable_destino"> <center> Nombre del Responable Técnico</center> </label>
-					<input type="text" class="form-control" id="responsable_destino" name="responsable_destino" value="<?= $responsable_destino ?>" oninput="terminar_manifiesto();check_resposanble();" placeholder="El nombre del responsable técnico está vacío.">
+					<input type="text" class="form-control" id="responsable_destino" name="responsable_destino" value="<?= $responsable_destino ?>" oninput="terminar_manifiesto(); check_resposanble();" placeholder="El nombre del responsable técnico está vacío.">
 				</div>
 
 				<div class="form-group col-md-6">
 					<label class="col-form-label" for="ruta"> <center> Ruta de la empresa generadora</center> </label>
-					<input type="text" class="form-control" id="ruta" name="ruta" value="<?= $ruta ?>" oninput="terminar_manifiesto();check_resposanble();" placeholder="La ruta no está especificada"> 
+					<input type="text" class="form-control" id="ruta" name="ruta" value="<?= $ruta ?>" oninput="terminar_manifiesto(); check_resposanble();" placeholder="La ruta no está especificada"> 
 				</div>		
 			</div>
 
@@ -146,10 +146,10 @@
 							<div class="form-row">
 								<div class="form-group col-md-4">
 									<label class="col-form-label" for="cantidad_envase"> Envase Cantidad </label>
-									<input readonly type="number" class="form-control" id="cantidad_envase" name="cantidad_envase" min="1" style="text-align:center" value="" required>
+									<input type="number" class="form-control" id="cantidad_envase" name="cantidad_envase" min="1" style="text-align:center" value="" required>
 
 									<label class="col-form-label" for="capacidad_envase"> Capacidad de Envase</label>
-									<input readonly type="number" class="form-control" id="capacidad_envase" name="capacidad_envase" min="0" style="text-align:center" value="0" required>
+									<input type="number" class="form-control" id="capacidad_envase" name="capacidad_envase" min="0" style="text-align:center" value="0" required>
 								</div>	
 
 								<div class="form-group col-md-1">
@@ -186,7 +186,7 @@
 
 								<div class="form-group col-md-4">
 									<label class="col-form-label" for="cantidad"> Cantidad Residuo (KG)</label>
-									<input readonly type="number" class="form-control" id="cantidad" name="cantidad" min="1" style="text-align:center" value="" required>
+									<input type="number" class="form-control" id="cantidad" name="cantidad" min="1" style="text-align:center" value="" required>
 
 									<label class="col-form-label " for="etiqueta_check"> Etiqueta </label> <br>
 									<label class="switch">
@@ -244,11 +244,11 @@
 							<td> <?= $key->etiqueta ?> </td>
 							<?php if ($total_reg == 1) { ?>
 								<td style="text-align: center;">
-									<button type="button" class="btn btn-danger btn-sm btn-block" data-toggle="modal" data-target="#deleteLastResiduo"> Eliminar </button>
+									<button type="button" class="btn btn-danger btn-sm btn-block" data-toggle="modal" data-target="#deleteLastResiduo"> Borrar </button>
 								</td>
 							<?php } else { ?>
 								<td style="text-align: center;"> 
-								<a href="<?=site_url('recolector/eliminar_tran_residuo/' . $id_cliente . '/' . $key->id_tran_residuo);?>" class="btn btn-danger btn-sm" role="button"> Eliminar </a> 
+								<a href="<?=site_url('recolector/eliminar_tran_residuo/' . $id_cliente . '/' . $key->id_tran_residuo);?>" class="btn btn-danger btn-sm" role="button"> Borrar </a> 
 							</td>
 							<?php } ?>
 						</tr>
@@ -284,8 +284,7 @@
 				<input type="text" name="terminar_persona_residuos" id="terminar_persona_residuos" hidden>
 				<input type="text" name="terminar_cargo_persona" id="terminar_cargo_persona" hidden>
 
-
-				<button type="button" class="btn btn-success btn-lg btn-block" id="b_terminar_manifiesto" data-toggle="modal" data-target="#terminar_manifiesto_modal" disabled> Terminar Manifiesto </button>
+				<button type="button" class="btn btn-success btn-lg btn-block" id="b_terminar_manifiesto" data-toggle="modal" data-target="#terminar_manifiesto_modal" onclick="terminar_manifiesto()"> Terminar Manifiesto </button>
 
 			</form>
 		</div>
@@ -307,11 +306,13 @@
 					<div class="form-row">
 						<div class="form-group col-md-10">
 							<label class="col-form-label" for="responsable_tecnico">  Responsable Técnico del Generador </label>
-							<input type="text" class="form-control" id="responsable_tecnico" name="responsable_tecnico" onchange="update_terminar_manifiiesto()"> 
+							<input type="text" class="form-control" id="responsable_tecnico" name="responsable_tecnico" onchange="terminar_manifiesto()"> 
+							
 							<label class="col-form-label" for="persona_residuos">  Persona que recibe los residuos </label>
-							<input type="text" class="form-control" id="persona_residuos" name="persona_residuos" onchange="update_terminar_manifiiesto()"> 
+							<input type="text" class="form-control" id="persona_residuos" name="persona_residuos" onchange="terminar_manifiesto()"> 
+							
 							<label class="col-form-label" for="cargo_persona">  Cargo </label>
-							<input type="text" class="form-control" id="cargo_persona" name="cargo_persona" onchange="update_terminar_manifiiesto()"> 
+							<input type="text" class="form-control" id="cargo_persona" name="cargo_persona" onchange="terminar_manifiesto()"> 
 						</div>	
 					</div>
 
@@ -348,7 +349,7 @@
 					<!-- Modal footer -->
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-						<a href="<?=site_url('recolector/eliminar_ultimo_residuo/' . $id_cliente . '/' . $key->id_tran_residuo);?>" class="btn btn-danger" role="button"> Eliminar </a>
+						<a href="<?=site_url('recolector/eliminar_ultimo_residuo/' . $id_cliente . '/' . $folio . '/' . $key->id_tran_residuo);?>" class="btn btn-danger" role="button"> Eliminar </a>
 					</div>
 
 				</div>

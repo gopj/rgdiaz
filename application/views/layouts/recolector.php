@@ -86,7 +86,6 @@
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<!-- <script type="text/javascript" src="js/bootstrap4/jquery-3.3.1.min.js"></script> -->
 	<script type="text/javascript" src="<?=base_url('js/bootstrap4/jquery-3.3.1.min.js')?>"></script>
 	<script type="text/javascript" src="<?=base_url('js/bootstrap4/popper.min.js')?>"></script>
 	<script type="text/javascript" src="<?=base_url('js/bootstrap4/InputSpinner.js')?>"></script>
@@ -94,7 +93,6 @@
 	<script type="text/javascript" src="<?=base_url('js/bootstrap4/jquery.dataTables.min.js')?>"></script>
 	<script type="text/javascript" src="<?=base_url('js/bootstrap4/dataTables.fixedColumns.min.js')?>"></script>
 	<script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/js/gijgo.min.js" type="text/javascript"></script>
-	<!-- <script type="text/javascript" src="<?=base_url('js/bootstrap4/dataTables.bootstrap4.min.js"></script')?>"> -->
 	<script type="text/javascript" src="<?=base_url('js/recolector.js')?>"></script>
 
 	<script>

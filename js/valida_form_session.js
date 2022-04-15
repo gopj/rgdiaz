@@ -10,13 +10,13 @@ var host="localhost/rgdiaz";
 
 
 function validarFormSesion(){
-	var expRegEmail= /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;//Expresion regular correo
+	var expRegEmail= /^[\w-\.]+([\w-]+\.)+[\w-]{2,4}$/;//Expresion regular correo
 	var verificar = true;
 	var formulario = document.getElementById("formSesion");
 	var usuario = document.getElementById("correo_session");
 	var password_val = document.getElementById("password_session");
 
-	if(!usuario.value || !expRegEmail.exec(usuario.value)){
+	if(!usuario.value){
 		alert('EL CORREO DE USUARIO ES REQUERIDO O ES UN CORREO INVALIDO');
 		usuario.focus();
 		verificar = false;

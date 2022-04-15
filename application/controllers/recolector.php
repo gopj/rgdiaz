@@ -126,7 +126,6 @@ class Recolector extends MY_Controller {
 
 		if ($this->session->userdata('tipo') == 2){
 			
-
 			$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
 			$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
 			$data["recolector"]			= $this->persona_model->get_datos_empresa($this->session->userdata('id'));
@@ -277,11 +276,12 @@ class Recolector extends MY_Controller {
 	public function terminar_manifiesto($id_cliente, $folio) {
 
 		if ($this->session->userdata('tipo') == 2){
-			$data["recolector"]			= $this->persona_model->get_datos_empresa($this->session->userdata('id'));
-			$data["vehiculos"] 			= $this->tran_vehiculo_model->get_vehiculos();
-			$data["cliente"] 			= $this->persona_model->get_datos_empresa($id_cliente);
-			$folio_temp 				= $this->tran_residuo_model->get_bitacora_count($id_cliente) - 1;
+			$data["recolector"]	= $this->persona_model->get_datos_empresa($this->session->userdata('id'));
+			$data["vehiculos"] 	= $this->tran_vehiculo_model->get_vehiculos();
+			$data["cliente"] 	= $this->persona_model->get_datos_empresa($id_cliente);
+			$folio_temp = $this->tran_residuo_model->get_bitacora_count($id_cliente) - 1;
 			$data["folio_identificador"]= $this->persona_model->get_datos_empresa($id_cliente)->identificador_folio . '-' . $folio_temp;
+			$data["nombre_empresa"] 	= $this->persona_model->get_nombre_empresa($id_cliente);
 
 			if ($this->input->post()) {
 
@@ -300,6 +300,7 @@ class Recolector extends MY_Controller {
 				$data["bitacora"] 	= $this->tran_residuo_model->get_bitacora($id_cliente);
 				
 				$this->load->view("recolector/ver_manifiestos", $data);
+
 
 			}
 
@@ -339,15 +340,15 @@ class Recolector extends MY_Controller {
 	
 	}
 
-	public function eliminar_ultimo_residuo($id_cliente, $folio) {
+	public function eliminar_ultimo_residuo($id_cliente, $folio, $id_tran_residuo) {
 
 		if ($this->session->userdata('tipo') == 2){
 			
 						
-			$this->tran_residuo_model->delete_tran_residuos($folio);
+			$this->tran_residuo_model->delete_tran_residuos($id_tran_residuo);
 			$this->tran_residuo_model->delete_tran_folio($folio);
 
-			redirect("admin/recolector_ver_manifiestos/" . $id_cliente);
+			redirect("recolector/ver_manifiestos/" . $id_cliente);
 
 		} else {
 			$this->session->sess_destroy(); #destruye session
@@ -357,6 +358,7 @@ class Recolector extends MY_Controller {
 	}
 
 	public function generar_manifiesto($id_cliente, $folio) {
+		$this->setLayout('empty');
 		$data["id_cliente"] 			= $id_cliente;
 		$data["folio"] 					= $folio;
 		$data["folio_identificador"]	= $this->tran_residuo_model->get_folio_identificador($folio)->folio;

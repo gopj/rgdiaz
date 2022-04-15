@@ -299,7 +299,7 @@
 					<input type="text" name="terminar_asignar_recolector" id="terminar_asignar_recolector"  hidden>
 
 
-					<button type="button" class="btn btn-success btn-lg btn-block" id="b_terminar_manifiesto" data-toggle="modal" data-target="#terminar_manifiesto_modal" disabled> Terminar Manifiesto </button>
+					<button type="button" class="btn btn-success btn-lg btn-block" id="b_terminar_manifiesto" data-toggle="modal" data-target="#terminar_manifiesto_modal"> Terminar Manifiesto </button>
 
 				</form>
 			</div>

@@ -26,7 +26,7 @@
 							</div>
 							<div class="form-group col-md-3">
 								<label class="col-form-label" for="fecha_embarque" style="text-align: center;"> Fecha de Embarque </label>
-								<input style="text-align: center;" class="form-control date-picker" id="fecha_embarque" name="fecha_embarque" required>
+								<input type="text" style="text-align: center;" class="form-control date-picker" id="fecha_embarque" name="fecha_embarque" autocomplete="off" required>
 								<div class="invalid-feedback">
 									Selecciona la fecha de embarque
 								</div>
@@ -37,8 +37,8 @@
 
 						<div class="form-row">
 							<div class="form-group col-md-6">
-								<label class="col-form-label" for="responsable_desttino"> <center> Nombre del Responable Técnico</center> </label>
-								<input type="text" class="form-control" id="responsable_desttino" name="responsable_desttino">
+								<label class="col-form-label" for="responsable_destino"> <center> Nombre del Responable Técnico</center> </label>
+								<input type="text" class="form-control" id="responsable_destino" name="responsable_destino">
 							</div>		
 
 							<div class="form-group col-md-6">

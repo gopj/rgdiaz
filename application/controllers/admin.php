@@ -387,7 +387,7 @@ class Admin extends MY_Controller {
 
 			$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
 			$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
-			$data["recolector"]			= $this->persona_model->get_datos_empresa($this->session->userdata('id'));
+			$data["recolector"]			= $this->persona_model->get_datos_empresa($id_cliente);
 			$data["vehiculos"] 			= $this->tran_vehiculo_model->get_vehiculos();
 			$data["cliente"] 			= $this->persona_model->get_datos_empresa($id_cliente);
 			$data["recolectores"] 		= $this->persona_model->get_recolectores();

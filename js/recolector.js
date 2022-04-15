@@ -441,32 +441,6 @@ function update_clave(id_clave) {
 	);
 }
 
-function terminar_manifiesto() {
-	
-	var empresa_destino 	= document.getElementById('empresa_destino');
-	var fecha_embarque 		= document.getElementById('fecha_embarque').value;
-	var responsable_destino = document.getElementById('responsable_destino').value;
-	var responsable_tecnico = document.getElementById('responsable_tecnico').value;
-	var ruta 				= document.getElementById('ruta').value;
-	var observaciones		= document.getElementById('observaciones').value;
-
-	var s_empresa_destino = empresa_destino.options[empresa_destino.selectedIndex].value;
-
-	//console.log(s_empresa_destino);
-	//console.log(fecha_embarque);
-	//console.log(responsable_destino);
-	//console.log(responsable_tecnico);
-	//console.log(ruta);
-	//console.log(observaciones);
-
-	$("#terminar_responsable").val(responsable_destino);
-	$("#terminar_responsable_tecnico").val(responsable_tecnico);
-	$("#terminar_fecha").val(fecha_embarque);
-	$("#terminar_empresa_destino").val(s_empresa_destino);
-	$("#terminar_ruta").val(ruta);
-	$("#terminar_observaciones").val(observaciones);
-}
-
 function update_terminar_manifiiesto(){
 	var responsable_tecnico = document.getElementById('responsable_tecnico').value;
 	var persona_residuos = document.getElementById('persona_residuos').value;
@@ -553,22 +527,19 @@ function form_bitacora_submit(){
 }
 
 
+function terminar_manifiesto(){
+	$('#terminar_responsable').val($('#responsable_destino').val());
+	$('#terminar_responsable_tecnico').val($('#responsable_tecnico').val());
+	$('#terminar_fecha').val($('#fecha_embarque').val());
+	$('#terminar_empresa_destino').val($('#empresa_destino option:selected').text());
+	$('#terminar_ruta').val($('#ruta').val());
+	$('#terminar_observaciones').val($('#observaciones').val());
+	$('#terminar_persona_residuos').val($('#persona_residuos').val());
+	$('#terminar_cargo_persona').val($('#cargo_persona').val());
+}
+
 $(document).ready(function() {
-    
-	var empresa_destino 	= document.getElementById('empresa_destino');
-	var fecha_embarque 		= $('#fecha_embarque').val;
-	var responsable_destino = $('#responsable_destino').val;
-	var ruta 				= $('#ruta').val;
-	var observaciones		= $('#observaciones').val;
-
-	var s_empresa_destino = $('#empresa_destino').val;
-
-	$("#terminar_responsable").val(responsable_destino);
-	$("#terminar_fecha").val(fecha_embarque);
-	$("#terminar_empresa_destino").val(s_empresa_destino);
-	$("#terminar_ruta").val(s_empresa_destino);
-	$("#terminar_observaciones").val(s_empresa_destino);
-	
+    terminar_manifiesto();
 
 	$('.date-picker').datepicker({
 		language: 'es',
