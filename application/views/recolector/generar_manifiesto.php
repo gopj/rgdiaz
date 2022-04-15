@@ -540,6 +540,7 @@ for ($h=0; $h < $num_table_res; $h++) {
 $nombre_empresa = str_replace(" ", "_", $nombre_empresa); // Fix for spaces
 $filename 		= "{$nombre_empresa}_{$folio_identificador}_{$manifiesto->fecha_embarque}.pdf";
 $location 		= $_SERVER['DOCUMENT_ROOT'] ."rgdiaz/img/pdf/";
+//$location 		= $_SERVER['DOCUMENT_ROOT'] ."img/pdf/";
 $pdf_location	= $location . $filename;
 
 //Close and output PDF document
