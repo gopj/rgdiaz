@@ -22,12 +22,12 @@
 					<?php if ($bit->status == 'R'){ ?>
 						<td style="text-align: center;"> 
 							<a href="<?=base_url('recolector/ver_manifiesto/' . $id_cliente . '/' . $bit->id_tran_folio);?>" class="btn btn-primary btn-sm" role="button"> Ver </a>
-							<a href="<?=base_url('recolector/generar_manifiesto/' . $id_cliente . '/' . $bit->id_tran_folio);?>" class="btn btn-danger btn-sm" role="button">PDF </a>
+							<a href="<?=base_url('recolector/generar_manifiesto/' . $id_cliente . '/' . $bit->id_tran_folio);?>" class="btn btn-danger btn-sm" role="button" target="_blank">PDF </a>
 						</td>
 					<?php } elseif ($bit->status == 'W') { ?>
 						<td style="text-align: center;"> 
 							<a href="<?=base_url('recolector/crear_manifiestos/' . $id_cliente . '/' . $bit->id_tran_folio)?>" class="btn btn-success btn-sm" role="button"> Terminar </a>
-							<a href="<?=base_url('recolector/ver_manifiestos/' . $id_cliente)?> " class="btn btn-danger btn-sm" role="button" disabled> PDF </a>
+							<a href="<?=base_url('recolector/ver_manifiestos/' . $id_cliente)?> " class="btn btn-danger btn-sm" role="button" target="_blank" disabled> PDF </a>
 						</td>
 					<?php } ?>
 				</tr>
