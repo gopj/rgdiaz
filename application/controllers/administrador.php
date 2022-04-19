@@ -250,6 +250,7 @@ class Administrador extends MY_Controller {
 		
 		$ruta_carpeta = $ruta_anterior . '/' . $nombrecarpeta;
 		$ruta_carpeta_os = $_SERVER['DOCUMENT_ROOT'] . 'rgdiaz/' . $ruta_anterior . '/' . $nombrecarpeta;
+		#$ruta_carpeta_os = $_SERVER['DOCUMENT_ROOT'] . $ruta_anterior . '/' . $nombrecarpeta;
 
 		if($ruta_carpeta =='') {
 			echo "Ingresa un nombre a la carpeta"."<br>";
@@ -478,6 +479,7 @@ class Administrador extends MY_Controller {
 					
 			//PDF
 			$pdfpath = $_SERVER['DOCUMENT_ROOT'] . "rgdiaz/img/pdf/rdiaztmp" . $data['id_persona'] . ".pdf";
+			#$pdfpath = $_SERVER['DOCUMENT_ROOT'] . "img/pdf/rdiaztmp" . $data['id_persona'] . ".pdf";
 			if (file_exists($pdfpath)) {
 				unlink($pdfpath);
 			}
@@ -1183,6 +1185,9 @@ class Administrador extends MY_Controller {
 			$nombre_nuevo = trim($nombre_nuevo);
 
 			//Temporal fix for renaming folder(s) at OS Level
+			#$ruta_carpeta_rename = "\"" . $_SERVER['DOCUMENT_ROOT'] . $ruta_carpeta . "\"";
+			#$ruta_nueva_rename = "\"" . $_SERVER['DOCUMENT_ROOT'] . $ruta_anterior . '/' . $nombre_nuevo . "\"";
+
 			$ruta_carpeta_rename = "\"" . $_SERVER['DOCUMENT_ROOT'] . 'rgdiaz/' . $ruta_carpeta . "\"";
 			$ruta_nueva_rename = "\"" . $_SERVER['DOCUMENT_ROOT'] . 'rgdiaz/' . $ruta_anterior . '/' . $nombre_nuevo . "\"";
 			rename($ruta_carpeta_rename, $ruta_nueva_rename);
