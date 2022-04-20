@@ -796,5 +796,14 @@ $(document).ready(function() {
 		$( "#form_reply_message" ).submit();
 	});
 
+	$("#input_busca_carpeta").on("keyup", function() {
+		// Search text
+		var text = $(this).val().toLowerCase();
+
+		// Search 
+		 if (text) $("#card_data").not(":contains(" + text + ")").hide();
+		
+	});
+
 });
 

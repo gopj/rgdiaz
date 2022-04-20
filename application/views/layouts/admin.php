@@ -107,12 +107,9 @@
 							</ul>
 						</li>
 						<li>
-							<a href="#!">
-								<i class="menu-icon icon-folder"></i><span>Carpetas</span><i class="accordion-icon fa fa-angle-left"></i>
+							<a href="<?=base_url('administrador/subir_archivo');?>">
+								<i class="menu-icon icon-folder"></i><span>Mis Documentos</span>
 							</a>
-							<ul>
-								<li><a href="<?=base_url('administrador/subir_archivo');?>">Mis Documentos</a></li>								
-							</ul>
 						</li>
 						
 						<li class="menu-divider"></li>

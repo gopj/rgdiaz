@@ -488,22 +488,7 @@ function check_resposanble() {
 	}
 }
 
-(function() {
-	'use strict';
-	window.addEventListener('load', function() {
-		var form = document.getElementById('form_manifiesto_recolector');
-		form.addEventListener('submit', function(event) {
-			if (form.checkValidity() === false) {
-				event.preventDefault();
-				event.stopPropagation();
-			}
-			form.classList.add('was-validated');
-		}, false);
-	}, false);
-})();
-
 $('.fecha_embarque').keypress((e) => {
-  
 	// Enter key corresponds to number 13
 	if (e.which === 13) {
 		$('#form_bitacora').submit();
@@ -540,6 +525,14 @@ function terminar_manifiesto(){
 
 $(document).ready(function() {
     terminar_manifiesto();
+
+    form.addEventListener('submit', function(event) {
+		if (form.checkValidity() === false) {
+			event.preventDefault();
+			event.stopPropagation();
+		}
+		form.classList.add('was-validated');
+	}, false);
 
 	$('.date-picker').datepicker({
 		language: 'es',
