@@ -39,8 +39,8 @@
 	</div> 
 
 	<div class="card">
-		<table id="tabla" class="display">
-			<thead>
+		<table id="generic_table" class="display table table-striped table-bordered">
+			<thead class="thead-dark">
 				<tr>
 					<th style="width:5%;"></th>
 					<th style="width:55%;">Nombre</th>
@@ -72,7 +72,7 @@
 												<input type="hidden" name="nombre_nuevo" id="<?php echo $carpe->nombre.$carpe->id_carpeta; ?>">
 												<input type="hidden" value="<?php echo $carpe->ruta_carpeta; ?>" name="ruta_carpeta">
 												<input type="hidden" value="<?php echo $carpe->ruta_anterior; ?>" name="ruta_anterior">
-												<input type="button" class="btn btn-outline-secondary" onclick="abrir_modal('<?php echo $carpe->id_carpeta.$carpe->nombre; ?>', '<?php echo $carpe->nombre.$carpe->id_carpeta; ?>');" value="Renombrar">
+												<button class="btn btn-outline-secondary btn-sm" type="button" class="btn btn-outline-secondary" onclick="abrir_modal('<?php echo $carpe->id_carpeta.$carpe->nombre; ?>', '<?php echo $carpe->nombre.$carpe->id_carpeta; ?>');"> <i class="fas fa-edit"></i> Renombrar </button>
 											</form>
 										</div>
 										<div class="col-lg-6">
@@ -81,7 +81,7 @@
 												<input type="hidden" value="<?php echo $carpe->id_carpeta; ?>" id="id_carpeta" name="id_carpeta">
 												<input type="hidden" value="<?php echo $carpe->ruta_carpeta; ?>" id="ruta_carpeta" name="ruta_carpeta">
 												<input type="hidden" value="<?php echo $carpe->ruta_anterior; ?>" id="ruta_carpeta" name="ruta_anterior">
-												<input class="btn btn-outline-danger" type="submit"  value="Eliminar">
+												<button class="btn btn-outline-danger btn-sm" type="submit"> <i class="fas fa-trash"></i> Eliminar </button>
 											</form>
 										</div>
 									</div>
@@ -90,9 +90,9 @@
 						</td>        			
 					</tr>
 				<?php } ?>						
-				<?php 
-					foreach ($archivo->result() as $arch) {
-						echo "<tr>";
+				<?php foreach ($archivo->result() as $arch) { ?>
+						<tr>
+						<?php 
 							$ext = explode('.', $arch->nombre);
 							$extencion = array_pop($ext);
 							if($extencion=='pdf'){
@@ -120,21 +120,21 @@
 							$id_per_arc = $array_ruta[1]; ?>
 
 							<td align="center">
-								<div class="row-fluid" style="margin-top:10px;">
-									<div class="span6">
+								<div class="row">
+									<div class="col-lg-6">
 										<form method='post' action="<?php echo site_url('administrador/descargar'); ?>">
 											<input type="hidden" value="<?php echo $arch->nombre; ?>" name="nombre">
 											<input type="hidden" value="<?php echo $arch->ruta_archivo; ?>" name="ruta_archivo">
-											<input class="btn btn-mini btn-primary"  type="submit" value="Descargar">
+											<button class="btn btn-outline-primary btn-sm" type="submit"> <i class="fas fa-cloud-download-alt"></i> Descargar </button>
 										</form>
 									</div>
-									<div class="span6">
+									<div class="col-lg-6">
 										<form id="form_eliminar" method='post' action="<?php echo site_url('administrador/eliminar_archivo');?>">
 											<input type="hidden" value="<?php echo $id_per_arc; ?>" name="id_persona">
 											<input type="hidden" value="<?php echo $arch->id_archivo; ?>" name="id_archivo">
 											<input type="hidden" value="<?php echo $arch->ruta_archivo; ?>" name="ruta_archivo" >
 											<input type="hidden" value="<?php echo $arch->ruta_carpeta_pertenece; ?>" name="ruta_carpeta_pertenece" >
-											<input class="btn btn-mini btn-primary"  type="submit"  value="Eliminar">
+											<button class="btn btn-outline-danger btn-sm" type="submit"> <i class="fas fa-trash"></i> Eliminar </button>
 										</form>
 									</div>
 								</div>

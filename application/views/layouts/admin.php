@@ -14,6 +14,12 @@
 	<!-- title  -->
 	<title>RD&iacute;az - Servicios Integrales en Materia Ambiental</title>
 
+	<!-- favicon -->
+	<link rel="shortcut icon" href="<?=base_url('img/minilogo.png')?>">
+	<link rel="apple-touch-icon" href="<?=base_url('img/crizal/logos/apple-touch-icon-57x57.png')?>">
+	<link rel="apple-touch-icon" sizes="72x72" href="<?=base_url('img/crizal/logos/apple-touch-icon-72x72.png')?>">
+	<link rel="apple-touch-icon" sizes="114x114" href="<?=base_url('img/crizal/logos/apple-touch-icon-114x114.png')?>">
+
 	<!-- common plugins -->
 	<link rel="stylesheet" href="<?=base_url('css/crizal/bootstrap.min.css')?>" />
 	<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/font-awesome/css/font-awesome.min.css')?>" />
@@ -105,9 +111,7 @@
 								<i class="menu-icon icon-folder"></i><span>Carpetas</span><i class="accordion-icon fa fa-angle-left"></i>
 							</a>
 							<ul>
-								<li><a href="<?=base_url('administrador/subir_archivo');?>">Mis Documentos</a></li>
-								<li><a href="<?=base_url('administrador/subir_archivo');?>">Subir Archivos</a></li>
-								
+								<li><a href="<?=base_url('administrador/subir_archivo');?>">Mis Documentos</a></li>								
 							</ul>
 						</li>
 						

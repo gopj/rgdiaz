@@ -550,8 +550,43 @@ $(document).ready(function() {
 	$('#tabla_manifiestos').dataTable({
 		"displayLength": 25,
 		"language": {
+			"paginate": {
+				"previous": "Anterior",
+				"next": "Siguiente",
+			},
 			"lengthMenu": "Mostrar _MENU_ registros por página",
 			"search": "Buscar:",
+			"zeroRecords": "No hay resultados para esa búsqueda.",
+			"info": "Mostrando página _PAGE_ de _PAGES_",
+			"infoEmpty": "No hay registros disponibles",
+			"infoFiltered": "(filtered from _MAX_ total records)"
+		},
+	});
+
+	$('#generic_table').dataTable({
+		"displayLength": 25,
+		"language": {
+			"paginate": {
+				"previous": "Anterior",
+				"next": "Siguiente",
+			},
+			"lengthMenu": "Mostrar _MENU_ registros por página",
+			"search": "Buscar:",
+			"zeroRecords": "No hay resultados para esa búsqueda.",
+			"info": "Mostrando página _PAGE_ de _PAGES_",
+			"infoEmpty": "No hay registros disponibles",
+			"infoFiltered": "(filtered from _MAX_ total records)"
+		},
+	});
+
+	$('#carpeta_table').dataTable({
+		
+		"lengthChange": false,
+		"searching": false,
+		"info": false,
+		"paging": false,
+		"language": {
+			"lengthMenu": "Mostrar _MENU_ registros por página",
 			"zeroRecords": "No hay resultados para esa búsqueda.",
 			"info": "Mostrando página _PAGE_ de _PAGES_",
 			"infoEmpty": "No hay registros disponibles",

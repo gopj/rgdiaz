@@ -3,9 +3,21 @@
 	<head>
 		<!-- base_url -->
 		<base href="<?php echo base_url(); ?>"/>
-		<!-- Required meta tags -->
+		<!-- metas -->
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="keywords" content="admin,dashboard" />
+		<meta name="description" content="RDíaz - Servicios Integrales en Materia Ambiental" />
+
+		<!-- title  -->
+		<title>RD&iacute;az - Servicios Integrales en Materia Ambiental</title>
+
+		<!-- favicon -->
+		<link rel="shortcut icon" href="<?=base_url('img/minilogo.png')?>">
+		<link rel="apple-touch-icon" href="<?=base_url('img/crizal/logos/apple-touch-icon-57x57.png')?>">
+		<link rel="apple-touch-icon" sizes="72x72" href="<?=base_url('img/crizal/logos/apple-touch-icon-72x72.png')?>">
+		<link rel="apple-touch-icon" sizes="114x114" href="<?=base_url('img/crizal/logos/apple-touch-icon-114x114.png')?>">
 
 		<!-- Bootstrap CSS --> 	
     	<!-- <link href="css/bootstrap4/dataTables.bootstrap4.min.css" rel="stylesheet"> -->

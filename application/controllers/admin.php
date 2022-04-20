@@ -31,10 +31,10 @@ class Admin extends MY_Controller {
 
 	public function recolector_index() {
 		if ($this->session->userdata('tipo') == 1){
-			$id_tipo_persona 			= 3;
-			$lleno_datos 				= 1;	// <-- Mandamos 1 para que nos cargue solo a los clientes que ya cargaron sus datos
-			$data["id"]					= $this->session->userdata('id');
-			$data["tclientes"]			= $this->persona_model->obtienetodoclientes($id_tipo_persona,$lleno_datos);
+			$id_tipo_persona 	= 3;
+			$lleno_datos 		= 1;	// <-- Mandamos 1 para que nos cargue solo a los clientes que ya cargaron sus datos
+			$data["id"]			= $this->session->userdata('id');
+			$data["tclientes"]	= $this->persona_model->obtienetodoclientes($id_tipo_persona,$lleno_datos);
 			
 			$this->load->view('administrador/recolector/index', $data);
 		} else {
