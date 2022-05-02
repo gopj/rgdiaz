@@ -1,8 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Cliente extends CI_Controller {
+
+class Cliente extends MY_Controller {
 
 	public function __construct(){
 		parent::__construct();
+		$this->setLayout('cliente');
 		$this->load->model('persona_model');
 		$this->load->model('contacto_model');
 		$this->load->model('carpeta_model');
@@ -45,7 +47,7 @@ class Cliente extends CI_Controller {
 						   'id'=>$id,
 						   'datos'=>$datos
 							);
-			$this->load->view('usuario/header_usuario',$data);
+
 			$this->load->view('usuario/carpeta_usuario',$data); // aqui es donde se carga el numero de notificaciones
 			$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
 			
@@ -53,7 +55,6 @@ class Cliente extends CI_Controller {
 			$data2 = array(
 							'new_noti' =>$datos_popover,
 						  );
-			$this->load->view('usuario/footer_usuario',$data2);// aqui se carga el modal de notficaciones
 		}else{
 			$this->session->sess_destroy(); #destruye session
 			redirect('home/index');
@@ -78,7 +79,7 @@ class Cliente extends CI_Controller {
 							'id'=>$id,
 							'datos'=>$datos
 						);
-			$this->load->view('usuario/header_usuario',$data);
+
 			$this->load->view('usuario/carpeta_compartida',$data); // aqui es donde se carga el numero de notificaciones
 			$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
 
@@ -86,7 +87,6 @@ class Cliente extends CI_Controller {
 			$data2 = array(
 							'new_noti' =>$datos_popover,
 						  );
-			$this->load->view('usuario/footer_usuario',$data2);// aqui se carga el modal de notficaciones
 		}else{
 			$this->session->sess_destroy(); #destruye session
 			redirect('home/index');
@@ -183,7 +183,7 @@ class Cliente extends CI_Controller {
 					'numnoti'=>$total,
 					'id'=>$id
 					);
-			$this->load->view('usuario/header_usuario',$data);
+
 			$this->load->view('usuario/act_password');
 			$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
 			// Obtenemos las bitacoras que hay
@@ -192,7 +192,6 @@ class Cliente extends CI_Controller {
 							'new_noti' =>$datos_popover,
 							'bitacoras' =>$bitacoras
 						  );
-			$this->load->view('usuario/footer_usuario',$data2);// aqui se carga el modal de notficaciones
 	}
 
 	public function update_password(){
@@ -324,8 +323,7 @@ class Cliente extends CI_Controller {
 	}
 
 	
-		public function versubcarpeta()
-	{
+	public function versubcarpeta() {
 		$status = 0;
 		$id = $this->session->userdata('id');
 		$total=$this->notificacion_model->obtiene_noticliente($id,$status);
@@ -360,7 +358,7 @@ class Cliente extends CI_Controller {
 
 				);
 	
-			$this->load->view('usuario/header_usuario',$data);
+
 			$this->load->view('usuario/carpeta_usuario',$data2);
 
 			$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
@@ -370,32 +368,29 @@ class Cliente extends CI_Controller {
 							'new_noti' =>$datos_popover,
 							'bitacoras' =>$bitacoras
 						  );
-		$this->load->view('usuario/footer_usuario',$data2);
 	}
 
-	public function mis_datos()
-	{
+	public function mis_datos() {
 		$id_persona =$this->session->userdata('id');
 		$id=$id_persona;
 		$status=0;
 		$total=$this->notificacion_model->obtiene_noticliente($id,$status);
 		$datos=$this->persona_model->obtiene_cliente($id_persona);
 		$data = array(
-					  'cliente' => $datos,
-					  'numnoti'=>$total,
-					  'id'=>$id 
-					 );
-		$this->load->view('usuario/header_usuario',$data);
+			'cliente' => $datos,
+			'numnoti'=>$total,
+			'id'=>$id 
+		);
+
 		$this->load->view('usuario/mis_datos',$data);
 
 		$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
-			// Obtenemos las bitacoras que hay
-			$bitacoras = $this->residuo_peligroso_model->get_bitacora($id);
-			$data2 = array(
-							'new_noti' =>$datos_popover,
-							'bitacoras' =>$bitacoras
-						  );
-		$this->load->view('usuario/footer_usuario',$data2);
+		// Obtenemos las bitacoras que hay
+		$bitacoras = $this->residuo_peligroso_model->get_bitacora($id);
+		$data2 = array(
+			'new_noti' =>$datos_popover,
+			'bitacoras' =>$bitacoras
+		);
 	}
 
 	public function actualizadatos_persona(){	
@@ -437,7 +432,6 @@ class Cliente extends CI_Controller {
 					   'id_persona' => $id_persona,
 					   'datos' => $datos	
 					 );
-		$this->load->view('usuario/header_usuario',$data);
 
 		//PDF
 		$pdfpath = $_SERVER['DOCUMENT_ROOT'] . "rgdiaz/img/pdf/rdiaztmp{$id_persona}.pdf";
@@ -458,7 +452,6 @@ class Cliente extends CI_Controller {
 							'new_noti' =>$datos_popover,
 							'bitacoras' =>$bitacoras
 						  );
-			$this->load->view('usuario/footer_usuario',$data2);
 	}
 
 	public function bitacora(){
@@ -485,16 +478,14 @@ class Cliente extends CI_Controller {
 			'areas' 		=> $areas
 		);
 
-		$this->load->view('usuario/header_usuario',$data);
 		$this->load->view('usuario/nuevo_registro',$data);
 		$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
 		// Obtenemos las bitacoras que hay
 		$bitacoras = $this->residuo_peligroso_model->get_bitacora($id);
 		$data2 = array(
-						'new_noti' =>$datos_popover,
-						'bitacoras' =>$bitacoras
-					  );
-		$this->load->view('usuario/footer_usuario',$data2);
+			'new_noti' =>$datos_popover,
+			'bitacoras' =>$bitacoras
+		);
 	}
 
 	public function nuevo_registro() {
@@ -517,11 +508,12 @@ class Cliente extends CI_Controller {
 				'id'  => $id_persona
 
 			);
-			$this->load->view('usuario/header_usuario',$data);
+
 			$data2 = array(
 				'id_persona'	=> $id_persona,
 				'residuos' 		=> $residuos,
-				'areas' 		=> $areas);
+				'areas' 		=> $areas
+			);
 
 			#	Obtengo a todos mis clientes para seleccionar uno en opcion dar de baja y los mando al modal
 			$id_tipo_persona=3;
@@ -535,11 +527,9 @@ class Cliente extends CI_Controller {
 				'correo' => $correo_clientes,
 				'id_persona' => $id_persona
 			);
+
 			$this->load->view('usuario/nuevo_registro',$data2);
-			//$this->load->view('usuario/footer_usuario',$data3);
-		}
-		else
-		{
+		} else {
 			redirect('usuario/bitacora');
 		}
 	}
@@ -577,7 +567,7 @@ class Cliente extends CI_Controller {
 					'siguiente_folio'		=> $siguiente_folio
 				);
 
-				$this->load->view('usuario/header_usuario',$data);
+	
 				$this->load->view('usuario/actualizar_registros',$data);
 				$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
 				$bitacoras = $this->residuo_peligroso_model->get_bitacora($id);
@@ -587,7 +577,7 @@ class Cliente extends CI_Controller {
 					'new_noti' =>$datos_popover,
 					'bitacoras' =>$bitacoras
 				);
-				$this->load->view('usuario/footer_usuario',$data2);
+
 			} else {
 				redirect("cliente/ver_bitacora");
 			}
@@ -642,7 +632,7 @@ class Cliente extends CI_Controller {
 				'bitacora' => $bitacora
 			);
 
-			$this->load->view('usuario/header_usuario',$data);
+
 			$this->load->view('usuario/modificar_bitacora',$data);
 			
 			$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
@@ -660,7 +650,6 @@ class Cliente extends CI_Controller {
 					'correo' => $correo_clientes
 			);
 
-			$this->load->view('usuario/footer_usuario',$data2);
 		}else{
 			redirect('cliente/ver_bitacora');
 		}	
@@ -847,7 +836,6 @@ class Cliente extends CI_Controller {
 			'id' => $id_persona,
 
 		);
-		$this->load->view('usuario/header_usuario',$data);
 
 		#	Obtengo a todos mis clientes para seleccionar uno en opcion dar de baja y los mando al modal
 		$id_tipo_persona=3;
@@ -875,8 +863,7 @@ class Cliente extends CI_Controller {
 		);
 		
 		$this->load->view("usuario/manifiesto.php", $data3);
-	
-		$this->load->view('usuario/footer_usuario',$data3);
+
 
 
 	}
