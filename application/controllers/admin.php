@@ -29,7 +29,12 @@ class Admin extends MY_Controller {
 		$this->load->helper('url');
 	}
 
-	public function recolector_index() {
+	public function index() {
+
+		echo "<pre>";
+		print_r($this->session->all_userdata());
+		echo "</pre>";
+		
 		if ($this->session->userdata('tipo') == 1){
 			$id_tipo_persona 	= 3;
 			$lleno_datos 		= 1;	// <-- Mandamos 1 para que nos cargue solo a los clientes que ya cargaron sus datos

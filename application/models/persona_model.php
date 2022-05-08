@@ -54,9 +54,10 @@ class Persona_model extends CI_Model {
 
 	public function obtiene_clientes($id_status_persona,$id_tipo_persona)
 	{
-			$query = $this->db->where('id_tipo_persona',$id_tipo_persona)
-				 ->where('id_status_persona',$id_status_persona)
-				 ->get('persona');
+		$query = $this->db->where('id_tipo_persona',$id_tipo_persona)
+						  ->where('id_status_persona',$id_status_persona)
+						  ->get('persona');
+						  
 		return $query;
 	}
 

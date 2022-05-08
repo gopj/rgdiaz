@@ -12,7 +12,15 @@ class My_Controller extends CI_Controller{
 				$user = $this->session->userdata('user');
 				if($user['code'] != $code){
 					// Mostrar mensaje, no tienes permisos
-					redirect("admin");
+
+					if ($this->session->userdata('tipo') == 1) {
+						redirect("admin");
+					} elseif ($this->session->userdata('tipo') == 2) {
+						redirect("recolector");
+					} elseif ($this->session->userdata('tipo') == 3) {
+						redirect("cliente");
+					}
+					
 				}
 			}
 		}

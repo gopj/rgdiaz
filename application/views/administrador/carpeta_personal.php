@@ -1,5 +1,5 @@
 	<div class="page-title">
-		<h3 class="breadcrumb-header"> Bitacora </h3>
+		<h3 class="breadcrumb-header"> Mi Carpeta </h3>
 	</div>
 	<div class="card card-white">
 		<div id="main-wrapper">

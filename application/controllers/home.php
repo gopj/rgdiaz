@@ -59,10 +59,9 @@ class Home extends My_Controller {
 			$login = $this->persona_model->login($this->input->post('correo'), $this->input->post('password'),$id_status_persona);
  
 			if(!is_object($login)){
-						//contraseña y/o usuario invalido
-						
-						$this->session->sess_destroy(); #destruye session
-						redirect('home/index');	
+				//contraseña y/o usuario invalido
+				$this->session->sess_destroy(); #destruye session
+				redirect('home/index');	
 			}else{
 				//Login correcto
 				$this->session->set_userdata('correo',$login->correo);
@@ -76,17 +75,17 @@ class Home extends My_Controller {
 				//	Sesion del Administrador
 				if($this->session->userdata('status') == 1 && $this->session->userdata('tipo')==1){
 					#	Cargar la vista de usuario
-					redirect('admin/recolector_index');
+					redirect('admin');
 				}
 				// Sesion del Auxiliar
-				else if($this->session->userdata('status') == 1 && $this->session->userdata('tipo')==2){
+				elseif($this->session->userdata('status') == 1 && $this->session->userdata('tipo')==2){
 					#	Cargar la vista de usuaria
 					redirect('recolector');
 				}
 				// Sesion de Cliente 
-				else if($this->session->userdata('status')== 1 && $this->session->userdata('tipo')==3){
+				elseif($this->session->userdata('status') == 1 && $this->session->userdata('tipo')==3){
 					#	Cargar la vista de usuario
-					redirect('cliente');
+					redirect('cliente/mis_datos');
 				}else{
 					$this->session->sess_destroy(); #destruye session
 					redirect('home/index');	

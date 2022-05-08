@@ -11,24 +11,31 @@ class Cliente extends MY_Controller {
 		$this->load->model('archivo_model');
 		$this->load->model('notificacion_model');
 		$this->load->model('residuo_peligroso_model');
+		$this->load->model('tran_residuo_model');
+		$this->load->model('tran_vehiculo_model');
 		$this->load->model('area_model');
 		$this->load->model('emp_transportista_model');
 		$this->load->model('emp_destino_model');
 		$this->load->model('modalidad_model');
 		$this->load->helper('download');
+		$this->load->helper('file');
 		$this->load->library('session');
 		$this->load->library('email');
 		$this->load->library('Excel');
 		$this->load->library('MY_PDF');
 		$this->load->library('MY_Output');
+		$this->load->library('MY_Input');
 		$this->load->helper('file');
 		$this->load->helper('url');
 	}
 
 	#	Metodo index carga la vista principal del cliente
 	public function index(){
+		echo "<pre>";
+		print_r($this->session->all_userdata());
+		echo "</pre>";
 
-		if($this->session->userdata('tipo')==3){
+		if ($this->session->userdata('tipo')==3) {
 			$id = $this->session->userdata('id');
 			$ruta = "clientes/".$id;
 			$ruta_carpeta = $ruta;
@@ -39,23 +46,24 @@ class Cliente extends MY_Controller {
 			$carpetas=$this->carpeta_model->obt_carpeta_personal($ruta);
 			$archivos=$this->archivo_model->obtienearchivos($ruta_carpeta);
 			$datos=$this->persona_model->obtiene_cliente($id);
-			$data = array('carpetas'=> $carpetas,
-						   'archivo'=>$archivos,
-						   'numnoti'=>$total,
-						   'anterior'=>$anterior,
-						   'raiz'=>$raiz,
-						   'id'=>$id,
-						   'datos'=>$datos
-							);
+			$data = array(
+				'carpetas'=> $carpetas,
+				'archivo'=> $archivos,
+				'numnoti'=> $total,
+				'anterior'=> $anterior,
+				'raiz'=> $raiz,
+				'id'=> $id,
+				'datos'=> $datos
+			);
 
 			$this->load->view('usuario/carpeta_usuario',$data); // aqui es donde se carga el numero de notificaciones
 			$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
 			
 			// Obtenemos las bitacoras que hay
 			$data2 = array(
-							'new_noti' =>$datos_popover,
-						  );
-		}else{
+				'new_noti' =>$datos_popover,
+			);
+		} else {
 			$this->session->sess_destroy(); #destruye session
 			redirect('home/index');
 		}
@@ -73,20 +81,20 @@ class Cliente extends MY_Controller {
 			$archivos=$this->archivo_model->obtienearchivos($ruta_carpeta);
 			$datos=$this->persona_model->obtiene_cliente($id);
 			$data = array( 
-							'carpetas'=> $carpetas,
-							'archivo'=>$archivos,
-							'numnoti'=>$total,
-							'id'=>$id,
-							'datos'=>$datos
-						);
+				'carpetas'=> $carpetas,
+				'archivo'=>$archivos,
+				'numnoti'=>$total,
+				'id'=>$id,
+				'datos'=>$datos
+			);
 
 			$this->load->view('usuario/carpeta_compartida',$data); // aqui es donde se carga el numero de notificaciones
 			$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
 
 		
 			$data2 = array(
-							'new_noti' =>$datos_popover,
-						  );
+				'new_noti' =>$datos_popover,
+			);
 		}else{
 			$this->session->sess_destroy(); #destruye session
 			redirect('home/index');
@@ -371,26 +379,25 @@ class Cliente extends MY_Controller {
 	}
 
 	public function mis_datos() {
-		$id_persona =$this->session->userdata('id');
-		$id=$id_persona;
-		$status=0;
-		$total=$this->notificacion_model->obtiene_noticliente($id,$status);
-		$datos=$this->persona_model->obtiene_cliente($id_persona);
-		$data = array(
-			'cliente' => $datos,
-			'numnoti'=>$total,
-			'id'=>$id 
-		);
+		echo "<pre>";
+		print_r($this->session->all_userdata());
+		echo "</pre>";
+		
+		if($this->session->userdata('tipo')==3){
+			$id_persona = $this->session->userdata('id');
+			$status = 0;
 
-		$this->load->view('usuario/mis_datos',$data);
+			$data['id'] = $id_persona;
+			$data['numnoti'] = $this->notificacion_model->obtiene_noticliente($id_persona,$status);
+			$data['cliente'] = $this->persona_model->obtiene_cliente($id_persona);
+			$data['new_noti'] = $this->notificacion_model->get_new_noti($status,$id_persona);
+			$data['bitacoras'] = $this->residuo_peligroso_model->get_bitacora($id_persona);
 
-		$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
-		// Obtenemos las bitacoras que hay
-		$bitacoras = $this->residuo_peligroso_model->get_bitacora($id);
-		$data2 = array(
-			'new_noti' =>$datos_popover,
-			'bitacoras' =>$bitacoras
-		);
+			$this->load->view('usuario/mis_datos',$data);
+		} else {
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/index');
+		}
 	}
 
 	public function actualizadatos_persona(){	
@@ -882,5 +889,10 @@ class Cliente extends MY_Controller {
 			$this->load->view("usuario/generar_manifiesto.php", $data);
 		}
 
-	}	
+	}
+
+	public function terminar_sesion() {
+		$this->session->sess_destroy(); #destruye session
+		redirect('home/index');		
+	}
 }
