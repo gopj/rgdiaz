@@ -17,14 +17,14 @@
 					<tr>
 						<td><center><img src='img/iconos/folder.png'></center></td>
 						<td>
-							<form method='post' action="<?php echo site_url('cliente/versubcarpeta');?>">
+							<form method='post' action="<?php echo site_url('usuario/versubcarpeta');?>">
 								<input type="hidden" value="<?php echo $carpe->id_persona; ?>" name="id_persona"/>
 								<input type="hidden" value="<?php echo $carpe->ruta_carpeta; ?>" name="ruta_carpeta" >
 								<input class="nombre-carpeta"  type="submit" value="<?php echo $carpe->nombre?>">
 							</form>
 						</td>
 						<td align="center">
-							<form method='post' action="<?php echo site_url('cliente/versubcarpeta');?>">
+							<form method='post' action="<?php echo site_url('usuario/versubcarpeta');?>">
 								<input type="hidden" value="<?php echo $carpe->id_persona; ?>" name="id_persona"/>
 								<input type="hidden" value="<?php echo $carpe->ruta_carpeta; ?>" name="ruta_carpeta" >
 								<button class="btn btn-primary" type="submit"><i class="fas fa-eye"></i> Ver Carpeta </button>

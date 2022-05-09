@@ -30,10 +30,6 @@ class Admin extends MY_Controller {
 	}
 
 	public function index() {
-
-		echo "<pre>";
-		print_r($this->session->all_userdata());
-		echo "</pre>";
 		
 		if ($this->session->userdata('tipo') == 1){
 			$id_tipo_persona 	= 3;

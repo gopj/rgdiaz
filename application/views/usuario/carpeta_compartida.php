@@ -18,14 +18,14 @@
 							<tr>
 								<td><center><img src='img/iconos/folder.png'></center></td>
 								<td>
-									<form method='post' action="<?php echo site_url('cliente/versubcarpeta'); ?>">
+									<form method='post' action="<?php echo site_url('usuario/versubcarpeta'); ?>">
 										<input type="hidden" value="<?php echo $carpe->id_persona; ?>" name="id_persona">
                       					<input type="hidden" value="<?php echo $carpe->ruta_carpeta; ?>" name="ruta_carpeta">
                       					<input class="nombre-carpeta"  type="submit" value="<?php echo $carpe->nombre; ?>">
 									</form>
 								</td>
 								<td align="center">
-									<form method='post' action="<?php echo site_url('cliente/versubcarpeta'); ?>">
+									<form method='post' action="<?php echo site_url('usuario/versubcarpeta'); ?>">
 										<input type="hidden" value="<?php echo $carpe->id_persona; ?>" name="id_persona">
                       					<input type="hidden" value="<?php echo $carpe->ruta_carpeta; ?>" name="ruta_carpeta">
                       					<input class="btn btn-mini btn-primary"  type="submit" value="Ver Carpeta">
@@ -60,7 +60,7 @@
 							?>
 								<td><?php echo $arch->nombre; ?></td>
 								<td align="center">
-									<form method='post' action="<?php echo site_url('administrador/descargar'); ?>">
+									<form method='post' action="<?php echo site_url('usuario/descargar'); ?>">
 										<input type="hidden" value="<?php echo $arch->nombre; ?>" name="nombre">
 										<input type="hidden" value="<?php echo $arch->ruta_archivo; ?>" name="ruta_archivo">
 										<input class="btn btn-mini btn-primary"  type="submit" value="Descargar">
@@ -79,7 +79,7 @@
 			} else {
 		?>
 				<div class="span9">
-					<form method="post" action="<?php echo site_url('cliente/regisdatos_persona'); ?>">
+					<form method="post" action="<?php echo site_url('usuario/regisdatos_persona'); ?>">
 					<div class="row-fluid">
 						<div class="span5">
 							<legend>Datos de la Empresa</legend>

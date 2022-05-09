@@ -3,7 +3,7 @@
 	<head>
 
 		<!-- base_url -->
-		<base href="<?php echo base_url(); ?>"/>
+		<base href="<?=base_url();?>"/>
 
 		<!-- Required meta tags -->
 		<meta charset="utf-8">

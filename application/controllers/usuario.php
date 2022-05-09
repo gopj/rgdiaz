@@ -1,10 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Cliente extends MY_Controller {
+class Usuario extends MY_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->setLayout('cliente');
+		$this->setLayout('usuario');
 		$this->load->model('persona_model');
 		$this->load->model('contacto_model');
 		$this->load->model('carpeta_model');
@@ -12,28 +12,24 @@ class Cliente extends MY_Controller {
 		$this->load->model('notificacion_model');
 		$this->load->model('residuo_peligroso_model');
 		$this->load->model('tran_residuo_model');
+		$this->load->model('tran_residuo_model');
 		$this->load->model('tran_vehiculo_model');
 		$this->load->model('area_model');
 		$this->load->model('emp_transportista_model');
 		$this->load->model('emp_destino_model');
 		$this->load->model('modalidad_model');
 		$this->load->helper('download');
-		$this->load->helper('file');
 		$this->load->library('session');
 		$this->load->library('email');
 		$this->load->library('Excel');
 		$this->load->library('MY_PDF');
 		$this->load->library('MY_Output');
-		$this->load->library('MY_Input');
 		$this->load->helper('file');
 		$this->load->helper('url');
 	}
 
 	#	Metodo index carga la vista principal del cliente
 	public function index(){
-		echo "<pre>";
-		print_r($this->session->all_userdata());
-		echo "</pre>";
 
 		if ($this->session->userdata('tipo')==3) {
 			$id = $this->session->userdata('id');
@@ -64,6 +60,7 @@ class Cliente extends MY_Controller {
 				'new_noti' =>$datos_popover,
 			);
 		} else {
+			die();
 			$this->session->sess_destroy(); #destruye session
 			redirect('home/index');
 		}
@@ -379,10 +376,7 @@ class Cliente extends MY_Controller {
 	}
 
 	public function mis_datos() {
-		echo "<pre>";
-		print_r($this->session->all_userdata());
-		echo "</pre>";
-		
+			
 		if($this->session->userdata('tipo')==3){
 			$id_persona = $this->session->userdata('id');
 			$status = 0;

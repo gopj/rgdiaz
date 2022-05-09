@@ -3,25 +3,25 @@
 		<div class="row">
 			<?php if($anterior == "cliente/") { ?>
 				<div class="col-lg-3" >
-					<form method="post" action="<?php echo site_url('cliente/index');?>">
+					<form method="post" action="<?php echo site_url('usuario/index');?>">
 						<button type="submit" class="btn"><i class="icon-arrow-left"></i></button>
 					</form>
 				</div>
 			<?php } else if($anterior == "clientes/") { ?>
 				<div class="col-lg-3 " >
-					<form method="post" action="<?php echo site_url('cliente/admin_clientes/' . $id_persona);?>">
+					<form method="post" action="<?php echo site_url('usuario/admin_clientes/' . $id_persona);?>">
 						<button type="submit" class="btn" ><i class="icon-arrow-left"></i></button>
 					</form>
 				</div>
 			<?php } else if($raiz==$anterior) { ?>
 				<div class="col-lg-3" >
-					<form method="post" action="<?php echo site_url('cliente/subir_archivo');?>">
+					<form method="post" action="<?php echo site_url('usuario/subir_archivo');?>">
 						<button type="submit" class="btn" ><i class="icon-arrow-left"></i></button>
 					</form>
 				</div>
 			<?php } else { ?>
 				<div class="col-lg-3" >
-					<form method="post" action="<?php echo site_url('cliente/versubcarpeta');?>">
+					<form method="post" action="<?php echo site_url('usuario/versubcarpeta');?>">
 						<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
 						<input type="hidden" value="<?php echo $anterior; ?>" name="ruta_carpeta">
 						<button type="submit" class="btn btn" ><i class="icon-arrow-left"></i></button>
@@ -53,7 +53,7 @@
 					<tr>
 						<td><img src='img/iconos/folder.png'></td>
 						<td>
-							<form method='post' action="<?php echo site_url('cliente/versubcarpeta');?>">
+							<form method='post' action="<?php echo site_url('usuario/versubcarpeta');?>">
 								<input type="hidden" value="<?php echo $carpe->id_persona; ?>" name="id_persona"/>
 								<input type="hidden" value="<?php echo $carpe->ruta_carpeta; ?>" name="ruta_carpeta" >
 								<button type="submit" class="nombre-carpeta" ><?php echo $carpe->nombre?></button>
@@ -66,7 +66,7 @@
 									<div class="row">
 										<div class="col-lg-6">
 											<input type="hidden" value="<?php echo $carpe->id_carpeta.$carpe->nombre; ?>" id="id_formulario_renombra">
-											<form id="<?php echo $carpe->id_carpeta.$carpe->nombre; ?>" method='post' action="<?php echo site_url('cliente/renombrar_carpeta'); ?>">
+											<form id="<?php echo $carpe->id_carpeta.$carpe->nombre; ?>" method='post' action="<?php echo site_url('usuario/renombrar_carpeta'); ?>">
 												<input type="hidden" value="<?php echo $carpe->id_persona; ?>" name="id_persona">
 												<input type="hidden" value="<?php echo $carpe->nombre; ?>" name="nombre_carpeta">
 												<input type="hidden" name="nombre_nuevo" id="<?php echo $carpe->nombre.$carpe->id_carpeta; ?>">
@@ -76,7 +76,7 @@
 											</form>
 										</div>
 										<div class="col-lg-6">
-											<form id="form_eliminar_carpeta" method='post' action="<?php echo site_url('cliente/eliminar_carpeta'); ?>">
+											<form id="form_eliminar_carpeta" method='post' action="<?php echo site_url('usuario/eliminar_carpeta'); ?>">
 												<input type="hidden" value="<?php echo $carpe->id_persona; ?>" id="id_persona" name="id_persona">
 												<input type="hidden" value="<?php echo $carpe->id_carpeta; ?>" id="id_carpeta" name="id_carpeta">
 												<input type="hidden" value="<?php echo $carpe->ruta_carpeta; ?>" id="ruta_carpeta" name="ruta_carpeta">
@@ -122,14 +122,14 @@
 							<td align="center">
 								<div class="row">
 									<div class="col-lg-6">
-										<form method='post' action="<?php echo site_url('cliente/descargar'); ?>">
+										<form method='post' action="<?php echo site_url('usuario/descargar'); ?>">
 											<input type="hidden" value="<?php echo $arch->nombre; ?>" name="nombre">
 											<input type="hidden" value="<?php echo $arch->ruta_archivo; ?>" name="ruta_archivo">
 											<button class="btn btn-outline-primary btn-sm" type="submit"> <i class="fas fa-cloud-download-alt"></i> Descargar </button>
 										</form>
 									</div>
 									<div class="col-lg-6">
-										<form id="form_eliminar" method='post' action="<?php echo site_url('cliente/eliminar_archivo');?>">
+										<form id="form_eliminar" method='post' action="<?php echo site_url('usuario/eliminar_archivo');?>">
 											<input type="hidden" value="<?php echo $id_per_arc; ?>" name="id_persona">
 											<input type="hidden" value="<?php echo $arch->id_archivo; ?>" name="id_archivo">
 											<input type="hidden" value="<?php echo $arch->ruta_archivo; ?>" name="ruta_archivo" >
@@ -157,7 +157,7 @@
 				</button>
 			</div> 
 			<div class=modal-body>
-				<form id="form_carp" action="<?php echo site_url('cliente/crearsubcarpeta');?>" method="post">
+				<form id="form_carp" action="<?php echo site_url('usuario/crearsubcarpeta');?>" method="post">
 					<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona"/>
 					<input type="hidden" value="<?php echo $direccion; ?>" name="direccion"/>
 					Nombre de la carpeta:
@@ -188,7 +188,7 @@
 				</button>
 			</div> 
 			<div class=modal-body>
-				<form id="form_archivo" class="form-inline" method="post" action="<?php echo site_url('cliente/subirarchivo');?>" enctype="multipart/form-data">
+				<form id="form_archivo" class="form-inline" method="post" action="<?php echo site_url('usuario/subirarchivo');?>" enctype="multipart/form-data">
 					Haz click en el boton para seleccionar archivo(s)
 					<br>
 					<input type="hidden" value="<?php echo $direccion; ?>" name="direccion"/>

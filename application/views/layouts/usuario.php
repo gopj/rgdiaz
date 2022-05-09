@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 	<!-- base_url -->
 	<base href="<?=base_url()?>"/>
 
 	<!-- metas -->
-	<meta charset="utf-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta name="keywords" content="cliente,dashboard" />
 	<meta name="description" content="RDíaz - Servicios Integrales en Materia Ambiental" />
 
@@ -52,7 +52,7 @@
 	<!-- custom css -->
 	<link rel="stylesheet" href="<?=base_url('css/crizal/admin-template/styles.css')?>" />
 
-	<title>Recolector</title>
+	<title>Cliente</title>
 </head>
 <body>
 
@@ -68,7 +68,7 @@
 	<div class="page-container">
 		<!-- start page sidebar -->
 		<div class="page-sidebar">
-			<a class="logo-box" href="<?=base_url('cliente')?>">
+			<a class="logo-box" href="<?=base_url('usuario')?>">
 				<span>RDiaz</span>
 				<i class="fas fa-unlock-alt" id="fixed-sidebar-toggle-button"></i>
 				<i class="icon-close" id="sidebar-toggle-button-close"></i>
@@ -77,22 +77,22 @@
 				<div class="page-sidebar-menu">
 					<ul class="accordion-menu">
 						<li>
-							<a href="<?=base_url('cliente')?>">
+							<a href="<?=base_url('usuario')?>">
 								<i class="menu-icon icon-home4"></i><span>Mi Carpeta</span>
 							</a>
 						</li>
 						<li>
-							<a href="<?=base_url('cliente/carpeta_compartida');?>">
+							<a href="<?=base_url('usuario/carpeta_compartida');?>">
 								<i class="menu-icon icon-folder"></i><span>Documentos de RDíaz</span>
 							</a>
 						</li>
 						<li>
-							<a href="<?=base_url('cliente/mensajes_contacto')?>">
+							<a href="<?=base_url('usuario/mensajes_contacto')?>">
 								<i class="menu-icon icon-inbox"></i><span><span class="badge float-right badge-danger" id="message_count"></span> Correo</span>
 							</a>
 						</li>
 						<li>
-							<a href="<?=base_url('cliente/mis_datos')?>">
+							<a href="<?=base_url('usuario/mis_datos')?>">
 								<i class="menu-icon icon-user"></i><span>Mis Datos</span>
 							</a>
 						</li>
@@ -104,7 +104,7 @@
 								<i class="menu-icon icon-settings"></i><span>Configuración</span><i class="accordion-icon fa fa-angle-left"></i>
 							</a>
 							<ul>
-								<li><a href="<?=base_url('cliente/terminar_sesion');?>">Cerrar Sesión</a></li>
+								<li><a href="<?=base_url('usuario/terminar_sesion');?>">Cerrar Sesión</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -123,7 +123,7 @@
 						<div class="navbar-header">
 							<div class="logo-sm">
 								<a href="#!" id="sidebar-toggle-button"><i class="fa fa-bars"></i></a>
-								<a class="logo-box" href="index.html"><span>RDIAZ</span></a>
+								<a class="logo-box" href="<?=base_url('usuario')?>"><span>RDIAZ</span></a>
 							</div>
 						</div>
 						<!-- Collect the nav links, forms, and other content for toggling -->
@@ -203,6 +203,7 @@
 	<!-- custom scripts -->
 	<script src="<?=base_url('js/crizal/main.js')?>"></script>
 
+
 	<!-- all js include end -->		
 
 	<!-- Custom -->
@@ -210,8 +211,6 @@
 	<script type="text/javascript" src="<?=base_url('js/bitacora.js')?>"></script>
 
 	<script type="text/javascript" src="<?=base_url('js/formulario_bitacora.js')?>"></script>
-
-	<script type="text/javascript" src="<?=base_url('js/swith.js')?>"></script>
 
 </body>
 

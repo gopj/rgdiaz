@@ -1,29 +1,9 @@
 <?php
 class My_Controller extends CI_Controller{
 	// Propiedad para asignar el layout, valor por defecto: 'default'
-	private $layout = "default";
-	public function __construct($requireLogin = FALSE, $code = null){
+	private $layout = "empty";
+	public function __construct(){
 		parent::__construct();
-		if($requireLogin){
-			if(!$this->session->userdata('user')){
-				// Mostrar mensaje que necesita identificarse como usuario del sistema
-				redirect('login');
-			} elseif(!is_null($code)){
-				$user = $this->session->userdata('user');
-				if($user['code'] != $code){
-					// Mostrar mensaje, no tienes permisos
-
-					if ($this->session->userdata('tipo') == 1) {
-						redirect("admin");
-					} elseif ($this->session->userdata('tipo') == 2) {
-						redirect("recolector");
-					} elseif ($this->session->userdata('tipo') == 3) {
-						redirect("cliente");
-					}
-					
-				}
-			}
-		}
 	}
 	/**
 	 * Set layout for change the default layout

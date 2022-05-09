@@ -7,7 +7,7 @@
 </pre>
 
 <div id="main-wrapper">	
-	<form class="form-row" id="act_datos_admin" action="<?=base_url('cliente/actualizadatos_persona');?>" method="POST">
+	<form class="form-row" id="act_datos_admin" action="<?=base_url('usuario/actualizadatos_persona');?>" method="POST">
 		<input type="hidden" id="recibe" name="id_persona" value="<?=$id;?>" />
 	 	<div class="col-md-6">
 			<div class="card card-white">

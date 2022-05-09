@@ -68,7 +68,7 @@
 	<div class="page-container">
 		<!-- start page sidebar -->
 		<div class="page-sidebar">
-			<a class="logo-box" href="<?=base_url('administrador/index')?>">
+			<a class="logo-box" href="<?=base_url('administrador')?>">
 				<span>RDiaz</span>
 				<i class="fas fa-unlock-alt" id="fixed-sidebar-toggle-button"></i>
 				<i class="icon-close" id="sidebar-toggle-button-close"></i>
@@ -92,7 +92,7 @@
 							</a>
 							<ul>
 								<li><a href="<?=base_url('admin/recolector_consulta')?>">Consultas</a></li>
-								<li><a href="<?=base_url('admin/recolector_index')?>">Manifiestos</a></li>
+								<li><a href="<?=base_url('admin')?>">Manifiestos</a></li>
 								<li><a href="<?=base_url('admin/recolector_bitacora')?>">Bítacora</a></li>
 							</ul>
 						</li>

@@ -51,18 +51,15 @@ class Home extends My_Controller {
 		$this->load->view('home/login2');
 	}
 
-	public function login()
-	{
-		if($this->input->post())
-		{
-			$id_status_persona = 1;
-			$login = $this->persona_model->login($this->input->post('correo'), $this->input->post('password'),$id_status_persona);
+	public function login(){
+		if ($this->input->post()) {
+			$login = $this->persona_model->login($this->input->post('correo'), $this->input->post('password'),$id_status_persona=1);
  
 			if(!is_object($login)){
 				//contraseña y/o usuario invalido
 				$this->session->sess_destroy(); #destruye session
 				redirect('home/index');	
-			}else{
+			} else {
 				//Login correcto
 				$this->session->set_userdata('correo',$login->correo);
 				$this->session->set_userdata('id',$login->id_persona);
@@ -71,33 +68,30 @@ class Home extends My_Controller {
 				$this->session->set_userdata('status',$login->id_status_persona);
 				$this->session->set_userdata('tipo',$login->id_tipo_persona);
 				$this->session->set_userdata('completo',$login->lleno_datos);
+				$this->session->set_userdata('login_state', TRUE);
 				
-				//	Sesion del Administrador
-				if($this->session->userdata('status') == 1 && $this->session->userdata('tipo')==1){
-					#	Cargar la vista de usuario
+				if ($this->session->userdata('status') == 1 && $this->session->userdata('tipo') == 1) {
+					#	Admin
 					redirect('admin');
-				}
-				// Sesion del Auxiliar
-				elseif($this->session->userdata('status') == 1 && $this->session->userdata('tipo')==2){
-					#	Cargar la vista de usuaria
+				} elseif ($this->session->userdata('status') == 1 && $this->session->userdata('tipo') == 2){
+					#	Auxiliar
 					redirect('recolector');
-				}
-				// Sesion de Cliente 
-				elseif($this->session->userdata('status') == 1 && $this->session->userdata('tipo')==3){
-					#	Cargar la vista de usuario
-					redirect('cliente/mis_datos');
-				}else{
-					$this->session->sess_destroy(); #destruye session
+				} elseif ($this->session->userdata('status') == 1 && $this->session->userdata('tipo') == 3){
+					#	Cliente
+					redirect('usuario/mis_datos');
+				} else {
+					#   Termina Sesión
 					redirect('home/index');	
 				}
 								
 			}
-		}else{
+		} else {
+			$this->session->sess_destroy(); #destruye session
 			exit('Ocurrio un error contactar al administrador!!!..');
 		}
 	}
 
-//	-- Metodo que inserta Mensajes de Contacto
+	//	-- Metodo que inserta Mensajes de Contacto
 	public function contacto_mensaje(){
 		if($this->input->post()){
 			$status = 0;	#	Mandamos el status del mensaje como no leido con 0
@@ -111,24 +105,23 @@ class Home extends My_Controller {
 		}
 	}
 
-//	--	Metodo que valida un usuario dado de alta
+	//	--	Metodo que valida un usuario dado de alta
 	public function valida_usuario(){
 		$this->setLayout('empty');
-		if($this->input->post()){
-			$id_status_persona = 1; // mandamos person con status igual a uno
+		if ($this->input->post()) {
 			$login=$this->persona_model->login($this->input->post('correo'),
-												$this->input->post('password'),
-												$id_status_persona);
-			 if(is_object($login)){
+											   $this->input->post('password'),
+											   $id_status_persona = 1);
+			 if (is_object($login)) {
 			 	echo json_encode(true);
-			 }else{
+			 } else {
 			 	echo json_encode(false);
 			 }
 		}
 	}
-//	-- Metodo que destruye la sesion 
-	public function logout()
-	{
+
+	//	-- Metodo que destruye la sesion 
+	public function logout(){
 		//exit('entra a la funcion');
 		$this->session->sess_destroy(); #destruye session
 		redirect('home');
