@@ -41,7 +41,7 @@ class Recolector extends MY_Controller {
 			$this->load->view("recolector/index", $data);
 		}else{
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}
 		
 	}
@@ -88,7 +88,7 @@ class Recolector extends MY_Controller {
 		
 		}else{
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}
 	
 	}
@@ -117,7 +117,7 @@ class Recolector extends MY_Controller {
 		
 		} else {
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}
 
 	}
@@ -187,7 +187,7 @@ class Recolector extends MY_Controller {
 
 		} else {
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}	
 	
 	}
@@ -268,7 +268,7 @@ class Recolector extends MY_Controller {
 
 		} else {
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}	
 	
 	}
@@ -306,7 +306,7 @@ class Recolector extends MY_Controller {
 
 		} else { 
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}	
 	
 	}
@@ -335,7 +335,7 @@ class Recolector extends MY_Controller {
 
 		} else {
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}	
 	
 	}
@@ -352,7 +352,7 @@ class Recolector extends MY_Controller {
 
 		} else {
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}	
 	
 	}
@@ -421,7 +421,7 @@ class Recolector extends MY_Controller {
 
 		} else {
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}	
 	}
 

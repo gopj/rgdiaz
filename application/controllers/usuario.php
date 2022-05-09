@@ -62,7 +62,7 @@ class Usuario extends MY_Controller {
 		} else {
 			die();
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}
 	}
 
@@ -94,7 +94,7 @@ class Usuario extends MY_Controller {
 			);
 		}else{
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}
 	}
 
@@ -279,51 +279,15 @@ class Usuario extends MY_Controller {
 				$this->email->set_mailtype('html');
 
 				$this->email->send();
-				//-------------------------------------------------------------
-
-
-			if(!is_object($login)){
-						//contraseña y/o usuario invalido			
-						$this->session->sess_destroy(); #destruye session
-						redirect('home/index');	
-			}else{
-				//Login correcto
-								$this->session->set_userdata('correo',$login->correo);
-								$this->session->set_userdata('id',$login->id_persona);
-								$this->session->set_userdata('empresa',$login->nombre_empresa);
-								$this->session->set_userdata('nombre',$login->nombre);
-								$this->session->set_userdata('status',$login->id_status_persona);
-								$this->session->set_userdata('tipo',$login->id_tipo_persona);
-								$this->session->set_userdata('completo',$login->lleno_datos);
-								
-								//	Sesion del Administrador
-								if($this->session->userdata('status') == 1 && $this->session->userdata('tipo')==1){
-									#	Cargar la vista de usuario
-									redirect('administrador');
-								}
-								// Sesion del Auxiliar
-								else if($this->session->userdata('status')== 1 && $this->session->userdata('tipo')==2){
-									#	Cargar la vista de usuario
-									redirect('administrador/auxiliar');
-								}
-								// Sesion de Cliente 
-								else if($this->session->userdata('status')== 1 && $this->session->userdata('tipo')==3){
-									#	Cargar la vista de usuario
-									redirect('cliente');
-								}else{
-									$this->session->sess_destroy(); #destruye session
-									redirect('home/index');	
-								}
-								
-			}
-
+				//------------------------------------------------------------
 			}
 			else{
-				redirect('home/index');
+				$this->session->sess_destroy(); #destruye session
+				redirect('home/sesion');
 			}
 		}else{
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}
 	}
 
@@ -376,13 +340,12 @@ class Usuario extends MY_Controller {
 	}
 
 	public function mis_datos() {
-			
+
 		if($this->session->userdata('tipo')==3){
 			$id_persona = $this->session->userdata('id');
-			$status = 0;
 
 			$data['id'] = $id_persona;
-			$data['numnoti'] = $this->notificacion_model->obtiene_noticliente($id_persona,$status);
+			$data['numnoti'] = $this->notificacion_model->obtiene_noticliente($id_persona,$status = 0);
 			$data['cliente'] = $this->persona_model->obtiene_cliente($id_persona);
 			$data['new_noti'] = $this->notificacion_model->get_new_noti($status,$id_persona);
 			$data['bitacoras'] = $this->residuo_peligroso_model->get_bitacora($id_persona);
@@ -390,7 +353,7 @@ class Usuario extends MY_Controller {
 			$this->load->view('usuario/mis_datos',$data);
 		} else {
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}
 	}
 
@@ -887,6 +850,6 @@ class Usuario extends MY_Controller {
 
 	public function terminar_sesion() {
 		$this->session->sess_destroy(); #destruye session
-		redirect('home/index');		
+		redirect('home/sesion');		
 	}
 }

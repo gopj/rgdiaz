@@ -40,7 +40,7 @@ class Administrador extends MY_Controller {
 			$this->load->view('administrador/carpeta_personal',$data);
 		}else{
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}
 	}
 
@@ -715,7 +715,7 @@ class Administrador extends MY_Controller {
 
 		} else {
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}
 	}
 
@@ -1482,7 +1482,7 @@ class Administrador extends MY_Controller {
 			echo json_encode($data['clientes']);
 		} else {
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}	
 	}
 
@@ -1494,7 +1494,7 @@ class Administrador extends MY_Controller {
 			echo json_encode($unread);
 		} else {
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}	
 	}
 
@@ -1507,7 +1507,7 @@ class Administrador extends MY_Controller {
 			echo json_encode($unread);
 		} else {
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}	
 	}
 
@@ -1543,7 +1543,7 @@ class Administrador extends MY_Controller {
 
 	public function end_session() { 
 		$this->session->sess_destroy(); #destruye session
-		redirect('home/index');
+		redirect('home/sesion');
 	}
 
 }

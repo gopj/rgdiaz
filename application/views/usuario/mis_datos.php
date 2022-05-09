@@ -2,10 +2,6 @@
 	<h3 class="breadcrumb-header"> Datos de la Empresa </h3>
 </div>
 
-<pre>
-<?= print_r($cliente); ?>
-</pre>
-
 <div id="main-wrapper">	
 	<form class="form-row" id="act_datos_admin" action="<?=base_url('usuario/actualizadatos_persona');?>" method="POST">
 		<input type="hidden" id="recibe" name="id_persona" value="<?=$id;?>" />
@@ -59,7 +55,7 @@
 
 						<div class="col-md-7 mb-2">
 							<label >Domicilio | Calle</label>
-							<input type="text" class="form-control" id="calle_empresa" name="calle_empresa"  >
+							<input type="text" class="form-control" id="calle_empresa" name="calle_empresa" value="<?=$cliente->calle_empresa?>">
 							<div class="invalid-feedback">
 								Please provide a valid state.
 							</div>
@@ -67,27 +63,27 @@
 
 						<div class="col-md-3 mb-3">
 							<label >Número</label>
-							<input class="form-control" id="numero_empresa" name="numero_empresa" type="text">
+							<input class="form-control" id="numero_empresa" name="numero_empresa" type="text" value="<?=$cliente->numero_empresa?>">
 						</div>
 
 						<div class="col-md-2 mb-3">
 							<label for="validationCustom05">C. P.</label>
-							<input class="form-control" id="cp_empresa" name="cp_empresa" type="text">
+							<input class="form-control" id="cp_empresa" name="cp_empresa" type="text" value="<?=$cliente->cp_empresa?>">
 						</div>
 
 						<div class="col-md-4 mb-2">
 							<label >Colonia</label>
-							<input class="form-control" id="colonia_empresa" name="colonia_empresa" type="text">
+							<input class="form-control" id="colonia_empresa" name="colonia_empresa" type="text" value="<?=$cliente->colonia_empresa?>">
 						</div>
 						
 						<div class="col-md-4 mb-3">
 							<label >Estado</label>
-							<input class="form-control" id="estado" name="estado" type="text">
+							<input class="form-control" id="estado" name="estado" type="text" value="<?=$cliente->estado?>">
 						</div>
 
 						<div class="col-md-4 mb-1">
 							<label >Municipio</label>
-							<input class="form-control" id="municipio_empresa" name="municipio" type="text">
+							<input class="form-control" id="municipio_empresa" name="municipio" type="text" value="<?=$cliente->municipio?>">
 						</div>
 					</div>	
 				</div>
@@ -104,7 +100,7 @@
 					<div class="row">
 						<div class="col-md-6 mb-2">
 							<label >Nombre del contacto</label>
-							<input class="form-control" id="nombre_contacto" name="nombre_contacto" type="text">
+							<input class="form-control" id="nombre_contacto" name="nombre_contacto" type="text" value="<?=$cliente->nombre?>">
 						</div>
 
 						<div class="col-md-6 mb-2">
@@ -113,7 +109,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-envelope"></i></span>
 								</div>
-								<input class="form-control" id="correo" name="correo" type="text">
+								<input class="form-control" id="correo" name="correo" type="text" value="<?=$cliente->correo?>">
 							</div>
 						</div>
 					</div>
@@ -125,7 +121,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-envelope"></i></span>
 								</div>
-								<input class="form-control" type="text" id="telefono_contacto" name="telefono_contacto">
+								<input class="form-control" type="text" id="telefono_contacto" name="telefono_contacto" value="<?=$cliente->telefono_personal?>">
 							</div>
 						</div>
 
@@ -135,7 +131,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-phone"></i></span>
 								</div>
-								<input class="form-control" id="telefono_contacto_alt" name="telefono_contacto_alt" type="text">
+								<input class="form-control" id="telefono_contacto_alt" name="telefono_contacto_alt" type="text" value="<?=$cliente->telefono_personal_alt?>">
 							</div>
 						</div>
 						

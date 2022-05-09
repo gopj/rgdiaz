@@ -40,7 +40,7 @@ class Admin extends MY_Controller {
 			$this->load->view('administrador/recolector/index', $data);
 		} else {
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}
 		
 	}
@@ -80,7 +80,7 @@ class Admin extends MY_Controller {
 			}
 		} else {
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}
 		
 	}
@@ -152,7 +152,7 @@ class Admin extends MY_Controller {
 			} 
 		} else {
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}
 
 	}
@@ -176,7 +176,7 @@ class Admin extends MY_Controller {
 			redirect('admin/recolector_consulta');
 		} else {
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}
 	}
 
@@ -217,7 +217,7 @@ class Admin extends MY_Controller {
 
 		} else {
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}
 		
 	}
@@ -283,7 +283,7 @@ class Admin extends MY_Controller {
 		
 		}else{
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}
 	
 	}
@@ -313,7 +313,7 @@ class Admin extends MY_Controller {
 			$this->load->view("administrador/recolector/ver_manifiesto", $data);
 		} else {
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}
 
 	}
@@ -378,7 +378,7 @@ class Admin extends MY_Controller {
 			}
 		} else {
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}	
 	
 	}
@@ -454,7 +454,7 @@ class Admin extends MY_Controller {
 
 		} else {
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}	
 	
 	}
@@ -490,7 +490,7 @@ class Admin extends MY_Controller {
 
 		} else { 
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}	
 	
 	}
@@ -503,7 +503,7 @@ class Admin extends MY_Controller {
 			redirect("admin/recolector_crear_manifiestos/" . $id_cliente . "/" . $folio);
 		} else {
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}	
 	
 	}
@@ -520,7 +520,7 @@ class Admin extends MY_Controller {
 
 		} else {
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}	
 	
 	}
@@ -624,7 +624,7 @@ class Admin extends MY_Controller {
 		
 		}else{
 			$this->session->sess_destroy(); #destruye session
-			redirect('home/index');
+			redirect('home/sesion');
 		}
 	
 	}

@@ -58,7 +58,7 @@ class Home extends My_Controller {
 			if(!is_object($login)){
 				//contraseña y/o usuario invalido
 				$this->session->sess_destroy(); #destruye session
-				redirect('home/index');	
+				redirect('home/sesion');	
 			} else {
 				//Login correcto
 				$this->session->set_userdata('correo',$login->correo);
@@ -81,7 +81,7 @@ class Home extends My_Controller {
 					redirect('usuario/mis_datos');
 				} else {
 					#   Termina Sesión
-					redirect('home/index');	
+					redirect('home/sesion');	
 				}
 								
 			}
