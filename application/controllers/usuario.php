@@ -390,42 +390,26 @@ class Usuario extends MY_Controller {
 	}
 
 	public function ver_bitacora(){
-		$id = $this->session->userdata('id');
-		$id_persona = $id;
-		$ruta = "clientes/".$id;
-		$ruta_carpeta = $ruta;
-		$status=0;
-		$total=$this->notificacion_model->obtiene_noticliente($id,$status);
-		$carpetas=$this->carpeta_model->obt_carpeta_personal($ruta);
-		$archivos=$this->archivo_model->obtienearchivos($ruta_carpeta);
-		$datos=$this->persona_model->obtiene_cliente($id);
-		$data = array('carpetas'=> $carpetas,
-					   'archivo'=>$archivos,
-					   'numnoti'=>$total,
-					   'id'=>$id,
-					   'id_persona' => $id_persona,
-					   'datos' => $datos	
-					 );
+		if ($this->session->userdata('tipo')==3){
+			
+			$data['id_persona'] = $this->session->userdata('id');
 
-		//PDF
-		$pdfpath = $_SERVER['DOCUMENT_ROOT'] . "rgdiaz/img/pdf/rdiaztmp{$id_persona}.pdf";
-		if (file_exists($pdfpath)) {
-			unlink($pdfpath);
+			//PDF
+			$pdfpath = $_SERVER['DOCUMENT_ROOT'] . "rgdiaz/img/pdf/rdiaztmp" . $data['id_persona'] . ".pdf";
+			#$pdfpath = $_SERVER['DOCUMENT_ROOT'] . "img/pdf/rdiaztmp" . $data['id_persona'] . ".pdf";
+			if (file_exists($pdfpath)) {
+				unlink($pdfpath);
+			}
+
+			$data['nombre_cliente'] = $this->persona_model->get_nombre_cliente($data['id_persona']);
+			$data['nombre_empresa'] = $this->persona_model->get_nombre_empresa($data['id_persona']);
+			$data['residuos'] = $this->residuo_peligroso_model->get_residuos($data['id_persona']);
+
+			$this->load->view('usuario/bitacora',$data);
+		} else {
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/sesion');
 		}
-
-		#	Obtengo todos los registros de residuos peligrosos
-			$residuos_peligrosos = $this->residuo_peligroso_model->get_residuos($id);
-			$data3 = array(
-				'residuos' => $residuos_peligrosos
-			);
-		$this->load->view('usuario/bitacora',$data3);
-		$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
-			// Obtenemos las bitacoras que hay
-			$bitacoras = $this->residuo_peligroso_model->get_bitacora($id);
-			$data2 = array(
-							'new_noti' =>$datos_popover,
-							'bitacoras' =>$bitacoras
-						  );
 	}
 
 	public function bitacora(){

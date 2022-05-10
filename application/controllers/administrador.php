@@ -493,7 +493,8 @@ class Administrador extends MY_Controller {
 
 			$this->load->view('administrador/bitacora_residuo',$data);
 		} else {
-			redirect('administrador/admin_clientes');
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/sesion');
 		}
 	}
 

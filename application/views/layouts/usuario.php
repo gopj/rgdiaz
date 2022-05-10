@@ -87,7 +87,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="<?=base_url('usuario/mensajes_contacto')?>">
+							<a href="<?=base_url('usuario/ver_bitacora')?>">
 								<i class="menu-icon fas fa-file-export"></i><span>Bitacora</span>
 							</a>
 						</li>
