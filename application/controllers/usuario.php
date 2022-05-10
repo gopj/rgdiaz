@@ -64,6 +64,7 @@ class Usuario extends MY_Controller {
 		}
 	}
 
+
 	public function carpeta_compartida(){
 
 		if($this->session->userdata('tipo')==3){
@@ -110,56 +111,6 @@ class Usuario extends MY_Controller {
 				echo json_encode($acceso);
 			}
 		}
-	}
-
-	public function subir_archivo(){
-		if ($this->session->userdata('tipo')==3){
-			$data['mensajes'] 	= $this->contacto_model->contador_mensajes($status = 0);
-			$cliente 			= $this->persona_model->obtiene_clientes($id_status_persona=1,$id_tipo_persona=3,$lleno_datos=1);
-			$data['ruta'] 		= 'clientes/';
-			$data['carpetas'] 	= $this->carpeta_model->obtiene_carpetasraiz($id_status_persona=1,$lleno_datos=1,$data['ruta']);
-			$data['clientes'] 	= $this->persona_model->obtiene_clientes_baja($id_status_persona=1,$id_status_persona=1,$lleno_datos=1);
-			$data['correo'] 	= $this->persona_model->getCorreos($id_tipo_persona);
-
-			$this->load->view('usuario/subir_archivo',$data);
-		}
-	}
-
-	public function crearsubcarpeta() {
-		$ruta_anterior = $this->input->post('direccion');
-		$nombrecarpeta =$this->input->post('nombrecarpeta');
-		$id_persona = $this->input->post('id_persona');
-		
-		$ruta_carpeta = $ruta_anterior . '/' . $nombrecarpeta;
-		$ruta_carpeta_os = $_SERVER['DOCUMENT_ROOT'] . 'rgdiaz/' . $ruta_anterior . '/' . $nombrecarpeta;
-		#$ruta_carpeta_os = $_SERVER['DOCUMENT_ROOT'] . $ruta_anterior . '/' . $nombrecarpeta;
-
-		if($ruta_carpeta =='') {
-			echo "Ingresa un nombre a la carpeta"."<br>";
-		} else if (!is_dir($ruta_carpeta_os)) {
-			mkdir($ruta_carpeta_os, 0755);
-			chmod($ruta_carpeta_os, 0755);
-			$this->carpeta_model->registrarcarpeta($nombrecarpeta,$id_persona,$ruta_carpeta,$id_status_carpeta=1,$ruta_anterior);	
-		} else {
-			echo "Ya existe una carpeta con ese nombre"."<br>";
-		}
-
-		$ruta = explode("/", $ruta_anterior);
-		$data['direccion_real'] ="";
-		foreach ($ruta as $r) {
-			$data['direccion_real'] .= $r . "/";
-		}
-		$data['direccion'] = $ruta_anterior;
-		$data['raiz'] = 'clientes/';
-		$data['anterior'] = $this->carpeta_model->obtieneunacarpeta($ruta_anterior);
-		$data['carpetas'] = $this->carpeta_model->obtienesubcarpeta($ruta_anterior);
-		$data['archivo'] = $this->archivo_model->obtienearchivos($ruta_anterior);
-		$data['mensajes'] = $this->contacto_model->contador_mensajes($status=0);
-		$data['clientes'] = $this->persona_model->obtiene_clientes($id_tipo_persona=3,$id_status_persona=1);
-		$data['correo'] = $this->persona_model->getCorreos($id_tipo_persona=3);
-		$data['id_persona'] = $id_persona;
-				
-		$this->load->view('usuario/subcarpeta',$data);
 	}
 
 	public function descargar(){
@@ -369,7 +320,7 @@ class Usuario extends MY_Controller {
 				if (count($ruta_split) < 3){
 					redirect('usuario');
 				}
-
+	
 				$ruta = explode("/", $data['direccion']);
 				$data['direccion_real'] ="";
 				foreach ($ruta as $r) {

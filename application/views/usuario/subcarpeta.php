@@ -1,3 +1,6 @@
+<?php 
+	$dir = explode('/', $direccion_real);
+?>
 <div class="container-fluid">
 	<div class="card">
 		<div class="row">
@@ -30,12 +33,9 @@
 			<?php } ?> 
 		</div>
 		<h5>Ver Carpetas</h5>
-		<i>Ubicación: <?php echo $direccion_real; ?><br/></i>
-
-		<div class="row justify-content-end">
-				<button class="btn btn-outline-primary mx-2" href="#cate" data-toggle="modal" ><i class="icon-folder px-1"></i> Nueva Carpeta</button>
-				<button class="btn btn-outline-primary" href="#upload" data-toggle="modal"><i class="icon-plus px-1"></i> Agregar Archivo(s)</button>
-		</div>
+		<?php if ($dir[0] != 'administrador') { ?>
+			<i>Ubicación: <?=$direccion_real;?><br/></i>
+		<?php } ?>	
 	</div> 
 
 	<div class="card">
@@ -64,15 +64,15 @@
 							<div class="row-fluid" style="margin-top:10px;">
 								<?php if ( $carpe->nombre != "Documentos de RDiaz" ) { ?> 
 									<div class="row">
-										<div class="col-lg-6">
+										<div class="col-lg-12">
 											<input type="hidden" value="<?php echo $carpe->id_carpeta.$carpe->nombre; ?>" id="id_formulario_renombra">
-											<form id="<?php echo $carpe->id_carpeta.$carpe->nombre; ?>" method='post' action="<?php echo site_url('usuario/renombrar_carpeta'); ?>">
+											<form id="<?php echo $carpe->id_carpeta.$carpe->nombre; ?>" method='post' action="<?php echo site_url('usuario/versubcarpeta'); ?>">
 												<input type="hidden" value="<?php echo $carpe->id_persona; ?>" name="id_persona">
 												<input type="hidden" value="<?php echo $carpe->nombre; ?>" name="nombre_carpeta">
 												<input type="hidden" name="nombre_nuevo" id="<?php echo $carpe->nombre.$carpe->id_carpeta; ?>">
 												<input type="hidden" value="<?php echo $carpe->ruta_carpeta; ?>" name="ruta_carpeta">
 												<input type="hidden" value="<?php echo $carpe->ruta_anterior; ?>" name="ruta_anterior">
-												<button class="btn btn-outline-secondary btn-sm" type="button" class="btn btn-outline-secondary" onclick="abrir_modal('<?php echo $carpe->id_carpeta.$carpe->nombre; ?>', '<?php echo $carpe->nombre.$carpe->id_carpeta; ?>');"> <i class="fas fa-edit"></i> Renombrar </button>
+												<button class="btn btn-primary btn-sm" type="submit" class="btn btn-outline-secondary"> <i class="fas fa-eye"></i> Ver Carpeta </button>
 											</form>
 										</div>
 								
@@ -113,7 +113,7 @@
 
 							<td align="center">
 								<div class="row">
-									<div class="col-lg-6">
+									<div class="col-lg-12">
 										<form method='post' action="<?php echo site_url('usuario/descargar'); ?>">
 											<input type="hidden" value="<?php echo $arch->nombre; ?>" name="nombre">
 											<input type="hidden" value="<?php echo $arch->ruta_archivo; ?>" name="ruta_archivo">
