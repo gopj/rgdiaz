@@ -140,7 +140,7 @@
 
 					<div class="row">
 						<div class="col-md-12">
-							<input type="button"  onclick="actualiza_datos();" value="Guardar Cambios" id="enviar" class="btn btn-primary pull-right"/>
+							<input type="submit" onclick="actualiza_datos();" value="Guardar Cambios" id="enviar" class="btn btn-primary pull-right"/>
 						</div>
 					</div>
 					

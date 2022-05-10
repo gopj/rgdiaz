@@ -342,7 +342,7 @@ class Administrador extends MY_Controller {
 		}
 	}
 
-    public function descargar(){
+	public function descargar(){
 		$name=$this->input->post('nombre');
 		$ruta=$this->input->post('ruta_archivo');
 		header('Content-Description: File Transfer');

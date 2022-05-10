@@ -191,26 +191,22 @@ class Persona_model extends CI_Model {
 				 ->update('persona');
 	}
 
-	public function actualizadatos_persona($id_persona,$nombre,$correo,$telefono_personal,$telefono_personal_alt,
-											$nombre_empresa,$calle_empresa,$correo_empresa,
-											$cp_empresa,$colonia_empresa,$numero_empresa,
-											$municipio,$estado,$telefono_empresa, $numero_registro_ambiental)
-	{
-		$this->db->set('nombre',$nombre)
-				 ->set('correo',$correo)
-				 ->set('telefono_personal',$telefono_personal)
-				 ->set('telefono_personal_alt',$telefono_personal_alt)
-				 ->set('nombre_empresa',$nombre_empresa)
-				 ->set('calle_empresa',$calle_empresa)
-				 ->set('correo_empresa',$correo_empresa)
-				 ->set('cp_empresa',$cp_empresa)
-				 ->set('colonia_empresa',$colonia_empresa)
-				 ->set('numero_empresa',$numero_empresa)
-				 ->set('municipio',$municipio)
-				 ->set('estado',$estado)
-				 ->set('telefono_empresa',$telefono_empresa)
-				 ->set('numero_registro_ambiental',$numero_registro_ambiental)
-				 ->where('id_persona',$id_persona)
+	public function actualizadatos_persona($data) {
+		$this->db->set('nombre_empresa',$data['nombre_empresa'])
+				 ->set('numero_registro_ambiental',$data['numero_registro_ambiental'])
+				 ->set('correo_empresa',$data['email_empresa'])
+				 ->set('telefono_personal_alt',$data['telefono_personal_alt'])
+				 ->set('telefono_empresa',$data['telefono_empresa'])
+				 ->set('identificador_folio',$data['identificador_folio'])
+				 ->set('calle_empresa',$data['calle_empresa'])
+				 ->set('numero_empresa',$data['numero_empresa'])
+				 ->set('cp_empresa',$data['cp_empresa'])
+				 ->set('colonia_empresa',$data['colonia_empresa'])
+				 ->set('estado',$data['estado'])
+				 ->set('estado',$data['estado'])
+				 ->set('municipio',$data['municipio'])
+				 ->set('nombre',$data['nombre_contacto'])
+				 ->where('id_persona',$data['id_persona'])
 				 ->update('persona');
 	 }
 

@@ -29,7 +29,7 @@
 				</div> 
 			<?php } ?> 
 		</div>
-		<h5>Administrar Carpetas</h5>
+		<h5>Ver Carpetas</h5>
 		<i>Ubicación: <?php echo $direccion_real; ?><br/></i>
 
 		<div class="row justify-content-end">
@@ -75,15 +75,7 @@
 												<button class="btn btn-outline-secondary btn-sm" type="button" class="btn btn-outline-secondary" onclick="abrir_modal('<?php echo $carpe->id_carpeta.$carpe->nombre; ?>', '<?php echo $carpe->nombre.$carpe->id_carpeta; ?>');"> <i class="fas fa-edit"></i> Renombrar </button>
 											</form>
 										</div>
-										<div class="col-lg-6">
-											<form id="form_eliminar_carpeta" method='post' action="<?php echo site_url('usuario/eliminar_carpeta'); ?>">
-												<input type="hidden" value="<?php echo $carpe->id_persona; ?>" id="id_persona" name="id_persona">
-												<input type="hidden" value="<?php echo $carpe->id_carpeta; ?>" id="id_carpeta" name="id_carpeta">
-												<input type="hidden" value="<?php echo $carpe->ruta_carpeta; ?>" id="ruta_carpeta" name="ruta_carpeta">
-												<input type="hidden" value="<?php echo $carpe->ruta_anterior; ?>" id="ruta_carpeta" name="ruta_anterior">
-												<button class="btn btn-outline-danger btn-sm" type="submit"> <i class="fas fa-trash"></i> Eliminar </button>
-											</form>
-										</div>
+								
 									</div>
 								<?php } ?>	
 							</div>
@@ -128,15 +120,7 @@
 											<button class="btn btn-outline-primary btn-sm" type="submit"> <i class="fas fa-cloud-download-alt"></i> Descargar </button>
 										</form>
 									</div>
-									<div class="col-lg-6">
-										<form id="form_eliminar" method='post' action="<?php echo site_url('usuario/eliminar_archivo');?>">
-											<input type="hidden" value="<?php echo $id_per_arc; ?>" name="id_persona">
-											<input type="hidden" value="<?php echo $arch->id_archivo; ?>" name="id_archivo">
-											<input type="hidden" value="<?php echo $arch->ruta_archivo; ?>" name="ruta_archivo" >
-											<input type="hidden" value="<?php echo $arch->ruta_carpeta_pertenece; ?>" name="ruta_carpeta_pertenece" >
-											<button class="btn btn-outline-danger btn-sm" type="submit"> <i class="fas fa-trash"></i> Eliminar </button>
-										</form>
-									</div>
+								
 								</div>
 							</td>
 						</tr>

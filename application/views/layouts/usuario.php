@@ -88,7 +88,7 @@
 						</li>
 						<li>
 							<a href="<?=base_url('usuario/mensajes_contacto')?>">
-								<i class="menu-icon icon-inbox"></i><span><span class="badge float-right badge-danger" id="message_count"></span> Correo</span>
+								<i class="menu-icon fas fa-file-export"></i><span>Bitacora</span>
 							</a>
 						</li>
 						<li>
@@ -211,6 +211,10 @@
 	<script type="text/javascript" src="<?=base_url('js/bitacora.js')?>"></script>
 
 	<script type="text/javascript" src="<?=base_url('js/formulario_bitacora.js')?>"></script>
+
+	<script type="text/javascript" src="<?=base_url('js/notificaciones.js')?>"></script>
+	
+	<script type="text/javascript" src="<?=base_url('js/swith_usuario.js')?>"></script>
 
 </body>
 

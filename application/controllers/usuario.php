@@ -30,7 +30,6 @@ class Usuario extends MY_Controller {
 
 	#	Metodo index carga la vista principal del cliente
 	public function index(){
-
 		if ($this->session->userdata('tipo')==3) {
 			$id = $this->session->userdata('id');
 			$ruta = "clientes/".$id;
@@ -60,7 +59,6 @@ class Usuario extends MY_Controller {
 				'new_noti' =>$datos_popover,
 			);
 		} else {
-			die();
 			$this->session->sess_destroy(); #destruye session
 			redirect('home/sesion');
 		}
@@ -112,6 +110,73 @@ class Usuario extends MY_Controller {
 				echo json_encode($acceso);
 			}
 		}
+	}
+
+	public function subir_archivo(){
+		if ($this->session->userdata('tipo')==3){
+			$data['mensajes'] 	= $this->contacto_model->contador_mensajes($status = 0);
+			$cliente 			= $this->persona_model->obtiene_clientes($id_status_persona=1,$id_tipo_persona=3,$lleno_datos=1);
+			$data['ruta'] 		= 'clientes/';
+			$data['carpetas'] 	= $this->carpeta_model->obtiene_carpetasraiz($id_status_persona=1,$lleno_datos=1,$data['ruta']);
+			$data['clientes'] 	= $this->persona_model->obtiene_clientes_baja($id_status_persona=1,$id_status_persona=1,$lleno_datos=1);
+			$data['correo'] 	= $this->persona_model->getCorreos($id_tipo_persona);
+
+			$this->load->view('usuario/subir_archivo',$data);
+		}
+	}
+
+	public function crearsubcarpeta() {
+		$ruta_anterior = $this->input->post('direccion');
+		$nombrecarpeta =$this->input->post('nombrecarpeta');
+		$id_persona = $this->input->post('id_persona');
+		
+		$ruta_carpeta = $ruta_anterior . '/' . $nombrecarpeta;
+		$ruta_carpeta_os = $_SERVER['DOCUMENT_ROOT'] . 'rgdiaz/' . $ruta_anterior . '/' . $nombrecarpeta;
+		#$ruta_carpeta_os = $_SERVER['DOCUMENT_ROOT'] . $ruta_anterior . '/' . $nombrecarpeta;
+
+		if($ruta_carpeta =='') {
+			echo "Ingresa un nombre a la carpeta"."<br>";
+		} else if (!is_dir($ruta_carpeta_os)) {
+			mkdir($ruta_carpeta_os, 0755);
+			chmod($ruta_carpeta_os, 0755);
+			$this->carpeta_model->registrarcarpeta($nombrecarpeta,$id_persona,$ruta_carpeta,$id_status_carpeta=1,$ruta_anterior);	
+		} else {
+			echo "Ya existe una carpeta con ese nombre"."<br>";
+		}
+
+		$ruta = explode("/", $ruta_anterior);
+		$data['direccion_real'] ="";
+		foreach ($ruta as $r) {
+			$data['direccion_real'] .= $r . "/";
+		}
+		$data['direccion'] = $ruta_anterior;
+		$data['raiz'] = 'clientes/';
+		$data['anterior'] = $this->carpeta_model->obtieneunacarpeta($ruta_anterior);
+		$data['carpetas'] = $this->carpeta_model->obtienesubcarpeta($ruta_anterior);
+		$data['archivo'] = $this->archivo_model->obtienearchivos($ruta_anterior);
+		$data['mensajes'] = $this->contacto_model->contador_mensajes($status=0);
+		$data['clientes'] = $this->persona_model->obtiene_clientes($id_tipo_persona=3,$id_status_persona=1);
+		$data['correo'] = $this->persona_model->getCorreos($id_tipo_persona=3);
+		$data['id_persona'] = $id_persona;
+				
+		$this->load->view('usuario/subcarpeta',$data);
+	}
+
+	public function descargar(){
+		$name=$this->input->post('nombre');
+		$ruta=$this->input->post('ruta_archivo');
+		header('Content-Description: File Transfer');
+		header('Content-Type: application/octet-stream');
+		header('Content-Disposition: attachment; filename='.basename($ruta));
+		header('Content-Transfer-Encoding: binary');
+		header('Expires: 0');
+		header('Cache-Control: must-revalidate');
+		header('Pragma: public');
+		header('Content-Length:' . filesize($ruta));
+		ob_clean();
+		flush();
+		readfile($ruta);
+		exit;	
 	}
 
 	#	Metodo para restablecer contraseña de cliente y mandar correo de conformacion
@@ -293,54 +358,39 @@ class Usuario extends MY_Controller {
 
 	
 	public function versubcarpeta() {
-		$status = 0;
-		$id = $this->session->userdata('id');
-		$total=$this->notificacion_model->obtiene_noticliente($id,$status);
-		$id_persona=$this->input->post('id_persona');
-		$direccion=$this->input->post('ruta_carpeta');
-		$anterior=$this->carpeta_model->obtieneunacarpeta($this->input->post('ruta_carpeta'));
-		$raiz="clientes/";
-		$subcarpetas=$this->carpeta_model->obtienesubcarpeta($this->input->post('ruta_carpeta'));
-		$archivos=$this->archivo_model->obtienearchivos($this->input->post('ruta_carpeta'));
-		$id_tipo_persona=3;
-		$id_status_persona=1;
-		$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
-		$cliente=$this->persona_model->obtiene_clientes($id_tipo_persona,$id_status_persona);
-				#$todosmensajes = $this->contacto_model->mensajescontacto();
-				$data = array(
-					'mensajes'=> $mensajesnuevos,
-					#'mensajitos' => $todosmensajes,
-					'numnoti'=>$total,
-					'id'=>$id
-				);
-				$id_tipo_persona=3;
-				$id_status_persona=1;
-				$data2 = array( 
-					'clientes' => $cliente,
-								'carpetas'=> $subcarpetas,
-								'direccion'=> $direccion,
-								'id_persona'=> $id_persona,
-								'archivo'=>$archivos,
-								'anterior'=>$anterior,
-								'raiz'=>$raiz,
-								'id'=>$id
+		if($this->session->userdata('tipo')==3){
+			if($this->input->post()){
 
-				);
-	
+				$data['id_persona'] = $this->input->post('id_persona');
+				$data['direccion'] = $this->input->post('ruta_carpeta'); // Direccion de carpeta
+				
+				$ruta_split = explode('/', $data['direccion']);
+				
+				if (count($ruta_split) < 3){
+					redirect('usuario');
+				}
 
-			$this->load->view('usuario/carpeta_usuario',$data2);
+				$ruta = explode("/", $data['direccion']);
+				$data['direccion_real'] ="";
+				foreach ($ruta as $r) {
+					$data['direccion_real']  .= $r . "/";
+				}
+				$data['anterior'] = $this->carpeta_model->obtieneunacarpeta($data['direccion']);
+				$data['raiz'] ='clientes/';
+				$data['carpetas'] = $this->carpeta_model->obtienesubcarpeta($data['direccion']);
+				$data['archivo'] = $this->archivo_model->obtienearchivos($data['direccion']);
 
-			$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
-			// Obtenemos las bitacoras que hay
-			$bitacoras = $this->residuo_peligroso_model->get_bitacora($id);
-			$data2 = array(
-							'new_noti' =>$datos_popover,
-							'bitacoras' =>$bitacoras
-						  );
+				$this->load->view('usuario/subcarpeta',$data);
+			}else{
+				redirect('usuario');
+			}
+		} else {
+			$this->session->sess_destroy();
+			redirect('home/sesion');
+		}
 	}
 
 	public function mis_datos() {
-
 		if($this->session->userdata('tipo')==3){
 			$id_persona = $this->session->userdata('id');
 
@@ -352,30 +402,39 @@ class Usuario extends MY_Controller {
 
 			$this->load->view('usuario/mis_datos',$data);
 		} else {
-			$this->session->sess_destroy(); #destruye session
+			$this->session->sess_destroy();
 			redirect('home/sesion');
 		}
 	}
 
-	public function actualizadatos_persona(){	
-		if($this->input->post()){
-		$this->persona_model->actualizadatos_persona($this->input->post('id_persona'),
-													 $this->input->post('nombre'),
-													 $this->input->post('correo'),
-													 $this->input->post('telefono_personal'),
-													 $this->input->post('telefono_personal_alt'),
-													 $this->input->post('nombre_empresa'),
-													 $this->input->post('calle_empresa'),
-													 $this->input->post('correo_empresa'),
-							 						 $this->input->post('cp_empresa'),
-							 						 $this->input->post('colonia_empresa'),
-							 						 $this->input->post('numero_empresa'),
-							 						 $this->input->post('municipio'),
-							 						 $this->input->post('estado'),
-							 						 $this->input->post('telefono_empresa'));
-		redirect('cliente/mis_datos');
-		}else{
-			redirect('cliente/mis_datos');
+	public function actualizadatos_persona(){
+		if($this->session->userdata('tipo')==3){
+			if($this->input->post()){
+
+				$data['id_persona'] 				= $this->input->post('id_persona');
+				$data['nombre_empresa'] 			= $this->input->post('nombre_empresa');
+				$data['numero_registro_ambiental'] 	= $this->input->post('numero_registro_ambiental');
+				$data['email_empresa'] 				= $this->input->post('email_empresa');
+				$data['telefono_personal_alt']		= $this->input->post('telefono_personal_alt');
+				$data['telefono_empresa'] 			= $this->input->post('telefono_empresa');
+				$data['identificador_folio'] 		= $this->input->post('identificador_folio');
+				$data['calle_empresa'] 				= $this->input->post('calle_empresa');
+				$data['numero_empresa'] 			= $this->input->post('numero_empresa');
+				$data['cp_empresa'] 				= $this->input->post('cp_empresa');
+				$data['colonia_empresa'] 			= $this->input->post('colonia_empresa');
+				$data['estado'] 					= $this->input->post('estado');
+				$data['municipio'] 					= $this->input->post('municipio');
+				$data['nombre_contacto'] 			= $this->input->post('nombre_contacto');
+
+				$this->persona_model->actualizadatos_persona($data);
+
+				redirect('usuario/mis_datos');
+			}else{
+				redirect('usuario/mis_datos');
+			}
+		} else {
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/sesion');
 		}
 	}
 
