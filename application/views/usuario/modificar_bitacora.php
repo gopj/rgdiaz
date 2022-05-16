@@ -194,14 +194,14 @@
 			</div>
 		</div>
 	</div>
-	<input type="hidden" name="id_persona" value="<?php echo $id; ?>">
+	<input type="hidden" name="id_persona" value="<?php echo $id_persona; ?>">
 	<input type="hidden" name="id_residuo_peligroso" value="<?php echo $bitacora->id_residuo_peligroso;?>"/>
 	<input type="submit" onclick="reg_bit_new();" class="btn btn-primary pull-right" value="Guardar">
 	</form>
 
 
 	<form id="regresar_bitacora" method='post' action="<?php echo site_url('usuario/ver_bitacora');?>">
-		<input type="hidden" name="id_persona" value="<?php echo $id; ?>">
+		<input type="hidden" name="id_persona" value="<?php echo $id_persona; ?>">
 		<input class="btn btn-warning pull-left" id="regresar_bitacora"  type="submit" value="Cancelar">
 	</form>
 	

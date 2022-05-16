@@ -78,12 +78,12 @@ class Home extends My_Controller {
 					redirect('recolector');
 				} elseif ($this->session->userdata('status') == 1 && $this->session->userdata('tipo') == 3){
 					#	Cliente
-					redirect('usuario/mis_datos');
+					redirect('usuario');
 				} else {
 					#   Termina Sesión
+					$this->session->sess_destroy(); #destruye session
 					redirect('home/sesion');	
 				}
-								
 			}
 		} else {
 			$this->session->sess_destroy(); #destruye session

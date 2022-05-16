@@ -1037,6 +1037,7 @@ class Administrador extends MY_Controller {
 			}
 
 		} else {
+			$this->session->sess_destroy(); #destruye session
 			redirect('home');
 		}
 	}
@@ -1168,8 +1169,8 @@ class Administrador extends MY_Controller {
 			}else{
 				redirect('administrador/bitacora/' . $id_bitacora );
 			}	
-
 		} else {
+			
 			redirect('home');
 		}
 	}

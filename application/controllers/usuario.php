@@ -34,10 +34,9 @@ class Usuario extends MY_Controller {
 			$id = $this->session->userdata('id');
 			$ruta = "clientes/".$id;
 			$ruta_carpeta = $ruta;
-			$status=0;
 			$anterior=$this->carpeta_model->obtieneunacarpeta($ruta_carpeta);
 			$raiz="clientes/";
-			$total=$this->notificacion_model->obtiene_noticliente($id,$status);
+			$total=$this->notificacion_model->obtiene_noticliente($id,$status=0);
 			$carpetas=$this->carpeta_model->obt_carpeta_personal($ruta);
 			$archivos=$this->archivo_model->obtienearchivos($ruta_carpeta);
 			$datos=$this->persona_model->obtiene_cliente($id);
@@ -52,7 +51,7 @@ class Usuario extends MY_Controller {
 			);
 
 			$this->load->view('usuario/carpeta_usuario',$data); // aqui es donde se carga el numero de notificaciones
-			$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
+			$datos_popover = $this->notificacion_model->get_new_noti($status=0,$id);
 			
 			// Obtenemos las bitacoras que hay
 			$data2 = array(
@@ -66,7 +65,6 @@ class Usuario extends MY_Controller {
 
 
 	public function carpeta_compartida(){
-
 		if($this->session->userdata('tipo')==3){
 			$id = $this->session->userdata('id');
 			$ruta = "administrador/1/Documentos de RDiaz";
@@ -98,7 +96,7 @@ class Usuario extends MY_Controller {
 	}
 
 
-	#	Metodo para validar el correo valido de un usuario
+	# Metodo para validar el correo valido de un usuario
 	public function valida_usuario_correo(){
 		$this->setLayout('empty');
 		if($this->input->post()){
@@ -358,6 +356,30 @@ class Usuario extends MY_Controller {
 		}
 	}
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+	public function actualizadatos_persona(){	
+		if($this->input->post()){
+		$this->persona_model->actualizadatos_persona($this->input->post('id_persona'),
+													 $this->input->post('nombre'),
+													 $this->input->post('correo'),
+													 $this->input->post('telefono_personal'),
+													 $this->input->post('telefono_personal_alt'),
+													 $this->input->post('nombre_empresa'),
+													 $this->input->post('calle_empresa'),
+													 $this->input->post('correo_empresa'),
+							 						 $this->input->post('cp_empresa'),
+							 						 $this->input->post('colonia_empresa'),
+							 						 $this->input->post('numero_empresa'),
+							 						 $this->input->post('municipio'),
+							 						 $this->input->post('estado'),
+							 						 $this->input->post('telefono_empresa'));
+		redirect('cliente/mis_datos');
+		}else{
+			redirect('cliente/mis_datos');
+=======
+>>>>>>> Stashed changes
 	public function actualizadatos_persona(){
 		if($this->session->userdata('tipo')==3){
 			if($this->input->post()){
@@ -366,8 +388,14 @@ class Usuario extends MY_Controller {
 				$data['nombre_empresa'] 			= $this->input->post('nombre_empresa');
 				$data['numero_registro_ambiental'] 	= $this->input->post('numero_registro_ambiental');
 				$data['email_empresa'] 				= $this->input->post('email_empresa');
+<<<<<<< Updated upstream
 				$data['telefono_personal_alt']		= $this->input->post('telefono_personal_alt');
 				$data['telefono_empresa'] 			= $this->input->post('telefono_empresa');
+=======
+				$data['telefono_empresa'] 			= $this->input->post('telefono_empresa');
+				$data['telefono_personal'] 			= $this->input->post('telefono_contacto');
+				$data['telefono_personal_alt']		= $this->input->post('telefono_contacto_alt');
+>>>>>>> Stashed changes
 				$data['identificador_folio'] 		= $this->input->post('identificador_folio');
 				$data['calle_empresa'] 				= $this->input->post('calle_empresa');
 				$data['numero_empresa'] 			= $this->input->post('numero_empresa');
@@ -386,6 +414,10 @@ class Usuario extends MY_Controller {
 		} else {
 			$this->session->sess_destroy(); #destruye session
 			redirect('home/sesion');
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 		}
 	}
 
@@ -552,66 +584,67 @@ class Usuario extends MY_Controller {
 		}
 	}
 
-	public function update_bit( $id_bit ){
-		if( ($this->input->post()) || ($id_bit != null) ) {
-
-			$id_tipo_persona=3; // para la función de correo en el header
-			$id_status_persona=1; // para la función de correo en el footer
-
-			$id_bitacora 			= $id_bit;
-			$id 					= $this->session->userdata('id');
-			$status 				= 0;
-			$total					= $this->notificacion_model->obtiene_noticliente($id,$status);
-			$bitacora 				= $this->residuo_peligroso_model->get_bitacora($id_bitacora);
-			$peligrosidad 			= $bitacora->caracteristica;
-			$peligrosidad2 			= explode(" ", $peligrosidad);
-
-			$bitacora 				= $this->residuo_peligroso_model->get_ident_residuo($id_bit);
-
-			$residuos 				= $this->residuo_peligroso_model->get_tipo_residuos();
-			$areas 					= $this->area_model->get_areas();
-			$tipo_emp_transportista = $this->emp_transportista_model->get_tipo_emp_transportista();
-			$tipo_emp_destino 		= $this->emp_destino_model->get_tipo_emp_destino();
-			$tipo_modalidad 		= $this->modalidad_model->get_tipo_modalidad();
-
-			$status = 0;
-			$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
-
-			$data = array(
-				'numnoti'=>$total,
-				'id'=>$id,
-				'mensajes' => $mensajesnuevos,
-				'peligrosidad' => $peligrosidad2,
-				'residuos' => $residuos,
-				'areas' => $areas,
-				'tipo_emp_transportista' => $tipo_emp_transportista,
-				'tipo_emp_destino' => $tipo_emp_destino,
-				'tipo_modalidad' => $tipo_modalidad,
-				'bitacora' => $bitacora
-			);
-
-
-			$this->load->view('usuario/modificar_bitacora',$data);
+	public function update_bit($id_persona = null, $id_bit = null){
+		if ($this->session->userdata('tipo') == 3) {
+		
+			if(($this->input->post()) || ($id_bit != null) ){
 			
-			$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
-			
-			// Obtenemos las bitacoras que hay
-			$bitacoras = $this->residuo_peligroso_model->get_bitacora($id);
-			
-			$cliente 			= $this->persona_model->obtiene_clientes($id_tipo_persona, $id_status_persona);
-			$correo_clientes 	= $this->persona_model->getCorreos($id_tipo_persona);
+				$id_tipo_persona=3; // para la función de correo en el header
+				$id_status_persona=1; // para la función de correo en el footer
 
-			$data2 = array(
-					'new_noti' =>$datos_popover,
-					'bitacoras' =>$bitacoras,
-					'clientes' => $cliente,
-					'correo' => $correo_clientes
-			);
+				$bitacora 				= $this->residuo_peligroso_model->get_ident_residuo($id_bit);
+				
+				$id_bitacora 			= $id_bit;
+				$id 					= $this->session->userdata('id');
+				$status 				= 0;
+				$total					= $this->notificacion_model->obtiene_noticliente($id,$status);
+				$peligrosidad 			= $bitacora->caracteristica;
+				$peligrosidad2 			= explode(" ", $peligrosidad);
 
-		}else{
-			redirect('cliente/ver_bitacora');
-		}	
-			
+				$residuos 				= $this->residuo_peligroso_model->get_tipo_residuos();
+				$areas 					= $this->area_model->get_areas();
+				$tipo_emp_transportista = $this->emp_transportista_model->get_tipo_emp_transportista();
+				$tipo_emp_destino 		= $this->emp_destino_model->get_tipo_emp_destino();
+				$tipo_modalidad 		= $this->modalidad_model->get_tipo_modalidad();
+
+				$status = 0;
+				$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
+
+				$data = array(
+					'numnoti'=>$total,
+					'id'=>$id,
+					'id_persona'=>$id_persona,
+					'mensajes' => $mensajesnuevos,
+					'peligrosidad' => $peligrosidad2,
+					'residuos' => $residuos,
+					'areas' => $areas,
+					'tipo_emp_transportista' => $tipo_emp_transportista,
+					'tipo_emp_destino' => $tipo_emp_destino,
+					'tipo_modalidad' => $tipo_modalidad,
+					'bitacora' => $bitacora
+				);
+
+
+				$this->load->view('usuario/modificar_bitacora',$data);
+				$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
+				
+				// Obtenemos las bitacoras que hay				
+				$cliente 			= $this->persona_model->obtiene_clientes($id_tipo_persona, $id_status_persona);
+				$correo_clientes 	= $this->persona_model->getCorreos($id_tipo_persona);
+
+				$data2 = array(
+						'new_noti' =>$datos_popover,
+						'clientes' => $cliente,
+						'correo' => $correo_clientes
+				);
+				
+			}else{
+				redirect('administrador/bitacora/' . $id_bitacora );
+			}	
+		} else {
+			$this->session->sess_destroy();
+			redirect('home');
+		}
 	}
 
 	public function guardar_registro_nueva() {
