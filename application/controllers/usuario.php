@@ -356,30 +356,6 @@ class Usuario extends MY_Controller {
 		}
 	}
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-	public function actualizadatos_persona(){	
-		if($this->input->post()){
-		$this->persona_model->actualizadatos_persona($this->input->post('id_persona'),
-													 $this->input->post('nombre'),
-													 $this->input->post('correo'),
-													 $this->input->post('telefono_personal'),
-													 $this->input->post('telefono_personal_alt'),
-													 $this->input->post('nombre_empresa'),
-													 $this->input->post('calle_empresa'),
-													 $this->input->post('correo_empresa'),
-							 						 $this->input->post('cp_empresa'),
-							 						 $this->input->post('colonia_empresa'),
-							 						 $this->input->post('numero_empresa'),
-							 						 $this->input->post('municipio'),
-							 						 $this->input->post('estado'),
-							 						 $this->input->post('telefono_empresa'));
-		redirect('cliente/mis_datos');
-		}else{
-			redirect('cliente/mis_datos');
-=======
->>>>>>> Stashed changes
 	public function actualizadatos_persona(){
 		if($this->session->userdata('tipo')==3){
 			if($this->input->post()){
@@ -388,14 +364,9 @@ class Usuario extends MY_Controller {
 				$data['nombre_empresa'] 			= $this->input->post('nombre_empresa');
 				$data['numero_registro_ambiental'] 	= $this->input->post('numero_registro_ambiental');
 				$data['email_empresa'] 				= $this->input->post('email_empresa');
-<<<<<<< Updated upstream
-				$data['telefono_personal_alt']		= $this->input->post('telefono_personal_alt');
-				$data['telefono_empresa'] 			= $this->input->post('telefono_empresa');
-=======
 				$data['telefono_empresa'] 			= $this->input->post('telefono_empresa');
 				$data['telefono_personal'] 			= $this->input->post('telefono_contacto');
 				$data['telefono_personal_alt']		= $this->input->post('telefono_contacto_alt');
->>>>>>> Stashed changes
 				$data['identificador_folio'] 		= $this->input->post('identificador_folio');
 				$data['calle_empresa'] 				= $this->input->post('calle_empresa');
 				$data['numero_empresa'] 			= $this->input->post('numero_empresa');
@@ -414,10 +385,6 @@ class Usuario extends MY_Controller {
 		} else {
 			$this->session->sess_destroy(); #destruye session
 			redirect('home/sesion');
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 		}
 	}
 
