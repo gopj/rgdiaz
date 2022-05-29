@@ -26,8 +26,7 @@ public function __construct()
     }
 
     public function get_new_noti($status,$id){
-        return $this->db->select('ruta_archivo')
-                        ->from('notificacion')
+        return $this->db->from('notificacion')
                         ->where('id_status_notificacion',$status)
                         ->where('recibe',$id)
                         ->get()

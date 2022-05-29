@@ -116,3 +116,52 @@ function valida_form_password(){
 		} 
 	}
 }
+
+function count_notifications(){
+	$.ajax({
+		url: 'https://' + host + '/usuario/count_notifications',
+		success:function(data){
+			var count = $.parseJSON(data);
+			$("#count_noti").text(count);
+			if (count > 0){
+				$(".far fa-bell").removeAttr("class");
+				$("#bell").attr("class", "fas fa-bell");
+			} else {
+				$(".fas fa-bell").removeAttr("class");
+				$("#bell").attr("class", "far fa-bell");
+			}
+		},
+	});
+}
+
+function get_notifications(){
+	$.ajax({
+		url: 'https://' + host + '/usuario/get_notifications',
+		success:function(data){
+			var opts = $.parseJSON(data);
+			$.each(opts, function(i, d) {
+				const archivo = d.ruta_archivo.split("\/");
+				var pos = archivo.length;
+				var url = window.location.href;  
+				$("#notifications").append('<a href="'+ url +'#"><span class="notification-badge bg-primary"><i class="fa fa-photo"></i></span><span class="notification-info">Se agregó <b>' + archivo[pos-1] + '</b> en la carpeta <b>' + archivo[pos-2] + '</b></br><small class="notification-date">' + d.fecha_notificacion + '</small></span></a>');
+			});		
+		},
+	});
+}
+
+function read_notifications(){
+	$(".fas fa-bell").removeAttr("class");
+	$("#bell").attr("class", "far fa-bell");
+	$.ajax({
+		url: 'https://' + host + '/usuario/read_notifications',
+		success:function(data){
+			var state = $.parseJSON(data);
+		},
+	});
+}
+
+$(document).ready(function() {
+	//Notifications
+	count_notifications()
+	get_notifications();
+});

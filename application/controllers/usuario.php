@@ -551,6 +551,29 @@ class Usuario extends MY_Controller {
 		}
 	}
 
+	public function count_notifications(){
+		$this->setLayout('empty');
+		$id = $this->session->userdata('id');
+		$datos_popover = $this->notificacion_model->obtiene_noticliente($id, $status=0);
+
+		echo json_encode($datos_popover);
+	}
+
+	public function get_notifications(){
+		$this->setLayout('empty');
+		$id = $this->session->userdata('id');
+		$datos_popover = $this->notificacion_model->get_new_noti($status=0,$id);
+
+		echo json_encode($datos_popover);
+	}
+
+	public function read_notifications(){
+		$this->setLayout('empty');
+		$id = $this->session->userdata('id');
+		$this->notificacion_model->cambia_status_notificacion($status=1,$id);
+		echo json_encode('done');
+	}
+
 	public function update_bit($id_persona = null, $id_bit = null){
 		if ($this->session->userdata('tipo') == 3) {
 		
