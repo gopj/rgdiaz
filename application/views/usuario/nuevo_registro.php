@@ -84,16 +84,16 @@
 					</div>
 
 					<div class="form-group col-md-6">
-						<label class="col-form-label"  for="fecha_ingreso">Fecha de entrada en almacen:</label>
+						<label class="col-form-label" for="fecha_ingreso">Fecha de entrada en almacen:</label>
 						
-						<input class="form-control date-picker" type="date" style="text-align: center;" name="fecha_ingreso" id="fecha_ingreso"  placeholder="MM/DD/AAAA" data-date-format="yyyy-mm-dd" oninvalid="this.setCustomValidity('Selecciona fecha de entrada');" onchange="clearDateRequired('fecha_ingreso')"  required>	
+						<input class="form-control date-picker" type="date" style="text-align: center;" name="fecha_ingreso" id="fecha_ingreso" placeholder="MM/DD/AAAA" data-date-format="yyyy-mm-dd" oninvalid="this.setCustomValidity('Selecciona fecha de entrada');" onchange="clearDateRequired('fecha_ingreso')"  required>	
 					</div>
 					<div class="form-group col-md-3">
 					</div>
 
 					<div class="form-group col-md-6">
 						<input type="hidden" name="id_persona" value="<?=$id_persona?>">
-						<a href="<?=site_url('usuario/ver_bitacora')?>" class="btn btn-lg btn-block btn-warning" type="button"id="regresar_bitacora"> Cancelar </a>
+						<a href="<?=site_url('usuario/ver_bitacora')?>" class="btn btn-lg btn-block btn-warning" type="button" id="regresar_bitacora"> Cancelar </a>
 					</div>
 					<div class="form-group col-md-6">
 						<input type="submit" class="btn btn-lg btn-block btn-primary" value="Guardar">
@@ -105,6 +105,6 @@
 </div>
 
 <script type="text/javascript">
-	//$('#fecha_ingreso').datepicker();
-	$('#fecha_salida').datepicker();
+	$('#fecha_ingreso').datepicker();
+	//$('#fecha_salida').datepicker();
 </script>
