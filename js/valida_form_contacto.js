@@ -1,8 +1,3 @@
-// --		Desarrollado por SharkSoft 
-// -- 		Adan Cruz Huerta
-// -- 		Jonathan Yaran Ramos Vazquez
-// --		Erick Alejandro Sandoval Flores
-// -- 		Christian Ramon Magallon Garcia
 //	Script para validar el envio de el formulario de contactanos. Campos vacios y validos!!
 
 function validarForm(){
