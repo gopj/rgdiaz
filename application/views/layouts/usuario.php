@@ -142,7 +142,7 @@
 								<li class="dropdown">
 									<a href="#!" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bell"></i></a>
 									<ul class="dropdown-menu dropdown-lg dropdown-content">
-										<li class="drop-title">Notifications<a href="#" class="drop-title-link"><i class="fa fa-angle-right"></i></a></li>
+										<li class="drop-title">Notifications<a href="<?=current_url().'#'?>" class="drop-title-link"><i class="fa fa-angle-right"></i></a></li>
 										<li class="slimscroll dropdown-notifications">
 											<ul class="list-unstyled dropdown-oc">
 												<li>
@@ -185,9 +185,7 @@
 
 			<!-- end page header -->
 			<div class="page-inner">
-
 				<?=$output?>
-
 				<div class="page-footer" style="padding-right: 18%;">
 					<p>Todos los derechos reservados &copy; <script>document.write(new Date().getFullYear())</script> RDíaz.</p>
 				</div>
