@@ -22,13 +22,7 @@
 
 	<!-- bootstrap-datepicker plugin -->
 	<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/bootstrap-datepicker/datepicker.css')?>" />
-
-	<!-- datatables plugin -->
-	<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/datatables/jquery.datatables.min.css')?>" />
 	
-	<!-- datatables plugin -->
-	<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/datatables/jquery.datatables_themeroller.css')?>" />
-
 	<!-- bootstrap-colorpicker plugin -->
 	<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/bootstrap-colorpicker/bootstrap-colorpicker.css')?>" />
 
@@ -113,7 +107,7 @@
 								<i class="menu-icon icon-settings"></i><span>Configuración</span><i class="accordion-icon fa fa-angle-left"></i>
 							</a>
 							<ul>
-								<li><a href="<?=base_url();?>">Cerrar Sesión</a></li>
+								<li><a href="<?=base_url('usuario/terminar_sesion');?>">Cerrar Sesión</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -145,6 +139,43 @@
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav">
 								<li><a href="#!" id="collapsed-sidebar-toggle-button"><i class="fa fa-bars"></i></a></li>
+							</ul>
+							<ul class="nav navbar-nav navbar-right">
+								<li class="dropdown">
+									<a href="#!" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bell"></i></a>
+									<ul class="dropdown-menu dropdown-lg dropdown-content">
+										<li class="drop-title">Notifications<a href="#" class="drop-title-link"><i class="fa fa-angle-right"></i></a></li>
+										<li class="slimscroll dropdown-notifications">
+											<ul class="list-unstyled dropdown-oc">
+												<li>
+													<a href="#"><span class="notification-badge bg-primary"><i class="fa fa-photo"></i></span>
+															<span class="notification-info">Finished uploading photos to gallery <b>"South Africa"</b>.
+																<small class="notification-date">20:00</small>
+															</span></a>
+												</li>
+												<li>
+													<a href="#"><span class="notification-badge bg-primary"><i class="fa fa-at"></i></span>
+															<span class="notification-info"><b>John Doe</b> mentioned you in a post "Update v1.5".
+																<small class="notification-date">06:07</small>
+															</span></a>
+												</li>
+												<li>
+													<a href="#"><span class="notification-badge bg-danger"><i class="fa fa-bolt"></i></span>
+															<span class="notification-info">4 new special offers from the apps you follow!
+																<small class="notification-date">Yesterday</small>
+															</span></a>
+												</li>
+												<li>
+													<a href="#"><span class="notification-badge bg-success"><i class="fa fa-bullhorn"></i></span>
+															<span class="notification-info">There is a meeting with <b>Ethan</b> in 15 minutes!
+																<small class="notification-date">Yesterday</small>
+															</span></a>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								
 							</ul>
 						</div>
 						<!-- /.navbar-collapse -->
@@ -369,9 +400,6 @@
 	<!-- switchery -->
 	<script src="<?=base_url('js/crizal/plugins/switchery/switchery.min.js')?>"></script>
 
-	<!-- datatable -->
-	<script src="<?=base_url('js/crizal/plugins/datatables/jquery.datatables.js')?>"></script>
-
 	<!-- summernote -->
 	<script src="<?=base_url('js/crizal/plugins/summernote-master/summernote.min.js')?>"></script>
 
@@ -391,11 +419,8 @@
 	<!-- form elements -->
 	<script src="<?=base_url('js/crizal/pages/form-elements.js')?>"></script>
 
-	<!-- table data-->
-	<script src="<?=base_url('js/crizal/pages/table-data.js')?>"></script>
-
 	<!-- custom scripts -->
-	<script src="<?=base_url('js/crizal/main.js')?>"></script>
+	<script src="<?=base_url('js/crizal/admin-template/main.js')?>"></script>
 
 	<!-- all js include end -->		
 

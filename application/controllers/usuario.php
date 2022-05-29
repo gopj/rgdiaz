@@ -846,4 +846,9 @@ class Usuario extends MY_Controller {
 		$this->session->sess_destroy(); #destruye session
 		redirect('home/sesion');		
 	}
+
+	public function crizal(){
+		$this->setLayout('admin_test');
+		$this->load->view("usuario/crizal_forms.php");
+	}
 }
