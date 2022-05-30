@@ -55,9 +55,15 @@
 									<td style="text-align: center;"> <?= $bit->numero_placa ?> </td>
 									<td style="text-align: center;"> <?= date_format($fecha, "d/m/Y"); ?> </td>
 									<?php if ($bit->status == 'W'){ ?>
-										<td style="text-align: center;">  <a href="<?=site_url('admin/recolector_crear_manifiestos/' . $bit->id_persona . '/' . $bit->id_tran_folio);?>" class="btn btn-success btn-sm" role="button"> Terminar </a> </td>
+										<td style="text-align: center;">  
+											<a href="<?=site_url('admin/recolector_crear_manifiestos/' . $bit->id_persona . '/' . $bit->id_tran_folio);?>" class="btn btn-success btn-sm" role="button"> Terminar </a> 
+											<button class="btn btn-danger btn-sm" disabled> PDF </a>
+										</td>
 									<?php } else { ?>
-										<td style="text-align: center;">  <a href="<?=site_url('admin/recolector_ver_manifiesto/' . $bit->id_persona . '/' . $bit->id_tran_folio);?>" class="btn btn-primary btn-sm" role="button"> Ver </a> </td>
+										<td style="text-align: center;"> 
+											<a href="<?=site_url('admin/recolector_ver_manifiesto/' . $bit->id_persona . '/' . $bit->id_tran_folio);?>" class="btn btn-primary btn-sm" role="button"> Ver </a> 
+											<a href="<?=site_url('admin/recolector_generar_manifiesto/' . $bit->id_persona . '/' . $bit->id_tran_folio);?>" class="btn btn-danger btn-sm" target="_blank" role="button"> PDF </a>
+										</td>
 									<?php }?>
 								</tr>
 							<?php } ?>

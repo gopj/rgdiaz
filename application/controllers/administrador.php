@@ -1363,7 +1363,7 @@ class Administrador extends MY_Controller {
 
 	}
 
-	public function transportistas_destinos() {	
+	public function transportistas_destinos(){
 		$status = 0;
 		$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
 
@@ -1385,9 +1385,8 @@ class Administrador extends MY_Controller {
 			'emp_transportista' => $emp_transportista,
 			'emp_destino' => $emp_destino,
 		);
-		$this->load->view("administrador/transportistas_destinos", $data);
-		
 
+		$this->load->view("administrador/transportistas_destinos", $data);
 	}
 
 	public function obtiene_emp_trans(){

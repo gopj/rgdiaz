@@ -6,7 +6,7 @@
 	<div class="card card-white">
 		<div id="main-wrapper">
 			<div class="card-body">
-				<table id="tabla_manifiestos" class="display table table-striped table-bordered" style="width:100%">
+				<table id="tabla_manifiestos" class="display table table-striped table-bordered">
 					<thead class="thead-dark">
 						<tr>
 							<th>Folio</th>
@@ -59,3 +59,4 @@
 			</div>
 		</div>
 	</div>
+

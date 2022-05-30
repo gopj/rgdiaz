@@ -25,6 +25,7 @@
 	<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/font-awesome/css/font-awesome.min.css')?>" />
 	<link rel="stylesheet" href="<?=base_url('css/style.css')?>" />
 	<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/icomoon/style.css')?>" />
+	<link rel="stylesheet" href="<?=base_url('css/crizal/style/styles.css')?>" />
 	<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/uniform/css/default.css')?>" />
 	<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/switchery/switchery.min.css')?>" />
 
