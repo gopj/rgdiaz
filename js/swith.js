@@ -798,12 +798,17 @@ $(document).ready(function() {
 
 	$("#input_busca_carpeta").on("keyup", function() {
 		// Search text
-		var text = $(this).val().toLowerCase();
+		var text = $(this).val();
+		//var text = $(this).val().toLowerCase();
+		var text_search = text.replace(/ /g, "_");
 
-		// Search 
-		 if (text) $("#card_data").not(":contains(" + text + ")").hide();
+		if (text_search) {
+			$("[id*=card_data_]").not("[id*=card_data_]" + text_search).hide();
+			$("[id*=card_data_]:contains('" + text +"')").show();
+		} else {
+			$("[id*=card_data]").show();
+		}
 		
 	});
 
 });
-

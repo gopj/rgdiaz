@@ -7,14 +7,18 @@
 	</div>
 	<div class="card">
 		<div class="input-group mb-2 mr-sm-2">
-			<!-- <div class="input-group-prepend"> -->
-			<!--	<div class="input-group-text">Buscar</div> -->
-			<!--</div> -->
-			<!-- <input type="text" class="form-control" placeholder="" id="input_busca_carpeta"> -->
+			<div class="input-group-prepend">
+				<div class="input-group-text">Buscar</div>
+			</div>
+			<input type="text" class="form-control" placeholder="" id="input_busca_carpeta">
 		</div>
 		<div class="row justify-content-center">
 			<?php foreach ($carpetas->result() as $carpe) { ?>
-				<div class='card filecard align-items-center'  id='card_data'>
+				<?php 
+					$name_for_js = strtolower($carpe->empresa);
+					$name_for_js = str_replace(" ", "_", $name_for_js);
+				?>
+				<div class='card filecard align-items-center'  id='card_data_<?=$name_for_js?>'>
 					<i class='icon-folder thumb'></i>
 					<div class="card-body ">
 						<form method='post' action="<?php echo site_url('administrador/versubcarpeta');?>">
