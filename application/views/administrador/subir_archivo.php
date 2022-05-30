@@ -16,15 +16,15 @@
 			<?php foreach ($carpetas->result() as $carpe) { ?>
 				<?php 
 					$name_for_js = strtolower($carpe->empresa);
-					$name_for_js = str_replace(" ", "_", $name_for_js);
+					$name_for_js_id = str_replace(" ", "_", $name_for_js);
 				?>
-				<div class='card filecard align-items-center'  id='card_data_<?=$name_for_js?>'>
+				<div class='card filecard align-items-center'  id='card_data_<?=$name_for_js_id?>'>
 					<i class='icon-folder thumb'></i>
 					<div class="card-body ">
 						<form method='post' action="<?php echo site_url('administrador/versubcarpeta');?>">
 							<input type="hidden" value="<?php echo $carpe->id_persona; ?>" name="id_persona"/>
 							<input type="hidden" value="<?php echo $carpe->ruta_carpeta; ?>" name="ruta_carpeta" >
-							<button type="submit" class="nombre-carpeta card-title" ><?php echo $carpe->empresa?></button>
+							<button type="submit" class="nombre-carpeta card-title" ><?php echo $name_for_js?></button>
 						</form>
 						<form method='post' action="<?php echo site_url('administrador/versubcarpeta');?>">
 							<input type="hidden" value="<?php echo $carpe->id_persona; ?>" name="id_persona"/>
