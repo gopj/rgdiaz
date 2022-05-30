@@ -479,6 +479,14 @@ function check_resposanble() {
 	ruta = document.getElementById('terminar_ruta').value;
 	observaciones = document.getElementById('terminar_observaciones').value;
 
+	form.addEventListener('submit', function(event) {
+		if (form.checkValidity() === false) {
+			event.preventDefault();
+			event.stopPropagation();
+		}
+		form.classList.add('was-validated');
+	}, false);
+
 	if ( (tecnico == "") || (ruta == "") || (observaciones == "") ){
 		$("#b_terminar_manifiesto").attr('disabled','disabled');
 	} else {
@@ -523,14 +531,6 @@ function terminar_manifiesto(){
 
 $(document).ready(function() {
     terminar_manifiesto();
-
-    form.addEventListener('submit', function(event) {
-		if (form.checkValidity() === false) {
-			event.preventDefault();
-			event.stopPropagation();
-		}
-		form.classList.add('was-validated');
-	}, false);
 
 	$('.date-picker').datepicker({
 		language: 'es',
