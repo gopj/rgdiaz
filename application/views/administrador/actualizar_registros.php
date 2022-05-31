@@ -101,12 +101,11 @@
 						<input class="form-control" name="resp_tec" id="resp_tec" type="text">
 					</div>
 				
-					<input type="hidden" name="id_persona" value="<?php echo $id; ?>">
+					<input type="hidden" name="id_persona" value="<?php echo $id_persona ?>">
 					<input type="hidden" name="registros" value="<?php echo $str_act_reg ?>">
 		
 					<!-- <input type="button" onclick="reg_bit_update();" class="btn btn-primary pull-right" value="Guardar"> -->
 					<div class="form-group col-md-6">
-						<input type="hidden" name="id_persona" value="<?=$id?>">
 						<a href="<?=base_url('administrador/bitacora/'.$id_persona)?>" class="btn btn-lg btn-block btn-warning" type="button" id="regresar_bitacora"> Cancelar </a>
 					</div>
 					<div class="form-group col-md-6">
