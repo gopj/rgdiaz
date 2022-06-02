@@ -714,7 +714,7 @@ class Usuario extends MY_Controller {
 	public function update_bitacora_cliente(){
 		$id_persona = $this->input->post('id_persona');
 
-		if ($this->session->userdata('tipo') == 2) {
+		if ($this->session->userdata('tipo') == 3) {
 
 			if($this->input->post()){
 				$data["id_residuo_peligroso"]= $this->input->post('id_bitacora');

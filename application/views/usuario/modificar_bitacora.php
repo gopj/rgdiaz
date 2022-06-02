@@ -20,7 +20,7 @@
 								}
 							} ?>
 							<option value="Otro">Otro</option>
-						</select>
+						</select>	
 					</div>
 					<div class="form-group col-md-3">	
 						<label for="lb_clave" class="col-form-label">Clave:</label>

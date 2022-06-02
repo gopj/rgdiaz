@@ -125,15 +125,15 @@ class Residuo_peligroso_model extends CI_Model {
 		$data['area_generacion'] = $this->area_model->_area($data);
 
 		$this->db
-				->set('id_persona'					,$data['id_persona'])
-				->set('id_tipo_residuo'				,$data['residuo'])
-				->set('id_area'						,$data['area_generacion'])
-				->set('cantidad'					,$data['cantidad'])
-				->set('unidad'						,$data['unidad'])
-				->set('caracteristica'				,$data['caracteristicas_residuos'])
-				->set('fecha_ingreso'				,$data['fecha_ingreso'])
-				->set('fecha_insercion'				,$data['fecha_insercion'])
-				->set('status'						,"W")
+				->set('id_persona'		,$data['id_persona'])
+				->set('id_tipo_residuo'	,$data['residuo'])
+				->set('id_area'			,$data['area_generacion'])
+				->set('cantidad'		,$data['cantidad'])
+				->set('unidad'			,$data['unidad'])
+				->set('caracteristica'	,$data['caracteristicas_residuos'])
+				->set('fecha_ingreso'	,$data['fecha_ingreso'])
+				->set('fecha_insercion'	,$data['fecha_insercion'])
+				->set('status'			,"W")
 				->insert('residuos_peligrosos');
 
 		return $this->db->insert_id();
