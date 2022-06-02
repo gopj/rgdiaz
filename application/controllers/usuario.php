@@ -611,7 +611,8 @@ class Usuario extends MY_Controller {
 					'tipo_emp_transportista' => $tipo_emp_transportista,
 					'tipo_emp_destino' => $tipo_emp_destino,
 					'tipo_modalidad' => $tipo_modalidad,
-					'bitacora' => $bitacora
+					'bitacora' => $bitacora,
+					'id_bitacora' => $id_bit
 				);
 
 
@@ -711,61 +712,73 @@ class Usuario extends MY_Controller {
 	}
 
 	public function update_bitacora_cliente(){
-		if($this->input->post()){
+		$id_persona = $this->input->post('id_persona');
 
-			$data["id_residuo_peligroso"]= $this->input->post('id_residuo_peligroso');
-			$data["id_persona"] 		= $this->input->post('id_persona');
-			$data["residuo"] 			= $this->input->post('residuo');
-			$data["otro_residuo"] 		= $this->input->post('otro_residuo');
-			$data["clave"] 				= $this->input->post('clave');
-			$data["cantidad"] 			= $this->input->post('cantidad');
-			$data["unidad"] 			= $this->input->post('unidad');
-			$data["caracteristica"] 	= $this->input->post('caracteristica');
-			$data["area_generacion"] 	= $this->input->post('area_generacion');
-			$data["otro_area"] 			= $this->input->post('otro_area');
-			$data["fecha_ingreso"] 		= $this->input->post('fecha_ingreso');
-			$data["fecha_salida"] 		= $this->input->post('fecha_salida');
-			$data["emp_tran"] 			= $this->input->post('emp_tran');
-			$data["otro_emp"] 			= $this->input->post('otro_emp');
-			$data["no_auto"] 			= $this->input->post('no_auto');
-			$data["folio_manifiesto"]	= $this->input->post('folio');
-			$data["dest_final"] 		= $this->input->post('dest_final');
-			$data["otro_dest"] 			= $this->input->post('otro_dest');
-			$data["no_auto_dest"] 		= $this->input->post('no_auto_dest');
-			$data["sig_manejo"] 		= $this->input->post('sig_manejo');
-			$data["otro_modalidad"]		= $this->input->post('otro_modalidad');
-			$data["resp_tec"] 			= $this->input->post('resp_tec');
+		if ($this->session->userdata('tipo') == 2) {
 
-			//Residuo					
-			if ($data["residuo"] != "Otro") {
-				$id_residuo = explode(",", $data["residuo"]);
-				$data["residuo"] = $id_residuo[0];
-			} 
-			
-			//Caracteristicas
-			$data["caracteristicas_residuos"] = "";
-			foreach ($data["caracteristica"] as $row) {
-				$data["caracteristicas_residuos"] .= $row . " ";
+			if($this->input->post()){
+				$data["id_residuo_peligroso"]= $this->input->post('id_bitacora');
+				$data["id_persona"] 		= $id_persona;
+				$data["residuo"] 			= $this->input->post('residuo');
+				$data["otro_residuo"] 		= $this->input->post('otro_residuo');
+				$data["clave"] 				= $this->input->post('clave');
+				$data["cantidad"] 			= $this->input->post('cantidad');
+				$data["unidad"] 			= $this->input->post('unidad');
+				$data["caracteristica"] 	= $this->input->post('caracteristica');
+				$data["area_generacion"] 	= $this->input->post('area_generacion');
+				$data["otro_area"] 			= $this->input->post('otro_area');
+				$data["fecha_ingreso"] 		= $this->input->post('fecha_ingreso');
+				$data["fecha_salida"] 		= $this->input->post('fecha_salida');
+				$data["emp_tran"] 			= $this->input->post('emp_tran');
+				$data["otro_emp"] 			= $this->input->post('otro_emp');
+				$data["no_auto"] 			= $this->input->post('no_auto');
+				$data["folio_manifiesto"]	= $this->input->post('folio');
+				$data["dest_final"] 		= $this->input->post('dest_final');
+				$data["otro_dest"] 			= $this->input->post('otro_dest');
+				$data["no_auto_dest"] 		= $this->input->post('no_auto_dest');
+				$data["sig_manejo"] 		= $this->input->post('sig_manejo');
+				$data["otro_modalidad"]		= $this->input->post('otro_modalidad');
+				$data["resp_tec"] 			= $this->input->post('resp_tec');
+
+				//Residuo					
+				if ($data["residuo"] != "Otro") {
+					$id_residuo = explode(",", $data["residuo"]);
+					$data["residuo"] = $id_residuo[0];
+				} 
+				
+				//Caracteristicas
+				$data["caracteristicas_residuos"] = "";
+				foreach ($data["caracteristica"] as $row) {
+					$data["caracteristicas_residuos"] .= $row . " ";
+				}
+				unset($data["caracteristica"]);
+				
+				// Empresa transportista
+				if($data["emp_tran"] != "Otro")	{
+					$id_emp_tran = explode(",", $data["emp_tran"]);
+					$data["emp_tran"] = $id_emp_tran[0];
+				} 
+
+				// Empresa de destino
+				if($data["dest_final"] != "Otro")	{
+					$id_emp_final = explode(",", $data["dest_final"]);
+					$data["dest_final"] = $id_emp_final[0];
+				}
+
+				$data['residuo'] = $this->residuo_peligroso_model->tipo_residuo($data);
+				$data['area_generacion'] = $this->area_model->_area($data);
+				$data['emp_tran'] = $this->emp_transportista_model->_emp_tran($data);
+				$data['dest_final'] = $this->emp_destino_model->_emp_dest($data);
+				$data['sig_manejo'] = $this->modalidad_model->_modalidad($data);
+
+				$this->residuo_peligroso_model->actualizar_registro($data);
+																
+				redirect('usuario/ver_bitacora/' . $id_persona);
+			}else{
+				redirect('usuario/ver_bitacora/' . $id_persona);
 			}
-			unset($data["caracteristica"]);
-			
-			// Empresa transportista
-			if($data["emp_tran"] != "Otro")	{
-				$id_emp_tran = explode(",", $data["emp_tran"]);
-				$data["emp_tran"] = $id_emp_tran[0];
-			} 
-
-			// Empresa de destino
-			if($data["dest_final"] != "Otro")	{
-				$id_emp_final = explode(",", $data["dest_final"]);
-				$data["dest_final"] = $id_emp_final[0];
-			}
-
-			$this->residuo_peligroso_model->actualizar_registro($data);
-															
-			redirect('cliente/update_bit');
-		}else{
-			redirect('cliente/update_bit');
+		} else {
+			redirect('usuario/ver_bitacora/' . $id_persona);
 		}
 	}
 
