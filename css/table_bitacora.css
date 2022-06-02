@@ -5,40 +5,42 @@ html {
 }
 
 body {
-  margin: 0 0 100px;
   background-color: #F1F1F1;
 }
 
-footer {
+/*footer {
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
-}
+}*/
 
-table {
+/*table {
 	border-collapse: collapse;
 	overflow-x: scroll;
 	overflow-y: scroll;
 	display: block;
 	height: 510px;
-}
+}*/
+
 thead {
 	background-color: #88B22F;
 }
 
-th {
+/*th {
 	min-width: 198px;
 	height: 40px;
 	border: dashed 1px green;
 	font-weight: bold;
 }
+
 td {
 	min-width: 200px;
 	height: 40px;
 	border: dashed 1px green;
 	text-align: center;
-}
+}*/
+
 /*tbody tr:nth-child(odd) {
    background-color: #BAEA4B;
 }*/

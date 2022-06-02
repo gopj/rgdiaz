@@ -538,6 +538,23 @@ $(document).ready(function() {
 		autoclose: true
 	});
 
+	$('#bitacora_administrador').dataTable({
+		displayLength: 25,
+		scrollX: true,
+		language: {
+			paginate: {
+				previous: "Anterior",
+				next: "Siguiente",
+			},
+			lengthMenu: "Mostrar _MENU_ registros por página",
+			search: "Buscar:",
+			zeroRecords: "No hay resultados para esa búsqueda.",
+			info: "Mostrando página _PAGE_ de _PAGES_",
+			infoEmpty: "No hay registros disponibles",
+			infoFiltered: "(filtered from _MAX_ total records)"
+		}
+	});
+
 	$('#tabla_manifiestos').dataTable({
 		"displayLength": 25,
 		"language": {
