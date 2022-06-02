@@ -1004,6 +1004,12 @@ class Administrador extends MY_Controller {
 				$data["otro_modalidad"]		= $this->input->post('otro_modalidad');
 				$data["resp_tec"] 			= $this->input->post('resp_tec');
 
+			/*	echo "<pre>";
+				print_r($data);
+				echo "</pre>";
+
+				die();*/
+
 				//Residuo					
 				if ($data["residuo"] != "Otro") {
 					$id_residuo = explode(",", $data["residuo"]);
@@ -1120,6 +1126,7 @@ class Administrador extends MY_Controller {
 				$bitacora 				= $this->residuo_peligroso_model->get_ident_residuo($id_bit);
 				
 				$id_bitacora 			= $id_bit;
+				$id_persona 			= $id_persona;
 				$id 					= $this->session->userdata('id');
 				$status 				= 0;
 				$total					= $this->notificacion_model->obtiene_noticliente($id,$status);
@@ -1149,23 +1156,14 @@ class Administrador extends MY_Controller {
 					'bitacora' => $bitacora
 				);
 
-
 				$this->load->view('administrador/modificar_bitacora',$data);
-				$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
+				$datos_popover = $this->notificacion_model->get_new_noti($status,$id_persona);
 				
 				// Obtenemos las bitacoras que hay
-				
 				
 				$cliente 			= $this->persona_model->obtiene_clientes($id_tipo_persona, $id_status_persona);
 				$correo_clientes 	= $this->persona_model->getCorreos($id_tipo_persona);
 
-				$data2 = array(
-						'new_noti' =>$datos_popover,
-						'clientes' => $cliente,
-						'correo' => $correo_clientes
-				);
-
-				
 			}else{
 				redirect('administrador/bitacora/' . $id_bitacora );
 			}	

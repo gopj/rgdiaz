@@ -27,9 +27,7 @@
 					</div>
 					<div class="form-group col-md-6">
 						<label for="fecha_salida" class="col-form-label" for="fecha_salida">Fecha de salida en almacen:</label>
-						<div class="controls">
-							<input class="form-control date-picker" style="text-align: center;" name="fecha_salida" id="fecha_salida" type="date" placeholder="AAAA/MM/DD" data-date-format="yyyy-mm-dd">
-						</div>
+						<input class="form-control date-picker" style="text-align: center;" name="fecha_salida" id="fecha_salida" type="text" placeholder="AAAA/MM/DD" data-date-format="yyyy-mm-dd">
 					</div>
 					<div class="form-group col-md-9">
 						<label class="col-form-label" for="emp_tran">Nombre y Número de Autorización del Transportista:</label>

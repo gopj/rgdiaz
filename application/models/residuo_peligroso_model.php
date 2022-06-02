@@ -161,14 +161,18 @@ class Residuo_peligroso_model extends CI_Model {
 	}
 
 	public function actualizar_registro($data) {
+		/*echo "<pre>";
+		print_r($data);
+		echo "</pre>";
+
+		die();*/
 		
 		$data['residuo'] = $this->_tipo_residuo($data);
 		$data['area_generacion'] = $this->area_model->_area($data);
 		$data['emp_tran'] = $this->emp_transportista_model->_emp_tran($data);
 		$data['dest_final'] = $this->emp_destino_model->_emp_dest($data);
 		$data['sig_manejo'] = $this->modalidad_model->_modalidad($data);
-
-							
+		
 		return $this->db->set('id_tipo_residuo'				,$data['residuo'])
 						->set('id_area'						,$data['area_generacion'])
 						->set('id_tipo_modalidad'			,$data['sig_manejo'])
