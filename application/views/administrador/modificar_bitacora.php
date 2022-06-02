@@ -1,4 +1,4 @@
-<div class="page-title">
+ 	<div class="page-title">
 	<h3 class="breadcrumb-header"> Actualizar Registro </h3>
 </div>
 	
@@ -23,56 +23,52 @@
 						</select>
 					</div>
 					<div class="form-group col-md-3">	
-						<label for="clave" class="col-form-label">Clave:</label>
-						<label id="lb_clave" type="text" class="form-control" name="clave"> <?= $bitacora->clave; ?> </label>
+						<label for="lb_clave" class="col-form-label">Clave:</label>
+						<label id="lb_clave" type="text" class="form-control" name="lb_clave"> <?= $bitacora->clave; ?> </label>
 					</div>
 
 					<div class="form-group col-md-9">
-						<label for="" class="control-label">Otro:</label>
+						<label for="otro_residuo" class="control-label">Otro:</label>
 						<input type="text" class="form-control" name="otro_residuo" id="otro_residuo" disabled>
 					</div>	
 					<div class="form-group col-md-3">
-						<label for="">Clave:</label>
-						<input type="text" class="form-control" name="clave" id="clave" disabled>
+						<label for="clave" class="col-form-label">Clave:</label>
+						<input type="text" class="form-control" id="clave" name="clave" disabled>
 					</div>
 
-					<div class="form-group col-md-3">
-						<label for="" class="control-label">Cantidad:</label>
-						<div class="controls">
-							<div class="form-inline">
-								<input type="number" id="cantidad" class="form-control" style="width:58%;"value="<?php echo $bitacora->cantidad;?>" name="cantidad" >
-								&nbsp;
-								<label for="radio1" class="radio">
-									<input type="radio" id="radio1" name="unidad" value="Kg" <?php if($bitacora->unidad == "Kg"){echo "checked";} ?> >Kg
-								</label>
-								&nbsp;
-								<label for="radio2" class="radio">
-									<input type="radio" id="radio2" name="unidad" value="Ton" <?php if($bitacora->unidad == "Ton"){echo "checked";} ?> >Ton
-								</label>
-							</div>
+					<div class="form-group col-md-6">
+						<label for="" class="col-form-label">Cantidad:</label>
+						<div class="form-inline">
+							<input type="number" id="cantidad" class="form-control" style="width:58%;"value="<?php echo $bitacora->cantidad;?>" name="cantidad" >
+							&nbsp;
+							<label for="radio1" class="radio">
+								<input type="radio" id="radio1" name="unidad" value="Kg" <?php if($bitacora->unidad == "Kg"){echo "checked";} ?> >Kg
+							</label>
+							&nbsp;
+							<label for="radio2" class="radio">
+								<input type="radio" id="radio2" name="unidad" value="Ton" <?php if($bitacora->unidad == "Ton"){echo "checked";} ?> >Ton
+							</label>
 						</div>
 					</div>
 
-					<div class="control-group">
-						<label for="" class="control-label">Característica de peligrosidad:</label>
-						<div class="controls">
-							<div class="form-inline">
-								<label for="check1" class="checkbox">
-									<input type="checkbox" id="check1" name="caracteristica[]" value="Toxico" <?php foreach ($peligrosidad as $row ){if($row == "Toxico"){ echo "checked";}} ?> > Toxico
-								</label>
-								&nbsp;&nbsp;
-								<label for="check2" class="checkbox">
-									<input type="checkbox" id="check2" name="caracteristica[]" value="Inflamable" <?php foreach ($peligrosidad as $row ){if($row == "Inflamable"){ echo "checked";}} ?> >Inflamable
-								</label>
-								&nbsp;&nbsp;
-								<label for="check3" class="checkbox">
-									<input type="checkbox" id="check3" name="caracteristica[]" value="Corrosivo" <?php foreach ($peligrosidad as $row ){if($row == "Corrosivo"){ echo "checked";}} ?> >Corrosivo
-								</label>
-								&nbsp;&nbsp;
-								<label for="check4" class="checkbox">
-									<input type="checkbox" id="check4" name="caracteristica[]" value="Reactivo" <?php foreach ($peligrosidad as $row ){if($row == "Reactivo"){ echo "checked";}} ?> >Reactivo
-								</label>
-							</div>
+					<div class="form-group col-md-6">
+						<label for="" class="col-form-label">Característica de peligrosidad:</label>
+						<div class="form-inline">
+							<label for="check1" class="checkbox">
+								<input type="checkbox" id="check1" name="caracteristica[]" value="Toxico" <?php foreach ($peligrosidad as $row ){if($row == "Toxico"){ echo "checked";}} ?> > Toxico
+							</label>
+							&nbsp;&nbsp;
+							<label for="check2" class="checkbox">
+								<input type="checkbox" id="check2" name="caracteristica[]" value="Inflamable" <?php foreach ($peligrosidad as $row ){if($row == "Inflamable"){ echo "checked";}} ?> >Inflamable
+							</label>
+							&nbsp;&nbsp;
+							<label for="check3" class="checkbox">
+								<input type="checkbox" id="check3" name="caracteristica[]" value="Corrosivo" <?php foreach ($peligrosidad as $row ){if($row == "Corrosivo"){ echo "checked";}} ?> >Corrosivo
+							</label>
+							&nbsp;&nbsp;
+							<label for="check4" class="checkbox">
+								<input type="checkbox" id="check4" name="caracteristica[]" value="Reactivo" <?php foreach ($peligrosidad as $row ){if($row == "Reactivo"){ echo "checked";}} ?> >Reactivo
+							</label>
 						</div>
 					</div>
 
