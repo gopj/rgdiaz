@@ -981,7 +981,7 @@ class Administrador extends MY_Controller {
 		if ($this->session->userdata('tipo')==1) {
 
 			if($this->input->post()){
-				$data["id_residuo_peligroso"]= $this->input->post('id_residuo_peligroso');
+				$data["id_residuo_peligroso"]= $this->input->post('id_bitacora');
 				$data["id_persona"] 		= $this->input->post('id_persona');
 				$data["residuo"] 			= $this->input->post('residuo');
 				$data["otro_residuo"] 		= $this->input->post('otro_residuo');
@@ -1003,12 +1003,6 @@ class Administrador extends MY_Controller {
 				$data["sig_manejo"] 		= $this->input->post('sig_manejo');
 				$data["otro_modalidad"]		= $this->input->post('otro_modalidad');
 				$data["resp_tec"] 			= $this->input->post('resp_tec');
-
-			/*	echo "<pre>";
-				print_r($data);
-				echo "</pre>";
-
-				die();*/
 
 				//Residuo					
 				if ($data["residuo"] != "Otro") {
@@ -1034,6 +1028,13 @@ class Administrador extends MY_Controller {
 					$id_emp_final = explode(",", $data["dest_final"]);
 					$data["dest_final"] = $id_emp_final[0];
 				}
+
+				$data['residuo'] = $this->residuo_peligroso_model->tipo_residuo($data);
+				$data['area_generacion'] = $this->area_model->_area($data);
+				$data['emp_tran'] = $this->emp_transportista_model->_emp_tran($data);
+				$data['dest_final'] = $this->emp_destino_model->_emp_dest($data);
+				$data['sig_manejo'] = $this->modalidad_model->_modalidad($data);
+
 
 				$this->residuo_peligroso_model->actualizar_registro($data);
 																
@@ -1153,7 +1154,8 @@ class Administrador extends MY_Controller {
 					'tipo_emp_transportista' => $tipo_emp_transportista,
 					'tipo_emp_destino' => $tipo_emp_destino,
 					'tipo_modalidad' => $tipo_modalidad,
-					'bitacora' => $bitacora
+					'bitacora' => $bitacora,
+					'id_bitacora' => $id_bit
 				);
 
 				$this->load->view('administrador/modificar_bitacora',$data);
@@ -1165,7 +1167,7 @@ class Administrador extends MY_Controller {
 				$correo_clientes 	= $this->persona_model->getCorreos($id_tipo_persona);
 
 			}else{
-				redirect('administrador/bitacora/' . $id_bitacora );
+				redirect('administrador/bitacora/' . $id_persona );
 			}	
 		} else {
 			

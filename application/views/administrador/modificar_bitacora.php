@@ -183,6 +183,7 @@
 					</div>
 					<div class="form-group col-md-9">
 						<input type="hidden" name="id_persona" value="<?=$id_persona?>">
+						<input type="hidden" name="id_bitacora" value="<?=$id_bitacora?>">
 					</div>	
 
 					<div class="form-group col-md-6">
