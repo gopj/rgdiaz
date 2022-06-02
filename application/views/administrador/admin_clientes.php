@@ -57,19 +57,19 @@
 								<input type="hidden" id="ruta" name="ruta_carpeta" >
 								<input type="hidden" id="persona_expediente" name="id_persona_expediente" >
 								
-								<input class="btn btn-primary mb-2" id="btn_expediente" disabled type="submit" value="Ver Expediente">
+								<button type="submit" class="btn btn-primary mb-2" id="btn_expediente" disabled><i class="far fa-folder"></i> Ver Expediente </button>
 							</form>
 						</div>
 						
 						<div class="col-sm-2">
 							<form id="ver_bitacora" method='post' action="<?=base_url('administrador/bitacora/');?>">
 								<input type="hidden" id="persona_bitacora" name="id_persona">
-								<input class="btn btn-primary mb-2" id="btn_bitacora" disabled type="submit" value="Ver Bitacora">
+								<button class="btn btn-primary mb-2" id="btn_bitacora" disabled type="submit"> <i class="far fa-file-alt"></i> Ver Bitacora </button>
 							</form>
 						</div>
 
 						<div class="col-sm-2">
-							<input class="btn btn-primary mb-2" id="btn_guardar" disabled type="button" onclick="confir_act_admin();" value="Guardar Cambios">
+							<button class="btn btn-primary mb-2" id="btn_guardar" disabled type="button" onclick="confir_act_admin();"> <i class="far fa-save"></i> Guardar Cambios</button>
 						</div>
 					</div>
 				</div>
@@ -239,10 +239,10 @@
 					
 					<div class="row" style="padding-top: 63px">
 						<div class="col-md-6">
-							<input type="button" id="activar_campos" value="Activar Campos" class="btn btn-primary "  data-toggle='modal' data-target='#modal_activa_campos'>
+							<button type="button" id="activar_campos" value="Activar Campos" class="btn btn-primary "  data-toggle='modal' data-target='#modal_activa_campos'> <i class="far fa-check-circle"></i> Activar Campos</button>
 						</div>
 						<div class="col-md-6">
-							<input type="button" id="update_status" value="Activar Usuario" onclick="update();" class="btn btn-primary" disabled><br>     
+							<button type="button" id="update_status" value="Activar Usuario" onclick="update();" class="btn btn-primary" disabled> <i class="far fa-user-circle"></i> Activar Usuario </button>
 						</div>
 					</div>
 				</div>
