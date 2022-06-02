@@ -498,7 +498,7 @@ class Usuario extends MY_Controller {
 
 		
 				$id_bitacora 			= $this->input->post('id_residuo_peligroso');
-				$id 					= $this->session->userdata('id');
+				$id_persona				= $this->session->userdata('id');
 				$status 				= 0;
 				$total					= $this->notificacion_model->obtiene_noticliente($id,$status);
 				$ruta 					= "clientes/".$id;

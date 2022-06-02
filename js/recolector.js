@@ -541,6 +541,10 @@ $(document).ready(function() {
 	$('#bitacora_administrador').dataTable({
 		displayLength: 25,
 		scrollX: true,
+		columnDefs: [{
+			className: "dt-center", 
+			targets: "_all"
+		}],
 		language: {
 			paginate: {
 				previous: "Anterior",

@@ -5,10 +5,10 @@
 	<base href="<?=base_url()?>"/>
 
 	<!-- metas -->
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="keywords" content="cliente,dashboard" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="admin,dashboard" />
 	<meta name="description" content="RDíaz - Servicios Integrales en Materia Ambiental" />
 
 	<!-- title  -->
@@ -253,6 +253,8 @@
 	<!-- Custom -->
 
 	<script type="text/javascript" src="<?=base_url('js/bitacora.js')?>"></script>
+
+	<script type="text/javascript" src="<?=base_url('js/recolector.js')?>"></script>
 
 	<script type="text/javascript" src="<?=base_url('js/formulario_bitacora.js')?>"></script>
 
