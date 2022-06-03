@@ -108,6 +108,12 @@ function date_bitacora($s_date){
 							<button type="submit" class="btn btn-primary btn-rounded" name="excel" ><i class="fas fa-file-excel"></i> Generar Excel </button>
 						</form>
 					</div>
+					<div class="col">
+						<form action="<?=base_url('admin/reportes'); ?>" method="POST">
+							<input type="hidden" value="<?=$id_persona?>" name="id_persona">
+							<button type="submit" class="btn btn-primary btn-rounded" name="reportes"><i class="far fa-list-alt"></i> Reportes </button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>

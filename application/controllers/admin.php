@@ -629,6 +629,17 @@ class Admin extends MY_Controller {
 	
 	}
 
+	public function reportes(){
+		if ($this->session->userdata('tipo') == 1){
+			if ($this->input->post()){
+				$data["id_persona"] = $this->input->post("id_persona");
+				$data['nombre_empresa'] = $this->persona_model->get_nombre_empresa($data['id_persona']);
+
+				$this->load->view("administrador/reportes", $data);
+			}
+		}
+	}
+
 	public function crizal(){
 		$this->setLayout('admin_test');
 		$this->load->view('administrador/recolector/crizal');

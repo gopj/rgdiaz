@@ -53,6 +53,9 @@
 	<!-- custom css -->
 	<link rel="stylesheet" href="<?=base_url('css/crizal/admin-template/styles.css')?>" />
 
+	<!-- Charts -->
+	<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/nvd3/nv.d3.min.css')?>" />
+
 	<title>Recolector</title>
 </head>
 <body>
@@ -286,6 +289,36 @@
 	<!-- clockpicker -->
 	<script src="<?=base_url('js/crizal/plugins/bootstrap-clockpicker/bootstrap-clockpicker.min.js')?>"></script>
 
+	<!-- chartjs -->
+	<script src="<?=base_url('js/crizal/plugins/chartjs/chart.min.js')?>"></script>
+
+	<!-- d3.min -->
+	<script src="<?=base_url('js/crizal/plugins/d3/d3.min.js')?>"></script>
+
+	<!-- nv.d3.min -->
+	<script src="<?=base_url('js/crizal/plugins/nvd3/nv.d3.min.js')?>"></script>
+
+	<!-- float chart -->
+	<script src="<?=base_url('js/crizal/plugins/flot/jquery.flot.min.js')?>"></script>
+
+	<!-- float time -->
+	<script src="<?=base_url('js/crizal/plugins/flot/jquery.flot.time.min.js')?>"></script>
+
+	<!-- float symbol -->
+	<script src="<?=base_url('js/crizal/plugins/flot/jquery.flot.symbol.min.js')?>"></script>
+
+	<!-- float resize -->
+	<script src="<?=base_url('js/crizal/plugins/flot/jquery.flot.resize.min.js')?>"></script>
+
+	<!-- float tooltip -->
+	<script src="<?=base_url('js/crizal/plugins/flot/jquery.flot.tooltip.min.js')?>"></script>
+
+	<!-- float pie -->
+	<script src="<?=base_url('js/crizal/plugins/flot/jquery.flot.pie.min.js')?>"></script>
+
+	<!-- float pie -->
+	<script src="<?=base_url('js/crizal/pages/chart.js')?>"></script>
+
 	<!-- form elements -->
 	<script src="<?=base_url('js/crizal/pages/form-elements.js')?>"></script>
 
@@ -293,7 +326,7 @@
 	<script src="<?=base_url('js/crizal/pages/table-data.js')?>"></script>
 
 	<!-- custom scripts -->
-	<script src="<?=base_url('js/crizal/main.js')?>"></script>
+	<script src="<?=base_url('js/crizal/admin-template/main.js')?>"></script>
 
 	<!-- all js include end -->		
 

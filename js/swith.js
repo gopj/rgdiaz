@@ -200,11 +200,13 @@ function compruebausuario(id){
 		$("#btn_bitacora").attr('disabled','disabled');
 		$("#btn_guardar").attr('disabled','disabled');
 		$("#update_status").attr('disabled','disabled');
+		$("#activar_campos").attr('disabled','disabled');
 	}
 	else{
 		$("#btn_expediente").removeAttr('disabled');
 		$("#btn_bitacora").removeAttr('disabled');
 		$("#btn_guardar").removeAttr('disabled');
+		$("#activar_campos").removeAttr('disabled');
 	}
 
 	//AJAX
@@ -691,40 +693,38 @@ function get_message_info(id){
 		data:{
 			email_id: email_id,
 		}
-	}).done(
-		function(resp) {
-			var json_data = jQuery.parseJSON(resp);
-			var email_subject = json_data.email_subject;
-			var email = json_data.email;
-			var email_date = json_data.email_date;
-			var email_message = json_data.email_message;
-			var email_phone = json_data.email_phone;
-			var email_status = json_data.status;
+	}).done(function(resp) {
+		var json_data = jQuery.parseJSON(resp);
+		var email_subject = json_data.email_subject;
+		var email = json_data.email;
+		var email_date = json_data.email_date;
+		var email_message = json_data.email_message;
+		var email_phone = json_data.email_phone;
+		var email_status = json_data.status;
 
-			if (email_subject == ""){
-				email_subject = "-";
-			}
-
-			if (email_status == 1){
-				$("#mark_read").attr("disabled", "true");
-				$("#mark_read").removeAttr("onclick");
-				$("#mark_read").attr("class", "btn btn-secondary");
-			}
-
-			email_phone = "Teléfono: " + email_phone;
-
-			$("#mark_read").attr("onclick", "mark_read(" + id + ")");
-
-			$("#email_subject").text(email_subject);
-			$("#email").text(email);
-			$("#email_date").text(email_date);
-			$("#email_message").text(email_message);
-			$("#email_phone").text(email_phone);
-			$("#delete_message").attr('onclick', 'delete_message(' + url_delete + ')');
-			$("#form_reply_message").attr('action', url_reply);
-			$('#email_respond').text($('#email').text());
+		if (email_subject == ""){
+			email_subject = "-";
 		}
-	);
+
+		if (email_status == 1){
+			$("#mark_read").attr("disabled", "true");
+			$("#mark_read").removeAttr("onclick");
+			$("#mark_read").attr("class", "btn btn-secondary");
+		}
+
+		email_phone = "Teléfono: " + email_phone;
+
+		$("#mark_read").attr("onclick", "mark_read(" + id + ")");
+
+		$("#email_subject").text(email_subject);
+		$("#email").text(email);
+		$("#email_date").text(email_date);
+		$("#email_message").text(email_message);
+		$("#email_phone").text(email_phone);
+		$("#delete_message").attr('onclick', 'delete_message(' + url_delete + ')');
+		$("#form_reply_message").attr('action', url_reply);
+		$('#email_respond').text($('#email').text());
+	});
 }
 
 function mark_read(id){
@@ -763,7 +763,7 @@ $(document).ready(function() {
 	$("#reply_message").attr("disabled", "true");
 	$(".note-editable").attr( "style", "height: 195.65px");
 	$(".email-list").attr("style", "height: auto; max-height: 576px;");
-
+	
 	$(':file').change(function () {
 		$('.custom-file-label').text(this.files.length + " Archivo seleccionado(s)");
 	});
