@@ -121,7 +121,7 @@ class Residuo_peligroso_model extends CI_Model {
 
 	public function inserta_residuo($data) {	
 
-		$data['residuo'] = $this->_tipo_residuo($data);
+		$data['residuo'] = $this->tipo_residuo($data);
 		$data['area_generacion'] = $this->area_model->_area($data);
 
 		$this->db
