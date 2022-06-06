@@ -195,14 +195,13 @@ function compruebausuario(id){
 	$("#identificador_folio").val("");
 	$("#id_cliente").val(id);
 
-	if(id_per == 0){
+	if (id_per == 0) {
 		$("#btn_expediente").attr('disabled','disabled');
 		$("#btn_bitacora").attr('disabled','disabled');
 		$("#btn_guardar").attr('disabled','disabled');
 		$("#update_status").attr('disabled','disabled');
 		$("#activar_campos").attr('disabled','disabled');
-	}
-	else{
+	} else {
 		$("#btn_expediente").removeAttr('disabled');
 		$("#btn_bitacora").removeAttr('disabled');
 		$("#btn_guardar").removeAttr('disabled');
@@ -282,6 +281,11 @@ function compruebausuario(id){
 		);
 
 	//echo site_url('administrador/obtiene_cliente'); ?>"  <--	Ruta de la peticion
+}
+
+function lock_inputs(){
+	$("#nombre_empresa").attr("readonly","true");
+	$("#password_contacto").attr("readonly","true");
 }
 
 function comprueba_emp_trans(id){
@@ -763,6 +767,8 @@ $(document).ready(function() {
 	$("#reply_message").attr("disabled", "true");
 	$(".note-editable").attr( "style", "height: 195.65px");
 	$(".email-list").attr("style", "height: auto; max-height: 576px;");
+	$('#date_start').datepicker();
+	$('#date_end').datepicker();
 	
 	$(':file').change(function () {
 		$('.custom-file-label').text(this.files.length + " Archivo seleccionado(s)");

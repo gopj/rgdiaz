@@ -43,7 +43,7 @@
 					<div class="form-row align-items-center">
 						<div class="col-sm-6">
 							<label class="sr-only" for="id_persona">Clientes</label>
-							<select class="form-control" onchange="compruebausuario(this.value);" id="id_persona" name="id_persona" style="width: 100%;">
+							<select class="form-control" onchange="compruebausuario(this.value);lock_inputs();" id="id_persona" name="id_persona" style="width: 100%;">
 								<option value="" class="form-control">Selecciona Cliente</option>
 								<?php foreach($todosclientes->result() as $row){ ?>
 									<option value="<?php echo $row->id_persona;?>"><?php echo $row-> nombre_empresa; ?></option>
@@ -253,7 +253,6 @@
 
 </div>
 <!-- / Main wrapper-->
-
 
 <!-- Modal Activar Campos Start-->
 <div class="modal" id="modal_activa_campos">
