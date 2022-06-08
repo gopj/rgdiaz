@@ -85,9 +85,16 @@
 </div>
 
 <script type="text/javascript">
+	function chart() {
+		var date_start = $("#date_start");
+		var date_end = $("#date_end");
 
+		
+	}
+	
 	window.onload = function () {
 		var ctx = $("#stacked_area_chart");
+		
 		var lineChart = new Chart(ctx, {
 			type: 'line',
 			data: {
