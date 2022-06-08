@@ -640,6 +640,27 @@ class Admin extends MY_Controller {
 		}
 	}
 
+	public function get_data_chart(){
+		$this->setLayout('empty');
+		if ($this->session->userdata('tipo') == 1){
+			$fake_post = 21;
+
+			if ($fake_post){
+				$data['id_persona'] = $fake_post;
+				$data['date_start'] = '2021-01-01';
+				$data['date_end'] = '2021-11-30';
+
+				$this->residuo_peligroso_model->get_array_chart($data);
+			}
+
+			/*if ($this->input->post()){
+				echo "<pre>";
+				print_r($this->input->post());
+				echo "</pre>";
+			}*/
+		}
+	}
+
 	public function crizal(){
 		$this->setLayout('admin_test');
 		$this->load->view('administrador/recolector/crizal');

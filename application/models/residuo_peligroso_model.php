@@ -279,4 +279,54 @@ class Residuo_peligroso_model extends CI_Model {
 
 	}
 
+	function get_array_chart($data){
+		echo "<pre>";
+		print_r($data);
+		echo "</pre>";
+
+		$begin = new DateTime( $data['date_start'] );
+		$end = new DateTime( $data['date_end'] );
+		$interval = DateInterval::createFromDateString('1 month');
+
+		$period = new DatePeriod($begin, $interval, $end);
+		$months = 0;
+
+		foreach($period as $dt) {
+			$months++;
+		}
+
+		echo "Months " . $months;
+
+		$string = $this->db->query("
+			SELECT 
+				id_residuo_peligroso,
+				id_tipo_residuo,
+				count(id_tipo_residuo) counter,
+				DATE_FORMAT(fecha_salida, '%Y/%m') dates
+			FROM
+				residuos_peligrosos 
+			WHERE
+				id_persona = {$data['id_persona']}
+			GROUP BY 
+				dates, id_tipo_residuo
+			ORDER BY 
+				id_residuo_peligroso ASC;
+		")->result();
+		
+		$counter = 0;
+		foreach ($string as $row) { 
+	
+			$new_array[$counter][] = $row->id_residuo_peligroso;
+			$new_array[$counter][] = $row->id_tipo_residuo;
+			$new_array[$counter][] = $row->counter;
+			$new_array[$counter][] = $row->dates;
+
+			$counter++;	
+		}
+
+		echo "<pre>";
+		print_r($new_array);
+		echo "</pre>";
+	}
+
 }

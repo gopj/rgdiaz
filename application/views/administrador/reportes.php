@@ -1,7 +1,7 @@
 <div class="page-title">
 	<h3 class="breadcrumb-header"> <a href="<?=base_url().'administrador/bitacora/' . $id_persona?>"> Bitacora > </a> Reportes - <?= $nombre_empresa; ?> </h3>
 </div>
-<input type="hidden" id="prev_selected" name="prev_selected" value="<?=$id_persona;?>">
+<input type="hidden" id="id_persona" name="id_persona" value="<?=$id_persona;?>">
 <div class="card card-white">
 	<div id="main-wrapper">
 		<div class="card-body">
@@ -25,7 +25,7 @@
 							<input type="text" class="form-control" id="date_end" name="date_end" placeholder="AAAA/MM/DD" data-date-format="yyyy-mm-dd">
 						</div>
 						<div class="col-auto">
-							<button type="submit" class="btn btn-primary"> Buscar </button>
+							<button type="submit" class="btn btn-primary" onclick="get_chart()"> Buscar </button>
 						</div>	
 					</div>	
 				</div>
@@ -85,13 +85,6 @@
 </div>
 
 <script type="text/javascript">
-	function chart() {
-		var date_start = $("#date_start");
-		var date_end = $("#date_end");
-
-		
-	}
-	
 	window.onload = function () {
 		var ctx = $("#stacked_area_chart");
 		

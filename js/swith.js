@@ -761,6 +761,27 @@ function get_baja_clientes(){
 	});
 }
 
+function get_chart(){
+	var date_start = $("#date_start").val();
+	var date_end = $("#date_end").val();
+	var id_persona = $("#id_persona").val();
+
+	alert(date_start + " " + date_end + " " + id_persona);
+
+	jQuery.ajax({
+		url: 'https://' + host + '/admin/get_data_chart',
+		//url:'https://rdiaz.mx/admin/get_data_chart',
+		timeout: 3000, //sets timeout to 3 seconds
+		type:'post',
+		data:{
+			date_start: date_start,
+			date_end: date_end
+		}
+	}).done(function(data_chart) {
+		var json_data = jQuery.parseJSON(data_chart);		
+	});
+}
+
 $(document).ready(function() {
 	$("#delete_message").attr("disabled", "true");
 	$("#mark_read").attr("disabled", "true");

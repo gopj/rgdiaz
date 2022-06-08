@@ -1,7 +1,7 @@
                             <?php
                             
                             phpinfo  ();
-                            CI_version();   
+                            echo CI_VERSION();   
                             
                             ?>    
                             
