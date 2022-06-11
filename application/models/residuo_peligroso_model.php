@@ -287,46 +287,161 @@ class Residuo_peligroso_model extends CI_Model {
 		$begin = new DateTime( $data['date_start'] );
 		$end = new DateTime( $data['date_end'] );
 		$interval = DateInterval::createFromDateString('1 month');
+		//$end->modify('+1 month');
 
 		$period = new DatePeriod($begin, $interval, $end);
 		$months = 0;
 
 		foreach($period as $dt) {
+			$month_list[] = date_format($dt,"Y-m");
+
 			$months++;
 		}
 
 		echo "Months " . $months;
 
-		$string = $this->db->query("
+		$waste_types = $this->db->query("
 			SELECT 
 				id_residuo_peligroso,
-				id_tipo_residuo,
-				count(id_tipo_residuo) counter,
-				DATE_FORMAT(fecha_salida, '%Y/%m') dates
+				id_tipo_residuo
 			FROM
 				residuos_peligrosos 
 			WHERE
 				id_persona = {$data['id_persona']}
 			GROUP BY 
-				dates, id_tipo_residuo
+				id_tipo_residuo
 			ORDER BY 
 				id_residuo_peligroso ASC;
 		")->result();
-		
-		$counter = 0;
-		foreach ($string as $row) { 
-	
-			$new_array[$counter][] = $row->id_residuo_peligroso;
-			$new_array[$counter][] = $row->id_tipo_residuo;
-			$new_array[$counter][] = $row->counter;
-			$new_array[$counter][] = $row->dates;
 
-			$counter++;	
+		foreach ($waste_types as $row) { 
+			$tipo_residuo = $row->id_tipo_residuo;
+			if ($tipo_residuo != 0){
+				$waste_type_list[] = $row->id_tipo_residuo;	
+			}
+		}
+
+		$counter = 0;
+		foreach ($month_list as $month){
+			foreach ($waste_type_list as $waste_type){
+				$count_month = $this->db->query("
+					SELECT 
+						id_residuo_peligroso,
+						id_tipo_residuo,
+						count(id_tipo_residuo) counter,
+						DATE_FORMAT(fecha_salida, '%Y-%m') dates
+					FROM
+						residuos_peligrosos 
+					WHERE
+						id_persona = {$data['id_persona']} 
+						AND fecha_salida like '{$month}%'
+						AND id_tipo_residuo = $waste_type
+					GROUP BY 
+						id_tipo_residuo
+					ORDER BY 
+						id_residuo_peligroso ASC;
+				")->result();
+
+				foreach ($count_month as $row){
+					$count_month_list[$counter][$month][] = $row->id_tipo_residuo;
+					$count_month_list[$counter][$month][] = $row->counter;
+					$count_month_list[$counter][$month][] = $row->dates;				
+				}
+				
+				$counter++;
+			}
 		}
 
 		echo "<pre>";
-		print_r($new_array);
+		print_r($waste_type_list);
+		print_r($month_list);
+		print_r($count_month_list);
 		echo "</pre>";
+
+		// $months = $this->db->query("
+		// 	SELECT 
+		// 		id_residuo_peligroso,
+		// 		DATE_FORMAT(fecha_salida, '%Y-%m') dates
+		// 	FROM
+		// 		residuos_peligrosos 
+		// 	WHERE
+		// 		id_persona = {$data['id_persona']}
+		// 	GROUP BY 
+		// 		dates
+		// 	ORDER BY 
+		// 		id_residuo_peligroso ASC;
+		// ")->result();
+
+		// foreach ($months as $row){
+		// 	if ($row->dates != ""){
+		// 		$month_list[] = $row->dates;
+		// 	}
+		// }
+
+
+		// $counter = 0;
+		// for ($i=0; $i < 3; $i++) {
+		// 	foreach ($month_list as $month){
+		// 		foreach ($waste_type_list as $waste_type){
+		// 			$count_month = $this->db->query("
+		// 				SELECT 
+		// 					id_residuo_peligroso,
+		// 					id_tipo_residuo,
+		// 					count(id_tipo_residuo) counter,
+		// 					DATE_FORMAT(fecha_salida, '%Y-%m') dates
+		// 				FROM
+		// 					residuos_peligrosos 
+		// 				WHERE
+		// 					id_persona = {$data['id_persona']} 
+		// 					AND fecha_salida like '{$month}%'
+		// 					AND id_tipo_residuo = $waste_type
+		// 				GROUP BY 
+		// 					id_tipo_residuo
+		// 				ORDER BY 
+		// 					id_residuo_peligroso ASC;
+		// 			")->result();
+
+					
+		// 			foreach ($count_month as $row){
+		// 				$count_month_list[$counter][$i][] = $row->id_tipo_residuo;
+		// 				$count_month_list[$counter][$i][] = $row->counter;
+		// 				$count_month_list[$counter][$i][] = $row->dates;				
+		// 			}
+					
+		// 			$counter++;
+		// 		}
+		// 	}
+		// }
+		
+		// echo "<pre>";
+		// print_r($count_month_list);
+		// echo "</pre>";
+
+		// $counter = 0;
+		// foreach ($string as $row) { 
+	
+		// 	$new_array[$counter][] = $row->id_residuo_peligroso;
+		// 	$new_array[$counter][] = $row->id_tipo_residuo;
+		// 	$new_array[$counter][] = $row->counter;
+		// 	$new_array[$counter][] = $row->dates;
+
+		// 	$counter++;	
+		// }
+
+		// 		SELECT 
+		// 	id_residuo_peligroso,
+		// 	id_tipo_residuo,
+		// 	count(id_tipo_residuo) counter,
+		// 	DATE_FORMAT(fecha_salida, '%Y/%m') dates
+		// FROM
+		// 	residuos_peligrosos 
+		// WHERE
+		// 	id_persona = {$data['id_persona']}
+		// GROUP BY 
+		// 	dates, id_tipo_residuo
+		// ORDER BY 
+		// 	id_residuo_peligroso ASC;
+
 	}
 
 }
