@@ -647,10 +647,11 @@ class Admin extends MY_Controller {
 
 			if ($fake_post){
 				$data['id_persona'] = $fake_post;
-				$data['date_start'] = '2021-01-01';
-				$data['date_end'] = '2021-11-30';
+				$data['date_start'] = '2016-01-01';
+				$data['date_end'] = '2016-11-30';
 
-				$this->residuo_peligroso_model->get_array_chart($data);
+				$chart_monthly = $this->residuo_peligroso_model->get_array_chart($data)
+				echo json_encode( $chart_monthly );
 			}
 
 			/*if ($this->input->post()){
