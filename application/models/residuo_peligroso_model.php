@@ -318,11 +318,11 @@ class Residuo_peligroso_model extends CI_Model {
 			}
 			$counter ++;
 		}
-		
+
 		$counter = 0;
 		$count_month_list = array();
-		foreach ($month_list as $month){
-			foreach ($waste_type_list as $waste_type){
+		foreach ($waste_type_list as $waste_type){
+			foreach ($month_list as $month){
 
 				$count_month = $this->db->query("
 					SELECT 
@@ -343,8 +343,7 @@ class Residuo_peligroso_model extends CI_Model {
 				")->result();
 
 				foreach ($count_month as $row){
-					$count_month_list[$month][$waste_type[0]][] = $waste_type[1];
-					$count_month_list[$month][$waste_type[0]][] = $row->counter;			
+					$count_month_list[$waste_type[1]][$month][] = $row->counter;			
 				}
 			}
 			$counter++;
