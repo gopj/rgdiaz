@@ -295,10 +295,12 @@ class Residuo_peligroso_model extends CI_Model {
 
 		$waste_types = $this->db->query("
 			SELECT 
-				id_residuo_peligroso,
-				id_tipo_residuo
+				r.id_residuo_peligroso,
+				r.id_tipo_residuo,
+				tr.residuo 
 			FROM
-				residuos_peligrosos 
+				residuos_peligrosos r
+					LEFT JOIN tipo_residuos tr ON (r.id_tipo_residuo = tr.id_tipo_residuo)
 			WHERE
 				id_persona = {$data['id_persona']}
 			GROUP BY 
@@ -307,18 +309,21 @@ class Residuo_peligroso_model extends CI_Model {
 				id_residuo_peligroso ASC;
 		")->result();
 
+		$counter = 0;
 		foreach ($waste_types as $row) { 
 			$tipo_residuo = $row->id_tipo_residuo;
 			if ($tipo_residuo != 0){
-				$waste_type_list[] = $row->id_tipo_residuo;	
+				$waste_type_list[$counter][] = $tipo_residuo;
+				$waste_type_list[$counter][] = $row->residuo;
 			}
+			$counter ++;
 		}
-
+		
 		$counter = 0;
 		$count_month_list = array();
-
 		foreach ($month_list as $month){
 			foreach ($waste_type_list as $waste_type){
+
 				$count_month = $this->db->query("
 					SELECT 
 						rp.id_residuo_peligroso,
@@ -332,14 +337,14 @@ class Residuo_peligroso_model extends CI_Model {
 					WHERE
 						rp.id_persona = {$data['id_persona']} 
 						AND rp.fecha_salida like '{$month}%'
-						AND rp.id_tipo_residuo = {$waste_type}
+						AND rp.id_tipo_residuo = {$waste_type[0]}
 					ORDER BY 
 						rp.id_residuo_peligroso ASC;
 				")->result();
 
 				foreach ($count_month as $row){
-					$count_month_list[$month][$waste_type][] = $row->residuo;
-					$count_month_list[$month][$waste_type][] = $row->counter;			
+					$count_month_list[$month][$waste_type[0]][] = $waste_type[1];
+					$count_month_list[$month][$waste_type[0]][] = $row->counter;			
 				}
 			}
 			$counter++;

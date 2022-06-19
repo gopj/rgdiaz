@@ -18,11 +18,11 @@
 					<div class="form-row align-items-center">
 						<div class="col-auto">
 							<label for="date_start" class="col-form-label">Inicio</label>
-							<input type="text" class="form-control" id="date_start" name="date_start" placeholder="AAAA/MM/DD" data-date-format="yyyy-mm-dd">
+							<input type="text" class="form-control" id="date_start" name="date_start" placeholder="AAAA/MM/DD" data-date-format="yyyy-mm-dd" value="2018-01-01">
 						</div>
 						<div class="col-auto">
 							<label for="date_end" class="col-form-label">Final</label>
-							<input type="text" class="form-control" id="date_end" name="date_end" placeholder="AAAA/MM/DD" data-date-format="yyyy-mm-dd">
+							<input type="text" class="form-control" id="date_end" name="date_end" placeholder="AAAA/MM/DD" data-date-format="yyyy-mm-dd" value="2018-12-01">
 						</div>
 						<div class="col-auto">
 							<button type="submit" class="btn btn-primary" onclick="get_chart()"> Buscar </button>

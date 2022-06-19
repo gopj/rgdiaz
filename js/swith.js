@@ -1,6 +1,6 @@
 // Global variable for host
-var host="localhost/rgdiaz";
-//var host="rdiaz.mx";
+//var host="http://rdiaz.mx";
+var host="https://localhost/rgdiaz";
 
 function swith(){
 	// Preguntamos confirmar dar de alta cliente
@@ -32,8 +32,7 @@ function alta_cliente(){
 		var email = document.getElementById('alta_correo').value;
 		//alert(email);
 		jQuery.ajax({
-			url:'https://' + host + '/administrador/verifica_correo',	//<-- Url que va procesar la peticion
-			//url:'https://rdiaz.mx/administrador/verifica_correo',
+			url: host + '/administrador/verifica_correo',	//<-- Url que va procesar la peticion
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -145,8 +144,7 @@ function eliminar_carpeta(){
 			var r =  ruta.value;
 		//	---------------------	
 			jQuery.ajax({
-			url:'https://' + host + '/administrador/eliminar_carpeta',	//<-- Url que va procesar la peticion
-			//url:'https://rdiaz.mx/administrador/eliminar_carpeta',
+			url: host + '/administrador/eliminar_carpeta',	//<-- Url que va procesar la peticion
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -210,8 +208,7 @@ function compruebausuario(id){
 
 	//AJAX
 	jQuery.ajax({
-			url:'https://' + host + '/administrador/obtiene_cliente',	//<-- Url que va procesar la peticion
-			//url:'https://rdiaz.mx/administrador/obtiene_cliente',
+			url: host + '/administrador/obtiene_cliente',	//<-- Url que va procesar la peticion
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -299,8 +296,7 @@ function comprueba_emp_trans(id){
 
 	//AJAX
 	jQuery.ajax({
-			url:'https://' + host + '/administrador/obtiene_emp_trans',	//<-- Url que va procesar la peticion
-			//url:'https://rdiaz.mx/administrador/obtiene_cliente',
+			url: host + '/administrador/obtiene_emp_trans',	//<-- Url que va procesar la peticion
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -336,8 +332,7 @@ function comprueba_emp_dest(id){
 
 	//AJAX
 	jQuery.ajax({
-			url:'https://' + host + '/administrador/obtiene_emp_dest',	//<-- Url que va procesar la peticion
-			//url:'https://rdiaz.mx/administrador/obtiene_emp_dest',
+			url: host + '/administrador/obtiene_emp_dest',	//<-- Url que va procesar la peticion
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -442,8 +437,7 @@ function alta_cliente_admin(){
 		var email = emailContacto.value;
 		var empresa = nombreEmpresa.value;
 	jQuery.ajax({
-			url:'https://' + host + '/administrador/verifica_correo',	//<-- Url que va procesar la peticion
-			//url:'https://rdiaz.mx/administrador/verifica_correo',
+			url: host + '/administrador/verifica_correo',	//<-- Url que va procesar la peticion
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -494,8 +488,7 @@ function envia_correo_admin(){
 		var mens = mensaje.value;
 		//AJAX
 		jQuery.ajax({
-			url:'https://' + host + '/administrador/envia_correo_admin',	//<-- Url que va procesar la peticion
-			//url:'https://rdiaz.mx/administrador/envia_correo_admin',
+			url: host + '/administrador/envia_correo_admin',	//<-- Url que va procesar la peticion
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -581,8 +574,7 @@ function update(){
 	var cliente = $("#id_cliente").val();
 	// AJAX
 	jQuery.ajax({
-			url:'https://' + host + '/administrador/update_status_cliente',	//<-- Url que va procesar la peticion
-			//url:'https://rdiaz.mx/administrador/update_status_cliente',
+			url: host + '/administrador/update_status_cliente',	//<-- Url que va procesar la peticion
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -648,8 +640,7 @@ function gen_identificador_duiplicado() {
 
 	//AJAX
 	jQuery.ajax({
-		url:'https://' + host + '/administrador/identificador_duplicado',	//<-- Url que va procesar la peticion
-		//url:'https://rdiaz.mx/administrador/identificador_duplicado',
+		url: host + '/administrador/identificador_duplicado',	//<-- Url que va procesar la peticion
 		timeout: 3000, //sets timeout to 3 seconds
 		type:'post',
 		data:{
@@ -685,13 +676,12 @@ function get_message_info(id){
 	$(".note-codable").attr( "id", "text_message");
 
 	var email_id = id;
-	var url_delete = '\'https://' + host + '/administrador/eliminar_mensaje/' + email_id + '\'';
+	var url_delete = '\'' + host + '/administrador/eliminar_mensaje/' + email_id + '\'';
 	var url_reply = 'administrador/contestar_mensaje_contacto/' + email_id;
 
 	//AJAX
 	jQuery.ajax({
-		url:'https://' + host + '/administrador/get_message',	//<-- Url que va procesar la peticion
-		//url:'https://rdiaz.mx/administrador/get_message',
+		url: host + '/administrador/get_message',	//<-- Url que va procesar la peticion
 		timeout: 3000, //sets timeout to 3 seconds
 		type:'post',
 		data:{
@@ -733,7 +723,7 @@ function get_message_info(id){
 
 function mark_read(id){
 	$.ajax({
-		url: 'https://' + host + '/administrador/mark_read/' + id,
+		url: host + '/administrador/mark_read/' + id,
 		success:function(data){
 			var new_unreads = $.parseJSON(data);
 			$("#message_count").text(new_unreads);
@@ -750,7 +740,7 @@ function delete_message(url_delete){
 
 function get_baja_clientes(){
 	$.ajax({
-		url: 'https://' + host + '/administrador/get_clientes',
+		url: host + '/administrador/get_clientes',
 		success:function(data){
 			var opts = $.parseJSON(data);
 			$('#id_persona_baja').append('<option value="-1">Selecciona empresa</option>');
@@ -766,19 +756,74 @@ function get_chart(){
 	var date_end = $("#date_end").val();
 	var id_persona = $("#id_persona").val();
 
-	alert(date_start + " " + date_end + " " + id_persona);
-
 	jQuery.ajax({
-		url: 'https://' + host + '/admin/get_data_chart',
-		//url:'https://rdiaz.mx/admin/get_data_chart',
+		url: host + '/admin/get_data_chart',
 		timeout: 3000, //sets timeout to 3 seconds
 		type:'post',
 		data:{
+			id_persona: id_persona,
 			date_start: date_start,
 			date_end: date_end
 		}
 	}).done(function(data_chart) {
-		var json_data = jQuery.parseJSON(data_chart);		
+		var json_data = jQuery.parseJSON(data_chart);
+
+		console.log(JSON.stringify(json_data));
+
+		        new Chart(document.getElementById("chart3"),{
+		        	"type":"line",
+		        	"data":{
+		        		"labels":["Eating","Drinking","Sleeping","Designing","Coding","Cycling","Running"],
+		        		"datasets":[
+		        		{
+		        			"label":"My First Dataset",
+		        			"data":[65,59,90,81,56,55,40],
+		        			"fill":true,
+		        			"backgroundColor":"rgba(236, 94, 105, 0.2)",
+		        			"borderColor":"rgb(236, 94, 105)",
+		        			"pointBackgroundColor":"rgb(236, 94, 105)",
+		        			"pointBorderColor":"#fff",
+		        			"pointHoverBackgroundColor":"#fff",
+		        			"pointHoverBorderColor":"rgb(236, 94, 105)"
+		        		}, {
+		        			"label":"My Second Dataset",
+		        			"data":[28,48,40,19,96,27,100],"fill":true,
+		        			"backgroundColor":"rgba(0, 112, 224, 0.2)",
+		        			"borderColor":"rgb(0, 112, 224)",
+		        			"pointBackgroundColor":"rgb(0, 112, 224)",
+		        			"pointBorderColor":"#fff",
+		        			"pointHoverBackgroundColor":"#fff",
+		        			"pointHoverBorderColor":"rgb(0, 112, 224)"
+		        		}]
+		        	},
+					"options":{
+						"elements":{
+							"line":{
+								"tension":0,
+								"borderWidth":3
+							}
+						}
+					}
+
+		        	});
+
+
+		Object.entries(json_data).forEach(([month, month_data]) => {
+			Object.entries(month_data).forEach(([waste, waste_data]) => {
+				console.log(`${month} ${waste} ${waste_data}`);
+				var ctx = $("#stacked_area_chart");
+				var lineChart = new Chart(ctx, {
+					type: 'line',
+					data: {
+						labels: ["2018-01", "2018-02", "2018-03", "2018-04", "2018-05", "2018-06", "2018-07", "2018-08", "2018-09", "2018-10", "2018-11", "2018-12"],
+						datasets: [{
+							label: "Aceites lubricantes usados",
+							data: [0, 0, 3, 3, 0, 0, 0, 0, 4, 0, 0, 0]
+						}]
+					}
+				})
+			});
+		});
 	});
 }
 
@@ -796,7 +841,7 @@ $(document).ready(function() {
 	});
 
 	$.ajax({
-		url: 'https://' + host + '/administrador/get_unread',
+		url: host + '/administrador/get_unread',
 		success:function(data){
 			var unread = $.parseJSON(data);
 			$("#message_count").text(unread);

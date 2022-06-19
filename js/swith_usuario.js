@@ -1,7 +1,3 @@
-// Global variable for host
-var host="localhost/rgdiaz";
-//var host="rdiaz.mx";
-
 //	Funcion para validar al agregar una carpeta nueva
 function valida_nom_carpeta(){
 	var expRegNombre = /^\s*$/;

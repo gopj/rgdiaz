@@ -643,22 +643,23 @@ class Admin extends MY_Controller {
 	public function get_data_chart(){
 		$this->setLayout('empty');
 		if ($this->session->userdata('tipo') == 1){
-			$fake_post = 21;
+			if ($this->input->post()){
+				$data['id_persona'] = $this->input->post('id_persona');
+				$data['date_start'] = $this->input->post('date_start');
+				$data['date_end'] = $this->input->post('date_end');
 
-			if ($fake_post){
-				$data['id_persona'] = $fake_post;
-				$data['date_start'] = '2016-01-01';
-				$data['date_end'] = '2016-11-30';
+				$chart_monthly = $this->residuo_peligroso_model->get_array_chart($data);
 
-				$chart_monthly = $this->residuo_peligroso_model->get_array_chart($data)
-				echo json_encode( $chart_monthly );
+				echo json_encode($chart_monthly);
+			} else {
+				$data['id_persona'] = 140;
+				$data['date_start'] = '2018-01-01';
+				$data['date_end'] = '2018-12-01';
+
+				$chart_monthly = $this->residuo_peligroso_model->get_array_chart($data);
+
+				echo json_encode($chart_monthly);
 			}
-
-			/*if ($this->input->post()){
-				echo "<pre>";
-				print_r($this->input->post());
-				echo "</pre>";
-			}*/
 		}
 	}
 
