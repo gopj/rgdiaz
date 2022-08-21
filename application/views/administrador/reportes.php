@@ -14,6 +14,7 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="form-inline col-md-12">
 					<div class="form-row align-items-center">
 						<div class="col-auto">
@@ -33,52 +34,13 @@
 				<div class="col-md-12">
 					<div class="card-body">
 						<div class="card-heading clearfix">
-							<h4 class="card-title">Stacked Area Chart</h4>
+							<h4 class="card-title">Hazardous waste chart per month</h4>
 						</div>
-						<canvas id="stacked_area_chart">
+						<canvas id="hazardous_waste_monthly">
 						</canvas>
 					</div>
 				</div>
 
-				<div class="col-md-6">
-					<div class="card-body">
-						<div class="card-heading clearfix">
-							<h4 class="card-title">chart1</h4>
-						</div>
-						<canvas id="chart1">
-						</canvas>
-					</div>
-				</div>
-
-				<div class="col-md-6">
-					<div class="card-body">
-						<div class="card-heading clearfix">
-							<h4 class="card-title">chart2</h4>
-						</div>
-						<canvas id="chart2">
-						</canvas>
-					</div>
-				</div>
-
-				<div class="col-md-6">
-					<div class="card-body">
-						<div class="card-heading clearfix">
-							<h4 class="card-title">chart3</h4>
-						</div>
-						<canvas id="chart3">
-						</canvas>
-					</div>
-				</div>
-
-				<div class="col-md-6">
-					<div class="card-body">
-						<div class="card-heading clearfix">
-							<h4 class="card-title">chart4</h4>
-						</div>
-						<canvas id="chart4">
-						</canvas>
-					</div>
-				</div>
 			</div>	
 		</div>
 	</div>
@@ -86,17 +48,36 @@
 
 <script type="text/javascript">
 	window.onload = function () {
-		var ctx = $("#stacked_area_chart");
-		
-		var lineChart = new Chart(ctx, {
+				
+		var hwm = $("#hazardous_waste_monthly");
+
+		var lineChart = new Chart(hwm, {
 			type: 'line',
 			data: {
-				labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+				labels: ["2018-01", "2018-02", "2018-03", "2018-04", "2018-05", "2018-06", "2018-07", "2018-08", "2018-09", "2018-10", "2018-11"],
 				datasets: [{
-					label: "2015",
-					data: [10, 8, 6, 5, 12, 8, 16, 17, 6, 7, 6, 10]
+					label: "Aceites lubricantes usados",
+					data: [0, 0, 3, 3, 0, 0, 0, 4, 0, 0, 0],
+					fill:true,
+					backgroundColor:"rgba(236, 94, 105, 0.2)",
+					borderColor:"rgb(236, 94, 105)",
+					pointBackgroundColor:"rgb(236, 94, 105)",
+					pointBorderColor:"#fff",
+					pointHoverBackgroundColor:"#fff",
+					pointHoverBorderColor:"rgb(236, 94, 105)"
+				}, {
+					label: "Aceites lubricantes usados",
+					data: [0, 0, 3, 2, 0, 0, 0, 4, 0, 0, 0],
+					fill:true,
+					backgroundColor:"rgba(0, 112, 224, 0.2)",
+					borderColor:"rgb(0, 112, 224)",
+					pointBackgroundColor:"rgb(0, 112, 224)",
+					pointBorderColor:"#fff",
+					pointHoverBackgroundColor:"#fff",
+					pointHoverBorderColor:"rgb(0, 112, 224)"
 				}]
 			}
 		})
 	}
+
 </script>
