@@ -343,13 +343,16 @@ class Residuo_peligroso_model extends CI_Model {
 				")->result();
 
 				foreach ($count_month as $row){
-					$count_month_list[$waste_type[1]][$month][] = $row->counter;			
+					$count_month_list[$waste_type[1]][] = $row->counter;			
 				}
 			}
 			$counter++;
 		}
 
-		return $count_month_list;
+		$data["labels"] = $month_list;
+		$data["data"] = $count_month_list;
+
+		return $data;
 	}
 
 }

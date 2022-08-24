@@ -643,22 +643,81 @@ class Admin extends MY_Controller {
 	public function get_data_chart(){
 		$this->setLayout('empty');
 		if ($this->session->userdata('tipo') == 1){
+
 			if ($this->input->post()){
 				$data['id_persona'] = $this->input->post('id_persona');
 				$data['date_start'] = $this->input->post('date_start');
 				$data['date_end'] = $this->input->post('date_end');
 
-				$chart_monthly = $this->residuo_peligroso_model->get_array_chart($data);
+				$chart = $this->residuo_peligroso_model->get_array_chart($data);
 
-				echo json_encode($chart_monthly);
+				$chart_print["labels"] =  $chart["labels"];
+				$chart_print["datasets"] = $chart["data"];
+
+				$json_data = "labels: [";
+				$label_count = count($chart_print["labels"]) - 1;
+
+				foreach ($chart_print["labels"] as $label => $value) {
+					if ($label_count == $label) {
+						$json_data .= "'" . $value . "'], datasets: [{ label: ";
+					} else {
+						$json_data .= "'" . $value . "', ";
+					}
+				}
+
+				foreach ($chart_print["datasets"] as $key => $value) {
+				 	$json_data .= "'" . $key . "', data: [";
+
+				 	$values_count = count($value) - 1;
+				 	foreach ($value as $key => $value) {
+				 		if ($values_count == $key) {
+							$json_data .= $value . "], fill: true, }, { ";
+				 		} else {
+							$json_data .= $value . ", ";
+				 		}
+				 	}
+				}
+
+				$json_data = mb_substr($json_data, 0, -4) . "]";
+				
+				echo json_encode($json_data);
 			} else {
 				$data['id_persona'] = 140;
 				$data['date_start'] = '2018-01-01';
 				$data['date_end'] = '2018-12-01';
 
-				$chart_monthly = $this->residuo_peligroso_model->get_array_chart($data);
+				$chart = $this->residuo_peligroso_model->get_array_chart($data);
 
-				echo json_encode($chart_monthly);
+				$chart_print["labels"] =  $chart["labels"];
+				$chart_print["datasets"] = $chart["data"];
+
+				$json_data = "labels: [";
+				$label_count = count($chart_print["labels"]) - 1;
+
+				foreach ($chart_print["labels"] as $label => $value) {
+					if ($label_count == $label) {
+						$json_data .= "'" . $value . "'], datasets: [{ label: ";
+					} else {
+						$json_data .= "'" . $value . "', ";
+					}
+				}
+
+				foreach ($chart_print["datasets"] as $key => $value) {
+				 	$json_data .= "'" . $key . "', data: [";
+
+				 	$values_count = count($value) - 1;
+				 	foreach ($value as $key => $value) {
+				 		if ($values_count == $key) {
+							$json_data .= $value . "], fill: true, }, { label: ";
+				 		} else {
+							$json_data .= $value . ", ";
+				 		}
+				 	}
+				}
+
+				$json_data = mb_substr($json_data, 0, -12) . "]";
+
+				echo json_encode($json_data);
 			}
 		}
 	}

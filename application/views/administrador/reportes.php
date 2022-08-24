@@ -58,23 +58,23 @@
 				datasets: [{
 					label: "Aceites lubricantes usados",
 					data: [0, 0, 3, 3, 0, 0, 0, 4, 0, 0, 0],
-					fill:true,
-					backgroundColor:"rgba(236, 94, 105, 0.2)",
-					borderColor:"rgb(236, 94, 105)",
-					pointBackgroundColor:"rgb(236, 94, 105)",
-					pointBorderColor:"#fff",
-					pointHoverBackgroundColor:"#fff",
-					pointHoverBorderColor:"rgb(236, 94, 105)"
+					fill: true,
+					backgroundColor: "rgba(236, 94, 105, 0.2)",
+					borderColor: "rgb(236, 94, 105)",
+					pointBackgroundColor: "rgb(236, 94, 105)",
+					pointBorderColor: "#fff",
+					pointHoverBackgroundColor: "#fff",
+					pointHoverBorderColor: "rgb(236, 94, 105)"
 				}, {
 					label: "Aceites lubricantes usados",
 					data: [0, 0, 3, 2, 0, 0, 0, 4, 0, 0, 0],
-					fill:true,
-					backgroundColor:"rgba(0, 112, 224, 0.2)",
-					borderColor:"rgb(0, 112, 224)",
-					pointBackgroundColor:"rgb(0, 112, 224)",
-					pointBorderColor:"#fff",
-					pointHoverBackgroundColor:"#fff",
-					pointHoverBorderColor:"rgb(0, 112, 224)"
+					fill: true,
+					backgroundColor: "rgba(0, 112, 224, 0.2)",
+					borderColor: "rgb(0, 112, 224)",
+					pointBackgroundColor: "rgb(0, 112, 224)",
+					pointBorderColor: "#fff",
+					pointHoverBackgroundColor: "#fff",
+					pointHoverBorderColor: "rgb(0, 112, 224)"
 				}]
 			}
 		})
