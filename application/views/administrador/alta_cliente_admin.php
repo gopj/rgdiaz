@@ -1,127 +1,150 @@
-				<div class="span9">
-					<center><legend>Alta de Cliente</legend></center>
-					<form method="post" id="altaCAdmin" action="<?php echo site_url('administrador/registra_cliente_admin')?>">
-					<div class="row-fluid">
-						<div class="span5">
-							<legend>Datos de la Empresa</legend>
-							<div class="well">
-								<br>
-								<center>
-									Nombre o Razón Social
-									<div class='input-prepend'>
-										<span class='add-on'>
-											<img src="img/glyphicons_450_factory.png" class="icon-form">
-										</span>
-										<input class="txt-well" id="nomEmp" type='text' name="nombre_empresa">
-									</div>
-									Calle 
-									<div class='input-prepend'>
-										<span class='add-on'>
-											<img src="img/glyphicons_242_google_maps.png" class="icon-form">
-										</span>
-										<input class="txt-well" id="calleEmp" type='text' name="calle_empresa">
-									</div>
-									Número
-									<div class='input-prepend'>
-										<span class='add-on'>
-											<img src="img/glyphicons_242_google_maps.png" class="icon-form">
-										</span>
-										<input class="txt-well" id="numEmp" type='text' placeholder='Ejemplo: 45'  name="numero_empresa">
-									</div>
-									Número de Registro Ambiental
-									<div class='input-prepend'>
-										<span class='add-on'>
-											<img src="img/glyphicons_242_google_maps.png" class="icon-form">
-										</span>
-										<input class="txt-well" id="numRegAmb" type='text' placeholder=''  name="numero_registro_ambiental">
-									</div>
-									Colonia
-									<div class='input-prepend'>
-										<span class='add-on'>
-											<img src="img/glyphicons_242_google_maps.png" class="icon-form">
-										</span>
-										<input class="txt-well" id="colEmp" type='text' name="colonia_empresa">
-									</div>
-									Municipio
-									<div class='input-prepend'>
-										<span class='add-on'>
-											<img src="img/glyphicons_242_google_maps.png" class="icon-form">
-										</span>
-										<input class="txt-well" id="munEmp" type='text' name="municipio">
-									</div>
-									Código Postal
-									<div class='input-prepend'>
-										<span class='add-on'>
-											<img src="img/glyphicons_242_google_maps.png" class="icon-form">
-										</span>
-										<input class="txt-well" id="cpEmp" type='text' name="cp_empresa">
-									</div>
-									Estado
-									<div class='input-prepend'>
-										<span class='add-on'>
-											<img src="img/glyphicons_242_google_maps.png" class="icon-form">
-										</span>
-										<input class="txt-well" id="esEmp" type='text' name="estado">
-									</div>
-									Teléfono
-									<div class='input-prepend'>
-										<span class='add-on'>
-											<img src="img/glyphicons_442_earphone.png" class="icon-form">
-										</span>
-										<input class="txt-well" id="telEmp" type='text' name="telefono_empresa">
-									</div>
-									Dirección de Email
-									<div class='input-prepend'>
-										<span class='add-on'>
-											<img src="img/glyphicons_010_envelope.png" class="icon-form">
-										</span>
-										<input class="txt-well" id="correo_empresa" type="email"  type='text' name="correo_empresa">
-									</div>
-								</center>
-								<br>
+<div class="page-title">
+	<h3 class="breadcrumb-header"> Alta Cliente </h3>
+</div>
+<form class="form-row" id="altaCAdmin" action="<?=base_url('administrador/registra_cliente_admin');?>" method="POST">
+ 	<div class="col-md-6">
+		<div class="card card-white">
+			<div class="card-heading clearfix">
+				<h4 class="card-title">Datos de Cliente</h4>
+			</div>
+			<div class="card-body">
+			
+				<div class="form-row" id="datosempresa" >
+					<div class="col-md-8 mb-2">
+						<label >Nombre | Razón social</label>
+						<input type="text" class="form-control" id="nombre_empresa" name="nombre_empresa">
+						<input type="text" id="id_cliente" name="id_cliente" hidden>
+					</div>
+					<div class="col-md-4 mb-2">
+						<label >Registro ambiental</label>
+						<input class="form-control" id="numero_registro_ambiental" name="numero_registro_ambiental" type="text">
+					</div>
+
+					<div class="col-md-6 mb-2">
+						<label >Email</label>
+						<div class="input-group-prepend">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="inputGroupPrepend"><i class="far fa-envelope"></i></span>
 							</div>
-						</div>
-						<div class="span2"></div>
-						<div class="span5">
-							<legend>Datos del Contacto</legend>
-							<div class="well">
-								<br>
-								<center>
-									Nombre
-									<div class='input-prepend'>
-										<span class='add-on'>
-											<img src="img/glyphicons_003_user.png" class="icon-form">
-										</span>
-										<input class="txt-well" id="nomCont" type='text' name="nombre">
-									</div>
-									Teléfono
-									<div class='input-prepend'>
-										<span class='add-on'>
-											<img src="img/glyphicons_442_earphone.png" class="icon-form">
-										</span>
-										<input class="txt-well" id="telCont" type='text' name="telefono_personal">
-									</div>
-									Teléfono Alternativo
-									<div class='input-prepend'>
-										<span class='add-on'>
-											<img src="img/glyphicons_442_earphone.png" class="icon-form">
-										</span>
-										<input class="txt-well" id="telCont_alt" type='text' name="telefono_personal_alt">
-									</div>
-									Direcion de Email
-									<div class='input-prepend'>
-										<span class='add-on'>
-											<img src="img/glyphicons_010_envelope.png" class="icon-form">
-										</span>
-										<input class="txt-well" id="emailCont" name="correo" type='text'>
-									</div>
-								</center>
-								<br>
-							</div>
+							<input class="form-control" id="email_empresa" name="email_empresa" type="text">
 						</div>
 					</div>
-					<input type="button" value="Dar de Alta" id="enviar" onclick="alta_cliente_admin();" class="btn btn-primary pull-right">
-					</form>
-				</div>
+
+					<div class="col-md-3 mb-2">
+						<label >Teléfono</label>
+						<div class="input-group-prepend">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="inputGroupPrepend" onclick="gen_identificador_folio();"><i class="fas fa-phone"></i></span>
+							</div>
+							<input class="form-control" id="telefono_empresa" name="telefono_empresa" type="text">
+						</div>
+					</div>
+
+					<div class="col-md-3 mb-2">
+						<label >Identificador Fólio</label>
+					
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<button class="btn btn-outline-primary" type="button" id="button-addon1" onclick="gen_identificador_folio();"><i class="fas fa-bolt"></i></button>
+							</div>
+							<input class="form-control" id="identificador_folio" name="identificador_folio" type="text">
+						</div>
+					</div>
+
+					<div class="col-md-7 mb-2">
+						<label >Domicilio | Calle</label>
+						<input type="text" class="form-control" id="calle_empresa" name="calle_empresa"  >
+						<div class="invalid-feedback">
+							Please provide a valid state.
+						</div>
+					</div>
+
+					<div class="col-md-3 mb-3">
+						<label >Número</label>
+						<input class="form-control" id="numero_empresa" name="numero_empresa" type="text">
+					</div>
+
+					<div class="col-md-2 mb-3">
+						<label for="validationCustom05">C. P.</label>
+						<input class="form-control" id="cp_empresa" name="cp_empresa" type="text">
+					</div>
+
+					<div class="col-md-4 mb-2">
+						<label >Colonia</label>
+						<input class="form-control" id="colonia_empresa" name="colonia_empresa" type="text">
+					</div>
+					
+					<div class="col-md-4 mb-3">
+						<label >Estado</label>
+						<input class="form-control" id="estado_empresa" name="estado" type="text">
+					</div>
+
+					<div class="col-md-4 mb-1">
+						<label >Municipio</label>
+						<input class="form-control" id="municipio_empresa" name="municipio" type="text">
+					</div>
+				</div>	
 			</div>
 		</div>
+	</div>
+
+	<div class="col-md-6">
+		<div class="card card-white">
+			<div class="card-heading clearfix">
+				<h4 class="card-title">Datos de Contacto</h4>
+			</div>
+			<div class="card-body">
+
+				<div class="row">
+					<div class="col-md-6 mb-2">
+						<label >Nombre del contacto</label>
+						<input class="form-control" id="nombre_contacto" name="nombre_contacto" type="text">
+					</div>
+
+					<div class="col-md-6 mb-2">
+						<label >Email Alternativo</label>
+						<div class="input-group-prepend">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-envelope"></i></span>
+							</div>
+							<input class="form-control" id="email_contacto" name="email_contacto" type="text">
+						</div>
+					</div>
+				</div>
+				
+				<div class="row" id="datoscontacto">
+					<div class="col-md-6 mb-2">
+						<label >Teléfono</label>
+						<div class="input-group-prepend">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-envelope"></i></span>
+							</div>
+							<input class="form-control" type="text" id="telefono_contacto" name="telefono_contacto">
+						</div>
+					</div>
+
+					<div class="col-md-6 mb-2">
+						<label >Teléfono Alternativo</label>
+						<div class="input-group-prepend">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-phone"></i></span>
+							</div>
+							<input class="form-control" id="telefono_contacto_alt" name="telefono_contacto_alt" type="text">
+						</div>
+					</div>
+					
+				</div>
+
+				<div>
+					<div class="row" style="padding-top: 63px">
+						<div class="col-md-6">
+							<button class="btn btn-primary mb-2" id="btn_guardar" onclick="alta_cliente_admin();" type="submit"> <i class="far fa-save"></i> Guardar Cambios</button>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>	
+	</div>
+
+</form>	

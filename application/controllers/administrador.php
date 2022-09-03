@@ -94,7 +94,7 @@ class Administrador extends MY_Controller {
 					$psw_nva .= substr($str,rand(0,62),1);
 				}
 
-				$this->persona_model->alta_cliente($this->input->post('correo'),$psw_nva,$id_tipo_persona=3,$id_status_persona=1,$lleno_datos=0);
+				$this->persona_model->alta_cliente($this->input->post('correo'),$psw_nva,$id_tipo_persona=3,$id_status_persona=1,$lleno_datos=1);
 
 				$correo = $this->input->post('correo'); 
 			
@@ -500,26 +500,9 @@ class Administrador extends MY_Controller {
 
 	public function alta_cliente_admin(){	
 	
-		$mensajesnuevos = $this->contacto_model->contador_mensajes($status=0);
-		#$todosmensajes = $this->contacto_model->mensajescontacto();
-		$data = array(
-			'mensajes'=> $mensajesnuevos,
-			#'mensajitos' => $todosmensajes
-		);
-
-		#	Obtenemos a todos los clientes activos de RDIAZ-----------------------
-		$id_tipo_persona=3;
-		$id_status_persona=1;
-		// Mandar una variable para selecciar solo a los clientes que ya llenaron su info
-		$lleno_datos = 1;
-		$cliente_baja=$this->persona_model->obtiene_clientes_baja($id_status_persona,$id_tipo_persona,$lleno_datos);
-		//$cliente=$this->persona_model->obtiene_clientes($id_tipo_persona,$id_status_persona,$lleno_datos);
-
-		$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
-		$data = array(
-			'clientes' => $cliente_baja,
-			'correo' => $correo_clientes
-		);
+		if ($this->input->post()){
+			$data['correo'] = $this->input->post('correo');
+		}
 
 		$this->load->view('administrador/alta_cliente_admin', $data);
 		

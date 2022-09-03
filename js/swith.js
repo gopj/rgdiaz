@@ -357,6 +357,11 @@ function comprueba_emp_dest(id){
 		);
 }
 
+function alta_correo() {
+	correo =  $('#correo_admin_alta').val();
+	alert(correo);
+}
+
 function alta_cliente_admin(){
 	var expRegEmail= /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;//Expresion regular correo
 	var expRegNum = /^(?:\+|-)?\d+$/; // Expresion regular números

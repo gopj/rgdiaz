@@ -189,7 +189,7 @@
 										<span class="add-on">
 											<img src="img/glyphicons_003_user.png" class="icon-form">
 										</span>
-										<input class="form-control" type="text" id="alta_correo" name="correo"/>
+										<input class="form-control" type="text" id="alta_correo" name="correo" oninput="alta_correo();" />
 									</div>
 									Nota: se le enviara automáticamente al cliente un correo con su usuario y contraseña.
 								</div>
@@ -199,7 +199,12 @@
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-primary"  onclick="alta_cliente()" value="Dar de Alta">
-					<a href="<?=site_url('administrador/alta_cliente_admin')?>" class="btn btn-primary"> Dar de alta y registrar datos </a>
+
+					<form id="form_admin_alta" method="post"  action="<?=base_url('administrador/alta_cliente_admin')?>">
+						<input type="hidden" name="alta_correo" id="alta_correo" value="What">
+						<button type="button" class="btn btn-primary"> Dar de alta y registrar datos </button>
+					</form>
+
 				</div>
 			</div> 
 		</div>
@@ -244,6 +249,11 @@
 			</div> 
 		</div>
 	</div>
+	<!-- Alta cliente Admin -->
+	<script type="text/javascript">
+		
+	</script>
+
 	<!-- Modal Baja Cliente End-->
 
 	<!-- start scroll to top -->

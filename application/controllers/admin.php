@@ -688,10 +688,18 @@ class Admin extends MY_Controller {
 
 				$chart = $this->residuo_peligroso_model->get_array_chart($data);
 
-				$chart_print["labels"] =  $chart["labels"];
-				$chart_print["datasets"] = $chart["data"];
+				$json_data["type"] = "line";
+				$json_data["data"]["labels"] = $chart["labels"];
 
-				$json_data = "labels: [";
+				$label_count= 0;
+				foreach ($chart["data"] as $label => $data) {
+
+					$json_data["data"]["datasets"][$label_count][$label]["data"] = $data;
+					$label_count +=1 ;
+				}
+
+
+				/*$json_data = "labels: [";
 				$label_count = count($chart_print["labels"]) - 1;
 
 				foreach ($chart_print["labels"] as $label => $value) {
@@ -715,7 +723,10 @@ class Admin extends MY_Controller {
 				 	}
 				}
 
-				$json_data = mb_substr($json_data, 0, -12) . "]";
+				$json_data = mb_substr($json_data, 0, -12) . "]";*/
+				echo "<pre>";
+				print_r($json_data);
+				echo "</pre>";
 
 				echo json_encode($json_data);
 			}
