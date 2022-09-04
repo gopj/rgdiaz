@@ -651,7 +651,8 @@ class Admin extends MY_Controller {
 
 				$chart = $this->residuo_peligroso_model->get_array_chart($data);
 
-				$json_data = "type: 'line', data: { labels: [";
+
+				/*$json_data = "{type: 'line', data: { labels: [";
 				$label_count = count($chart["labels"]) - 1;
 
 				foreach ($chart["labels"] as $label => $value) {
@@ -670,6 +671,9 @@ class Admin extends MY_Controller {
 				 	foreach ($value as $key => $value) {
 				 		if ($values_count == $key) {
 							$json_data .= $value . "], fill: true, {$this->_chart_colors($count_color)}}, { label: ";
+							if ($count_color == 10){
+								$count_color = -1;
+							}
 							$count_color++;
 				 		} else {
 							$json_data .= $value . ", ";
@@ -677,9 +681,9 @@ class Admin extends MY_Controller {
 				 	}
 				}
 
-				$json_data = mb_substr($json_data, 0, -12) . "}]}";
+				$json_data = mb_substr($json_data, 0, -12) . "}]} }";*/
 
-				echo json_encode($json_data);
+				echo json_encode($chart);
 			} else {
 				$data['id_persona'] = 140;
 				$data['date_start'] = '2018-01-01';
@@ -687,7 +691,9 @@ class Admin extends MY_Controller {
 
 				$chart = $this->residuo_peligroso_model->get_array_chart($data);
 
-				$json_data = "type: 'line', data: { labels: [";
+
+
+				/*$json_data = "{type: 'line', data: { labels: [";
 				$label_count = count($chart["labels"]) - 1;
 
 				foreach ($chart["labels"] as $label => $value) {
@@ -706,6 +712,9 @@ class Admin extends MY_Controller {
 				 	foreach ($value as $key => $value) {
 				 		if ($values_count == $key) {
 							$json_data .= $value . "], fill: true, {$this->_chart_colors($count_color)}}, { label: ";
+							if ($count_color == 10){
+								$count_color = -1;
+							}
 							$count_color++;
 				 		} else {
 							$json_data .= $value . ", ";
@@ -713,8 +722,9 @@ class Admin extends MY_Controller {
 				 	}
 				}
 
-				$json_data = mb_substr($json_data, 0, -12) . "}]}";
-				echo json_encode($json_data);
+				$json_data = mb_substr($json_data, 0, -12) . "}]}}";
+				echo json_encode($json_data);*/
+				echo json_encode($chart);
 			}
 		}
 	}

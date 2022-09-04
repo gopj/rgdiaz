@@ -771,17 +771,23 @@ function get_chart(){
 			date_start: date_start,
 			date_end: date_end
 		}
-	}).done(function(data_chart) {
+	}).done(function(data_chart){
 		//var json_data = jQuery.parseJSON(data_chart);
 		var json_data = JSON.parse(data_chart);
 		var hwm = $("#hazardous_waste_monthly");
 
-		var print_data = json_data;
+		console.log(json_data.labels);
+		console.log(json_data.data);
+		console.log(json_data.data[0]);
 
-		console.log(print_data);
 
-		var lineChart = new Chart( hwm, {type: 'line', data: { labels: ['2018-01', '2018-02', '2018-03', '2018-04', '2018-05', '2018-06', '2018-07', '2018-08', '2018-09', '2018-10', '2018-11'], datasets: [{ label: 'Aceites lubricantes usados', data: [0, 0, 3, 3, 0, 0, 0, 4, 0, 0, 0], fill: true, backgroundColor: 'rgba(236, 94, 105, 0.2)', borderColor: 'rgb(236, 94, 105)', pointBackgroundColor: 'rgb(236, 94, 105)', pointBorderColor: '#fff', pointHoverBackgroundColor: '#fff', pointHoverBorderColor: 'rgb(236, 94, 105)'}, { label: 'Sólidos de mantenimiento automotriz', data: [0, 0, 3, 2, 0, 0, 0, 4, 0, 0, 0], fill: true, backgroundColor: 'rgba(0, 112, 224, 0.2)', borderColor: 'rgb(0, 112, 224)', pointBackgroundColor: 'rgb(0, 112, 224)', pointBorderColor: '#fff', pointHoverBackgroundColor: '#fff', pointHoverBorderColor: 'rgb(0, 112, 224)'}, { label: 'cubetas impregnadas de aceite', data: [0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0], fill: true, backgroundColor: 'rgba(21, 145, 77, 0.2)', borderColor: 'rgb(21, 145, 77)', pointBackgroundColor: 'rgb(21, 145, 77)', pointBorderColor: '#fff', pointHoverBackgroundColor: '#fff', pointHoverBorderColor: 'rgb(21, 145, 77)'}, { label: 'Sólidos otros (cubetas impregnadas con aceite)', data: [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0], fill: true, backgroundColor: 'rgba(187, 237, 52, 0.2)', borderColor: 'rgb(187, 237, 52)', pointBackgroundColor: 'rgb(187, 237, 52)', pointBorderColor: '#fff', pointHoverBackgroundColor: '#fff', pointHoverBorderColor: 'rgb(187, 237, 52)'}, { label: 'Sólidos telas o pieles imppregnadas de residuos peligrosos', data: [0, 0, 3, 3, 0, 0, 0, 3, 0, 0, 0], fill: true, backgroundColor: 'rgba(140, 54, 201, 0.2)', borderColor: 'rgb(140, 54, 201)', pointBackgroundColor: 'rgb(140, 54, 201)', pointBorderColor: '#fff', pointHoverBackgroundColor: '#fff', pointHoverBorderColor: 'rgb(140, 54, 201)'}, { label: 'Solidos otros (papel, carton, plastico, impregnados de aceite lubricante)', data: [0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0], fill: true, backgroundColor: 'rgba(229, 125, 41, 0.2)', borderColor: 'rgb(229, 125, 41)', pointBackgroundColor: 'rgb(229, 125, 41)', pointBorderColor: '#fff', pointHoverBackgroundColor: '#fff', pointHoverBorderColor: 'rgb(229, 125, 41)'}, { label: 'Otros residuos peligrosos (agua contaminada)', data: [0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0], fill: true, backgroundColor: 'rgba(209, 37, 137, 0.2)', borderColor: 'rgb(209, 37, 137)', pointBackgroundColor: 'rgb(209, 37, 137)', pointBorderColor: '#fff', pointHoverBackgroundColor: '#fff', pointHoverBorderColor: 'rgb(209, 37, 137)'}]}
-} );
+		var lineChart = new Chart( hwm, {
+			type: 'line', 
+			data: { 
+				labels: json_data.labels,
+				datasets: json_data.data.label
+			}
+		});
 	});
 }
 

@@ -34,7 +34,7 @@
 				<div class="col-md-12">
 					<div class="card-body">
 						<div class="card-heading clearfix">
-							<h4 class="card-title">Hazardous waste chart per month</h4>
+							<h4 class="card-title">Residuos Peligrosos - Cantidad</h4>
 						</div>
 						<canvas id="hazardous_waste_monthly">
 						</canvas>
