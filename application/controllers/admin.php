@@ -651,13 +651,10 @@ class Admin extends MY_Controller {
 
 				$chart = $this->residuo_peligroso_model->get_array_chart($data);
 
-				$chart_print["labels"] =  $chart["labels"];
-				$chart_print["datasets"] = $chart["data"];
+				$json_data = "type: 'line', data: { labels: [";
+				$label_count = count($chart["labels"]) - 1;
 
-				$json_data = "labels: [";
-				$label_count = count($chart_print["labels"]) - 1;
-
-				foreach ($chart_print["labels"] as $label => $value) {
+				foreach ($chart["labels"] as $label => $value) {
 					if ($label_count == $label) {
 						$json_data .= "'" . $value . "'], datasets: [{ label: ";
 					} else {
@@ -665,21 +662,23 @@ class Admin extends MY_Controller {
 					}
 				}
 
-				foreach ($chart_print["datasets"] as $key => $value) {
+				$count_color = 0;
+				foreach ($chart["data"] as $key => $value) {
 				 	$json_data .= "'" . $key . "', data: [";
 
 				 	$values_count = count($value) - 1;
 				 	foreach ($value as $key => $value) {
 				 		if ($values_count == $key) {
-							$json_data .= $value . "], fill: true, }, { ";
+							$json_data .= $value . "], fill: true, {$this->_chart_colors($count_color)}}, { label: ";
+							$count_color++;
 				 		} else {
 							$json_data .= $value . ", ";
 				 		}
 				 	}
 				}
 
-				$json_data = mb_substr($json_data, 0, -4) . "]";
-				
+				$json_data = mb_substr($json_data, 0, -12) . "}]}";
+
 				echo json_encode($json_data);
 			} else {
 				$data['id_persona'] = 140;
@@ -688,21 +687,10 @@ class Admin extends MY_Controller {
 
 				$chart = $this->residuo_peligroso_model->get_array_chart($data);
 
-				$json_data["type"] = "line";
-				$json_data["data"]["labels"] = $chart["labels"];
+				$json_data = "type: 'line', data: { labels: [";
+				$label_count = count($chart["labels"]) - 1;
 
-				$label_count= 0;
-				foreach ($chart["data"] as $label => $data) {
-
-					$json_data["data"]["datasets"][$label_count][$label]["data"] = $data;
-					$label_count +=1 ;
-				}
-
-
-				/*$json_data = "labels: [";
-				$label_count = count($chart_print["labels"]) - 1;
-
-				foreach ($chart_print["labels"] as $label => $value) {
+				foreach ($chart["labels"] as $label => $value) {
 					if ($label_count == $label) {
 						$json_data .= "'" . $value . "'], datasets: [{ label: ";
 					} else {
@@ -710,27 +698,71 @@ class Admin extends MY_Controller {
 					}
 				}
 
-				foreach ($chart_print["datasets"] as $key => $value) {
+				$count_color = 0;
+				foreach ($chart["data"] as $key => $value) {
 				 	$json_data .= "'" . $key . "', data: [";
 
 				 	$values_count = count($value) - 1;
 				 	foreach ($value as $key => $value) {
 				 		if ($values_count == $key) {
-							$json_data .= $value . "], fill: true, }, { label: ";
+							$json_data .= $value . "], fill: true, {$this->_chart_colors($count_color)}}, { label: ";
+							$count_color++;
 				 		} else {
 							$json_data .= $value . ", ";
 				 		}
 				 	}
 				}
 
-				$json_data = mb_substr($json_data, 0, -12) . "]";*/
-				echo "<pre>";
-				print_r($json_data);
-				echo "</pre>";
-
+				$json_data = mb_substr($json_data, 0, -12) . "}]}";
 				echo json_encode($json_data);
 			}
 		}
+	}
+
+	function _chart_colors($case){
+		$rgb = "";
+
+		switch ($case) {
+			case 0:
+				$rgb = "236, 94, 105"; #
+				break;
+			case 1:
+				$rgb = "0, 112, 224"; #
+				break;
+			case 2:
+				$rgb = "21, 145, 77"; #
+				break;
+			case 3:
+				$rgb = "187, 237, 52"; #
+				break;
+			case 4:
+				$rgb = "140, 54, 201"; #
+				break;
+			case 5:
+				$rgb = "229, 125, 41"; #
+				break;
+			case 6:
+				$rgb = "209, 37, 137"; #
+				break;
+			case 7:
+				$rgb = "150, 58, 58"; #
+				break;
+			case 8:
+				$rgb = "60, 209, 186"; #
+				break;
+			case 9:
+				$rgb = "138, 219, 92"; #
+				break;
+		}
+
+		$color_string = "backgroundColor: 'rgba({$rgb}, 0.2)',";
+		$color_string .= " borderColor: 'rgb({$rgb})',";
+		$color_string .= " pointBackgroundColor: 'rgb({$rgb})',";
+		$color_string .= " pointBorderColor: '#fff',";
+		$color_string .= " pointHoverBackgroundColor: '#fff',";
+		$color_string .= " pointHoverBorderColor: 'rgb({$rgb})'";
+
+		return $color_string;
 	}
 
 	public function crizal(){

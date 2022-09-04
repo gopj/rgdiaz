@@ -773,56 +773,13 @@ function get_chart(){
 		}
 	}).done(function(data_chart) {
 		var json_data = jQuery.parseJSON(data_chart);
+		var hwm = $("#hazardous_waste_monthly");
 
-		console.log(JSON.stringify(json_data));
+		var json_string = {json_data};
 
-		new Chart(document.getElementById("chart3"),{
-			"type":"line",
-			"data":{
-				"labels":["Eating","Drinking","Sleeping","Designing","Coding","Cycling","Running"],
-				"datasets":[
-					{
-						"label":"My First Dataset",
-						"data":[65,59,90,81,56,55,40],
-						"fill":true,
-						"backgroundColor":"rgba(236, 94, 105, 0.2)",
-						"borderColor":"rgb(236, 94, 105)",
-						"pointBackgroundColor":"rgb(236, 94, 105)",
-						"pointBorderColor":"#fff",
-						"pointHoverBackgroundColor":"#fff",
-						"pointHoverBorderColor":"rgb(236, 94, 105)"
-					}, 
-					{
-						"label":"My Second Dataset",
-						"data":[28,48,40,19,96,27,100],"fill":true,
-						"backgroundColor":"rgba(0, 112, 224, 0.2)",
-						"borderColor":"rgb(0, 112, 224)",
-						"pointBackgroundColor":"rgb(0, 112, 224)",
-						"pointBorderColor":"#fff",
-						"pointHoverBackgroundColor":"#fff",
-						"pointHoverBorderColor":"rgb(0, 112, 224)"
-					}
-				]
-			},
-			"options":{
-				"elements":{
-					"line":{
-						"tension":0,
-						"borderWidth":3
-					}
-				}
-			}
-		});
+		console.log(json_string);
 
-
-		Object.entries(json_data).forEach(([waste, waste_data]) => {
-			Object.entries(waste_data).forEach(([month, month_data]) => {
-				month_array = [month];
-			});
-		});
-
-		console.log(`${month} ${waste} ${month_data}`);
-
+		var lineChart = new Chart(hwm, json_string);
 	});
 }
 

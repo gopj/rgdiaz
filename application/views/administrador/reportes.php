@@ -46,38 +46,3 @@
 	</div>
 </div>
 
-<script type="text/javascript">
-	window.onload = function () {
-				
-		var hwm = $("#hazardous_waste_monthly");
-
-		var lineChart = new Chart(hwm, {
-			type: 'line',
-			data: {
-				labels: ["2018-01", "2018-02", "2018-03", "2018-04", "2018-05", "2018-06", "2018-07", "2018-08", "2018-09", "2018-10", "2018-11"],
-				datasets: [{
-					label: "Aceites lubricantes usados",
-					data: [0, 0, 3, 3, 0, 0, 0, 4, 0, 0, 0],
-					fill: true,
-					backgroundColor: "rgba(236, 94, 105, 0.2)",
-					borderColor: "rgb(236, 94, 105)",
-					pointBackgroundColor: "rgb(236, 94, 105)",
-					pointBorderColor: "#fff",
-					pointHoverBackgroundColor: "#fff",
-					pointHoverBorderColor: "rgb(236, 94, 105)"
-				}, {
-					label: "Aceites lubricantes usados",
-					data: [0, 0, 3, 2, 0, 0, 0, 4, 0, 0, 0],
-					fill: true,
-					backgroundColor: "rgba(0, 112, 224, 0.2)",
-					borderColor: "rgb(0, 112, 224)",
-					pointBackgroundColor: "rgb(0, 112, 224)",
-					pointBorderColor: "#fff",
-					pointHoverBackgroundColor: "#fff",
-					pointHoverBorderColor: "rgb(0, 112, 224)"
-				}]
-			}
-		})
-	}
-
-</script>
