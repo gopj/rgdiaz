@@ -713,6 +713,7 @@ class Administrador extends MY_Controller {
 				$nombre_cliente = $this->persona_model->get_nombre_cliente($id_persona);
 				$nombre_empresa = $this->persona_model->get_nombre_empresa($id_persona);
 				$nombre_empresa = str_replace(" ", "_", $nombre_empresa);
+				$nombre_empresa = str_replace(",", "", $nombre_empresa);
 				
 				$fecha=date("d-M-Y");
 				
