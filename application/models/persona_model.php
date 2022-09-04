@@ -206,7 +206,6 @@ class Persona_model extends CI_Model {
 				 ->set('estado',$data['estado'])
 				 ->set('municipio',$data['municipio'])
 				 ->set('nombre',$data['nombre_contacto'])
-				 ->set('lleno_datos', 1)
 				 ->where('id_persona',$data['id_persona'])
 				 ->update('persona');
 	 }
