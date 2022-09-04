@@ -501,7 +501,7 @@ class Administrador extends MY_Controller {
 	public function alta_cliente_admin(){	
 	
 		if ($this->input->post()){
-			$data['correo'] = $this->input->post('correo');
+			$data['correo'] = $this->input->post('alta_correo_hidd');
 		}
 
 		$this->load->view('administrador/alta_cliente_admin', $data);
@@ -512,36 +512,35 @@ class Administrador extends MY_Controller {
 	public function registra_cliente_admin(){	
 		if ($this->session->userdata('tipo')==1){
 			if($this->input->post()){
+				
 				#	Asignamos una contraseña al usuario y lo insertamos como cliente -----------	
 				$str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
 				$psw_nva = ""; #password nueva
 					for($i=0;$i<8;$i++) {
 					$psw_nva .= substr($str,rand(0,62),1);
 				}
-				$id_tipo_persona=3;
-				$id_status_persona=1;
-				$lleno_datos = 1;
-				#	Insertamos en la base de datos 
-				$inserta = $this->persona_model->inserta_cliente_admin(
-					$this->input->post('nombre'),
-					$this->input->post('correo'),
-					$this->input->post('telefono_personal'),
-					$this->input->post('telefono_personal_alt'),
-					$psw_nva,
-					$this->input->post('nombre_empresa'),
-					$id_status_persona,
-					$id_tipo_persona,
-					$this->input->post('calle_empresa'),
-					$this->input->post('correo_empresa'),
-					$lleno_datos,
-					$this->input->post('cp_empresa'),
-					$this->input->post('colonia_empresa'),
-					$this->input->post('numero_empresa'),
-					$this->input->post('numero_registro_ambiental'),
-					$this->input->post('estado'),
-					$this->input->post('municipio'),
-					$this->input->post('telefono_empresa')
-				);
+
+				$data['id_tipo_persona'] = 3;
+				$data['psw_nva'] = $psw_nva;
+				$data['lleno_datos'] = 1;
+				$data['id_status_persona'] = 1;
+				$data['nombre_empresa'] = $this->input->post('nombre_empresa');
+				$data['numero_registro_ambiental'] = $this->input->post('numero_registro_ambiental');
+				$data['email_empresa'] = $this->input->post('email_empresa');
+				$data['telefono_empresa'] = $this->input->post('telefono_empresa');
+				$data['identificador_folio'] = $this->input->post('identificador_folio');
+				$data['calle_empresa'] = $this->input->post('calle_empresa');
+				$data['numero_empresa'] = $this->input->post('numero_empresa');
+				$data['cp_empresa'] = $this->input->post('cp_empresa');
+				$data['colonia_empresa'] = $this->input->post('colonia_empresa');
+				$data['estado_empresa'] = $this->input->post('estado_empresa');
+				$data['municipio_empresa'] = $this->input->post('municipio_empresa');
+				$data['nombre_contacto'] = $this->input->post('nombre_contacto');
+				$data['email_contacto'] = $this->input->post('email_contacto');
+				$data['telefono_contacto'] = $this->input->post('telefono_contacto');
+				$data['telefono_contacto_alt'] = $this->input->post('telefono_contacto_alt');			
+
+				$inserta = $this->persona_model->inserta_cliente_admin($data);
 
 				#	Mandamos Correo con datos de acceso al nuevo cliente
 				#	Mandamos mail con datos de acceso al cliente---------------------------------

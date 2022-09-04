@@ -357,9 +357,10 @@ function comprueba_emp_dest(id){
 		);
 }
 
-function alta_correo() {
-	correo =  $('#correo_admin_alta').val();
-	alert(correo);
+function alta_correo_post(){
+	var correo =  $('#alta_correo').val();
+
+	$('#alta_correo_hidd').val(correo)
 }
 
 function alta_cliente_admin(){

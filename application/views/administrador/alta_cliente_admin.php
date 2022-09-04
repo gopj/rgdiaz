@@ -26,7 +26,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text" id="inputGroupPrepend"><i class="far fa-envelope"></i></span>
 							</div>
-							<input class="form-control" id="email_empresa" name="email_empresa" type="text">
+							<input class="form-control" id="email_empresa" name="email_empresa" type="text" value="<?=$correo?>">
 						</div>
 					</div>
 
@@ -76,12 +76,12 @@
 					
 					<div class="col-md-4 mb-3">
 						<label >Estado</label>
-						<input class="form-control" id="estado_empresa" name="estado" type="text">
+						<input class="form-control" id="estado_empresa" name="estado_empresa" type="text">
 					</div>
 
 					<div class="col-md-4 mb-1">
 						<label >Municipio</label>
-						<input class="form-control" id="municipio_empresa" name="municipio" type="text">
+						<input class="form-control" id="municipio_empresa" name="municipio_empresa" type="text">
 					</div>
 				</div>	
 			</div>

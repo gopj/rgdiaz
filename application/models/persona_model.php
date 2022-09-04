@@ -210,29 +210,26 @@ class Persona_model extends CI_Model {
 				 ->update('persona');
 	 }
 
-	public function inserta_cliente_admin($nombre,$correo,$telefono_personal,$telefono_personal_alt,
-										   $psw_nva,$nombre_empresa,$id_status_persona,
-										   $id_tipo_persona,$calle_empresa,$correo_empresa,
-										   $lleno_datos,$cp_empresa,$colonia_empresa,
-										   $numero_empresa, $numero_registro_ambiental, $estado,$municipio,$telefono_empresa){
-		return $this->db->set('nombre',$nombre)
-						->set('correo',$correo)
-						->set('telefono_personal',$telefono_personal)
-						->set('telefono_personal_alt',$telefono_personal_alt)
-						->set('password',$psw_nva)
-						->set('nombre_empresa',$nombre_empresa)
-						->set('id_status_persona',$id_status_persona)
-						->set('id_tipo_persona',$id_tipo_persona)
-						->set('calle_empresa',$calle_empresa)
-						->set('correo_empresa',$correo_empresa)
-						->set('lleno_datos',$lleno_datos)
-						->set('cp_empresa',$cp_empresa)
-						->set('colonia_empresa',$colonia_empresa)
-						->set('numero_empresa',$numero_empresa)
-						->set('estado',$estado)
-						->set('municipio',$municipio)
-						->set('telefono_empresa',$telefono_empresa)
-						->set('numero_registro_ambiental',$numero_registro_ambiental)
+	public function inserta_cliente_admin($data){
+		return $this->db->set('nombre',$data['nombre_contacto'])
+						->set('correo',$data['email_contacto'])
+						->set('telefono_personal',$data['telefono_contacto'])
+						->set('telefono_personal_alt',$data['telefono_contacto_alt'])
+						->set('password',$data['psw_nva'])
+						->set('nombre_empresa',$data['nombre_empresa'])
+						->set('id_status_persona',$data['id_status_persona'])
+						->set('id_tipo_persona',$data['id_tipo_persona'])
+						->set('calle_empresa',$data['calle_empresa'])
+						->set('correo_empresa',$data['email_empresa'])
+						->set('lleno_datos',$data['lleno_datos'])
+						->set('cp_empresa',$data['cp_empresa'])
+						->set('colonia_empresa',$data['colonia_empresa'])
+						->set('numero_empresa',$data['numero_empresa'])
+						->set('identificador_folio',$data['identificador_folio'])
+						->set('estado',$data['estado_empresa'])
+						->set('municipio',$data['municipio_empresa'])
+						->set('telefono_empresa',$data['telefono_empresa'])
+						->set('numero_registro_ambiental',$data['numero_registro_ambiental'])
 						->insert('persona');
 	}
 
