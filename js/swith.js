@@ -764,7 +764,7 @@ function get_chart(){
 
 	jQuery.ajax({
 		url: host + '/admin/get_data_chart',
-		timeout: 3000, //sets timeout to 3 seconds
+		timeout: 30000, //sets timeout to 30 seconds
 		type:'post',
 		data:{
 			id_persona: id_persona,
