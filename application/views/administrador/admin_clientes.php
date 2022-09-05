@@ -239,7 +239,7 @@
 					
 					<div class="row" style="padding-top: 63px">
 						<div class="col-md-6">
-							<button type="button" id="activar_campos" class="btn btn-primary" data-toggle="modal" data-target="#modal_activa_campos" disabled> <i class="far fa-check-circle"></i> Activar Campos</button>
+							<button type="button" id="activar_campos" value="Activar Campos" class="btn btn-primary "  data-toggle='modal' data-target='#modal_activa_campos'> <i class="far fa-check-circle"></i> Activar Campos</button>
 						</div>
 						<div class="col-md-6">
 							<button type="button" id="update_status" value="Activar Usuario" onclick="update();" class="btn btn-primary" disabled> <i class="far fa-user-circle"></i> Activar Usuario </button>
@@ -253,6 +253,7 @@
 
 </div>
 <!-- / Main wrapper-->
+
 
 <!-- Modal Activar Campos Start-->
 <div class="modal" id="modal_activa_campos">
@@ -319,4 +320,3 @@
 	</div>
 </div>
 <!-- Modal Folio Modificar End-->
-
