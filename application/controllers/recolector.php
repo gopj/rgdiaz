@@ -366,11 +366,7 @@ class Recolector extends MY_Controller {
 
 	public function generar_manifiesto_no_login($id_cliente, $codigo_identificador) {
 		$this->setLayout('empty');
-
-		/*ALTER TABLE rdiaz.tran_folios ADD codigo_identificador varchar(100) NULL;
-		ALTER TABLE rdiaz.tran_folios CHANGE codigo_identificador codigo_identificador varchar(100) NULL AFTER folio;*/
-
-
+		
 		$data["id_cliente"] 			= $id_cliente;
 		$data["folio"] 					= $this->tran_residuo_model->get_codigo_identificador($codigo_identificador)->id_tran_folio;
 		$data["folio_identificador"]	= $this->tran_residuo_model->get_codigo_identificador($codigo_identificador)->folio;
@@ -383,9 +379,9 @@ class Recolector extends MY_Controller {
 		$data["datos_empresa"] 			= $this->persona_model->get_datos_empresa($id_cliente);
 		$data["datos_empresa_tran"] 	= $this->emp_transportista_model->get_datos_emp_trans(1);// default rdiaz
 		$data["datos_empresa_destino"] 	= $this->emp_destino_model->get_destino($data["bitacora_manifiesto"][0]->id_tipo_emp_destino);
-		$data["datos_recolector"] 		= $this->persona_model->get_nombre_cliente($this->session->userdata("id"));
+		$data["datos_recolector"] 		= $this->persona_model->get_nombre_cliente($id_cliente);
 		$data["vehiculos"] 				= $this->tran_vehiculo_model->get_vehiculos();
-		$data["id_vehiculo"] 			= $this->persona_model->get_recolector_vehicle($this->session->userdata('id'));
+		$data["id_vehiculo"] 			= $this->persona_model->get_recolector_vehicle($id_cliente);
 		$data["recolector_vehiculo"]	= $this->tran_vehiculo_model->get_folio_vehiculo((int) $data["id_vehiculo"]->cp_empresa); // en recolectores (usuario tipo 2) cp_empresa es el id del vehiculo
 		$tran_resiudos 					= $this->tran_residuo_model->get_reg_tran_residuos($id_cliente, $data["folio"]);
 		$data["ruta"]					= $tran_resiudos->ruta;
