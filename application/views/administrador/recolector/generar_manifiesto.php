@@ -47,8 +47,6 @@ function date_manifiesto($s_date){
 	return $date;
 }
 
-///// Testing parameters
-
 // create new PDF document
 $pdf = new MY_PDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
@@ -72,7 +70,7 @@ $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
 // QR
-$pdf->setQR($id_cliente, $folio);
+$pdf->setQR($id_cliente, $codigo_identificador);
 
 // $pdf->SetY(-15);
 // $pdf->Cell(0, 8, '1', 0, false, 'C', 0, '', 0, false, 'T', 'M');

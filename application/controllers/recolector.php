@@ -162,8 +162,15 @@ class Recolector extends MY_Controller {
 					$data["caracteristicas"] .= $value . " ";
 				}
 
+				$str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+				$data['codigo_folio'] = "";
+				for($i=0;$i<3;$i++) {
+					$data['codigo_folio'] .= substr($str,rand(0,62),1);
+				}
+
 				// Inserta Folio
 				$data["id_folio"] = $this->tran_residuo_model->inserta_tran_folio($data); // id_folio es el necesario para generacion automatica (no mover)
+
 				// Inserta Manifiesto
 				$this->tran_residuo_model->inserta_tran_residuo($data);
 
@@ -355,6 +362,37 @@ class Recolector extends MY_Controller {
 			redirect('home/sesion');
 		}	
 	
+	}
+
+	public function generar_manifiesto_no_login($id_cliente, $codigo_identificador) {
+		$this->setLayout('empty');
+
+		/*ALTER TABLE rdiaz.tran_folios ADD codigo_identificador varchar(100) NULL;
+		ALTER TABLE rdiaz.tran_folios CHANGE codigo_identificador codigo_identificador varchar(100) NULL AFTER folio;*/
+
+
+		$data["id_cliente"] 			= $id_cliente;
+		$data["folio"] 					= $this->tran_residuo_model->get_codigo_identificador($codigo_identificador)->id_tran_folio;
+		$data["folio_identificador"]	= $this->tran_residuo_model->get_codigo_identificador($codigo_identificador)->folio;
+		$data["manifiesto"]				= $this->tran_residuo_model->get_manifiesto($id_cliente, $data["folio"]);
+		$data["nombre_cliente"] 		= $this->persona_model->get_nombre_cliente($id_cliente);
+		$data["cliente"] 				= $this->persona_model->get_datos_empresa($id_cliente);
+		$data["nombre_empresa"] 		= $this->persona_model->get_nombre_empresa($id_cliente);
+		$data["residuos_manifiesto"]	= $this->tran_residuo_model->get_residuos_manifiesto($id_cliente, $data["folio"]);
+		$data["bitacora_manifiesto"]	= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $data["folio"]);
+		$data["datos_empresa"] 			= $this->persona_model->get_datos_empresa($id_cliente);
+		$data["datos_empresa_tran"] 	= $this->emp_transportista_model->get_datos_emp_trans(1);// default rdiaz
+		$data["datos_empresa_destino"] 	= $this->emp_destino_model->get_destino($data["bitacora_manifiesto"][0]->id_tipo_emp_destino);
+		$data["datos_recolector"] 		= $this->persona_model->get_nombre_cliente($this->session->userdata("id"));
+		$data["vehiculos"] 				= $this->tran_vehiculo_model->get_vehiculos();
+		$data["id_vehiculo"] 			= $this->persona_model->get_recolector_vehicle($this->session->userdata('id'));
+		$data["recolector_vehiculo"]	= $this->tran_vehiculo_model->get_folio_vehiculo((int) $data["id_vehiculo"]->cp_empresa); // en recolectores (usuario tipo 2) cp_empresa es el id del vehiculo
+		$tran_resiudos 					= $this->tran_residuo_model->get_reg_tran_residuos($id_cliente, $data["folio"]);
+		$data["ruta"]					= $tran_resiudos->ruta;
+		$data["nombre_empresas"] 		= $this->persona_model->get_datos_empresas();
+
+		$this->load->view("recolector/generar_manifiesto", $data);
+
 	}
 
 	public function generar_manifiesto($id_cliente, $folio) {

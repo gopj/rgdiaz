@@ -47,13 +47,6 @@ function date_manifiesto($s_date){
 	return $date;
 }
 
-///// Testing parameters
-
-// echo "<pre>";
-// print_r($residuos_manifiesto);
-// echo "</pre>"; 
-// die();
-
 // create new PDF document
 $pdf = new MY_PDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
@@ -77,7 +70,7 @@ $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
 // QR
-$pdf->setQR($id_cliente, $folio);
+$pdf->setQR($id_cliente, $codigo_identificador);
 
 // $pdf->SetY(-15);
 // $pdf->Cell(0, 8, '1', 0, false, 'C', 0, '', 0, false, 'T', 'M');
@@ -540,7 +533,7 @@ for ($h=0; $h < $num_table_res; $h++) {
 $nombre_empresa = str_replace(" ", "_", $nombre_empresa); // Fix for spaces
 $filename 		= "{$nombre_empresa}_{$folio_identificador}_{$manifiesto->fecha_embarque}.pdf";
 $location 		= $_SERVER['DOCUMENT_ROOT'] ."rgdiaz/img/pdf/";
-//$location 		= $_SERVER['DOCUMENT_ROOT'] ."img/pdf/";
+//$location 		= $_SERVER['DOCUMENT_ROOT'] ."img/pdf/"; //PROD
 $pdf_location	= $location . $filename;
 
 //Close and output PDF document

@@ -116,6 +116,7 @@ class Tran_residuo_model extends CI_Model {
 			->set('id_tipo_emp_destino'	, $data['id_emp_destino'])
 			->set('id_recolector' 		, $data["id_recolector"])
 			->set('folio' 				, $data["folio_identificador"])
+			->set('codigo_identificador', $data["codigo_folio"])
 			->set('fecha_embarque' 		, $data['fecha_embarque'])
 			->set('responsable_destino'	, $data['responsable_destino'])
 			->set('status' 				, 'W')
@@ -230,7 +231,22 @@ class Tran_residuo_model extends CI_Model {
 			FROM 
 				tran_folios
 			WHERE
-				id_tran_folio	= {$folio};
+				id_tran_folio = {$folio};
+		";
+
+		$result = $this->db->query($sql_text)->row();
+
+		return $result;
+	}
+
+	public function get_codigo_identificador($codigo_identificador){
+		$sql_text = "
+			SELECT 
+				*
+			FROM 
+				tran_folios
+			WHERE
+				codigo_identificador = '{$codigo_identificador}';
 		";
 
 		$result = $this->db->query($sql_text)->row();

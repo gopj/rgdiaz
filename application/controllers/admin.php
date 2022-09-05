@@ -357,6 +357,12 @@ class Admin extends MY_Controller {
 					@$data["caracteristicas"] .= $value . " ";
 				}
 
+				$str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+				$data['codigo_folio'] = "";
+				for($i=0;$i<3;$i++) {
+					$data['codigo_folio'] .= substr($str,rand(0,62),1);
+				}
+
 				// Inserta Folio
 				$data["id_folio"] = $this->tran_residuo_model->inserta_tran_folio($data); // id_folio es el necesario para generacion automatica (no mover)
 				// Inserta Manifiesto
@@ -534,7 +540,7 @@ class Admin extends MY_Controller {
 		$data["id_cliente"] 			= $id_cliente;
 		$data["folio"] 					= $folio;
 		$data["folio_identificador"]	= $this->tran_residuo_model->get_folio_identificador($folio)->folio;
-
+		$data["codigo_identificador"]	= $this->tran_residuo_model->get_folio_identificador($folio)->codigo_identificador;
 		$data["manifiesto"]				= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio);
 		$data["nombre_cliente"] 		= $this->persona_model->get_nombre_cliente($id_cliente);
 		$data["cliente"] 				= $this->persona_model->get_datos_empresa($id_cliente);
@@ -556,6 +562,38 @@ class Admin extends MY_Controller {
 		$this->load->view("administrador/recolector/generar_manifiesto", $data);
 
 	}
+
+	public function generar_manifiesto_no_login($id_cliente, $base_64) {
+		$this->setLayout('empty');
+
+		$folio_identificador 			= base64_decode($base_64);
+		$folio_ident					= split("-", $folio_identificador);
+		$folio 							= $folio_ident[1];
+
+		$data["id_cliente"] 			= $id_cliente;
+		$data["folio"] 					= $folio;
+		$data["folio_identificador"]	= $folio_identificador;
+		$data["manifiesto"]				= $this->tran_residuo_model->get_manifiesto($id_cliente, $folio);
+		$data["nombre_cliente"] 		= $this->persona_model->get_nombre_cliente($id_cliente);
+		$data["cliente"] 				= $this->persona_model->get_datos_empresa($id_cliente);
+		$data["nombre_empresa"] 		= $this->persona_model->get_nombre_empresa($id_cliente);
+		$data["residuos_manifiesto"]	= $this->tran_residuo_model->get_residuos_manifiesto($id_cliente, $folio);
+		$data["bitacora_manifiesto"]	= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $folio);
+		$data["datos_empresa"] 			= $this->persona_model->get_datos_empresa($id_cliente);
+		$data["datos_empresa_tran"] 	= $this->emp_transportista_model->get_datos_emp_trans(1);// default rdiaz
+		$data["datos_empresa_destino"] 	= $this->emp_destino_model->get_destino($data["bitacora_manifiesto"][0]->id_tipo_emp_destino);
+		$data["datos_recolector"] 		= $this->persona_model->get_nombre_cliente($this->session->userdata("id"));
+		$data["vehiculos"] 				= $this->tran_vehiculo_model->get_vehiculos();
+		$data["id_vehiculo"] 			= $this->persona_model->get_recolector_vehicle($this->session->userdata('id'));
+		$data["recolector_vehiculo"]	= $this->tran_vehiculo_model->get_folio_vehiculo((int) $data["id_vehiculo"]->cp_empresa); // en recolectores (usuario tipo 2) cp_empresa es el id del vehiculo
+		$tran_resiudos 					= $this->tran_residuo_model->get_reg_tran_residuos($id_cliente, $folio);
+		$data["ruta"]					= $tran_resiudos->ruta;
+		$data["nombre_empresas"] 		= $this->persona_model->get_datos_empresas();
+
+		$this->load->view("recolector/generar_manifiesto", $data);
+
+	}
+
 
 	public function recolector_generar_manifiesto_dummy($id_cliente, $folio) {
 		$this->setLayout('empty');
@@ -732,40 +770,18 @@ class Admin extends MY_Controller {
 
 	function _chart_colors($case){
 		$rgb = "";
-
 		switch ($case) {
-			case 0:
-				$rgb = "236, 94, 105"; #
-				break;
-			case 1:
-				$rgb = "0, 112, 224"; #
-				break;
-			case 2:
-				$rgb = "21, 145, 77"; #
-				break;
-			case 3:
-				$rgb = "187, 237, 52"; #
-				break;
-			case 4:
-				$rgb = "140, 54, 201"; #
-				break;
-			case 5:
-				$rgb = "229, 125, 41"; #
-				break;
-			case 6:
-				$rgb = "209, 37, 137"; #
-				break;
-			case 7:
-				$rgb = "150, 58, 58"; #
-				break;
-			case 8:
-				$rgb = "60, 209, 186"; #
-				break;
-			case 9:
-				$rgb = "138, 219, 92"; #
-				break;
+			case 0: $rgb = "236, 94, 105"; break;
+			case 1: $rgb = "0, 112, 224"; break;
+			case 2: $rgb = "21, 145, 77"; break;
+			case 3: $rgb = "187, 237, 52"; break;
+			case 4: $rgb = "140, 54, 201"; break;
+			case 5: $rgb = "229, 125, 41"; break;
+			case 6: $rgb = "209, 37, 137"; break;
+			case 7: $rgb = "150, 58, 58"; break;
+			case 8: $rgb = "60, 209, 186"; break;
+			case 9: $rgb = "138, 219, 92"; break;
 		}
-
 		return $rgb;
 	}
 
