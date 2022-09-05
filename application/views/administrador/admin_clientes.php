@@ -43,7 +43,7 @@
 					<div class="form-row align-items-center">
 						<div class="col-sm-6">
 							<label class="sr-only" for="id_persona">Clientes</label>
-							<select class="form-control" onchange="compruebausuario(this.value);lock_inputs();" id="id_persona" name="id_persona" style="width: 100%;">
+							<select class="form-control" onchange="compruebausuario(this.value);lock_inputs();copy_id_persona();" id="id_persona" name="id_persona" style="width: 100%;">
 								<option value="" class="form-control">Selecciona Cliente</option>
 								<?php foreach($todosclientes->result() as $row){ ?>
 									<option value="<?php echo $row->id_persona;?>"><?php echo $row-> nombre_empresa; ?></option>
@@ -53,7 +53,7 @@
 
 						<div class="col-sm-2">							
 							<form method='post' action="<?=base_url('administrador/versubcarpeta');?>">
-								<input type="hidden" id="persona" name="ruta_carpeta">
+								<input type="hidden" id="id_persona_ver_sub" name="id_persona">
 								<input type="hidden" id="ruta" name="ruta_carpeta" >
 								<input type="hidden" id="persona_expediente" name="id_persona_expediente" >
 								
@@ -319,3 +319,4 @@
 	</div>
 </div>
 <!-- Modal Folio Modificar End-->
+

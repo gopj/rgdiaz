@@ -1,15 +1,20 @@
 <div class="container-fluid">
 	<div class="card">
 		<div class="row">
+			
 			<?php if($anterior == "administrador/") { ?>
 				<div class="col-lg-3" >
-					<form method="post" action="<?php echo site_url('administrador/index');?>">
+					<form method="post" action="<?php echo site_url('administrador/admin_clientes/' . $id_persona);?>">
+						<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
+						<input type="hidden" value="<?php echo $anterior; ?>" name="ruta_carpeta">
 						<button type="submit" class="btn"><i class="icon-arrow-left"></i></button>
 					</form>
 				</div>
 			<?php } else if($anterior == "clientes/") { ?>
 				<div class="col-lg-3 " >
 					<form method="post" action="<?php echo site_url('administrador/admin_clientes/' . $id_persona);?>">
+						<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
+						<input type="hidden" value="<?php echo $anterior; ?>" name="ruta_carpeta">
 						<button type="submit" class="btn" ><i class="icon-arrow-left"></i></button>
 					</form>
 				</div>

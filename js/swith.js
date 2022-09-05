@@ -772,23 +772,19 @@ function get_chart(){
 			date_end: date_end
 		}
 	}).done(function(data_chart){
-		//var json_data = jQuery.parseJSON(data_chart);
+
 		var json_data = JSON.parse(data_chart);
 		var hwm = $("#hazardous_waste_monthly");
 
-		console.log(json_data.labels);
-		console.log(json_data.data);
-		console.log(json_data.data[0]);
+		console.log(json_data);
 
-
-		var lineChart = new Chart( hwm, {
-			type: 'line', 
-			data: { 
-				labels: json_data.labels,
-				datasets: json_data.data.label
-			}
-		});
+		var lineChart = new Chart( hwm, json_data);
 	});
+}
+
+function copy_id_persona(){
+	var id_persona = $('#id_persona').val();
+	$('#id_persona_ver_sub').val(id_persona);
 }
 
 $(document).ready(function() {

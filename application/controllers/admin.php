@@ -651,39 +651,38 @@ class Admin extends MY_Controller {
 
 				$chart = $this->residuo_peligroso_model->get_array_chart($data);
 
+				$graph = array("type" => "line", "data" => array("labels" => $chart['labels']), "datasets" => "");
 
-				/*$json_data = "{type: 'line', data: { labels: [";
-				$label_count = count($chart["labels"]) - 1;
+				$counter = 0;
+				foreach ($chart['data'] as $key => $value) {
 
-				foreach ($chart["labels"] as $label => $value) {
-					if ($label_count == $label) {
-						$json_data .= "'" . $value . "'], datasets: [{ label: ";
-					} else {
-						$json_data .= "'" . $value . "', ";
+					$pregraph[] = array( 
+						"label" => $key, 
+						"data" => $value, 
+						"fill" => true,
+						"backgroundColor" => "rgba({$this->_chart_colors($counter)}, 0.2)",
+						"borderColor" =>  "rgb({$this->_chart_colors($counter)})",
+						"pointBackgroundColor" =>  "rgb({$this->_chart_colors($counter)})",
+						"pointBorderColor" =>  "#fff",
+						"pointHoverBackgroundColor" =>  "#fff",
+						"pointHoverBorderColor" =>  "rgb({$this->_chart_colors($counter)})"
+					);
+
+					if ($counter == 10){
+						$counter = -1;
 					}
+					$counter++;
 				}
 
-				$count_color = 0;
-				foreach ($chart["data"] as $key => $value) {
-				 	$json_data .= "'" . $key . "', data: [";
-
-				 	$values_count = count($value) - 1;
-				 	foreach ($value as $key => $value) {
-				 		if ($values_count == $key) {
-							$json_data .= $value . "], fill: true, {$this->_chart_colors($count_color)}}, { label: ";
-							if ($count_color == 10){
-								$count_color = -1;
-							}
-							$count_color++;
-				 		} else {
-							$json_data .= $value . ", ";
-				 		}
-				 	}
-				}
-
-				$json_data = mb_substr($json_data, 0, -12) . "}]} }";*/
-
-				echo json_encode($chart);
+				$graph = array(
+					"type" => "line", 
+					"data" => array(
+						"labels" => $chart['labels'], 
+						"datasets" => $pregraph
+					)
+				);
+				
+				echo json_encode($graph);
 			} else {
 				$data['id_persona'] = 140;
 				$data['date_start'] = '2018-01-01';
@@ -691,40 +690,42 @@ class Admin extends MY_Controller {
 
 				$chart = $this->residuo_peligroso_model->get_array_chart($data);
 
+				$graph = array("type" => "line", "data" => array("labels" => $chart['labels']), "datasets" => "");
 
+				$counter = 0;
+				foreach ($chart['data'] as $key => $value) {
 
-				/*$json_data = "{type: 'line', data: { labels: [";
-				$label_count = count($chart["labels"]) - 1;
+					$pregraph[] = array( 
+						"label" => $key, 
+						"data" => $value, 
+						"fill" => true,
+						"backgroundColor" => "rgba({$this->_chart_colors($counter)}, 0.2)",
+						"borderColor" =>  "rgb({$this->_chart_colors($counter)})",
+						"pointBackgroundColor" =>  "rgb({$this->_chart_colors($counter)})",
+						"pointBorderColor" =>  "#fff",
+						"pointHoverBackgroundColor" =>  "#fff",
+						"pointHoverBorderColor" =>  "rgb({$this->_chart_colors($counter)})"
+					);
 
-				foreach ($chart["labels"] as $label => $value) {
-					if ($label_count == $label) {
-						$json_data .= "'" . $value . "'], datasets: [{ label: ";
-					} else {
-						$json_data .= "'" . $value . "', ";
+					if ($counter == 10){
+						$counter = -1;
 					}
+					$counter++;
 				}
 
-				$count_color = 0;
-				foreach ($chart["data"] as $key => $value) {
-				 	$json_data .= "'" . $key . "', data: [";
 
-				 	$values_count = count($value) - 1;
-				 	foreach ($value as $key => $value) {
-				 		if ($values_count == $key) {
-							$json_data .= $value . "], fill: true, {$this->_chart_colors($count_color)}}, { label: ";
-							if ($count_color == 10){
-								$count_color = -1;
-							}
-							$count_color++;
-				 		} else {
-							$json_data .= $value . ", ";
-				 		}
-				 	}
-				}
+				$graph = array(
+					"type" => "line", 
+					"data" => array(
+						"labels" => $chart['labels'], 
+						"datasets" => $pregraph
+					)
+				);
 
-				$json_data = mb_substr($json_data, 0, -12) . "}]}}";
-				echo json_encode($json_data);*/
-				echo json_encode($chart);
+			
+				echo "<pre>";
+				
+				echo json_encode($graph);
 			}
 		}
 	}
@@ -765,14 +766,7 @@ class Admin extends MY_Controller {
 				break;
 		}
 
-		$color_string = "backgroundColor: 'rgba({$rgb}, 0.2)',";
-		$color_string .= " borderColor: 'rgb({$rgb})',";
-		$color_string .= " pointBackgroundColor: 'rgb({$rgb})',";
-		$color_string .= " pointBorderColor: '#fff',";
-		$color_string .= " pointHoverBackgroundColor: '#fff',";
-		$color_string .= " pointHoverBorderColor: 'rgb({$rgb})'";
-
-		return $color_string;
+		return $rgb;
 	}
 
 	public function crizal(){

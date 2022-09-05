@@ -505,8 +505,6 @@ class Administrador extends MY_Controller {
 		}
 
 		$this->load->view('administrador/alta_cliente_admin', $data);
-		
-	#-------------------------------------------------------------------------
 	}
 
 	public function registra_cliente_admin(){	
