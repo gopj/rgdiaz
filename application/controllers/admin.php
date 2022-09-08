@@ -668,6 +668,7 @@ class Admin extends MY_Controller {
 	}
 
 	public function reportes(){
+		$this->setLayout('chart');
 		if ($this->session->userdata('tipo') == 1){
 			if ($this->input->post()){
 				$data["id_persona"] = $this->input->post("id_persona");
