@@ -332,7 +332,7 @@
 	<script src="<?=base_url('js/crizal/pages/table-data.js')?>"></script>
 
 	<!-- custom scripts -->
-	<script src="<?=base_url('js/crizal/admin-template/main.js')?>"></script>
+	<script src="<?=base_url('js/crizal/main.js')?>"></script>
 
 	<!-- all js include end -->		
 
