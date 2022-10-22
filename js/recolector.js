@@ -82,6 +82,7 @@ function get_recolector(id){
 		$("#edita_recolector").removeAttr('disabled');
 		$("#elimina_recolector").removeAttr('disabled');
 		$("#vehiculo_asignado").attr('disabled','disabled');
+		//$("#folio_recolector").attr('disabled','disabled');
 	} else {
 		$("#nombre_recolector").removeAttr('disabled');
 		$("#correo").removeAttr('disabled');
@@ -108,12 +109,13 @@ function get_recolector(id){
 				var correo = json_data.correo;
 				var clave = json_data.password;
 				var vehiculo_asignado = json_data.id_vehiculo;
-	
+				var folio_recolector = json_data.folio_recolector;
+
 				$("#nombre_recolector").val(nombre);
 				$("#correo").val(correo);
 				$("#clave").val(clave);
 				$("#vehiculo_asignado").val(vehiculo_asignado);
-
+				$("#folio_recolector").val(folio_recolector);
 			}
 		);
 
@@ -129,6 +131,7 @@ function update_recolector(){
 	$("#edita_recolector").removeAttr('disabled');
 	$("#elimina_recolector").attr('disabled','disabled');
 	$("#vehiculo_asignado").removeAttr('disabled');
+	
 }
 
 function onchange_recolector(){

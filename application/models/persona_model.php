@@ -109,6 +109,7 @@ class Persona_model extends CI_Model {
 						->set('correo',				$data['correo'])
 						->set('password',			$data['clave'])
 						->set('cp_empresa',			$data['id_vehiculo'])
+						->set('folio_recolector',			$data['folio_recolector'])
 						->set('id_tipo_persona',	2)
 						->set('id_status_persona',	1)
 						->set('lleno_datos',		1)
@@ -120,6 +121,7 @@ class Persona_model extends CI_Model {
 						->set('correo',				$data['correo'])
 						->set('password',			$data['clave'])
 						->set('cp_empresa',			$data['id_vehiculo'])
+						->set('folio_recolector',	$data['folio_recolector'])
 						->where('id_persona',		$data['id_persona'])
 						->update('persona');
 	}

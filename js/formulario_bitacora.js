@@ -129,6 +129,13 @@ function automatic_pass() {
 	}
 }
 
+
+function automatic_folio() {
+	var randomstring = gen_pass();
+	document.getElementById('folio_recolector').value = randomstring;
+
+}
+
 function gen_pass() {
 	var chars = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
 	var string_length = 6;
@@ -152,4 +159,17 @@ function gen_pass() {
 
 	return randomstring;
 
+}
+
+function generarFolio() {
+
+
+var charFolio= gen_pass();
+
+//$('#folio_recolector').val(charFolio);
+
+//$("#folio_recolector").text(charFolio);
+//$("#otro_mofolio_recolectordalidad").removeAttr('disabled');
+document.getElementById('folio_recolector').value = 'jalo';
+alert(charFolio);
 }

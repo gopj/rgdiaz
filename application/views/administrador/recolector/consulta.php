@@ -21,7 +21,7 @@
 							<div class="form-group row">
 								<label class="col-md-2 form-control-label" for="id_persona"> Selecciona Usuario </label>
 								<div class="col-md-6">
-									<select class="form-control" onchange="get_recolector(this.value)" id="id_persona" name="id_persona">
+									<select class="form-control" onchange="get_recolector(this.value); generarFolio()" id="id_persona" name="id_persona">
 										<option value=""> Nuevo </option>
 										<?php foreach($recolectores->result() as $row){ ?>
 											<option value="<?php echo $row->id_persona;?>"><?php echo $row->correo; ?></option>
@@ -71,6 +71,18 @@
 								</div>
 							</div>
 							<br>
+							<div class="form-group row">
+							<label class="col-md-2 form-control-label" for="folio_recolector">Folio del Recolector </label>
+								<div class="col-md-6">
+									<input class="form-control" type="text"  style=" text-align: center;" name="folio_recolector" id="folio_recolector" oninvalid="this.setCustomValidity('Ingresa Usuario')" oninput="setCustomValidity(''); onchange_recolector()" required>
+								</div>	
+							
+					
+							</div>
+							<br>
+
+							</div>
+
 							<div class="form-group row">
 								<label class="col-md-2 form-control-label"></label>
 								<div class="col-lg-9">
