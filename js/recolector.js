@@ -109,13 +109,13 @@ function get_recolector(id){
 				var correo = json_data.correo;
 				var clave = json_data.password;
 				var vehiculo_asignado = json_data.id_vehiculo;
-				var folio_recolector = json_data.folio_recolector;
+				//var folio_recolector = json_data.folio_recolector;
 
 				$("#nombre_recolector").val(nombre);
 				$("#correo").val(correo);
 				$("#clave").val(clave);
 				$("#vehiculo_asignado").val(vehiculo_asignado);
-				$("#folio_recolector").val(folio_recolector);
+				//$("#folio_recolector").val(folio_recolector);
 			}
 		);
 
@@ -127,7 +127,7 @@ function update_recolector(){
 	$("#correo").removeAttr('disabled');
 	$("#clave").removeAttr('disabled');
 	$("#clave_automatica").removeAttr('disabled');
-	$("#guarda_recolector").attr('disabled','disabled');
+	$("#guarda_recolector").removeAttr('disabled');
 	$("#edita_recolector").removeAttr('disabled');
 	$("#elimina_recolector").attr('disabled','disabled');
 	$("#vehiculo_asignado").removeAttr('disabled');

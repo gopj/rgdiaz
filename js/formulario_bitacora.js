@@ -164,12 +164,14 @@ function gen_pass() {
 function generarFolio() {
 
 
-var charFolio= gen_pass();
+var charFolio = gen_pass();
 
 //$('#folio_recolector').val(charFolio);
 
 //$("#folio_recolector").text(charFolio);
 //$("#otro_mofolio_recolectordalidad").removeAttr('disabled');
-document.getElementById('folio_recolector').value = 'jalo';
+//document.getElementById('folio_recolector').value = 'jalo';
+
+document.getElementById('folio_recolector').value = charFolio;
 alert(charFolio);
 }

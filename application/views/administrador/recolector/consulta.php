@@ -21,7 +21,7 @@
 							<div class="form-group row">
 								<label class="col-md-2 form-control-label" for="id_persona"> Selecciona Usuario </label>
 								<div class="col-md-6">
-									<select class="form-control" onchange="get_recolector(this.value); generarFolio()" id="id_persona" name="id_persona">
+									<select class="form-control" onchange="get_recolector(this.value); automatic_folio()" id="id_persona" name="id_persona">
 										<option value=""> Nuevo </option>
 										<?php foreach($recolectores->result() as $row){ ?>
 											<option value="<?php echo $row->id_persona;?>"><?php echo $row->correo; ?></option>
@@ -74,13 +74,9 @@
 							<div class="form-group row">
 							<label class="col-md-2 form-control-label" for="folio_recolector">Folio del Recolector </label>
 								<div class="col-md-6">
-									<input class="form-control" type="text"  style=" text-align: center;" name="folio_recolector" id="folio_recolector" oninvalid="this.setCustomValidity('Ingresa Usuario')" oninput="setCustomValidity(''); onchange_recolector()" required>
+									<input class="form-control" type="text"  style=" text-align: center;" name="folio_recolector" id='folio_recolector' oninvalid="this.setCustomValidity('Ingresa Usuario')" oninput="setCustomValidity(''); onchange_recolector()" required>
 								</div>	
 							
-					
-							</div>
-							<br>
-
 							</div>
 
 							<div class="form-group row">
@@ -88,7 +84,7 @@
 								<div class="col-lg-9">
 									<input type="button" class="btn btn-primary" value="Guardar" name="guarda_recolector" id="guarda_recolector" data-toggle="modal" data-target="#modal_guarda_recolector">
 									<input type="button" class="btn btn-primary" value="Editar" name="edita_recolector" id="edita_recolector" onclick="update_recolector()">
-									<input type="button" class="btn btn-danger" value="Eiminar" name="elimina_recolector" id="elimina_recolector" data-toggle="modal" data-target="#modal_elimina_recolector">
+									<input type="button" class="btn btn-danger" value="Eliminar" name="elimina_recolector" id="elimina_recolector" data-toggle="modal" data-target="#modal_elimina_recolector">
 								</div>
 							</div>
 
