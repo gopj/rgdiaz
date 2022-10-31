@@ -13,7 +13,13 @@ class MY_PDF extends TCPDF {
     // URL FOR QRCODE
 	public function setQR($id_cliente, $codigo){
 		$this->url = 'https://localhost/rgdiaz/recolector/generar_manifiesto_no_login/' . $id_cliente . "/" . $codigo;
-		//$this->url = 'https://rdiaz.mx/recolector/generar_manifiesto_no_login/' . $id_cliente . "/" . $codigo;
+		//$this->url = 'http://rdiaz.mx/recolector/generar_manifiesto_no_login/' . $id_cliente . "/" . $codigo;
+	}
+
+	// URL FOR QRCODE
+	public function genera_qr_empresa($id_cliente){
+		$this->url = 'https://localhost/rgdiaz/admin/recolector_crear_manifiesto/' . $id_cliente ;
+		//$this->url = 'http://rdiaz.mx/recolector/generar_manifiesto_no_login/' . $id_cliente . "/" . $codigo;
 	}
 
 	//Page header
