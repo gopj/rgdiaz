@@ -319,6 +319,77 @@ class Admin extends MY_Controller {
 
 	}
 
+	public function recolector_manifiesto($id_cliente, $id_folio=null){
+		if ($this->session->userdata('tipo') == 1){
+
+			$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
+			$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
+			$data["recolector"]			= $this->persona_model->get_datos_empresa($this->session->userdata('id'));
+			$data["vehiculos"] 			= $this->tran_vehiculo_model->get_vehiculos();
+			$data["cliente"] 			= $this->persona_model->get_datos_empresa($id_cliente);
+
+			if ($this->input->post()) {
+				
+				$data["folio"]				= $this->tran_residuo_model->get_bitacora_count($id_cliente); // Sacando count para folio automatico
+
+				$fecha_embarque 			= date_create_from_format("d/m/Y", $this->input->post("fecha_embarque"));
+
+				$data["id_cliente"] 		= $id_cliente;
+				$data["id_recolector"] 		= $this->session->userdata("id");
+				$data["id_emp_destino"]		= $this->input->post("empresa_destino");
+				$data["residuo"]			= $this->input->post("residuo_peligroso");
+				$data["fecha_embarque"]		= date_format($fecha_embarque, "Y-m-d");
+				$data["responsable_destino"]= $this->input->post("responsable_destino");
+				$data["ruta"]				= $this->input->post("ruta");
+				$data["observaciones"]		= $this->input->post("observaciones");
+				$data["residuo_cantidad"]	= $this->input->post("cantidad");
+				$data["cont_cantidad"]		= $this->input->post("cantidad_envase");
+				$data["cont_capacidad"]		= $this->input->post("capacidad_envase");
+				$data["contenedor_tipo"]	= $this->input->post("tipoRadio");
+				$data["etiqueta"]			= $this->input->post("etiqueta_check");
+				$data["caracteristica_r"]	= $this->input->post("caracteristica_check");
+				$data["id_vehiculo"]		= $this->input->post("id_vehiculo");
+
+				$data["caracteristicas"] 	= "";
+				$folio_temp = $this->tran_residuo_model->get_bitacora_count($id_cliente) - 1;
+				$data["folio_identificador"]= $this->persona_model->get_datos_empresa($id_cliente)->identificador_folio . '-' . $data["folio"]; // Primera inserción de identificador de folio (no mover)
+
+				foreach (@$data["caracteristica_r"] as $key => $value) {
+					@$data["caracteristicas"] .= $value . " ";
+				}
+
+				$str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"; ### QR Code for URL
+				$data['codigo_folio'] = "";
+				for($i=0;$i<3;$i++) {
+					$data['codigo_folio'] .= substr($str,rand(0,62),1);
+				}
+
+				// Inserta Folio
+				$data["id_folio"] = $this->tran_residuo_model->inserta_tran_folio($data); // id_folio es el necesario para generacion automatica (no mover)
+				// Inserta Manifiesto
+				$this->tran_residuo_model->inserta_tran_residuo($data);
+
+				$data["datos_persona"]		= '';
+				$data["bitacora_manifiesto"]= $this->tran_residuo_model->get_bitacora_manifiesto($id_cliente, $data["folio"]);
+				$data["fecha_embarque"]		= date_format($fecha_embarque, "d/m/Y");
+
+				redirect("admin/manifiesto" . "/" .  $id_cliente . "/" . $data["id_folio"]);
+
+			} else {
+
+				$data["id_cliente"] 		= $id_cliente;
+				$data["empresa_destino"] 	= $this->emp_destino_model->get_tipo_emp_destino();
+				$data["residuos"] 			= $this->residuo_peligroso_model->get_tipo_residuos();
+
+				$this->load->view("administrador/recolector/manifiesto", $data);
+			}
+		} else {
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/sesion');
+		}	
+
+	}
+
 	public function recolector_crear_manifiesto($id_cliente) {
 		if ($this->session->userdata('tipo') == 1){
 
