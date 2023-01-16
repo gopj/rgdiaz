@@ -1,35 +1,46 @@
 	<div class="page-title">
-		<h3 class="breadcrumb-header"> Ver Manifiesto | <?= $folio_identificador ?> </h3>
+	<div class="row">
+			<div class="col-md-6">
+				<h3 class="breadcrumb-header"> Manifiestos </h3>
+			</div>
+			<div class="col-md-6 flex-row  ">
+				<div class="row">
+					<button class="btn "><a href="<?=base_url('admin/recolector_consulta')?>" > Consultas</a></button>		
+					<button class="btn "><a href="<?=base_url('admin')?>"> Manifiestos</a></button>
+					<button class="btn "> <a href="<?=base_url('admin/recolector_bitacora')?>"> Bítacora</a></button>
+				</div>
+			</div>
+	</div>
 	</div>
 	<div class="card card-white">
 		<div id="main-wrapper">
 			<div class="card-body">
 				<div class="form-row">
 					<div class="form-group col-md-9">
-						<label class="col-form-label" for="nombre_empresa"> <center> Empresa Destino </center> </label>
+						<label class="col-form-label" for="nombre_empresa">  Empresa Destino </label>
 						<input type="text" class="form-control" id="nombre_empresa" name="fecha_embarque" value="<?= $empresa_destino; ?> " disabled>
 					</div>
 					<div class="form-group col-md-3">
-						<label class="col-form-label" for="fecha_embarque_terminada"> <center> Fecha de Embarque </center> </label>
+						<label class="col-form-label" for="fecha_embarque_terminada">  Fecha de Embarque </label>
 						<input type="text" class="form-control" id="fecha_embarque_terminada" name="fecha_embarque_terminada" style="text-align:center;" value="<?= $fecha_embarque ?>" disabled>
 					</div>		
 				</div>
 
 				<div class="form-row">
 					<div class="form-group col-md-6">
-						<label class="col-form-label" for="responsable_destino"> <center> Nombre del Responable Técnico</center> </label>
+						<label class="col-form-label" for="responsable_destino">  Nombre del Responable Técnico</label>
 						<input type="text" class="form-control" id="responsable_destino" name="responsable_destino" value="<?= $responsable_destino ?>" readonly>
 					</div>
 
 					<div class="form-group col-md-6">
-						<label class="col-form-label" for="ruta"> <center> Ruta de la empresa generadora</center> </label>
+						<label class="col-form-label" for="ruta">  Ruta de la empresa generadora</label>
 						<input type="text" class="form-control" id="ruta" name="ruta" value="<?= $ruta ?>" readonly>
 					</div>	
 				</div>
 
 				<div class="form-row">
 					<div class="form-group col-md-12">
-						<label class="col-form-label" for="observaciones"> <center> Observaciones </center> </label>
+						<label class="col-form-label" for="observaciones">  Observaciones </label>
 						<input type="text" class="form-control" id="observaciones" name="observaciones" value="<?= $observaciones ?>" readonly>  
 					</div>		
 				</div>
@@ -37,7 +48,7 @@
 
 				<div class="form-row">
 					<div class="form-group col-md-12">
-						<center><h3 class="bd-title" id="content">Recolección de Residuos</h3></center>
+						<h3 class="bd-title" id="content">Recolección de Residuos</h3>
 						<hr>
 						<table id="tabla_residuos" class="table table-striped table-bordered table-sm" >
 							<thead>
@@ -67,7 +78,7 @@
 										<td> <?= $key->contenedor_capacidad ?> </td>
 										<td> <?= $key->residuo_cantidad ?> </td>
 										<td> <?= $key->etiqueta ?> </td>
-										<td> <center><button class="btn btn-danger btn-sm" disabled> Borrar </button> </center> </td>
+										<td> <button class="btn btn-danger btn-sm" disabled> <i class="fa fa-trash"></i> Borrar </button> </td>
 									</tr>
 								<?php } ?>
 							</tbody>

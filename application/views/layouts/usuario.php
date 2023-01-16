@@ -55,7 +55,7 @@
 
 	<!-- custom css -->
 	<link rel="stylesheet" href="<?=base_url('css/crizal/admin-template/styles.css')?>" />
-
+	<link href="<?=base_url('css/custom.css')?>" rel="stylesheet" />
 	<title>Cliente</title>
 </head>
 <body>

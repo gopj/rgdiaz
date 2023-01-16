@@ -32,6 +32,8 @@
 
 	<!-- custom css -->
 	<link href="css/crizal/styles.css" rel="stylesheet" id="colors">
+	
+
 </head>
 
 <body>

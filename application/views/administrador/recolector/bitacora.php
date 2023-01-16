@@ -1,8 +1,19 @@
 <?php $this->session->set_userdata('url', 'from_bitacora'); ?>
 
-	<div class="page-title">
-		<h3 class="breadcrumb-header"> Bitacora </h3>
-	</div>
+<div class="page-title">
+<div class="row">
+		<div class="col-md-6">
+			<h3 class="breadcrumb-header"> Bitacora </h3>
+		</div>
+		<div class="col-md-6 flex-row  ">
+			<div class="row">
+				<button class="btn "><a href="<?=base_url('admin/recolector_consulta')?>" > Consultas</a></button>		
+				<button class="btn "><a href="<?=base_url('admin')?>"> Manifiestos</a></button>
+				<button class="btn "> <a href="<?=base_url('admin/recolector_bitacora')?>"> Bítacora</a></button>
+			</div>
+		</div>
+</div>
+</div>
 	<div class="card card-white">
 		<div id="main-wrapper">
 			<div class="card-body">
@@ -61,8 +72,8 @@
 										</td>
 									<?php } else { ?>
 										<td style="text-align: center;"> 
-											<a href="<?=site_url('admin/recolector_ver_manifiesto/' . $bit->id_persona . '/' . $bit->id_tran_folio);?>" class="btn btn-primary btn-sm" role="button"> Ver </a> 
-											<a href="<?=site_url('admin/recolector_generar_manifiesto/' . $bit->id_persona . '/' . $bit->id_tran_folio);?>" class="btn btn-danger btn-sm" target="_blank" role="button"> PDF </a>
+											<a href="<?=site_url('admin/recolector_ver_manifiesto/' . $bit->id_persona . '/' . $bit->id_tran_folio);?>" class="btn btn-primary btn-sm" role="button"><i class="fa fa-eye"></i> Ver </a> 
+											<a href="<?=site_url('admin/recolector_generar_manifiesto/' . $bit->id_persona . '/' . $bit->id_tran_folio);?>" class="btn btn-danger btn-sm" target="_blank" role="button"><i class="fa fa-file-pdf"></i> PDF </a>
 										</td>
 									<?php }?>
 								</tr>

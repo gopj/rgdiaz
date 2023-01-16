@@ -1,5 +1,16 @@
 	<div class="page-title">
-		<h3 class="breadcrumb-header"> Manifiestos </h3>
+	<div class="row">
+			<div class="col-md-6">
+				<h3 class="breadcrumb-header"> Manifiestos </h3>
+			</div>
+			<div class="col-md-6 flex-row  ">
+				<div class="row">
+					<button class="btn "><a href="<?=base_url('admin/recolector_consulta')?>" > Consultas</a></button>		
+					<button class="btn "><a href="<?=base_url('admin')?>"> Manifiestos</a></button>
+					<button class="btn "> <a href="<?=base_url('admin/recolector_bitacora')?>"> Bítacora</a></button>
+				</div>
+			</div>
+	</div>
 	</div>
 	<div class="card card-white">
 		<div id="main-wrapper">
@@ -9,7 +20,7 @@
 					<div class="row">
 						<div class="col-md-4 order-md-1">
 
-							<h5><i class="fas fa-user"></i>Selecciona Cliente</h5><hr>
+							<h5><i class="fas fa-user mx-2"></i>Selecciona Cliente</h5><hr>
 							
 							<input type="text" class="form-control form-control-lg" id="search_cliente"> <br>
 
@@ -24,7 +35,7 @@
 
 
 						<div class="col-md-8 order-md-2">
-							<h5> <i class="far fa-address-card"></i> Datos de la empresa</h5> <hr>
+							<h5> <i class="far fa-address-card mx-2"></i> Datos de la empresa</h5> <hr>
 							
 							<div class="form-group">
 								<label class="col-form-label" for="nombre_empresa">  Nombre o Razón Social  </label>
@@ -57,7 +68,7 @@
 								</div>
 							</div>	
 
-							<div class="form-row">
+							<div class="form-row flex-align-end">
 								<div class="form-group col-md-6">
 									<label class="col-form-label" for="telefono">  Télefono  </label>
 									<input type="text" class="form-control form-control-lg" id="telefono" disabled>
@@ -66,7 +77,18 @@
 									<label class="col-form-label" for="email">  Dirección de Email  </label>
 									<input type="text" class="form-control form-control-lg" id="email" disabled>
 									<input type="text" id="identificador_folio" name="identificador_folio" value="" hidden >
+
+									<div class="form-row my-4 " >
+									<div class="form-group col-md-6  ">
+										<button type="submit" class="btn btn-outline-success btn-lg" id="ver_manifiestos" name="ver_manifiestos" disabled>Ver Manifiestos</button>
+									</div>
+									<div class="form-group col-md-6">
+										<button type="submit"class="btn btn-success btn-lg " >crear Manifiestos</a></button>
+
+									</div>
 								</div>
+							</div>
+								
 							</div>
 
 							<div class="form-row">
@@ -79,11 +101,7 @@
 							</div>
 					
 
-							<div class="form-row">
-								<div class="form-group col-md-4">
-									<button type="submit" class="btn btn-primary btn-lg btn-block" id="ver_manifiestos" name="ver_manifiestos" disabled>Ver Manifiestos</button>
-								</div>
-							</div>
+							
 						</div>
 					</div>		
 				</form>

@@ -56,7 +56,8 @@ $(document).ready(function() {
             $('body').addClass('page-header-fixed');
         };
     };
-    
+
+   
     
     // Sidebar
     var page_sidebar_init = function() {

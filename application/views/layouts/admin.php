@@ -24,6 +24,7 @@
 	<link rel="stylesheet" href="<?=base_url('css/crizal/bootstrap.min.css')?>" />
 	<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/font-awesome/css/font-awesome.min.css')?>" />
 	<link rel="stylesheet" href="<?=base_url('css/style.css')?>" />
+	<link rel="stylesheet" href="<?=base_url('css/estilos.css')?>" />
 	<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/icomoon/style.css')?>" />
 	<link rel="stylesheet" href="<?=base_url('css/crizal/style/styles.css')?>" />
 	<link rel="stylesheet" href="<?=base_url('css/crizal/plugins/uniform/css/default.css')?>" />
@@ -53,6 +54,7 @@
 	<!-- custom css -->
 	<link rel="stylesheet" href="<?=base_url('css/crizal/admin-template/styles.css')?>" />
 
+	<link href="<?=base_url('css/custom.css')?>" rel="stylesheet" />
 	<title>Recolector</title>
 </head>
 <body>
@@ -67,95 +69,55 @@
 
 	<!-- start page container -->
 	<div class="page-container">
-		<!-- start page sidebar -->
-		<div class="page-sidebar">
-			<a class="logo-box" href="<?=base_url('administrador')?>">
-				<span>RDiaz</span>
-				<i class="fas fa-unlock-alt" id="fixed-sidebar-toggle-button"></i>
-				<i class="icon-close" id="sidebar-toggle-button-close"></i>
-			</a>
-			<div class="page-sidebar-inner">
-				<div class="page-sidebar-menu">
-					<ul class="accordion-menu">
-						<li>
-							<a href="<?=base_url('administrador/index')?>">
-								<i class="menu-icon icon-home4"></i><span>Mi Carpeta</span>
-							</a>
-						</li>
-						<li>
-							<a href="<?=base_url('administrador/mensajes_contacto')?>">
-								<i class="menu-icon icon-inbox"></i><span><span class="badge float-right badge-danger" id="message_count"></span> Correo</span>
-							</a>
-						</li>
-						<li>
-							<a href="#!">
-								<i class="menu-icon icon-truck"></i><span>Recolectores</span><i class="accordion-icon fa fa-angle-left"></i>
-							</a>
-							<ul>
-								<li><a href="<?=base_url('admin/recolector_consulta')?>">Consultas</a></li>
-								<li><a href="<?=base_url('admin')?>">Manifiestos</a></li>
-								<li><a href="<?=base_url('admin/recolector_bitacora')?>">Bítacora</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="#!">
-								<i class="menu-icon icon-user"></i><span>Clientes</span><i class="accordion-icon fa fa-angle-left"></i>
-							</a>
-							<ul>
-								<li><a href="" data-toggle="modal" data-target="#modal_nuevo_cliente">+ Nuevo Cliente</a></li>
-								<li><a href="" data-toggle="modal" data-target="#modal_baja_cliente" onclick="get_baja_clientes()">- Baja Cliente</a></li>
-								<li><a href="<?=base_url('administrador/admin_clientes')?>">Directorio de Clientes</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="<?=base_url('administrador/subir_archivo');?>">
-								<i class="menu-icon icon-folder"></i><span>Mis Documentos</span>
-							</a>
-						</li>
-						
-						<li class="menu-divider"></li>
-						<li>
-							<a href="#!">
-								<i class="menu-icon icon-settings"></i><span>Configuración</span><i class="accordion-icon fa fa-angle-left"></i>
-							</a>
-							<ul>
-								<li><a href="<?=base_url('administrador/end_session');?>">Cerrar Sesión</a></li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<!-- end page sidebar -->
-	
 		<!-- start page content -->
 		<div class="page-content">
 			<!-- start page header -->
 			<div class="page-header">
-				<nav class="navbar navbar-default">
-					<div class="container-fluid">
-						<!-- Brand and toggle get grouped for better mobile display -->
-						<div class="navbar-header">
-							<div class="logo-sm">
-								<a href="#!" id="sidebar-toggle-button"><i class="fa fa-bars"></i></a>
-								<a class="logo-box" href="index.html"><span>RDIAZ</span></a>
-							</div>
-						</div>
-						<!-- Collect the nav links, forms, and other content for toggling -->
+			<nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <div class="logo-sm">
+                                <a href="#!" id="sidebar-toggle-button"><i class="fa fa-bars"></i></a>
+                                <a class="logo-box" href="index.html"><span>Crizal</span></a>
+                            </div>
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <i class="fa fa-angle-down"></i>
+                            </button>
+                        </div>
 
-						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-							<ul class="nav navbar-nav">
-								<li><a href="#!" id="collapsed-sidebar-toggle-button"><i class="fa fa-bars"></i></a></li>
-							</ul>
-						</div>
-						<!-- /.navbar-collapse -->
-					</div>
-					<!-- /.container-fluid -->
-				</nav>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li><a href="#!" id="toggle-fullscreen"><i class="fa fa-expand"></i></a></li>
+                                <li><a href="#!" id="search-button"><i class="fa fa-search"></i></a></li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right px-10">
+								<li><a  href="<?=base_url('admin/recolector_consulta')?>" data-toggle="tooltip" data-placement="bottom" title="Recolector"><i class="menu-icon icon-truck"></i></a></li>
+                                <li><a href="<?=base_url('administrador/mensajes_contacto')?>" class="right-sidebar-toggle" data-sidebar-id="main-right-sidebar" data-toggle="tooltip" data-placement="bottom" title="Correo"><i class="fa fa-envelope"></i></a></li>
+								<li><a href="<?=base_url('administrador/subir_archivo');?>" data-toggle="tooltip" data-placement="bottom" title="Mi carpeta"><i class="menu-icon icon-folder"></i></a></li>
+                                <li class="dropdown user-dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="img/avatars/user-dropdown.jpg" alt="" class="rounded-circle"></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="">Nuevo Cliente</a></li>
+                                        <li><a href="#">Baja de Cliente</a></li>
+                                        <li><a href="<?=base_url('administrador/admin_clientes')?>">Directorio</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Configuración</a></li>
+                                        <li><a href="#">Cerrar sesión</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </nav>
 			</div>
 
 			<!-- end page header -->
-			<div class="page-inner">
+			<div class="page-inner workspace ">
 
 				<?=$output?>
 
@@ -303,7 +265,11 @@
 	<script src="<?=base_url('js/crizal/main.js')?>"></script>
 
 	<!-- all js include end -->		
-
+	<script> 
+	$(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
+    </script>
 	<!-- Custom -->
 	<script type="text/javascript" src="<?=base_url('js/recolector.js')?>"></script>
 
@@ -314,5 +280,6 @@
 	<script type="text/javascript" src="<?=base_url('js/swith.js')?>"></script>
 
 </body>
+
 
 </html>

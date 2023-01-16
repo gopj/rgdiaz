@@ -1,9 +1,9 @@
 <div class="span9">
-	<center><legend>Contestar Mensaje</legend></center>
+	<legend>Contestar Mensaje</legend>
 		<div class="row-fluid well">
 			<div class="span6">
 				<form id="form_contestar Mensaje" method="post" action="<?php echo site_url('administrador/contestar_mensaje_contacto/'. $completo->id_contacto); ?>">
-					<center>
+					
 						<br>
 						Nombre o Nombre de la Empresa<br>
 						<input class="txt-well" type="text" value="<?php echo $completo->nombre;?>" readonly><br>
@@ -11,28 +11,28 @@
 						<input name="correo" class="txt-well" type="text" value="<?php echo $completo->correo;  ?>" readonly><br>
 						Fecha Mensaje<br>
 						<input class="txt-well" type="text" value="<?php echo $completo->fecha_mensaje; ?>" readonly><br>
-					</center>
+					
 			</div>
 			<div class="span6">
-				<center>
+				
 				<br>
 				Asunto<br>
 				<input name="asunto" class="txt-well" type="text" value="<?php echo $completo->asunto; ?>" readonly><br>
 				Teléfono<br>
 				<input class="txt-well" type="text" value="<?php  echo $completo->telefono;?>" readonly><br>
-				</center>
+				
 			</div>
 			<div class="row-fluid">
 				<div class="span12">
-					<center>
+					
 						Mensaje<br>
 						<textarea name="mensaje_contacto" class="txt-well" readonly><?php echo $completo->mensaje; ?></textarea><br>
-					</center>
+					
 
-					<center>
+					
 						Redactar<br>
 						<textarea name="texto_mensaje" class="txt-well" rows="9"></textarea>
-					</center>
+					
 
 					<div class="span4">
 						<a href="<?php echo site_url('administrador/mensaje_completo?id_contacto=' . base64_encode($completo->id_contacto)); ?>" type="button" class="btn btn pull-right" style="margin-top: 15px;"><i class="icon-arrow-left"></i> Regresar</a>
