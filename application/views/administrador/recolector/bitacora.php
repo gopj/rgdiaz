@@ -5,7 +5,7 @@
 		<div class="col-md-6">
 			<h3 class="breadcrumb-header"> Bitacora </h3>
 		</div>
-		<div class="col-md-6 flex-row  ">
+		<div class="col-md-6 d-flex flex-row-reverse ">
 			<div class="row">
 				<button class="btn "><a href="<?=base_url('admin/recolector_consulta')?>" > Consultas</a></button>		
 				<button class="btn "><a href="<?=base_url('admin')?>"> Manifiestos</a></button>

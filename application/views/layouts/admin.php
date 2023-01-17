@@ -100,8 +100,8 @@
                                 <li class="dropdown user-dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="img/avatars/user-dropdown.jpg" alt="" class="rounded-circle"></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="">Nuevo Cliente</a></li>
-                                        <li><a href="#">Baja de Cliente</a></li>
+                                        <li><a href="#"  data-toggle="modal" data-target="#modal_nuevo_cliente">Nuevo Cliente</a></li>
+                                        <li><a href="#" data-toggle="modal" data-target="#modal_baja_cliente" onclick="get_baja_clientes()">Baja de Cliente</a></li>
                                         <li><a href="<?=base_url('administrador/admin_clientes')?>">Directorio</a></li>
                                         <li role="separator" class="divider"></li>
                                         <li><a href="#">Configuración</a></li>

@@ -1,5 +1,5 @@
 <main role="main" class="container" style="padding-top:-10px;">
-	<center><h2 class="bd-title" id="content">Clientes</h1></center>
+	<h2 class="bd-title" id="content">Clientes</h1>
 	<hr>
 
 	<form method="post" id="form_ver_manifiestos" action="<?php echo site_url('recolector/ver_manifiestos')?>">
@@ -24,43 +24,43 @@
 				<h4 class="mb-3"> <img src="img/iconos_bt4/spreadsheet-4x.png" /> Datos de la empresa</h4> <hr>
 				
 				<div class="form-group">
-					<label class="col-form-label" for="nombre_empresa"> <center> Nombre o Razón Social </center> </label>
+					<label class="col-form-label" for="nombre_empresa">  Nombre o Razón Social  </label>
 					<input type="text" class="form-control form-control-lg" id="nombre_empresa" disabled>
 				</div>
 
 				<div class="form-row">
 					<div class="form-group col-md-8">
-						<label class="col-form-label" for="calle"> <center> Calle </center> </label>
+						<label class="col-form-label" for="calle">  Calle  </label>
 						<input type="text" class="form-control form-control-lg" id="calle" disabled>
 					</div>
 					<div class="form-group col-md-2">
-						<label class="col-form-label" for="numero"> <center> Número </center> </label>
+						<label class="col-form-label" for="numero">  Número  </label>
 						<input type="text" class="form-control form-control-lg" id="numero" disabled>
 					</div>
 					<div class="form-group col-md-2">
-						<label class="col-form-label" for="cp"> <center> Código Postal </center> </label>
+						<label class="col-form-label" for="cp">  Código Postal  </label>
 						<input type="text" class="form-control form-control-lg" id="cp" disabled>
 					</div>				
 				</div>
 
 				<div class="form-row">
 					<div class="form-group col-md-6">
-						<label class="col-form-label" for="municipio"> <center> Municipio </center> </label>
+						<label class="col-form-label" for="municipio">  Municipio  </label>
 						<input type="text" class="form-control form-control-lg" id="municipio" disabled>
 					</div>
 					<div class="form-group col-md-6">
-						<label class="col-form-label" for="estado"> <center> Estado </center> </label>
+						<label class="col-form-label" for="estado">  Estado  </label>
 						<input type="text" class="form-control form-control-lg" id="estado" disabled>
 					</div>
 				</div>	
 
 				<div class="form-row">
 					<div class="form-group col-md-6">
-						<label class="col-form-label" for="telefono"> <center> Télefono </center> </label>
+						<label class="col-form-label" for="telefono">  Télefono  </label>
 						<input type="text" class="form-control form-control-lg" id="telefono" disabled>
 					</div>
 					<div class="form-group col-md-6">
-						<label class="col-form-label" for="email"> <center> Dirección de Email </center> </label>
+						<label class="col-form-label" for="email">  Dirección de Email  </label>
 						<input type="text" class="form-control form-control-lg" id="email" disabled>
 						<input type="text" id="identificador_folio" name="identificador_folio" value="" hidden >
 					</div>
