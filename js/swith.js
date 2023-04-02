@@ -32,7 +32,7 @@ function alta_cliente(){
 		var email = document.getElementById('alta_correo').value;
 		//alert(email);
 		jQuery.ajax({
-			url: host + '/administrador/verifica_correo',	//<-- Url que va procesar la peticion
+			url: host + '/administrador/verifica_correo',	//<-- Url que va procesar la petición
 			timeout: 3000, //sets timeout to 3 seconds
 			type:'post',
 			data:{
@@ -78,7 +78,6 @@ function cliente_baja(){
 	}
 }
 
-
 //	Funcion para validar al agregar una carpeta nueva
 function valida_nom_carpeta(){
 	var expRegNombre = /^\s*$/;
@@ -102,7 +101,6 @@ function valida_nom_carpeta(){
 		alert('¡LA CARPETA FUE CREADA SATISFACTORIAMENTE!');
 	}
 }
-
 
 // 	Funcion para validar al agregar un archivo a carpeta
 function valida_archivo(){
@@ -170,6 +168,10 @@ function eliminar_carpeta(){
 
 function compruebausuario(id){
 	var id_per = id;
+	var qr_url = $("#btn_qr").attr('href');
+
+
+	$("#btn_qr").attr("href", qr_url + "/" + id_per);
 
 	$("#nombre_empresa").val("");
 	$("#cp_empresa").val("");
@@ -199,11 +201,13 @@ function compruebausuario(id){
 		$("#btn_guardar").attr('disabled','disabled');
 		$("#update_status").attr('disabled','disabled');
 		$("#activar_campos").attr('disabled','disabled');
+		$("#btn_qr").attr('onclick', 'return false;');
 	} else {
 		$("#btn_expediente").removeAttr('disabled');
 		$("#btn_bitacora").removeAttr('disabled');
 		$("#btn_guardar").removeAttr('disabled');
 		$("#activar_campos").removeAttr('disabled');
+		$("#btn_qr").removeAttr('onclick');
 	}
 
 	//AJAX

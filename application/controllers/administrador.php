@@ -23,6 +23,7 @@ class Administrador extends MY_Controller {
 		$this->load->library('email');
 		$this->load->library('Excel');
 		$this->load->library('MY_PDF');
+		$this->load->library('MY_QR_PDF');
 		$this->load->library('MY_Output');
 		$this->load->library('MY_Input');
 		$this->load->helper('file');
@@ -1342,6 +1343,14 @@ class Administrador extends MY_Controller {
 			$this->load->view("administrador/generar_manifiesto", $data);
 		}
 
+	}
+
+	public function generar_qr_cliente($id_persona) {
+		$this->setLayout('empty');
+
+		$data["id_cliente"] = $id_persona;
+		
+		$this->load->view("administrador/generar_qr", $data);
 	}
 
 	public function transportistas_destinos(){

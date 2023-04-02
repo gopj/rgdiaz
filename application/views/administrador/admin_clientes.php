@@ -1,4 +1,3 @@
-
 <script type="text/javascript">
 	window.onload = refresh;
 
@@ -6,19 +5,21 @@
 		var select = document.getElementById('id_persona').value;
 		
 		var prev_selected_client = document.getElementById('prev_selected').value;
+
 		console.log(prev_selected_client + "<-Dato de la persona");
 
 		compruebausuario(prev_selected_client);
 
 		$("#id_persona option[value='" + prev_selected_client + "']").attr("selected","selected");
-
+		$("#btn_qr option[value='" + prev_selected_client + "']").attr("selected","selected");
+		
 		if(prev_selected_client){select=1;}
 
 		if(select == 0){
 			$("#btn_expediente").attr('disabled','disabled');
 			$("#btn_bitacora").attr('disabled','disabled');
 			$("#btn_guardar").attr('disabled','disabled');
-		}else{
+		} else {
 			$("#btn_expediente").removeAttr('disabled');
 			$("#btn_bitacora").removeAttr('disabled');
 			$("#btn_guardar").removeAttr('disabled');
@@ -41,12 +42,12 @@
 				<div class="card-body">
 			
 					<div class="form-row align-items-center">
-						<div class="col-sm-6">
+						<div class="col-sm-5">
 							<label class="sr-only" for="id_persona">Clientes</label>
 							<select class="form-control" onchange="compruebausuario(this.value);lock_inputs();copy_id_persona();" id="id_persona" name="id_persona" style="width: 100%;">
 								<option value="" class="form-control">Selecciona Cliente</option>
 								<?php foreach($todosclientes->result() as $row){ ?>
-									<option value="<?php echo $row->id_persona;?>"><?php echo $row-> nombre_empresa; ?></option>
+									<option value="<?php echo $row->id_persona;?>"><?php echo $row->nombre_empresa; ?></option>
 								<?php } ?>
 							</select>
 						</div>	
@@ -70,6 +71,10 @@
 
 						<div class="col-sm-2">
 							<button class="btn btn-primary mb-2" id="btn_guardar" disabled type="button" onclick="confir_act_admin();"> <i class="far fa-save"></i> Guardar Cambios</button>
+						</div>
+
+						<div class="col-sm-1">
+							<a href="<?=base_url('administrador/generar_qr_cliente/')?>" id="btn_qr" target="_blank" class="btn btn-primary mb-2" role="button"> <i class="fa fa-qrcode"></i> QR </a>
 						</div>
 					</div>
 				</div>

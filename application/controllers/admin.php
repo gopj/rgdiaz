@@ -668,6 +668,14 @@ class Admin extends MY_Controller {
 	
 	}
 
+	public function generar_qr_cliente($id_cliente) {
+		$this->setLayout('empty');
+		$id_cliente 		= $this->id_cliente;
+		$data["id_cliente"] = $id_cliente;
+		
+		$this->load->view("administrador/generar_manifiesto", $data);
+	}
+
 	public function reportes(){
 		$this->setLayout('chart');
 		if ($this->session->userdata('tipo') == 1){
