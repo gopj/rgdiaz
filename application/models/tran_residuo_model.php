@@ -201,6 +201,8 @@ class Tran_residuo_model extends CI_Model {
 	public function terminar_manifiesto($id_cliente, $folio, $data) {
 
 		if ($data["user_type"] == 2){
+			$this->db->set('')
+
 			return $this->db->set('status',			'R')
 						->set('responsable_tecnico',$data["responsable_tecnico"])
 						->set('responsable_destino',$data["responsable_destino"])
@@ -282,6 +284,13 @@ class Tran_residuo_model extends CI_Model {
 				tf.id_tran_folio	= {$folio};")->result();
 
 	}
+
+	public function get_todos_residuos(){
+		return $this->db->from('tran_residuos')
+						->where('status', 0)
+						->result();
+	}
+
 
 	public function get_vehiculo($folio){
 		return $this->db->query("select * from tran_folios where id_tran_folio=" . $folio . ";")->row();

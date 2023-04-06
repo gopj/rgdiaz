@@ -676,6 +676,13 @@ class Admin extends MY_Controller {
 		$this->load->view("administrador/generar_manifiesto", $data);
 	}
 
+	public function residuos_capturados() {
+
+		$data["todos_residuos"] = $this->tran_residuo_model->get_todos_residuos();
+
+		$this->load->view("administrador/recolector/residuos_capturados", $data);
+	}
+
 	public function reportes(){
 		$this->setLayout('chart');
 		if ($this->session->userdata('tipo') == 1){

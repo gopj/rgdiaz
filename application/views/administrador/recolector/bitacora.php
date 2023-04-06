@@ -37,6 +37,11 @@
 					<div class="form-group col-md-1">	
 						<input class="btn btn-primary btn-sm" type="submit" name="submit_form_bitacora" value="Buscar">
 					</div>
+
+					<div class="form-group col-md-1">	
+						
+						<a href="<?=base_url('admin/residuos_capturados/')?>" id="btn_residuos_capturados" class="btn btn-primary btn-sm" role="button"> Residuos </a>
+					</div>
 					
 				</form>
 				
