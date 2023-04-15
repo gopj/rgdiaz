@@ -10,6 +10,7 @@
 				<button class="btn "><a href="<?=base_url('admin/recolector_consulta')?>" > Consultas</a></button>		
 				<button class="btn "><a href="<?=base_url('admin')?>"> Manifiestos</a></button>
 				<button class="btn "> <a href="<?=base_url('admin/recolector_bitacora')?>"> Bítacora</a></button>
+				<button class="btn "> <a href="<?=base_url('admin/inventario')?>"> Inventario</a></button>
 			</div>
 		</div>
 </div>

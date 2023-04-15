@@ -1,15 +1,24 @@
-<?php $this->session->set_userdata('url', 'from_bitacora'); ?>
+<?php 
+
+$this->session->set_userdata('url', 'from_bitacora'); 
+
+echo "<pre>";
+print_r($todos_residuos);
+echo "</pre>";
+
+?>
 
 <div class="page-title">
 <div class="row">
 		<div class="col-md-6">
-			<h3 class="breadcrumb-header"> Bitacora </h3>
+			<h3 class="breadcrumb-header"> Inventario </h3>
 		</div>
 		<div class="col-md-6 d-flex flex-row-reverse ">
 			<div class="row">
 				<button class="btn "><a href="<?=base_url('admin/recolector_consulta')?>" > Consultas</a></button>		
 				<button class="btn "><a href="<?=base_url('admin')?>"> Manifiestos</a></button>
 				<button class="btn "> <a href="<?=base_url('admin/recolector_bitacora')?>"> Bítacora</a></button>
+                <button class="btn "> <a href="<?=base_url('admin/inventario')?>"> Inventario</a></button>
 			</div>
 		</div>
 </div>
@@ -24,25 +33,10 @@
 						<input type="text" class="form-control date-picker col-md-6" id="fecha_embarque" name="fecha_embarque" style="text-align: center;" value="<?= @$fecha_embarque ?>">
 					</div>
 
-					<div class="form-group col-md-4">
-						<label class="col-md-2" for="fecha">Tipo</label>
-						<select class="form-control col-md-6" name="tipo" id="tipo">
-							<option value=""> Todos </option>
-							<option value="W" <?php if(@$tipo=='W'){echo "selected";}?>> Pendientes </option>
-							<option value="R" <?php if(@$tipo=='R'){echo "selected";}?>> Completados </option>
-						</select>
-
-					</div>
-
 					<div class="form-group col-md-1">	
 						<input class="btn btn-primary btn-sm" type="submit" name="submit_form_bitacora" value="Buscar">
 					</div>
 
-					<div class="form-group col-md-1">	
-						
-						<a href="<?=base_url('admin/residuos_capturados/')?>" id="btn_residuos_capturados" class="btn btn-primary btn-sm" role="button"> Residuos </a>
-					</div>
-					
 				</form>
 				
 				<hr>
@@ -55,6 +49,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th></th>
                                         <th>Nombre residuo</th>
                                         <th>CRETI</th>
                                         <th>Contenedor Cantidad</th>
@@ -62,16 +57,18 @@
                                         <th>Contenedor Capacidad</th>
                                         <th>Cantidad (KG)</th>
                                         <th>Etiqueta</th>
-                                        <th>Opcion</th>
+                                        <th>Fecha</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php 
                                         $x = 1;
-                                        foreach ($bitacora_manifiesto as $key) { 
+                                        foreach ($todos_residuos as $key) { 
                                     ?>
                                         <tr>
                                             <td> <?= $x++ ?></td>
+                                            <th> </th>
                                             <td> <?= $key->residuo ?> </td>
                                             <td> <?= $key->caracteristica ?> </td>
                                             <td> <?= $key->contenedor_cantidad ?> </td>
@@ -79,7 +76,7 @@
                                             <td> <?= $key->contenedor_capacidad ?> </td>
                                             <td> <?= $key->residuo_cantidad ?> </td>
                                             <td> <?= $key->etiqueta ?> </td>
-                                            <td> <button class="btn btn-danger btn-sm" disabled> <i class="fa fa-trash"></i> Borrar </button> </td>
+                                            <td> <?= $key->fecha_insercion ?> </td>
                                         </tr>
                                     <?php } ?>
                                 </tbody>

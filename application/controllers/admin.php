@@ -676,11 +676,11 @@ class Admin extends MY_Controller {
 		$this->load->view("administrador/generar_manifiesto", $data);
 	}
 
-	public function residuos_capturados() {
+	public function inventario() {
 
 		$data["todos_residuos"] = $this->tran_residuo_model->get_todos_residuos();
 
-		$this->load->view("administrador/recolector/residuos_capturados", $data);
+		$this->load->view("administrador/recolector/inventario", $data);
 	}
 
 	public function reportes(){
