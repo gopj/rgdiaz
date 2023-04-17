@@ -243,7 +243,7 @@ class Tran_residuo_model extends CI_Model {
 	public function get_codigo_identificador($codigo_identificador){
 		$sql_text = "
 			SELECT 
-				*
+				*	
 			FROM 
 				tran_folios
 			WHERE

@@ -37,6 +37,10 @@ echo "</pre>";
 						<input class="btn btn-primary btn-sm" type="submit" name="submit_form_bitacora" value="Buscar">
 					</div>
 
+                    <div class="form-group col-md-1">	
+						<input class="btn btn-primary btn-sm" type="submit" name="submit_form_salidas" value="Registrar Salidas">
+					</div>
+
 				</form>
 				
 				<hr>
@@ -48,8 +52,8 @@ echo "</pre>";
                             <table id="tabla_residuos" class="table table-striped table-bordered table-sm" >
                                 <thead>
                                     <tr>
-                                        <th>#</th>
                                         <th></th>
+                                        <th>#</th>
                                         <th>Nombre residuo</th>
                                         <th>CRETI</th>
                                         <th>Contenedor Cantidad</th>
@@ -67,8 +71,8 @@ echo "</pre>";
                                         foreach ($todos_residuos as $key) { 
                                     ?>
                                         <tr>
+                                            <th> <input type="checkbox"> </th>
                                             <td> <?= $x++ ?></td>
-                                            <th> </th>
                                             <td> <?= $key->residuo ?> </td>
                                             <td> <?= $key->caracteristica ?> </td>
                                             <td> <?= $key->contenedor_cantidad ?> </td>
