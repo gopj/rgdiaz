@@ -289,9 +289,10 @@ class Tran_residuo_model extends CI_Model {
 			$sql_text .= 'AND tf.fecha_embarque = \'' . $data["fecha"] . '\'';
 		}
 	
-		return $this->db->where('status', 0)
+		return $this->db->where('status', 'R')
 						->from('tran_residuos')
 						->join('tipo_residuos', 'tran_residuos.id_tipo_residuo = tipo_residuos.id_tipo_residuo', 'left')
+						->join('tran_folios', 'tran_residuos.id_tran_folio = tran_folios.id_tran_folio', 'left')
 						->get()
 						->result();
 	}

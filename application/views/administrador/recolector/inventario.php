@@ -38,7 +38,7 @@ echo "</pre>";
 					</div>
 
                     <div class="form-group col-md-1">	
-						<input class="btn btn-primary btn-sm" type="submit" name="submit_form_salidas" value="Registrar Salidas">
+						<input class="btn btn-primary btn-sm" type="submit" name="submit_form_salidas" id="submit_form_salidas" value="Registrar Salidas" disabled>
 					</div>
 
 				</form>
@@ -53,7 +53,7 @@ echo "</pre>";
                                 <thead>
                                     <tr>
                                         <th></th>
-                                        <th>#</th>
+                                        <th># Manifiesto</th>
                                         <th>Nombre residuo</th>
                                         <th>CRETI</th>
                                         <th>Contenedor Cantidad</th>
@@ -62,7 +62,6 @@ echo "</pre>";
                                         <th>Cantidad (KG)</th>
                                         <th>Etiqueta</th>
                                         <th>Fecha</th>
-                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -71,8 +70,8 @@ echo "</pre>";
                                         foreach ($todos_residuos as $key) { 
                                     ?>
                                         <tr>
-                                            <th> <input type="checkbox"> </th>
-                                            <td> <?= $x++ ?></td>
+                                            <th> <input type="checkbox" onclick="enable_fields_inventario()" name="salidas_selected[]" value="<?php echo $key->id_tran_residuo; ?>"> </th>
+                                            <td> <?= $key->folio ?></td>
                                             <td> <?= $key->residuo ?> </td>
                                             <td> <?= $key->caracteristica ?> </td>
                                             <td> <?= $key->contenedor_cantidad ?> </td>

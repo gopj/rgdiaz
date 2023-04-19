@@ -610,6 +610,18 @@ function enable_fields(){
 	$("#activar_campos").prop('disabled', true);
 }
 
+function enable_fields_inventario(){
+	var len = $('input[type="checkbox"]:checked').length;
+
+	if (len>0){
+		$("#submit_form_salidas").removeAttr("disabled");
+	} else {
+		$("#submit_form_salidas").attr("disabled", "true");
+	}
+	
+
+}
+
 function gen_identificador_folio() {
 	var nombre_empresa = document.getElementById('nombre_empresa');
 	var nombre_empresa_val = nombre_empresa.value;
