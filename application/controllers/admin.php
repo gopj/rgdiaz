@@ -407,7 +407,7 @@ class Admin extends MY_Controller {
 			$data["id_folio"]			= $folio; // Se necesita para inserción
 
 			if ($this->input->post()) {
-				
+		
 				$fecha_embarque 			= date_create_from_format("d/m/Y", $this->input->post("fecha_embarque"));
 
 				$data["id_recolector"] 		= $this->session->userdata("id");
@@ -641,33 +641,6 @@ class Admin extends MY_Controller {
 		}
 	}
 
-	public function recolector_bitacora() {
-		if ($this->session->userdata('tipo') == 1){
-			$data["url_back"] = $this->session->set_userdata('url_back', 'recolector_bitacora'); // URL Hacía atras
-
-			if ($this->input->post()){
-				$fecha = date_create_from_format('d/m/Y', $this->input->post("fecha_embarque"));
-				@$data["fecha"] = date_format($fecha, 'Y/m/d');
-				$data["fecha_embarque"] = $this->input->post("fecha_embarque");
-				$data["tipo"] = $this->input->post("tipo");
-
-				$data["bitacora"] = $this->tran_residuo_model->recolector_bitacora_custom($data);
-				
-				$this->load->view("administrador/recolector/bitacora", $data);
-			} else {
-
-				$data["bitacora"] = $this->tran_residuo_model->recolector_bitacora();
-
-				$this->load->view("administrador/recolector/bitacora", $data);
-			}
-		
-		}else{
-			$this->session->sess_destroy(); #destruye session
-			redirect('home/sesion');
-		}
-	
-	}
-
 	public function generar_qr_cliente($id_cliente) {
 		$this->setLayout('empty');
 		$id_cliente 		= $this->id_cliente;
@@ -678,9 +651,42 @@ class Admin extends MY_Controller {
 
 	public function inventario() {
 
-		$data["todos_residuos"] = $this->tran_residuo_model->get_todos_residuos();
+		if ($this->session->userdata('tipo') == 1){
+			$data["url_back"] = $this->session->set_userdata('url_back', 'inventario'); // URL Hacía atras
 
-		$this->load->view("administrador/recolector/inventario", $data);
+			if ($this->input->post()){
+				$fecha = date_create_from_format('d/m/Y', $this->input->post("fecha_embarque"));
+				@$data["fecha"] = date_format($fecha, 'Y-m-d');
+				$data["fecha_embarque"] = $this->input->post("fecha_embarque");
+				$data["tipo"] = $this->input->post("tipo");
+
+				$data["todos_residuos"] = $this->tran_residuo_model->get_residuos($data);
+				
+				$this->load->view("administrador/recolector/inventario", $data);
+			} else {
+				$data["tipo"] = $this->input->post("tipo");
+
+				$data["todos_residuos"] = $this->tran_residuo_model->get_residuos($data);
+
+				$this->load->view("administrador/recolector/inventario", $data);
+			}
+		
+		}else{
+			$this->session->sess_destroy(); #destruye session
+			redirect('home/sesion');
+		}
+	}
+
+	public function registra_salida(){
+		if ($this->session->userdata('tipo')==1) {
+			
+			if ($this->input->post()){
+				echo "<pre>";
+				print_r($this->input->post('salidas_selected'));
+				$data['salidas_selected'] = $this->input->post('salidas_selected');
+				echo "</pre>";
+			}
+		}
 	}
 
 	public function reportes(){

@@ -138,3 +138,4 @@ function date_bitacora($s_date){
 		</div> 
 	</div>
 </div><!-- Modal -->
+<html

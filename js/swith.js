@@ -614,12 +614,16 @@ function enable_fields_inventario(){
 	var len = $('input[type="checkbox"]:checked').length;
 
 	if (len>0){
-		$("#submit_form_salidas").removeAttr("disabled");
+		$("#submit_form_salida").removeAttr("disabled");
 	} else {
-		$("#submit_form_salidas").attr("disabled", "true");
+		$("#submit_form_salida").attr("disabled", "true");
 	}
 	
 
+}
+
+function delete_search(){
+	$("#fecha_embarque").val('');
 }
 
 function gen_identificador_folio() {

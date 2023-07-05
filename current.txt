@@ -1,0 +1,13 @@
+Pendiente
+
+- Registrar salidas (https://localhost/rgdiaz/admin/inventario)
+    - Seleccionar salidas del manifiesto en array solo los id(s) del residuo(s)
+    - Agregar función para el controlador
+        - Agregar los residuos seleccionados y marcarlos como salida
+- Crear PDF Salidas
+    - En seleccion de residuos identificar los residuos por tipo
+    -
+
+
+
+Falta por arreglar
