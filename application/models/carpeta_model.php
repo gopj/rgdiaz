@@ -104,6 +104,57 @@ public function __construct()
                         ->update('carpeta');
     }
 
- }
+    public function get_folder($id_persona) {
+        return $this->db->where('name', $id_persona)
+                        ->get('files')
+                        ->row();
+    }
+
+   public function get_subfolder($parent_id) {
+      return $this->db->where('parent_id', $parent_id)
+                        ->get('files')
+                        ->result();
+   }
+
+   public function get_old_parent($parent_id) {
+      if ($parent_id) {
+         return $this->db->where('file_id', $parent_id)
+                        ->get('files')
+                        ->row()->parent_id;
+      } else {
+         return -1;
+      }
+
+
+      
+   }
+
+   public function get_path($data) {
+      $array_path = array();
+      $full_path = '';
+
+      if ($data['parent_id'] == 0){
+         $path = $this->db->where('name', $data['id_persona'])
+                        ->get('files')
+                        ->row();
+         $array_path[] = $path->name;               
+      } else {
+         while ($data['parent_id'] > 0) {
+            $path = $this->db->where('file_id', $data['parent_id'])
+                        ->get('files')
+                        ->row(); 
+            $data['parent_id'] = $path->parent_id;
+            $array_path[] = $path->name;
+         }
+      }
+      
+      foreach (array_reverse($array_path) as $value) {
+         $full_path .= $value . '/';
+      }
+      
+      return $full_path;
+   }
+
+}
 
 

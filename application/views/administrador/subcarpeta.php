@@ -1,41 +1,18 @@
 <div class="container-fluid">
 	<div class="card">
 		<div class="row">
-			
-			<?php if($anterior == "administrador/") { ?>
-				<div class="col-lg-3" >
-					<form method="post" action="<?php echo site_url('administrador/admin_clientes/' . $id_persona);?>">
-						<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
-						<input type="hidden" value="<?php echo $anterior; ?>" name="ruta_carpeta">
-						<button type="submit" class="btn"><i class="icon-arrow-left"></i></button>
-					</form>
-				</div>
-			<?php } else if($anterior == "clientes/") { ?>
-				<div class="col-lg-3 " >
-					<form method="post" action="<?php echo site_url('administrador/admin_clientes/' . $id_persona);?>">
-						<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
-						<input type="hidden" value="<?php echo $anterior; ?>" name="ruta_carpeta">
-						<button type="submit" class="btn" ><i class="icon-arrow-left"></i></button>
-					</form>
-				</div>
-			<?php } else if($raiz==$anterior) { ?>
-				<div class="col-lg-3" >
-					<form method="post" action="<?php echo site_url('administrador/subir_archivo');?>">
-						<button type="submit" class="btn" ><i class="icon-arrow-left"></i></button>
-					</form>
-				</div>
-			<?php } else { ?>
+		
 				<div class="col-lg-3" >
 					<form method="post" action="<?php echo site_url('administrador/versubcarpeta');?>">
 						<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
-						<input type="hidden" value="<?php echo $anterior; ?>" name="ruta_carpeta">
+						<input type="hidden" value="<?php echo $old_parent_id; ?>" name="file_id">
 						<button type="submit" class="btn btn" ><i class="icon-arrow-left"></i></button>
 					</form>
 				</div> 
-			<?php } ?> 
+			
 		</div>
 		<h5>Administrar Carpetas</h5>
-		<i>Ubicación: <?php echo $direccion_real; ?><br/></i>
+		<i>Ubicación: <?php echo 'clientes/' . $path; ?><br/></i>
 
 		<div class="row justify-content-end">
 				<button class="btn btn-outline-primary mx-2" href="#cate" data-toggle="modal" ><i class="icon-folder px-1"></i> Nueva Carpeta</button>
@@ -54,97 +31,96 @@
 				</tr>
 			</thead>
 			<tbody>
-				<?php foreach ($carpetas->result() as $carpe) { ?>
-					<tr>
-						<td><img src='img/iconos/folder.png'></td>
-						<td>
-							<form method='post' action="<?php echo site_url('administrador/versubcarpeta');?>">
-								<input type="hidden" value="<?php echo $carpe->id_persona; ?>" name="id_persona"/>
-								<input type="hidden" value="<?php echo $carpe->ruta_carpeta; ?>" name="ruta_carpeta" >
-								<button type="submit" class="nombre-carpeta" ><?php echo $carpe->nombre?></button>
-							</form>
-						</td>
-						<td><?php echo $carpe->fecha_creada; ?></td>
-						<td align="center">
-							<div class="row-fluid" style="margin-top:10px;">
-								<?php if ( $carpe->nombre != "Documentos de RDiaz" ) { ?> 
-									<div class="row">
-										<div class="col-lg-6">
-											<input type="hidden" value="<?php echo $carpe->id_carpeta.$carpe->nombre; ?>" id="id_formulario_renombra">
-											<form id="<?php echo $carpe->id_carpeta.$carpe->nombre; ?>" method='post' action="<?php echo site_url('administrador/renombrar_carpeta'); ?>">
-												<input type="hidden" value="<?php echo $carpe->id_persona; ?>" name="id_persona">
-												<input type="hidden" value="<?php echo $carpe->nombre; ?>" name="nombre_carpeta">
-												<input type="hidden" name="nombre_nuevo" id="<?php echo $carpe->nombre.$carpe->id_carpeta; ?>">
-												<input type="hidden" value="<?php echo $carpe->ruta_carpeta; ?>" name="ruta_carpeta">
-												<input type="hidden" value="<?php echo $carpe->ruta_anterior; ?>" name="ruta_anterior">
-												<button class="btn btn-outline-secondary btn-sm" type="button" class="btn btn-outline-secondary" onclick="abrir_modal('<?php echo $carpe->id_carpeta.$carpe->nombre; ?>', '<?php echo $carpe->nombre.$carpe->id_carpeta; ?>');"> <i class="fas fa-edit"></i> Renombrar </button>
-											</form>
-										</div>
-										<div class="col-lg-6">
-											<form id="form_eliminar_carpeta" method='post' action="<?php echo site_url('administrador/eliminar_carpeta'); ?>">
-												<input type="hidden" value="<?php echo $carpe->id_persona; ?>" id="id_persona" name="id_persona">
-												<input type="hidden" value="<?php echo $carpe->id_carpeta; ?>" id="id_carpeta" name="id_carpeta">
-												<input type="hidden" value="<?php echo $carpe->ruta_carpeta; ?>" id="ruta_carpeta" name="ruta_carpeta">
-												<input type="hidden" value="<?php echo $carpe->ruta_anterior; ?>" id="ruta_carpeta" name="ruta_anterior">
-												<button class="btn btn-outline-danger btn-sm" type="submit"> <i class="fas fa-trash"></i> Eliminar </button>
-											</form>
-										</div>
+				<?php foreach ($subfolder as $file) { ?>
+					<?php if ($file->type == 'folder') { ?>
+							<tr>
+								<td><img src='img/iconos/folder.png'></td>
+								<td>
+									<form method='post' action="<?php echo site_url('administrador/versubcarpeta');?>">
+										<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona"/>
+										<input type="hidden" value="<?php echo $path; ?>" name="ruta_carpeta" >
+										<input type="hidden" value="<?php echo $file->file_id; ?>" name="file_id" >
+										<button type="submit" class="nombre-carpeta" ><?php echo $file->name ?></button>
+									</form>
+								</td>
+								<td><?php echo $file->date; ?></td>
+								<td align="center">
+									<div class="row-fluid" style="margin-top:10px;">
+										<?php if ( $file->name != "Documentos de RDiaz" ) { ?> 
+											<div class="row">
+												<div class="col-lg-6">
+													<input type="hidden" value="<?php echo $file->parent_id.$file->name; ?>" id="id_formulario_renombra">
+													<form id="<?php echo $file->file_id.$file->name; ?>" method='post' action="<?php echo site_url('administrador/renombrar_carpeta'); ?>">
+														
+														<input type="hidden" value="<?php echo $file->name; ?>" name="nombre_carpeta">
+														<input type="hidden" name="nombre_nuevo" id="<?php echo $file->name.$file->file_id; ?>">
+														<input type="hidden" value="<?php echo $path; ?>" name="ruta_carpeta">
+
+														<button class="btn btn-outline-secondary btn-sm" type="button" class="btn btn-outline-secondary" onclick="abrir_modal('<?php echo $file->file_id.$file->name; ?>', '<?php echo $file->name.$file->file_id; ?>');"> <i class="fas fa-edit"></i> Renombrar </button>
+													</form>
+												</div>
+												<div class="col-lg-6">
+													<form id="form_eliminar_carpeta" method='post' action="<?php echo site_url('administrador/eliminar_carpeta'); ?>">
+														<input type="hidden" value="<?php echo $file->file_id; ?>" id="id_carpeta" name="id_carpeta">
+														<input type="hidden" value="<?php echo $path; ?>" id="ruta_carpeta" name="ruta_carpeta">
+														<button class="btn btn-outline-danger btn-sm" type="submit"> <i class="fas fa-trash"></i> Eliminar </button>
+													</form>
+												</div>
+											</div>
+										<?php } ?>	
 									</div>
-								<?php } ?>	
-							</div>
-						</td>        			
-					</tr>
-				<?php } ?>						
-				<?php foreach ($archivo->result() as $arch) { ?>
-						<tr>
-						<?php 
-							$ext = explode('.', $arch->nombre);
-							$extencion = array_pop($ext);
-							if($extencion=='pdf'){
+								</td>        			
+							</tr>
+					<?php } elseif ($file->type == 'file') {
+						# code...
+							echo '<tr>';
+							$ext = explode('.', $file->name);
+							$extension = array_pop($ext);
+							if($extension=='pdf'){
 								echo "<td><img src='img/iconos/pdf.png'></td>";
-							}elseif($extencion=='xls' || $extencion=='xlsx'){
+							}elseif($extension=='xls' || $extension=='xlsx'){
 								echo "<td><img src='img/iconos/xls.png'></td>";
-							}elseif($extencion=='doc'|| $extencion=='docx'){
+							}elseif($extension=='doc'|| $extension=='docx'){
 								echo "<td><img src='img/iconos/doc.png'></td>";
-							}elseif($extencion=='jpg' || $extencion=='JPG'){
+							}elseif($extension=='jpg' || $extension=='JPG'){
 								echo "<td><img src='img/iconos/jpg.png'></td>";
-							}elseif($extencion=='jpeg' || $extencion=='JPEG'){
+							}elseif($extension=='jpeg' || $extension=='JPEG'){
 								echo "<td><img src='img/iconos/jpeg.png'></td>";
-							}elseif($extencion=='png' || $extencion=='PNG'){
+							}elseif($extension=='png' || $extension=='PNG'){
 								echo "<td><img src='img/iconos/png.png'></td>";
-							}elseif($extencion=='gif'){
+							}elseif($extension=='gif'){
 								echo "<td><img src='img/iconos/gif.png'></td>";
-							}elseif($extencion=='txt'){
+							}elseif($extension=='txt'){
 								echo "<td><img src='img/iconos/txt.png'></td>";
 							} else {
 								echo "<td><img src='img/iconos/unk.png'></td>";
 							}
-							echo "<td>".$arch->nombre."</td>";
-							echo "<td>".$arch->fecha_subida."</td>";
-							$array_ruta = explode("/", $arch->ruta_archivo);
-							$id_per_arc = $array_ruta[1]; ?>
-
+							echo "<td>".$file->name."</td>";
+							echo "<td>".$file->date."</td>";
+						?>
+					
 							<td align="center">
 								<div class="row">
 									<div class="col-lg-6">
 										<form method='post' action="<?php echo site_url('administrador/descargar'); ?>">
-											<input type="hidden" value="<?php echo $arch->nombre; ?>" name="nombre">
-											<input type="hidden" value="<?php echo $arch->ruta_archivo; ?>" name="ruta_archivo">
+											<input type="hidden" value="<?php echo $file->name; ?>" name="nombre">
+											<input type="hidden" value="<?php echo $path; ?>" name="ruta_archivo">
 											<button class="btn btn-outline-primary btn-sm" type="submit"> <i class="fas fa-cloud-download-alt"></i> Descargar </button>
 										</form>
 									</div>
 									<div class="col-lg-6">
 										<form id="form_eliminar" method='post' action="<?php echo site_url('administrador/eliminar_archivo');?>">
-											<input type="hidden" value="<?php echo $id_per_arc; ?>" name="id_persona">
-											<input type="hidden" value="<?php echo $arch->id_archivo; ?>" name="id_archivo">
-											<input type="hidden" value="<?php echo $arch->ruta_archivo; ?>" name="ruta_archivo" >
-											<input type="hidden" value="<?php echo $arch->ruta_carpeta_pertenece; ?>" name="ruta_carpeta_pertenece" >
+											<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
+											<input type="hidden" value="<?php echo $file->file_id; ?>" name="id_archivo">
+											<input type="hidden" value="<?php echo $path; ?>" name="ruta_archivo" >
+											<input type="hidden" value="<?php echo $file->parent_id; ?>" name="ruta_carpeta_pertenece" >
 											<button class="btn btn-outline-danger btn-sm" type="submit"> <i class="fas fa-trash"></i> Eliminar </button>
 										</form>
 									</div>
 								</div>
 							</td>
 						</tr>
+					<?php } ?>						
 				<?php } ?>
 			</tbody>
 		</table>
