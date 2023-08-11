@@ -1,7 +1,13 @@
 <div class="container-fluid">
 	<div class="card">
 		<div class="row">
-		
+			<?php if ($old_parent_id == 0) { ?>
+				<div class="col-lg-3" >
+					<form method="post" action="<?php echo site_url('administrador/admin_clientes/' . $id_persona);?>">
+						<button type="submit" class="btn btn" ><i class="icon-arrow-left"></i></button>
+					</form>
+				</div> 
+			<?php } else { ?>
 				<div class="col-lg-3" >
 					<form method="post" action="<?php echo site_url('administrador/versubcarpeta');?>">
 						<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
@@ -9,7 +15,7 @@
 						<button type="submit" class="btn btn" ><i class="icon-arrow-left"></i></button>
 					</form>
 				</div> 
-			
+			<?php } ?>
 		</div>
 		<h5>Administrar Carpetas</h5>
 		<i>Ubicación: <?php echo 'clientes/' . $path; ?><br/></i>

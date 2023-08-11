@@ -243,8 +243,7 @@ class Administrador extends MY_Controller {
 		echo json_encode($data);
 	}
 
-	public function crearsubcarpeta()
-	{
+	public function crearsubcarpeta(){
 		$ruta_anterior = $this->input->post('direccion');
 		$nombrecarpeta =$this->input->post('nombrecarpeta');
 		$id_persona = $this->input->post('id_persona');
@@ -287,7 +286,7 @@ class Administrador extends MY_Controller {
 		$data['correo'] 	= $this->persona_model->getCorreos($id_tipo_persona);
 		
 		if($this->input->post()){
-			$data['id_persona'] = $this->input->post('id_persona');
+			$data['id_persona'] = $this->input->post('id_persona_expediente');
 
 			if ($this->input->post('file_id') == -1) {
 				redirect('administrador/admin_clientes/' . $data['id_persona']);
@@ -302,12 +301,7 @@ class Administrador extends MY_Controller {
 			$data['path']			= $this->carpeta_model->get_path($data);
 			$data['subfolder'] 		= $this->carpeta_model->get_subfolder($data['parent_id']);
 
-			echo '<pre>';
-			print_r($data);
-			echo '</pre>';
-
 			$this->load->view('administrador/subcarpeta',$data);
-
 		}else{
 			redirect('administrador/index');
 		}
