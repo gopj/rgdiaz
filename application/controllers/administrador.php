@@ -243,6 +243,11 @@ class Administrador extends MY_Controller {
 		$data['folder_path']	= $_SERVER['DOCUMENT_ROOT'] . 'rgdiaz/clientes/' . $data['path'] . $data['nombre'];
 		#$data['folder_path'] 	= $_SERVER['DOCUMENT_ROOT'] . '/clientes/' . $data['path'];
 		
+		echo '<pre>';
+		print_r($data);
+		echo '</pre>';
+		die();
+		
 		if ($data['folder_path'] == '') {
 			echo "Ingresa un nombre a la carpeta"."<br>";
 		} else if (!is_dir($data['folder_path'])) {
@@ -278,10 +283,7 @@ class Administrador extends MY_Controller {
 			$data['old_parent_id']	= $this->carpeta_model->get_old_parent($data['parent_id']);
 			$data['path']			= $this->carpeta_model->get_path($data);
 			$data['subfolder'] 		= $this->carpeta_model->get_subfolder($data['parent_id']);
-
-			// echo '<pre>';
-			// print_r($data);
-			// echo '</pre>';
+			$data['folder_id'] 		= $this->carpeta_model->get_folder_id($data['parent_id']);
 
 			$this->load->view('administrador/subcarpeta',$data);
 		}else{
@@ -328,7 +330,7 @@ class Administrador extends MY_Controller {
 	}
 
 
-	public function subir_archivo() {
+	public function subir_archivos() {
 		if ($this->session->userdata('tipo')==1) {
 
 			if($this->input->post()) {
@@ -338,14 +340,19 @@ class Administrador extends MY_Controller {
 				
 				$data['id_persona']		= $this->input->post('id_persona');
 				$data['parent_id'] 		= $this->input->post('file_id');
-				$data['old_parent_id']	= $this->carpeta_model->get_old_parent($data['parent_id']);
+				$data['old_parent_id']	= $this->carpeta_model->get_old_parent($data['id_persona']);
 				$data['path']			= $this->carpeta_model->get_path($data);
+			
+				$data['folder_data']	= $this->carpeta_model->get_folder($data['id_persona']);
+				$data['folder'] 		= $data['folder_data']->name;
+				$data['parent_id'] 		= $data['folder_data']->file_id;
+				$data['subfolder'] 		= $this->carpeta_model->get_subfolder($data['parent_id']);
+				
+				$data['files']			= $_FILES['files'];
 
-				$data['subfolder'] 		= $this->carpeta_model->get_subfolder($data['old_parent_id']);
-				echo '<pre>';
-				print_r($data);
-				echo '</pre>';
-				die();
+				
+				$this->carpeta_model->upload_files($data);
+		
 
 				$this->load->view('administrador/subcarpeta',$data);
 			}

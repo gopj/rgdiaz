@@ -137,7 +137,7 @@
 				</button>
 			</div> 
 			<div class=modal-body>
-				<form id="form_carp" action="<?php echo site_url('administrador/crearsubcarpeta');?>" method="post">
+				<form id="form_nombrecarpeta" action="<?php echo site_url('administrador/crearsubcarpeta');?>" method="post">
 					<input type="hidden" value="<?php echo $parent_id; ?>" name="file_id"/>
 					<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona"/>
 					Nombre de la carpeta:
@@ -150,7 +150,7 @@
 				</form>
 			</div>
 			<div class="modal-footer">
-				<input type="button" class="btn btn-primary" onclick="valida_nom_carpeta()" value="Crear Carpeta">
+				<input type="button" class="btn btn-primary" onclick="valida_nom_carpeta('nombrecarpeta')" value="Crear Carpeta">
 			</div>
 		</div> 
 	</div>
@@ -168,20 +168,20 @@
 				</button>
 			</div> 
 			<div class=modal-body>
-				<form id="form_folder_rename" action="<?php echo site_url('administrador/renombrar_carpeta');?>" method="post">
-					<input type="text" value="" id="file_id_update" name="file_id"/>
+				<form id="form_rename_folder" action="<?php echo site_url('administrador/renombrar_carpeta');?>" method="post">
+					<input type="hidden" value="" id="file_id_update" name="file_id"/>
 					<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona"/>
 					Nombre de la carpeta:
 					<div class='input-prepend'>
 						<span class='add-on'>
 								<img src="img/glyphicons_144_folder_open.png" class="icon-form">
 						</span>
-						<input id="rename_folder_input" class="txt-modal" type='text' name="rename_folder_input">
+						<input id="rename_folder" class="txt-modal" type='text' name="rename_folder">
 					</div>
 				</form>
 			</div>
 			<div class="modal-footer">
-				<input type="button" class="btn btn-primary" onclick="valida_nom_carpeta()" value="Renombrar Carpeta">
+				<input type="button" class="btn btn-primary" onclick="valida_nom_carpeta('rename_folder')" value="Renombrar Carpeta">
 			</div>
 		</div> 
 	</div>
@@ -199,15 +199,15 @@
 				</button>
 			</div> 
 			<div class=modal-body>
-				<form id="form_archivo" class="form-inline" method="post" action="<?php echo site_url('administrador/subir_archivo');?>" enctype="multipart/form-data">
+				<form id="form_archivo" class="form-inline" method="post" enctype="multipart/form-data" action="<?php echo site_url('administrador/subir_archivos');?>">
 					Haz click en el boton para seleccionar archivo(s)
 					<br>
 					<input type="hidden" value="<?php echo $old_parent_id; ?>" name="file_id"/>
 					<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona"/>
 
 					<div class="custom-file">
-						<input type="file" id="file_id" name="archivo[]" multiple>
-						<label class="custom-file-label" for="file_id">Selecciona Archivos</label>
+						<input type="file" id="files" name="files[]" multiple>
+						<label class="custom-file-label" for="files">Selecciona Archivos</label>
 					</div>
 				</form>
 			</div>

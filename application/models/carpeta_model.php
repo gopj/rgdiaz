@@ -126,10 +126,10 @@ public function __construct()
       }      
    }
 
-   public function get_file_id($file_id){
-      return $this->db->where('file_id', $file_id)
+   public function get_folder_id($file_id){
+      return $this->db->where('parent_id', $file_id)
                       ->get('files')
-                      ->row();
+                      ->row()->parent_id;;
    }
 
    public function get_path($data) {
@@ -171,6 +171,18 @@ public function __construct()
                       ->set('name',$data['new_folder'])
                       ->update('files');
   }
+
+  public function upload_files($data) {
+   
+   $count_files = count($data['files']);
+
+      for ($i=0; $i < $count_files; $i++) { 
+
+         return $this->db->set('name', $data['files']['name'][$i])
+                        ->set('type','file')
+                        ->set('parent_id', $data["parent_id"])
+                        ->set('size', $data['files']['size'][$i])
+                        ->insert('files');
+      }
+  }
 }
-
-

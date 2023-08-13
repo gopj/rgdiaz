@@ -84,20 +84,22 @@ function send_file_id(file_id, folder_name){
 }
 
 //	Funcion para validar al agregar una carpeta nueva
-function valida_nom_carpeta(){
+function valida_nom_carpeta(carpeta){
 	var expRegNombre = /^\s*$/;
-	var expRegValido = /^[\s-\w ñÑ][0-9]*$/;
-	var formulario = document.getElementById('form_folder_rename');
-	var nombre = $("#file_id_update").val();
+	var expRegValido = /^[\s-\w ñÑ]*$/;
+	var formulario = document.getElementById('form_' + carpeta);
+	var nombre = $("#"+carpeta).val();
 	var validar = true;
+
+	console.log(nombre);
 
 	if(!nombre || expRegNombre.test(nombre)){
 		alert("¡ESCRIBE UN NOMBRE VALIDO A LA CARPETA!");
-		$("#nombrecarpeta").focus();
+		$("#"+carpeta).focus();
 		validar = false;
 	}else if(!expRegValido.test(nombre)){
 		alert("NO SE PERMITEN / : * ? < > |");
-		$("#nombrecarpeta").focus();
+		$("#"+carpeta).focus();
 		validar = false; 
 	}
 
@@ -110,7 +112,7 @@ function valida_nom_carpeta(){
 // 	Funcion para validar al agregar un archivo a carpeta
 function valida_archivo(){
 	var form_archivo = document.getElementById('form_archivo');
-	var archivo = document.getElementById('file_id');
+	var archivo = document.getElementById('files');
 	var validar = true;
 
 	if(!archivo.value){
