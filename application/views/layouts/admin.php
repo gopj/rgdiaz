@@ -105,7 +105,7 @@
                                         <li><a href="<?=base_url('administrador/admin_clientes')?>">Directorio</a></li>
                                         <li role="separator" class="divider"></li>
                                         <li><a href="#">Configuración</a></li>
-                                        <li><a href="#">Cerrar sesión</a></li>
+                                        <li><a href="<?=base_url('home/logout')?>">Cerrar sesión</a></li>
                                     </ul>
                                 </li>
                             </ul>

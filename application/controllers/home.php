@@ -124,7 +124,7 @@ class Home extends My_Controller {
 	public function logout(){
 		//exit('entra a la funcion');
 		$this->session->sess_destroy(); #destruye session
-		redirect('home');
+		redirect('home/sesion');
 	}
 
 }

@@ -3,7 +3,7 @@
 		<div class="row">
 			<?php if ($old_parent_id == 0) { ?>
 				<div class="col-lg-3" >
-					<form method="post" action="<?php echo site_url('administrador/admin_clientes/' . $id_persona);?>">
+					<form method="post" action="<?php echo site_url('administrador/admin_clientes/' . $path);?>">
 						<button type="submit" class="btn btn" ><i class="icon-arrow-left"></i></button>
 					</form>
 				</div> 
@@ -55,15 +55,8 @@
 										<?php if ( $file->name != "Documentos de RDiaz" ) { ?> 
 											<div class="row">
 												<div class="col-lg-6">
-													<input type="hidden" value="<?php echo $file->parent_id.$file->name; ?>" id="id_formulario_renombra">
-													<form id="<?php echo $file->file_id.$file->name; ?>" method='post' action="<?php echo site_url('administrador/renombrar_carpeta'); ?>">
-														
-														<input type="hidden" value="<?php echo $file->name; ?>" name="nombre_carpeta">
-														<input type="hidden" name="nombre_nuevo" id="<?php echo $file->name.$file->file_id; ?>">
-														<input type="hidden" value="<?php echo $path; ?>" name="ruta_carpeta">
-
-														<button class="btn btn-outline-secondary btn-sm" type="button" class="btn btn-outline-secondary" onclick="abrir_modal('<?php echo $file->file_id.$file->name; ?>', '<?php echo $file->name.$file->file_id; ?>');"> <i class="fas fa-edit"></i> Renombrar </button>
-													</form>
+													<input type="hidden" value="<?php echo $path; ?>" name="ruta_carpeta">
+													<button class="btn btn-outline-secondary btn-sm" type="button" class="btn btn-outline-secondary" href="#rename" data-toggle="modal" onclick="send_file_id(<?=$file->file_id?>, '<?=$file->name?>')"> <i class="fas fa-edit"></i> Renombrar </button>
 												</div>
 												<div class="col-lg-6">
 													<form id="form_eliminar_carpeta" method='post' action="<?php echo site_url('administrador/eliminar_carpeta'); ?>">
@@ -164,6 +157,37 @@
 </div>
 <!-- Modal Agregar Carpeta End-->
 
+<!-- Modal Renombrar Carpeta Start-->
+<div class="modal" id="rename">
+	<div class="modal-dialog modal-md"> 
+		<div class="modal-content"> 
+			<div class="modal-header"> 
+				<h5 class="modal-title" >Renombrar Carpeta</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div> 
+			<div class=modal-body>
+				<form id="form_folder_rename" action="<?php echo site_url('administrador/renombrar_carpeta');?>" method="post">
+					<input type="text" value="" id="file_id_update" name="file_id"/>
+					<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona"/>
+					Nombre de la carpeta:
+					<div class='input-prepend'>
+						<span class='add-on'>
+								<img src="img/glyphicons_144_folder_open.png" class="icon-form">
+						</span>
+						<input id="rename_folder_input" class="txt-modal" type='text' name="rename_folder_input">
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<input type="button" class="btn btn-primary" onclick="valida_nom_carpeta()" value="Renombrar Carpeta">
+			</div>
+		</div> 
+	</div>
+</div>
+<!-- Modal Agregar Carpeta End-->
+
 <!-- Modal Subir Archivos Start-->
 <div class="modal" id="upload">
 	<div class="modal-dialog modal-md"> 
@@ -175,15 +199,15 @@
 				</button>
 			</div> 
 			<div class=modal-body>
-				<form id="form_archivo" class="form-inline" method="post" action="<?php echo site_url('administrador/subirarchivo');?>" enctype="multipart/form-data">
+				<form id="form_archivo" class="form-inline" method="post" action="<?php echo site_url('administrador/subir_archivo');?>" enctype="multipart/form-data">
 					Haz click en el boton para seleccionar archivo(s)
 					<br>
 					<input type="hidden" value="<?php echo $old_parent_id; ?>" name="file_id"/>
 					<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona"/>
-					
+
 					<div class="custom-file">
-						<input type="file" class="custom-file-input" id="file" multiple="multiple" name="archivo[]">
-						<label class="custom-file-label" for="customFile">Selecciona Archivos</label>
+						<input type="file" id="file_id" name="archivo[]" multiple>
+						<label class="custom-file-label" for="file_id">Selecciona Archivos</label>
 					</div>
 				</form>
 			</div>
@@ -194,66 +218,3 @@
 	</div>
 </div>
 <!-- Modal Subir Archivos End-->
-
-
-
-<!-- Modal Renombrar Carpeta Start-->
-<div class="modal" id="cate">
-	<div class="modal-dialog modal-md"> 
-		<div class="modal-content"> 
-			<div class="modal-header"> 
-				<h5 class="modal-title" >Renombrar Carpeta</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div> 
-			<div class=modal-body>
-				<form id="form_carp" action="<?php echo site_url('administrador/renombrar_carpeta');?>" method="post">
-					<input type="hidden" value="<?php echo $parent_id; ?>" name="file_id"/>
-					<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona"/>
-					Nombre de la carpeta:
-					<div class='input-prepend'>
-						<span class='add-on'>
-								<img src="img/glyphicons_144_folder_open.png" class="icon-form">
-						</span>
-						<input id="nombrecarpeta" class="txt-modal" type='text' name="nombrecarpeta">
-					</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<input type="button" class="btn btn-primary" onclick="valida_nom_carpeta()" value="Crear Carpeta">
-			</div>
-		</div> 
-	</div>
-</div>
-<!-- Modal Agregar Carpeta End-->
-
-
-
-<!-- Modal Renombrar Carpeta Start-->
-<div class="modal" id="renombrar">
-	<div class="modal-dialog modal-md"> 
-		<div class="modal-content"> 
-			<div class="modal-header"> 
-				<h5 class="modal-title" >Renombrar Carpeta</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div> 
-			<div class=modal-body>
-				Nombre de la carpeta:
-				<div class='input-prepend'>
-					<span class='add-on'>
-						<img src="img/glyphicons_144_folder_open.png" class="icon-form">
-					</span>
-					<input type="text" class="txt-modal" id="nuevo_nombre">
-				</div>
-			</div>
-			<div class="modal-footer">
-				<input type="button" class="btn btn-primary" onclick="renombrar_carpeta();" value="Cambiar">
-			</div>
-		</div> 
-	</div>
-</div>
-<!-- Modal Renombrar Carpeta End-->
-

@@ -126,6 +126,12 @@ public function __construct()
       }      
    }
 
+   public function get_file_id($file_id){
+      return $this->db->where('file_id', $file_id)
+                      ->get('files')
+                      ->row();
+   }
+
    public function get_path($data) {
       $array_path = array();
       $full_path = '';
@@ -152,7 +158,6 @@ public function __construct()
       return $full_path;
    }
 
-
    public function create_folder($data){
       return $this->db->set('name', $data["nombre"])
             ->set('type','folder')
@@ -160,6 +165,12 @@ public function __construct()
             ->set('size', '4096')
             ->insert('files');
    }
+
+   public function update_folder($data) {
+      return $this->db->where('file_id',$data['parent_id'])
+                      ->set('name',$data['new_folder'])
+                      ->update('files');
+  }
 }
 
 
