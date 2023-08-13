@@ -123,10 +123,7 @@ public function __construct()
                         ->row()->parent_id;
       } else {
          return -1;
-      }
-
-
-      
+      }      
    }
 
    public function get_path($data) {
@@ -155,6 +152,14 @@ public function __construct()
       return $full_path;
    }
 
+
+   public function create_folder($data){
+      return $this->db->set('name', $data["nombre"])
+            ->set('type','folder')
+            ->set('parent_id', $data["parent_id"])
+            ->set('size', '4096')
+            ->insert('files');
+   }
 }
 
 

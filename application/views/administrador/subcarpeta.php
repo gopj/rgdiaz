@@ -145,8 +145,8 @@
 			</div> 
 			<div class=modal-body>
 				<form id="form_carp" action="<?php echo site_url('administrador/crearsubcarpeta');?>" method="post">
+					<input type="hidden" value="<?php echo $parent_id; ?>" name="file_id"/>
 					<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona"/>
-					<input type="hidden" value="<?php echo $direccion; ?>" name="direccion"/>
 					Nombre de la carpeta:
 					<div class='input-prepend'>
 						<span class='add-on'>
@@ -178,10 +178,9 @@
 				<form id="form_archivo" class="form-inline" method="post" action="<?php echo site_url('administrador/subirarchivo');?>" enctype="multipart/form-data">
 					Haz click en el boton para seleccionar archivo(s)
 					<br>
-					<input type="hidden" value="<?php echo $direccion; ?>" name="direccion"/>
+					<input type="hidden" value="<?php echo $old_parent_id; ?>" name="file_id"/>
 					<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona"/>
-					<input type="hidden" value="<?php echo $direccion; ?>" name="ruta_carpeta">
-
+					
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" id="file" multiple="multiple" name="archivo[]">
 						<label class="custom-file-label" for="customFile">Selecciona Archivos</label>
@@ -195,6 +194,41 @@
 	</div>
 </div>
 <!-- Modal Subir Archivos End-->
+
+
+
+<!-- Modal Renombrar Carpeta Start-->
+<div class="modal" id="cate">
+	<div class="modal-dialog modal-md"> 
+		<div class="modal-content"> 
+			<div class="modal-header"> 
+				<h5 class="modal-title" >Renombrar Carpeta</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div> 
+			<div class=modal-body>
+				<form id="form_carp" action="<?php echo site_url('administrador/renombrar_carpeta');?>" method="post">
+					<input type="hidden" value="<?php echo $parent_id; ?>" name="file_id"/>
+					<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona"/>
+					Nombre de la carpeta:
+					<div class='input-prepend'>
+						<span class='add-on'>
+								<img src="img/glyphicons_144_folder_open.png" class="icon-form">
+						</span>
+						<input id="nombrecarpeta" class="txt-modal" type='text' name="nombrecarpeta">
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<input type="button" class="btn btn-primary" onclick="valida_nom_carpeta()" value="Crear Carpeta">
+			</div>
+		</div> 
+	</div>
+</div>
+<!-- Modal Agregar Carpeta End-->
+
+
 
 <!-- Modal Renombrar Carpeta Start-->
 <div class="modal" id="renombrar">
@@ -223,23 +257,3 @@
 </div>
 <!-- Modal Renombrar Carpeta End-->
 
-<script>
-	var id_formulario_renombrar;
-	var id_hidden_nuevo_nombre;
-
-	function abrir_modal(id_formulario, id_hidden) {
-		id_formulario_renombrar = id_formulario;
-		id_hidden_nuevo_nombre = id_hidden;
-		$('#renombrar').modal('show');
-	}
-	
-	function renombrar_carpeta() {
-		if(document.getElementById('nuevo_nombre').value == "")  {
-			alert('EL CAMPO NOMBRE ES REQUERIDO');
-			document.getElementById('nuevo_nombre').focus();
-		} else {
-			document.getElementById(id_hidden_nuevo_nombre).value = document.getElementById('nuevo_nombre').value;
-			document.getElementById(id_formulario_renombrar).submit();
-		}
-	}
-</script>
