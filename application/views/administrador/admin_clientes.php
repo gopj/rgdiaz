@@ -6,7 +6,7 @@
 		
 		var prev_selected_client = document.getElementById('prev_selected').value;
 
-		console.log(prev_selected_client + "<-Dato de la persona");
+		console.log(prev_selected_client);
 
 		compruebausuario(prev_selected_client);
 

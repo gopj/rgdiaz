@@ -177,7 +177,6 @@ function compruebausuario(id){
 	var id_per = id;
 	var qr_url = $("#btn_qr").attr('href');
 
-
 	$("#btn_qr").attr("href", qr_url + "/" + id_per);
 
 	$("#nombre_empresa").val("");
@@ -228,7 +227,7 @@ function compruebausuario(id){
 		}).done(
 			function(resp)
 			{
-				var miJson = jQuery.parseJSON(resp);
+				var miJson = JSON.parse(resp);
 
 				var id_persona = miJson.id_persona;
 				var nombre = miJson.nombre;

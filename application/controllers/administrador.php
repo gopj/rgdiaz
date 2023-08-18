@@ -119,50 +119,22 @@ class Administrador extends MY_Controller {
 
 				$datocliente = $this->persona_model->obtenerid($this->input->post('correo'),$psw_nva);
 
-				public function crearsubcarpeta(){
-					$data['mensajes']		= $this->contacto_model->contador_mensajes($status=0);
-					$data['clientes'] 		= $this->persona_model->obtiene_clientes_baja($id_status_persona=1,$id_tipo_persona=3,$lleno_datos=1);
-					$data['correo'] 		= $this->persona_model->getCorreos($id_tipo_persona);
-			
-					$data['nombre'] 		= $this->input->post('nombrecarpeta');
-					$data['id_persona'] 	= $this->input->post('id_persona');
-					$data['parent_id'] 		= $this->input->post('file_id');
-					$data['old_parent_id']	= $this->carpeta_model->get_old_parent($data['parent_id']);
-					$data['path']			= $this->carpeta_model->get_path($data);
-					
-					$data['folder_path']	= $_SERVER['DOCUMENT_ROOT'] . 'rgdiaz/clientes/' . $data['path'] . $data['nombre'];
-					#$data['folder_path'] 	= $_SERVER['DOCUMENT_ROOT'] . '/clientes/' . $data['path'];
-					
-					if ($data['folder_path'] == '') {
-						echo "Ingresa un nombre a la carpeta"."<br>";
-					} else if (!is_dir($data['folder_path'])) {
-						mkdir($data['folder_path'], 0755);
-						chmod($data['folder_path'], 0755);
-						$this->carpeta_model->create_folder($data);
-					} else {
-						echo "Ya existe una carpeta con ese nombre"."<br>";
-					}
-			
-					$data['subfolder'] 		= $this->carpeta_model->get_subfolder($data['parent_id']);
-			
-					$this->load->view('administrador/subcarpeta',$data);
-				}
-
-				$data['folder_name'] = $datocliente->id_persona;
-				$data['folder_path'] = $_SERVER['DOCUMENT_ROOT'] . 'rgdiaz/clientes/' . $data['folder_name'];
-				#$data['folder_path'] = $_SERVER['DOCUMENT_ROOT'] . 'clientes/' . $data['folder_name'];
+				$data['nombre'] = $datocliente->id_persona;
+				$data['parent_id'] = $datocliente->id_persona;
+				$data['folder_path'] = $_SERVER['DOCUMENT_ROOT'] . 'rgdiaz/clientes/' . $data['nombre'];
+				#$data['folder_path'] = $_SERVER['DOCUMENT_ROOT'] . 'clientes/' . $data['nombre'];
 				
-				if($data['folder_name'] == '') {
+				if($data['nombre'] == '') {
 					echo "Ingresa un nombre a la carpeta"."<br>";
 				} else if(!is_dir($data['folder_path'])) {
 					mkdir($data['folder_path'], 0755);
 					chmod($data['folder_path'], 0755);
-					$this->carpeta_model->registrarcarpeta($nombrecarpeta,$id_persona,$ruta_carpeta,$id_status_carpeta,$ruta_anterior);
+					$this->carpeta_model->create_folder($data);
 				} else {
 					echo "Ya existe una carpeta con ese nombre"."<br>";
 				}
 
-				redirect('administrador/index');
+				redirect('administrador/admin_clientes/' . $data['parent_id']);
 			}
 
 		} else {
@@ -252,7 +224,8 @@ class Administrador extends MY_Controller {
 		$data['numero_registro_ambiental'] = $persona->numero_registro_ambiental;
 		$data['identificador_folio'] = $persona->identificador_folio;
 		$data['password_contacto'] = $persona->password;
-		$data['ruta'] = $this->carpeta_model->obtiene_ruta($this->input->post('id_persona'),$ruta_anterior="clientes/")->ruta_carpeta;
+		$data['parent_id'] = 0;
+		$data['ruta'] = $this->carpeta_model->get_path($data);
 
 		echo json_encode($data);
 	}
@@ -617,24 +590,24 @@ class Administrador extends MY_Controller {
 
 				//-------------------------------------------------------------
 
-				$datocliente=$this->persona_model->obtenerid($this->input->post('correo'),$psw_nva);
-				$nombrecarpeta=$datocliente->id_persona;
-				$id_persona=$nombrecarpeta;
-				$ruta_anterior='clientes/';
-				$ruta_carpeta= 'clientes/'.$nombrecarpeta;
-				$id_status_carpeta=1;
+				$datocliente = $this->persona_model->obtenerid($this->input->post('correo'),$psw_nva);
 
-				if($ruta_carpeta =='') {
+				$data['nombre'] = $datocliente->id_persona;
+				$data['parent_id'] = $datocliente->id_persona;
+				$data['folder_path'] = $_SERVER['DOCUMENT_ROOT'] . 'rgdiaz/clientes/' . $data['nombre'];
+				#$data['folder_path'] = $_SERVER['DOCUMENT_ROOT'] . 'clientes/' . $data['nombre'];
+				
+				if($data['nombre'] == '') {
 					echo "Ingresa un nombre a la carpeta"."<br>";
-				} else if(!is_dir($ruta_carpeta)) {
-					mkdir($ruta_carpeta, 0755);
-					chmod($ruta_carpeta, 0755);
-					$this->carpeta_model->registrarcarpeta($nombrecarpeta,$id_persona,$ruta_carpeta,$id_status_carpeta,$ruta_anterior);
+				} else if(!is_dir($data['folder_path'])) {
+					mkdir($data['folder_path'], 0755);
+					chmod($data['folder_path'], 0755);
+					$this->carpeta_model->create_folder($data);
 				} else {
 					echo "Ya existe una carpeta con ese nombre"."<br>";
 				}
 
-				redirect('administrador/index');
+				redirect('administrador/admin_clientes/' . $data['parent_id']);
 			}
 		}
 	}
