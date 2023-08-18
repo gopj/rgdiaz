@@ -8,8 +8,7 @@ public function __construct()
            $this->load->database();
      }
 
-     public function registrarcarpeta($nombrecarpeta,$id_persona,$ruta_carpeta,$id_status_carpeta,$ruta_anterior)
-     {
+     public function registrarcarpeta($nombrecarpeta,$id_persona,$ruta_carpeta,$id_status_carpeta,$ruta_anterior) {
         return $this->db->set('nombre',$nombrecarpeta)
                         ->set('id_persona',$id_persona)
                         ->set('ruta_carpeta',$ruta_carpeta)
@@ -129,18 +128,20 @@ public function __construct()
    public function get_folder_id($file_id){
       return $this->db->where('parent_id', $file_id)
                       ->get('files')
-                      ->row()->parent_id;;
+                      ->row()->parent_id;
    }
 
    public function get_path($data) {
       $array_path = array();
+      $array_type = array();
       $full_path = '';
 
       if ($data['parent_id'] == 0){
          $path = $this->db->where('name', $data['id_persona'])
                         ->get('files')
                         ->row();
-         $array_path[] = $path->name;               
+         $array_path[] = $path->name;
+         $array_type[] = $path->type;              
       } else {
          while ($data['parent_id'] > 0) {
             $path = $this->db->where('file_id', $data['parent_id'])
@@ -148,13 +149,18 @@ public function __construct()
                         ->row(); 
             $data['parent_id'] = $path->parent_id;
             $array_path[] = $path->name;
+            $array_type[] = $path->type;
          }
       }
-      
+   
       foreach (array_reverse($array_path) as $value) {
          $full_path .= $value . '/';
       }
       
+      if ($array_type[0] != 'folder') {
+         $full_path = substr($full_path, 0, -1);
+      }
+
       return $full_path;
    }
 
@@ -170,19 +176,34 @@ public function __construct()
       return $this->db->where('file_id',$data['parent_id'])
                       ->set('name',$data['new_folder'])
                       ->update('files');
-  }
+   }
 
-  public function upload_files($data) {
-   
-   $count_files = count($data['files']);
+   public function delete_folder($parent_id) {
+      return $this->db->query("
+         select  file_id,
+            name,
+            parent_id 
+            from    (select * from files
+            order by parent_id, file_id) files_sorted,
+            (select @pv := '{$parent_id}') initialisation
+            where   find_in_set(parent_id, @pv)
+            and     length(@pv := concat(@pv, ',', file_id))
+      ")->result();
+   }
 
-      for ($i=0; $i < $count_files; $i++) { 
+   public function upload_files($data) {
 
-         return $this->db->set('name', $data['files']['name'][$i])
-                        ->set('type','file')
-                        ->set('parent_id', $data["parent_id"])
-                        ->set('size', $data['files']['size'][$i])
-                        ->insert('files');
-      }
-  }
+      return $this->db->set('name', $data['file_name'])
+                     ->set('type','file')
+                     ->set('parent_id', $data["parent_id"])
+                     ->set('size', $data['file_size'])
+                     ->insert('files');
+
+   }
+
+   public function delete_file($file_id){
+      return $this->db->where('file_id',$file_id)
+      ->delete('files');
+   }
+
 }

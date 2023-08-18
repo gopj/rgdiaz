@@ -80,7 +80,7 @@ function cliente_baja(){
 
 function send_file_id(file_id, folder_name){
 	$("#file_id_update").val(file_id);
-	$("#rename_folder_input").val(folder_name);
+	$("#rename_folder").val(folder_name);
 }
 
 //	Funcion para validar al agregar una carpeta nueva

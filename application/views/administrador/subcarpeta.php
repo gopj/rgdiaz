@@ -61,7 +61,8 @@
 												<div class="col-lg-6">
 													<form id="form_eliminar_carpeta" method='post' action="<?php echo site_url('administrador/eliminar_carpeta'); ?>">
 														<input type="hidden" value="<?php echo $file->file_id; ?>" id="id_carpeta" name="id_carpeta">
-														<input type="hidden" value="<?php echo $path; ?>" id="ruta_carpeta" name="ruta_carpeta">
+														<input type="hidden" value="<?php echo $path; ?>" id="ruta_carpeta" name="current_path">
+														<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona"/>
 														<button class="btn btn-outline-danger btn-sm" type="submit"> <i class="fas fa-trash"></i> Eliminar </button>
 													</form>
 												</div>
@@ -102,17 +103,16 @@
 								<div class="row">
 									<div class="col-lg-6">
 										<form method='post' action="<?php echo site_url('administrador/descargar'); ?>">
-											<input type="hidden" value="<?php echo $file->name; ?>" name="nombre">
-											<input type="hidden" value="<?php echo $path; ?>" name="ruta_archivo">
+											<input type="hidden" value="<?php echo $file->file_id; ?>" name="file_id">
 											<button class="btn btn-outline-primary btn-sm" type="submit"> <i class="fas fa-cloud-download-alt"></i> Descargar </button>
 										</form>
 									</div>
 									<div class="col-lg-6">
 										<form id="form_eliminar" method='post' action="<?php echo site_url('administrador/eliminar_archivo');?>">
 											<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona">
-											<input type="hidden" value="<?php echo $file->file_id; ?>" name="id_archivo">
-											<input type="hidden" value="<?php echo $path; ?>" name="ruta_archivo" >
-											<input type="hidden" value="<?php echo $file->parent_id; ?>" name="ruta_carpeta_pertenece" >
+											<input type="hidden" value="<?php echo $file->file_id; ?>" name="file_id">
+											<input type="hidden" value="<?php echo $path; ?>" name="path" >
+											<input type="hidden" value="<?php echo $file->parent_id; ?>" name="paren_id" >
 											<button class="btn btn-outline-danger btn-sm" type="submit"> <i class="fas fa-trash"></i> Eliminar </button>
 										</form>
 									</div>
@@ -169,8 +169,8 @@
 			</div> 
 			<div class=modal-body>
 				<form id="form_rename_folder" action="<?php echo site_url('administrador/renombrar_carpeta');?>" method="post">
-					<input type="hidden" value="" id="file_id_update" name="file_id"/>
-					<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona"/>
+					<input type="text" value="" id="file_id_update" name="file_id"/>
+					<input type="text" value="<?=$id_persona;?>" name="id_persona"/>
 					Nombre de la carpeta:
 					<div class='input-prepend'>
 						<span class='add-on'>
@@ -202,7 +202,7 @@
 				<form id="form_archivo" class="form-inline" method="post" enctype="multipart/form-data" action="<?php echo site_url('administrador/subir_archivos');?>">
 					Haz click en el boton para seleccionar archivo(s)
 					<br>
-					<input type="hidden" value="<?php echo $old_parent_id; ?>" name="file_id"/>
+					<input type="hidden" value="<?php echo $parent_id; ?>" name="file_id"/>
 					<input type="hidden" value="<?php echo $id_persona; ?>" name="id_persona"/>
 
 					<div class="custom-file">

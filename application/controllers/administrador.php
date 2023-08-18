@@ -77,7 +77,7 @@ class Administrador extends MY_Controller {
 			
 				$str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
 				$psw_nva = "";
-					for($i=0;$i<8;$i++) {
+				for($i=0;$i<8;$i++) {
 					$psw_nva .= substr($str,rand(0,62),1);
 				}
 
@@ -118,17 +118,45 @@ class Administrador extends MY_Controller {
 				$this->email->send();
 
 				$datocliente = $this->persona_model->obtenerid($this->input->post('correo'),$psw_nva);
-				$nombrecarpeta = $datocliente->id_persona;
-				$id_persona = $nombrecarpeta;
-				$ruta_anterior ='clientes/';
-				$ruta_carpeta = 'clientes/'.$nombrecarpeta;
-				$id_status_carpeta=1;
+
+				public function crearsubcarpeta(){
+					$data['mensajes']		= $this->contacto_model->contador_mensajes($status=0);
+					$data['clientes'] 		= $this->persona_model->obtiene_clientes_baja($id_status_persona=1,$id_tipo_persona=3,$lleno_datos=1);
+					$data['correo'] 		= $this->persona_model->getCorreos($id_tipo_persona);
+			
+					$data['nombre'] 		= $this->input->post('nombrecarpeta');
+					$data['id_persona'] 	= $this->input->post('id_persona');
+					$data['parent_id'] 		= $this->input->post('file_id');
+					$data['old_parent_id']	= $this->carpeta_model->get_old_parent($data['parent_id']);
+					$data['path']			= $this->carpeta_model->get_path($data);
+					
+					$data['folder_path']	= $_SERVER['DOCUMENT_ROOT'] . 'rgdiaz/clientes/' . $data['path'] . $data['nombre'];
+					#$data['folder_path'] 	= $_SERVER['DOCUMENT_ROOT'] . '/clientes/' . $data['path'];
+					
+					if ($data['folder_path'] == '') {
+						echo "Ingresa un nombre a la carpeta"."<br>";
+					} else if (!is_dir($data['folder_path'])) {
+						mkdir($data['folder_path'], 0755);
+						chmod($data['folder_path'], 0755);
+						$this->carpeta_model->create_folder($data);
+					} else {
+						echo "Ya existe una carpeta con ese nombre"."<br>";
+					}
+			
+					$data['subfolder'] 		= $this->carpeta_model->get_subfolder($data['parent_id']);
+			
+					$this->load->view('administrador/subcarpeta',$data);
+				}
+
+				$data['folder_name'] = $datocliente->id_persona;
+				$data['folder_path'] = $_SERVER['DOCUMENT_ROOT'] . 'rgdiaz/clientes/' . $data['folder_name'];
+				#$data['folder_path'] = $_SERVER['DOCUMENT_ROOT'] . 'clientes/' . $data['folder_name'];
 				
-				if($ruta_carpeta =='') {
+				if($data['folder_name'] == '') {
 					echo "Ingresa un nombre a la carpeta"."<br>";
-				} else if(!is_dir($ruta_carpeta)) {
-					mkdir($ruta_carpeta, 0755);
-					chmod($ruta_carpeta, 0755);
+				} else if(!is_dir($data['folder_path'])) {
+					mkdir($data['folder_path'], 0755);
+					chmod($data['folder_path'], 0755);
 					$this->carpeta_model->registrarcarpeta($nombrecarpeta,$id_persona,$ruta_carpeta,$id_status_carpeta,$ruta_anterior);
 				} else {
 					echo "Ya existe una carpeta con ese nombre"."<br>";
@@ -243,11 +271,6 @@ class Administrador extends MY_Controller {
 		$data['folder_path']	= $_SERVER['DOCUMENT_ROOT'] . 'rgdiaz/clientes/' . $data['path'] . $data['nombre'];
 		#$data['folder_path'] 	= $_SERVER['DOCUMENT_ROOT'] . '/clientes/' . $data['path'];
 		
-		echo '<pre>';
-		print_r($data);
-		echo '</pre>';
-		die();
-		
 		if ($data['folder_path'] == '') {
 			echo "Ingresa un nombre a la carpeta"."<br>";
 		} else if (!is_dir($data['folder_path'])) {
@@ -269,7 +292,11 @@ class Administrador extends MY_Controller {
 		$data['correo'] 	= $this->persona_model->getCorreos($id_tipo_persona);
 		
 		if($this->input->post()){
-			$data['id_persona'] = $this->input->post('id_persona_expediente');
+			if ($this->input->post('id_persona_expediente')) {
+				$data['id_persona'] = $this->input->post('id_persona_expediente');
+			} else {
+				$data['id_persona'] = $this->input->post('id_persona');
+			}
 
 			if ($this->input->post('file_id') == -1) {
 				redirect('administrador/admin_clientes/' . $data['id_persona']);
@@ -283,11 +310,16 @@ class Administrador extends MY_Controller {
 			$data['old_parent_id']	= $this->carpeta_model->get_old_parent($data['parent_id']);
 			$data['path']			= $this->carpeta_model->get_path($data);
 			$data['subfolder'] 		= $this->carpeta_model->get_subfolder($data['parent_id']);
-			$data['folder_id'] 		= $this->carpeta_model->get_folder_id($data['parent_id']);
+			#$data['folder_id'] 		= $this->carpeta_model->get_folder_id($data['parent_id']);
+
+			// echo "<pre>";
+			// print_r($data);
+			// echo "</pre>";
 
 			$this->load->view('administrador/subcarpeta',$data);
 		}else{
-			redirect('administrador/index');
+			#redirect('home/logout');
+			redirect('administrador/admin_clientes');
 		}
 
 	}
@@ -301,7 +333,7 @@ class Administrador extends MY_Controller {
 			$data['id_persona']	= $this->input->post('id_persona');
 			$data['parent_id'] 	= $this->input->post('file_id');
 
-			$data['new_folder']		= $this->input->post('rename_folder_input');
+			$data['new_folder']		= $this->input->post('rename_folder');
 			$data['old_parent_id']	= $this->carpeta_model->get_old_parent($data['parent_id']);
 			$data['path']			= $this->carpeta_model->get_path($data);
 			
@@ -310,6 +342,10 @@ class Administrador extends MY_Controller {
 			$data['new_folder_path']= $_SERVER['DOCUMENT_ROOT'] . 'rgdiaz/clientes/' . $data['id_persona'] . '/' . $data['new_folder']; #DEV
 			#$data['new_folder_path']= $_SERVER['DOCUMENT_ROOT'] . 'clientes/' . $data['id_persona'] . '/' . $data['new_folder']; #PROD
 
+			// echo "<pre>";
+			// print_r($data);
+			// echo "</pre>";
+		
 			
 			if ($data['folder_path'] == '') {
 				echo "Ingresa un nombre a la carpeta"."<br>";
@@ -325,7 +361,8 @@ class Administrador extends MY_Controller {
 
 			$this->load->view('administrador/subcarpeta', $data);
 		} else {
-			redirect('administrador/index');
+			#redirect('home/logout');
+			redirect('administrador/admin_clientes');
 		} 
 	}
 
@@ -343,17 +380,35 @@ class Administrador extends MY_Controller {
 				$data['old_parent_id']	= $this->carpeta_model->get_old_parent($data['id_persona']);
 				$data['path']			= $this->carpeta_model->get_path($data);
 			
-				$data['folder_data']	= $this->carpeta_model->get_folder($data['id_persona']);
-				$data['folder'] 		= $data['folder_data']->name;
-				$data['parent_id'] 		= $data['folder_data']->file_id;
+				
 				$data['subfolder'] 		= $this->carpeta_model->get_subfolder($data['parent_id']);
 				
 				$data['files']			= $_FILES['files'];
 
+				$data['folder_path']	= $_SERVER['DOCUMENT_ROOT'] . 'rgdiaz/clientes/' . $data['path']; #DEV
+				#$data['folder_path'] 	= $_SERVER['DOCUMENT_ROOT'] . 'clientes/' . $data['path']; #PROD
 				
-				$this->carpeta_model->upload_files($data);
-		
-
+				$count_files = count($data['files']['name']);
+     			for ($i=0; $i < $count_files; $i++) {
+					$data['file_name'] = $data['files']['name'][$i];
+					$data['file_size'] = $data['files']['size'][$i];
+					$data['file_path'] = $data['folder_path'] . $data['files']['name'][$i];
+					$data['file_temp'] = $data['files']['tmp_name'][$i];
+					if (file_exists($data['file_path'])) {
+						echo "Lo siento, el archivo o los archivos ya existen.";
+					} else {
+						move_uploaded_file($data['file_temp'], $data['file_path']);
+						$this->carpeta_model->upload_files($data);
+					}
+				}
+				// echo "<pre>";
+				// print_r($data);
+				// echo "</pre>";
+				
+				$data['old_parent_id']	= $this->carpeta_model->get_old_parent($data['parent_id']);
+				$data['path']			= $this->carpeta_model->get_path($data);
+				$data['subfolder'] 		= $this->carpeta_model->get_subfolder($data['parent_id']);
+				
 				$this->load->view('administrador/subcarpeta',$data);
 			}
 		} else {
@@ -363,128 +418,88 @@ class Administrador extends MY_Controller {
 
 
 	public function descargar(){
-		$name=$this->input->post('nombre');
-		$ruta=$this->input->post('ruta_archivo');
+		$data['parent_id'] 	= $this->input->post('file_id');
+		$data['path']		= $this->carpeta_model->get_path($data);
+		$data['file_path']	= $_SERVER['DOCUMENT_ROOT'] . 'rgdiaz/clientes/' . $data['path']; #DEV
+		#$data['file_path']	= $_SERVER['DOCUMENT_ROOT'] . 'rgdiaz/clientes/' . $data['path']; #DEV
+		#$data['file_path'] 	= $_SERVER['DOCUMENT_ROOT'] . 'clientes/' . $data['path']; #PROD
+
 		header('Content-Description: File Transfer');
 		header('Content-Type: application/octet-stream');
-		header('Content-Disposition: attachment; filename='.basename($ruta));
+		header('Content-Disposition: attachment; filename=' . basename($data['file_path']));
 		header('Content-Transfer-Encoding: binary');
 		header('Expires: 0');
 		header('Cache-Control: must-revalidate');
 		header('Pragma: public');
-		header('Content-Length:' . filesize($ruta));
+		header('Content-Length:' . filesize($data['file_path']));
 		ob_clean();
 		flush();
-		readfile($ruta);
+		readfile($data['file_path']);
 		exit;	
 	}
 
-	public function eliminar_archivo()
-	{	
-		$this->archivo_model->eliminar_archivo($this->input->post('id_archivo'));
-		$ruta = $this->input->post('ruta_archivo');
-		unlink(@$ruta);
-		$id_persona = $this->input->post('id_persona');
-		$ruta_carpeta_pertenece = $this->input->post('ruta_carpeta_pertenece');
-		
-		$ruta_carpeta=$ruta_carpeta_pertenece;
-		$direccion = $ruta_carpeta_pertenece;
-		$anterior=$this->carpeta_model->obtieneunacarpeta($ruta_carpeta);
-		$nombre_empresa = $this->persona_model->get_nombre($id_persona);
-		$nombre = $nombre_empresa->nombre_empresa;	//Nombre de la empresa
-		$ruta = explode("/", $direccion);
-		$ruta[1] = $nombre;
-		$direccion_real="";
+	public function eliminar_archivo() {
+		$data['mensajes']		= $this->contacto_model->contador_mensajes($status=0);
+		$data['clientes'] 		= $this->persona_model->obtiene_clientes_baja($id_status_persona=1,$id_tipo_persona=3,$lleno_datos=1);
+		$data['correo'] 		= $this->persona_model->getCorreos($id_tipo_persona);
 
-		foreach ($ruta as $r) {
-			$direccion_real .= $r."/";
-		}
+		$data['id_persona']		= $this->input->post('id_persona');
+		$data['parent_id'] 		= $this->input->post('file_id');
+		$data['old_parent_id']	= $this->carpeta_model->get_old_parent($data['parent_id']);
+		$data['path']			= $this->carpeta_model->get_path($data);
 
-		$raiz='clientes/';
-		$subcarpetas=$this->carpeta_model->obtienesubcarpeta($ruta_carpeta);
-		$archivos=$this->archivo_model->obtienearchivos($ruta_carpeta);
-		$id_tipo_persona=3;
-		$id_status_persona=1;
-		$mensajesnuevos = $this->contacto_model->contador_mensajes($status=0);
-		$cliente=$this->persona_model->obtiene_clientes($id_tipo_persona,$id_status_persona);
-		$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
 
-		#$todosmensajes = $this->contacto_model->mensajescontacto();
-		$data = array(
-			'mensajes'=> $mensajesnuevos,
-			#'mensajitos' => $todosmensajes
-		);
-		$id_tipo_persona=3;
-		$id_status_persona=1;
-		$data = array( 
-			'clientes' => $cliente,
-			'carpetas'=> $subcarpetas,
-			'direccion'=> $direccion,
-			'id_persona'=> $id_persona,
-			'archivo'=>$archivos,
-			'anterior'=>$anterior,
-			'raiz'=>$raiz,
-			'correo' => $correo_clientes,
-			'direccion_real' => $direccion_real
+		$data['file_path']		= $_SERVER['DOCUMENT_ROOT'] . 'rgdiaz/clientes/' . $data['path']; #DEV
+		#$data['file_path'] = $_SERVER['DOCUMENT_ROOT'] . 'clientes/' . $data['path']; #PROD
 
-		);
+		unlink(@$data['file_path']);
+		$this->carpeta_model->delete_file($data['parent_id']);
+	
+		### Needed do not delete, per old values to the new file deleted
+		$data['parent_id']		= $data['old_parent_id'];
+		$data['path']			= $this->carpeta_model->get_path($data);
+		$data['subfolder'] 		= $this->carpeta_model->get_subfolder($data['old_parent_id']);
+		$data['old_parent_id']	= $this->carpeta_model->get_old_parent($data['parent_id']); 
 
-		$this->load->view('administrador/subcarpeta',$data);
-				
+		$this->load->view('administrador/subcarpeta', $data);		
 	}
 
-	public function eliminar_carpeta()
-	{	
-		$ruta=$this->input->post('ruta_carpeta');
-		$this->carpeta_model->eliminar_carpeta($this->input->post('id_carpeta'));
-		delete_files($ruta, TRUE);
-		rmdir($ruta);
-		#	borramos archivos de la base de datos
-		$this->archivo_model->eliminar_archivos($ruta);
-		#	borramos carpetas de la base de datos
-		$this->carpeta_model->eliminar_carpetas($ruta);
-		$id_persona = $this->input->post('id_persona');
-		$ruta_carpeta_pertenece=$this->input->post('ruta_anterior');
-		$status = 0;
-		$ruta_carpeta=$ruta_carpeta_pertenece;
-		$anterior=$this->carpeta_model->obtieneunacarpeta($ruta_carpeta);
-		$nombre_empresa = $this->persona_model->get_nombre($id_persona);
-		$nombre = $nombre_empresa->nombre_empresa;	//Nombre de la empresa
-		$ruta = explode("/", $ruta_carpeta);
-		$ruta[1] = $nombre;
-		$direccion_real="";
-		foreach ($ruta as $r) {
-			$direccion_real .= $r."/";
+	public function eliminar_carpeta() {	
+		$data['mensajes']		= $this->contacto_model->contador_mensajes($status=0);
+		$data['clientes'] 		= $this->persona_model->obtiene_clientes_baja($id_status_persona=1,$id_tipo_persona=3,$lleno_datos=1);
+		$data['correo'] 		= $this->persona_model->getCorreos($id_tipo_persona);
+
+		$data['id_persona']		= $this->input->post('id_persona');
+		$data['parent_id'] 		= $this->input->post('id_carpeta');
+		$data['current_path']	= $this->input->post('current_path');
+		$data['old_parent_id']	= $this->carpeta_model->get_old_parent($data['parent_id'] );
+		$data['subfolder'] 		= $this->carpeta_model->get_subfolder($data['parent_id']);
+		$data['path']			= $this->carpeta_model->get_path($data);
+
+		$data['get_subfolders']	= array();
+		$data['file_ids_delete']= $this->carpeta_model->delete_folder($data['parent_id']);
+		$data['get_subfolders'][]= $data['parent_id']; 
+		for ($i=0; $i < count($data['file_ids_delete']); $i++) { 
+			$data['get_subfolders'][] = $data['file_ids_delete'][$i]->file_id;
 		}
-		$raiz='clientes/';
-		$direccion = $ruta_carpeta_pertenece;
-		$subcarpetas=$this->carpeta_model->obtienesubcarpeta($ruta_carpeta);
-		$archivos=$this->archivo_model->obtienearchivos($ruta_carpeta);
-		$id_tipo_persona=3;
-		$id_status_persona=1;
-		$mensajesnuevos = $this->contacto_model->contador_mensajes($status);
-		$cliente=$this->persona_model->obtiene_clientes($id_tipo_persona,$id_status_persona);
-		$correo_clientes = $this->persona_model->getCorreos($id_tipo_persona);
-		#$todosmensajes = $this->contacto_model->mensajescontacto();
-		$data = array(
-			'mensajes'=> $mensajesnuevos,
-			#'mensajitos' => $todosmensajes
-		);
-		$id_tipo_persona=3;
-		$id_status_persona=1;
-		$data = array( 
-				'clientes' => $cliente,
-				'carpetas'=> $subcarpetas,
-				'direccion'=> $direccion,
-				'id_persona'=> $id_persona,
-				'archivo'=>$archivos,
-				'anterior'=>$anterior,
-				'raiz'=>$raiz,
-				'correo' => $correo_clientes,
-				'direccion_real' => $direccion_real
 
-		);
+		foreach ($data['get_subfolders'] as $file_id) {
+			$this->carpeta_model->delete_file($file_id);
+		}
+		$data['folder_path']	= $_SERVER['DOCUMENT_ROOT'] . 'rgdiaz/clientes/' . $data['path']; #DEV
+		#$data['folder_path'] 	= $_SERVER['DOCUMENT_ROOT'] . 'clientes/' . $data['path']; #PROD
 
+		$full_path = substr($data['folder_path'], 0, -1);
+
+		// Linux
+		#system('rm -rf ' . escapeshellarg($full_path));
+		//Windows
+		system('rmdir /s /q ' . escapeshellarg($full_path));
+
+		$data['parent_id'] 		= $data['old_parent_id'];
+		$data['path']			= $this->carpeta_model->get_path($data);
+		$data['subfolder'] 		= $this->carpeta_model->get_subfolder($data['parent_id']);
+	
 		$this->load->view('administrador/subcarpeta',$data);
 	}
 
