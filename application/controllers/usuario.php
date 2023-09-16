@@ -277,7 +277,7 @@ class Usuario extends MY_Controller {
 						La alta de cliente ha quedado registrada. <br>
 
 						Usuario: {$correo} <br>
-						Contraseña: {$psw_nva}	<br>
+						Contraseña: {$password}	<br>
 						<br>
 
 						Favor de utilizar el siguiente link para iniciar sesión: http://rdiaz.mx
@@ -500,8 +500,8 @@ class Usuario extends MY_Controller {
 				$id_bitacora 			= $this->input->post('id_residuo_peligroso');
 				$id_persona				= $this->session->userdata('id');
 				$status 				= 0;
-				$total					= $this->notificacion_model->obtiene_noticliente($id,$status);
-				$ruta 					= "clientes/".$id;
+				$total					= $this->notificacion_model->obtiene_noticliente($id_persona,$status);
+				$ruta 					= "clientes/".$id_persona;
 				$ruta_carpeta 			= $ruta;
 				$carpetas 				= $this->carpeta_model->obt_carpeta_personal($ruta);
 				$archivos 				= $this->archivo_model->obtienearchivos($ruta_carpeta);
@@ -510,13 +510,13 @@ class Usuario extends MY_Controller {
 				$tipo_emp_destino 		= $this->emp_destino_model->get_tipo_emp_destino();
 				$tipo_modalidad 		= $this->modalidad_model->get_tipo_modalidad();
 				$actualizar_registros	= $this->input->post("residuos_to_update");
-				$siguiente_folio 		= $this->residuo_peligroso_model->get_siguiente_folio($id);
+				$siguiente_folio 		= $this->residuo_peligroso_model->get_siguiente_folio($id_persona);
 				
 				$data = array(
 					'carpetas' 				=> $carpetas,
 					'archivo' 				=> $archivos,
 					'numnoti' 				=> $total,
-					'id' 					=> $id,
+					'id' 					=> $id_persona,
 					'tipo_emp_transportista'=> $tipo_emp_transportista,
 					'tipo_emp_destino' 		=> $tipo_emp_destino,
 					'tipo_modalidad' 		=> $tipo_modalidad,
@@ -526,8 +526,8 @@ class Usuario extends MY_Controller {
 
 	
 				$this->load->view('usuario/actualizar_registros',$data);
-				$datos_popover = $this->notificacion_model->get_new_noti($status,$id);
-				$bitacoras = $this->residuo_peligroso_model->get_bitacora($id);
+				$datos_popover = $this->notificacion_model->get_new_noti($status,$id_persona);
+				$bitacoras = $this->residuo_peligroso_model->get_bitacora($id_persona);
 
 
 				$data2 = array(
@@ -630,7 +630,7 @@ class Usuario extends MY_Controller {
 				);
 				
 			}else{
-				redirect('administrador/bitacora/' . $id_bitacora );
+				redirect('administrador/bitacora/' . $id_bit );
 			}	
 		} else {
 			$this->session->sess_destroy();

@@ -285,10 +285,6 @@ class Administrador extends MY_Controller {
 			$data['subfolder'] 		= $this->carpeta_model->get_subfolder($data['parent_id']);
 			#$data['folder_id'] 		= $this->carpeta_model->get_folder_id($data['parent_id']);
 
-			// echo "<pre>";
-			// print_r($data);
-			// echo "</pre>";
-
 			$this->load->view('administrador/subcarpeta',$data);
 		}else{
 			#redirect('home/logout');
@@ -854,7 +850,7 @@ class Administrador extends MY_Controller {
 				redirect('administrador/bitacora/' . $data["id_persona"]);
 
 			} else {
-				redirect('administrador/bitacora' .  $data["id_persona"]);
+				redirect('administrador/bitacora' .  $this->input->post('id_persona'));
 			}
 
 		} else { 
@@ -956,7 +952,7 @@ class Administrador extends MY_Controller {
 				
 				redirect('administrador/bitacora/' . $data["id_persona"] );
 			} else {
-				redirect('administrador/bitacora/' . $data["id_persona"] );
+				redirect('administrador/bitacora/' . $this->input->post('id_persona') );
 			}
 
 		} else {
@@ -1029,7 +1025,7 @@ class Administrador extends MY_Controller {
 																
 				redirect('administrador/bitacora/' . $data["id_persona"] );
 			}else{
-				redirect('administrador/bitacora/' . $data["id_persona"] );
+				redirect('administrador/bitacora/' . $this->input->post('id_persona') );
 			}
 
 		} else {
@@ -1096,7 +1092,7 @@ class Administrador extends MY_Controller {
 
 					
 				} else {
-					redirect('administrador/bitacora/' . $data["id_persona"] );
+					redirect('administrador/bitacora/' . $this->input->post('id_persona') );
 				}
 			}
 
