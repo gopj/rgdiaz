@@ -307,35 +307,35 @@ class Usuario extends MY_Controller {
 
 	
 	public function versubcarpeta() {
-		if($this->session->userdata('tipo')==3){
+		if ($this->session->userdata('tipo')==3){
+			$data['mensajes']	= $this->contacto_model->contador_mensajes($status=0);
+			$data['clientes'] 	= $this->persona_model->obtiene_clientes_baja($id_status_persona=1,$id_tipo_persona=3,$lleno_datos=1);
+			$data['correo'] 	= $this->persona_model->getCorreos($id_tipo_persona);
+			
 			if($this->input->post()){
-
+			
 				$data['id_persona'] = $this->input->post('id_persona');
-				$data['direccion'] = $this->input->post('ruta_carpeta'); // Direccion de carpeta
 				
-				$ruta_split = explode('/', $data['direccion']);
-				
-				if (count($ruta_split) < 3){
-					redirect('usuario');
-				}
-	
-				$ruta = explode("/", $data['direccion']);
-				$data['direccion_real'] ="";
-				foreach ($ruta as $r) {
-					$data['direccion_real']  .= $r . "/";
-				}
-				$data['anterior'] = $this->carpeta_model->obtieneunacarpeta($data['direccion']);
-				$data['raiz'] ='clientes/';
-				$data['carpetas'] = $this->carpeta_model->obtienesubcarpeta($data['direccion']);
-				$data['archivo'] = $this->archivo_model->obtienearchivos($data['direccion']);
 
-				$this->load->view('usuario/subcarpeta',$data);
-			}else{
-				redirect('usuario');
+				if ($this->input->post('file_id') == -1) {
+					redirect('administrador/admin_clientes/' . $data['id_persona']);
+				} elseif ($this->input->post('file_id') != 0) {
+					$data['parent_id'] 	= $this->input->post('file_id');
+				} else {
+					$data['folder_data']= $this->carpeta_model->get_folder($data['id_persona']);
+					$data['folder'] 	= $data['folder_data']->name;
+					$data['parent_id'] 	= $data['folder_data']->file_id;
+				}
+				$data['old_parent_id']	= $this->carpeta_model->get_old_parent($data['parent_id']);
+				$data['path']			= $this->carpeta_model->get_path($data);
+				$data['subfolder'] 		= $this->carpeta_model->get_subfolder($data['parent_id']);
+				#$data['folder_id'] 		= $this->carpeta_model->get_folder_id($data['parent_id']);
+
+				$this->load->view('usuario/carpeta_usuario',$data);
+			} else {
+				$this->session->sess_destroy();
+				redirect('home/sesion');
 			}
-		} else {
-			$this->session->sess_destroy();
-			redirect('home/sesion');
 		}
 	}
 
