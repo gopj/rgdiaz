@@ -3,7 +3,7 @@
             <div class="rev_slider fullscreenbanner" id="rev_slider_3" data-version="5.4.5">
                 <ul>
                     <!-- slide 1 -->
-                    <li data-fstransition="fade" data-transition="fade" data-easein="default" data-easeout="default" data-slotamount="1" data-masterspeed="1200" data-delay="8000" data-title="Planeamos negocios">
+                    <li data-fstransition="fade" data-transition="fade" data-easein="default" data-easeout="default" data-slotamount="1" data-masterspeed="1200" data-delay="8000" data-title="CAPACITACIÓN">
 
                         <!-- overlay -->
                         <div class="opacity-light bg-black z-index-1"></div>
@@ -12,7 +12,7 @@
                         <img src="img/portada/portada_1.jpeg" alt="" data-bgrepeat="no-repeat" data-bgfit="cover" data-bgparallax="3" class="rev-slidebg">
 
                         <!-- hero title -->
-                        <div class="tp-caption hero-text alt-font font-weight-600 text-white" data-x="30" data-y="center" data-voffset="[-84,-63,-68,-108]" data-fontsize="[72,62,52,46]" data-lineheight="[72,62,52,46]" data-width="[none, none, none, 300]" data-whitespace="[nowrap, nowrap, nowrap, normal]" data-frames='[{
+                        <div class="tp-caption hero-text alt-font font-weight-420 text-white" data-x="30" data-y="center" data-voffset="[-84,-63,-68,-108]" data-fontsize="[45,45,45,45]" data-lineheight="[72,62,52,46]" data-width="[none, none, none, 600]" data-whitespace="[wrap, wrap, wrap, normal]" data-frames='[{
                                     "delay":1000,
                                     "speed":900,
                                     "frame":"0",
@@ -24,7 +24,7 @@
                                     "speed":1000,
                                     "frame":"999",
                                     "to":"opacity:0;","ease":"Power3.easeOut"
-                                }]' data-splitout="none">Planeamos negocios
+                                }]' data-splitout="none">Capacitación del Personal para el Manejo de RP
                         </div>
 
                         <!-- hero subtitle -->
@@ -41,14 +41,14 @@
                                     "frame":"999",
                                     "to":"opacity:0;","ease":"Power3.easeOut"
                                 }]'>
-                            <p class="white-space">Negocios confiables y profesionales para alcanzar tus metas.</p>
+                            <p class="white-space">Cursos y Talleres impartidos por Agentes Capacitadores Externos registrados ante la STPS para el manejo adecuado de los residuos peligrosos generados en los centros de trabajo.</p>
                         </div>
 
                     </li>
                     <!-- end slide 1 -->
 
                     <!-- SLIDE 2 -->
-                    <li data-fstransition="fade" data-transition="fade" data-easein="default" data-easeout="default" data-slotamount="1" data-masterspeed="1200" data-delay="8000" data-title="Somos los mejores">
+                    <li data-fstransition="fade" data-transition="fade" data-easein="default" data-easeout="default" data-slotamount="1" data-masterspeed="1200" data-delay="8000" data-title="ASESORÍA">
 
                         <!-- Overlay -->
                         <div class="opacity-light bg-black z-index-1"></div>
@@ -57,7 +57,7 @@
                         <img src="img/portada/portada_2.jpeg" alt="" data-bgrepeat="no-repeat" data-bgfit="cover" data-bgparallax="3" class="rev-slidebg">
 
                         <!-- HERO TITLE -->
-                        <div class="tp-caption hero-text alt-font font-weight-600 text-white text-center" data-x="['center','center','center','center']" data-y="center" data-voffset="[-84,-63,-68,-108]" data-fontsize="[72,62,52,46]" data-lineheight="[72,62,52,46]" data-width="[none, none, none, 300]" data-whitespace="[nowrap, nowrap, nowrap, normal]" data-frames='[{
+                        <div class="tp-caption hero-text alt-font font-weight-420 text-white" data-x="30" data-y="center" data-voffset="[-84,-63,-68,-108]" data-fontsize="[45,45,45,45]" data-lineheight="[72,62,52,46]" data-width="[none, none, none, 600]" data-whitespace="[wrap, wrap, wrap, normal]" data-frames='[{
                                     "delay":1000,
                                     "speed":900,
                                     "frame":"0",
@@ -69,11 +69,11 @@
                                     "speed":1000,
                                     "frame":"999",
                                     "to":"opacity:0;","ease":"Power3.easeOut"
-                                }]' data-splitout="none">Somos los mejores.
+                                }]' data-splitout="none">Asesoría para el cumplimiento de obligaciones legales
                         </div>
 
-                        <!-- HERO SUBTITLE -->
-                        <div class="tp-caption small-text text-white slider-text text-center" data-x="['center','center','center','center']" data-y="center" data-voffset="[10,40,36,56]" data-fontsize="[21,21,21,21]" data-lineheight="34" data-width="[600, 500, 400, 300]" data-whitespace="[nowrap, nowrap, nowrap, normal]" data-frames='[{
+                        <!-- hero subtitle -->
+                        <div class="tp-caption small-text text-white slider-text" data-x="30" data-y="center" data-voffset="[45,40,36,56]" data-fontsize="[21,21,21,21]" data-lineheight="34" data-width="[600, 500, 400, 300]" data-whitespace="[nowrap, nowrap, nowrap, normal]" data-frames='[{
                                     "delay":1100,
                                     "speed":900,
                                     "frame":"0",
@@ -86,39 +86,39 @@
                                     "frame":"999",
                                     "to":"opacity:0;","ease":"Power3.easeOut"
                                 }]'>
-                            <p class="white-space">Expertos en el trato de material peligroso.</p>
+                            <p class="white-space">Trabajamos de la mano con nuestros clientes orientándolos sobre las acciones a tomar para el manejo adecuado de los residuos peligrosos que genere, de tal manera que atiendan las obligaciones que la legislación en la materia establece de acuerdo su categorización.</p>
                         </div>
 
                     </li>
                     <!-- end slide 1 -->
 
                     <!-- SLIDE 3 -->
-                    <li data-fstransition="fade" data-transition="fade" data-easein="default" data-easeout="default" data-slotamount="1" data-masterspeed="1200" data-delay="8000" data-title="Reduce, reusa y recicla.">
+                    <li data-fstransition="fade" data-transition="fade" data-easein="default" data-easeout="default" data-slotamount="1" data-masterspeed="1200" data-delay="8000" data-title="DIAGNÓSTICO">
 
                         <!-- Overlay -->
                         <div class="opacity-light bg-black z-index-1"></div>
 
                         <!-- main image -->
-                        <img src="img/portada/portada_3.jpeg" alt="" data-bgrepeat="no-repeat" data-bgfit="cover" data-bgparallax="7" class="rev-slidebg">
+                        <img src="img/portada/portada_5.jpeg" alt="" data-bgrepeat="no-repeat" data-bgfit="cover" data-bgparallax="7" class="rev-slidebg">
 
-                        <!-- HERO TITLE -->
-                        <div class="tp-caption hero-text alt-font font-weight-600 text-white text-right" data-x="['right','right','right','right']" data-y="center" data-hoffset="['30','30',30','30']" data-voffset="[-84,-63,-68,-108]" data-fontsize="[72,62,52,46]" data-lineheight="[72,62,52,46]" data-width="[none, none, none, 300]" data-whitespace="[nowrap, nowrap, nowrap, normal]" data-frames='[{
-                                    "delay":1000,
-                                    "speed":900,
-                                    "frame":"0",
-                                    "from":"y:150px;opacity:0;",
-                                    "ease":"Power3.easeOut",
-                                    "to":"o:1;"
-                                    },{
-                                    "delay":"wait",
-                                    "speed":1000,
-                                    "frame":"999",
-                                    "to":"opacity:0;","ease":"Power3.easeOut"
-                                }]' data-splitout="none">Reduce, reusa y recicla.
+                        <!-- hero title -->
+                        <div class="tp-caption hero-text alt-font font-weight-420 text-white" data-x="30" data-y="center" data-voffset="[-84,-63,-68,-108]" data-fontsize="[45,45,45,45]" data-lineheight="[72,62,52,46]" data-width="[none, none, none, 600]" data-whitespace="[wrap, wrap, wrap, normal]" data-frames='[{
+                                "delay":1000,
+                                "speed":900,
+                                "frame":"0",
+                                "from":"y:150px;opacity:0;",
+                                "ease":"Power3.easeOut",
+                                "to":"o:1;"
+                                },{
+                                "delay":"wait",
+                                "speed":1000,
+                                "frame":"999",
+                                "to":"opacity:0;","ease":"Power3.easeOut"
+                            }]' data-splitout="none">Visitas de Diagnóstico Ambiental
                         </div>
 
-                        <!-- HERO SUBTITLE -->
-                        <div class="tp-caption small-text text-white slider-text" data-x="['right','right','right','right']" data-y="center" data-hoffset="['30','30',30','30']" data-voffset="[10,40,36,56]" data-fontsize="[21,21,21,21]" data-lineheight="34" data-width="[600, 500, 400, 300]" data-whitespace="[nowrap, nowrap, nowrap, normal]" data-frames='[{
+                        <!-- hero subtitle -->
+                        <div class="tp-caption small-text text-white slider-text" data-x="30" data-y="center" data-voffset="[10,40,36,56]" data-fontsize="[21,21,21,21]" data-lineheight="34" data-width="[600, 500, 400, 300]" data-whitespace="[nowrap, nowrap, nowrap, normal]" data-frames='[{
                                     "delay":1100,
                                     "speed":900,
                                     "frame":"0",
@@ -131,7 +131,51 @@
                                     "frame":"999",
                                     "to":"opacity:0;","ease":"Power3.easeOut"
                                 }]'>
-                            <p class="white-space text-right"> Nunca te niegues a reutilizar.</p>
+                            <p class="white-space">Verificación física y documental del nivel de cumplimiento de las obligaciones legales aplicables al establecimiento como generador de residuos peligrosos.</p>
+                        </div>
+
+                    </li>
+                    <!-- end slide 1 -->
+
+                    <li data-fstransition="fade" data-transition="fade" data-easein="default" data-easeout="default" data-slotamount="1" data-masterspeed="1200" data-delay="8000" data-title="ETIQUETAS">
+
+                        <!-- Overlay -->
+                        <div class="opacity-light bg-black z-index-1"></div>
+
+                        <!-- main image -->
+                        <img src="img/portada/portada_3.jpeg" alt="" data-bgrepeat="no-repeat" data-bgfit="cover" data-bgparallax="7" class="rev-slidebg">
+                        
+                         <!-- hero title -->
+                         <div class="tp-caption hero-text alt-font font-weight-420 text-white" data-x="30" data-y="center" data-voffset="[-84,-63,-68,-108]" data-fontsize="[45,45,45,45]" data-lineheight="[72,62,52,46]" data-width="[none, none, none, 600]" data-whitespace="[wrap, wrap, wrap, normal]" data-frames='[{
+                                "delay":1000,
+                                "speed":900,
+                                "frame":"0",
+                                "from":"y:150px;opacity:0;",
+                                "ease":"Power3.easeOut",
+                                "to":"o:1;"
+                                },{
+                                "delay":"wait",
+                                "speed":1000,
+                                "frame":"999",
+                                "to":"opacity:0;","ease":"Power3.easeOut"
+                            }]' data-splitout="none">Etiquetas y Contenedores para RP
+                        </div>
+
+                        <!-- hero subtitle -->
+                        <div class="tp-caption small-text text-white slider-text" data-x="60" data-y="center" data-voffset="[45,40,36,56]" data-fontsize="[21,21,21,21]" data-lineheight="34" data-width="[600, 500, 400, 300]" data-whitespace="[nowrap, nowrap, nowrap, normal]" data-frames='[{
+                                    "delay":1100,
+                                    "speed":900,
+                                    "frame":"0",
+                                    "from":"y:150px;opacity:0;",
+                                    "ease":"Power3.easeOut",
+                                    "to":"o:1;"
+                                    },{
+                                    "delay":"wait",
+                                    "speed":1000,
+                                    "frame":"999",
+                                    "to":"opacity:0;","ease":"Power3.easeOut"
+                                }]'>
+                            <p class="white-space">Contamos con tambos metálicos de 200 litros y totes de 1000 litros de capacidad, adecuados para el almacenamiento de los residuos peligrosos generados; así como con etiquetas adhesivas para la correcta identificación de RP, con la información mínima requerida por la legislación para su llenado</p>
                         </div>
 
                     </li>
@@ -157,12 +201,12 @@
                 <div class="title-box">
                     <div class="row">
                         <div class="col-md-5 col-sm-12 col-xs-12 text-right xs-text-left">
-                            <h2 class="font-size27 md-font-size24 sm-font-size30 xs-font-size24 font-weight-800 margin-40px-bottom xs-margin-30px-bottom">Servicios profesionales de calidad para alcanzar tus metas.</h2>
+                            <h2 class="font-size27 md-font-size24 sm-font-size30 xs-font-size24 font-weight-800 margin-40px-bottom xs-margin-30px-bottom">Servicios profesionales para el Manejo de RP </h2>
                         </div>
                         <div class="col-md-7 col-sm-12 col-xs-12 xs-margin-30px-top">
                             <div class="padding-60px-left md-padding-45px-left sm-padding-30px-left xs-no-padding-left">
                                 <div class="margin-30px-bottom sm-margin-20px-bottom">
-                                    <p>Una empresa joven, que a fuerza de dedicación y compromiso se ha ido posicionando al adoptar como nuestro el compromiso y/o responsabilidad que nuestros clientes tienen para con el medio ambiente, permitiéndoles así el concentrarse en las tareas sustanciales de sus respectivas empresas.</p>
+                                    <p>Somos una empresa en constante crecimiento, posicionada en el sector ambiental como prestadora de servicios en materia de manejo integral de residuos peligrosos y de manejo especial, así como en la asesoría, gestión de trámites y desarrollo de proyectos ambientales.</p>
                                 </div>
                             </div>
                         </div>
@@ -170,70 +214,14 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-4 sm-margin-30px-bottom">
-                        <div class="blog-grid-simples md-padding-20px-all">
-                            <h4><a href="#!">Misión</a></h4>
-                            <p>Brindar a nuestros clientes servicios de calidad y confianza para el manejo de los residuos generados en sus procesos, ofreciendo a la par soluciones integrales diseñadas a la medida de acuerdo con sus necesidades y la normatividad ambiental aplicable.</p>
-                            <div class="blog-grid-simples-content">
+                    <img src="img/portada/quienessomos.png">
 
-                                <div class="blog-grid-simples-date">
-                                    <div class="row">
-
-                                        <div class="col-6">
-                                      
-                                           
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 sm-margin-30px-bottom">
-                        <div class="blog-grid-simples md-padding-20px-all">
-                            <h4><a href="#!">Vision</a></h4>
-                            <p>Posicionar nuestra empresa como una de las mejores alternativas para la prestación de servicios relacionados con el manejo integral de los residuos generados por el sector industrial y de servicios de la región Occidente del país.</p>
-                            <div class="blog-grid-simples-content">
-
-                                <div class="blog-grid-simples-date">
-                                    <div class="row">
-                                        <div class="col-6">
-                                          
-                                            
-                                        </div>
-
-                                      
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="blog-grid-simples md-padding-20px-all">
-                            <h4><a href="#!">Valores Organizacionales</a></h4>
-                            <ul class="list-style-16">
-                                <li>Responsabilidad </li>
-                                <li>Compromiso</li>
-                                <li>Honestidad </li>
-                                <li>Profesionalismo </li>
-                                <li>Trabajo en equipo</li>
-                                <li>Actitud de servicio</li>
-                            </ul>
-                            <div class="blog-grid-simples-content">
-
-                                <div class="blog-grid-simples-date">
-                                    <div class="row">
-                                        <div class="col-6">
-                        
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="margin-30px-bottom sm-margin-20px-bottom">
+                        <p>A través de un <strong style="color: #99CC33;"> equipo multidisciplinario</strong> ofrecemos una alternativa de <strong style="color: #1E4B9E;"> servicios integrales</strong>, adaptados especialmente a las necesidades de nuestros clientes de acuerdo a las características de sus procesos.</p>
                     </div>
                 </div>
+
+              
             </div>              
         </section>
         <!-- end about section -->
@@ -252,42 +240,43 @@
                             <ul class="resp-tabs-list hor_1">
                                 <li class="margin-20px-left"><span class="count font-size100 md-font-size80 alt-font font-weight-700">01</span>
                                     <div class="tab-box">
-                                       <h6>DIAGNÓSTICO</h6><span>DE DESEMPEÑO <br> AMBIENTAL</span> 
+                                       <h6>CAPACITACION</h6>
                                    </div>
                                 </li>
                                 <li class="margin-20px-left"><span class="count font-size100 md-font-size80 alt-font font-weight-700">02</span>
                                     <div class="tab-box">
-                                        <h6>GESTIÓN</h6> <br>&nbsp;<!-- <span>Plan to market</span> --></div>
+                                        <h6>ASESORIA</h6>
+                                    </div>
                                 </li>
                                 <li class="margin-20px-left"><span class="count font-size100 md-font-size80 alt-font font-weight-700">03</span>
                                     <div class="tab-box">
-                                        <h6>GENERACIÓN</h6><span>DE DOCUMENTACIÓN <br> &nbsp;<br></span></div>
+                                        <h6>DIAGNÓSTICO</h6>
+                                    </div>
                                 </li>
                                 <li class="margin-20px-left"><span class="count font-size100 md-font-size80 alt-font font-weight-700">04</span>
                                     <div class="tab-box">
-                                        <h6>ASESORÍA</h6><span>Y CAPACITACIÓN <br>&nbsp;<br></span></div>
+                                        <h6>EXPEDIENTE</h6>
+                                    </div>
                                 </li>
                                 <li class="margin-20px-left"><span class="count font-size100 md-font-size80 alt-font font-weight-700">05</span>
                                     <div class="tab-box">
-                                        <h6>MANEJO DE</h6><span>MATERIALES Y <br> RESIDUOS PELIGROSOS</span></div>
+                                        <h6>ETIQUETAS</h6>
+                                    </div>
                                 </li>
                                 <li class="margin-20px-left"><span class="count font-size100 md-font-size80 alt-font font-weight-700">06</span>
                                     <div class="tab-box">
-                                        <h6>MANEJO</h6><span>Y CONTROL <br> DE DOCUMENTOS</span></div>
+                                        <h6>ACONDICIO-</h6>
+                                        <h6>NAMIENTO</h6>
+                                    </div>
                                 </li>
                             </ul>
                             <div class="resp-tabs-container box-shadow-large bg-white hor_1">
                                 <div class="bg-white box-shadow-primary padding-30px-all xs-padding-20px-all">
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <div class="padding-30px-left md-padding-20px-left sm-no-padding-left">
-                                                <h5>Diagnóstico de desempeño ambiental</h5>
-                                                <p style="text-align: justify">Con base a los requerimientos establecidos tanto por la normatividad en materia ambiental, de Seguridad e Higiene Laboral, la Norma ISO 14001:2004; así como las buenas prácticas de ingeniería, se determina el grado de cumplimiento, por parte de la empresa, de los requerimientos aplicables; de tal manera que permita establecer la pertinencia para la obtención de los siguientes reconocimientos:</p>
-
-                                                <p style="text-align: justify"> <strong> Certificación como Industria Limpia: </strong> certificado promovido y otorgado por la Procuraduría Federal de Protección al Ambiente, PROFEPA; fundamentalmente basado en el cumplimiento de la normatividad ambiental aplicable a la empresa. </p>
-
-                                                <p style="text-align: justify"> <strong> Certificación ISO 14001: </strong> Certificación otorgada por un organismo certificador, acreditado para tal efecto; el cual certifica que la empresa ha implantado un Sistema de Gestión Ambiental en base a la Norma ISO 14001. </p>
-
+                                            <div class="padding-30px-left padding-30px-right md-padding-20px-left sm-no-padding-left">
+                                                <h5>Capacitación del Personal para el Manejo de RP</h5>
+                                                <p style="text-align: justify">Cursos y Talleres impartidos por Agentes Capacitadores Externos registrados ante la STPS para el manejo adecuado de los residuos peligrosos generados en los centros de trabajo.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -295,19 +284,9 @@
                                 <div class="bg-white box-shadow-primary padding-30px-all xs-padding-20px-all">
                                     <div class="row">
                                         <div class="col-lg-12 order-lg-1 order-2">
-                                            <div class="padding-30px-right md-padding-20px-right sm-no-padding-right">
-                                                <h5>Gestión</h5>
-                                                <p style="text-align: justify">Ante Unidades de Verificación Ambiental, para que mediante auditorías ambientales certifiquen el cumplimiento de la normatividad aplicable y con ello obtener los certificados mencionados. </p>
-                                                
-                                                <p style="text-align: justify">Ante autoridades de los tres niveles de gobierno para la obtención permisos, autorizaciones u otros requisitos establecidos por la normatividad, tales como:</p>
-
-                                                <ul class="list-style-16">
-                                                    <li>Registro como generador de Residuos Peligrosos y/o de Manejo Especial.</li>
-                                                    <li>Obtención de la Licencia Ambiental Única, LAU.</li>
-                                                    <li>Obtención de Licencia Local de Funcionamiento Ambiental.</li>
-                                                    <li>Reporte anual de la Cédula de Operación Anual, COA, tanto federal como estatal.</li>
-                                                    <li>Estudios de ambiente y riesgo laboral establecidos por la normatividad de la STPS, ello mediante laboratorios acreditados ante la EMA.</li>
-                                                </ul>
+                                            <div class="padding-30px-left padding-30px-right md-padding-20px-left sm-no-padding-left">
+                                                <h5>Asesoría para el cumplimiento de obligaciones legales</h5>
+                                                <p style="text-align: justify">Trabajamos de la mano con nuestros clientes orientándolos sobre las acciones a tomar para el manejo adecuado de los residuos peligrosos que genere, de tal manera que atiendan las obligaciones que la legislación en la materia establece de acuerdo su categorización. </p>
                                             </div>
                                         </div>
                                     </div>
@@ -315,26 +294,9 @@
                                 <div class="bg-white box-shadow-primary padding-30px-all xs-padding-20px-all">
                                     <div class="row">   
                                         <div class="col-lg-12">
-                                            <div class="padding-30px-left md-padding-20px-left sm-no-padding-left">
-                                                <h5>Generación de documentación</h5>
-                                                 <p style="text-align: justify">Requerida tanto por la normatividad en materia ambiental, de Seguridad e Higiene Laboral, y/o la Norma ISO 14001:2004; entre las que destaca:</p>
-
-                                                <ul class="list-style-16">
-                                                    <li>Procedimientos para la prevención y atención de incendios</li>
-                                                    <li>Procedimientos para el manejo de sustancias químicas peligrosas</li>
-                                                    <li>Procedimientos para la comunicación de riesgos por sustancias químicas</li>
-                                                    <li>Procedimientos para el manejo de residuos</li>
-                                                    <li>Programas de capacitación</li>
-                                                    <li>Programas de comunicación y difusión</li>
-                                                    <li>Programa Interno de Protección Civil</li>
-                                                    <li>Plan de Manejo de Residuos Peligrosos</li>
-                                                    <li>Plan de Manejo de Residuos de Manejo Especial</li>
-                                                    <li>Estudios de Riesgo Ambiental por Manejo de Sustancias Químicas Altamente Peligrosas</li>
-                                                    <li>Clasificación del Riesgo de Incendio conforme a la NOM-002-STPS-2010</li>
-                                                    <li>Bitácoras</li>
-                                                    <li>Registro de actividades</li>
-                                                </ul>
-
+                                            <div class="padding-30px-left padding-30px-right md-padding-20px-left sm-no-padding-left">
+                                                <h5>Visitas de Diagnóstico Ambiental</h5>
+                                                 <p style="text-align: justify">Verificación física y documental del nivel de cumplimiento de las obligaciones legales aplicables al establecimiento como generador de residuos peligrosos.</p>
                                             </div>
 
                                         </div>
@@ -344,19 +306,9 @@
                                     <div class="row">
                                         
                                         <div class="col-lg-12">
-                                            <div class="padding-30px-left md-padding-20px-left sm-no-padding-left">
-                                                <h5>Asesoría y capacitación</h5>
-                                                 <p style="text-align: justify">Para la implantación de las medidas establecidas por la legislación aplicable, tales como:</p>
-
-                                                <ul class="list-style-16">
-                                                    <li>Señalización para protección civil</li>
-                                                    <li>Instalación de sistemas para prevención y combate a incendios</li>
-                                                    <li>Sistemas de protección y dispositivos de seguridad en maquinaria y equipo</li>
-                                                    <li>Manejo de Residuos Sólidos Urbanos, de Manejo Especial, y Peligrosos</li>
-                                                    <li>Constitución, integración, organización y funcionamiento de las Comisiones de Seguridad e Higiene</li>
-                                                    <li>Manejo de sustancias químicas peligrosas</li>
-                                                </ul>
-
+                                            <div class="padding-30px-left padding-30px-right md-padding-20px-left sm-no-padding-left">
+                                                <h5>Expediente Ambiental Digital</h5>
+                                                 <p style="text-align: justify">Ponemos a disposición de nuestros clientes una cuenta en nuestro portal www.rdiaz.mx para la creación de su expediente digital en materia de residuos peligrosos, así como nuestra herramienta dentro de esta plataforma para el llenado de Bitácora en línea.</p>
                                             </div>
 
                                         </div>
@@ -366,9 +318,9 @@
                                     <div class="row">
 
                                         <div class="col-lg-12">
-                                            <div class="padding-30px-left md-padding-20px-left sm-no-padding-left">
-                                                <h5>Manejo de materiales y residuos peligrosos</h5>
-                                                <p style="text-align: justify">Que implica la recolección y transporte en vehículos autorizados tanto por la Secretaría de Comunicaciones y Transporte, como por la Secretaría del Medio Ambiente y Recursos Naturales; SEMARNAT; disposición final por coprocesamiento y/o confinamiento en instalaciones debidamente autorizadas por la SEMARNAT; y, en su defecto la destrucción fiscal de mercancías, materiales peligrosos o no peligrosos, en instalaciones debidamente autorizadas por las autoridades competentes.</p>
+                                            <div class="padding-30px-left padding-30px-right md-padding-20px-left sm-no-padding-left">
+                                                <h5>Etiquetas y Contenedores para RP</h5>
+                                                <p style="text-align: justify">Contamos con tambos metálicos de 200 litros y totes de 1000 litros de capacidad, adecuados para el almacenamiento de los residuos peligrosos generados; así como con etiquetas adhesivas para la correcta identificación de RP, con la información mínima requerida por la legislación para su llenado.</p>
                                             </div>
 
                                         </div>
@@ -379,10 +331,9 @@
                                     <div class="row">
 
                                         <div class="col-lg-12">
-                                            <div class="padding-30px-left md-padding-20px-left sm-no-padding-left">
-                                                <h5>Manejo y control de documentos</h5>
-                                                 <p style="text-align: justify">Toda la documentación generada en materia ambiental es manejada en una plataforma virtual; a la cual se puede acceder en cualquier momento mediante contraseña de usuario.</p>
-                                                <p style="text-align: justify">Adicional a lo mencionado, de así requerirlo, estamos en condiciones de adaptarnos a sus necesidades previo análisis de las mismas.</p>
+                                            <div class="padding-30px-left padding-30px-right md-padding-20px-left sm-no-padding-left">
+                                                <h5>Acondicionamiento de Almacén Temporal de Residuos Peligrosos (ATRP)</h5>
+                                                 <p style="text-align: justify">Diseño, construcción y/o acondicionamiento del ATRP, incluyendo la señalización necesaria para la identificación de áreas, de acuerdo con las especificaciones establecidas en la legislación y las características del sitio.</p>
 
                                             </div>
 
@@ -396,6 +347,33 @@
             </div>
         </section>
         <!-- end tab section -->
+
+        <!-- start about section -->
+        <section>
+            <div class="container">
+                <div class="section-heading title-style4 border-bottom padding-25px-bottom sm-padding-15px-bottom">
+                    <h3>OTROS SERVICIOS<span> ESPECIALIZADOS</span></h3>
+                </div>
+                
+                <div class="row">
+                    <div class="margin-30px-bottom sm-margin-20px-bottom" style="width: 900px;"
+
+                        <p><strong style="color: #1E4B9E;">• Destrucción de Mercancía</strong></p>
+                        <p style="padding-left: 60px;">Derivadas de procedimientos fiscales u ordenadas por dependencias reguladoras (SAT, COFEPRIS, COESPRIS)</p>
+
+                        <p><strong style="color: #1E4B9E;">• Gestión de Trámites Ambientales (Federales y Estatales)</strong></p>
+                        <p style="padding-left: 60px;">Presentación de Licencias Ambientales Únicas, Licencias Locales de Funcionamiento Ambiental y Cédulas de Operación Anual (COA) para giros de competencia estatal y federal, así como Elaboración de Estudios de Impacto Ambiental.</p>
+
+                        <p><strong style="color: #1E4B9E;">• Asesoría Ambiental + Desarrollo de Proyectos</strong></p>
+                        <p style="padding-left: 60px;">Apoyamos a nuestros clientes en la implementación de Sistemas de Gestión Ambiental (SGA) mediante la elaboración, revisión o actualización de Planes, Programas y Procedimientos internos, así como el diseño de Estrategias para mejorar su desempeño ambiental y promover la cultura ambiental entre su personal.</p>
+
+                        <p><strong style="color: #1E4B9E;">• Limpieza y Mantenimiento General</strong></p>
+                        <p style="padding-left: 60px;">Contamos con un equipo de trabajo consolidado para la prestación de servicios especializados de limpieza y mantenimiento general de oficinas e instalaciones industriales.</p>
+                    </div>
+                </div>              
+            </div>              
+        </section>
+        <!-- end about section -->
 
         <!-- start request form -->
         <section class="parallax" id="section_contacto" data-overlay-dark="3" data-background="img/portada/portada_4_logo.jpeg">
@@ -506,8 +484,6 @@
                                         <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
                                             <div class="card-body">
                                                 Institución responsable, confiable y sólida que se encarga de generar, integrar y difundir conocimiento e información a través de investigación científica aplicada y el fortalecimiento de capacidades, para apoyar la formulación de política ambiental y la toma de decisiones que promuevan el desarrollo sustentable. (Instituto Nacional de Estadística, Geografía e Informática).
-
-                                                <br>
 
                                                 <a href="http://www.inegi.org.mx/" target="_blank">Ver sitio</a>
                                             </div>
