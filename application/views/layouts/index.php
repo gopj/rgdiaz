@@ -128,7 +128,7 @@
 							</li>
 							<li>
 								<span class="d-inline-block vertical-align-top font-size18"><i class="fas fa-mobile-alt text-theme-color" style="margin-left: 4px;"></i></span>
-								<span class="d-inline-block width-85 vertical-align-top padding-10px-left" style="margin-left: 2px;">312 157 8255 (WhatsApp Directo)</span>
+								<a href="https://wa.me/3121578255" target="_blank"> <span class="d-inline-block width-85 vertical-align-top padding-10px-left" style="margin-left: 2px;">  312 157 8255 (WhatsApp Directo)</span> </a>
 							</li>
 							<li>
 								<span class="d-inline-block vertical-align-top font-size18"><i class="fas fa-phone text-theme-color"></i></span>
