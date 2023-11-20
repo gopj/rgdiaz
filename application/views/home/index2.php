@@ -206,7 +206,7 @@
                         <div class="col-md-7 col-sm-12 col-xs-12 xs-margin-30px-top">
                             <div class="padding-60px-left md-padding-45px-left sm-padding-30px-left xs-no-padding-left">
                                 <div class="margin-30px-bottom sm-margin-20px-bottom">
-                                    <p>Somos una empresa en constante crecimiento, posicionada en el sector ambiental como prestadora de servicios en materia de manejo integral de residuos peligrosos y de manejo especial, así como en la asesoría, gestión de trámites y desarrollo de proyectos ambientales.</p>
+                                    <p style="font-size: large;">Somos una empresa en constante crecimiento, posicionada en el sector ambiental como prestadora de servicios en materia de manejo integral de residuos peligrosos y de manejo especial, así como en la asesoría, gestión de trámites y desarrollo de proyectos ambientales.</p>
                                 </div>
                             </div>
                         </div>
@@ -217,7 +217,7 @@
                     <img src="img/portada/quienessomos.png">
 
                     <div class="margin-30px-bottom sm-margin-20px-bottom">
-                        <p>A través de un <strong style="color: #99CC33;"> equipo multidisciplinario</strong> ofrecemos una alternativa de <strong style="color: #1E4B9E;"> servicios integrales</strong>, adaptados especialmente a las necesidades de nuestros clientes de acuerdo a las características de sus procesos.</p>
+                        <p style="font-size: large;">A través de un <strong style="color: #99CC33;"> equipo multidisciplinario</strong> ofrecemos una alternativa de <strong style="color: #1E4B9E;"> servicios integrales</strong>, adaptados especialmente a las necesidades de nuestros clientes de acuerdo a las características de sus procesos.</p>
                     </div>
                 </div>
 
@@ -240,12 +240,12 @@
                             <ul class="resp-tabs-list hor_1">
                                 <li class="margin-20px-left"><span class="count font-size100 md-font-size80 alt-font font-weight-700">01</span>
                                     <div class="tab-box">
-                                       <h6>CAPACITACION</h6>
+                                       <h6>CAPACITACIÓN</h6>
                                    </div>
                                 </li>
                                 <li class="margin-20px-left"><span class="count font-size100 md-font-size80 alt-font font-weight-700">02</span>
                                     <div class="tab-box">
-                                        <h6>ASESORIA</h6>
+                                        <h6>ASESORÍA</h6>
                                     </div>
                                 </li>
                                 <li class="margin-20px-left"><span class="count font-size100 md-font-size80 alt-font font-weight-700">03</span>
@@ -276,7 +276,7 @@
                                         <div class="col-lg-12">
                                             <div class="padding-30px-left padding-30px-right md-padding-20px-left sm-no-padding-left">
                                                 <h5>Capacitación del Personal para el Manejo de RP</h5>
-                                                <p style="text-align: justify">Cursos y Talleres impartidos por Agentes Capacitadores Externos registrados ante la STPS para el manejo adecuado de los residuos peligrosos generados en los centros de trabajo.</p>
+                                                <p style="text-align: justify; font-size: large;">Cursos y Talleres impartidos por Agentes Capacitadores Externos registrados ante la STPS para el manejo adecuado de los residuos peligrosos generados en los centros de trabajo.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -286,7 +286,7 @@
                                         <div class="col-lg-12 order-lg-1 order-2">
                                             <div class="padding-30px-left padding-30px-right md-padding-20px-left sm-no-padding-left">
                                                 <h5>Asesoría para el cumplimiento de obligaciones legales</h5>
-                                                <p style="text-align: justify">Trabajamos de la mano con nuestros clientes orientándolos sobre las acciones a tomar para el manejo adecuado de los residuos peligrosos que genere, de tal manera que atiendan las obligaciones que la legislación en la materia establece de acuerdo su categorización. </p>
+                                                <p style="text-align: justify; font-size: large;">Trabajamos de la mano con nuestros clientes orientándolos sobre las acciones a tomar para el manejo adecuado de los residuos peligrosos que genere, de tal manera que atiendan las obligaciones que la legislación en la materia establece de acuerdo su categorización. </p>
                                             </div>
                                         </div>
                                     </div>
@@ -296,7 +296,7 @@
                                         <div class="col-lg-12">
                                             <div class="padding-30px-left padding-30px-right md-padding-20px-left sm-no-padding-left">
                                                 <h5>Visitas de Diagnóstico Ambiental</h5>
-                                                 <p style="text-align: justify">Verificación física y documental del nivel de cumplimiento de las obligaciones legales aplicables al establecimiento como generador de residuos peligrosos.</p>
+                                                 <p style="text-align: justify; font-size: large;">Verificación física y documental del nivel de cumplimiento de las obligaciones legales aplicables al establecimiento como generador de residuos peligrosos.</p>
                                             </div>
 
                                         </div>
@@ -308,7 +308,7 @@
                                         <div class="col-lg-12">
                                             <div class="padding-30px-left padding-30px-right md-padding-20px-left sm-no-padding-left">
                                                 <h5>Expediente Ambiental Digital</h5>
-                                                 <p style="text-align: justify">Ponemos a disposición de nuestros clientes una cuenta en nuestro portal www.rdiaz.mx para la creación de su expediente digital en materia de residuos peligrosos, así como nuestra herramienta dentro de esta plataforma para el llenado de Bitácora en línea.</p>
+                                                 <p style="text-align: justify; font-size: large;">Ponemos a disposición de nuestros clientes una cuenta en nuestro portal www.rdiaz.mx para la creación de su expediente digital en materia de residuos peligrosos, así como nuestra herramienta dentro de esta plataforma para el llenado de Bitácora en línea.</p>
                                             </div>
 
                                         </div>
@@ -320,7 +320,7 @@
                                         <div class="col-lg-12">
                                             <div class="padding-30px-left padding-30px-right md-padding-20px-left sm-no-padding-left">
                                                 <h5>Etiquetas y Contenedores para RP</h5>
-                                                <p style="text-align: justify">Contamos con tambos metálicos de 200 litros y totes de 1000 litros de capacidad, adecuados para el almacenamiento de los residuos peligrosos generados; así como con etiquetas adhesivas para la correcta identificación de RP, con la información mínima requerida por la legislación para su llenado.</p>
+                                                <p style="text-align: justify; font-size: large;">Contamos con tambos metálicos de 200 litros y totes de 1000 litros de capacidad, adecuados para el almacenamiento de los residuos peligrosos generados; así como con etiquetas adhesivas para la correcta identificación de RP, con la información mínima requerida por la legislación para su llenado.</p>
                                             </div>
 
                                         </div>
@@ -333,7 +333,7 @@
                                         <div class="col-lg-12">
                                             <div class="padding-30px-left padding-30px-right md-padding-20px-left sm-no-padding-left">
                                                 <h5>Acondicionamiento de Almacén Temporal de Residuos Peligrosos (ATRP)</h5>
-                                                 <p style="text-align: justify">Diseño, construcción y/o acondicionamiento del ATRP, incluyendo la señalización necesaria para la identificación de áreas, de acuerdo con las especificaciones establecidas en la legislación y las características del sitio.</p>
+                                                 <p style="text-align: justify; font-size: large;">Diseño, construcción y/o acondicionamiento del ATRP, incluyendo la señalización necesaria para la identificación de áreas, de acuerdo con las especificaciones establecidas en la legislación y las características del sitio.</p>
 
                                             </div>
 
@@ -358,17 +358,17 @@
                 <div class="row">
                     <div class="margin-30px-bottom sm-margin-20px-bottom" style="width: 900px;"
 
-                        <p><strong style="color: #1E4B9E;">• Destrucción de Mercancía</strong></p>
-                        <p style="padding-left: 60px;">Derivadas de procedimientos fiscales u ordenadas por dependencias reguladoras (SAT, COFEPRIS, COESPRIS)</p>
+                        <p><strong style="color: #1E4B9E; font-size: large;">• Destrucción de Mercancía</strong></p>
+                        <p style="padding-left: 60px; font-size: large;">Derivadas de procedimientos fiscales u ordenadas por dependencias reguladoras (SAT, COFEPRIS, COESPRIS)</p>
 
-                        <p><strong style="color: #1E4B9E;">• Gestión de Trámites Ambientales (Federales y Estatales)</strong></p>
-                        <p style="padding-left: 60px;">Presentación de Licencias Ambientales Únicas, Licencias Locales de Funcionamiento Ambiental y Cédulas de Operación Anual (COA) para giros de competencia estatal y federal, así como Elaboración de Estudios de Impacto Ambiental.</p>
+                        <p><strong style="color: #1E4B9E; font-size: large;">• Gestión de Trámites Ambientales (Federales y Estatales)</strong></p>
+                        <p style="padding-left: 60px; font-size: large;">Presentación de Licencias Ambientales Únicas, Licencias Locales de Funcionamiento Ambiental y Cédulas de Operación Anual (COA) para giros de competencia estatal y federal, así como Elaboración de Estudios de Impacto Ambiental.</p>
 
-                        <p><strong style="color: #1E4B9E;">• Asesoría Ambiental + Desarrollo de Proyectos</strong></p>
-                        <p style="padding-left: 60px;">Apoyamos a nuestros clientes en la implementación de Sistemas de Gestión Ambiental (SGA) mediante la elaboración, revisión o actualización de Planes, Programas y Procedimientos internos, así como el diseño de Estrategias para mejorar su desempeño ambiental y promover la cultura ambiental entre su personal.</p>
+                        <p><strong style="color: #1E4B9E; font-size: large;">• Asesoría Ambiental + Desarrollo de Proyectos</strong></p>
+                        <p style="padding-left: 60px; font-size: large;" font-size: large;>Apoyamos a nuestros clientes en la implementación de Sistemas de Gestión Ambiental (SGA) mediante la elaboración, revisión o actualización de Planes, Programas y Procedimientos internos, así como el diseño de Estrategias para mejorar su desempeño ambiental y promover la cultura ambiental entre su personal.</p>
 
-                        <p><strong style="color: #1E4B9E;">• Limpieza y Mantenimiento General</strong></p>
-                        <p style="padding-left: 60px;">Contamos con un equipo de trabajo consolidado para la prestación de servicios especializados de limpieza y mantenimiento general de oficinas e instalaciones industriales.</p>
+                        <p><strong style="color: #1E4B9E; font-size: large;">• Limpieza y Mantenimiento General</strong></p>
+                        <p style="padding-left: 60px; font-size: large;">Contamos con un equipo de trabajo consolidado para la prestación de servicios especializados de limpieza y mantenimiento general de oficinas e instalaciones industriales.</p>
                     </div>
                 </div>              
             </div>              
